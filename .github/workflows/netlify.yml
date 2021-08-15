@@ -2,8 +2,8 @@ name: Netlify
 
 on:
   push:
-  pull_request:
-    types: [opened, synchronize]
+    branches:
+      - master
 
 jobs:
   build:
