@@ -1,5 +1,5 @@
 import { cloneDeep } from 'lodash'
-import axios from 'axios'
+// import axios from 'axios'
 
 const initialState = {
   prefList: [],

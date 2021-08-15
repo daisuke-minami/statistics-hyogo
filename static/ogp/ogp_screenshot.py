@@ -2,6 +2,7 @@ import os
 import time
 import pathlib
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 
 #ルートディレクトリの設定
 root_dir = pathlib.Path(__file__).parent.parent.parent
@@ -11,7 +12,22 @@ print(root_dir)
 path = os.path.join(root_dir, 'data/pagesetting')
 files = os.listdir(path)
 files_file = [f for f in files if os.path.isfile(os.path.join(path, f))]
-print(files_file)
+# print(files_file)
+
+FILENAME = os.path.join(os.path.dirname(os.path.abspath(__file__)), "screen.png")
+print(FILENAME)
+
+
+#ChromeDriverの設定
+chromePath = os.path.join(root_dir, 'node_modules/chromedriver/bin/chromedriver')
+driver = webdriver.Chrome(executable_path=chromePath)
+url = 'https://statistics-hyogo.com/'
+driver.get(url)
+driver.set_window_size(959, 500)
+driver.save_screenshot(FILENAME)
+
+# Chromeを閉じる
+driver.quit()
 
 # #ChromeDriverの設定
 # options = webdriver.ChromeOptions()
@@ -19,9 +35,7 @@ print(files_file)
 # options.add_argument("--hide-scrollbars")
 # driver = webdriver.Chrome(options=options)
 
-driver = webdriver.Chrome('./chromedriver')
-url = 'https://www.rakuten.co.jp/'
-driver.get(url)
+
 
 # #OGP画像の生成（都道府県）
 # for item in files_file:
