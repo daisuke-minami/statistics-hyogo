@@ -1,0 +1,114 @@
+{
+  "prefecture": [
+    {
+      "title": "発電電力量",
+      "titleId": "power-generation",
+      "cardComponent": "estat-column-chart-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010108",
+        "categories": [
+          {
+            "cdCat01": "H5104",
+            "name": "発電電力量"
+          }
+        ]
+      }
+    },
+    {
+      "title": "電力需要量",
+      "titleId": "electricity-demand",
+      "cardComponent": "estat-column-chart-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010108",
+        "categories": [
+          {
+            "cdCat01": "H5105",
+            "name": "電力需要量"
+          }
+        ]
+      }
+    },
+    {
+      "title": "ガソリン販売量",
+      "titleId": "gasoline-sales-volume",
+      "cardComponent": "estat-column-chart-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010108",
+        "categories": [
+          {
+            "cdCat01": "H5205",
+            "name": "ガソリン販売量"
+          }
+        ]
+      }
+    },
+    {
+      "title": "都市ガス販売量",
+      "titleId": "city-gas-sales-volume",
+      "cardComponent": "estat-column-chart-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010108",
+        "categories": [
+          {
+            "cdCat01": "H5206",
+            "name": "都市ガス販売量"
+          }
+        ]
+      }
+    },
+    {
+      "title": "ごみ総排出量",
+      "titleId": "garbage-discharged",
+      "cardComponent": "estat-column-chart-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010108",
+        "categories": [
+          {
+            "cdCat01": "H5609",
+            "name": "ごみ総排出量"
+          }
+        ]
+      }
+    }
+  ],
+  "city": [
+    {
+      "title": "ごみ総排出量",
+      "titleId": "garbage-discharged",
+      "cardComponent": "estat-column-chart-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000020208",
+        "categories": [
+          {
+            "cdCat01": "H5609",
+            "name": "ごみ総排出量"
+          }
+        ]
+      }
+    }
+  ]
+}

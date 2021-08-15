@@ -1,0 +1,1180 @@
+{
+  "prefecture": [
+    {
+      "title": "交通事故発生件数",
+      "titleId": "traffic-accident",
+      "cardComponent": "estat-column-chart-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010111",
+        "categories": [
+          {
+            "cdCat01": "K3101",
+            "name": "交通事故発生件数"
+          }
+        ]
+      }
+    },
+    {
+      "title": "刑法犯認知件数",
+      "titleId": "criminal-law-offender",
+      "cardComponent": "estat-column-chart-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010111",
+        "categories": [
+          {
+            "cdCat01": "K4201",
+            "name": "刑法犯認知件数"
+          }
+        ]
+      }
+    },
+    {
+      "title": "交通事故死傷者数",
+      "titleId": "traffic-accident-casualties",
+      "cardComponent": "estat-line-chart-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010111",
+        "categories": [
+          {
+            "cdCat01": "K3102",
+            "name": "交通事故死傷者数"
+          }
+        ]
+      }
+    },
+    {
+      "title": "消防本部・署数",
+      "titleId": "fire-department",
+      "cardComponent": "estat-column-chart-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010111",
+        "categories": [
+          {
+            "cdCat01": "K1105",
+            "name": "消防本部・署数"
+          }
+        ]
+      }
+    },
+    {
+      "title": "消防機関出動回数",
+      "titleId": "fire-department-dispatch",
+      "cardComponent": "estat-line-chart-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010111",
+        "categories": [
+          {
+            "cdCat01": "K1201",
+            "name": "消防機関出動回数"
+          }
+        ]
+      }
+    },
+    {
+      "title": "消防団数",
+      "titleId": "fire-brigade",
+      "cardComponent": "estat-column-chart-break-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010111",
+        "categories": [
+          {
+            "cdCat01": "K1104",
+            "name": "総数"
+          },
+          {
+            "cdCat01": "K110401",
+            "name": "消防団数"
+          },
+          {
+            "cdCat01": "K110402",
+            "name": "消防分団数"
+          }
+        ]
+      }
+    },
+    {
+      "title": "消防団員数",
+      "titleId": "fire-brigade-member",
+      "cardComponent": "estat-line-chart-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010111",
+        "categories": [
+          {
+            "cdCat01": "K1105",
+            "name": "消防団員数"
+          }
+        ]
+      }
+    },
+    {
+      "title": "救急出動件数",
+      "titleId": "emergency-dispatches",
+      "cardComponent": "estat-column-chart-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010111",
+        "categories": [
+          {
+            "cdCat01": "K1210",
+            "name": "救急出動件数"
+          }
+        ]
+      }
+    },
+    {
+      "title": "出火件数",
+      "titleId": "number-of-fires",
+      "cardComponent": "estat-column-chart-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010111",
+        "categories": [
+          {
+            "cdCat01": "K2101",
+            "name": "出火件数"
+          }
+        ]
+      }
+    },
+    {
+      "title": "建物火災出火件数",
+      "titleId": "number-of-building-fires",
+      "cardComponent": "estat-column-chart-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010111",
+        "categories": [
+          {
+            "cdCat01": "K2102",
+            "name": "建物火災出火件数"
+          }
+        ]
+      }
+    },
+    {
+      "title": "建物焼損床面積",
+      "titleId": "building-burned-floor-area",
+      "cardComponent": "estat-column-chart-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010111",
+        "categories": [
+          {
+            "cdCat01": "K210311",
+            "name": "建物焼損床面積"
+          }
+        ]
+      }
+    },
+    {
+      "title": "火災損害額",
+      "titleId": "fire-damage-amount",
+      "cardComponent": "estat-column-chart-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010111",
+        "categories": [
+          {
+            "cdCat01": "K2105",
+            "name": "火災損害額"
+          }
+        ]
+      }
+    },
+    {
+      "title": "建物火災損害額",
+      "titleId": "building-fire-damage-amount",
+      "cardComponent": "estat-column-chart-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010111",
+        "categories": [
+          {
+            "cdCat01": "K2106",
+            "name": "建物火災損害額"
+          }
+        ]
+      }
+    },
+    {
+      "title": "火災死傷者数",
+      "titleId": "number-of-fire-casualties",
+      "cardComponent": "estat-line-chart-break-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010111",
+        "categories": [
+          {
+            "cdCat01": "K2109",
+            "name": "総数"
+          },
+          {
+            "cdCat01": "K2110",
+            "name": "死亡者数"
+          },
+          {
+            "cdCat01": "K2111",
+            "name": "負傷者数"
+          }
+        ]
+      }
+    },
+    {
+      "title": "火災保険新契約件数",
+      "titleId": "number-of-new-fire-insurance-contracts",
+      "cardComponent": "estat-line-chart-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010111",
+        "categories": [
+          {
+            "cdCat01": "K2209",
+            "name": "火災保険新契約件数"
+          }
+        ]
+      }
+    },
+    {
+      "title": "火災保険新規契約金額",
+      "titleId": "fire-insurance-new-contract-amount",
+      "cardComponent": "estat-column-chart-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010111",
+        "categories": [
+          {
+            "cdCat01": "K2211",
+            "name": "火災保険新契約金額"
+          }
+        ]
+      }
+    },
+    {
+      "title": "火災保険保険金支払件数",
+      "titleId": "number-of-fire-insurance-claims-paid",
+      "cardComponent": "estat-line-chart-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010111",
+        "categories": [
+          {
+            "cdCat01": "K2213",
+            "name": "火災保険保険金支払件数"
+          }
+        ]
+      }
+    },
+    {
+      "title": "火災保険保険金支払金額",
+      "titleId": "fire-insurance-insurance-payment-amount",
+      "cardComponent": "estat-column-chart-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010111",
+        "categories": [
+          {
+            "cdCat01": "K2215",
+            "name": "火災保険保険金支払金額"
+          }
+        ]
+      }
+    },
+    {
+      "title": "任意自動車保険契約台数",
+      "titleId": "number-of-voluntary-automobile-insurance-contracts",
+      "cardComponent": "estat-column-chart-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010111",
+        "categories": [
+          {
+            "cdCat01": "K3301",
+            "name": "任意自動車保険契約台数"
+          }
+        ]
+      }
+    },
+    {
+      "title": "任意自動車保険契約保険料",
+      "titleId": "voluntary-car-insurance-contract-premium",
+      "cardComponent": "estat-column-chart-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010111",
+        "categories": [
+          {
+            "cdCat01": "K3302",
+            "name": "任意自動車保険契約保険料"
+          }
+        ]
+      }
+    },
+    {
+      "title": "任意自動車保険保険金支払件数",
+      "titleId": "number-of-voluntary-automobile-insurance-claims-paid",
+      "cardComponent": "estat-line-chart-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010111",
+        "categories": [
+          {
+            "cdCat01": "K3303",
+            "name": "任意自動車保険保険金支払件数"
+          }
+        ]
+      }
+    },
+    {
+      "title": "任意自動車保険保険金支払金額",
+      "titleId": "voluntary-car-insurance-insurance-payment-amount",
+      "cardComponent": "estat-column-chart-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010111",
+        "categories": [
+          {
+            "cdCat01": "K3304",
+            "name": "任意自動車保険保険金支払金額"
+          }
+        ]
+      }
+    },
+    {
+      "title": "任意自動車保険普及率（車両）",
+      "titleId": "voluntary-car-insurance-penetration-rate-one",
+      "cardComponent": "estat-line-chart-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010111",
+        "categories": [
+          {
+            "cdCat01": "K330501",
+            "name": "任意自動車保険普及率（車両）"
+          }
+        ]
+      }
+    },
+    {
+      "title": "任意自動車保険普及率（対人）",
+      "titleId": "voluntary-car-insurance-penetration-rate-two",
+      "cardComponent": "estat-line-chart-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010111",
+        "categories": [
+          {
+            "cdCat01": "K330502",
+            "name": "任意自動車保険普及率（対人）"
+          }
+        ]
+      }
+    },
+    {
+      "title": "任意自動車保険普及率（対物）",
+      "titleId": "voluntary-car-insurance-penetration-rate-three",
+      "cardComponent": "estat-line-chart-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010111",
+        "categories": [
+          {
+            "cdCat01": "K330503",
+            "name": "任意自動車保険普及率（対物）"
+          }
+        ]
+      }
+    },
+    {
+      "title": "任意自動車保険普及率（搭乗者傷害）",
+      "titleId": "voluntary-car-insurance-penetration-rate-four",
+      "cardComponent": "estat-line-chart-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010111",
+        "categories": [
+          {
+            "cdCat01": "K330504",
+            "name": "任意自動車保険普及率（搭乗者傷害）"
+          }
+        ]
+      }
+    },
+    {
+      "title": "防犯ボランティア団体数",
+      "titleId": "number-of-crime-prevention-volunteer-groups",
+      "cardComponent": "estat-line-chart-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010111",
+        "categories": [
+          {
+            "cdCat01": "K8101",
+            "name": "防犯ボランティア団体数"
+          }
+        ]
+      }
+    },
+    {
+      "title": "防犯ボランティア講構成員数",
+      "titleId": "number-of-crime-prevention-volunteer-members",
+      "cardComponent": "estat-line-chart-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010111",
+        "categories": [
+          {
+            "cdCat01": "K8102",
+            "name": "防犯ボランティア構成員数"
+          }
+        ]
+      }
+    },
+    {
+      "title": "温室効果ガス算定排出量（実数）",
+      "titleId": "calculated-greenhouse-gas-emissions-one",
+      "cardComponent": "estat-column-chart-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010111",
+        "categories": [
+          {
+            "cdCat01": "K6107",
+            "name": "温室効果ガス算定排出量（実数）"
+          }
+        ]
+      }
+    },
+    {
+      "title": "温室効果ガス算定排出量（率）",
+      "titleId": "calculated-greenhouse-gas-emissions-two",
+      "cardComponent": "estat-line-chart-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010111",
+        "categories": [
+          {
+            "cdCat01": "K6108",
+            "name": "温室効果ガス算定排出量（率）"
+          }
+        ]
+      }
+    },
+    {
+      "title": "水質汚濁防止法上の特定事業所数",
+      "titleId": "water-pollution-control-law",
+      "cardComponent": "estat-column-chart-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010111",
+        "categories": [
+          {
+            "cdCat01": "K6106",
+            "name": "水質汚濁防止法上の特定事業所数"
+          }
+        ]
+      }
+    },
+    {
+      "title": "ばい煙発生施設数",
+      "titleId": "number-of-soot-and-smoke-generating-facilities",
+      "cardComponent": "estat-column-chart-break-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010111",
+        "categories": [
+          {
+            "cdCat01": "K610501",
+            "name": "総数"
+          },
+          {
+            "cdCat01": "K610502",
+            "name": "一般粉塵発生施設数"
+          },
+          {
+            "cdCat01": "K610503",
+            "name": "一般粉塵発生施設数"
+          }
+        ]
+      }
+    },
+    {
+      "title": "公害苦情件数（典型7公害）",
+      "titleId": "number-of-pollution-complaints",
+      "cardComponent": "estat-column-chart-break-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010111",
+        "categories": [
+          {
+            "cdCat01": "K6103",
+            "name": "総数"
+          },
+          {
+            "cdCat01": "K610301",
+            "name": "大気汚染"
+          },
+          {
+            "cdCat01": "K610302",
+            "name": "水質汚濁"
+          },
+          {
+            "cdCat01": "K610303",
+            "name": "土壌汚染"
+          },
+          {
+            "cdCat01": "K610304",
+            "name": "騒音"
+          },
+          {
+            "cdCat01": "K610305",
+            "name": "振動"
+          },
+          {
+            "cdCat01": "K610306",
+            "name": "地盤沈下"
+          },
+          {
+            "cdCat01": "K610307",
+            "name": "悪臭"
+          }
+        ]
+      }
+    },
+    {
+      "title": "公害苦情受付件数",
+      "titleId": "number-of-pollution-complaints-received",
+      "cardComponent": "estat-column-chart-break-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010111",
+        "categories": [
+          {
+            "cdCat01": "K6101",
+            "name": "総数"
+          },
+          {
+            "cdCat01": "K610101",
+            "name": "新規受付件数"
+          },
+          {
+            "cdCat01": "K610102",
+            "name": "前年度繰越受付件数"
+          }
+        ]
+      }
+    },
+    {
+      "title": "公害苦情処理件数",
+      "titleId": "number-of-pollution-complaints-handled",
+      "cardComponent": "estat-column-chart-break-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010111",
+        "categories": [
+          {
+            "cdCat01": "K6102",
+            "name": "総数"
+          },
+          {
+            "cdCat01": "K610201",
+            "name": "直接処理件数"
+          },
+          {
+            "cdCat01": "K610202",
+            "name": "翌年度繰越処理件数"
+          }
+        ]
+      }
+    },
+    {
+      "title": "災害被害額",
+      "titleId": "disaster-damage-amount",
+      "cardComponent": "estat-column-chart-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010111",
+        "categories": [
+          {
+            "cdCat01": "K5112",
+            "name": "災害被害額"
+          }
+        ]
+      }
+    },
+    {
+      "title": "建物被害床上浸水",
+      "titleId": "flooding-on-the-floor",
+      "cardComponent": "estat-column-chart-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010111",
+        "categories": [
+          {
+            "cdCat01": "K5113",
+            "name": "建物被害床上浸水"
+          }
+        ]
+      }
+    },
+    {
+      "title": "建物被害床下浸水",
+      "titleId": "flooding-under-the-floor",
+      "cardComponent": "estat-column-chart-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010111",
+        "categories": [
+          {
+            "cdCat01": "K5114",
+            "name": "建物被害床下浸水"
+          }
+        ]
+      }
+    },
+    {
+      "title": "自然災害による罹災世帯数",
+      "titleId": "number-of-affected-households",
+      "cardComponent": "estat-column-chart-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010111",
+        "categories": [
+          {
+            "cdCat01": "K5115",
+            "name": "自然災害による罹災世帯数"
+          }
+        ]
+      }
+    },
+    {
+      "title": "自然災害による罹災者数",
+      "titleId": "number-of-victims",
+      "cardComponent": "estat-line-chart-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010111",
+        "categories": [
+          {
+            "cdCat01": "K5116",
+            "name": "自然災害による罹災者数"
+          }
+        ]
+      }
+    },
+    {
+      "title": "外国人被疑事件受理人員",
+      "titleId": "personnel-accepting-alleged-foreigners",
+      "cardComponent": "estat-line-chart-break-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010111",
+        "categories": [
+          {
+            "cdCat01": "K4803",
+            "name": "総数"
+          },
+          {
+            "cdCat01": "K480301",
+            "name": "既済人員"
+          },
+          {
+            "cdCat01": "K480302",
+            "name": "未済人員"
+          }
+        ]
+      }
+    },
+    {
+      "title": "出入国管理及び難民認定法の送致件数",
+      "titleId": "immigration-control-one",
+      "cardComponent": "estat-line-chart-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010111",
+        "categories": [
+          {
+            "cdCat01": "K4801",
+            "name": "出入国管理及び難民認定法の送致件数"
+          }
+        ]
+      }
+    },
+    {
+      "title": "出入国管理及び難民認定法の送致人員",
+      "titleId": "immigration-control-two",
+      "cardComponent": "estat-line-chart-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010111",
+        "categories": [
+          {
+            "cdCat01": "K4802",
+            "name": "出入国管理及び難民認定法の送致人員"
+          }
+        ]
+      }
+    },
+    {
+      "title": "道路交通法違反検挙総件数（告知・送致）",
+      "titleId": "violation-of-the-road-traffic-act",
+      "cardComponent": "estat-line-chart-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010111",
+        "categories": [
+          {
+            "cdCat01": "K4401",
+            "name": "道路交通法違反検挙総件数（告知・送致）"
+          }
+        ]
+      }
+    },
+    {
+      "title": "交通事故事件件数",
+      "titleId": "number-of-traffic-accidents",
+      "cardComponent": "estat-line-chart-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010111",
+        "categories": [
+          {
+            "cdCat01": "K4402",
+            "name": "交通事故事件件数"
+          }
+        ]
+      }
+    },
+    {
+      "title": "交通事故事件少年件数",
+      "titleId": "number-of-traffic-accidents-boys",
+      "cardComponent": "estat-line-chart-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010111",
+        "categories": [
+          {
+            "cdCat01": "K4403",
+            "name": "交通事故事件少年件数"
+          }
+        ]
+      }
+    },
+    {
+      "title": "交通事故事件人員",
+      "titleId": "traffic-accident-personnel",
+      "cardComponent": "estat-line-chart-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010111",
+        "categories": [
+          {
+            "cdCat01": "K4404",
+            "name": "交通事故事件人員"
+          }
+        ]
+      }
+    },
+    {
+      "title": "触法少年補導人員",
+      "titleId": "tactile-boy-guidance-personnel",
+      "cardComponent": "estat-line-chart-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010111",
+        "categories": [
+          {
+            "cdCat01": "K4501",
+            "name": "触法少年補導人員"
+          }
+        ]
+      }
+    },
+    {
+      "title": "少年保護事件新受入人員",
+      "titleId": "newly-accepted-juvenile-protection-case",
+      "cardComponent": "estat-line-chart-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010111",
+        "categories": [
+          {
+            "cdCat01": "K4502",
+            "name": "少年保護事件新受入人員"
+          }
+        ]
+      }
+    },
+    {
+      "title": "民事事件件数",
+      "titleId": "number-of-civil-cases",
+      "cardComponent": "estat-line-chart-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010111",
+        "categories": [
+          {
+            "cdCat01": "K4701",
+            "name": "民事事件件数"
+          }
+        ]
+      }
+    },
+    {
+      "title": "行政事件件数",
+      "titleId": "number-of-administrative-cases",
+      "cardComponent": "estat-line-chart-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010111",
+        "categories": [
+          {
+            "cdCat01": "K4702",
+            "name": "行政事件件数"
+          }
+        ]
+      }
+    },
+    {
+      "title": "家事事件件数",
+      "titleId": "number-of-domestic-affairs",
+      "cardComponent": "estat-line-chart-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010111",
+        "categories": [
+          {
+            "cdCat01": "K4703",
+            "name": "家事事件件数"
+          }
+        ]
+      }
+    },
+    {
+      "title": "警察官数",
+      "titleId": "number-of-police-officers",
+      "cardComponent": "estat-line-chart-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010111",
+        "categories": [
+          {
+            "cdCat01": "K4102",
+            "name": "警察官数"
+          }
+        ]
+      }
+    },
+    {
+      "title": "特別法犯検挙件数",
+      "titleId": "number-of-arrests-for-special-law-offenses",
+      "cardComponent": "estat-column-chart-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010111",
+        "categories": [
+          {
+            "cdCat01": "K4301",
+            "name": "特別法犯検挙件数"
+          }
+        ]
+      }
+    },
+    {
+      "title": "特別法犯検挙人員",
+      "titleId": "special-law-offenders-arrested",
+      "cardComponent": "estat-column-chart-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010111",
+        "categories": [
+          {
+            "cdCat01": "K4302",
+            "name": "特別法犯検挙人員"
+          }
+        ]
+      }
+    },
+    {
+      "title": "覚せい剤取締検挙件数",
+      "titleId": "number-of-stimulant-drug-control-law-arrests",
+      "cardComponent": "estat-column-chart-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010111",
+        "categories": [
+          {
+            "cdCat01": "K4303",
+            "name": "覚せい剤取締検挙件数"
+          }
+        ]
+      }
+    },
+    {
+      "title": "覚せい剤取締検挙人員",
+      "titleId": "stimulant-drug-control-arrest-personnel",
+      "cardComponent": "estat-column-chart-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010111",
+        "categories": [
+          {
+            "cdCat01": "K4304",
+            "name": "覚せい剤取締検挙人員"
+          }
+        ]
+      }
+    },
+    {
+      "title": "売春事犯の検挙件数",
+      "titleId": "number-of-arrests-for-prostitution-offenders",
+      "cardComponent": "estat-column-chart-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010111",
+        "categories": [
+          {
+            "cdCat01": "K4305",
+            "name": "売春事犯の検挙件数"
+          }
+        ]
+      }
+    },
+    {
+      "title": "売春事犯の検挙人員",
+      "titleId": "arrested-personnel-for-prostitution-offenders",
+      "cardComponent": "estat-column-chart-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010111",
+        "categories": [
+          {
+            "cdCat01": "K4306",
+            "name": "売春事犯の検挙人員"
+          }
+        ]
+      }
+    }
+  ],
+  "city": [
+    {
+      "title": "交通事故発生件数",
+      "titleId": "traffic-accident",
+      "cardComponent": "estat-column-chart-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000020211",
+        "categories": [
+          {
+            "cdCat01": "K3101",
+            "name": "交通事故発生件数"
+          }
+        ]
+      }
+    },
+    {
+      "title": "刑法犯認知件数",
+      "titleId": "criminal-law-offender",
+      "cardComponent": "estat-column-chart-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000020211",
+        "categories": [
+          {
+            "cdCat01": "K4201",
+            "name": "刑法犯認知件数"
+          }
+        ]
+      }
+    }
+  ]
+}

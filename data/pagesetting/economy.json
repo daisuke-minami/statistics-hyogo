@@ -1,0 +1,906 @@
+{
+  "prefecture": [
+    {
+      "title": "県内総生産(平成23年基準)",
+      "titleId": "gross-fomestic-product-h23",
+      "cardComponent": "estat-column-chart-break-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010103",
+        "categories": [
+          {
+            "cdCat01": "C1111",
+            "name": "総数"
+          },
+          {
+            "cdCat01": "C1115",
+            "name": "第１次産業"
+          },
+          {
+            "cdCat01": "C1116",
+            "name": "第２次産業"
+          },
+          {
+            "cdCat01": "C1117",
+            "name": "第３次産業"
+          }
+        ]
+      }
+    },
+    {
+      "title": "1人当たり県民所得（平成23年基準）",
+      "titleId": "prefectural-income-h23",
+      "cardComponent": "estat-column-chart-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010103",
+        "categories": [
+          {
+            "cdCat01": "C121101",
+            "name": "1人当たり県民所得（平成23年基準）"
+          }
+        ]
+      }
+    },
+    {
+      "title": "民間最終消費支出（名目）（平成23年基準）",
+      "titleId": "private-final-consumption-expenditure-nominal",
+      "cardComponent": "estat-column-chart-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010103",
+        "categories": [
+          {
+            "cdCat01": "C1311",
+            "name": "民間最終消費支出（名目）（平成23年基準）"
+          }
+        ]
+      }
+    },
+    {
+      "title": "民間最終消費支出（実質）（平成23年基準）",
+      "titleId": "private-final-consumption-expenditure-real",
+      "cardComponent": "estat-column-chart-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010103",
+        "categories": [
+          {
+            "cdCat01": "C1411",
+            "name": "民間最終消費支出（実質）（平成23年基準）"
+          }
+        ]
+      }
+    },
+    {
+      "title": "政府最終消費支出（名目）（平成23年基準）",
+      "titleId": "government-final-consumption-expenditure-nominal",
+      "cardComponent": "estat-column-chart-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010103",
+        "categories": [
+          {
+            "cdCat01": "C1312",
+            "name": "政府最終消費支出（名目）（平成23年基準）"
+          }
+        ]
+      }
+    },
+    {
+      "title": "政府最終消費支出（実質）（平成23年基準）",
+      "titleId": "government-final-consumption-expenditure-real",
+      "cardComponent": "estat-column-chart-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010103",
+        "categories": [
+          {
+            "cdCat01": "C1412",
+            "name": "政府最終消費支出（実質）（平成23年基準）"
+          }
+        ]
+      }
+    },
+    {
+      "title": "県内総資本形成（名目）（平成23年基準）",
+      "titleId": "prefectural-total-capital-formation-nominal",
+      "cardComponent": "estat-column-chart-break-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010103",
+        "categories": [
+          {
+            "cdCat01": "C1313",
+            "name": "総数"
+          },
+          {
+            "cdCat01": "C131301",
+            "name": "総固定資本形成"
+          },
+          {
+            "cdCat01": "C131302",
+            "name": "在庫変動"
+          }
+        ]
+      }
+    },
+    {
+      "title": "県内総資本形成（実質）（平成23年基準）",
+      "titleId": "prefectural-total-capital-formation-real",
+      "cardComponent": "estat-column-chart-break-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010103",
+        "categories": [
+          {
+            "cdCat01": "C1413",
+            "name": "総数"
+          },
+          {
+            "cdCat01": "C141301",
+            "name": "総固定資本形成"
+          },
+          {
+            "cdCat01": "C141302",
+            "name": "在庫変動"
+          }
+        ]
+      }
+    },
+    {
+      "title": "課税対象所得",
+      "titleId": "taxable-income",
+      "cardComponent": "estat-column-chart-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010103",
+        "categories": [
+          {
+            "cdCat01": "C120110",
+            "name": "課税対象所得"
+          }
+        ]
+      }
+    },
+    {
+      "title": "納税義務者数（所得割）",
+      "titleId": "number-of-taxpayers-one",
+      "cardComponent": "estat-line-chart-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010103",
+        "categories": [
+          {
+            "cdCat01": "C120120",
+            "name": "納税義務者数（所得割）"
+          }
+        ]
+      }
+    },
+    {
+      "title": "納税義務者数（均等割）",
+      "titleId": "number-of-taxpayers-two",
+      "cardComponent": "estat-line-chart-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010103",
+        "categories": [
+          {
+            "cdCat01": "C120130",
+            "name": "納税義務者数（均等割）"
+          }
+        ]
+      }
+    },
+    {
+      "title": "事業所数（事業所・企業統計調査結果）",
+      "titleId": "number-of-establishments-one",
+      "cardComponent": "estat-column-chart-break-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010103",
+        "categories": [
+          {
+            "cdCat01": "C2101",
+            "name": "総数"
+          },
+          {
+            "cdCat01": "C2106",
+            "name": "第１次産業"
+          },
+          {
+            "cdCat01": "C2104",
+            "name": "第２次産業"
+          },
+          {
+            "cdCat01": "C2105",
+            "name": "第３次産業"
+          }
+        ]
+      }
+    },
+    {
+      "title": "事業所数（経済センサス‐基礎調査結果）",
+      "titleId": "number-of-establishments-two",
+      "cardComponent": "estat-column-chart-break-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010103",
+        "categories": [
+          {
+            "cdCat01": "C2107",
+            "name": "総数"
+          },
+          {
+            "cdCat01": "C2110",
+            "name": "第１次産業"
+          },
+          {
+            "cdCat01": "C2111",
+            "name": "第２次産業"
+          },
+          {
+            "cdCat01": "C2112",
+            "name": "第３次産業"
+          }
+        ]
+      }
+    },
+    {
+      "title": "従業者数（事業所・企業統計調査結果）",
+      "titleId": "number-of-employees-one",
+      "cardComponent": "estat-column-chart-break-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010103",
+        "categories": [
+          {
+            "cdCat01": "C2201",
+            "name": "総数"
+          },
+          {
+            "cdCat01": "C2206",
+            "name": "第１次産業"
+          },
+          {
+            "cdCat01": "C2204",
+            "name": "第２次産業"
+          },
+          {
+            "cdCat01": "C2205",
+            "name": "第３次産業"
+          }
+        ]
+      }
+    },
+    {
+      "title": "従業者数（経済センサス‐基礎調査結果）",
+      "titleId": "number-of-employees-two",
+      "cardComponent": "estat-column-chart-break-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010103",
+        "categories": [
+          {
+            "cdCat01": "C2207",
+            "name": "総数"
+          },
+          {
+            "cdCat01": "C2210",
+            "name": "第１次産業"
+          },
+          {
+            "cdCat01": "C2211",
+            "name": "第２次産業"
+          },
+          {
+            "cdCat01": "C2212",
+            "name": "第３次産業"
+          }
+        ]
+      }
+    },
+    {
+      "title": "売上金額（民営）",
+      "titleId": "sales-amount",
+      "cardComponent": "estat-column-chart-break-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010103",
+        "categories": [
+          {
+            "cdCat01": "C6101",
+            "name": "総数"
+          },
+          {
+            "cdCat01": "C610101",
+            "name": "農林漁業"
+          },
+          {
+            "cdCat01": "C610105",
+            "name": "鉱業，採石業，砂利採取業"
+          },
+          {
+            "cdCat01": "C610106",
+            "name": "建設業"
+          },
+          {
+            "cdCat01": "C610107",
+            "name": "製造業"
+          },
+          {
+            "cdCat01": "C610108",
+            "name": "電気・ガス・熱供給・水道業"
+          },
+          {
+            "cdCat01": "C610109",
+            "name": "情報通信業"
+          },
+          {
+            "cdCat01": "C610110",
+            "name": "運輸業，郵便業"
+          },
+          {
+            "cdCat01": "C610111",
+            "name": "卸売業，小売業"
+          },
+          {
+            "cdCat01": "C610114",
+            "name": "金融業，保険業"
+          },
+          {
+            "cdCat01": "C610115",
+            "name": "不動産業，物品賃貸業"
+          },
+          {
+            "cdCat01": "C610116",
+            "name": "学術研究，専門・技術サービス業"
+          },
+          {
+            "cdCat01": "C610117",
+            "name": "宿泊業，飲食サービス業"
+          },
+          {
+            "cdCat01": "C610118",
+            "name": "生活関連サービス業，娯楽業"
+          },
+          {
+            "cdCat01": "C610119",
+            "name": "教育，学習支援業"
+          },
+          {
+            "cdCat01": "C610120",
+            "name": "医療，福祉"
+          },
+          {
+            "cdCat01": "C610121",
+            "name": "複合サービス事業"
+          },
+          {
+            "cdCat01": "C610122",
+            "name": "サービス業（他に分類されないもの）"
+          }
+        ]
+      }
+    },
+    {
+      "title": "付加価値額（民営）",
+      "titleId": "value-added-amount",
+      "cardComponent": "estat-column-chart-break-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010103",
+        "categories": [
+          {
+            "cdCat01": "C6201",
+            "name": "総数"
+          },
+          {
+            "cdCat01": "C620101",
+            "name": "農林漁業"
+          },
+          {
+            "cdCat01": "C620105",
+            "name": "鉱業，採石業，砂利採取業"
+          },
+          {
+            "cdCat01": "C620106",
+            "name": "建設業"
+          },
+          {
+            "cdCat01": "C620107",
+            "name": "製造業"
+          },
+          {
+            "cdCat01": "C620108",
+            "name": "電気・ガス・熱供給・水道業"
+          },
+          {
+            "cdCat01": "C620109",
+            "name": "情報通信業"
+          },
+          {
+            "cdCat01": "C620110",
+            "name": "運輸業，郵便業"
+          },
+          {
+            "cdCat01": "C620111",
+            "name": "卸売業，小売業"
+          },
+          {
+            "cdCat01": "C620114",
+            "name": "金融業，保険業"
+          },
+          {
+            "cdCat01": "C620115",
+            "name": "不動産業，物品賃貸業"
+          },
+          {
+            "cdCat01": "C620116",
+            "name": "学術研究，専門・技術サービス業"
+          },
+          {
+            "cdCat01": "C620117",
+            "name": "宿泊業，飲食サービス業"
+          },
+          {
+            "cdCat01": "C620118",
+            "name": "生活関連サービス業，娯楽業"
+          },
+          {
+            "cdCat01": "C620119",
+            "name": "教育，学習支援業"
+          },
+          {
+            "cdCat01": "C620120",
+            "name": "医療，福祉"
+          },
+          {
+            "cdCat01": "C620121",
+            "name": "複合サービス事業"
+          },
+          {
+            "cdCat01": "C620122",
+            "name": "サービス業（他に分類されないもの）"
+          }
+        ]
+      }
+    },
+    {
+      "title": "消費者物価地域差指数",
+      "titleId": "consumer-price-index",
+      "cardComponent": "estat-line-chart-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010103",
+        "categories": [
+          {
+            "cdCat01": "C5701",
+            "name": "消費者物価地域差指数"
+          }
+        ]
+      }
+    },
+    {
+      "title": "実収入（二人以上の世帯のうち勤労者世帯）",
+      "titleId": "real-income",
+      "cardComponent": "estat-column-chart-break-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010112",
+        "categories": [
+          {
+            "cdCat01": "L3110",
+            "name": "総数"
+          },
+          {
+            "cdCat01": "L3111",
+            "name": "経常収入"
+          },
+          {
+            "cdCat01": "L3112",
+            "name": "特別収入"
+          }
+        ]
+      }
+    },
+    {
+      "title": "消費支出（二人以上の世帯のうち勤労者世帯）",
+      "titleId": "consumption-expenditure-two",
+      "cardComponent": "estat-column-chart-break-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010112",
+        "categories": [
+          {
+            "cdCat01": "L3211",
+            "name": "総数"
+          },
+          {
+            "cdCat01": "L321101",
+            "name": "食糧費"
+          },
+          {
+            "cdCat01": "L321102",
+            "name": "住居費"
+          },
+          {
+            "cdCat01": "L321103",
+            "name": "光熱・水道費"
+          },
+          {
+            "cdCat01": "L321104",
+            "name": "家具・家事用品費"
+          },
+          {
+            "cdCat01": "L321105",
+            "name": "被服及び履物費"
+          },
+          {
+            "cdCat01": "L321106",
+            "name": "保険医療費"
+          },
+          {
+            "cdCat01": "L321107",
+            "name": "交通・通信費"
+          },
+          {
+            "cdCat01": "L321108",
+            "name": "教育費"
+          },
+          {
+            "cdCat01": "L321109",
+            "name": "教養娯楽費"
+          },
+          {
+            "cdCat01": "L321110",
+            "name": "その他"
+          }
+        ]
+      }
+    },
+    {
+      "title": "消費支出（二人以上の世帯）",
+      "titleId": "consumption-expenditure-one",
+      "cardComponent": "estat-column-chart-break-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010112",
+        "categories": [
+          {
+            "cdCat01": "L3221",
+            "name": "総数"
+          },
+          {
+            "cdCat01": "L322101",
+            "name": "食糧費"
+          },
+          {
+            "cdCat01": "L322102",
+            "name": "住居費"
+          },
+          {
+            "cdCat01": "L322103",
+            "name": "光熱・水道費"
+          },
+          {
+            "cdCat01": "L322104",
+            "name": "家具・家事用品費"
+          },
+          {
+            "cdCat01": "L322105",
+            "name": "被服及び履物費"
+          },
+          {
+            "cdCat01": "L322106",
+            "name": "保険医療費"
+          },
+          {
+            "cdCat01": "L322107",
+            "name": "交通・通信費"
+          },
+          {
+            "cdCat01": "L322108",
+            "name": "教育費"
+          },
+          {
+            "cdCat01": "L322109",
+            "name": "教養娯楽費"
+          },
+          {
+            "cdCat01": "L322110",
+            "name": "その他"
+          }
+        ]
+      }
+    },
+    {
+      "title": "貯蓄現在高（二人以上の世帯）",
+      "titleId": "current-savings-one",
+      "cardComponent": "estat-column-chart-break-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010112",
+        "categories": [
+          {
+            "cdCat01": "L430101",
+            "name": "総数"
+          },
+          {
+            "cdCat01": "L430102",
+            "name": "預貯金"
+          },
+          {
+            "cdCat01": "L430103",
+            "name": "生命保険など"
+          },
+          {
+            "cdCat01": "L430104",
+            "name": "有価証券"
+          }
+        ]
+      }
+    },
+    {
+      "title": "貯蓄現在高（二人以上の世帯のうち勤労者世帯）",
+      "titleId": "current-savings-two",
+      "cardComponent": "estat-column-chart-break-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010112",
+        "categories": [
+          {
+            "cdCat01": "L430201",
+            "name": "総数"
+          },
+          {
+            "cdCat01": "L430202",
+            "name": "預貯金"
+          },
+          {
+            "cdCat01": "L430203",
+            "name": "生命保険など"
+          },
+          {
+            "cdCat01": "L430204",
+            "name": "有価証券"
+          }
+        ]
+      }
+    },
+    {
+      "title": "負債現在高（二人以上の世帯）",
+      "titleId": "current-debt-one",
+      "cardComponent": "estat-column-chart-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010112",
+        "categories": [
+          {
+            "cdCat01": "L440101",
+            "name": "負債現在高（二人以上の世帯）"
+          }
+        ]
+      }
+    },
+    {
+      "title": "負債現在高（二人以上の世帯のうち勤労者世帯）",
+      "titleId": "current-debt-two",
+      "cardComponent": "estat-column-chart-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010112",
+        "categories": [
+          {
+            "cdCat01": "L440201",
+            "name": "負債現在高（二人以上の世帯のうち勤労者世帯）"
+          }
+        ]
+      }
+    },
+    {
+      "title": "年間収入平均（全世帯）",
+      "titleId": "average-annual-income-one",
+      "cardComponent": "estat-column-chart-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010112",
+        "categories": [
+          {
+            "cdCat01": "L450101",
+            "name": "年間収入平均（全世帯）"
+          }
+        ]
+      }
+    },
+    {
+      "title": "年間収入平均（勤労者世帯）",
+      "titleId": "average-annual-income-two",
+      "cardComponent": "estat-column-chart-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010112",
+        "categories": [
+          {
+            "cdCat01": "L450201",
+            "name": "年間収入平均（勤労者世帯）"
+          }
+        ]
+      }
+    },
+    {
+      "title": "年間収入のジニ係数（二人以上の世帯）",
+      "titleId": "gini-coefficient-of-annual-income-one",
+      "cardComponent": "estat-line-chart-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010112",
+        "categories": [
+          {
+            "cdCat01": "L4601",
+            "name": "年間収入のジニ係数（二人以上の世帯）"
+          }
+        ]
+      }
+    },
+    {
+      "title": "年間収入のジニ係数（二人以上の世帯のうち勤労者世帯）",
+      "titleId": "gini-coefficient-of-annual-income-two",
+      "cardComponent": "estat-line-chart-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010112",
+        "categories": [
+          {
+            "cdCat01": "L4602",
+            "name": "年間収入のジニ係数（二人以上の世帯のうち勤労者世帯）"
+          }
+        ]
+      }
+    },
+    {
+      "title": "貯蓄現在高のジニ係数（二人以上の世帯）",
+      "titleId": "gini-coefficient-of-current-savings-one",
+      "cardComponent": "estat-line-chart-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010112",
+        "categories": [
+          {
+            "cdCat01": "L4603",
+            "name": "貯蓄現在高のジニ係数（二人以上の世帯）"
+          }
+        ]
+      }
+    },
+    {
+      "title": "貯蓄現在高のジニ係数（二人以上の世帯のうち勤労者世帯）",
+      "titleId": "gini-coefficient-of-current-savings-two",
+      "cardComponent": "estat-line-chart-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010112",
+        "categories": [
+          {
+            "cdCat01": "L4604",
+            "name": "貯蓄現在高のジニ係数（二人以上の世帯のうち勤労者世帯）"
+          }
+        ]
+      }
+    }
+  ],
+  "city": [
+    {
+      "title": "課税対象所得",
+      "titleId": "taxable-income",
+      "cardComponent": "estat-column-chart-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000020203",
+        "categories": [
+          {
+            "cdCat01": "C120110",
+            "name": "課税対象所得"
+          }
+        ]
+      }
+    }
+  ]
+}

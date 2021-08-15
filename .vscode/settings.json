@@ -1,0 +1,16 @@
+{
+    "editor.renderControlCharacters": true,
+    "editor.formatOnSave": false,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
+    },
+    "eslint.format.enable": true,
+    "eslint.packageManager": "yarn",
+    "eslint.workingDirectories": ["./"],
+    "eslint.validate": [
+      "javascript",
+      "vue"
+    ],
+    "editor.minimap.enabled": false,
+    "python.pythonPath": "/Library/Frameworks/Python.framework/Versions/3.9/bin/python3"
+  }

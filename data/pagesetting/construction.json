@@ -1,0 +1,114 @@
+{
+  "prefecture": [
+    {
+      "title": "標準価格（平均価格）（住宅地）",
+      "titleId": "standard-price-residential-area",
+      "cardComponent": "estat-column-chart-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010103",
+        "categories": [
+          {
+            "cdCat01": "C5401",
+            "name": "標準価格（平均価格）（住宅地）"
+          }
+        ]
+      }
+    },
+    {
+      "title": "標準価格（平均価格）（商業地）",
+      "titleId": "standard-price-commercial-area",
+      "cardComponent": "estat-column-chart-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010103",
+        "categories": [
+          {
+            "cdCat01": "C5403",
+            "name": "標準価格（平均価格）（商業地）"
+          }
+        ]
+      }
+    },
+    {
+      "title": "標準価格（平均価格）（工業地）",
+      "titleId": "standard-price-industrial-area",
+      "cardComponent": "estat-column-chart-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010103",
+        "categories": [
+          {
+            "cdCat01": "C5405",
+            "name": "標準価格（平均価格）（工業地）"
+          }
+        ]
+      }
+    }
+  ],
+  "city": [
+    {
+      "title": "標準価格（平均価格）（住宅地）",
+      "titleId": "standard-price-residential-area",
+      "cardComponent": "estat-column-chart-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000020203",
+        "categories": [
+          {
+            "cdCat01": "C5401",
+            "name": "標準価格（平均価格）（住宅地）"
+          }
+        ]
+      }
+    },
+    {
+      "title": "標準価格（平均価格）（商業地）",
+      "titleId": "standard-price-commercial-area",
+      "cardComponent": "estat-column-chart-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000020203",
+        "categories": [
+          {
+            "cdCat01": "C5403",
+            "name": "標準価格（平均価格）（商業地）"
+          }
+        ]
+      }
+    },
+    {
+      "title": "標準価格（平均価格）（工業地）",
+      "titleId": "standard-price-industrial-area",
+      "cardComponent": "estat-column-chart-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000020203",
+        "categories": [
+          {
+            "cdCat01": "C5405",
+            "name": "標準価格（平均価格）（工業地）"
+          }
+        ]
+      }
+    }
+  ]
+}

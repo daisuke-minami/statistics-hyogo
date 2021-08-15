@@ -1,0 +1,58 @@
+{
+  "prefecture": [
+    {
+      "title": "商業事業所数",
+      "titleId": "number-of-commercial-establishments",
+      "cardComponent": "estat-column-chart-break-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000010103",
+        "categories": [
+          {
+            "cdCat01": "C3502",
+            "name": "総数"
+          },
+          {
+            "cdCat01": "C350201",
+            "name": "卸売業"
+          },
+          {
+            "cdCat01": "C350202",
+            "name": "小売業"
+          }
+        ]
+      }
+    }
+  ],
+  "city": [
+    {
+      "title": "商業事業所数",
+      "titleId": "number-of-commercial-establishments",
+      "cardComponent": "estat-column-chart-break-card",
+      "isRank": true,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0000020203",
+        "categories": [
+          {
+            "cdCat01": "C3502",
+            "name": "総数"
+          },
+          {
+            "cdCat01": "C350201",
+            "name": "卸売業"
+          },
+          {
+            "cdCat01": "C350202",
+            "name": "小売業"
+          }
+        ]
+      }
+    }
+  ]
+}
