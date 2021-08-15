@@ -32,19 +32,19 @@ export const mutations = {
 
 export const actions = {
   // RESAS-APIから取得する場合
-  async fetchPrefs({ commit }) {
-    const res = await axios.get(
-      'https://opendata.resas-portal.go.jp/api/v1/prefectures',
-      {
-        headers: {
-          'X-API-KEY': process.env.API_KEY,
-        },
-      }
-    )
-    if (res.data.result) commit('initPrefSet', res.data.result)
-  },
-  // 環境変数から取得する場合
-  // fetchPrefs({ commit }) {
-  //   commit('initPrefSet', process.env.prefList)
+  // async fetchPrefs({ commit }) {
+  //   const res = await axios.get(
+  //     'https://opendata.resas-portal.go.jp/api/v1/prefectures',
+  //     {
+  //       headers: {
+  //         'X-API-KEY': process.env.API_KEY,
+  //       },
+  //     }
+  //   )
+  //   if (res.data.result) commit('initPrefSet', res.data.result)
   // },
+  // 環境変数から取得する場合
+  fetchPrefs({ commit }) {
+    commit('initPrefSet', process.env.prefList)
+  },
 }
