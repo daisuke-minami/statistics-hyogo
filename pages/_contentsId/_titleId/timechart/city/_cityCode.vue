@@ -3,12 +3,10 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-
 export default {
-  async asyncData({ store }) {
-    await store.dispatch('prefList/fetchPrefs')
-    await store.dispatch('cityList/fetchCities')
+  async asyncData() {
+    const cityList = await import(`~/static/codes/cityList.json`)
+    return { cityList }
   },
   data() {
     return {
@@ -16,7 +14,6 @@ export default {
     }
   },
   computed: {
-    ...mapGetters('cityList', ['getCityList', 'getCityName']),
     contentsId() {
       return this.$route.params.contentsId
     },
@@ -27,7 +24,8 @@ export default {
       return this.$route.params.cityCode
     },
     cityName() {
-      return this.getCityName(this.cityCode)
+      return this.cityList.result.find((d) => d.cityCode === this.cityCode)
+        .cityName
     },
     contentsAll() {
       return require(`~/data/pagesetting/${this.contentsId}.json`)
