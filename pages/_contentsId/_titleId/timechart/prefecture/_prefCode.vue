@@ -3,15 +3,10 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-
 export default {
-  async asyncData({ store }) {
-    if (store.getters['prefList/getPrefList'].length) {
-      return
-    }
-    await store.dispatch('prefList/fetchPrefs')
-    await store.dispatch('cityList/fetchCities')
+  async asyncData() {
+    const prefList = await (await import(`~/static/codes/prefList.json`)).result
+    return { prefList }
   },
   data() {
     return {
@@ -19,7 +14,6 @@ export default {
     }
   },
   computed: {
-    ...mapGetters('prefList', ['getPrefName']),
     contentsId() {
       return this.$route.params.contentsId
     },
@@ -28,11 +22,9 @@ export default {
     },
     prefCode() {
       return Number(this.$route.params.prefCode)
-      // return 28
     },
     prefName() {
-      return this.getPrefName(this.prefCode)
-      // return '兵庫県'
+      return this.prefList.find((d) => d.prefCode === this.prefCode).prefName
     },
     contentsAll() {
       return require(`~/data/pagesetting/${this.contentsId}.json`)

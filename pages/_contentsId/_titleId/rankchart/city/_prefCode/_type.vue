@@ -3,31 +3,29 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-
 export default {
+  async asyncData() {
+    const cityList = await (await import(`~/static/codes/cityList.json`)).result
+    const prefList = await (await import(`~/static/codes/prefList.json`)).result
+    return { cityList, prefList }
+  },
   data() {
     return {
       governmentType: 'city',
     }
   },
   computed: {
-    ...mapGetters('cityList', ['getCityList']),
-    ...mapGetters('prefList', ['getPrefName']),
     prefCode() {
       return this.$route.params.prefCode
     },
     prefName() {
-      return this.getPrefName(this.prefCode)
+      return this.prefList((d) => d.prefCode === this.prefCode).prefName
     },
     contentsId() {
       return this.$route.params.contentsId
     },
     titleId() {
       return this.$route.params.titleId
-    },
-    cityList() {
-      return this.getCityList
     },
     contentsAll() {
       return require(`~/data/pagesetting/${this.contentsId}.json`)

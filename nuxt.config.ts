@@ -8,8 +8,8 @@ const environment = process.env.NODE_ENV || 'development'
 
 const fs = require('fs')
 const routes = JSON.parse(fs.readFileSync('data/routes/routes.json'))
-const cityList = JSON.parse(fs.readFileSync('data/codes/citylist.json'))
-const prefList = JSON.parse(fs.readFileSync('data/codes/preflist.json'))
+const cityList = JSON.parse(fs.readFileSync('static/codes/citylist.json'))
+const prefList = JSON.parse(fs.readFileSync('static/codes/preflist.json'))
 
 require('dotenv').config()
 
@@ -229,9 +229,9 @@ const config: NuxtConfig = {
     interval: 1000,
     fallback: true,
     // concurrency: 100,
-    routes() {
-      return routes
-    },
+    // routes() {
+    //   return routes
+    // },
   },
   // /*
   // ** hot read configuration for docker
