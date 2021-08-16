@@ -14,7 +14,7 @@ const prefList = JSON.parse(fs.readFileSync('static/codes/preflist.json'))
 require('dotenv').config()
 
 const config: NuxtConfig = {
-  ssr: 'true',
+  mode: 'universal',
   target: 'static',
   /*
    ** Headers of the page
