@@ -32,7 +32,7 @@ export default {
       // return '兵庫県'
     },
     contentsAll() {
-      return require(`~/static/pagesetting/${this.contentsId}.json`)
+      return require(`~/data/pagesetting/${this.contentsId}.json`)
     },
     contents() {
       return this.contentsAll[this.governmentType]

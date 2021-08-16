@@ -23,7 +23,7 @@ export default {
       return this.getPrefList
     },
     contentsAll() {
-      return require(`~/static/pagesetting/${this.contentsId}.json`)
+      return require(`~/data/pagesetting/${this.contentsId}.json`)
     },
     contentsList() {
       return this.contentsAll[this.governmentType].filter(

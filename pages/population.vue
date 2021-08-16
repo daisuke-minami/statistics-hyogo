@@ -61,7 +61,7 @@ export default Vue.extend({
       return 'population'
     },
     contentsAll(): ContentsType[] {
-      return require(`~/static/pagesetting/${this.contentsId}.json`)
+      return require(`~/data/pagesetting/${this.contentsId}.json`)
     },
   },
   methods: {

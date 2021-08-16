@@ -44,7 +44,7 @@ export default Vue.extend({
       return 'safetyenvironment'
     },
     contentsAll(): ContentsType[] {
-      return require(`~/static/pagesetting/${this.contentsId}.json`)
+      return require(`~/data/pagesetting/${this.contentsId}.json`)
     },
   },
   methods: {
