@@ -44,7 +44,7 @@
 <script>
 import DataView from '@/components/DataView.vue'
 import DataViewTable from '@/components/DataViewTable.vue'
-import KenminKyoku from '@/static/common/kenminkyoku.json'
+import KenminKyoku from '@/data/common/kenminkyoku.json'
 import 'leaflet/dist/leaflet.css'
 
 export default {

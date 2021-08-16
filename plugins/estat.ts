@@ -57,7 +57,7 @@ const formatEstatTimeChart = async (contents: object) => {
   // estatAPIのレスポンス取得（ローカルJSON）
   // 特定のcdAreaでfilterが必要
   const resAll =
-    await require(`~/static/pagecontents/${contentsId}/${governmentType}/${titleId}.json`)
+    await require(`~/data/pagecontents/${contentsId}/${governmentType}/${titleId}.json`)
   const resValue = resAll.GET_STATS_DATA.STATISTICAL_DATA.DATA_INF.VALUE.filter(
     (d) => d['@area'] === cdArea
   )
@@ -379,7 +379,7 @@ const formatEstatRankMapChart = async (
 
   // estatAPIのレスポンス取得（ローカルJSON）
   const res =
-    await require(`~/static/pagecontents/${contentsId}/${governmentType}/${titleId}.json`)
+    await require(`~/data/pagecontents/${contentsId}/${governmentType}/${titleId}.json`)
   const resValue = res.GET_STATS_DATA.STATISTICAL_DATA.DATA_INF.VALUE
 
   const resTimes = Array.from(new Set(resValue.map((d) => d['@time']))).map(
@@ -490,7 +490,7 @@ const formatEstatRankBarChart = async (
 
   // estatAPIのレスポンス取得（ローカルJSON）
   const res =
-    await require(`~/static/pagecontents/${contentsId}/${governmentType}/${titleId}.json`)
+    await require(`~/data/pagecontents/${contentsId}/${governmentType}/${titleId}.json`)
   const resValue = res.GET_STATS_DATA.STATISTICAL_DATA.DATA_INF.VALUE
 
   const resTimes = Array.from(new Set(resValue.map((d) => d['@time']))).map(

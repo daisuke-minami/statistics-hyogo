@@ -8,8 +8,8 @@ const environment = process.env.NODE_ENV || 'development'
 
 const fs = require('fs')
 const routes = JSON.parse(fs.readFileSync('data/routes/routes.json'))
-const cityList = JSON.parse(fs.readFileSync('static/codes/citylist.json'))
-const prefList = JSON.parse(fs.readFileSync('static/codes/preflist.json'))
+const cityList = JSON.parse(fs.readFileSync('data/codes/citylist.json'))
+const prefList = JSON.parse(fs.readFileSync('data/codes/preflist.json'))
 
 require('dotenv').config()
 
