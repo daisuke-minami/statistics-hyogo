@@ -30,7 +30,7 @@ export default {
       return this.getCityName(this.cityCode)
     },
     contentsAll() {
-      return require(`~/data/pagesetting/${this.contentsId}.json`)
+      return require(`~/static/pagesetting/${this.contentsId}.json`)
     },
     contents() {
       return this.contentsAll[this.governmentType]

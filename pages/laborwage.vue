@@ -46,7 +46,7 @@ export default Vue.extend({
       return 'laborwage'
     },
     contentsAll(): ContentsType[] {
-      return require(`~/data/pagesetting/${this.contentsId}.json`)
+      return require(`~/static/pagesetting/${this.contentsId}.json`)
     },
   },
   methods: {
