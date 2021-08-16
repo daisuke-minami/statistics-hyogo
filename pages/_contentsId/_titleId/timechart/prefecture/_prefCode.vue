@@ -3,8 +3,6 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-
 export default {
   async asyncData() {
     const prefList = await import(`~/static/codes/prefList.json`)
@@ -16,7 +14,6 @@ export default {
     }
   },
   computed: {
-    ...mapGetters('prefList', ['getPrefName']),
     contentsId() {
       return this.$route.params.contentsId
     },
@@ -27,7 +24,7 @@ export default {
       return Number(this.$route.params.prefCode)
     },
     prefName() {
-      return this.prefList.find((d) => d.code === this.prefCode).prefName
+      return this.prefList.result.find((d) => d.prefCode === this.prefCode).prefName
     },
     contentsAll() {
       return require(`~/data/pagesetting/${this.contentsId}.json`)
