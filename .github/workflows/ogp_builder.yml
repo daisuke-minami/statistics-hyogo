@@ -3,19 +3,22 @@ name: OGP Builder
 on:
   push:
     branches:
-      - master
+      - develop
 
 jobs:
   build:
     runs-on: macos-latest
     steps:
+      # カレントのブランチ名を取得
       - name: Extract branch name
         shell: bash
         run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
         id: extract_branch
+      # チェックアウト
       - uses: actions/checkout@v2
         with:
           ref: ${{ steps.extract_branch.outputs.branch }}
+      # Node.jsのセットアップ
       - name: Setup Node
         uses: actions/setup-node@v1
         with:
@@ -42,6 +45,7 @@ jobs:
           name: ogp
           path: ogp
   upload:
+    # buildが終わってから実行
     needs: build
     runs-on: ubuntu-latest
     steps:

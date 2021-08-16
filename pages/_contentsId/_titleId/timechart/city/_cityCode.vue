@@ -6,6 +6,10 @@
 import { mapGetters } from 'vuex'
 
 export default {
+  async asyncData({ store }) {
+    await store.dispatch('prefList/fetchPrefs')
+    await store.dispatch('cityList/fetchCities')
+  },
   data() {
     return {
       governmentType: 'city',

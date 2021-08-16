@@ -7,9 +7,6 @@ import { mapGetters } from 'vuex'
 
 export default {
   async asyncData({ store }) {
-    if (store.getters['prefList/getPrefList'].length) {
-      return
-    }
     await store.dispatch('prefList/fetchPrefs')
     await store.dispatch('cityList/fetchCities')
   },
