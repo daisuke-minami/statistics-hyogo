@@ -5,7 +5,7 @@
 <script>
 export default {
   async asyncData() {
-    const cityList = await import(`~/static/codes/cityList.json`)
+    const cityList = await import(`~/static/codes/cityList.json`).result
     return { cityList }
   },
   data() {
@@ -24,8 +24,7 @@ export default {
       return this.$route.params.cityCode
     },
     cityName() {
-      return this.cityList.result.find((d) => d.cityCode === this.cityCode)
-        .cityName
+      return this.cityList.find((d) => d.cityCode === this.cityCode).cityName
     },
     contentsAll() {
       return require(`~/data/pagesetting/${this.contentsId}.json`)

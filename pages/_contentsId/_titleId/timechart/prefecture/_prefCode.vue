@@ -5,7 +5,7 @@
 <script>
 export default {
   async asyncData() {
-    const prefList = await import(`~/static/codes/prefList.json`)
+    const prefList = await (await import(`~/static/codes/prefList.json`)).result
     return { prefList }
   },
   data() {
@@ -24,7 +24,7 @@ export default {
       return Number(this.$route.params.prefCode)
     },
     prefName() {
-      return this.prefList.result.find((d) => d.prefCode === this.prefCode).prefName
+      return this.prefList.find((d) => d.prefCode === this.prefCode).prefName
     },
     contentsAll() {
       return require(`~/data/pagesetting/${this.contentsId}.json`)
