@@ -45,6 +45,11 @@ type Methods = {
 }
 
 export default Vue.extend({
+  async asyncData() {
+    const contentsId = 'other'
+    const contentsAll = await import(`~/data/pagesetting/${contentsId}.json`)
+    return { contentsId, contentsAll }
+  },
   data() {
     return {
       tab: null,
@@ -56,14 +61,7 @@ export default Vue.extend({
       ],
     }
   },
-  computed: {
-    contentsId(): string {
-      return 'other'
-    },
-    contentsAll(): ContentsType[] {
-      return require(`~/data/pagesetting/${this.contentsId}.json`)
-    },
-  },
+  computed: {},
   methods: {
     change() {
       EventBus.$emit(TOGGLE_EVENT)

@@ -27,14 +27,11 @@
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
 import { EventBus, TOGGLE_EVENT } from '@/utils/tab-event-bus'
-// import { ContentsType } from '~/utils/formatChart'
 
 export default Vue.extend({
   async asyncData() {
     const contentsId = 'administrativefinancial'
-    const contentsAll = await await import(
-      `~/data/pagesetting/${contentsId}.json`
-    )
+    const contentsAll = await import(`~/data/pagesetting/${contentsId}.json`)
     return { contentsId, contentsAll }
   },
   data() {
@@ -48,14 +45,7 @@ export default Vue.extend({
       ],
     }
   },
-  computed: {
-    // contentsId(): string {
-    //   return 'administrativefinancial'
-    // },
-    // contentsAll(): ContentsType[] {
-    //   return require(`~/data/pagesetting/${this.contentsId}.json`)
-    // },
-  },
+  computed: {},
   methods: {
     change() {
       EventBus.$emit(TOGGLE_EVENT)
