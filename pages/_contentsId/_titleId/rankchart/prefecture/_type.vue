@@ -3,7 +3,6 @@
 </template>
 
 <script>
-
 export default {
   async asyncData({ params }) {
     const prefList = (await import(`~/data/codes/preflist.json`)).result
