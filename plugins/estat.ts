@@ -36,34 +36,33 @@ const formatEstatTimeChart = async (contents: object) => {
   const categories = contents.params.categories
   const statsDataId = contents.params.statsDataId
   const cdArea = contents.params.cdArea
-  const contentsId = contents.contentsId
-  const governmentType = contents.governmentType
-  const titleId = contents.titleId
+  // const contentsId = contents.contentsId
+  // const governmentType = contents.governmentType
+  // const titleId = contents.titleId
 
   // estatAPIのレスポンス取得（API）
-  // const estatParam = () => {
-  //   return {
-  //     statsDataId,
-  //     cdArea,
-  //     cdCat01: categories.map((d) => d.cdCat01),
-  //     cdCat02: null,
-  //     cdTab: null,
-  //   }
-  // }
-  // const res = await getEstatAPI(estatParam())
-  // const resValue = res.GET_STATS_DATA.STATISTICAL_DATA.DATA_INF.VALUE
-  // const CLASS_OBJ = res.GET_STATS_DATA.STATISTICAL_DATA.CLASS_INF.CLASS_OBJ
+  const estatParam = () => {
+    return {
+      statsDataId,
+      cdArea,
+      cdCat01: categories.map((d) => d.cdCat01),
+      cdCat02: null,
+      cdTab: null,
+    }
+  }
+  const res = await getEstatAPI(estatParam())
+  const resValue = res.GET_STATS_DATA.STATISTICAL_DATA.DATA_INF.VALUE
+  const CLASS_OBJ = res.GET_STATS_DATA.STATISTICAL_DATA.CLASS_INF.CLASS_OBJ
 
   // estatAPIのレスポンス取得（ローカルJSON）
   // 特定のcdAreaでfilterが必要
-  const resAll = await import(
-    `~/data/pagecontents/${contentsId}/${governmentType}/${titleId}.json`
-  )
-  const resValue = resAll.GET_STATS_DATA.STATISTICAL_DATA.DATA_INF.VALUE.filter(
-    (d) => d['@area'] === cdArea
-  )
-
-  const CLASS_OBJ = resAll.GET_STATS_DATA.STATISTICAL_DATA.CLASS_INF.CLASS_OBJ
+  // const resAll = await import(
+  //   `~/data/pagecontents/${contentsId}/${governmentType}/${titleId}.json`
+  // )
+  // const resValue = resAll.GET_STATS_DATA.STATISTICAL_DATA.DATA_INF.VALUE.filter(
+  //   (d) => d['@area'] === cdArea
+  // )
+  // const CLASS_OBJ = resAll.GET_STATS_DATA.STATISTICAL_DATA.CLASS_INF.CLASS_OBJ
 
   const chartData = categories.map((item) => {
     const target = () => {
@@ -358,31 +357,31 @@ const formatEstatRankMapChart = async (
   prefList: array,
   cityList: array
 ) => {
-  const contentsId = contents.contentsId
-  const governmentType = contents.governmentType
-  const titleId = contents.titleId
+  // const contentsId = contents.contentsId
+  // const governmentType = contents.governmentType
+  // const titleId = contents.titleId
   const categories = contents.params.categories
   const statsDataId = contents.params.statsDataId
 
   // estatAPIのレスポンス取得（API）
-  // const cdArea = contents.params.cdArea
-  // const estatParam = () => {
-  //   return {
-  //     statsDataId,
-  //     cdArea,
-  //     cdCat01: categories.map((d) => d.cdCat01),
-  //     cdCat02: null,
-  //     cdTab: null,
-  //   }
-  // }
-  // const res = await getEstatAPI(estatParam())
-  // const resValue = res.GET_STATS_DATA.STATISTICAL_DATA.DATA_INF.VALUE
+  const cdArea = contents.params.cdArea
+  const estatParam = () => {
+    return {
+      statsDataId,
+      cdArea,
+      cdCat01: categories.map((d) => d.cdCat01),
+      cdCat02: null,
+      cdTab: null,
+    }
+  }
+  const res = await getEstatAPI(estatParam())
+  const resValue = res.GET_STATS_DATA.STATISTICAL_DATA.DATA_INF.VALUE
 
   // estatAPIのレスポンス取得（ローカルJSON）
-  const res = await import(
-    `~/data/pagecontents/${contentsId}/${governmentType}/${titleId}.json`
-  )
-  const resValue = res.GET_STATS_DATA.STATISTICAL_DATA.DATA_INF.VALUE
+  // const res = await import(
+  //   `~/data/pagecontents/${contentsId}/${governmentType}/${titleId}.json`
+  // )
+  // const resValue = res.GET_STATS_DATA.STATISTICAL_DATA.DATA_INF.VALUE
 
   const resTimes = Array.from(new Set(resValue.map((d) => d['@time']))).map(
     (item) => {
@@ -470,31 +469,31 @@ const formatEstatRankBarChart = async (
   prefList: array,
   cityList: array
 ) => {
-  const contentsId = contents.contentsId
-  const governmentType = contents.governmentType
-  const titleId = contents.titleId
+  // const contentsId = contents.contentsId
+  // const governmentType = contents.governmentType
+  // const titleId = contents.titleId
   const categories = contents.params.categories
   const statsDataId = contents.params.statsDataId
 
   // estatAPIのレスポンス取得（API）
-  // const cdArea = contents.params.cdArea
-  // const estatParam = () => {
-  //   return {
-  //     statsDataId,
-  //     cdArea,
-  //     cdCat01: categories.map((d) => d.cdCat01),
-  //     cdCat02: null,
-  //     cdTab: null,
-  //   }
-  // }
-  // const res = await getEstatAPI(estatParam())
-  // const resValue = res.GET_STATS_DATA.STATISTICAL_DATA.DATA_INF.VALUE
+  const cdArea = contents.params.cdArea
+  const estatParam = () => {
+    return {
+      statsDataId,
+      cdArea,
+      cdCat01: categories.map((d) => d.cdCat01),
+      cdCat02: null,
+      cdTab: null,
+    }
+  }
+  const res = await getEstatAPI(estatParam())
+  const resValue = res.GET_STATS_DATA.STATISTICAL_DATA.DATA_INF.VALUE
 
   // estatAPIのレスポンス取得（ローカルJSON）
-  const res = await import(
-    `~/data/pagecontents/${contentsId}/${governmentType}/${titleId}.json`
-  )
-  const resValue = res.GET_STATS_DATA.STATISTICAL_DATA.DATA_INF.VALUE
+  // const res = await import(
+  //   `~/data/pagecontents/${contentsId}/${governmentType}/${titleId}.json`
+  // )
+  // const resValue = res.GET_STATS_DATA.STATISTICAL_DATA.DATA_INF.VALUE
 
   const resTimes = Array.from(new Set(resValue.map((d) => d['@time']))).map(
     (item) => {

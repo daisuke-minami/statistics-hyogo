@@ -5,7 +5,7 @@
 <script>
 export default {
   async asyncData() {
-    const prefList = await (await import(`~/data/codes/preflist.json`)).result
+    const prefList = (await import(`~/data/codes/preflist.json`)).result
     return { prefList }
   },
   data() {

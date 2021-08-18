@@ -5,8 +5,8 @@
 <script>
 export default {
   async asyncData() {
-    const cityList = await (await import(`~/data/codes/citylist.json`)).result
-    const prefList = await (await import(`~/data/codes/preflist.json`)).result
+    const cityList = (await import(`~/data/codes/citylist.json`)).result
+    const prefList = (await import(`~/data/codes/preflist.json`)).result
     return { cityList, prefList }
   },
   data() {
