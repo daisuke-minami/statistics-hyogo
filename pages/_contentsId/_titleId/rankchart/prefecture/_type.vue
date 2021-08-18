@@ -3,7 +3,6 @@
 </template>
 
 <script>
-// import prefJson from '~/data/codes/preflist.json'
 
 export default {
   async asyncData({ params }) {
@@ -16,22 +15,13 @@ export default {
     return {
       governmentType: 'prefecture',
       contentsId: null,
-      // contentsAll: [],
     }
   },
   computed: {
-    // conten
     titleId() {
       return this.$route.params.titleId
     },
-    // prefList() {
-    //   return prefJson.result
-    // },
-    // contentsAll() {
-    //   return require(`~/data/pagesetting/${this.contentsId}.json`)
-    // },
     contentsList() {
-      // console.log(this.contentsAll)
       return this.contentsAll[this.governmentType].filter(
         (d) => d.isRank !== false
       )

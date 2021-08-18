@@ -17,27 +17,15 @@ export default {
     }
   },
   computed: {
-    // prefList() {
-    //   return this.prefJson.result
-    // },
-    // cityList() {
-    //   return this.cityJson.result
-    // },
     prefCode() {
       return this.$route.params.prefCode
     },
     prefName() {
       return this.prefList.find((d) => d.prefCode === this.prefCode).prefName
     },
-    // contentsId() {
-    //   return this.$route.params.contentsId
-    // },
     titleId() {
       return this.$route.params.titleId
     },
-    // contentsAll() {
-    //   return require(`~/data/pagesetting/${this.contentsId}.json`)
-    // },
     contentsList() {
       return this.contentsAll[this.governmentType].filter(
         (d) => d.isRank !== false
