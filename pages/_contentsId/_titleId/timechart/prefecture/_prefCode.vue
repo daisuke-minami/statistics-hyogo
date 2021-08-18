@@ -3,11 +3,9 @@
 </template>
 
 <script>
+import prefList from '~/data/codes/preflist.json'
+
 export default {
-  async asyncData() {
-    const prefList = (await import(`~/data/codes/preflist.json`)).result
-    return { prefList }
-  },
   data() {
     return {
       governmentType: 'prefecture',
@@ -24,7 +22,7 @@ export default {
       return Number(this.$route.params.prefCode)
     },
     prefName() {
-      return this.prefList.find((d) => d.prefCode === this.prefCode).prefName
+      return prefList.result.find((d) => d.prefCode === this.prefCode).prefName
     },
     contentsAll() {
       return require(`~/data/pagesetting/${this.contentsId}.json`)
@@ -56,8 +54,6 @@ export default {
       ).cardComponent
     },
   },
-  created() {
-    // console.log(this.contents)
-  },
+  created() {},
 }
 </script>

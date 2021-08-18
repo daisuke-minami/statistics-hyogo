@@ -3,11 +3,9 @@
 </template>
 
 <script>
+import cityList from '~/data/codes/citylist.json'
+
 export default {
-  async asyncData() {
-    const cityList = await import(`~/data/codes/citylist.json`).result
-    return { cityList }
-  },
   data() {
     return {
       governmentType: 'city',
@@ -24,7 +22,7 @@ export default {
       return this.$route.params.cityCode
     },
     cityName() {
-      return this.cityList.find((d) => d.cityCode === this.cityCode).cityName
+      return cityList.result.find((d) => d.cityCode === this.cityCode).cityName
     },
     contentsAll() {
       return require(`~/data/pagesetting/${this.contentsId}.json`)

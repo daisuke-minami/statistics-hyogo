@@ -41,11 +41,8 @@
         <tbody>
           <tr>
             <td class="content importantContact" v-bind="headingAttrs">
-              <app-link
-                :to="'https://www.e-stat.go.jp/api/'"
-                :icon-size="16"
-              >
-                政府統計の総合窓口e-stat　API機能
+              <app-link :to="'https://www.e-stat.go.jp/api/'" :icon-size="16">
+                政府統計の総合窓口e-statAPI機能
               </app-link>
             </td>
             <td class="tel">
@@ -55,14 +52,14 @@
             </td>
           </tr>
         </tbody>
-                <tbody>
+        <tbody>
           <tr>
             <td class="content importantContact" v-bind="headingAttrs">
               <app-link
                 :to="'https://opendata.resas-portal.go.jp/'"
                 :icon-size="16"
               >
-                地域経済分析システム「RESAS」　API機能
+                地域経済分析システム「RESAS」API機能
               </app-link>
             </td>
             <td class="tel">
@@ -72,13 +69,10 @@
             </td>
           </tr>
         </tbody>
-                        <tbody>
+        <tbody>
           <tr>
             <td class="content importantContact" v-bind="headingAttrs">
-              <app-link
-                :to="'https://geoshape.ex.nii.ac.jp/'"
-                :icon-size="16"
-              >
+              <app-link :to="'https://geoshape.ex.nii.ac.jp/'" :icon-size="16">
                 Geoshapeリポジトリ - 地理形状データ共有サイト
               </app-link>
             </td>

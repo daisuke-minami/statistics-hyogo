@@ -4,10 +4,12 @@
 
 <script>
 export default {
-  async asyncData() {
+  async asyncData({ params }) {
     const cityList = (await import(`~/data/codes/citylist.json`)).result
     const prefList = (await import(`~/data/codes/preflist.json`)).result
-    return { cityList, prefList }
+    const contentsId = params.contentsId
+    const contentsAll = await import(`~/data/pagesetting/${contentsId}.json`)
+    return { cityList, prefList, contentsId, contentsAll }
   },
   data() {
     return {
@@ -15,21 +17,27 @@ export default {
     }
   },
   computed: {
+    // prefList() {
+    //   return this.prefJson.result
+    // },
+    // cityList() {
+    //   return this.cityJson.result
+    // },
     prefCode() {
       return this.$route.params.prefCode
     },
     prefName() {
-      return this.prefList((d) => d.prefCode === this.prefCode).prefName
+      return this.prefList.find((d) => d.prefCode === this.prefCode).prefName
     },
-    contentsId() {
-      return this.$route.params.contentsId
-    },
+    // contentsId() {
+    //   return this.$route.params.contentsId
+    // },
     titleId() {
       return this.$route.params.titleId
     },
-    contentsAll() {
-      return require(`~/data/pagesetting/${this.contentsId}.json`)
-    },
+    // contentsAll() {
+    //   return require(`~/data/pagesetting/${this.contentsId}.json`)
+    // },
     contentsList() {
       return this.contentsAll[this.governmentType].filter(
         (d) => d.isRank !== false

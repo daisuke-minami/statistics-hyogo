@@ -3,27 +3,35 @@
 </template>
 
 <script>
+// import prefJson from '~/data/codes/preflist.json'
+
 export default {
-  async asyncData() {
-    const prefList = await (await import(`~/data/codes/preflist.json`)).result
-    return { prefList }
+  async asyncData({ params }) {
+    const prefList = (await import(`~/data/codes/preflist.json`)).result
+    const contentsId = params.contentsId
+    const contentsAll = await import(`~/data/pagesetting/${contentsId}.json`)
+    return { prefList, contentsId, contentsAll }
   },
   data() {
     return {
       governmentType: 'prefecture',
+      contentsId: null,
+      // contentsAll: [],
     }
   },
   computed: {
-    contentsId() {
-      return this.$route.params.contentsId
-    },
+    // conten
     titleId() {
       return this.$route.params.titleId
     },
-    contentsAll() {
-      return require(`~/data/pagesetting/${this.contentsId}.json`)
-    },
+    // prefList() {
+    //   return prefJson.result
+    // },
+    // contentsAll() {
+    //   return require(`~/data/pagesetting/${this.contentsId}.json`)
+    // },
     contentsList() {
+      // console.log(this.contentsAll)
       return this.contentsAll[this.governmentType].filter(
         (d) => d.isRank !== false
       )
@@ -62,5 +70,9 @@ export default {
       return cardComponent
     },
   },
+  // created() {
+  //   this.contentsId = this.$route.params.contentsId
+  //   this.contentsAll = import(`~/data/pagesetting/${this.contentsId}.json`)
+  // },
 }
 </script>
