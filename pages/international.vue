@@ -29,11 +29,11 @@ import { MetaInfo } from 'vue-meta'
 import { EventBus, TOGGLE_EVENT } from '@/utils/tab-event-bus.ts'
 
 export default Vue.extend({
-  async asyncData() {
-    const contentsId = 'international'
-    const contentsAll = await import(`~/data/pagesetting/${contentsId}.json`)
-    return { contentsId, contentsAll }
-  },
+  // async asyncData() {
+  //   const contentsId = 'international'
+  //   const contentsAll = await import(`~/data/pagesetting/${contentsId}.json`)
+  //   return { contentsId, contentsAll }
+  // },
   data() {
     return {
       tab: null,
@@ -43,7 +43,14 @@ export default Vue.extend({
       ],
     }
   },
-  computed: {},
+  computed: {
+    contentsId(): string {
+      return 'international'
+    },
+    contentsAll() {
+      return require(`~/data/pagesetting/${this.contentsId}.json`)
+    },
+  },
   methods: {
     change() {
       EventBus.$emit(TOGGLE_EVENT)

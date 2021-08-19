@@ -27,13 +27,9 @@
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
 import { EventBus, TOGGLE_EVENT } from '@/utils/tab-event-bus.ts'
+import { ContentsType } from '~/utils/formatChart'
 
 export default Vue.extend({
-  async asyncData() {
-    const contentsId = 'agriculture'
-    const contentsAll = await import(`~/data/pagesetting/${contentsId}.json`)
-    return { contentsId, contentsAll }
-  },
   data() {
     return {
       tab: null,
@@ -45,7 +41,14 @@ export default Vue.extend({
       ],
     }
   },
-  computed: {},
+  computed: {
+    contentsId(): string {
+      return 'agriculture'
+    },
+    contentsAll(): ContentsType[] {
+      return require(`~/data/pagesetting/${this.contentsId}.json`)
+    },
+  },
   methods: {
     change() {
       EventBus.$emit(TOGGLE_EVENT)
