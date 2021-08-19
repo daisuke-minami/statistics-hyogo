@@ -1,35 +1,50 @@
 {
   "prefecture": [
     {
-      "title": "在留外国人数",
-      "titleId": "foreign-residents",
+      "title": "工業統計調査（平成26年度）",
+      "titleId": "industrial-statistics-survey",
       "cardComponent": "estat-line-chart-break-card",
-      "isRank": true,
+      "isRank": false,
       "additionalDescription": [
         "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
       ],
       "params": {
-        "statsDataId": "0000010101",
+        "statsDataId": "0003243562",
         "categories": [
           {
-            "cdCat01": "A3200",
-            "name": "総数"
+            "cdCat01": "100",
+            "cdCat02": "00",
+            "name": "事業所数"
           },
           {
-            "cdCat01": "A3201",
-            "name": "アジア"
+            "cdCat01": "110",
+            "cdCat02": "00",
+            "name": "従業者数"
           },
           {
-            "cdCat01": "A3202",
-            "name": "ヨーロッパ"
+            "cdCat01": "120",
+            "cdCat02": "00",
+            "name": "現金給与総額"
           },
           {
-            "cdCat01": "A3203",
-            "name": "北米"
+            "cdCat01": "130",
+            "cdCat02": "00",
+            "name": "原材料使用額等"
           },
           {
-            "cdCat01": "A3204",
-            "name": "南米"
+            "cdCat01": "140",
+            "cdCat02": "00",
+            "name": "製造品出荷額等"
+          },
+          {
+            "cdCat01": "150",
+            "cdCat02": "00",
+            "name": "付加価値額"
+          },
+          {
+            "cdCat01": "160",
+            "cdCat02": "00",
+            "name": "有形固定資産投資総額"
           }
         ]
       }
