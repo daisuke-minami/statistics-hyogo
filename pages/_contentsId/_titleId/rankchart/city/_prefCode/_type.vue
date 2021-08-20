@@ -3,20 +3,29 @@
 </template>
 
 <script>
+import prefJson from '~/data/codes/preflist.json'
+import cityJson from '~/data/codes/citylist.json'
+
 export default {
-  async asyncData({ params }) {
-    const cityList = (await import(`~/data/codes/citylist.json`)).result
-    const prefList = (await import(`~/data/codes/preflist.json`)).result
-    const contentsId = params.contentsId
-    const contentsAll = await import(`~/data/pagesetting/${contentsId}.json`)
-    return { cityList, prefList, contentsId, contentsAll }
-  },
+  // async asyncData({ params }) {
+  //   const cityList = (await import(`~/data/codes/citylist.json`)).result
+  //   const prefList = (await import(`~/data/codes/preflist.json`)).result
+  //   const contentsId = params.contentsId
+  //   const contentsAll = await import(`~/data/pagesetting/${contentsId}.json`)
+  //   return { cityList, prefList, contentsId, contentsAll }
+  // },
   data() {
     return {
       governmentType: 'city',
     }
   },
   computed: {
+    prefList() {
+      return prefJson.result
+    },
+    cityList() {
+      return cityJson.result
+    },
     prefCode() {
       return this.$route.params.prefCode
     },
@@ -25,6 +34,12 @@ export default {
     },
     titleId() {
       return this.$route.params.titleId
+    },
+    contentsId() {
+      return this.$route.params.contentsId
+    },
+    contentsAll() {
+      return require(`~/data/pagesetting/${this.contentsId}.json`)
     },
     contentsList() {
       return this.contentsAll[this.governmentType].filter(

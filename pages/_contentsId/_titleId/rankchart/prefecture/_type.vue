@@ -3,20 +3,30 @@
 </template>
 
 <script>
+import prefJson from '~/data/codes/preflist.json'
+
 export default {
-  async asyncData({ params }) {
-    const prefList = (await import(`~/data/codes/preflist.json`)).result
-    const contentsId = params.contentsId
-    const contentsAll = await import(`~/data/pagesetting/${contentsId}.json`)
-    return { prefList, contentsId, contentsAll }
-  },
+  // async asyncData({ params }) {
+  //   const prefList = (await import(`~/data/codes/preflist.json`)).result
+  //   const contentsId = params.contentsId
+  //   const contentsAll = await import(`~/data/pagesetting/${contentsId}.json`)
+  //   return { prefList, contentsId, contentsAll }
+  // },
   data() {
     return {
       governmentType: 'prefecture',
-      contentsId: null,
     }
   },
   computed: {
+    contentsId() {
+      return this.$route.params.contentsId
+    },
+    contentsAll() {
+      return require(`~/data/pagesetting/${this.contentsId}.json`)
+    },
+    prefList() {
+      return prefJson.result
+    },
     titleId() {
       return this.$route.params.titleId
     },
@@ -59,9 +69,10 @@ export default {
       return cardComponent
     },
   },
-  // created() {
-  //   this.contentsId = this.$route.params.contentsId
-  //   this.contentsAll = import(`~/data/pagesetting/${this.contentsId}.json`)
-  // },
+  created() {
+    // console.log(this.contents)
+    // this.contentsId = this.$route.params.contentsId
+    // this.contentsAll = import(`~/data/pagesetting/${this.contentsId}.json`)
+  },
 }
 </script>

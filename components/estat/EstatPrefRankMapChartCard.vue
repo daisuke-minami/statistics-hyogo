@@ -124,6 +124,7 @@ export default {
       ]
     },
     displayData() {
+      // console.log(this.chartData)
       const displayData = this.chartData.filter(
         (d) => d.year === this.targetYear
       )
