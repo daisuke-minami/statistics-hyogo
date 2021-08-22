@@ -3,7 +3,8 @@
 </template>
 
 <script>
-import prefList from '~/data/codes/preflist.json'
+// import prefList from '~/data/codes/preflist.json'
+import prefJson from '~/data/codes/preflist.json'
 
 export default {
   data() {
@@ -12,6 +13,9 @@ export default {
     }
   },
   computed: {
+    prefList() {
+      return prefJson.result
+    },
     contentsId() {
       return this.$route.params.contentsId
     },
@@ -22,12 +26,13 @@ export default {
       return Number(this.$route.params.prefCode)
     },
     prefName() {
-      return prefList.result.find((d) => d.prefCode === this.prefCode).prefName
+      return this.prefList.find((d) => d.prefCode === this.prefCode).prefName
     },
     contentsAll() {
       return require(`~/data/pagesetting/${this.contentsId}.json`)
     },
     contents() {
+      console.log(this.contentsAll)
       return this.contentsAll[this.governmentType]
         .map((d) => {
           const contentsId = this.contentsId

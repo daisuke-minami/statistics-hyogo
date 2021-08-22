@@ -3,7 +3,8 @@
 </template>
 
 <script>
-import cityList from '~/data/codes/citylist.json'
+// import cityList from '~/data/codes/citylist.json'
+import cityJson from '~/data/codes/citylist.json'
 
 export default {
   data() {
@@ -12,6 +13,9 @@ export default {
     }
   },
   computed: {
+    cityList() {
+      return cityJson.result
+    },
     contentsId() {
       return this.$route.params.contentsId
     },
@@ -22,12 +26,13 @@ export default {
       return this.$route.params.cityCode
     },
     cityName() {
-      return cityList.result.find((d) => d.cityCode === this.cityCode).cityName
+      return this.cityList.find((d) => d.cityCode === this.cityCode).cityName
     },
     contentsAll() {
       return require(`~/data/pagesetting/${this.contentsId}.json`)
     },
     contents() {
+      console.log(this.contentsAll)
       return this.contentsAll[this.governmentType]
         .map((d) => {
           d.params.cdArea = this.cityCode
