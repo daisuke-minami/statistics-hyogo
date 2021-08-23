@@ -25,12 +25,14 @@ export default {
       return require(`~/data/pagesetting/${this.contentsId}.json`)
     },
     prefList() {
+      console.log(prefJson)
       return prefJson.result
     },
     titleId() {
       return this.$route.params.titleId
     },
     contentsList() {
+      console.log(this.contentsAll)
       return this.contentsAll[this.governmentType].filter(
         (d) => d.isRank !== false
       )

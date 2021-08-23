@@ -42,6 +42,7 @@ export default {
       return require(`~/data/pagesetting/${this.contentsId}.json`)
     },
     contentsList() {
+      console.log(this.contentsAll)
       return this.contentsAll[this.governmentType].filter(
         (d) => d.isRank !== false
       )
