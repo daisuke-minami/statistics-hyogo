@@ -3,8 +3,8 @@
 </template>
 
 <script>
-// import cityList from '~/data/codes/citylist.json'
-import cityJson from '~/data/codes/citylist.json'
+// import cityList from '~/static/codes/citylist.json'
+import cityJson from '~/static/codes/citylist.json'
 
 export default {
   data() {
@@ -29,7 +29,7 @@ export default {
       return this.cityList.find((d) => d.cityCode === this.cityCode).cityName
     },
     contentsAll() {
-      return require(`~/data/pagesetting/${this.contentsId}.json`)
+      return require(`~/static/pagesetting/${this.contentsId}.json`)
     },
     contents() {
       console.log(this.contentsAll)

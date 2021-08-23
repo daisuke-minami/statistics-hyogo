@@ -3,8 +3,8 @@
 </template>
 
 <script>
-// import prefList from '~/data/codes/preflist.json'
-import prefJson from '~/data/codes/preflist.json'
+// import prefList from '~/static/codes/preflist.json'
+import prefJson from '~/static/codes/preflist.json'
 
 export default {
   data() {
@@ -29,7 +29,7 @@ export default {
       return this.prefList.find((d) => d.prefCode === this.prefCode).prefName
     },
     contentsAll() {
-      return require(`~/data/pagesetting/${this.contentsId}.json`)
+      return require(`~/static/pagesetting/${this.contentsId}.json`)
     },
     contents() {
       console.log(this.contentsAll)

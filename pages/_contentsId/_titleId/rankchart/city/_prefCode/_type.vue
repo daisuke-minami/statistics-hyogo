@@ -3,15 +3,15 @@
 </template>
 
 <script>
-import prefJson from '~/data/codes/preflist.json'
-import cityJson from '~/data/codes/citylist.json'
+import prefJson from '~/static/codes/preflist.json'
+import cityJson from '~/static/codes/citylist.json'
 
 export default {
   // async asyncData({ params }) {
-  //   const cityList = (await import(`~/data/codes/citylist.json`)).result
-  //   const prefList = (await import(`~/data/codes/preflist.json`)).result
+  //   const cityList = (await import(`~/static/codes/citylist.json`)).result
+  //   const prefList = (await import(`~/static/codes/preflist.json`)).result
   //   const contentsId = params.contentsId
-  //   const contentsAll = await import(`~/data/pagesetting/${contentsId}.json`)
+  //   const contentsAll = await import(`~/static/pagesetting/${contentsId}.json`)
   //   return { cityList, prefList, contentsId, contentsAll }
   // },
   data() {
@@ -39,7 +39,7 @@ export default {
       return this.$route.params.contentsId
     },
     contentsAll() {
-      return require(`~/data/pagesetting/${this.contentsId}.json`)
+      return require(`~/static/pagesetting/${this.contentsId}.json`)
     },
     contentsList() {
       return this.contentsAll[this.governmentType].filter(

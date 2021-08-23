@@ -31,7 +31,7 @@ import { EventBus, TOGGLE_EVENT } from '@/utils/tab-event-bus.ts'
 export default Vue.extend({
   // async asyncData() {
   //   const contentsId = 'socialsecurity'
-  //   const contentsAll = await import(`~/data/pagesetting/${contentsId}.json`)
+  //   const contentsAll = await import(`~/static/pagesetting/${contentsId}.json`)
   //   return { contentsId, contentsAll }
   // },
   data() {
@@ -50,7 +50,7 @@ export default Vue.extend({
       return 'socialsecurity'
     },
     contentsAll() {
-      return require(`~/data/pagesetting/${this.contentsId}.json`)
+      return require(`~/static/pagesetting/${this.contentsId}.json`)
     },
   },
   methods: {

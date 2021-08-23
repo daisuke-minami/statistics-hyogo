@@ -47,7 +47,7 @@ type Methods = {
 export default Vue.extend({
   // async asyncData() {
   //   const contentsId = 'population'
-  //   const contentsAll = await import(`~/data/pagesetting/${contentsId}.json`)
+  //   const contentsAll = await import(`~/static/pagesetting/${contentsId}.json`)
   //   return { contentsId, contentsAll }
   // },
   data() {
@@ -66,7 +66,7 @@ export default Vue.extend({
       return 'population'
     },
     contentsAll() {
-      return require(`~/data/pagesetting/${this.contentsId}.json`)
+      return require(`~/static/pagesetting/${this.contentsId}.json`)
     },
   },
   methods: {

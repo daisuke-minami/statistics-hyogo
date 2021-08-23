@@ -3,13 +3,13 @@
 </template>
 
 <script>
-import prefJson from '~/data/codes/preflist.json'
+import prefJson from '~/static/codes/preflist.json'
 
 export default {
   // async asyncData({ params }) {
-  //   const prefList = (await import(`~/data/codes/preflist.json`)).result
+  //   const prefList = (await import(`~/static/codes/preflist.json`)).result
   //   const contentsId = params.contentsId
-  //   const contentsAll = await import(`~/data/pagesetting/${contentsId}.json`)
+  //   const contentsAll = await import(`~/static/pagesetting/${contentsId}.json`)
   //   return { prefList, contentsId, contentsAll }
   // },
   data() {
@@ -22,7 +22,7 @@ export default {
       return this.$route.params.contentsId
     },
     contentsAll() {
-      return require(`~/data/pagesetting/${this.contentsId}.json`)
+      return require(`~/static/pagesetting/${this.contentsId}.json`)
     },
     prefList() {
       console.log(prefJson)
