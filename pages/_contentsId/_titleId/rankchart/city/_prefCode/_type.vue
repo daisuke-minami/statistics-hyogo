@@ -27,7 +27,7 @@ export default {
       return cityJson.result
     },
     prefCode() {
-      return this.$route.params.prefCode
+      return this.$route.params.prefcode
     },
     prefName() {
       return this.prefList.find((d) => d.prefCode === this.prefCode).prefName

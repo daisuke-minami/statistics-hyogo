@@ -23,7 +23,7 @@ export default {
       return this.$route.params.titleId
     },
     cityCode() {
-      return this.$route.params.cityCode
+      return this.$route.params.citycode
     },
     cityName() {
       return this.cityList.find((d) => d.cityCode === this.cityCode).cityName

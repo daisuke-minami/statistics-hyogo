@@ -23,7 +23,7 @@ export default {
       return this.$route.params.titleId
     },
     prefCode() {
-      return Number(this.$route.params.prefCode)
+      return Number(this.$route.params.prefcode)
     },
     prefName() {
       return this.prefList.find((d) => d.prefCode === this.prefCode).prefName
@@ -32,7 +32,7 @@ export default {
       return require(`~/static/pagesetting/${this.contentsId}.json`)
     },
     contents() {
-      console.log(this.contentsAll)
+      // console.log(this.contentsAll)
       return this.contentsAll[this.governmentType]
         .map((d) => {
           const contentsId = this.contentsId
