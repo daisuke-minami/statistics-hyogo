@@ -23,8 +23,8 @@ export default {
       return this.$route.params.titleId
     },
     prefCode() {
-      return this.$route.params.prefcode
-      // return Number(this.$route.params.prefcode)
+      // return this.$route.params.prefcode
+      return Number(this.$route.params.prefcode)
     },
     prefName() {
       return this.prefList.find((d) => d.prefCode === this.prefCode).prefName
