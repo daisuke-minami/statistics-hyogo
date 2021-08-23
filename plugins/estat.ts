@@ -33,7 +33,6 @@ const getEstatAPI = async (estatParam) => {
  * @param lgInfo - 地方公共団体の情報
  */
 const formatEstatTimeChart = async (contents: object) => {
-
   console.log('formatEstatTimeChartには来ている')
   const categories = contents.params.categories
   const statsDataId = contents.params.statsDataId
