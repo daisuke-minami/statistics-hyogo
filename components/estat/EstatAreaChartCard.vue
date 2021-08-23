@@ -85,6 +85,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     },
   },
   async fetch() {
+    console.log('ここには来ている')
     this.formatData = await this.$formatEstatTimeChart(this.contents)
   },
   data() {

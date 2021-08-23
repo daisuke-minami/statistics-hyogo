@@ -74,7 +74,7 @@ const formatEstatTimeChart = async (contents: object) => {
         return resValue.filter((d) => d['@cat01'] === item.cdCat01)
       }
     }
-    console.log('target', target)
+    console.log('target', target())
     const $ = target().map((d) => parseFloat(d.$))
     return {
       name: item.name,
