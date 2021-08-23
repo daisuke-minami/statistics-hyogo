@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import prefJson from '~/static/codes/preflist.json'
+import prefJson from '@/static/codes/preflist.json'
 
 export default {
   // async asyncData({ params }) {
@@ -25,14 +25,12 @@ export default {
       return require(`~/static/pagesetting/${this.contentsId}.json`)
     },
     prefList() {
-      console.log(prefJson)
       return prefJson.result
     },
     titleId() {
       return this.$route.params.titleId
     },
     contentsList() {
-      console.log(this.contentsAll)
       return this.contentsAll[this.governmentType].filter(
         (d) => d.isRank !== false
       )
