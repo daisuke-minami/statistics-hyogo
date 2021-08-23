@@ -144,6 +144,11 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     },
   },
   methods: {},
+  created() {
+    console.log('contents:', this.contents)
+    console.log('formatData:', this.formatData)
+    console.log('chatrData:', this.chartData)
+  },
 }
 
 export default Vue.extend(options)

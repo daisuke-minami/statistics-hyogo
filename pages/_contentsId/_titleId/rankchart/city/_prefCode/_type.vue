@@ -79,10 +79,10 @@ export default {
     },
   },
   created() {
-    console.log('contentsAll:', this.contentsAll)
-    console.log('contentsList:', this.contentsList)
-    console.log('perfCode:', this.prefCode)
-    console.log('cityList:', this.cityList)
+    // console.log('contentsAll:', this.contentsAll)
+    // console.log('contentsList:', this.contentsList)
+    // console.log('perfCode:', this.prefCode)
+    // console.log('cityList:', this.cityList)
   },
 }
 </script>
