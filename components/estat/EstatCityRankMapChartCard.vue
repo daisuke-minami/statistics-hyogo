@@ -142,10 +142,10 @@ export default {
     },
   },
   created() {
-    console.log('cityList:', this.cityList)
-    console.log('contents:', this.contents)
-    console.log('formatData:', this.formatData)
-    console.log('chatrData:', this.chartData)
+    // console.log('cityList:', this.cityList)
+    // console.log('contents:', this.contents)
+    // console.log('formatData:', this.formatData)
+    // console.log('chatrData:', this.chartData)
   },
   watch: {
     bigcityKind() {
