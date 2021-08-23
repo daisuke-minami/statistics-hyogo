@@ -227,9 +227,9 @@ const config: NuxtConfig = {
   },
   generate: {
     interval: 1000,
-    // fallback: true,
+    fallback: true,
     concurrency: 100,
-    crawler: false,
+    // crawler: false,
     routes() {
       return routes
     },

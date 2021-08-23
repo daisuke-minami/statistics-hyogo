@@ -4,7 +4,7 @@
 
 <script>
 // import prefList from '~/static/codes/preflist.json'
-import prefJson from '~/static/codes/preflist.json'
+import prefJson from '@/static/codes/preflist.json'
 
 export default {
   data() {
@@ -59,6 +59,9 @@ export default {
       ).cardComponent
     },
   },
-  created() {},
+  created() {
+    console.log('perfCode', this.prefCode)
+    console.log('prefList', this.prefList)
+  },
 }
 </script>
