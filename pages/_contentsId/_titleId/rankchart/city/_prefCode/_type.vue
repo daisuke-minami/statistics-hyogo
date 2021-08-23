@@ -42,7 +42,6 @@ export default {
       return require(`~/data/pagesetting/${this.contentsId}.json`)
     },
     contentsList() {
-      console.log(this.contentsAll)
       return this.contentsAll[this.governmentType].filter(
         (d) => d.isRank !== false
       )
@@ -78,6 +77,12 @@ export default {
       }
       return cardComponent
     },
+  },
+  created() {
+    console.log('contentsAll:', this.contentsAll)
+    console.log('contentsList:', this.contentsList)
+    console.log('perfCode:', this.prefCode)
+    console.log('cityList:', this.cityList)
   },
 }
 </script>

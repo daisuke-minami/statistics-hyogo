@@ -72,9 +72,10 @@ export default {
     },
   },
   created() {
-    // console.log(this.contents)
-    // this.contentsId = this.$route.params.contentsId
-    // this.contentsAll = import(`~/data/pagesetting/${this.contentsId}.json`)
+    console.log('contentsAll:', this.contentsAll)
+    console.log('contentsList:', this.contentsList)
+    console.log('perfCode:', this.prefCode)
+    console.log('cityList:', this.cityList)
   },
 }
 </script>
