@@ -3,27 +3,32 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import prefJson from '@/static/codes/preflist.json'
 
 export default {
+  // async asyncData({ params }) {
+  //   const prefList = (await import(`~/static/codes/preflist.json`)).result
+  //   const contentsId = params.contentsId
+  //   const contentsAll = await import(`~/static/pagesetting/${contentsId}.json`)
+  //   return { prefList, contentsId, contentsAll }
+  // },
   data() {
     return {
       governmentType: 'prefecture',
     }
   },
   computed: {
-    ...mapGetters('prefList', ['getPrefList']),
     contentsId() {
       return this.$route.params.contentsId
     },
-    titleId() {
-      return this.$route.params.titleId
+    contentsAll() {
+      return require(`~/static/pagesetting/${this.contentsId}.json`)
     },
     prefList() {
-      return this.getPrefList
+      return prefJson.result
     },
-    contentsAll() {
-      return require(`~/data/pagesetting/${this.contentsId}.json`)
+    titleId() {
+      return this.$route.params.titleId
     },
     contentsList() {
       return this.contentsAll[this.governmentType].filter(
@@ -63,6 +68,12 @@ export default {
       }
       return cardComponent
     },
+  },
+  created() {
+    // console.log('contentsAll:', this.contentsAll)
+    // console.log('contentsList:', this.contentsList)
+    // console.log('perfCode:', this.prefCode)
+    // console.log('cityList:', this.cityList)
   },
 }
 </script>

@@ -38,6 +38,51 @@
             </td>
           </tr>
         </tbody>
+        <tbody>
+          <tr>
+            <td class="content importantContact" v-bind="headingAttrs">
+              <app-link :to="'https://www.e-stat.go.jp/api/'" :icon-size="16">
+                政府統計の総合窓口e-statAPI機能
+              </app-link>
+            </td>
+            <td class="tel">
+              <p class="caution">
+                日本の統計が閲覧できる政府統計ポータルサイト「e-stat」のデータを利用できるAPI。都道府県別のデータは充実していますが、市区町村別データはまだ少ない印象です。
+              </p>
+            </td>
+          </tr>
+        </tbody>
+        <tbody>
+          <tr>
+            <td class="content importantContact" v-bind="headingAttrs">
+              <app-link
+                :to="'https://opendata.resas-portal.go.jp/'"
+                :icon-size="16"
+              >
+                地域経済分析システム「RESAS」API機能
+              </app-link>
+            </td>
+            <td class="tel">
+              <p class="caution">
+                RESAS(地域経済分析システム)に掲載しているデータを取得できるAPI。項目はestatに比べて少ないですが、市区町村データも整備されています。
+              </p>
+            </td>
+          </tr>
+        </tbody>
+        <tbody>
+          <tr>
+            <td class="content importantContact" v-bind="headingAttrs">
+              <app-link :to="'https://geoshape.ex.nii.ac.jp/'" :icon-size="16">
+                Geoshapeリポジトリ - 地理形状データ共有サイト
+              </app-link>
+            </td>
+            <td class="tel">
+              <p class="caution">
+                都道府県、市区町村行政区域をまとめたTopojsonを提供してくれています。
+              </p>
+            </td>
+          </tr>
+        </tbody>
       </table>
     </div>
   </div>

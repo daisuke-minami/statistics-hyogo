@@ -26,9 +26,13 @@
 <script lang="ts">
 import Vue from 'vue'
 import { EventBus, TOGGLE_EVENT } from '@/utils/tab-event-bus.ts'
-import { ContentsType } from '~/utils/formatChart'
 
 export default Vue.extend({
+  // async asyncData() {
+  //   const contentsId = 'educationsports'
+  //   const contentsAll = await import(`~/static/pagesetting/${contentsId}.json`)
+  //   return { contentsId, contentsAll }
+  // },
   data() {
     return {
       tab: null,
@@ -44,8 +48,8 @@ export default Vue.extend({
     contentsId(): string {
       return 'educationsports'
     },
-    contentsAll(): ContentsType[] {
-      return require(`~/data/pagesetting/${this.contentsId}.json`)
+    contentsAll() {
+      return require(`~/static/pagesetting/${this.contentsId}.json`)
     },
   },
   methods: {

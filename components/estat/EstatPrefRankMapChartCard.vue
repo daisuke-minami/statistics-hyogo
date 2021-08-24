@@ -124,6 +124,7 @@ export default {
       ]
     },
     displayData() {
+      // console.log(this.chartData)
       const displayData = this.chartData.filter(
         (d) => d.year === this.targetYear
       )
@@ -131,6 +132,12 @@ export default {
       displayData[0].states = { hover: { color: '#a4edba' } }
       return displayData
     },
+  },
+  created() {
+    console.log('prefList:', this.prefList)
+    console.log('contents:', this.contents)
+    console.log('formatData:', this.formatData)
+    console.log('chatrData:', this.chartData)
   },
 }
 </script>

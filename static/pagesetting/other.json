@@ -1,0 +1,103 @@
+{
+  "prefecture": [
+    {
+      "title": "工業統計調査（平成26年度）",
+      "titleId": "industrial-statistics-survey-h26",
+      "cardComponent": "estat-line-chart-break-card",
+      "isRank": false,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0003243562",
+        "categories": [
+          {
+            "cdCat01": "100",
+            "cdCat02": "00",
+            "name": "事業所数"
+          },
+          {
+            "cdCat01": "110",
+            "cdCat02": "00",
+            "name": "従業者数"
+          },
+          {
+            "cdCat01": "120",
+            "cdCat02": "00",
+            "name": "現金給与総額"
+          },
+          {
+            "cdCat01": "130",
+            "cdCat02": "00",
+            "name": "原材料使用額等"
+          },
+          {
+            "cdCat01": "140",
+            "cdCat02": "00",
+            "name": "製造品出荷額等"
+          },
+          {
+            "cdCat01": "150",
+            "cdCat02": "00",
+            "name": "付加価値額"
+          },
+          {
+            "cdCat01": "160",
+            "cdCat02": "00",
+            "name": "有形固定資産投資総額"
+          }
+        ]
+      }
+    },
+    {
+      "title": "工業統計調査（平成25年度）",
+      "titleId": "industrial-statistics-survey-h25",
+      "cardComponent": "estat-line-chart-break-card",
+      "isRank": false,
+      "additionalDescription": [
+        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+      ],
+      "params": {
+        "statsDataId": "0003244782",
+        "categories": [
+          {
+            "cdCat01": "100",
+            "cdCat02": "00",
+            "name": "事業所数"
+          },
+          {
+            "cdCat01": "110",
+            "cdCat02": "00",
+            "name": "従業者数"
+          },
+          {
+            "cdCat01": "120",
+            "cdCat02": "00",
+            "name": "現金給与総額"
+          },
+          {
+            "cdCat01": "130",
+            "cdCat02": "00",
+            "name": "原材料使用額等"
+          },
+          {
+            "cdCat01": "140",
+            "cdCat02": "00",
+            "name": "製造品出荷額等"
+          },
+          {
+            "cdCat01": "150",
+            "cdCat02": "00",
+            "name": "付加価値額"
+          },
+          {
+            "cdCat01": "160",
+            "cdCat02": "00",
+            "name": "有形固定資産投資総額"
+          }
+        ]
+      }
+    }
+  ],
+  "city": []
+}

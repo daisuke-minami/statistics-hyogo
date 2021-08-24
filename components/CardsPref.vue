@@ -60,6 +60,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
       return this.getPrefName(this.prefCode)
     },
     contentsList() {
+      // console.log(this.contentsAll)
       return this.contentsAll[this.governmentType].map((d) => {
         const prefName = this.prefName
         const prefCode = this.prefCode

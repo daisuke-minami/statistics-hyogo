@@ -27,9 +27,13 @@
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
 import { EventBus, TOGGLE_EVENT } from '@/utils/tab-event-bus.ts'
-import { ContentsType } from '~/utils/formatChart'
 
 export default Vue.extend({
+  // async asyncData() {
+  //   const contentsId = 'international'
+  //   const contentsAll = await import(`~/static/pagesetting/${contentsId}.json`)
+  //   return { contentsId, contentsAll }
+  // },
   data() {
     return {
       tab: null,
@@ -43,8 +47,8 @@ export default Vue.extend({
     contentsId(): string {
       return 'international'
     },
-    contentsAll(): ContentsType[] {
-      return require(`~/data/pagesetting/${this.contentsId}.json`)
+    contentsAll() {
+      return require(`~/static/pagesetting/${this.contentsId}.json`)
     },
   },
   methods: {

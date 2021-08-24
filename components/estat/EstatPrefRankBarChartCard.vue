@@ -131,5 +131,11 @@ export default {
       return displayData
     },
   },
+  created() {
+    console.log('prefList:', this.prefList)
+    console.log('contents:', this.contents)
+    console.log('formatData:', this.formatData)
+    console.log('chatrData:', this.chartData)
+  },
 }
 </script>

@@ -3,7 +3,8 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+// import cityList from '~/static/codes/citylist.json'
+import cityJson from '~/static/codes/citylist.json'
 
 export default {
   async asyncData({ store }) {
@@ -16,7 +17,9 @@ export default {
     }
   },
   computed: {
-    ...mapGetters('cityList', ['getCityList', 'getCityName']),
+    cityList() {
+      return cityJson.result
+    },
     contentsId() {
       return this.$route.params.contentsId
     },
@@ -24,15 +27,16 @@ export default {
       return this.$route.params.titleId
     },
     cityCode() {
-      return this.$route.params.cityCode
+      return this.$route.params.citycode
     },
     cityName() {
-      return this.getCityName(this.cityCode)
+      return this.cityList.find((d) => d.cityCode === this.cityCode).cityName
     },
     contentsAll() {
-      return require(`~/data/pagesetting/${this.contentsId}.json`)
+      return require(`~/static/pagesetting/${this.contentsId}.json`)
     },
     contents() {
+      console.log(this.contentsAll)
       return this.contentsAll[this.governmentType]
         .map((d) => {
           d.params.cdArea = this.cityCode

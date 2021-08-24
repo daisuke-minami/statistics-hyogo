@@ -3,34 +3,43 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import prefJson from '~/static/codes/preflist.json'
+import cityJson from '~/static/codes/citylist.json'
 
 export default {
+  // async asyncData({ params }) {
+  //   const cityList = (await import(`~/static/codes/citylist.json`)).result
+  //   const prefList = (await import(`~/static/codes/preflist.json`)).result
+  //   const contentsId = params.contentsId
+  //   const contentsAll = await import(`~/static/pagesetting/${contentsId}.json`)
+  //   return { cityList, prefList, contentsId, contentsAll }
+  // },
   data() {
     return {
       governmentType: 'city',
     }
   },
   computed: {
-    ...mapGetters('cityList', ['getCityList']),
-    ...mapGetters('prefList', ['getPrefName']),
+    prefList() {
+      return prefJson.result
+    },
+    cityList() {
+      return cityJson.result
+    },
     prefCode() {
-      return this.$route.params.prefCode
+      return this.$route.params.prefcode
     },
     prefName() {
-      return this.getPrefName(this.prefCode)
-    },
-    contentsId() {
-      return this.$route.params.contentsId
+      return this.prefList.find((d) => d.prefCode === this.prefCode).prefName
     },
     titleId() {
       return this.$route.params.titleId
     },
-    cityList() {
-      return this.getCityList
+    contentsId() {
+      return this.$route.params.contentsId
     },
     contentsAll() {
-      return require(`~/data/pagesetting/${this.contentsId}.json`)
+      return require(`~/static/pagesetting/${this.contentsId}.json`)
     },
     contentsList() {
       return this.contentsAll[this.governmentType].filter(
@@ -68,6 +77,12 @@ export default {
       }
       return cardComponent
     },
+  },
+  created() {
+    // console.log('contentsAll:', this.contentsAll)
+    // console.log('contentsList:', this.contentsList)
+    // console.log('perfCode:', this.prefCode)
+    // console.log('cityList:', this.cityList)
   },
 }
 </script>
