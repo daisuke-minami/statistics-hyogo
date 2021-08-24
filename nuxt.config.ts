@@ -230,9 +230,9 @@ const config: NuxtConfig = {
     fallback: true,
     concurrency: 100,
     // crawler: false,
-    routes() {
-      return routes
-    },
+    // routes() {
+    //   return routes
+    // },
   },
   // /*
   // ** hot read configuration for docker
