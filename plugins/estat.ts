@@ -62,7 +62,7 @@ const formatEstatTimeChart = async (contents: object) => {
   // )
   // const resValue = resAll.GET_STATS_DATA.STATISTICAL_DATA.DATA_INF.VALUE.filter(
   //   (d) => d['@area'] === cdArea
-  / )
+  // )
   // const CLASS_OBJ = resAll.GET_STATS_DATA.STATISTICAL_DATA.CLASS_INF.CLASS_OBJ
 
   // console.log('resValue', resValue)
