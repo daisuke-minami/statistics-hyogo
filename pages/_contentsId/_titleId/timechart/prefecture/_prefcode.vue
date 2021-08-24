@@ -7,13 +7,10 @@
 import prefJson from '@/static/codes/preflist.json'
 
 export default {
-<<<<<<< HEAD:pages/_contentsId/_titleId/timechart/prefecture/_prefCode.vue
-  async asyncData({ store }) {
-    await store.dispatch('prefList/fetchPrefs')
-    await store.dispatch('cityList/fetchCities')
-  },
-=======
->>>>>>> develop:pages/_contentsId/_titleId/timechart/prefecture/_prefcode.vue
+  // async asyncData({ store }) {
+  //   await store.dispatch('prefList/fetchPrefs')
+  //   await store.dispatch('cityList/fetchCities')
+  // },
   data() {
     return {
       governmentType: 'prefecture',
