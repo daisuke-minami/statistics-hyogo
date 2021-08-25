@@ -27,9 +27,21 @@
 import Vue from 'vue'
 // import { MetaInfo } from 'vue-meta'
 import { EventBus, TOGGLE_EVENT } from '@/utils/tab-event-bus.ts'
-import { ContentsType } from '~/utils/formatChart'
+// import { ContentsType } from '~/utils/formatChart'
 
 export default Vue.extend({
+  // asyncData+$axiosで取得する場合
+  // async asyncData({ $axios }) {
+  //   const contentsId = 'agriculture'
+  //   const contentsAll = await $axios.$get(`/pagesetting/${contentsId}.json`)
+  //   return { contentsId, contentsAll }
+  // },
+  // asyncData + DynamicImportの場合
+  async asyncData() {
+    const contentsId = 'agriculture'
+    const contentsAll = await import(`~/static/pagesetting/${contentsId}.json`)
+    return { contentsId, contentsAll }
+  },
   data() {
     return {
       tab: null,
@@ -41,20 +53,13 @@ export default Vue.extend({
       ],
     }
   },
-  computed: {
-    contentsId(): string {
-      return 'agriculture'
-    },
-    contentsAll(): ContentsType[] {
-      return require(`~/static/pagesetting/${this.contentsId}.json`)
-    },
-  },
+  computed: {},
   methods: {
     change() {
       EventBus.$emit(TOGGLE_EVENT)
     },
   },
-  head(): MetaInfo {
+  head() {
     return {
       title: '農林水産業',
     }

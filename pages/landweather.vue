@@ -28,7 +28,7 @@ import Vue from 'vue'
 import { EventBus, TOGGLE_EVENT } from '@/utils/tab-event-bus.ts'
 
 export default Vue.extend({
-  // asyncData + $axiosで取得する場合
+  // asyncData+$axiosで取得する場合
   // async asyncData({ $axios }) {
   //   const contentsId = 'landweather'
   //   const contentsAll = await $axios.$get(`/pagesetting/${contentsId}.json`)

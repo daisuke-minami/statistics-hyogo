@@ -45,11 +45,18 @@ type Methods = {
 }
 
 export default Vue.extend({
-  // async asyncData() {
+  // asyncData+$axiosで取得する場合
+  // async asyncData({ $axios }) {
   //   const contentsId = 'other'
-  //   const contentsAll = await import(`~/static/pagesetting/${contentsId}.json`)
+  //   const contentsAll = await $axios.$get(`/pagesetting/${contentsId}.json`)
   //   return { contentsId, contentsAll }
   // },
+  // asyncData + DynamicImportの場合
+  async asyncData() {
+    const contentsId = 'other'
+    const contentsAll = await import(`~/static/pagesetting/${contentsId}.json`)
+    return { contentsId, contentsAll }
+  },
   data() {
     return {
       tab: null,
@@ -61,20 +68,13 @@ export default Vue.extend({
       ],
     }
   },
-  computed: {
-    contentsId(): string {
-      return 'other'
-    },
-    contentsAll() {
-      return require(`~/static/pagesetting/${this.contentsId}.json`)
-    },
-  },
+  computed: {},
   methods: {
     change() {
       EventBus.$emit(TOGGLE_EVENT)
     },
   },
-  head(): MetaInfo {
+  head() {
     return {
       title: '人口・世帯',
     }

@@ -86,7 +86,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     },
   },
   created() {
-    console.log(this.contentsId, this.contentsList)
+    // console.log(this.contentsId, this.contentsList)
   },
   methods: {},
 }

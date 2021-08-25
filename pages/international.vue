@@ -29,11 +29,18 @@ import Vue from 'vue'
 import { EventBus, TOGGLE_EVENT } from '@/utils/tab-event-bus.ts'
 
 export default Vue.extend({
-  // async asyncData() {
+  // asyncData+$axiosで取得する場合
+  // async asyncData({ $axios }) {
   //   const contentsId = 'international'
-  //   const contentsAll = await import(`~/static/pagesetting/${contentsId}.json`)
+  //   const contentsAll = await $axios.$get(`/pagesetting/${contentsId}.json`)
   //   return { contentsId, contentsAll }
   // },
+  // asyncData + DynamicImportの場合
+  async asyncData() {
+    const contentsId = 'international'
+    const contentsAll = await import(`~/static/pagesetting/${contentsId}.json`)
+    return { contentsId, contentsAll }
+  },
   data() {
     return {
       tab: null,
@@ -43,20 +50,13 @@ export default Vue.extend({
       ],
     }
   },
-  computed: {
-    contentsId(): string {
-      return 'international'
-    },
-    contentsAll() {
-      return require(`~/static/pagesetting/${this.contentsId}.json`)
-    },
-  },
+  computed: {},
   methods: {
     change() {
       EventBus.$emit(TOGGLE_EVENT)
     },
   },
-  head(): MetaInfo {
+  head() {
     return {
       title: '国際',
     }
