@@ -39,7 +39,7 @@ export default {
       required: true,
     },
     contentsAll: {
-      type: Object,
+      // type: Object,
       required: true,
     },
   },

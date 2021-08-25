@@ -37,8 +37,9 @@ export default Vue.extend({
       type: String,
       required: true,
     },
+    // eslint-disable-next-line vue/require-prop-types
     contentsAll: {
-      type: Object,
+      // type: Object,
       required: true,
     },
   },

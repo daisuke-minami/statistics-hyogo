@@ -27,6 +27,7 @@
 import Vue from 'vue'
 // import { MetaInfo } from 'vue-meta'
 import { EventBus, TOGGLE_EVENT } from '@/utils/tab-event-bus.ts'
+import { mapGetters } from 'vuex'
 
 export default Vue.extend({
   // asyncData+$axiosで取得する場合
@@ -44,13 +45,23 @@ export default Vue.extend({
   data() {
     return {
       tab: null,
-      items: [
-        { label: '兵庫県の統計', component: 'cards-pref' },
-        { label: '都道府県ランキング', component: 'cards-pref-rank' },
-      ],
     }
   },
-  computed: {},
+  computed: {
+    ...mapGetters('prefList', ['getSelectedPrefCode', 'getPrefName']),
+    prefCode() {
+      return this.getSelectedPrefCode
+    },
+    prefName() {
+      return this.getPrefName(this.prefCode)
+    },
+    items() {
+      return [
+        { label: `${this.prefName}の統計`, component: 'cards-pref' },
+        { label: '市区町村の統計', component: 'cards-city' },
+      ]
+    },
+  },
   methods: {
     change() {
       EventBus.$emit(TOGGLE_EVENT)

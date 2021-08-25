@@ -42,7 +42,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
       required: true,
     },
     contentsAll: {
-      type: Object,
+      // type: Object,
       required: true,
     },
   },
@@ -85,7 +85,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     },
   },
   created() {
-    console.log('contentsList:', this.contentsList)
+    // console.log('contentsList:', this.contentsList)
   },
   methods: {},
 }
