@@ -1,8 +1,5 @@
 <template>
   <div>
-    <div v-if="$fetchState.pending" class="loader">
-      <scale-loader color="#01A0C7" />
-    </div>
     <v-tabs v-model="tab" hide-slider>
       <v-tab
         v-for="(item, i) in items"
@@ -31,15 +28,16 @@ import Vue from 'vue'
 import { EventBus, TOGGLE_EVENT } from '@/utils/tab-event-bus.ts'
 
 export default Vue.extend({
-  // asyncData+$axiosで取得する場合
+  // asyncData + $axiosで取得する場合
   // async asyncData({ $axios }) {
   //   const contentsId = 'landweather'
   //   const contentsAll = await $axios.$get(`/pagesetting/${contentsId}.json`)
   //   return { contentsId, contentsAll }
   // },
-  async fetch() {
+  // asyncData + DynamicImportの場合
+  async asyncData() {
     const contentsId = 'landweather'
-    const contentsAll = await import(`/pagesetting/${contentsId}.json`)
+    const contentsAll = await import(`~/static/pagesetting/${contentsId}.json`)
     return { contentsId, contentsAll }
   },
   data() {
@@ -53,15 +51,7 @@ export default Vue.extend({
       ],
     }
   },
-  computed: {
-    // computedで取得する場合
-    // contentsId(): string {
-    //   return 'landweather'
-    // },
-    // contentsAll() {
-    //   return require(`~/static/pagesetting/${this.contentsId}.json`)
-    // },
-  },
+  computed: {},
   methods: {
     change() {
       EventBus.$emit(TOGGLE_EVENT)
