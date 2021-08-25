@@ -33,7 +33,6 @@ const getEstatAPI = async (estatParam) => {
  * @param lgInfo - 地方公共団体の情報
  */
 const formatEstatTimeChart = async (contents: object) => {
-  // console.log('formatEstatTimeChartには来ている')
   const categories = contents.params.categories
   const statsDataId = contents.params.statsDataId
   const cdArea = contents.params.cdArea
@@ -65,8 +64,6 @@ const formatEstatTimeChart = async (contents: object) => {
   )
   const CLASS_OBJ = resAll.GET_STATS_DATA.STATISTICAL_DATA.CLASS_INF.CLASS_OBJ
 
-  console.log('resValue', resValue)
-
   const chartData = categories.map((item) => {
     const target = () => {
       if ('cdCat02' in categories[0]) {
@@ -75,7 +72,6 @@ const formatEstatTimeChart = async (contents: object) => {
         return resValue.filter((d) => d['@cat01'] === item.cdCat01)
       }
     }
-    // console.log('target', target())
     const $ = target().map((d) => parseFloat(d.$))
     return {
       name: item.name,
@@ -386,8 +382,6 @@ const formatEstatRankMapChart = async (
     `~/static/pagecontents/${contentsId}/${governmentType}/${titleId}.json`
   )
   const resValue = res.GET_STATS_DATA.STATISTICAL_DATA.DATA_INF.VALUE
-
-  // console.log('resValue', resValue)
 
   const resTimes = Array.from(new Set(resValue.map((d) => d['@time']))).map(
     (item) => {

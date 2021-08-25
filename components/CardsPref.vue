@@ -60,7 +60,6 @@ const options: ThisTypedComponentOptionsWithRecordProps<
       return this.getPrefName(this.prefCode)
     },
     contentsList() {
-      // console.log(this.contentsAll)
       return this.contentsAll[this.governmentType].map((d) => {
         const prefName = this.prefName
         const prefCode = this.prefCode
@@ -86,7 +85,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     },
   },
   created() {
-    // console.log(this.contentsId, this.contentsList)
+    console.log('contentsList:', this.contentsList)
   },
   methods: {},
 }
