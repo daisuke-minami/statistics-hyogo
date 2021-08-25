@@ -25,7 +25,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { MetaInfo } from 'vue-meta'
+// import { MetaInfo } from 'vue-meta'
 import { EventBus, TOGGLE_EVENT } from '@/utils/tab-event-bus.ts'
 import { ContentsType } from '~/utils/formatChart'
 

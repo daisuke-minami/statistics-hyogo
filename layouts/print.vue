@@ -34,7 +34,7 @@
 </template>
 <script lang="ts">
 import Vue from 'vue'
-import { MetaInfo } from 'vue-meta'
+// // import { MetaInfo } from 'vue-meta'
 import ScaleLoader from 'vue-spinner/src/ScaleLoader.vue'
 
 export default Vue.extend({

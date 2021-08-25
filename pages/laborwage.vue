@@ -24,7 +24,7 @@
 </template>
 
 <script lang="ts">
-import { MetaInfo } from 'vue-meta'
+// import { MetaInfo } from 'vue-meta'
 import Vue from 'vue'
 import { EventBus, TOGGLE_EVENT } from '@/utils/tab-event-bus.ts'
 
