@@ -34,7 +34,9 @@
     }
   },
   "dependencies": {
+    "@nuxt/builder-edge": "^2.16.0-27164173.b0147772",
     "@nuxt/cli-edge": "2.16.0-27148332.1455784",
+    "@nuxt/core-edge": "^2.16.0-27164173.b0147772",
     "@nuxt/types": "2.14.8",
     "@nuxt/typescript-runtime": "2.0.0",
     "@nuxt/webpack": "^2.15.7",
@@ -55,6 +57,7 @@
     "dayjs": "1.9.6",
     "dotenv": "^8.2.0",
     "fs": "0.0.1-security",
+    "fs-extra": "^10.0.0",
     "highcharts": "^9.0.0",
     "highcharts-vue": "^1.3.5",
     "leaflet": "^1.7.1",
