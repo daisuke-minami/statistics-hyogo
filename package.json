@@ -37,6 +37,7 @@
     "@nuxt/builder-edge": "^2.16.0-27164173.b0147772",
     "@nuxt/cli-edge": "2.16.0-27148332.1455784",
     "@nuxt/core-edge": "^2.16.0-27164173.b0147772",
+    "@nuxt/generator-edge": "^2.16.0-27164173.b0147772",
     "@nuxt/types": "2.14.8",
     "@nuxt/typescript-runtime": "2.0.0",
     "@nuxt/webpack": "^2.15.7",
