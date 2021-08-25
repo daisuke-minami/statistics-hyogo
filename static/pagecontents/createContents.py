@@ -8,7 +8,7 @@ import pathlib
 root_dir = pathlib.Path(__file__).parent.parent.parent
 
 #pagesettingディレクトリ配下のファイル名を取得
-path = os.path.join(root_dir, 'data/pagesetting')
+path = os.path.join(root_dir, 'static/pagesetting')
 files = os.listdir(path)
 files_file = [f for f in files if os.path.isfile(os.path.join(path, f))]
 

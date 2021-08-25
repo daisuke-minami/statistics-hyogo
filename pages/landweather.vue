@@ -25,15 +25,15 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { MetaInfo } from 'vue-meta'
 import { EventBus, TOGGLE_EVENT } from '@/utils/tab-event-bus.ts'
 
 export default Vue.extend({
-  // async asyncData() {
-  //   const contentsId = 'landweather'
-  //   const contentsAll = await import(`~/static/pagesetting/${contentsId}.json`)
-  //   return { contentsId, contentsAll }
-  // },
+  // asyncData+$axiosで取得する場合
+  async asyncData({ $axios }) {
+    const contentsId = 'landweather'
+    const contentsAll = await $axios.$get(`/pagesetting/${contentsId}.json`)
+    return { contentsId, contentsAll }
+  },
   data() {
     return {
       tab: null,
@@ -46,19 +46,19 @@ export default Vue.extend({
     }
   },
   computed: {
-    contentsId(): string {
-      return 'landweather'
-    },
-    contentsAll() {
-      return require(`~/static/pagesetting/${this.contentsId}.json`)
-    },
+    // contentsId(): string {
+    //   return 'landweather'
+    // },
+    // contentsAll() {
+    //   return require(`~/static/pagesetting/${this.contentsId}.json`)
+    // },
   },
   methods: {
     change() {
       EventBus.$emit(TOGGLE_EVENT)
     },
   },
-  head(): MetaInfo {
+  head() {
     return {
       title: '国土・気象',
     }
