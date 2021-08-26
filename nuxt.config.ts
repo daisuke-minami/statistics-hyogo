@@ -185,7 +185,7 @@ const config: NuxtConfig = {
   },
   'google-gtag': {
     id: 'G-0ENS8E4461', // サイトのID
-    debug: false, // 開発環境でも表示したい場合
+    debug: true, // 開発環境でも表示したい場合
   },
   /*
    ** @nuxtjs/gtm config
