@@ -3,7 +3,7 @@ import time
 import json
 import pathlib
 from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
+# from selenium.webdriver.chrome.options import Options
 
 #ルートディレクトリの設定
 root_dir = pathlib.Path(__file__).parent.parent
@@ -33,7 +33,7 @@ driver = webdriver.Chrome(options=options)
 for path in routes:
     driver.set_window_size(959, 500)
     driver.get(
-        ("http://localhost:3000/{}?ogp=true".format(path))
+        ("http://localhost:8000/{}?ogp=true".format(path))
         )
     driver.save_screenshot(
             "ogp/{}.png".format(path)
