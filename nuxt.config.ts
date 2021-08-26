@@ -14,7 +14,7 @@ const prefList = JSON.parse(fs.readFileSync('static/codes/preflist.json'))
 require('dotenv').config()
 
 const config: NuxtConfig = {
-  ssr: 'true',
+  // ssr: 'true',
   target: 'static',
   /*
    ** Headers of the page
@@ -229,9 +229,9 @@ const config: NuxtConfig = {
     interval: 1000,
     fallback: true,
     concurrency: 100,
-    // routes() {
-    //   return routes
-    // },
+    routes() {
+      return routes
+    },
   },
   // /*
   // ** hot read configuration for docker
