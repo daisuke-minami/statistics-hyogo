@@ -15,8 +15,8 @@ require('dotenv').config()
 
 const config: NuxtConfig = {
   ssr: 'true',
-  target: 'server',
-  // target: 'static',
+  // target: 'server',
+  target: 'static',
   /*
    ** Headers of the page
    */
