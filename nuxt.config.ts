@@ -186,7 +186,7 @@ const config: NuxtConfig = {
   },
   'google-gtag': {
     id: 'G-0ENS8E4461', // サイトのID
-    debug: true, // 開発環境でも表示したい場合
+    debug: false, // 開発環境でも表示したい場合
   },
   /*
    ** @nuxtjs/gtm config
@@ -230,9 +230,9 @@ const config: NuxtConfig = {
     interval: 1000,
     fallback: true,
     concurrency: 100,
-    routes() {
-      return routes
-    },
+    // routes() {
+    //   return routes
+    // },
   },
   // /*
   // ** hot read configuration for docker
