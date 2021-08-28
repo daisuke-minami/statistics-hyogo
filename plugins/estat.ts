@@ -1,11 +1,5 @@
 import axios from 'axios'
 
-// // 地溝公共団体の情報
-// type lgInfo = {
-//   lgName: string
-//   lgCode: string
-// }
-
 /** estat-APIからデータを取得
  * @param statsDataId - 統計表ID
  * @param cdArea - 都道府県コード or 市区町村コード（5桁）
@@ -62,28 +56,20 @@ const formatEstatTimeChart = async (contents: object) => {
   const resValue = resAll.GET_STATS_DATA.STATISTICAL_DATA.DATA_INF.VALUE.filter(
     (d) => d['@area'] === cdArea
   )
-  const CLASS_OBJ = resAll.GET_STATS_DATA.STATISTICAL_DATA.CLASS_INF.CLASS_OBJ
 
   const chartData = categories.map((item) => {
-    const target = () => {
-      if ('cdCat02' in categories[0]) {
-        return resValue.filter((d) => d['@cat02'] === item.cdCat02)
-      } else {
-        return resValue.filter((d) => d['@cat01'] === item.cdCat01)
-      }
-    }
-    const $ = target().map((d) => parseFloat(d.$))
+    const value = _filterValue(resValue, item)
     return {
       name: item.name,
       dataSetPanel: item.dataSetPanel,
-      data: target().map((d) => ({
+      data: value.map((d) => ({
         x: parseInt(d['@time'].substr(0, 4)),
         y: parseFloat(d.$),
         unit: d['@unit'],
       })),
-      max: _getArrayMinMax($).max,
-      min: _getArrayMinMax($).min,
-      unit: target()[0]['@unit'],
+      max: _getArrayMinMax(value).max,
+      min: _getArrayMinMax(value).min,
+      unit: value[0]['@unit'],
       yAxis: item.yAxis,
       opposite: item.opposite,
     }
@@ -109,31 +95,20 @@ const formatEstatTimeChart = async (contents: object) => {
     }),
   ]
 
-  const arr = CLASS_OBJ.find((d) => d['@id'] === 'time').CLASS
-
-  const timeMaster = () => {
-    return arr.map((item) => ({
-      yearInt: parseInt(item['@code'].substr(0, 4)),
-      yearStr: item['@code'],
-    }))
-  }
-
-  const years = timeMaster().map((d) => d.yearInt)
-  const tableData = years.map((year) => {
+  const tableData = resValue.map((d) => {
+    const year = parseInt(d['@time'].substr(0, 4))
     return Object.assign(
       { year: year + '年' },
-      ...chartData
-        .map((item) => item.name)
-        .map((name, j) => {
-          const value = chartData[j].data.find((d) => d.x === year)
-          if (value) {
-            return {
-              [name]: value.y.toLocaleString() + chartData[j].unit,
-            }
-          } else {
-            return ''
+      ...chartData.map((item, j) => {
+        const value = chartData[j].data.find((d) => d.x === year)
+        if (value) {
+          return {
+            [item.name]: value.y.toLocaleString() + chartData[j].unit,
           }
-        })
+        } else {
+          return ''
+        }
+      })
     )
   })
   return {
@@ -150,15 +125,12 @@ const formatEstatTimeChart = async (contents: object) => {
   }
 }
 
-const _getUpdate = () => {
-  const day = new Date(document.lastModified)
-  return `${day.getFullYear()}年${day.getMonth() + 1}月${day.getDate()}日`
-}
-
 /** 配列内の最大値と最小値を取得
  * @param ary - 配列
  */
-const _getArrayMinMax = (ary) => {
+const _getArrayMinMax = (value) => {
+  // 値だけを抽出
+  const ary = value.map((d) => parseFloat(d.$))
   // 大きい順にsort（null NaN対応）
   const aryMax = ary.concat()
   aryMax.sort(function (a, b) {
@@ -313,7 +285,7 @@ const formatEstatPyramidChart = async (contents: object) => {
     tableData,
     pyramidCategories,
     docURL: `https://www.e-stat.go.jp/dbview?sid=${statsDataId}`,
-    lastUpdate: _getUpdate(),
+    // lastUpdate: _getUpdate(),
   }
 }
 
@@ -431,12 +403,12 @@ const formatEstatRankMapChart = async (
       }
     }
 
-    const $ = dataByTime().map((d) => parseInt(d.$))
+    // const $ = dataByTime().map((d) => parseInt(d.$))
     return {
       year: years.yearInt,
       name: categories[0].name,
-      max: _getArrayMinMax($).max,
-      min: _getArrayMinMax($).min,
+      max: _getArrayMinMax(dataByTime()).max,
+      min: _getArrayMinMax(dataByTime()).min,
       data: localGavermentList().map((d) => {
         const dataByArea = dataByTime().find((e) => e['@area'] === d.lgCode)
         if (dataByArea) {
@@ -543,12 +515,12 @@ const formatEstatRankBarChart = async (
       }
     }
 
-    const $ = dataByTime().map((d) => parseInt(d.$))
+    // const $ = dataByTime().map((d) => parseInt(d.$))
     return {
       year: years.yearInt,
       name: categories[0].name,
-      max: _getArrayMinMax($).max,
-      min: _getArrayMinMax($).min,
+      max: _getArrayMinMax(dataByTime()).max,
+      min: _getArrayMinMax(dataByTime()).min,
       data: localGavermentList().map((d) => {
         const dataByArea = dataByTime().find((e) => e['@area'] === d.lgCode)
         if (dataByArea) {
@@ -572,6 +544,21 @@ const formatEstatRankBarChart = async (
     resTimes,
     docURL: `https://www.e-stat.go.jp/dbview?sid=${statsDataId}`,
   }
+}
+
+/** estatAPIの結果をカテゴリパラメータ（cdCat01,cdCat02,cdTab）でフィルタ
+ * @param resValue -estatAPIの結果
+ * @param category -cdCat01: ,cdCat02; , cdTab:
+ */
+const _filterValue = (resValue, item) => {
+  let value = resValue
+  if ('cdCat01' in item) {
+    value = value.filter((d) => d['@cat01'] === item.cdCat01)
+  }
+  if ('cdCat02' in item) {
+    value = value.filter((d) => d['@cat02'] === item.cdCat02)
+  }
+  return value
 }
 
 // 共通関数として利用する

@@ -3,7 +3,7 @@
     {
       "title": "工業統計調査（平成26年度）",
       "titleId": "industrial-statistics-survey-h26",
-      "cardComponent": "estat-line-chart-break-card",
+      "cardComponent": "estat-column-chart-break-card",
       "isRank": false,
       "additionalDescription": [
         "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
@@ -52,7 +52,7 @@
     {
       "title": "工業統計調査（平成25年度）",
       "titleId": "industrial-statistics-survey-h25",
-      "cardComponent": "estat-line-chart-break-card",
+      "cardComponent": "estat-column-chart-break-card",
       "isRank": false,
       "additionalDescription": [
         "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
