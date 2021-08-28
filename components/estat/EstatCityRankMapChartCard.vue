@@ -74,6 +74,7 @@ export default {
       null,
       this.cityList
     )
+    this.targetYear = this.formatData.resTimes[0].yearInt
   },
   data() {
     return {
@@ -128,29 +129,19 @@ export default {
       }
     },
     displayData() {
-      const year = () => {
-        if (this.taegetYear) {
-          return this.taegetYear
-        } else {
-          return this.formatData.resTimes.max
-        }
-      }
-      const displayData = this.chartData.filter((d) => d.year === year())
+      const displayData = this.chartData.filter(
+        (d) => d.year === this.targetYear
+      )
       displayData[0].joinBy = ['N03_007', 'id']
       displayData[0].states = { hover: { color: '#a4edba' } }
       return displayData
     },
-  },
-  created() {
-    // console.log('cityList:', this.cityList)
-    // console.log('contents:', this.contents)
-    // console.log('formatData:', this.formatData)
-    // console.log('chatrData:', this.chartData)
   },
   watch: {
     bigcityKind() {
       this.$fetch()
     },
   },
+  created() {},
 }
 </script>

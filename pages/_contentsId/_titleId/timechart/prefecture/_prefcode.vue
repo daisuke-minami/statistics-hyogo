@@ -65,10 +65,10 @@ export default {
     },
   },
   created() {
-    console.log('contentsId', this.contentsId)
-    console.log('titleId', this.titleId)
-    console.log('prefCode', this.prefCode)
-    console.log('prefList', this.prefList)
+    // console.log('contentsId', this.contentsId)
+    // console.log('titleId', this.titleId)
+    // console.log('prefCode', this.prefCode)
+    // console.log('prefList', this.prefList)
   },
 }
 </script>

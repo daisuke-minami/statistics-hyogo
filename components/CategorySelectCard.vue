@@ -2,14 +2,19 @@
   <div>
     <static-card>
       <v-row>
-        <v-col class="d-flex" cols="12" sm="6">
+        <v-col>
           <v-select
             v-model="titleId"
             :items="contentsList"
             item-text="title"
             item-value="titleId"
+            hint="統計項目を選択"
+            persistent-hint
             @change="$emit('input', $event)"
           />
+        </v-col>
+        <v-col>
+          <data-selector-rank-data-card v-model="rankDataType" />
         </v-col>
       </v-row>
     </static-card>
@@ -28,8 +33,10 @@ export default Vue.extend({
   },
   data() {
     return {
+      rankDataType: 'all',
       categoryCode: '',
       canvas: true,
+      row: null,
       titleId: '',
     }
   },

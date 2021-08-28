@@ -66,11 +66,12 @@ export default {
       this.prefList,
       null
     )
+    this.targetYear = this.formatData.resTimes[0].yearInt
   },
   data() {
     return {
       canvas: true,
-      targetYear: 2015,
+      targetYear: null,
       formatData: [],
     }
   },
@@ -131,11 +132,6 @@ export default {
       return displayData
     },
   },
-  created() {
-    console.log('prefList:', this.prefList)
-    console.log('contents:', this.contents)
-    console.log('formatData:', this.formatData)
-    console.log('chatrData:', this.chartData)
-  },
+  created() {},
 }
 </script>

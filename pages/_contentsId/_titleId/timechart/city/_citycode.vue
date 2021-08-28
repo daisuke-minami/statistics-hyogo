@@ -36,7 +36,7 @@ export default {
       return require(`~/static/pagesetting/${this.contentsId}.json`)
     },
     contents() {
-      console.log(this.contentsAll)
+      // console.log(this.contentsAll)
       return this.contentsAll[this.governmentType]
         .map((d) => {
           d.params.cdArea = this.cityCode

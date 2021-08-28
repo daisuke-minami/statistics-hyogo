@@ -26,6 +26,8 @@
 </template>
 
 <script>
+import { mdiHeart } from '@mdi/js'
+// import Vue from 'vue'
 import ScaleLoader from 'vue-spinner/src/ScaleLoader.vue'
 import { mapGetters } from 'vuex'
 
@@ -38,6 +40,7 @@ export default {
       type: String,
       required: true,
     },
+    // eslint-disable-next-line vue/require-prop-types
     contentsAll: {
       // type: Object,
       required: true,
@@ -48,6 +51,7 @@ export default {
   },
   data() {
     return {
+      mdiHeart,
       titleId: null,
       governmentType: 'prefecture',
     }
