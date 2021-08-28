@@ -1,10 +1,10 @@
 import axios from 'axios'
 
-// 地溝公共団体の情報
-type lgInfo = {
-  lgName: string
-  lgCode: string
-}
+// // 地溝公共団体の情報
+// type lgInfo = {
+//   lgName: string
+//   lgCode: string
+// }
 
 /** estat-APIからデータを取得
  * @param statsDataId - 統計表ID
