@@ -471,14 +471,18 @@ const formatEstatRankBarChart = async (
   )
   const resValue = res.GET_STATS_DATA.STATISTICAL_DATA.DATA_INF.VALUE
 
-  const resTimes = Array.from(new Set(resValue.map((d) => d['@time']))).map(
-    (item) => {
+  const resTimes = Array.from(new Set(resValue.map((d) => d['@time'])))
+    .map((item) => {
       return {
         yearInt: parseInt(item.substr(0, 4)),
         yearStr: item,
       }
-    }
-  )
+    })
+    .sort((a, b) => {
+      if (a.yearStr > b.yearStr) return -1
+      if (a.yearStr < b.yearStr) return 1
+      return 0
+    })
 
   const chartData = resTimes.map((years) => {
     const dataByTime = () => {

@@ -15,7 +15,7 @@
               </v-col>
               <v-col>
                 <v-select
-                  v-model="taegetYear"
+                  v-model="targetYear"
                   :items="Times"
                   item-text="yearName"
                   item-value="year"
@@ -79,7 +79,7 @@ export default {
     return {
       bigcityKind: 'all',
       canvas: true,
-      taegetYear: null,
+      targetYear: null,
       formatData: [],
     }
   },

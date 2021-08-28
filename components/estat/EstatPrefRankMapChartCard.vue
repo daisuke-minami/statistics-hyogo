@@ -67,7 +67,6 @@ export default {
       null
     )
     this.targetYear = this.formatData.resTimes[0].yearInt
-    // console.log(this.formatData.resTimes)
   },
   data() {
     return {
