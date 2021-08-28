@@ -93,18 +93,12 @@ export default {
       return this.formatData.docURL
     },
     Times() {
-      return this.formatData.resTimes
-        .map((item) => {
-          return {
-            yearName: `${item.yearInt}年`,
-            year: item.yearInt,
-          }
-        })
-        .sort((a, b) => {
-          if (a.yearName > b.yearName) return -1
-          if (a.yearName < b.yearName) return 1
-          return 0
-        })
+      return this.formatData.resTimes.map((item) => {
+        return {
+          yearName: `${item.yearInt}年`,
+          year: item.yearInt,
+        }
+      })
     },
     chartData() {
       return this.formatData.chartData
