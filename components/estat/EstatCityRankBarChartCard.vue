@@ -108,7 +108,6 @@ export default {
     },
     Times() {
       return this.formatData.resTimes.map((item) => {
-        this.taegetYear = 2015
         return {
           yearName: `${item.yearInt}年`,
           year: item.yearInt,
