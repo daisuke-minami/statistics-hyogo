@@ -113,16 +113,17 @@ const options: ThisTypedComponentOptionsWithRecordProps<
       return this.formatData.displayInfo
     },
     tableHeaders() {
+      // console.log(this.formatData.tableHeaders)
       return this.formatData.tableHeaders
     },
     tableData() {
+      // console.log(this.formatData.tableData)
       return this.formatData.tableData
     },
     chartData() {
       return this.formatData.chartData
     },
     displayData() {
-      // console.log(this.chartData)
       return this.chartData
     },
     lastUpdate() {
@@ -144,11 +145,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     },
   },
   methods: {},
-  created() {
-    // console.log('contents:', this.contents)
-    // console.log('formatData:', this.formatData)
-    // console.log('chatrData:', this.chartData)
-  },
+  created() {},
 }
 
 export default Vue.extend(options)

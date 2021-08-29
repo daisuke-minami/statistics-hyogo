@@ -1,10 +1,20 @@
 import axios from 'axios'
+// import { filter } from 'vue/types/umd'
 
 /** estat-APIからデータを取得
  * @param statsDataId - 統計表ID
  * @param cdArea - 都道府県コード or 市区町村コード（5桁）
  * @param cdCat01 - カテゴリコード
  */
+// const estatParam = () => {
+//   return {
+//     statsDataId,
+//     cdArea,
+//     cdCat01: categories.map((d) => d.cdCat01),
+//     cdCat02: null,
+//     cdTab: null,
+//   }
+// }
 const getEstatAPI = async (estatParam) => {
   const statsDataId = estatParam.statsDataId
   let url = `${process.env.ESTAT_API}/json/getStatsData?appId=${process.env.ESTAT_APPID}&statsDataId=${statsDataId}`
@@ -33,20 +43,6 @@ const formatEstatTimeChart = async (contents: object) => {
   const contentsId = contents.contentsId
   const governmentType = contents.governmentType
   const titleId = contents.titleId
-
-  // estatAPIのレスポンス取得（API）
-  // const estatParam = () => {
-  //   return {
-  //     statsDataId,
-  //     cdArea,
-  //     cdCat01: categories.map((d) => d.cdCat01),
-  //     cdCat02: null,
-  //     cdTab: null,
-  //   }
-  // }
-  // const res = await getEstatAPI(estatParam())
-  // const resValue = res.GET_STATS_DATA.STATISTICAL_DATA.DATA_INF.VALUE
-  // const CLASS_OBJ = res.GET_STATS_DATA.STATISTICAL_DATA.CLASS_INF.CLASS_OBJ
 
   // estatAPIのレスポンス取得（ローカルJSON）
   // 特定のcdAreaでfilterが必要
@@ -94,6 +90,8 @@ const formatEstatTimeChart = async (contents: object) => {
       }
     }),
   ]
+  // console.log('chartData', chartData)
+  // console.log('tableHeaders',tableHeaders)
 
   const tableData = resValue.map((d) => {
     const year = parseInt(d['@time'].substr(0, 4))
@@ -111,6 +109,9 @@ const formatEstatTimeChart = async (contents: object) => {
       })
     )
   })
+  // console.log('tableHeaders',tableHeaders)
+  // console.log('tableData',tableData)
+
   return {
     contentsId: contents.contentsId,
     titleId: contents.titleId,
@@ -335,82 +336,33 @@ const formatEstatRankMapChart = async (
   const categories = contents.params.categories
   const statsDataId = contents.params.statsDataId
 
-  // estatAPIのレスポンス取得（API）
-  // const cdArea = contents.params.cdArea
-  // const estatParam = () => {
-  //   return {
-  //     statsDataId,
-  //     cdArea,
-  //     cdCat01: categories.map((d) => d.cdCat01),
-  //     cdCat02: null,
-  //     cdTab: null,
-  //   }
-  // }
-  // const res = await getEstatAPI(estatParam())
-  // const resValue = res.GET_STATS_DATA.STATISTICAL_DATA.DATA_INF.VALUE
-
   // estatAPIのレスポンス取得（ローカルJSON）
   const res = await import(
     `~/static/pagecontents/${contentsId}/${governmentType}/${titleId}.json`
   )
   const resValue = res.GET_STATS_DATA.STATISTICAL_DATA.DATA_INF.VALUE
 
-  const resTimes = Array.from(new Set(resValue.map((d) => d['@time'])))
-    .map((item) => {
-      return {
-        yearInt: parseInt(item.substr(0, 4)),
-        yearStr: item,
-      }
-    })
-    .sort((a, b) => {
-      if (a.yearStr > b.yearStr) return -1
-      if (a.yearStr < b.yearStr) return 1
-      return 0
-    })
+  // 年次一覧の設定
+  const resTimes = _setTimes(resValue)
+
+  // 都道府県リスト or 市区町村リストの作成
+  const localGavermentList = _setlocalGavermentList(prefList, cityList)
 
   const chartData = resTimes.map((years) => {
-    const dataByTime = () => {
-      if ('cdCat02' in categories[0]) {
-        return resValue.filter(
-          (d) =>
-            d['@time'] === years.yearStr &&
-            d['@cat02'] === categories[0].cdCat02
-        )
-      } else {
-        return resValue.filter(
-          (d) =>
-            d['@time'] === years.yearStr &&
-            d['@cat01'] === categories[0].cdCat01
-        )
-      }
-    }
+    // 検索パラメータの設定
+    const params = categories[0]
+    delete params.name
+    params.time = years.yearStr
 
-    const localGavermentList = () => {
-      if (prefList) {
-        return prefList.map((d) => {
-          return {
-            lgCode: ('0000000000' + d.prefCode).slice(-2) + '000',
-            lgName: d.prefName,
-          }
-        })
-      } else {
-        return cityList.map((d) => {
-          return {
-            lgCode: d.cityCode,
-            lgName: d.cityName,
-          }
-        })
-      }
-    }
+    const valueByTime = _filterValue(resValue, params)
 
-    // const $ = dataByTime().map((d) => parseInt(d.$))
     return {
       year: years.yearInt,
       name: categories[0].name,
-      max: _getArrayMinMax(dataByTime()).max,
-      min: _getArrayMinMax(dataByTime()).min,
-      data: localGavermentList().map((d) => {
-        const dataByArea = dataByTime().find((e) => e['@area'] === d.lgCode)
+      max: _getArrayMinMax(valueByTime).max,
+      min: _getArrayMinMax(valueByTime).min,
+      data: localGavermentList.map((d) => {
+        const dataByArea = valueByTime.find((e) => e['@area'] === d.lgCode)
         if (dataByArea) {
           return {
             id: d.lgCode,
@@ -423,6 +375,35 @@ const formatEstatRankMapChart = async (
     }
   })
 
+  const tableHeaders = [
+    { text: '都道府県名', value: 'lgName', width: '80px' },
+    ...resTimes.map((item) => {
+      return {
+        text: `${item.yearInt}年`,
+        value: `${item.yearInt}年`,
+        align: 'center',
+        width: '100px',
+      }
+    }),
+  ]
+
+  const tableData = localGavermentList.map((d) => {
+    return Object.assign(
+      { lgName: d.lgName },
+      ...chartData.map((item, j) => {
+        const data = chartData[j].data.find((f) => f.cityName === d.lgName)
+        const year = `${item.year}年`
+        if (data) {
+          return {
+            [year]: data.value + data.unit,
+          }
+        } else {
+          return ''
+        }
+      })
+    )
+  })
+
   return {
     contentsId: contents.contentsId,
     titleId: contents.titleId,
@@ -430,12 +411,14 @@ const formatEstatRankMapChart = async (
     additionalDescription: contents.additionalDescription,
     routes: `${contents.routes}/map/`,
     chartData,
+    tableHeaders,
+    tableData,
     resTimes,
     docURL: `https://www.e-stat.go.jp/dbview?sid=${statsDataId}`,
   }
 }
 
-/** estatのRankMapChartを設定
+/** estatのRankBarChartを設定
  * @param contents - コンテンツ情報
  * @param prefList - 都道府県リスト（市区町村の場合はnull）
  * @param cityList - 市区町村リスト（都道府県の場合はnull）
@@ -451,82 +434,33 @@ const formatEstatRankBarChart = async (
   const categories = contents.params.categories
   const statsDataId = contents.params.statsDataId
 
-  // estatAPIのレスポンス取得（API）
-  // const cdArea = contents.params.cdArea
-  // const estatParam = () => {
-  //   return {
-  //     statsDataId,
-  //     cdArea,
-  //     cdCat01: categories.map((d) => d.cdCat01),
-  //     cdCat02: null,
-  //     cdTab: null,
-  //   }
-  // }
-  // const res = await getEstatAPI(estatParam())
-  // const resValue = res.GET_STATS_DATA.STATISTICAL_DATA.DATA_INF.VALUE
-
   // estatAPIのレスポンス取得（ローカルJSON）
   const res = await import(
     `~/static/pagecontents/${contentsId}/${governmentType}/${titleId}.json`
   )
   const resValue = res.GET_STATS_DATA.STATISTICAL_DATA.DATA_INF.VALUE
 
-  const resTimes = Array.from(new Set(resValue.map((d) => d['@time'])))
-    .map((item) => {
-      return {
-        yearInt: parseInt(item.substr(0, 4)),
-        yearStr: item,
-      }
-    })
-    .sort((a, b) => {
-      if (a.yearStr > b.yearStr) return -1
-      if (a.yearStr < b.yearStr) return 1
-      return 0
-    })
+  // 年次一覧の設定
+  const resTimes = _setTimes(resValue)
+
+  // 都道府県リスト or 市区町村リストの作成
+  const localGavermentList = _setlocalGavermentList(prefList, cityList)
 
   const chartData = resTimes.map((years) => {
-    const dataByTime = () => {
-      if ('cdCat02' in categories[0]) {
-        return resValue.filter(
-          (d) =>
-            d['@time'] === years.yearStr &&
-            d['@cat02'] === categories[0].cdCat02
-        )
-      } else {
-        return resValue.filter(
-          (d) =>
-            d['@time'] === years.yearStr &&
-            d['@cat01'] === categories[0].cdCat01
-        )
-      }
-    }
+    // 検索パラメータの設定
+    const params = categories[0]
+    delete params.name
+    params.time = years.yearStr
 
-    const localGavermentList = () => {
-      if (prefList) {
-        return prefList.map((d) => {
-          return {
-            lgCode: ('0000000000' + d.prefCode).slice(-2) + '000',
-            lgName: d.prefName,
-          }
-        })
-      } else {
-        return cityList.map((d) => {
-          return {
-            lgCode: d.cityCode,
-            lgName: d.cityName,
-          }
-        })
-      }
-    }
+    const valueByTime = _filterValue(resValue, params)
 
-    // const $ = dataByTime().map((d) => parseInt(d.$))
     return {
       year: years.yearInt,
       name: categories[0].name,
-      max: _getArrayMinMax(dataByTime()).max,
-      min: _getArrayMinMax(dataByTime()).min,
-      data: localGavermentList().map((d) => {
-        const dataByArea = dataByTime().find((e) => e['@area'] === d.lgCode)
+      max: _getArrayMinMax(valueByTime).max,
+      min: _getArrayMinMax(valueByTime).min,
+      data: localGavermentList.map((d) => {
+        const dataByArea = valueByTime.find((e) => e['@area'] === d.lgCode)
         if (dataByArea) {
           return {
             name: d.lgName,
@@ -550,19 +484,75 @@ const formatEstatRankBarChart = async (
   }
 }
 
+type Params = {
+  cdCat01: string | null
+  cdCat02: string | null
+  cdTab: string | null
+  time: string | null
+  area: string | null
+}
+
 /** estatAPIの結果をカテゴリパラメータ（cdCat01,cdCat02,cdTab）でフィルタ
- * @param resValue -estatAPIの結果
- * @param category -cdCat01: ,cdCat02; , cdTab:
+ * @param resValue -
+ * @param categories -
  */
-const _filterValue = (resValue, item) => {
+const _filterValue = (resValue: object, params: Params) => {
+  // console.log(params)
   let value = resValue
-  if ('cdCat01' in item) {
-    value = value.filter((d) => d['@cat01'] === item.cdCat01)
+  if ('cdCat01' in params) {
+    value = value.filter((d) => d['@cat01'] === params.cdCat01)
   }
-  if ('cdCat02' in item) {
-    value = value.filter((d) => d['@cat02'] === item.cdCat02)
+  if ('cdCat02' in params) {
+    value = value.filter((d) => d['@cat02'] === params.cdCat02)
   }
+  if ('time' in params) {
+    value = value.filter((d) => d['@time'] === params.time)
+  }
+  if ('area' in params) {
+    value = value.filter((d) => d['@area'] === params.area)
+  }
+
   return value
+}
+
+/** 都道府県リストまたは市区町村リストを整理する関数
+ * @param prefList -都道府県リスト
+ * @param cityList -市区町村リスト
+ */
+const _setlocalGavermentList = (prefList, cityList) => {
+  if (prefList) {
+    return prefList.map((d) => {
+      return {
+        lgCode: ('0000000000' + d.prefCode).slice(-2) + '000',
+        lgName: d.prefName,
+      }
+    })
+  } else {
+    return cityList.map((d) => {
+      return {
+        lgCode: d.cityCode,
+        lgName: d.cityName,
+      }
+    })
+  }
+}
+
+/** 年次一覧リストを作成する関数
+ * @param resValue - estatAPIのレスポンス
+ */
+const _setTimes = (resValue: object) => {
+  return Array.from(new Set(resValue.map((d) => d['@time'])))
+    .map((item) => {
+      return {
+        yearInt: parseInt(item.substr(0, 4)),
+        yearStr: item,
+      }
+    })
+    .sort((a, b) => {
+      if (a.yearStr > b.yearStr) return -1
+      if (a.yearStr < b.yearStr) return 1
+      return 0
+    })
 }
 
 // 共通関数として利用する
