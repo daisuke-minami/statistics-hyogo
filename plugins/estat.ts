@@ -53,6 +53,8 @@ const formatEstatTimeChart = async (contents: object) => {
     (d) => d['@area'] === cdArea
   )
 
+  const resTimes = _setTimes(resValue)
+
   const chartData = categories.map((item) => {
     const value = _filterValue(resValue, item)
     return {
@@ -90,18 +92,15 @@ const formatEstatTimeChart = async (contents: object) => {
       }
     }),
   ]
-  // console.log('chartData', chartData)
-  // console.log('tableHeaders',tableHeaders)
 
-  const tableData = resValue.map((d) => {
-    const year = parseInt(d['@time'].substr(0, 4))
+  const tableData = resTimes.map((d) => {
     return Object.assign(
-      { year: year + '年' },
-      ...chartData.map((item, j) => {
-        const value = chartData[j].data.find((d) => d.x === year)
+      { year: `${d.yearInt}年` },
+      ...chartData.map((item) => {
+        const value = item.data.find((f) => f.x === d.yearInt)
         if (value) {
           return {
-            [item.name]: value.y.toLocaleString() + chartData[j].unit,
+            [item.name]: value.y.toLocaleString() + item.unit,
           }
         } else {
           return ''
@@ -109,8 +108,6 @@ const formatEstatTimeChart = async (contents: object) => {
       })
     )
   })
-  // console.log('tableHeaders',tableHeaders)
-  // console.log('tableData',tableData)
 
   return {
     contentsId: contents.contentsId,
@@ -402,7 +399,7 @@ const formatEstatRankMapChart = async (
         const year = `${item.year}年`
         if (data) {
           return {
-            [year]: data.value + data.unit,
+            [year]: data.value.toLocaleString() + data.unit,
           }
         } else {
           return ''
@@ -507,7 +504,7 @@ const formatEstatRankBarChart = async (
         const year = `${item.year}年`
         if (data) {
           return {
-            [year]: data.y + data.unit,
+            [year]: data.y.toLocaleString() + data.unit,
           }
         } else {
           return ''
