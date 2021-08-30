@@ -109,11 +109,9 @@ export default {
       return this.formatData.chartData
     },
     tableHeaders() {
-      // console.log(this.formatData.tableHeaders)
       return this.formatData.tableHeaders
     },
     tableData() {
-      // console.log(this.formatData.tableData)
       return this.formatData.tableData
     },
     lastUpdate() {
@@ -136,7 +134,8 @@ export default {
       const displayData = this.chartData.filter(
         (d) => d.year === this.targetYear
       )
-      displayData[0].joinBy = ['N03_001', 'cityName']
+      console.log(displayData)
+      displayData[0].joinBy = ['N03_001', 'lgName']
       displayData[0].states = { hover: { color: '#a4edba' } }
       return displayData
     },

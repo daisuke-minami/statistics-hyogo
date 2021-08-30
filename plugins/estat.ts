@@ -327,8 +327,8 @@ const formatEstatPyramidChart = async (contents: object) => {
  */
 const formatEstatRankMapChart = async (
   contents: object,
-  prefList: array,
-  cityList: array
+  prefList: [],
+  cityList: []
 ) => {
   const contentsId = contents.contentsId
   const governmentType = contents.governmentType
@@ -365,10 +365,17 @@ const formatEstatRankMapChart = async (
         const dataByArea = valueByTime.find((e) => e['@area'] === d.lgCode)
         if (dataByArea) {
           return {
-            id: d.lgCode,
-            cityName: d.lgName,
+            lgCode: d.lgCode,
+            lgName: d.lgName,
             value: parseInt(dataByArea.$),
             unit: dataByArea['@unit'],
+          }
+        } else {
+          return {
+            lgCode: d.lgCode,
+            lgName: d.lgName,
+            value: '',
+            unit: '',
           }
         }
       }),
@@ -390,8 +397,8 @@ const formatEstatRankMapChart = async (
   const tableData = localGavermentList.map((d) => {
     return Object.assign(
       { lgName: d.lgName },
-      ...chartData.map((item, j) => {
-        const data = chartData[j].data.find((f) => f.cityName === d.lgName)
+      ...chartData.map((item) => {
+        const data = item.data.find((f) => f.lgCode === d.lgCode)
         const year = `${item.year}年`
         if (data) {
           return {
@@ -425,8 +432,8 @@ const formatEstatRankMapChart = async (
  */
 const formatEstatRankBarChart = async (
   contents: object,
-  prefList: array,
-  cityList: array
+  prefList: [],
+  cityList: []
 ) => {
   const contentsId = contents.contentsId
   const governmentType = contents.governmentType
@@ -463,13 +470,50 @@ const formatEstatRankBarChart = async (
         const dataByArea = valueByTime.find((e) => e['@area'] === d.lgCode)
         if (dataByArea) {
           return {
+            lgCode: d.lgCode,
             name: d.lgName,
             y: parseInt(dataByArea.$),
             unit: dataByArea['@unit'],
           }
+        } else {
+          return {
+            lgCode: d.lgCode,
+            name: d.lgName,
+            y: '',
+            unit: '',
+          }
         }
       }),
     }
+  })
+
+  const tableHeaders = [
+    { text: '都道府県名', value: 'lgName', width: '80px' },
+    ...resTimes.map((item) => {
+      return {
+        text: `${item.yearInt}年`,
+        value: `${item.yearInt}年`,
+        align: 'center',
+        width: '100px',
+      }
+    }),
+  ]
+
+  const tableData = localGavermentList.map((d) => {
+    return Object.assign(
+      { lgName: d.lgName },
+      ...chartData.map((item) => {
+        const data = item.data.find((f) => f.lgCode === d.lgCode)
+        const year = `${item.year}年`
+        if (data) {
+          return {
+            [year]: data.y + data.unit,
+          }
+        } else {
+          return ''
+        }
+      })
+    )
   })
 
   return {
@@ -479,6 +523,8 @@ const formatEstatRankBarChart = async (
     additionalDescription: contents.additionalDescription,
     routes: `${contents.routes}/bar/`,
     chartData,
+    tableHeaders,
+    tableData,
     resTimes,
     docURL: `https://www.e-stat.go.jp/dbview?sid=${statsDataId}`,
   }
@@ -557,7 +603,6 @@ const _setTimes = (resValue: object) => {
 
 // 共通関数として利用する
 export default (_, inject) => {
-  // inject('getEstatAPI', getEstatAPI)
   inject('formatEstatPyramidChart', formatEstatPyramidChart)
   inject('formatEstatRankMapChart', formatEstatRankMapChart)
   inject('formatEstatRankBarChart', formatEstatRankBarChart)

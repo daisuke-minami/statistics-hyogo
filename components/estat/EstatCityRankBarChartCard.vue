@@ -45,6 +45,12 @@
               <slot name="additionalDescription" />
             </template>
 
+            <template v-slot:dataTable>
+              <client-only>
+                <data-view-table :headers="tableHeaders" :items="tableData" />
+              </client-only>
+            </template>
+
             <template v-slot:footer>
               <app-link :to="docURL"> 政府統計の総合窓口e-stat </app-link>
             </template>
@@ -116,6 +122,12 @@ export default {
     },
     chartData() {
       return this.formatData.chartData
+    },
+    tableHeaders() {
+      return this.formatData.tableHeaders
+    },
+    tableData() {
+      return this.formatData.tableData
     },
     lastUpdate() {
       if (process.browser) {

@@ -50,7 +50,7 @@ export default {
         },
         tooltip: {
           formatter() {
-            return `${this.point.cityName}</b>:<br>${Highcharts.numberFormat(
+            return `${this.point.lgName}</b>:<br>${Highcharts.numberFormat(
               this.point.value,
               0,
               '',

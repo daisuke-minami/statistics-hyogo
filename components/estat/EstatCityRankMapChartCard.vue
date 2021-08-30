@@ -46,6 +46,12 @@
               <slot name="additionalDescription" />
             </template>
 
+            <template v-slot:dataTable>
+              <client-only>
+                <data-view-table :headers="tableHeaders" :items="tableData" />
+              </client-only>
+            </template>
+
             <template v-slot:footer>
               <app-link :to="docURL"> 政府統計の総合窓口e-stat </app-link>
             </template>
@@ -72,7 +78,7 @@ export default {
     this.formatData = await this.$formatEstatRankMapChart(
       this.contents,
       null,
-      this.cityList
+      this.innerCityList
     )
     this.targetYear = this.formatData.resTimes[0].yearInt
   },
@@ -85,6 +91,13 @@ export default {
     }
   },
   computed: {
+    innerCityList() {
+      if (this.bigcityKind === 'all') {
+        return this.cityList.filter((d) => d.bigCityFlag !== '1')
+      } else {
+        return this.cityList.filter((d) => d.bigCityFlag !== '2')
+      }
+    },
     title() {
       return this.formatData.title
     },
@@ -111,6 +124,12 @@ export default {
     chartData() {
       return this.formatData.chartData
     },
+    tableHeaders() {
+      return this.formatData.tableHeaders
+    },
+    tableData() {
+      return this.formatData.tableData
+    },
     yAxisData() {
       return [
         {
@@ -131,7 +150,7 @@ export default {
       const displayData = this.chartData.filter(
         (d) => d.year === this.targetYear
       )
-      displayData[0].joinBy = ['N03_007', 'id']
+      displayData[0].joinBy = ['N03_007', 'lgCode']
       displayData[0].states = { hover: { color: '#a4edba' } }
       return displayData
     },
