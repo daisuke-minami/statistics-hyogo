@@ -63,26 +63,26 @@ export default {
     }
   },
   computed: {
-    cdArea() {
-      if (!this.$route.params.codes) {
-        return this.cityCode
-      } else {
-        return this.$route.params.codes
-      }
-    },
-    chartConfig() {
-      return this.$getResasChartConfig(this.titleId, this.cdArea, this.isPref)
-    },
-    resasUrl() {
-      return this.chartConfig.apiURL
-    },
-    yAxisData() {
-      return this.chartData.map((item) => ({
-        max: item.max,
-        min: item.min,
-        opposite: item.opposite,
-      }))
-    },
+    // cdArea() {
+    //   if (!this.$route.params.codes) {
+    //     return this.cityCode
+    //   } else {
+    //     return this.$route.params.codes
+    //   }
+    // },
+    // chartConfig() {
+    //   return this.$getResasChartConfig(this.titleId, this.cdArea, this.isPref)
+    // },
+    // resasUrl() {
+    //   return this.chartConfig.apiURL
+    // },
+    // yAxisData() {
+    //   return this.chartData.map((item) => ({
+    //     max: item.max,
+    //     min: item.min,
+    //     opposite: item.opposite,
+    //   }))
+    // },
     resasParam() {
       const cityCode = () => {
         if (this.cdArea.slice(-3) === '000') {
@@ -111,6 +111,7 @@ export default {
   },
   created() {
     this.setChartData()
+    // console.log(contents)
   },
   methods: {
     async setChartData() {

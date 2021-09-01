@@ -93,7 +93,6 @@ export default Vue.extend({
   },
   computed: {
     title() {
-      // console.log(this.contents)
       return this.formatData.title
     },
     titleId() {

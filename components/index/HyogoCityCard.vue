@@ -11,13 +11,17 @@
               <v-col>
                 <data-selector-bigcitykind-card v-model="bigcityKind" />
               </v-col>
-              <v-col>
+              <v-col cols="6">
                 <v-select
-                  v-model="targetYear"
-                  :items="Times"
-                  item-text="yearName"
-                  item-value="year"
-                  @change="$emit('input', $event)"
+                  v-model="select"
+                  :hint="`${select.state}, ${select.abbr}`"
+                  :items="items"
+                  item-text="state"
+                  item-value="abbr"
+                  label="Select"
+                  persistent-hint
+                  return-object
+                  single-line
                 />
               </v-col>
             </v-row>
@@ -43,13 +47,28 @@ import * as topojson from 'topojson-client'
 export default {
   props: {
     prefCode: {
-      type: String,
+      type: Number,
       required: true,
     },
     prefName: {
       type: String,
       required: true,
     },
+  },
+  async fetch() {
+    const url = 'https://geoshape.ex.nii.ac.jp/city/topojson'
+    const json = () => {
+      if (this.bigcityKind === 'all') {
+        return '_city_dc.l.topojson'
+      } else {
+        return '_city.l.topojson'
+      }
+    }
+    const response = await fetch(
+      `${url}/${this.select.year}/${this.prefCode}/${this.prefCode}${json()}`
+    )
+    this.topojson = await response.json()
+    this.geojson = this._convTopoJsonToGeoJson(this.topojson, 'city')
   },
   data() {
     return {
@@ -60,11 +79,21 @@ export default {
       center: [34.9208791, 134.8826546],
       geojson: null,
       topojson: null,
-      targetYear: 20200101,
+      bigcityKind: 'all',
+      targetYear: null,
+      select: { state: 'Florida', abbr: 'FL' },
+      items: [
+        { state: 'Florida', abbr: 'FL' },
+        { state: 'Georgia', abbr: 'GA' },
+        { state: 'Nebraska', abbr: 'NE' },
+        { state: 'California', abbr: 'CA' },
+        { state: 'New York', abbr: 'NY' },
+      ],
     }
   },
   computed: {
     cardConfig() {
+      // console.log(this.items)
       return {
         graphTitle: `${this.prefName}の市区町村`,
         titleId: "'hyogo-population-chart'",
@@ -73,19 +102,16 @@ export default {
     },
     Times() {
       return [
-        { yearName: '2020年', year: 20200101 },
-        { yearName: '2019年', year: 20190101 },
+        { yearName: '1000年', year: '20200101' },
+        { yearName: '1920年', year: '19200101' },
       ]
     },
   },
-  async created() {
-    const response = await fetch(
-      'https://geoshape.ex.nii.ac.jp/city/topojson/20200101/28/28_city_dc.l.topojson'
-    )
-    this.topojson = await response.json()
-    this.geojson = this._convTopoJsonToGeoJson(this.topojson, 'city')
+  watch: {
+    bigcityKind() {
+      this.$fetch()
+    },
   },
-  // mounted() {},
   methods: {
     _convTopoJsonToGeoJson(topo, obj) {
       return topojson.feature(topo, topo.objects[obj])

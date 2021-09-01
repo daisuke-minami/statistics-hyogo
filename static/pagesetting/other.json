@@ -1,6 +1,34 @@
 {
   "prefecture": [
     {
+      "title": "人口推移",
+      "titleId": "resas-population",
+      "cardComponent": "resas-population-card",
+      "isRank": false,
+      "unit": "人",
+      "additionalDescription": [
+        "2015年までは実績値、それ以降は将来推計人口",
+        "RESAS（地域経済分析システム）を加工して作成"
+      ],
+      "params": {
+        "apiURL": "api/v1/population/composition/perYear"
+      }
+    },
+    {
+      "title": "人口ピラミッド",
+      "titleId": "resas-population-pyramid",
+      "cardComponent": "resas-population-pyramid-chart-card",
+      "isRank": false,
+      "unit": "人",
+      "additionalDescription": [
+        "2015年までは実績値、それ以降は将来推計人口",
+        "RESAS（地域経済分析システム）を加工して作成"
+      ],
+      "params": {
+        "apiURL": "api/v1/population/composition/pyramid"
+      }
+    },
+    {
       "title": "工業統計調査（平成26年度）",
       "titleId": "industrial-statistics-survey-h26",
       "cardComponent": "estat-table-card",
