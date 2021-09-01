@@ -2,21 +2,26 @@
   <div>
     <card-row class="DataBlock">
       <!-- 県民局 -->
-      <hyogo-kenmin-kyoku-card :city-code="'-'" :city-name="'兵庫県'" />
+      <hyogo-kenmin-kyoku-card />
+      <!-- 市区町村合併 -->
+      <hyogo-city-card :pref-code="'-'" :pref-name="'兵庫県'" />
     </card-row>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-import CardRow from '@/components/CardRow.vue'
-
-import HyogoKenminKyokuCard from '@/components/index/HyogoKenminKyokuCard.vue'
+import { mapGetters } from 'vuex'
 
 export default Vue.extend({
-  components: {
-    CardRow,
-    HyogoKenminKyokuCard,
+  computed: {
+    ...mapGetters('prefList', ['getSelectedPrefCode', 'getPrefName']),
+    prefCode() {
+      return this.getSelectedPrefCode
+    },
+    prefName() {
+      return this.getPrefName(this.prefCode)
+    },
   },
 })
 </script>

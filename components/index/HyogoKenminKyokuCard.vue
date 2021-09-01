@@ -9,7 +9,7 @@
           >
             <client-only>
               <div id="map-wrap">
-                <l-map :zoom="8" :center="[34.6908791, 135.1826546]">
+                <l-map :zoom="zoom" :center="center">
                   <l-tile-layer
                     url="https://{s}.tile.osm.org/{z}/{x}/{y}.png"
                   />
@@ -42,71 +42,34 @@
 </template>
 
 <script>
-import DataView from '@/components/DataView.vue'
-import DataViewTable from '@/components/DataViewTable.vue'
 import KenminKyoku from '@/static/common/kenminkyoku.json'
 import 'leaflet/dist/leaflet.css'
 
 export default {
-  components: {
-    DataView,
-    DataViewTable,
-  },
-  props: {
-    cityCode: {
-      type: String,
-      default: '',
-    },
-    cityName: {
-      type: String,
-      default: '',
-    },
+  // props: {
+  //   cityCode: {
+  //     type: String,
+  //     default: '',
+  //   },
+  //   cityName: {
+  //     type: String,
+  //     default: '',
+  //   },
+  // },
+  data() {
+    return {
+      url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+      attribution:
+        '&copy; <a target="_blank" href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+      zoom: 8,
+      center: [34.9208791, 134.8826546],
+    }
   },
   computed: {
     keys() {
       return KenminKyoku.map((item) => item['名称'])
     },
     displayData() {
-      // const cityCodes = process.env.cityList.map((d) => d.cityCode)
-      // const prefCode = `${process.env.PREF_CODE}000`
-      // const rankType = ['prefmap', 'prefbar', 'citymap', 'citybar']
-      // const timePrefList = process.env.Contents.reduce((acc, cur) => {
-      //   if ('prefecture' in cur) {
-      //     acc.push(cur)
-      //   }
-      //   return acc
-      // }, [])
-      //   .map((d) => d.titleId)
-      //   .map((item) => {
-      //     return `/${item}/${prefCode}/time`
-      //   })
-
-      // const timeCityList = process.env.Contents.reduce((acc, cur) => {
-      //   if ('city' in cur) {
-      //     acc.push(cur)
-      //   }
-      //   return acc
-      // }, [])
-      //   .map((d) => d.titleId)
-      //   .map((item) => {
-      //     return cityCodes.map((c) => {
-      //       return `/${item}/${c}/time`
-      //     })
-      //   })
-      //   .reduce((acc, cur) => acc.concat(cur), [])
-
-      // const rankList = process.env.Contents.filter((d) => d.isRank !== false)
-      //   .map((d) => d.titleId)
-      //   .map((item) => {
-      //     return rankType.map((d) => {
-      //       return `/${item}/${prefCode}/${d}`
-      //     })
-      //   })
-      //   .reduce((acc, cur) => acc.concat(cur), [])
-
-      // const routes = JSON.stringify(timePrefList.concat(timeCityList, rankList))
-      // console.log(routes)
-
       return KenminKyoku.map((item, j) => ({
         name: item['名称'],
         postNumber: item['郵便番号'],
@@ -139,8 +102,6 @@ export default {
       }))
     },
   },
-  mounted() {},
-  methods: {},
 }
 </script>
 

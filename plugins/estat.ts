@@ -1,4 +1,4 @@
-import axios from 'axios'
+// import axios from 'axios'
 // import { filter } from 'vue/types/umd'
 
 /** estat-APIからデータを取得
@@ -15,22 +15,22 @@ import axios from 'axios'
 //     cdTab: null,
 //   }
 // }
-const getEstatAPI = async (estatParam) => {
-  const statsDataId = estatParam.statsDataId
-  let url = `${process.env.ESTAT_API}/json/getStatsData?appId=${process.env.ESTAT_APPID}&statsDataId=${statsDataId}`
-  if (estatParam.cdArea) {
-    url = url + `&cdArea=${estatParam.cdArea}`
-  }
-  if (estatParam.cdCat01) {
-    url = url + `&cdCat01=${estatParam.cdCat01}`
-  }
-  const res = await axios.get(url, {
-    mode: 'cors',
-    withCredentials: true,
-    data: {},
-  })
-  return res.data
-}
+// const getEstatAPI = async (estatParam) => {
+//   const statsDataId = estatParam.statsDataId
+//   let url = `${process.env.ESTAT_API}/json/getStatsData?appId=${process.env.ESTAT_APPID}&statsDataId=${statsDataId}`
+//   if (estatParam.cdArea) {
+//     url = url + `&cdArea=${estatParam.cdArea}`
+//   }
+//   if (estatParam.cdCat01) {
+//     url = url + `&cdCat01=${estatParam.cdCat01}`
+//   }
+//   const res = await axios.get(url, {
+//     mode: 'cors',
+//     withCredentials: true,
+//     data: {},
+//   })
+//   return res.data
+// }
 
 /** estatのTimeChartを設定
  * @param titleId - 統計タイトルId
@@ -175,28 +175,20 @@ const formatEstatPyramidChart = async (contents: object) => {
   const categories = contents.params.categories
   const statsDataId = contents.params.statsDataId
   const cdArea = contents.params.cdArea
+  const contentsId = contents.contentsId
+  const governmentType = contents.governmentType
+  const titleId = contents.titleId
 
-  const estatParam = () => {
-    return {
-      statsDataId,
-      cdArea,
-      cdCat01: categories.map((d) => d.cdCat01),
-      cdCat02: null,
-      cdTab: null,
-    }
-  }
-
-  const res = await getEstatAPI(estatParam())
-  const resValue = res.GET_STATS_DATA.STATISTICAL_DATA.DATA_INF.VALUE
-
-  const resTimes = Array.from(new Set(resValue.map((d) => d['@time']))).map(
-    (item) => {
-      return {
-        yearInt: parseInt(item.substr(0, 4)),
-        yearStr: item,
-      }
-    }
+  // estatAPIのレスポンス取得（ローカルJSON）
+  // 特定のcdAreaでfilterが必要
+  const resAll = await import(
+    `~/static/pagecontents/${contentsId}/${governmentType}/${titleId}.json`
   )
+  const resValue = resAll.GET_STATS_DATA.STATISTICAL_DATA.DATA_INF.VALUE.filter(
+    (d) => d['@area'] === cdArea
+  )
+
+  const resTimes = _setTimes(resValue)
 
   const pyramidCategories = categories
     .filter((d) => d.name.includes('男'))
@@ -210,6 +202,7 @@ const formatEstatPyramidChart = async (contents: object) => {
           name: categories.find((t) => t.cdCat01 === i['@cat01']).name,
           year: years.yearInt,
           value: parseInt(i.$),
+          unit: i['@unit'],
         }
       })
     return {
@@ -221,6 +214,7 @@ const formatEstatPyramidChart = async (contents: object) => {
             .filter((d) => d.name.includes('男'))
             .map((t) => -1 * t.value),
           color: '#4169e1',
+          unit: dataByTime.unit,
         },
         {
           name: '女性',
@@ -228,15 +222,16 @@ const formatEstatPyramidChart = async (contents: object) => {
             .filter((d) => d.name.includes('女'))
             .map((t) => t.value),
           color: '#ff69b4',
+          unit: dataByTime.unit,
         },
       ],
     }
   })
 
   const tableHeaders = [
-    { text: '年齢区分', value: 'class', align: 'end' },
-    { text: '男性', value: 'man', align: 'end' },
-    { text: '女性', value: 'woman', align: 'end' },
+    { text: '年齢区分', value: 'class', width: '80px' },
+    { text: '男性', value: 'man', width: '80px' },
+    { text: '女性', value: 'woman', width: '80px' },
   ]
 
   const tableData = resTimes.map((years) => {
@@ -247,6 +242,7 @@ const formatEstatPyramidChart = async (contents: object) => {
           name: categories.find((t) => t.cdCat01 === i['@cat01']).name,
           year: years.yearInt,
           value: parseInt(i.$),
+          unit: i['@unit'],
         }
       })
 
@@ -254,7 +250,7 @@ const formatEstatPyramidChart = async (contents: object) => {
       if (!d) {
         return ''
       } else {
-        return d.value
+        return d.value.toLocaleString() + d.unit
       }
     }
 
@@ -283,39 +279,77 @@ const formatEstatPyramidChart = async (contents: object) => {
     tableData,
     pyramidCategories,
     docURL: `https://www.e-stat.go.jp/dbview?sid=${statsDataId}`,
-    // lastUpdate: _getUpdate(),
   }
 }
 
-// /** estat-APIの取得結果をRatestInformationTableにフォーマット
-//  * @param estatJson - estat-APIの取得結果
-//  */
-// const formatEstatDataToLatestInformationTable = (estatJson, categories) => {
-//   const TableData = new EstatData(estatJson, categories)
+/** estat-APIの取得結果をestatTableにフォーマット
+ * @param estatJson - estat-APIの取得結果
+ */
+const formatEstatDataToTable = async (contents: object) => {
+  // const categories = contents.params.categories
+  // console.log(contents.title)
+  // const title = contents.title
+  // const statsDataId = contents.params.statsDataId
+  const cdArea = contents.params.cdArea
+  const contentsId = contents.contentsId
+  const governmentType = contents.governmentType
+  const titleId = contents.titleId
 
-//   const tableHeaders = [
-//     { text: '統計項目名', value: 'categoryName', width: '80px' },
-//     { text: '統計値', value: 'value', width: '50px', align: 'end' },
-//     { text: '単位', value: 'unit', width: '50px', align: 'center' },
-//     { text: '調査年次', value: 'year', width: '30px', align: 'end' },
-//   ]
+  // console.log(this.contents)
+  // estatAPIのレスポンス取得（ローカルJSON）
+  // 特定のcdAreaでfilterが必要
+  const resAll = await import(
+    `~/static/pagecontents/${contentsId}/${governmentType}/${titleId}.json`
+  )
+  const resValue = resAll.GET_STATS_DATA.STATISTICAL_DATA.DATA_INF.VALUE.filter(
+    (d) => d['@area'] === cdArea
+  )
 
-//   const tableData = TableData.categoryMaster().map((i) => {
-//     const d = TableData.resValue()
-//       .filter((j) => j['@cat01'] === i.categoryCode)
-//       .pop()
-//     return {
-//       categoryName: i.categoryName,
-//       value: parseInt(d.$).toLocaleString(),
-//       unit: d['@unit'],
-//       year: d['@time'].substr(0, 4) + '年',
-//     }
-//   })
+  // カテゴリの取得（cdCat01、cdCat02、cdTabのみ）
+  const categories =
+    resAll.GET_STATS_DATA.STATISTICAL_DATA.CLASS_INF.CLASS_OBJ.filter(
+      (f) => f.id !== 'area'
+    ).map((item) => {
+      return {
+        id: item['@id'],
+        data: item.CLASS,
+      }
+    })
 
-//   const cityName = TableData.resArea().cityName
+  // セレクトメニュー用の配列
+  // const selectItems =
+  //   resAll.GET_STATS_DATA.STATISTICAL_DATA.CLASS_INF.CLASS_OBJ.filter(
+  //     (f) => f['@id'] === 'cat01'
+  //   ).CLASS
 
-//   return { tableHeaders, tableData, cityName }
-// }
+  // console.log('resValue', resValue)
+  // console.log('categories', categories)
+  // console.log({ contents, resValue, categories })
+  const tableHeaders = [
+    { text: '統計項目名', value: 'titleId', width: '80px' },
+    { text: '統計値', value: 'value', width: '50px', align: 'end' },
+    { text: '単位', value: 'unit', width: '50px', align: 'center' },
+    { text: '調査年次', value: 'year', width: '30px', align: 'end' },
+  ]
+
+  // const
+
+  // const tableData = TableData.categoryMaster().map((i) => {
+  //   const d = TableData.resValue()
+  //     .filter((j) => j['@cat01'] === i.categoryCode)
+  //     .pop()
+  //   return {
+  //     categoryName: i.categoryName,
+  //     value: parseInt(d.$).toLocaleString(),
+  //     unit: d['@unit'],
+  //     year: d['@time'].substr(0, 4) + '年',
+  //   }
+  // })
+
+  // const cityName = TableData.resArea().cityName
+
+  return { tableHeaders, resValue, categories }
+}
 
 /** estatのRankMapChartを設定
  * @param contents - コンテンツ情報
@@ -604,4 +638,5 @@ export default (_, inject) => {
   inject('formatEstatRankMapChart', formatEstatRankMapChart)
   inject('formatEstatRankBarChart', formatEstatRankBarChart)
   inject('formatEstatTimeChart', formatEstatTimeChart)
+  inject('formatEstatDataToTable', formatEstatDataToTable)
 }

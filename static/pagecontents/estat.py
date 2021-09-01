@@ -45,13 +45,14 @@ def setEstatParamsPref(params,type):
     p['statsDataId'] = params['statsDataId']
 
     #cdCat01,cdCat02,cdTabの設定
-    categories = params['categories']
-    if 'cdCat01' in categories[0]:
-        p['cdCat01'] = ','.join([d.get('cdCat01') for d in categories])
-    if 'cdCat02' in categories[0]:
-        p['cdCat02'] = ','.join([d.get('cdCat02') for d in categories])
-    if 'cdTab' in categories[0]:
-        p['cdTab'] = ','.join([d.get('cdTab') for d in categories])
+    if('categories' in params):
+        categories = params['categories']
+        if 'cdCat01' in categories[0]:
+            p['cdCat01'] = ','.join([d.get('cdCat01') for d in categories])
+        if 'cdCat02' in categories[0]:
+            p['cdCat02'] = ','.join([d.get('cdCat02') for d in categories])
+        if 'cdTab' in categories[0]:
+            p['cdTab'] = ','.join([d.get('cdTab') for d in categories])
 
     return p
 
