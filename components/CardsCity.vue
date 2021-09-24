@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- 市区町村のセレクトボックス  -->
-    <city-select-card v-model="cityCode" :city-list="cityList" />
+    <select-city v-model="cityCode" :city-list="cityList" />
 
     <div v-if="$fetchState.pending" class="loader">
       <scale-loader color="#01A0C7" />

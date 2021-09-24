@@ -12,7 +12,7 @@
             </h4>
 
             <template v-slot:button>
-              <data-selector-break
+              <toggle-break
                 v-model="dataKind"
                 :target-id="chartConfig.titleId"
                 :style="{ display: canvas ? 'inline-block' : 'none' }"

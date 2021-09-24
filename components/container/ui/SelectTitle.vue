@@ -14,7 +14,7 @@
           />
         </v-col>
         <v-col>
-          <data-selector-rank-data-card v-model="rankDataType" />
+          <toggle-rank-value v-model="rankDataType" />
         </v-col>
       </v-row>
     </static-card>

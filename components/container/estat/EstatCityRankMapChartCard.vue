@@ -2,28 +2,32 @@
   <v-col cols="12" md="6" class="DataCard">
     <client-only>
       <template>
-        <v-card :loading="$fetchState.pending" class="DataView">
+        <v-card :loading="$fetchState.pending">
           <p v-if="$fetchState.pending" />
           <data-view v-else :title="title" :routes="routes">
             <h4 :id="titleId" class="visually-hidden">
               {{ title }}
             </h4>
 
-            <template v-slot:infoPanel>
-              <data-view-data-set-panel :display-info="displayInfo" />
-            </template>
+            <v-row>
+              <v-col>
+                <toggle-big-city v-model="bigcityKind" />
+              </v-col>
+              <v-col>
+                <v-select
+                  v-model="targetYear"
+                  :items="Times"
+                  item-text="yearName"
+                  item-value="year"
+                  @change="$emit('input', $event)"
+                />
+              </v-col>
+            </v-row>
 
-            <template v-slot:button>
-              <data-selector-break
-                v-model="dataKind"
-                :target-id="routes"
-                :style="{ display: canvas ? 'inline-block' : 'none' }"
-              />
-            </template>
-
-            <line-chart
+            <map-chart-city
               v-show="canvas"
               :display-data="displayData"
+              :bigcity-kind="bigcityKind"
               :y-axis-data="yAxisData"
             />
 
@@ -61,22 +65,39 @@
 <script>
 export default {
   props: {
+    cityList: {
+      type: Array,
+      required: true,
+    },
     contents: {
       type: Object,
       required: true,
     },
   },
   async fetch() {
-    this.formatData = await this.$formatEstatTimeChart(this.contents)
+    this.formatData = await this.$formatEstatRankMapChart(
+      this.contents,
+      null,
+      this.innerCityList
+    )
+    this.targetYear = this.formatData.resTimes[0].yearInt
   },
   data() {
     return {
+      bigcityKind: 'all',
       canvas: true,
-      dataKind: 'all',
+      targetYear: null,
       formatData: [],
     }
   },
   computed: {
+    innerCityList() {
+      if (this.bigcityKind === 'all') {
+        return this.cityList.filter((d) => d.bigCityFlag !== '1')
+      } else {
+        return this.cityList.filter((d) => d.bigCityFlag !== '2')
+      }
+    },
     title() {
       return this.formatData.title
     },
@@ -92,8 +113,16 @@ export default {
     docURL() {
       return this.formatData.docURL
     },
-    displayInfo() {
-      return this.formatData.displayInfo
+    Times() {
+      return this.formatData.resTimes.map((item) => {
+        return {
+          yearName: `${item.yearInt}年`,
+          year: item.yearInt,
+        }
+      })
+    },
+    chartData() {
+      return this.formatData.chartData
     },
     tableHeaders() {
       return this.formatData.tableHeaders
@@ -101,15 +130,13 @@ export default {
     tableData() {
       return this.formatData.tableData
     },
-    chartData() {
-      return this.formatData.chartData
-    },
-    displayData() {
-      if (this.dataKind === 'all') {
-        return this.chartData.filter((item) => item.name === '総数')
-      } else {
-        return this.chartData.filter((item) => item.name !== '総数')
-      }
+    yAxisData() {
+      return [
+        {
+          max: this.displayData[0].max,
+          min: this.displayData[0].min,
+        },
+      ]
     },
     lastUpdate() {
       if (process.browser) {
@@ -119,13 +146,20 @@ export default {
         return ''
       }
     },
-    yAxisData() {
-      return [
-        {
-          opposite: this.chartData[0].opposite,
-        },
-      ]
+    displayData() {
+      const displayData = this.chartData.filter(
+        (d) => d.year === this.targetYear
+      )
+      displayData[0].joinBy = ['N03_007', 'lgCode']
+      displayData[0].states = { hover: { color: '#a4edba' } }
+      return displayData
     },
   },
+  watch: {
+    bigcityKind() {
+      this.$fetch()
+    },
+  },
+  created() {},
 }
 </script>

@@ -21,10 +21,10 @@
 <script lang="ts">
 import Vue from 'vue'
 
-import DataView from '@/components/DataView.vue'
+// import DataView from '@/components/DataView.vue'
 
 export default Vue.extend({
-  components: { DataView },
+  // components: { DataView },
   props: {
     title: {
       type: String,

@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- カテゴリ選択  -->
-    <category-select-card v-model="titleId" :contents-list="contentsList" />
+    <select-title v-model="titleId" :contents-list="contentsList" />
 
     <div v-if="$fetchState.pending" class="loader">
       <scale-loader color="#01A0C7" />

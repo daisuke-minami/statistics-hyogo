@@ -12,8 +12,8 @@
 </template>
 
 <script lang="ts">
-import DataViewDataSetPanel from '@/components/DataViewDataSetPanel.vue'
-export default DataViewDataSetPanel.extend({
+// import DataViewDataSetPanel from '@/components/DataViewDataSetPanel.vue'
+export default {
   props: {
     lText: {
       type: String,
@@ -24,5 +24,5 @@ export default DataViewDataSetPanel.extend({
       default: '',
     },
   },
-})
+}
 </script>

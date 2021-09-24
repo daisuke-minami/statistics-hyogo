@@ -26,8 +26,6 @@
 
 <script lang="ts">
 import Vue from 'vue'
-
-import AppLink from '@/components/AppLink.vue'
 import CovidIcon from '@/static/covid.svg'
 import MaskTrashIcon from '@/static/masktrash.svg'
 import ParentIcon from '@/static/parent.svg'
@@ -42,7 +40,7 @@ type MenuItem = {
 }
 
 export default Vue.extend({
-  components: { AppLink, CovidIcon, MaskTrashIcon, ParentIcon, SupportIcon },
+  components: { CovidIcon, MaskTrashIcon, ParentIcon, SupportIcon },
   props: {
     items: {
       type: Array as PropType<MenuItem[]>,

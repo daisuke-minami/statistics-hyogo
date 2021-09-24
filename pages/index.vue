@@ -22,7 +22,7 @@
 <script lang="ts">
 import Vue from 'vue'
 
-import CardsIndexPref from '@/components/index/CardsIndexPref.vue'
+import CardsIndexPref from '@/components/container/index/CardsIndexPref.vue'
 // import CardsIndexCity from '@/components/index/CardsIndexCity.vue'
 import { EventBus, TOGGLE_EVENT } from '@/utils/tab-event-bus.ts'
 export default Vue.extend({

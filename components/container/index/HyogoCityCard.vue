@@ -9,7 +9,7 @@
           >
             <v-row>
               <v-col>
-                <data-selector-bigcitykind-card v-model="bigcityKind" />
+                <toggle-big-city v-model="bigcityKind" />
               </v-col>
               <v-col cols="6">
                 <v-select

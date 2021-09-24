@@ -14,14 +14,14 @@
             </template>
 
             <template v-slot:button>
-              <data-selector-break
+              <toggle-break
                 v-model="dataKind"
                 :target-id="routes"
                 :style="{ display: canvas ? 'inline-block' : 'none' }"
               />
             </template>
 
-            <area-chart
+            <column-chart
               v-show="canvas"
               :display-data="displayData"
               :y-axis-data="yAxisData"
@@ -58,23 +58,8 @@
   </v-col>
 </template>
 
-<script lang="ts">
-import Vue from 'vue'
-import { FormatDataTimeChart } from '~/utils/formatChart'
-
-type Data = {
-  formatData: FormatDataTimeChart
-}
-
-type Computed = {
-  title: () => string
-  titleId: () => string
-  additionalDescription: () => string
-  routes: () => string
-  docURL: () => string
-}
-
-export default Vue.extend({
+<script>
+export default {
   props: {
     contents: {
       type: Object,
@@ -142,5 +127,5 @@ export default Vue.extend({
       ]
     },
   },
-})
+}
 </script>
