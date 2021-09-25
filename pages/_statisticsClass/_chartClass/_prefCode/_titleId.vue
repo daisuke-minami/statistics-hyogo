@@ -16,6 +16,7 @@ export default {
     const contentsAll = await import(
       `~/static/pagesetting/${params.statisticsClass}.json`
     )
+    console.log(contentsAll)
     return { contentsAll }
   },
   data() {
@@ -59,6 +60,8 @@ export default {
       return this.$route.params.titleId
     },
     contents() {
+      console.log(this.contentsAll)
+      console.log(this.chartClass)
       return this.contentsAll[this.governmentType]
         .map((d) => {
           // ShallowCopyを避けるため、lodashのcloneDeepを用いる。
@@ -102,6 +105,8 @@ export default {
     //   ).cardComponent
     // },
   },
-  created() {},
+  created() {
+    console.log(this.contents)
+  },
 }
 </script>
