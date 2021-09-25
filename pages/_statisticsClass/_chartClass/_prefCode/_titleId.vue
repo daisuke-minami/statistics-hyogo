@@ -58,8 +58,12 @@ export default {
     titleId() {
       return this.$route.params.titleId
     },
+    contentsList() {
+      const t = this.governmentType
+      return this.contentsAll[t]
+    },
     contents() {
-      return this.contentsAll[this.governmentType]
+      return this.contentsList
         .map((d) => {
           // ShallowCopyを避けるため、lodashのcloneDeepを用いる。
           const contents = cloneDeep(d)
