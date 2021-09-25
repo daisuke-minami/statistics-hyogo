@@ -5,16 +5,10 @@
     <select-title v-model="titleId" :contents-list="contentsList" />
 
     <card-row class="DataBlock">
-      <!-- Mapchart -->
-      <estat-pref-rank-map-chart-card
-        :pref-list="prefList"
-        :contents="contents"
-      />
-      <!-- Barchart -->
-      <estat-pref-rank-bar-chart-card
-        :pref-list="prefList"
-        :contents="contents"
-      />
+      <!-- Rankchart -->
+      <estat-pref-rank-card :pref-list="prefList" :contents="contents" />
+      <!-- Googleアドセンス -->
+      <!-- <adsense-card /> -->
     </card-row>
   </div>
 </template>
@@ -22,7 +16,7 @@
 <script>
 import { mdiHeart } from '@mdi/js'
 // import Vue from 'vue'
-// import { cloneDeep } from 'lodash'
+import { cloneDeep } from 'lodash'
 // import ScaleLoader from 'vue-spinner/src/ScaleLoader.vue'
 import { mapGetters } from 'vuex'
 
@@ -43,7 +37,7 @@ export default {
     return {
       mdiHeart,
       titleId: null,
-      governmentType: 'prefecture',
+      chartClass: 'prefectureRank',
     }
   },
   computed: {
@@ -58,38 +52,32 @@ export default {
       return this.$route.params.statisticsClass
     },
     contentsList() {
-      return this.contentsAll[this.governmentType].filter(
-        (d) => d.isRank === true
-      )
+      return this.contentsAll[this.chartClass.replace('Rank', '')]
+        .filter((f) => f.isRank === true)
+        .map((d) => {
+          // ShallowCopyを避けるため、lodashのcloneDeepを用いる。
+          const contents = cloneDeep(d)
+
+          // 都道府県リストをcdAreaに格納
+          // contents.estatParams.cdArea = this.prefList.map(
+          //   (d) => ('0000000000' + d.prefCode).slice(-2) + '000'
+          // )
+          contents.prefList = this.prefList
+
+          // 動的ルーティングのパスを追加
+          contents.route = `${this.prefCode}/${d.titleId}`
+
+          // estatResponseのパスを追加
+          contents.estatJsonPath = `${
+            this.statisticsClass
+          }/${this.chartClass.replace('Rank', '')}/${contents.titleId}.json`
+
+          return { ...contents }
+        })
     },
     contents() {
-      const titleId = () => {
-        if (this.titleId) {
-          return this.titleId
-        } else {
-          return this.contentsList[0].titleId
-        }
-      }
-
-      return this.contentsList
-        .map((d) => {
-          // 都道府県コードを5桁に変換してcdAreaに格納
-          d.params.cdArea = this.prefList.map(
-            (d) => ('0000000000' + d.prefCode).slice(-2) + '000'
-          )
-
-          return {
-            statisticsClass: this.statisticsClass,
-            governmentType: this.governmentType,
-            title: `都道府県別${d.title}ランキング`,
-            titleId: d.titleId,
-            additionalDescription: d.additionalDescription,
-            routes: `${this.statisticsClass}/${d.titleId}/rankchart/${this.governmentType}`,
-            unit: d.unit,
-            params: d.params,
-          }
-        })
-        .find((d) => d.titleId === titleId())
+      // console.log(this.contentsList)
+      return this.contentsList.find((f) => f.titleId === this.titleId)
     },
   },
   watch: {

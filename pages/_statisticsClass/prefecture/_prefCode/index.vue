@@ -17,7 +17,7 @@ import Vue from 'vue'
 import { EventBus, TOGGLE_EVENT } from '@/utils/tab-event-bus.ts'
 import { ThisTypedComponentOptionsWithRecordProps } from 'vue/types/options'
 import { mapGetters } from 'vuex'
-// import { cloneDeep } from 'lodash'
+import { cloneDeep } from 'lodash'
 import { ContentsType, ContentsList } from '~/utils/formatChart'
 
 type Props = {
@@ -47,7 +47,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
   },
   data() {
     return {
-      governmentType: 'prefecture',
+      chartClass: 'prefecture',
       tab: null,
     }
   },
@@ -71,26 +71,27 @@ const options: ThisTypedComponentOptionsWithRecordProps<
       ]
     },
     contentsList() {
-      return this.contentsAll[this.governmentType].map((d) => {
-        const prefName = this.prefName
-        const prefCode = this.prefCode
-        const statisticsClass = this.statisticsClass
+      return this.contentsAll[this.chartClass].map((d) => {
+        // ShallowCopyを避けるため、lodashのcloneDeepを用いる。
+        const contents = cloneDeep(d)
 
-        // 都道府県コードを5桁に変換してcdAreaに格納
-        d.params.cdArea = ('0000000000' + prefCode).slice(-2) + '000'
+        // 都道府県の情報を追加
+        contents.prefName = this.prefName
+        contents.prefCode = this.prefCode
 
+        // 統計タイトルを上書き
+        contents.title = `${this.prefName}の${d.title}`
+
+        // 動的ルーティングのパスを追加
+        contents.route = `${this.prefCode}/${contents.titleId}/`
+
+        // estatResponseのパスを追加
+        contents.estatJsonPath = `${this.statisticsClass}/${this.chartClass}/${contents.titleId}.json`
+
+        // console.log(contents)
         return {
           cardComponent: d.cardComponent,
-          contents: {
-            statisticsClass,
-            governmentType: this.governmentType,
-            title: `${prefName}の${d.title}`,
-            titleId: d.titleId,
-            additionalDescription: d.additionalDescription,
-            routes: `${statisticsClass}/${d.titleId}/timechart/${this.governmentType}/${prefCode}/`,
-            unit: d.unit,
-            params: d.params,
-          },
+          contents,
         }
       })
     },

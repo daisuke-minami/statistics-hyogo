@@ -11,15 +11,14 @@ export default {
       type: Array,
       required: true,
     },
-    yAxisData: {
-      type: Array,
-      required: true,
-    },
   },
   data() {
     return {}
   },
   computed: {
+    yAxisData() {
+      return [{ opposite: false }]
+    },
     chartOptions() {
       return {
         chart: {

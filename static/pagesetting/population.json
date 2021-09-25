@@ -1,887 +1,62 @@
 {
   "prefecture": [
     {
-      "title": "総人口",
-      "titleId": "population-all",
-      "cardComponent": "estat-line-chart-break-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000010101",
-        "categories": [
+      "title": "農家数",
+      "titleId": "number-of-farmers",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "column",
+      "isRank":false,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000010103",
+        "cdCat01": [
+          "C3102",
+          "C310202",
+          "C310211",
+          "C310212"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
           {
-            "cdCat01": "A1101",
+            "code": "C3102",
             "name": "総数"
           },
           {
-            "cdCat01": "A110101",
-            "name": "男性"
+            "code": "C310202",
+            "name": "自給的農家"
           },
           {
-            "cdCat01": "A110102",
-            "name": "女性"
+            "code": "C310211",
+            "name": "販売農家（専業農家）"
+          },
+          {
+            "code": "C310212",
+            "name": "販売農家（兼業農家）"
           }
         ]
       }
     },
     {
-      "title": "日本人人口",
-      "titleId": "population-japanese",
-      "cardComponent": "estat-line-chart-break-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000010101",
-        "categories": [
-          {
-            "cdCat01": "A1102",
-            "name": "総数"
-          },
-          {
-            "cdCat01": "A110201",
-            "name": "男性"
-          },
-          {
-            "cdCat01": "A110202",
-            "name": "女性"
-          }
+      "title": "農業産出額",
+      "titleId": "agricultural-output",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "column",
+      "isRank":false,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000010103",
+        "cdCat01": [
+          "C3101"
         ]
-      }
-    },
-    {
-      "title": "外国人人口",
-      "titleId": "foreign-population",
-      "cardComponent": "estat-line-chart-break-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000010101",
-        "categories": [
-          {
-            "cdCat01": "A1700",
-            "name": "総数"
-          },
-          {
-            "cdCat01": "A170001",
-            "name": "男性"
-          },
-          {
-            "cdCat01": "A170002",
-            "name": "女性"
-          }
-        ]
-      }
-    },
-    {
-      "title": "人口集中地区人口",
-      "titleId": "densely-inhabited-district-population",
-      "cardComponent": "estat-line-chart-break-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000010101",
-        "categories": [
-          {
-            "cdCat01": "A1801",
-            "name": "総数"
-          },
-          {
-            "cdCat01": "A180101",
-            "name": "男性"
-          },
-          {
-            "cdCat01": "A180102",
-            "name": "女性"
-          }
-        ]
-      }
-    },
-    {
-      "title": "未婚人口",
-      "titleId": "unmarried-population",
-      "cardComponent": "estat-pyramid-chart-card",
-      "isRank": false,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000010101",
-        "categories": [
-          {
-            "cdCat01": "A1601011",
-            "name": "15～19歳（男）"
-          },
-          {
-            "cdCat01": "A1601012",
-            "name": "15～19歳（女）"
-          },
-          {
-            "cdCat01": "A1601021",
-            "name": "20～24歳（男）"
-          },
-          {
-            "cdCat01": "A1601022",
-            "name": "20～24歳（女）"
-          },
-          {
-            "cdCat01": "A1601031",
-            "name": "25～29歳（男）"
-          },
-          {
-            "cdCat01": "A1601032",
-            "name": "25～29歳（女）"
-          },
-          {
-            "cdCat01": "A1601041",
-            "name": "30～34歳（男）"
-          },
-          {
-            "cdCat01": "A1601042",
-            "name": "30～34歳（女）"
-          },
-          {
-            "cdCat01": "A1601051",
-            "name": "35～39歳（男）"
-          },
-          {
-            "cdCat01": "A1601052",
-            "name": "35～39歳（女）"
-          },
-          {
-            "cdCat01": "A1601061",
-            "name": "40～44歳（男）"
-          },
-          {
-            "cdCat01": "A1601062",
-            "name": "40～44歳（女）"
-          },
-          {
-            "cdCat01": "A1601071",
-            "name": "45～49歳（男）"
-          },
-          {
-            "cdCat01": "A1601072",
-            "name": "45～49歳（女）"
-          },
-          {
-            "cdCat01": "A1601081",
-            "name": "50～54歳（男）"
-          },
-          {
-            "cdCat01": "A1601082",
-            "name": "50～54歳（女）"
-          },
-          {
-            "cdCat01": "A1601091",
-            "name": "55～59歳（男）"
-          },
-          {
-            "cdCat01": "A1601092",
-            "name": "55～59歳（女）"
-          },
-          {
-            "cdCat01": "A1601101",
-            "name": "60～64歳（男）"
-          },
-          {
-            "cdCat01": "A1601102",
-            "name": "60～64歳（女）"
-          },
-          {
-            "cdCat01": "A1601111",
-            "name": "65～69歳（男）"
-          },
-          {
-            "cdCat01": "A1601112",
-            "name": "65～69歳（女）"
-          },
-          {
-            "cdCat01": "A1601121",
-            "name": "70～74歳（男）"
-          },
-          {
-            "cdCat01": "A1601122",
-            "name": "70～74歳（女）"
-          },
-          {
-            "cdCat01": "A1601131",
-            "name": "75～79歳（男）"
-          },
-          {
-            "cdCat01": "A1601132",
-            "name": "75～79歳（女）"
-          },
-          {
-            "cdCat01": "A1601141",
-            "name": "80～84歳（男）"
-          },
-          {
-            "cdCat01": "A1601142",
-            "name": "80～84歳（女）"
-          },
-          {
-            "cdCat01": "A1601151",
-            "name": "85歳以上（男）"
-          },
-          {
-            "cdCat01": "A1601152",
-            "name": "85歳以上（女）"
-          }
-        ]
-      }
-    },
-    {
-      "title": "有配偶人口",
-      "titleId": "married-population",
-      "cardComponent": "estat-pyramid-chart-card",
-      "isRank": false,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000010101",
-        "categories": [
-          {
-            "cdCat01": "A1602021",
-            "name": "20～24歳（男）"
-          },
-          {
-            "cdCat01": "A1602022",
-            "name": "20～24歳（女）"
-          },
-          {
-            "cdCat01": "A1602031",
-            "name": "25～29歳（男）"
-          },
-          {
-            "cdCat01": "A1602032",
-            "name": "25～29歳（女）"
-          },
-          {
-            "cdCat01": "A1602041",
-            "name": "30～34歳（男）"
-          },
-          {
-            "cdCat01": "A1602042",
-            "name": "30～34歳（女）"
-          },
-          {
-            "cdCat01": "A1602051",
-            "name": "35～39歳（男）"
-          },
-          {
-            "cdCat01": "A1602052",
-            "name": "35～39歳（女）"
-          },
-          {
-            "cdCat01": "A1602061",
-            "name": "40～44歳（男）"
-          },
-          {
-            "cdCat01": "A1602062",
-            "name": "40～44歳（女）"
-          },
-          {
-            "cdCat01": "A1602071",
-            "name": "45～49歳（男）"
-          },
-          {
-            "cdCat01": "A1602072",
-            "name": "45～49歳（女）"
-          },
-          {
-            "cdCat01": "A1602081",
-            "name": "50～54歳（男）"
-          },
-          {
-            "cdCat01": "A1602082",
-            "name": "50～54歳（女）"
-          },
-          {
-            "cdCat01": "A1602091",
-            "name": "55～59歳（男）"
-          },
-          {
-            "cdCat01": "A1602092",
-            "name": "55～59歳（女）"
-          },
-          {
-            "cdCat01": "A1602101",
-            "name": "60～64歳（男）"
-          },
-          {
-            "cdCat01": "A1602102",
-            "name": "60～64歳（女）"
-          },
-          {
-            "cdCat01": "A1602111",
-            "name": "65～69歳（男）"
-          },
-          {
-            "cdCat01": "A1602112",
-            "name": "65～69歳（女）"
-          },
-          {
-            "cdCat01": "A1602121",
-            "name": "70～74歳（男）"
-          },
-          {
-            "cdCat01": "A1602122",
-            "name": "70～74歳（女）"
-          },
-          {
-            "cdCat01": "A1602131",
-            "name": "75～79歳（男）"
-          },
-          {
-            "cdCat01": "A1602132",
-            "name": "75～79歳（女）"
-          },
-          {
-            "cdCat01": "A1602141",
-            "name": "80～84歳（男）"
-          },
-          {
-            "cdCat01": "A1602142",
-            "name": "80～84歳（女）"
-          },
-          {
-            "cdCat01": "A1602151",
-            "name": "85歳以上（男）"
-          },
-          {
-            "cdCat01": "A1602152",
-            "name": "85歳以上（女）"
-          }
-        ]
-      }
-    },
-    {
-      "title": "死別人口",
-      "titleId": "bereavement-population",
-      "cardComponent": "estat-pyramid-chart-card",
-      "isRank": false,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000010101",
-        "categories": [
-          {
-            "cdCat01": "A1603031",
-            "name": "25～29歳（男）"
-          },
-          {
-            "cdCat01": "A1603032",
-            "name": "25～29歳（女）"
-          },
-          {
-            "cdCat01": "A1603041",
-            "name": "30～34歳（男）"
-          },
-          {
-            "cdCat01": "A1603042",
-            "name": "30～34歳（女）"
-          },
-          {
-            "cdCat01": "A1603051",
-            "name": "35～39歳（男）"
-          },
-          {
-            "cdCat01": "A1603052",
-            "name": "35～39歳（女）"
-          },
-          {
-            "cdCat01": "A1603061",
-            "name": "40～44歳（男）"
-          },
-          {
-            "cdCat01": "A1603062",
-            "name": "40～44歳（女）"
-          },
-          {
-            "cdCat01": "A1603071",
-            "name": "45～49歳（男）"
-          },
-          {
-            "cdCat01": "A1603072",
-            "name": "45～49歳（女）"
-          },
-          {
-            "cdCat01": "A1603081",
-            "name": "50～54歳（男）"
-          },
-          {
-            "cdCat01": "A1603082",
-            "name": "50～54歳（女）"
-          },
-          {
-            "cdCat01": "A1603091",
-            "name": "55～59歳（男）"
-          },
-          {
-            "cdCat01": "A1603092",
-            "name": "55～59歳（女）"
-          },
-          {
-            "cdCat01": "A1603101",
-            "name": "60～64歳（男）"
-          },
-          {
-            "cdCat01": "A1603102",
-            "name": "60～64歳（女）"
-          },
-          {
-            "cdCat01": "A1603111",
-            "name": "65～69歳（男）"
-          },
-          {
-            "cdCat01": "A1603112",
-            "name": "65～69歳（女）"
-          },
-          {
-            "cdCat01": "A1603121",
-            "name": "70～74歳（男）"
-          },
-          {
-            "cdCat01": "A1603122",
-            "name": "70～74歳（女）"
-          },
-          {
-            "cdCat01": "A1603131",
-            "name": "75～79歳（男）"
-          },
-          {
-            "cdCat01": "A1603132",
-            "name": "75～79歳（女）"
-          },
-          {
-            "cdCat01": "A1603141",
-            "name": "80～84歳（男）"
-          },
-          {
-            "cdCat01": "A1603142",
-            "name": "80～84歳（女）"
-          },
-          {
-            "cdCat01": "A1603151",
-            "name": "85歳以上（男）"
-          },
-          {
-            "cdCat01": "A1603152",
-            "name": "85歳以上（女）"
-          }
-        ]
-      }
-    },
-    {
-      "title": "離別人口",
-      "titleId": "separated-population",
-      "cardComponent": "estat-pyramid-chart-card",
-      "isRank": false,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000010101",
-        "categories": [
-          {
-            "cdCat01": "A1604011",
-            "name": "15～19歳（男）"
-          },
-          {
-            "cdCat01": "A1604012",
-            "name": "15～19歳（女）"
-          },
-          {
-            "cdCat01": "A1604021",
-            "name": "20～24歳（男）"
-          },
-          {
-            "cdCat01": "A1604022",
-            "name": "20～24歳（女）"
-          },
-          {
-            "cdCat01": "A1604031",
-            "name": "25～29歳（男）"
-          },
-          {
-            "cdCat01": "A1604032",
-            "name": "25～29歳（女）"
-          },
-          {
-            "cdCat01": "A1604041",
-            "name": "30～34歳（男）"
-          },
-          {
-            "cdCat01": "A1604042",
-            "name": "30～34歳（女）"
-          },
-          {
-            "cdCat01": "A1604051",
-            "name": "35～39歳（男）"
-          },
-          {
-            "cdCat01": "A1604052",
-            "name": "35～39歳（女）"
-          },
-          {
-            "cdCat01": "A1604061",
-            "name": "40～44歳（男）"
-          },
-          {
-            "cdCat01": "A1604062",
-            "name": "40～44歳（女）"
-          },
-          {
-            "cdCat01": "A1604071",
-            "name": "45～49歳（男）"
-          },
-          {
-            "cdCat01": "A1604072",
-            "name": "45～49歳（女）"
-          },
-          {
-            "cdCat01": "A1604081",
-            "name": "50～54歳（男）"
-          },
-          {
-            "cdCat01": "A1604082",
-            "name": "50～54歳（女）"
-          },
-          {
-            "cdCat01": "A1604091",
-            "name": "55～59歳（男）"
-          },
-          {
-            "cdCat01": "A1604092",
-            "name": "55～59歳（女）"
-          },
-          {
-            "cdCat01": "A1604101",
-            "name": "60～64歳（男）"
-          },
-          {
-            "cdCat01": "A1604102",
-            "name": "60～64歳（女）"
-          },
-          {
-            "cdCat01": "A1604111",
-            "name": "65～69歳（男）"
-          },
-          {
-            "cdCat01": "A1604112",
-            "name": "65～69歳（女）"
-          },
-          {
-            "cdCat01": "A1604121",
-            "name": "70～74歳（男）"
-          },
-          {
-            "cdCat01": "A1604122",
-            "name": "70～74歳（女）"
-          },
-          {
-            "cdCat01": "A1604131",
-            "name": "75～79歳（男）"
-          },
-          {
-            "cdCat01": "A1604132",
-            "name": "75～79歳（女）"
-          },
-          {
-            "cdCat01": "A1604141",
-            "name": "80～84歳（男）"
-          },
-          {
-            "cdCat01": "A1604142",
-            "name": "80～84歳（女）"
-          },
-          {
-            "cdCat01": "A1604151",
-            "name": "85歳以上（男）"
-          },
-          {
-            "cdCat01": "A1604152",
-            "name": "85歳以上（女）"
-          }
-        ]
-      }
-    },
-    {
-      "title": "出生数",
-      "titleId": "number-of-births",
-      "cardComponent": "estat-line-chart-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000010101",
-        "categories": [
-          {
-            "cdCat01": "A4101",
-            "name": "総数"
-          },
-          {
-            "cdCat01": "A410101",
-            "name": "男性"
-          },
-          {
-            "cdCat01": "A410102",
-            "name": "女性"
-          }
-        ]
-      }
-    },
-    {
-      "title": "合計特殊出生率",
-      "titleId": "total-fertility-rate",
-      "cardComponent": "estat-line-chart-card",
-      "isRank": true,
-      "unit": "",
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000010101",
-        "categories": [
-          {
-            "cdCat01": "A4103",
-            "name": "合計特殊出生率"
-          }
-        ]
-      }
-    },
-    {
-      "title": "死亡数",
-      "titleId": "number-of-deaths",
-      "cardComponent": "estat-line-chart-card",
-      "isRank": true,
-      "unit": "人",
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000010101",
-        "categories": [
-          {
-            "cdCat01": "A4200",
-            "name": "総数"
-          },
-          {
-            "cdCat01": "A420001",
-            "name": "男性"
-          },
-          {
-            "cdCat01": "A420002",
-            "name": "女性"
-          }
-        ]
-      }
-    },
-    {
-      "title": "年齢調整死亡率（男性）",
-      "titleId": "age-adjusted-mortality-man",
-      "cardComponent": "estat-line-chart-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000010101",
-        "categories": [
-          {
-            "cdCat01": "A424001",
-            "name": "年齢調整死亡率"
-          }
-        ]
-      }
-    },
-    {
-      "title": "年齢調整死亡率（女性）",
-      "titleId": "age-adjusted-mortality-woman",
-      "cardComponent": "estat-line-chart-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000010101",
-        "categories": [
-          {
-            "cdCat01": "A424002",
-            "name": "年齢調整死亡率"
-          }
-        ]
-      }
-    },
-    {
-      "title": "死産数",
-      "titleId": "stillbirth-one",
-      "cardComponent": "estat-line-chart-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000010101",
-        "categories": [
-          {
-            "cdCat01": "A4270",
-            "name": "死産数"
-          }
-        ]
-      }
-    },
-    {
-      "title": "自然死産数",
-      "titleId": "natural-stillbirth",
-      "cardComponent": "estat-line-chart-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000010101",
-        "categories": [
-          {
-            "cdCat01": "A427001",
-            "name": "自然死産数"
-          }
-        ]
-      }
-    },
-    {
-      "title": "死産数（妊娠満22週以降）",
-      "titleId": "stillbirth-two",
-      "cardComponent": "estat-line-chart-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000010101",
-        "categories": [
-          {
-            "cdCat01": "A4271",
-            "name": "死産数"
-          }
-        ]
-      }
-    },
-    {
-      "title": "早期新生児死亡数",
-      "titleId": "early-neonatal-mortality",
-      "cardComponent": "estat-line-chart-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000010101",
-        "categories": [
-          {
-            "cdCat01": "A4272",
-            "name": "早期新生児死亡数"
-          }
-        ]
-      }
-    },
-    {
-      "title": "新生児死亡数",
-      "titleId": "neonatal-mortality",
-      "cardComponent": "estat-line-chart-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000010101",
-        "categories": [
-          {
-            "cdCat01": "A4280",
-            "name": "新生児死亡数"
-          }
-        ]
-      }
-    },
-    {
-      "title": "乳児死亡数",
-      "titleId": "infant-deaths",
-      "cardComponent": "estat-line-chart-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000010101",
-        "categories": [
-          {
-            "cdCat01": "A4281",
-            "name": "乳児死亡数"
-          }
-        ]
-      }
-    },
-    {
-      "title": "標準化死亡率",
-      "titleId": "standardized-mortality-ratio",
-      "cardComponent": "estat-line-chart-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000010101",
-        "categories": [
-          {
-            "cdCat01": "A4301",
-            "name": "標準化死亡率"
-          }
-        ]
-      }
-    },
-    {
-      "title": "人口集中地区面積",
-      "titleId": "densely-inhabited-area",
-      "cardComponent": "estat-area-chart-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000010101",
-        "categories": [
-          {
-            "cdCat01": "A1802",
-            "name": "人口集中地区面積"
-          }
-        ]
-      }
-    },
-    {
-      "title": "昼間人口",
-      "titleId": "daytime-population",
-      "cardComponent": "estat-line-chart-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000010101",
-        "categories": [
-          {
-            "cdCat01": "A6107",
-            "name": "昼間人口"
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "C3101",
+            "name": "農業産出額"
           }
         ]
       }
@@ -889,287 +64,262 @@
     {
       "title": "昼夜間人口比率",
       "titleId": "day-night-population-ratio",
-      "cardComponent": "estat-line-chart-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "line",
+      "isRank":false,
+      "additionalDescription": [],
+      "estatParams": {
         "statsDataId": "0000010101",
-        "categories": [
+        "cdCat01": [
+          "A6108"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
           {
-            "cdCat01": "A6108",
+            "code": "A6108",
             "name": "昼夜間人口比率"
           }
         ]
       }
     },
     {
-      "title": "流入人口（県外）",
-      "titleId": "influx-population",
-      "cardComponent": "estat-line-chart-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
+      "title": "総人口",
+      "titleId": "population-all",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "line",
+      "isRank":false,
+      "additionalDescription": [],
+      "estatParams": {
         "statsDataId": "0000010101",
-        "categories": [
-          {
-            "cdCat01": "A6106",
-            "name": "流入人口（県外）"
-          }
+        "cdCat01": [
+          "A1101",
+          "A110101",
+          "A110102"
         ]
-      }
-    },
-    {
-      "title": "流出人口（県外）",
-      "titleId": "outflow-population",
-      "cardComponent": "estat-line-chart-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000010101",
-        "categories": [
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
           {
-            "cdCat01": "A6104",
-            "name": "流出人口（県外）"
-          }
-        ]
-      }
-    },
-    {
-      "title": "転入者数（日本人）",
-      "titleId": "transferees",
-      "cardComponent": "estat-line-chart-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000010101",
-        "categories": [
-          {
-            "cdCat01": "A5101",
-            "name": "転入者数（日本人）"
-          }
-        ]
-      }
-    },
-    {
-      "title": "転出者数（日本人）",
-      "cardComponent": "estat-line-chart-card",
-      "isRank": true,
-      "titleId": "outmigrants",
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000010101",
-        "categories": [
-          {
-            "cdCat01": "A5102",
-            "name": "転出者数（日本人）"
-          }
-        ]
-      }
-    },
-    {
-      "title": "結婚件数",
-      "titleId": "marriage",
-      "cardComponent": "estat-column-chart-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000010101",
-        "categories": [
-          {
-            "cdCat01": "A9101",
-            "name": "結婚件数"
-          }
-        ]
-      }
-    },
-    {
-      "title": "離婚件数",
-      "titleId": "divorce",
-      "cardComponent": "estat-column-chart-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000010101",
-        "categories": [
-          {
-            "cdCat01": "A9201",
-            "name": "離婚件数"
-          }
-        ]
-      }
-    },
-    {
-      "title": "出生数",
-      "titleId": "births",
-      "cardComponent": "estat-line-chart-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000010101",
-        "categories": [
-          {
-            "cdCat01": "A4101",
-            "name": "出生数"
-          }
-        ]
-      }
-    },
-    {
-      "title": "死亡数",
-      "titleId": "deaths",
-      "cardComponent": "estat-line-chart-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000010101",
-        "categories": [
-          {
-            "cdCat01": "A4200",
-            "name": "死亡数"
-          }
-        ]
-      }
-    },
-    {
-      "title": "平均婚姻年齢（初婚の夫）",
-      "titleId": "average-marriage-age-man",
-      "cardComponent": "estat-line-chart-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000010101",
-        "categories": [
-          {
-            "cdCat01": "A9111",
-            "name": "平均婚姻年齢（初婚の夫）"
-          }
-        ]
-      }
-    },
-    {
-      "title": "平均婚姻年齢（初婚の妻）",
-      "titleId": "average-marriage-age-woman",
-      "cardComponent": "estat-line-chart-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000010101",
-        "categories": [
-          {
-            "cdCat01": "A9112",
-            "name": "平均婚姻年齢（初婚の妻）"
-          }
-        ]
-      }
-    },
-    {
-      "title": "母子世帯数",
-      "titleId": "motherchild-household",
-      "cardComponent": "estat-column-chart-break-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000010101",
-        "categories": [
-          {
-            "cdCat01": "A8401",
+            "code": "A1101",
             "name": "総数"
           },
           {
-            "cdCat01": "A840101",
-            "name": "子供が1人"
+            "code": "A110101",
+            "name": "男性"
           },
           {
-            "cdCat01": "A840102",
-            "name": "子供が2人"
-          },
-          {
-            "cdCat01": "A840103",
-            "name": "子供が3人以上"
+            "code": "A110102",
+            "name": "女性"
           }
         ]
       }
     },
     {
-      "title": "父子世帯数",
-      "titleId": "parentchild-household",
-      "cardComponent": "estat-column-chart-break-card",
-      "isRank": true,
+      "title": "就業者数（男女年齢別）",
+      "titleId": "number-of-workers",
+      "cardComponent": "estat-pyramid-chart-card",
       "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+        "就業者 ： 「従業者」と「休業者」を合わせたもの",
+        "従業者 ： 調査週間中に賃金，給料，諸手当，内職収入などの収入を伴う仕事（以下「仕事」という。）を1時間以上した者。なお，家族従業者は，無給であっても仕事をしたとする。",
+        "休業者 ： 仕事を持ちながら，調査週間中に少しも仕事をしなかった者のうち、雇用者で，給料・賃金（休業手当を含む。）の支払を受けている者又は受けることになっている者、または自営業主で，自分の経営する事業を持ったままで，その仕事を休み始めてから30日にならない者"
       ],
-      "params": {
-        "statsDataId": "0000010101",
-        "categories": [
-          {
-            "cdCat01": "A8501",
-            "name": "総数"
-          },
-          {
-            "cdCat01": "A850101",
-            "name": "子供が1人"
-          },
-          {
-            "cdCat01": "A850102",
-            "name": "子供が2人"
-          },
-          {
-            "cdCat01": "A850103",
-            "name": "子供が3人以上"
-          }
-        ]
-      }
-    },
-    {
-      "title": "共働き世帯数",
-      "titleId": "double-income-household",
-      "cardComponent": "estat-column-chart-break-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
+      "estatParams": {
         "statsDataId": "0000010106",
-        "categories": [
+        "cdCat01": [
+          "F210101",
+          "F210102",
+          "F210201",
+          "F210202",
+          "F210301",
+          "F210302",
+          "F210401",
+          "F210402",
+          "F210501",
+          "F210502",
+          "F210601",
+          "F210602",
+          "F210701",
+          "F210702",
+          "F210801",
+          "F210802",
+          "F210901",
+          "F210902",
+          "F211001",
+          "F211002",
+          "F211101",
+          "F211102",
+          "F211201",
+          "F211202",
+          "F211301",
+          "F211302",
+          "F211401",
+          "F211402",
+          "F211501",
+          "F211502"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
           {
-            "cdCat01": "F1501",
+            "code": "F210101",
+            "name": "15～19歳",
+            "man": "F210101",
+            "woman": "F210102"
+          },
+          {
+            "name": "20～24歳",
+            "man": "F210201",
+            "woman": "F210202"
+          },
+          {
+            "name": "25～29歳",
+            "man": "F210301",
+            "woman": "F210302"
+          },
+          {
+            "name": "30～34歳",
+            "man": "F210401",
+            "woman": "F210402"
+          },
+          {
+            "name": "35～39歳",
+            "man": "F210501",
+            "woman": "F210502"
+          },
+          {
+            "name": "40～44歳",
+            "man": "F210601",
+            "woman": "F210602"
+          },
+          {
+            "name": "45～49歳",
+            "man": "F210701",
+            "woman": "F210702"
+          },
+          {
+            "name": "50～54歳",
+            "man": "F210801",
+            "woman": "F210802"
+          },
+          {
+            "name": "55～59歳",
+            "man": "F210901",
+            "woman": "F210902"
+          },
+          {
+            "name": "60～64歳",
+            "man": "F211001",
+            "woman": "F211002"
+          },
+          {
+            "name": "65～69歳",
+            "man": "F211101",
+            "woman": "F211102"
+          },
+          {
+            "name": "70～74歳",
+            "man": "F211201",
+            "woman": "F211202"
+          },
+          {
+            "name": "75～79歳",
+            "man": "F211301",
+            "woman": "F211302"
+          },
+          {
+            "name": "80～84歳",
+            "man": "F211401",
+            "woman": "F211402"
+          },
+          {
+            "name": "85歳以上",
+            "man": "F211501",
+            "woman": "F211502"
+          }
+        ]
+      }
+    },
+    {
+      "title": "総面積",
+      "titleId": "total-area",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "area",
+      "isRank": true,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000010102",
+        "cdCat01": [
+          "B1101"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "B1101",
+            "name": "総数"
+          }
+        ]
+      }
+    },
+    {
+      "title": "評価総地積（課税対象土地）",
+      "titleId": "evaluation-total-cadastral",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "area",
+      "isRank": true,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000010102",
+        "cdCat01": [
+          "B1201",
+          "B120101",
+          "B120102",
+          "B120103",
+          "B120104",
+          "B120105",
+          "B120106",
+          "B120107"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "B1201",
             "name": "総数"
           },
           {
-            "cdCat01": "F150101",
-            "name": "子供なし人"
+            "code": "B120101",
+            "name": "田"
           },
           {
-            "cdCat01": "F150102",
-            "name": "6歳未満の子供あり"
+            "code": "B120102",
+            "name": "畑"
           },
           {
-            "cdCat01": "F150103",
-            "name": "18歳未満の子供あり"
+            "code": "B120103",
+            "name": "宅地"
+          },
+          {
+            "code": "B120104",
+            "name": "山林"
+          },
+          {
+            "code": "B120105",
+            "name": "牧場"
+          },
+          {
+            "code": "B120106",
+            "name": "原野"
+          },
+          {
+            "code": "B120107",
+            "name": "その他"
           }
         ]
       }
@@ -1177,151 +327,24 @@
   ],
   "city": [
     {
-      "title": "総人口",
-      "titleId": "population-all",
-      "cardComponent": "estat-line-chart-break-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000020201",
-        "categories": [
-          {
-            "cdCat01": "A1101",
-            "name": "総数"
-          },
-          {
-            "cdCat01": "A110101",
-            "name": "男性"
-          },
-          {
-            "cdCat01": "A110102",
-            "name": "女性"
-          }
+      "title": "農業産出額",
+      "titleId": "agricultural-output",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "column",
+      "isRank":false,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000020203",
+        "cdCat01": [
+          "C3101"
         ]
-      }
-    },
-    {
-      "title": "日本人人口",
-      "titleId": "population-japanese",
-      "cardComponent": "estat-line-chart-break-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000020201",
-        "categories": [
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
           {
-            "cdCat01": "A1102",
-            "name": "総数"
-          },
-          {
-            "cdCat01": "A110201",
-            "name": "男性"
-          },
-          {
-            "cdCat01": "A110202",
-            "name": "女性"
-          }
-        ]
-      }
-    },
-    {
-      "title": "外国人人口",
-      "titleId": "foreign-population",
-      "cardComponent": "estat-line-chart-break-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000020201",
-        "categories": [
-          {
-            "cdCat01": "A1700",
-            "name": "総数"
-          }
-        ]
-      }
-    },
-    {
-      "title": "人口集中地区人口",
-      "titleId": "densely-inhabited-district-population",
-      "cardComponent": "estat-line-chart-break-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000020201",
-        "categories": [
-          {
-            "cdCat01": "A1801",
-            "name": "総数"
-          },
-          {
-            "cdCat01": "A180101",
-            "name": "男性"
-          },
-          {
-            "cdCat01": "A180102",
-            "name": "女性"
-          }
-        ]
-      }
-    },
-    {
-      "title": "死亡数",
-      "titleId": "number-of-deaths",
-      "cardComponent": "estat-line-chart-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000020201",
-        "categories": [
-          {
-            "cdCat01": "A4200",
-            "name": "総数"
-          }
-        ]
-      }
-    },
-    {
-      "title": "人口集中地区面積",
-      "titleId": "densely-inhabited-area",
-      "cardComponent": "estat-area-chart-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000020201",
-        "categories": [
-          {
-            "cdCat01": "A1802",
-            "name": "人口集中地区面積"
-          }
-        ]
-      }
-    },
-    {
-      "title": "昼間人口",
-      "titleId": "daytime-population",
-      "cardComponent": "estat-line-chart-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000020201",
-        "categories": [
-          {
-            "cdCat01": "A6107",
-            "name": "昼間人口"
+            "code": "C3101",
+            "name": "農業産出額"
           }
         ]
       }
@@ -1329,257 +352,45 @@
     {
       "title": "昼夜間人口比率",
       "titleId": "day-night-population-ratio",
-      "cardComponent": "estat-line-chart-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "line",
+      "isRank":false,
+      "additionalDescription": [],
+      "estatParams": {
         "statsDataId": "0000020201",
-        "categories": [
+        "cdCat01": [
+          "A6108"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
           {
-            "cdCat01": "A6108",
+            "code": "A6108",
             "name": "昼夜間人口比率"
           }
         ]
       }
     },
     {
-      "title": "流入人口（県外）",
-      "titleId": "influx-population",
-      "cardComponent": "estat-line-chart-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000020201",
-        "categories": [
-          {
-            "cdCat01": "A6106",
-            "name": "流入人口（県外）"
-          }
+      "title": "総面積",
+      "titleId": "total-area",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "area",
+      "isRank":true,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000020202",
+        "cdCat01": [
+          "B1101"
         ]
-      }
-    },
-    {
-      "title": "流入人口（県内他市区町村）",
-      "titleId": "influx-population-hyogo",
-      "cardComponent": "estat-line-chart-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000020201",
-        "categories": [
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
           {
-            "cdCat01": "A6105",
-            "name": "流入人口（県内他市区町村）"
-          }
-        ]
-      }
-    },
-    {
-      "title": "流出人口（県外）",
-      "titleId": "outflow-population",
-      "cardComponent": "estat-line-chart-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000020201",
-        "categories": [
-          {
-            "cdCat01": "A6104",
-            "name": "流出人口（県外）"
-          }
-        ]
-      }
-    },
-    {
-      "title": "流出人口（県内他市区町村）",
-      "titleId": "outflow-population-hyogo",
-      "cardComponent": "estat-line-chart-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000020201",
-        "categories": [
-          {
-            "cdCat01": "A6103",
-            "name": "流出人口（県内他市区町村）"
-          }
-        ]
-      }
-    },
-    {
-      "title": "転入者数（日本人）",
-      "titleId": "transferees",
-      "cardComponent": "estat-line-chart-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000020201",
-        "categories": [
-          {
-            "cdCat01": "A5101",
-            "name": "転入者数（日本人）"
-          }
-        ]
-      }
-    },
-    {
-      "title": "転出者数（日本人）",
-      "cardComponent": "estat-line-chart-card",
-      "isRank": true,
-      "titleId": "outmigrants",
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000020201",
-        "categories": [
-          {
-            "cdCat01": "A5102",
-            "name": "転出者数（日本人）"
-          }
-        ]
-      }
-    },
-    {
-      "title": "結婚件数",
-      "titleId": "marriage",
-      "cardComponent": "estat-column-chart-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000020201",
-        "categories": [
-          {
-            "cdCat01": "A9101",
-            "name": "結婚件数"
-          }
-        ]
-      }
-    },
-    {
-      "title": "離婚件数",
-      "titleId": "divorce",
-      "cardComponent": "estat-column-chart-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000020201",
-        "categories": [
-          {
-            "cdCat01": "A9201",
-            "name": "離婚件数"
-          }
-        ]
-      }
-    },
-    {
-      "title": "出生数",
-      "titleId": "births",
-      "cardComponent": "estat-line-chart-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000020201",
-        "categories": [
-          {
-            "cdCat01": "A4101",
-            "name": "出生数"
-          }
-        ]
-      }
-    },
-    {
-      "title": "死亡数",
-      "titleId": "deaths",
-      "cardComponent": "estat-line-chart-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000020201",
-        "categories": [
-          {
-            "cdCat01": "A4200",
-            "name": "死亡数"
-          }
-        ]
-      }
-    },
-    {
-      "title": "母子世帯数",
-      "titleId": "motherchild-household",
-      "cardComponent": "estat-column-chart-break-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000020201",
-        "categories": [
-          {
-            "cdCat01": "A8401",
+            "code": "B1101",
             "name": "総数"
-          },
-          {
-            "cdCat01": "A840101",
-            "name": "子供が1人"
-          },
-          {
-            "cdCat01": "A840102",
-            "name": "子供が2人"
-          },
-          {
-            "cdCat01": "A840103",
-            "name": "子供が3人以上"
-          }
-        ]
-      }
-    },
-    {
-      "title": "父子世帯数",
-      "titleId": "parentchild-household",
-      "cardComponent": "estat-column-chart-break-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000020201",
-        "categories": [
-          {
-            "cdCat01": "A8501",
-            "name": "総数"
-          },
-          {
-            "cdCat01": "A850101",
-            "name": "子供が1人"
-          },
-          {
-            "cdCat01": "A850102",
-            "name": "子供が2人"
-          },
-          {
-            "cdCat01": "A850103",
-            "name": "子供が3人以上"
           }
         ]
       }

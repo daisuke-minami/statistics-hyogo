@@ -19,7 +19,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import { mapActions, mapGetters } from 'vuex'
-// import { cloneDeep } from 'lodash'
+import { cloneDeep } from 'lodash'
 // import ScaleLoader from 'vue-spinner/src/ScaleLoader.vue'
 import { EventBus, TOGGLE_EVENT } from '@/utils/tab-event-bus.ts'
 
@@ -42,7 +42,7 @@ export default Vue.extend({
   data(): DataType {
     return {
       cityCode: null,
-      governmentType: 'city',
+      chartClass: 'city',
       tab: null,
     }
   },
@@ -77,25 +77,30 @@ export default Vue.extend({
       ]
     },
     contentsList() {
-      return this.contentsAll[this.governmentType].map((d) => {
-        const cityName = this.cityName
-        const cityCode = this.cityCode
-        d.params.cdArea = cityCode
+      return this.contentsAll[this.chartClass].map((d) => {
+        // ShallowCopyを避けるため、lodashのcloneDeepを用いる。
+        const contents = cloneDeep(d)
 
-        const statisticsClass = this.statisticsClass
+        // 都道府県の情報を追加
+        contents.prefName = this.prefName
+        contents.prefCode = this.prefCode
+
+        // 市区町村の情報を追加
+        contents.cityName = this.cityName
+        contents.cityCode = this.cityCode
+
+        // 統計タイトルを上書き
+        contents.title = `${this.cityName}の${d.title}`
+
+        // 動的ルーティングのパスを追加
+        contents.route = `${this.prefCode}/${this.cityCode}/${contents.titleId}/`
+
+        // estatResponseのパスを追加
+        contents.estatJsonPath = `${this.statisticsClass}/${this.chartClass}/${contents.titleId}.json`
 
         return {
           cardComponent: d.cardComponent,
-          contents: {
-            statisticsClass,
-            governmentType: this.governmentType,
-            title: `${cityName}の${d.title}`,
-            titleId: d.titleId,
-            additionalDescription: d.additionalDescription,
-            routes: `${statisticsClass}/${d.titleId}/timechart/${this.governmentType}/${cityCode}/`,
-            unit: d.unit,
-            params: d.params,
-          },
+          contents,
         }
       })
     },

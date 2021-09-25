@@ -4,7 +4,7 @@
       <template>
         <v-card :loading="$fetchState.pending" class="DataView">
           <p v-if="$fetchState.pending" />
-          <data-view v-else :title="title" :routes="routes">
+          <data-view v-else :title="title" :route="route">
             <h4 :id="titleId" class="visually-hidden">
               {{ title }}
             </h4>
@@ -13,23 +13,19 @@
                 <v-col>
                   <v-select
                     v-model="targetYear"
-                    :items="Times"
+                    :items="times"
                     item-text="yearName"
-                    item-value="year"
+                    item-value="yearInt"
                     @change="$emit('input', $event)"
                   />
                 </v-col>
               </v-row>
             </div>
 
-            <pyramid-chart
-              v-show="canvas"
-              :display-data="displayData"
-              :categories="categories"
-            />
+            <pyramid-chart v-show="canvas" :display-data="displayData" />
 
             <template v-slot:description>
-              <p>最終更新日：{{ formatData.lastUpdate }}</p>
+              <p>最終更新日：{{ lastUpdate }}</p>
               <slot name="description" />
             </template>
 
@@ -50,7 +46,7 @@
             </template>
 
             <template v-slot:footer>
-              <app-link :to="docURL"> 政府統計の総合窓口e-stat </app-link>
+              <app-link :to="statUrl"> {{ statName }} </app-link>
             </template>
           </data-view>
         </v-card>
@@ -60,6 +56,8 @@
 </template>
 
 <script>
+// import { cloneDeep } from 'lodash'
+
 export default {
   props: {
     contents: {
@@ -68,46 +66,95 @@ export default {
     },
   },
   async fetch() {
-    this.formatData = await this.$formatEstatPyramidChart(this.contents)
+    this.estatResponse = await import(
+      `~/static/pagecontents/${this.contents.estatJsonPath}`
+    )
+    this.estatData = this.$formatEstatData(this.estatResponse, this.cdArea)
+    this.targetYear = this.estatData.latestYearInt
   },
   data() {
     return {
       canvas: true,
-      formatData: [],
-      targetYear: 2015,
+      targetYear: null,
+      estatResponse: {},
+      estatData: {},
     }
   },
   computed: {
+    cdArea() {
+      if (this.contents.cityCode) {
+        return this.contents.cityCode
+      } else {
+        return ('0000000000' + this.contents.prefCode).slice(-2) + '000'
+      }
+    },
     title() {
-      return this.formatData.title
+      return this.contents.title
     },
     titleId() {
-      return this.formatData.titleId
+      return this.contents.titleId
+    },
+    statName() {
+      return this.estatData.statName
+    },
+    statUrl() {
+      return this.estatData.statUrl
+    },
+    route() {
+      return this.contents.route
+    },
+    estatCredit() {
+      return [
+        'このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません',
+      ]
     },
     additionalDescription() {
-      return this.formatData.additionalDescription
+      return this.contents.additionalDescription.concat(this.estatCredit)
     },
-    routes() {
-      return this.formatData.routes
+    times() {
+      const times = this.estatData.times
+      return times.sort((a, b) => {
+        if (a.yearStr > b.yearStr) return -1
+        if (a.yearStr < b.yearStr) return 1
+        return 0
+      })
     },
-    docURL() {
-      return this.formatData.docURL
-    },
-    displayInfo() {
-      return this.formatData.displayInfo
-    },
-    tableHeaders() {
-      return this.formatData.tableHeaders
-    },
-    tableData() {
-      return this.formatData.tableData.find((d) => d.year === this.targetYear)
-        .data
+    dataByTime() {
+      return this.times
+        .map((d) => {
+          return {
+            year: d.yearInt,
+            data: this.estatData.value.filter((f) => f['@time'] === d.yearStr),
+          }
+        })
+        .filter((f) => f.data.length !== 0)
     },
     chartData() {
-      return this.formatData.chartData
+      return this.dataByTime.map((d) => {
+        return {
+          year: d.year,
+          data: this.setPyramidData(d.data),
+        }
+      })
     },
     displayData() {
-      return this.chartData.find((d) => d.year === this.targetYear).data
+      return this.chartData.find((f) => f.year === this.targetYear).data
+    },
+    tableHeaders() {
+      return [
+        { text: '年齢区分', value: 'category', align: 'end' },
+        { text: '男性', value: 'man', align: 'end' },
+        { text: '女性', value: 'woman', align: 'end' },
+      ]
+    },
+    tableData() {
+      return this.displayData.map((d) => {
+        return {
+          category: d.category,
+          man: d.man.toLocaleString() + '人',
+          woman: d.woman.toLocaleString() + '人',
+        }
+      })
     },
     lastUpdate() {
       if (process.browser) {
@@ -117,29 +164,19 @@ export default {
         return ''
       }
     },
-    yAxisData() {
-      return this.chartData.map((item) => ({
-        max: item.max,
-        min: item.min,
-        opposite: item.opposite,
-      }))
-    },
-    categories() {
-      return this.formatData.pyramidCategories
-    },
-    Times() {
-      return this.formatData.resTimes
-        .map((item) => {
-          return {
-            yearName: `${item.yearInt}年`,
-            year: item.yearInt,
-          }
-        })
-        .sort((a, b) => {
-          if (a.yearName > b.yearName) return -1
-          if (a.yearName < b.yearName) return 1
-          return 0
-        })
+  },
+  methods: {
+    setPyramidData(data) {
+      const id = this.contents.series.id
+      const item = this.contents.series.item
+      return item.map((d) => {
+        return {
+          category: d.name,
+          man: parseInt(data.find((f) => f[`@${id}`] === d.man).$),
+          woman: parseInt(data.find((f) => f[`@${id}`] === d.woman).$),
+          unit: data[0]['@unit'],
+        }
+      })
     },
   },
 }

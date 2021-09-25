@@ -93,7 +93,6 @@ export default {
   },
   computed: {
     cardConfig() {
-      // console.log(this.items)
       return {
         graphTitle: `${this.prefName}の市区町村`,
         titleId: "'hyogo-population-chart'",

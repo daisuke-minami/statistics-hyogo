@@ -6,18 +6,47 @@
 
 <script>
 import Highcharts from 'highcharts'
+// import { cloneDeep } from 'lodash'
+
 export default {
   props: {
     displayData: {
       type: Array,
       required: true,
     },
-    yAxisData: {
-      type: Array,
-      required: true,
-    },
   },
   computed: {
+    series() {
+      return this.displayData.map((d) => {
+        return {
+          dataSorting: { enabled: true },
+          data: d.data.map((d) => {
+            if (d.cityName) {
+              return {
+                name: d.cityName,
+                y: d.value,
+                unit: d.unit,
+              }
+            } else {
+              return {
+                name: d.prefName,
+                y: d.value,
+                unit: d.unit,
+              }
+            }
+          }),
+        }
+      })
+    },
+    values() {
+      return this.series[0].data.map((d) => d.y)
+    },
+    max() {
+      return Math.max(...this.values)
+    },
+    min() {
+      return Math.min(...this.values)
+    },
     chartOptions() {
       return {
         chart: {
@@ -36,10 +65,10 @@ export default {
             enabled: true,
           },
         },
-        yAxis: this.yAxisData.map((item) => ({
-          max: item.max,
-          min: item.min,
-          opposite: item.opposite,
+        yAxis: {
+          opposite: false,
+          max: this.max,
+          min: this.min,
           title: {
             text: '',
           },
@@ -48,7 +77,7 @@ export default {
               return this.value.toLocaleString()
             },
           },
-        })),
+        },
         plotOptions: {
           series: {
             stacking: 'normal',
@@ -74,7 +103,7 @@ export default {
         credits: {
           enabled: false,
         },
-        series: this.displayData,
+        series: this.series,
       }
     },
   },

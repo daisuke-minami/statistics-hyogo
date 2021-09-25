@@ -2,41 +2,41 @@
   <v-col cols="12" md="6" class="DataCard">
     <client-only>
       <template>
-        <v-card>
-          <data-view
-            :title="chartConfig.graphTitle"
-            :title-id="chartConfig.titleId"
-          >
-            <h4 :id="chartConfig.graphId" class="visually-hidden">
-              {{ chartConfig.graphTitle }}
+        <v-card :loading="$fetchState.pending" class="DataView">
+          <p v-if="$fetchState.pending" />
+          <data-view v-else :title="title" :route="route">
+            <h4 :id="titleId" class="visually-hidden">
+              {{ title }}
             </h4>
 
             <template v-slot:button>
               <toggle-break
                 v-model="dataKind"
-                :target-id="chartConfig.titleId"
+                :target-id="titleId"
                 :style="{ display: canvas ? 'inline-block' : 'none' }"
               />
             </template>
 
-            <line-chart
-              v-show="canvas"
-              :display-data="displayData"
-              :y-axis-data="yAxisData"
-            />
+            <line-chart v-show="canvas" :display-data="displayData" />
 
             <template v-slot:additionalDescription>
               <span>（注）</span>
               <ul>
-                <li>2015年までは実績値、それ以降は将来推計人口</li>
+                <li v-for="item in additionalDescription" :key="item">
+                  {{ item }}
+                </li>
               </ul>
               <slot name="additionalDescription" />
             </template>
 
+            <!-- <template v-slot:dataTable>
+              <client-only>
+                <data-view-table :headers="tableHeaders" :items="tableData" />
+              </client-only>
+            </template> -->
+
             <template v-slot:footer>
-              <app-link :to="chartConfig.docURL">
-                地域経済分析システムRESAS
-              </app-link>
+              <app-link :to="statUrl"> {{ statName }} </app-link>
             </template>
           </data-view>
         </v-card>
@@ -46,7 +46,7 @@
 </template>
 
 <script>
-// import { mapGetters } from 'vuex'
+// import { cloneDeep } from 'lodash'
 
 export default {
   props: {
@@ -55,71 +55,77 @@ export default {
       required: true,
     },
   },
+  async fetch() {
+    // console.log(this.contents)
+    // パラメータ設定
+    // const resasParams = cloneDeep(this.contents.resasParams)
+    // resasParams.prefCode = this.prefCode
+    // resasParams.cityCode = this.cityCode
+    // API取得
+    this.resasResponse = await this.$getResasAPI(
+      this.resasUrl,
+      this.resasParams
+    )
+  },
+  // async fetch() {
+  //   // console.log(this.contents)
+  //   this.resasResponse = await import(
+  //     `~/static/pagecontents/${this.contents.estatJsonPath}`
+  //   )
+  // },
   data() {
     return {
       dataKind: 'all',
       canvas: true,
-      chartData: [],
+      resasResponse: {},
     }
   },
   computed: {
-    // cdArea() {
-    //   if (!this.$route.params.codes) {
-    //     return this.cityCode
-    //   } else {
-    //     return this.$route.params.codes
-    //   }
-    // },
-    // chartConfig() {
-    //   return this.$getResasChartConfig(this.titleId, this.cdArea, this.isPref)
-    // },
-    // resasUrl() {
-    //   return this.chartConfig.apiURL
-    // },
-    // yAxisData() {
-    //   return this.chartData.map((item) => ({
-    //     max: item.max,
-    //     min: item.min,
-    //     opposite: item.opposite,
-    //   }))
-    // },
-    resasParam() {
-      const cityCode = () => {
-        if (this.cdArea.slice(-3) === '000') {
-          return '-'
-        } else {
-          return this.cdArea
-        }
-      }
-      return {
-        prefCode: process.env.PREF_CODE,
-        cityCode: cityCode(),
-      }
+    prefCode() {
+      return this.contents.prefCode
     },
-    displayData() {
-      if (this.dataKind === 'all') {
-        return this.chartData.filter((item) => item.name === '総人口')
+    cityCode() {
+      if (this.contents.cityCode) {
+        return this.contents.cityCode
       } else {
-        return this.chartData.filter((item) => item.name !== '総人口')
+        return '-'
       }
     },
-  },
-  watch: {
-    resasParam() {
-      this.setChartData()
+    resasUrl() {
+      return this.contents.resasUrl
     },
-  },
-  created() {
-    this.setChartData()
-    // console.log(contents)
-  },
-  methods: {
-    async setChartData() {
-      const res = await this.$getResasAPI(this.resasUrl, this.resasParam)
-      this.chartData = res.data.map((item) => {
+    resasParams() {
+      return {
+        prefCode: this.prefCode,
+        cityCode: this.cityCode,
+      }
+    },
+    title() {
+      return this.contents.title
+    },
+    titleId() {
+      return this.contents.titleId
+    },
+    statName() {
+      return '地域経済分析システム「RESAS」'
+    },
+    statUrl() {
+      return `https://opendata.resas-portal.go.jp/docs/${this.contents.resasUrl}.html`
+    },
+    resasCredit() {
+      return ['地域経済分析システム「RESAS」を加工して作成']
+    },
+    route() {
+      return this.contents.route
+    },
+    additionalDescription() {
+      return this.contents.additionalDescription.concat(this.resasCredit)
+    },
+    chartData() {
+      return this.resasResponse.data.map((d) => {
         return {
-          name: item.label,
-          data: item.data.map((d) => {
+          name: d.label,
+          data: d.data.map((d) => {
             return {
               x: d.year,
               y: d.value,
@@ -127,6 +133,13 @@ export default {
           }),
         }
       })
+    },
+    displayData() {
+      if (this.dataKind === 'all') {
+        return this.chartData.filter((f) => f.name === '総人口')
+      } else {
+        return this.chartData.filter((f) => f.name !== '総人口')
+      }
     },
   },
 }

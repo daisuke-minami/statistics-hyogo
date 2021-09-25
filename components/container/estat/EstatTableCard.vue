@@ -27,7 +27,6 @@ export default {
     },
   },
   async fetch() {
-    // console.log('contents',this.contents)
     this.formatData = await this.$formatEstatDataToTable(this.contents)
   },
   data() {

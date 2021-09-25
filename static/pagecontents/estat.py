@@ -25,18 +25,19 @@ load_dotenv()
 ESTAT_APPID = os.getenv('ESTAT_APPID')
 
 #estatAPIのパラメータセット（都道府県）
-def setEstatParamsPref(params,type):
+def setEstatParams(params,type):
 
     #appIdの設定
     p = {'appId':ESTAT_APPID}
+    # params['appId']=ESTAT_APPID
 
     #cdAreaの設定
-    if type == 'prefecture':
+    if type == 'prefecture' or type == 'prefectureRank':
         prefCodes = [d.get('prefCode') for d in prefList['result']]
         prefCodesStr = [f'{n:02}'+'000' for n in prefCodes]
         # print(prefCodesStr)
         p['cdArea'] = ','.join(prefCodesStr)
-    if type == 'city':
+    if type == 'city' or type == 'cityRank':
         cityCodes = [d.get('cityCode') for d in cityList['result']]
         p['cdArea'] = ','.join(cityCodes)
         # print(cityCodes)
@@ -44,26 +45,22 @@ def setEstatParamsPref(params,type):
     #statsDataIdの設定
     p['statsDataId'] = params['statsDataId']
 
-    #cdCat01,cdCat02,cdTabの設定
-    if('categories' in params):
-        categories = params['categories']
-        if 'cdCat01' in categories[0]:
-            p['cdCat01'] = ','.join([d.get('cdCat01') for d in categories])
-        if 'cdCat02' in categories[0]:
-            p['cdCat02'] = ','.join([d.get('cdCat02') for d in categories])
-        if 'cdTab' in categories[0]:
-            p['cdTab'] = ','.join([d.get('cdTab') for d in categories])
+    if('cdCat01' in params):
+        p['cdCat01'] = ','.join([d for d in params['cdCat01']])
 
     return p
 
 #estatAPIのレスポンス取得
 def getEstatAPIResponse(params):
+    # print(params)
     url = 'http://api.e-stat.go.jp/rest/2.1/app/json/getStatsData?'
     url += urllib.parse.urlencode(params)
+    # print(url)
     with urllib.request.urlopen(url) as response:
         return json.loads(response.read().decode())
 
 def saveJson(data,downloadPath,**kwargs):
+    print('...Saving ' + downloadPath)
     with open(downloadPath, 'w') as f:
         json.dump(data, f, **kwargs)
 

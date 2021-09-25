@@ -1,8 +1,8 @@
 /** 各クラスのチャートリスト作成
- * @param statisticsClass - クラス
+ * @param contentsId - クラス
  * @param isPref - 都道府県(true) or 市区町村(false)
  */
-const getChartList = (statisticsClass: string, isPref: boolean) => {
+const getChartList = (contentsId: string, isPref: boolean) => {
   const param = () => {
     if (isPref) {
       return 'prefecture'
@@ -11,9 +11,7 @@ const getChartList = (statisticsClass: string, isPref: boolean) => {
     }
   }
 
-  const arr = process.env.Contents.filter(
-    (d) => d.statisticsClass === statisticsClass
-  )
+  const arr = process.env.Contents.filter((d) => d.contentsId === contentsId)
     .reduce((acc, cur) => {
       if (param() in cur) {
         acc.push(cur)
@@ -81,7 +79,7 @@ const getChartComponent = (chartType) => {
       cardComponent = 'resas-population-card'
       break
     case 'resas-pyramid':
-      cardComponent = 'resas-population-pyramid-chart-card'
+      cardComponent = 'resas-population-pyramid-card'
       break
   }
   return cardComponent

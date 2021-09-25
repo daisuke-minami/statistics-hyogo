@@ -1,1023 +1,325 @@
 {
   "prefecture": [
     {
-      "title": "労働力人口",
-      "titleId": "labor-force-population",
-      "cardComponent": "estat-line-chart-break-card",
-      "isRank": false,
-      "additionalDescription": [
-        "労働力人口 ： 15歳以上の人口のうち，「就業者」と「完全失業者」を合わせたもの",
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000010106",
-        "categories": [
+      "title": "農家数",
+      "titleId": "number-of-farmers",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "column",
+      "isRank":false,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000010103",
+        "cdCat01": [
+          "C3102",
+          "C310202",
+          "C310211",
+          "C310212"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
           {
-            "cdCat01": "F1101",
+            "code": "C3102",
             "name": "総数"
           },
           {
-            "cdCat01": "F110101",
+            "code": "C310202",
+            "name": "自給的農家"
+          },
+          {
+            "code": "C310211",
+            "name": "販売農家（専業農家）"
+          },
+          {
+            "code": "C310212",
+            "name": "販売農家（兼業農家）"
+          }
+        ]
+      }
+    },
+    {
+      "title": "農業産出額",
+      "titleId": "agricultural-output",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "column",
+      "isRank":false,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000010103",
+        "cdCat01": [
+          "C3101"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "C3101",
+            "name": "農業産出額"
+          }
+        ]
+      }
+    },
+    {
+      "title": "昼夜間人口比率",
+      "titleId": "day-night-population-ratio",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "line",
+      "isRank":false,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000010101",
+        "cdCat01": [
+          "A6108"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "A6108",
+            "name": "昼夜間人口比率"
+          }
+        ]
+      }
+    },
+    {
+      "title": "総人口",
+      "titleId": "population-all",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "line",
+      "isRank":false,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000010101",
+        "cdCat01": [
+          "A1101",
+          "A110101",
+          "A110102"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "A1101",
+            "name": "総数"
+          },
+          {
+            "code": "A110101",
             "name": "男性"
           },
           {
-            "cdCat01": "F110102",
+            "code": "A110102",
             "name": "女性"
           }
         ]
       }
     },
     {
-      "title": "就業者数",
-      "titleId": "number-of-employees",
-      "cardComponent": "estat-line-chart-break-card",
-      "isRank": true,
+      "title": "就業者数（男女年齢別）",
+      "titleId": "number-of-workers",
+      "cardComponent": "estat-pyramid-chart-card",
       "additionalDescription": [
         "就業者 ： 「従業者」と「休業者」を合わせたもの",
         "従業者 ： 調査週間中に賃金，給料，諸手当，内職収入などの収入を伴う仕事（以下「仕事」という。）を1時間以上した者。なお，家族従業者は，無給であっても仕事をしたとする。",
-        "休業者 ： 仕事を持ちながら，調査週間中に少しも仕事をしなかった者のうち、雇用者で，給料・賃金（休業手当を含む。）の支払を受けている者又は受けることになっている者、または自営業主で，自分の経営する事業を持ったままで，その仕事を休み始めてから30日にならない者",
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
+        "休業者 ： 仕事を持ちながら，調査週間中に少しも仕事をしなかった者のうち、雇用者で，給料・賃金（休業手当を含む。）の支払を受けている者又は受けることになっている者、または自営業主で，自分の経営する事業を持ったままで，その仕事を休み始めてから30日にならない者"
       ],
-      "params": {
+      "estatParams": {
         "statsDataId": "0000010106",
-        "categories": [
+        "cdCat01": [
+          "F210101",
+          "F210102",
+          "F210201",
+          "F210202",
+          "F210301",
+          "F210302",
+          "F210401",
+          "F210402",
+          "F210501",
+          "F210502",
+          "F210601",
+          "F210602",
+          "F210701",
+          "F210702",
+          "F210801",
+          "F210802",
+          "F210901",
+          "F210902",
+          "F211001",
+          "F211002",
+          "F211101",
+          "F211102",
+          "F211201",
+          "F211202",
+          "F211301",
+          "F211302",
+          "F211401",
+          "F211402",
+          "F211501",
+          "F211502"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
           {
-            "cdCat01": "F1102",
+            "code": "F210101",
+            "name": "15～19歳",
+            "man": "F210101",
+            "woman": "F210102"
+          },
+          {
+            "name": "20～24歳",
+            "man": "F210201",
+            "woman": "F210202"
+          },
+          {
+            "name": "25～29歳",
+            "man": "F210301",
+            "woman": "F210302"
+          },
+          {
+            "name": "30～34歳",
+            "man": "F210401",
+            "woman": "F210402"
+          },
+          {
+            "name": "35～39歳",
+            "man": "F210501",
+            "woman": "F210502"
+          },
+          {
+            "name": "40～44歳",
+            "man": "F210601",
+            "woman": "F210602"
+          },
+          {
+            "name": "45～49歳",
+            "man": "F210701",
+            "woman": "F210702"
+          },
+          {
+            "name": "50～54歳",
+            "man": "F210801",
+            "woman": "F210802"
+          },
+          {
+            "name": "55～59歳",
+            "man": "F210901",
+            "woman": "F210902"
+          },
+          {
+            "name": "60～64歳",
+            "man": "F211001",
+            "woman": "F211002"
+          },
+          {
+            "name": "65～69歳",
+            "man": "F211101",
+            "woman": "F211102"
+          },
+          {
+            "name": "70～74歳",
+            "man": "F211201",
+            "woman": "F211202"
+          },
+          {
+            "name": "75～79歳",
+            "man": "F211301",
+            "woman": "F211302"
+          },
+          {
+            "name": "80～84歳",
+            "man": "F211401",
+            "woman": "F211402"
+          },
+          {
+            "name": "85歳以上",
+            "man": "F211501",
+            "woman": "F211502"
+          }
+        ]
+      }
+    },
+    {
+      "title": "総面積",
+      "titleId": "total-area",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "area",
+      "isRank": true,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000010102",
+        "cdCat01": [
+          "B1101"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "B1101",
+            "name": "総数"
+          }
+        ]
+      }
+    },
+    {
+      "title": "評価総地積（課税対象土地）",
+      "titleId": "evaluation-total-cadastral",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "area",
+      "isRank": true,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000010102",
+        "cdCat01": [
+          "B1201",
+          "B120101",
+          "B120102",
+          "B120103",
+          "B120104",
+          "B120105",
+          "B120106",
+          "B120107"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "B1201",
             "name": "総数"
           },
           {
-            "cdCat01": "F110201",
-            "name": "男性"
+            "code": "B120101",
+            "name": "田"
           },
           {
-            "cdCat01": "F110202",
-            "name": "女性"
-          }
-        ]
-      }
-    },
-    {
-      "title": "就業者数（主に仕事）",
-      "titleId": "number-of-employees-one",
-      "cardComponent": "estat-line-chart-break-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000010106",
-        "categories": [
-          {
-            "cdCat01": "F1103",
-            "name": "総数"
+            "code": "B120102",
+            "name": "畑"
           },
           {
-            "cdCat01": "F110301",
-            "name": "男性"
+            "code": "B120103",
+            "name": "宅地"
           },
           {
-            "cdCat01": "F110302",
-            "name": "女性"
-          }
-        ]
-      }
-    },
-    {
-      "title": "就業者数（家事のほか仕事）",
-      "titleId": "number-of-employees-two",
-      "cardComponent": "estat-line-chart-break-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000010106",
-        "categories": [
-          {
-            "cdCat01": "F1104",
-            "name": "総数"
+            "code": "B120104",
+            "name": "山林"
           },
           {
-            "cdCat01": "F110401",
-            "name": "男性"
+            "code": "B120105",
+            "name": "牧場"
           },
           {
-            "cdCat01": "F110402",
-            "name": "女性"
-          }
-        ]
-      }
-    },
-    {
-      "title": "就業者数（通学のかたわら仕事）",
-      "titleId": "number-of-employees-three",
-      "cardComponent": "estat-line-chart-break-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000010106",
-        "categories": [
-          {
-            "cdCat01": "F1105",
-            "name": "総数"
+            "code": "B120106",
+            "name": "原野"
           },
           {
-            "cdCat01": "F110501",
-            "name": "男性"
-          },
-          {
-            "cdCat01": "F110502",
-            "name": "女性"
-          }
-        ]
-      }
-    },
-    {
-      "title": "就業者数（休業者）",
-      "titleId": "number-of-employees-four",
-      "cardComponent": "estat-line-chart-break-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000010106",
-        "categories": [
-          {
-            "cdCat01": "F1106",
-            "name": "総数"
-          },
-          {
-            "cdCat01": "F110601",
-            "name": "男性"
-          },
-          {
-            "cdCat01": "F110602",
-            "name": "女性"
-          }
-        ]
-      }
-    },
-    {
-      "title": "非労働力人口",
-      "titleId": "non-labor-population",
-      "cardComponent": "estat-line-chart-break-card",
-      "isRank": true,
-      "additionalDescription": [
-        "非労働力人口 ： 15歳以上の人口のうち，「就業者」と「完全失業者」以外の者",
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000010106",
-        "categories": [
-          {
-            "cdCat01": "F1108",
-            "name": "総数"
-          },
-          {
-            "cdCat01": "F110801",
-            "name": "男性"
-          },
-          {
-            "cdCat01": "F110802",
-            "name": "女性"
-          }
-        ]
-      }
-    },
-    {
-      "title": "非労働力人口（家事）",
-      "titleId": "non-labor-population-one",
-      "cardComponent": "estat-line-chart-break-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000010106",
-        "categories": [
-          {
-            "cdCat01": "F1109",
-            "name": "総数"
-          },
-          {
-            "cdCat01": "F110901",
-            "name": "男性"
-          },
-          {
-            "cdCat01": "F110902",
-            "name": "女性"
-          }
-        ]
-      }
-    },
-    {
-      "title": "非労働力人口（通学）",
-      "titleId": "non-labor-population-two",
-      "cardComponent": "estat-line-chart-break-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000010106",
-        "categories": [
-          {
-            "cdCat01": "F1110",
-            "name": "総数"
-          },
-          {
-            "cdCat01": "F111001",
-            "name": "男性"
-          },
-          {
-            "cdCat01": "F111002",
-            "name": "女性"
-          }
-        ]
-      }
-    },
-    {
-      "title": "非労働力人口（その他）",
-      "titleId": "non-labor-population-three",
-      "cardComponent": "estat-line-chart-break-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000010106",
-        "categories": [
-          {
-            "cdCat01": "F1111",
-            "name": "総数"
-          },
-          {
-            "cdCat01": "F111101",
-            "name": "男性"
-          },
-          {
-            "cdCat01": "F111102",
-            "name": "女性"
-          }
-        ]
-      }
-    },
-    {
-      "title": "会社団体役員",
-      "titleId": "company-group-officer",
-      "cardComponent": "estat-line-chart-break-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000010106",
-        "categories": [
-          {
-            "cdCat01": "F1303",
-            "name": "総数"
-          },
-          {
-            "cdCat01": "F130301",
-            "name": "男性"
-          },
-          {
-            "cdCat01": "F130302",
-            "name": "女性"
-          }
-        ]
-      }
-    },
-    {
-      "title": "商店主",
-      "titleId": "shopkeeper",
-      "cardComponent": "estat-line-chart-break-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000010106",
-        "categories": [
-          {
-            "cdCat01": "F1304",
-            "name": "総数"
-          },
-          {
-            "cdCat01": "F130401",
-            "name": "男性"
-          },
-          {
-            "cdCat01": "F130402",
-            "name": "女性"
-          }
-        ]
-      }
-    },
-    {
-      "title": "工場主",
-      "titleId": "factory-owner",
-      "cardComponent": "estat-line-chart-break-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000010106",
-        "categories": [
-          {
-            "cdCat01": "F1305",
-            "name": "総数"
-          },
-          {
-            "cdCat01": "F130501",
-            "name": "男性"
-          },
-          {
-            "cdCat01": "F130502",
-            "name": "女性"
-          }
-        ]
-      }
-    },
-    {
-      "title": "サービス・その他の事業主",
-      "titleId": "services-and-other-business-owners",
-      "cardComponent": "estat-line-chart-break-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000010106",
-        "categories": [
-          {
-            "cdCat01": "F1306",
-            "name": "総数"
-          },
-          {
-            "cdCat01": "F130601",
-            "name": "男性"
-          },
-          {
-            "cdCat01": "F130602",
-            "name": "女性"
-          }
-        ]
-      }
-    },
-    {
-      "title": "専門職業者",
-      "titleId": "professional",
-      "cardComponent": "estat-line-chart-break-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000010106",
-        "categories": [
-          {
-            "cdCat01": "F1307",
-            "name": "総数"
-          },
-          {
-            "cdCat01": "F130701",
-            "name": "男性"
-          },
-          {
-            "cdCat01": "F130702",
-            "name": "女性"
-          }
-        ]
-      }
-    },
-    {
-      "title": "技術者",
-      "titleId": "engineer",
-      "cardComponent": "estat-line-chart-break-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000010106",
-        "categories": [
-          {
-            "cdCat01": "F1308",
-            "name": "総数"
-          },
-          {
-            "cdCat01": "F130801",
-            "name": "男性"
-          },
-          {
-            "cdCat01": "F130802",
-            "name": "女性"
-          }
-        ]
-      }
-    },
-    {
-      "title": "教員・宗教家",
-      "titleId": "teacher-religious-person",
-      "cardComponent": "estat-line-chart-break-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000010106",
-        "categories": [
-          {
-            "cdCat01": "F1309",
-            "name": "総数"
-          },
-          {
-            "cdCat01": "F130901",
-            "name": "男性"
-          },
-          {
-            "cdCat01": "F130902",
-            "name": "女性"
-          }
-        ]
-      }
-    },
-    {
-      "title": "文筆家・芸術家・芸能家",
-      "titleId": "writer-artist-entertainer",
-      "cardComponent": "estat-line-chart-break-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000010106",
-        "categories": [
-          {
-            "cdCat01": "F1310",
-            "name": "総数"
-          },
-          {
-            "cdCat01": "F131001",
-            "name": "男性"
-          },
-          {
-            "cdCat01": "F131002",
-            "name": "女性"
-          }
-        ]
-      }
-    },
-    {
-      "title": "管理職",
-      "titleId": "management",
-      "cardComponent": "estat-line-chart-break-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000010106",
-        "categories": [
-          {
-            "cdCat01": "F1311",
-            "name": "総数"
-          },
-          {
-            "cdCat01": "F131101",
-            "name": "男性"
-          },
-          {
-            "cdCat01": "F131102",
-            "name": "女性"
-          }
-        ]
-      }
-    },
-    {
-      "title": "事務職",
-      "titleId": "clerk",
-      "cardComponent": "estat-line-chart-break-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000010106",
-        "categories": [
-          {
-            "cdCat01": "F1312",
-            "name": "総数"
-          },
-          {
-            "cdCat01": "F131201",
-            "name": "男性"
-          },
-          {
-            "cdCat01": "F131202",
-            "name": "女性"
-          }
-        ]
-      }
-    },
-    {
-      "title": "販売人",
-      "titleId": "seller",
-      "cardComponent": "estat-line-chart-break-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000010106",
-        "categories": [
-          {
-            "cdCat01": "F1313",
-            "name": "総数"
-          },
-          {
-            "cdCat01": "F131301",
-            "name": "男性"
-          },
-          {
-            "cdCat01": "F131302",
-            "name": "女性"
-          }
-        ]
-      }
-    },
-    {
-      "title": "技能者",
-      "titleId": "technician",
-      "cardComponent": "estat-line-chart-break-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000010106",
-        "categories": [
-          {
-            "cdCat01": "F1314",
-            "name": "総数"
-          },
-          {
-            "cdCat01": "F131401",
-            "name": "男性"
-          },
-          {
-            "cdCat01": "F131402",
-            "name": "女性"
-          }
-        ]
-      }
-    },
-    {
-      "title": "労務作業者",
-      "titleId": "labor-worker",
-      "cardComponent": "estat-line-chart-break-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000010106",
-        "categories": [
-          {
-            "cdCat01": "F1315",
-            "name": "総数"
-          },
-          {
-            "cdCat01": "F131501",
-            "name": "男性"
-          },
-          {
-            "cdCat01": "F131502",
-            "name": "女性"
-          }
-        ]
-      }
-    },
-    {
-      "title": "個人サービス人",
-      "titleId": "personal-service-person",
-      "cardComponent": "estat-line-chart-break-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000010106",
-        "categories": [
-          {
-            "cdCat01": "F1316",
-            "name": "総数"
-          },
-          {
-            "cdCat01": "F131601",
-            "name": "男性"
-          },
-          {
-            "cdCat01": "F131602",
-            "name": "女性"
-          }
-        ]
-      }
-    },
-    {
-      "title": "保安職",
-      "titleId": "security-staff",
-      "cardComponent": "estat-line-chart-break-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000010106",
-        "categories": [
-          {
-            "cdCat01": "F1317",
-            "name": "総数"
-          },
-          {
-            "cdCat01": "F131701",
-            "name": "男性"
-          },
-          {
-            "cdCat01": "F131702",
-            "name": "女性"
-          }
-        ]
-      }
-    },
-    {
-      "title": "内職者",
-      "titleId": "internal-worker",
-      "cardComponent": "estat-line-chart-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000010106",
-        "categories": [
-          {
-            "cdCat01": "F1318",
-            "name": "内職者"
-          }
-        ]
-      }
-    },
-    {
-      "title": "母子世帯・完全失業者数",
-      "titleId": "mother-child-households-unemployed",
-      "cardComponent": "estat-line-chart-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000010106",
-        "categories": [
-          {
-            "cdCat01": "F140301",
-            "name": "母子世帯・完全失業者数"
-          }
-        ]
-      }
-    },
-    {
-      "title": "母子世帯・非労働力人口",
-      "titleId": "mother-child-households-non-labor",
-      "cardComponent": "estat-line-chart-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000010106",
-        "categories": [
-          {
-            "cdCat01": "F140302",
-            "name": "母子世帯・非労働力人口"
-          }
-        ]
-      }
-    },
-    {
-      "title": "完全失業者数",
-      "titleId": "number-of-unemployed",
-      "cardComponent": "estat-line-chart-break-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000010106",
-        "categories": [
-          {
-            "cdCat01": "F1107",
-            "name": "総数"
-          },
-          {
-            "cdCat01": "F110701",
-            "name": "男性"
-          },
-          {
-            "cdCat01": "F110702",
-            "name": "女性"
-          }
-        ]
-      }
-    },
-    {
-      "title": "県内就業者数",
-      "titleId": "employees-in-the-prefecture",
-      "cardComponent": "estat-line-chart-break-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000010106",
-        "categories": [
-          {
-            "cdCat01": "F2704",
-            "name": "総数"
-          },
-          {
-            "cdCat01": "F270401",
-            "name": "男性"
-          },
-          {
-            "cdCat01": "F270402",
-            "name": "女性"
-          }
-        ]
-      }
-    },
-    {
-      "title": "県外就業者数",
-      "titleId": "employees-outside-prefecture",
-      "cardComponent": "estat-line-chart-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000010106",
-        "categories": [
-          {
-            "cdCat01": "F2703",
-            "name": "総数"
-          },
-          {
-            "cdCat01": "F270301",
-            "name": "男性"
-          },
-          {
-            "cdCat01": "F270302",
-            "name": "女性"
-          }
-        ]
-      }
-    },
-    {
-      "title": "新規求職申込件数",
-      "titleId": "new-job-applications",
-      "cardComponent": "estat-column-chart-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000010106",
-        "categories": [
-          {
-            "cdCat01": "F3101",
-            "name": "新規求職申込件数"
-          }
-        ]
-      }
-    },
-    {
-      "title": "月間有効求職者数",
-      "titleId": "effective-job-seekers-per-month",
-      "cardComponent": "estat-line-chart-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000010106",
-        "categories": [
-          {
-            "cdCat01": "F3102",
-            "name": "月間有効求職者数"
-          }
-        ]
-      }
-    },
-    {
-      "title": "月間有効求人数",
-      "titleId": "monthly-effective-job-openings",
-      "cardComponent": "estat-column-chart-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000010106",
-        "categories": [
-          {
-            "cdCat01": "F3103",
-            "name": "月間有効求人数"
-          }
-        ]
-      }
-    },
-    {
-      "title": "充足数",
-      "titleId": "satisfaction-number",
-      "cardComponent": "estat-column-chart-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000010106",
-        "categories": [
-          {
-            "cdCat01": "F3104",
-            "name": "充足数"
-          }
-        ]
-      }
-    },
-    {
-      "title": "労働組合数",
-      "titleId": "labor-unions",
-      "cardComponent": "estat-column-chart-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000010106",
-        "categories": [
-          {
-            "cdCat01": "F9101",
-            "name": "労働組合数"
-          }
-        ]
-      }
-    },
-    {
-      "title": "労働組合員数",
-      "titleId": "union-members",
-      "cardComponent": "estat-line-chart-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000010106",
-        "categories": [
-          {
-            "cdCat01": "F9102",
-            "name": "労働組合員数"
-          }
-        ]
-      }
-    },
-    {
-      "title": "就職件数",
-      "titleId": "number-of-employment",
-      "cardComponent": "estat-column-chart-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000010106",
-        "categories": [
-          {
-            "cdCat01": "F3105",
-            "name": "就職件数"
-          }
-        ]
-      }
-    },
-    {
-      "title": "県内就職件数",
-      "titleId": "number-of-employment-in-the-prefecture",
-      "cardComponent": "estat-column-chart-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000010106",
-        "categories": [
-          {
-            "cdCat01": "F3106",
-            "name": "県内就職件数"
-          }
-        ]
-      }
-    },
-    {
-      "title": "最低賃金",
-      "titleId": "minimum-wage",
-      "cardComponent": "estat-column-chart-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000010106",
-        "categories": [
-          {
-            "cdCat01": "F6501",
-            "name": "最低賃金"
-          }
-        ]
-      }
-    },
-    {
-      "title": "労働災害度数率",
-      "titleId": "occupational-accident-frequency-rate",
-      "cardComponent": "estat-line-chart-card",
-      "isRank": true,
-      "additionalDescription": [
-        "「度数率」とは、 100万延実労働時間当たりの労働災害による死傷者数で、災害発生の頻度を表す",
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000010106",
-        "categories": [
-          {
-            "cdCat01": "F8101",
-            "name": "労働災害度数率"
-          }
-        ]
-      }
-    },
-    {
-      "title": "第１次産業就業者数",
-      "titleId": "primary-industry",
-      "cardComponent": "estat-line-chart-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000010106",
-        "categories": [
-          {
-            "cdCat01": "F2201",
-            "name": "第１次産業就業者数"
-          }
-        ]
-      }
-    },
-    {
-      "title": "第２次産業就業者数",
-      "titleId": "secondary-industry",
-      "cardComponent": "estat-line-chart-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000010106",
-        "categories": [
-          {
-            "cdCat01": "F2211",
-            "name": "第２次産業就業者数"
-          }
-        ]
-      }
-    },
-    {
-      "title": "第３次産業就業者数",
-      "titleId": "tertiary-industry",
-      "cardComponent": "estat-line-chart-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000010106",
-        "categories": [
-          {
-            "cdCat01": "F2221",
-            "name": "第３次産業就業者数"
+            "code": "B120107",
+            "name": "その他"
           }
         ]
       }
@@ -1025,243 +327,70 @@
   ],
   "city": [
     {
-      "title": "労働力人口",
-      "titleId": "labor-force-population",
-      "isRank": false,
-      "cardComponent": "estat-line-chart-break-card",
-      "additionalDescription": [
-        "労働力人口 ： 15歳以上の人口のうち，「就業者」と「完全失業者」を合わせたもの",
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000020206",
-        "categories": [
+      "title": "農業産出額",
+      "titleId": "agricultural-output",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "column",
+      "isRank":false,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000020203",
+        "cdCat01": [
+          "C3101"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
           {
-            "cdCat01": "F1101",
+            "code": "C3101",
+            "name": "農業産出額"
+          }
+        ]
+      }
+    },
+    {
+      "title": "昼夜間人口比率",
+      "titleId": "day-night-population-ratio",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "line",
+      "isRank":false,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000020201",
+        "cdCat01": [
+          "A6108"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "A6108",
+            "name": "昼夜間人口比率"
+          }
+        ]
+      }
+    },
+    {
+      "title": "総面積",
+      "titleId": "total-area",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "area",
+      "isRank":true,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000020202",
+        "cdCat01": [
+          "B1101"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "B1101",
             "name": "総数"
-          },
-          {
-            "cdCat01": "F110101",
-            "name": "男性"
-          },
-          {
-            "cdCat01": "F110102",
-            "name": "女性"
-          }
-        ]
-      }
-    },
-    {
-      "title": "就業者数",
-      "titleId": "number-of-employees",
-      "cardComponent": "estat-line-chart-break-card",
-      "isRank": true,
-      "additionalDescription": [
-        "就業者 ： 「従業者」と「休業者」を合わせたもの",
-        "従業者 ： 調査週間中に賃金，給料，諸手当，内職収入などの収入を伴う仕事（以下「仕事」という。）を1時間以上した者。なお，家族従業者は，無給であっても仕事をしたとする。",
-        "休業者 ： 仕事を持ちながら，調査週間中に少しも仕事をしなかった者のうち、雇用者で，給料・賃金（休業手当を含む。）の支払を受けている者又は受けることになっている者、または自営業主で，自分の経営する事業を持ったままで，その仕事を休み始めてから30日にならない者",
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000020206",
-        "categories": [
-          {
-            "cdCat01": "F1102",
-            "name": "総数"
-          },
-          {
-            "cdCat01": "F110201",
-            "name": "男性"
-          },
-          {
-            "cdCat01": "F110202",
-            "name": "女性"
-          }
-        ]
-      }
-    },
-    {
-      "title": "非労働力人口",
-      "titleId": "non-labor-population",
-      "cardComponent": "estat-line-chart-break-card",
-      "isRank": true,
-      "additionalDescription": [
-        "非労働力人口 ： 15歳以上の人口のうち，「就業者」と「完全失業者」以外の者",
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000020206",
-        "categories": [
-          {
-            "cdCat01": "F1108",
-            "name": "総数"
-          },
-          {
-            "cdCat01": "F110801",
-            "name": "男性"
-          },
-          {
-            "cdCat01": "F110802",
-            "name": "女性"
-          }
-        ]
-      }
-    },
-    {
-      "title": "完全失業者数",
-      "titleId": "number-of-unemployed",
-      "cardComponent": "estat-line-chart-break-card",
-      "isRank": true,
-      "additionalDescription": [
-        "完全失業者： 仕事がなくて調査週間中に少しも仕事をしなかった（就業者ではない）者で、仕事があればすぐ就くことができ、調査週間中に，仕事を探す活動や事業を始める準備をしていた者（過去の求職活動の結果を待っている場合を含む）",
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000020206",
-        "categories": [
-          {
-            "cdCat01": "F1107",
-            "name": "総数"
-          },
-          {
-            "cdCat01": "F110701",
-            "name": "男性"
-          },
-          {
-            "cdCat01": "F110702",
-            "name": "女性"
-          }
-        ]
-      }
-    },
-    {
-      "title": "第１次産業就業者数",
-      "titleId": "primary-industry",
-      "cardComponent": "estat-line-chart-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000020206",
-        "categories": [
-          {
-            "cdCat01": "F2201",
-            "name": "第１次産業就業者数"
-          }
-        ]
-      }
-    },
-    {
-      "title": "第２次産業就業者数",
-      "titleId": "secondary-industry",
-      "cardComponent": "estat-line-chart-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000020206",
-        "categories": [
-          {
-            "cdCat01": "F2211",
-            "name": "第２次産業就業者数"
-          }
-        ]
-      }
-    },
-    {
-      "title": "第３次産業就業者数",
-      "titleId": "tertiary-industry",
-      "cardComponent": "estat-line-chart-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000020206",
-        "categories": [
-          {
-            "cdCat01": "F2221",
-            "name": "第３次産業就業者数"
-          }
-        ]
-      }
-    },
-    {
-      "title": "市区町内で従業している就業者数",
-      "titleId": "number-of-employees-in-the-city",
-      "cardComponent": "estat-line-chart-break-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000020206",
-        "categories": [
-          {
-            "cdCat01": "F2701",
-            "name": "総数"
-          },
-          {
-            "cdCat01": "F270101",
-            "name": "男性"
-          },
-          {
-            "cdCat01": "F270102",
-            "name": "女性"
-          }
-        ]
-      }
-    },
-    {
-      "title": "市区町外（県内）で従業している就業者数",
-      "titleId": "number-of-employees-outside-city",
-      "cardComponent": "estat-line-chart-break-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000020206",
-        "categories": [
-          {
-            "cdCat01": "F2702",
-            "name": "総数"
-          },
-          {
-            "cdCat01": "F270201",
-            "name": "男性"
-          },
-          {
-            "cdCat01": "F270202",
-            "name": "女性"
-          }
-        ]
-      }
-    },
-    {
-      "title": "市区町外（県外）で従業している就業者数",
-      "titleId": "number-of-employees-outside-prefecture",
-      "cardComponent": "estat-line-chart-break-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
-        "statsDataId": "0000020206",
-        "categories": [
-          {
-            "cdCat01": "F2703",
-            "name": "総数"
-          },
-          {
-            "cdCat01": "F270301",
-            "name": "男性"
-          },
-          {
-            "cdCat01": "F270302",
-            "name": "女性"
           }
         ]
       }

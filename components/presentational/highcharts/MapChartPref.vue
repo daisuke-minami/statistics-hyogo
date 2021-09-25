@@ -7,6 +7,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import Highcharts from 'highcharts'
+import { cloneDeep } from 'lodash'
 
 export default {
   props: {
@@ -14,13 +15,15 @@ export default {
       type: Array,
       required: true,
     },
-    yAxisData: {
-      type: Array,
-      required: true,
-    },
   },
   computed: {
     ...mapGetters('topojson', ['getMaps']),
+    series() {
+      const series = cloneDeep(this.displayData)
+      series[0].joinBy = ['N03_001', 'prefName']
+      series[0].states = { hover: { color: '#a4edba' } }
+      return series
+    },
     map() {
       return this.getMaps.japanMap
     },
@@ -50,7 +53,7 @@ export default {
         },
         tooltip: {
           formatter() {
-            return `${this.point.lgName}</b>:<br>${Highcharts.numberFormat(
+            return `${this.point.prefName}</b>:<br>${Highcharts.numberFormat(
               this.point.value,
               0,
               '',
@@ -61,7 +64,7 @@ export default {
         credits: {
           enabled: false,
         },
-        series: this.displayData,
+        series: this.series,
       }
     },
   },
