@@ -1,14 +1,40 @@
 <template>
   <div>
     <tab-chart-class :statistics-class="statisticsClass" />
-    <card-row class="DataBlock">
-      <component
-        :is="item.cardComponent"
-        v-for="(item, i) in contentsList"
-        :key="i"
-        :contents="item.contents"
+
+    <!-- RankChartの場合  -->
+    <div v-if="isRank">
+      <select-title
+        v-model="titleId"
+        :contents-list="contentsList"
+        :is-rank="isRank"
       />
-    </card-row>
+      <div v-if="isCity">
+        <card-row class="DataBlock">
+          <estat-city-rank-card :city-list="cityList" :contents="contents" />
+        </card-row>
+      </div>
+      <div v-else>
+        <card-row class="DataBlock">
+          <estat-pref-rank-card :pref-list="prefList" :contents="contents" />
+        </card-row>
+      </div>
+    </div>
+
+    <!-- TimeChartの場合  -->
+    <div v-else>
+      <div v-if="isCity">
+        <select-city v-model="cityCode" :city-list="cityList" />
+      </div>
+      <card-row class="DataBlock">
+        <component
+          :is="item.cardComponent"
+          v-for="(item, i) in contentsList"
+          :key="i"
+          :contents="item"
+        />
+      </card-row>
+    </div>
   </div>
 </template>
 
@@ -16,7 +42,7 @@
 import Vue from 'vue'
 import { EventBus, TOGGLE_EVENT } from '@/utils/tab-event-bus.ts'
 import { ThisTypedComponentOptionsWithRecordProps } from 'vue/types/options'
-import { mapGetters } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 import { cloneDeep } from 'lodash'
 import { ContentsType, ContentsList } from '~/utils/formatChart'
 
@@ -47,59 +73,116 @@ const options: ThisTypedComponentOptionsWithRecordProps<
   },
   data() {
     return {
-      chartClass: 'prefecture',
+      // chartClass: 'prefecture',
       tab: null,
+      titleId: null,
+      cityCode: null,
     }
   },
   computed: {
-    ...mapGetters('prefList', ['getSelectedPrefCode', 'getPrefName']),
-    prefCode() {
+    ...mapGetters('prefList', [
+      'getSelectedPrefCode',
+      'getPrefName',
+      'getPrefList',
+    ]),
+    ...mapGetters('cityList', [
+      'getSelectedCityCode',
+      'getCityList',
+      'getCityName',
+    ]),
+    prefList() {
+      return this.getPrefList
+    },
+    prefCode(): number {
       return this.getSelectedPrefCode
     },
-    prefName() {
+    prefName(): string {
       return this.getPrefName(this.prefCode)
+    },
+    cityList() {
+      return this.getCityList
+    },
+    cityName() {
+      return this.getCityName(this.cityCode)
     },
     statisticsClass() {
       return this.$route.params.statisticsClass
     },
-    items() {
-      return [
-        { label: `${this.prefName}の統計`, component: 'cards-pref' },
-        { label: '市区町村の統計', component: 'cards-city' },
-        { label: '都道府県ランキング', component: 'cards-pref-rank' },
-        { label: '市区町村ランキング', component: 'cards-city-rank' },
-      ]
+    chartClass(): 'prefecture' | 'city' | 'prefectureRank' | 'cityRank' {
+      return this.$route.params.chartClass
+    },
+    governmentType(): 'prefecture' | 'city' {
+      return this.chartClass.replace('Rank', '')
+    },
+    isCity(): boolean {
+      if (this.governmentType === 'city') {
+        return true
+      } else {
+        return false
+      }
+    },
+    isRank(): boolean {
+      if (this.chartClass.match(/Rank/)) {
+        return true
+      } else {
+        return false
+      }
     },
     contentsList() {
-      return this.contentsAll[this.chartClass].map((d) => {
+      return this.contentsAll[this.governmentType].map((d) => {
         // ShallowCopyを避けるため、lodashのcloneDeepを用いる。
         const contents = cloneDeep(d)
 
         // 都道府県の情報を追加
+        contents.prefList = this.prefList
         contents.prefName = this.prefName
         contents.prefCode = this.prefCode
 
-        // 統計タイトルを上書き
-        contents.title = `${this.prefName}の${d.title}`
-
-        // 動的ルーティングのパスを追加
-        contents.route = `${this.prefCode}/${contents.titleId}/`
+        switch (this.chartClass) {
+          case 'prefecture':
+            contents.title = `${this.prefName}の${d.title}`
+            contents.route = `${this.prefCode}/${contents.titleId}/`
+            break
+          case 'city':
+            contents.cityName = this.cityName
+            contents.cityCode = this.cityCode
+            contents.title = `${this.cityName}の${d.title}`
+            contents.route = `${this.prefCode}/${this.cityCode}/${contents.titleId}/`
+            break
+        }
 
         // estatResponseのパスを追加
-        contents.estatJsonPath = `${this.statisticsClass}/${this.chartClass}/${contents.titleId}.json`
+        contents.estatJsonPath = `${this.statisticsClass}/${this.governmentType}/${contents.titleId}.json`
 
         // console.log(contents)
         return {
-          cardComponent: d.cardComponent,
-          contents,
+          // cardComponent: d.cardComponent,
+          ...contents,
         }
       })
     },
+    contents() {
+      return this.contentsList.find((f) => f.titleId === this.titleId)
+    },
+  },
+  watch: {
+    titleId() {
+      // this.$fetch()
+    },
+    cityCode(): void {
+      // this.$fetch()
+      this.changeSelectedCity(this.cityCode)
+    },
+  },
+  created(): void {
+    this.cityCode = this.getSelectedCityCode
+    this.titleId = this.contentsList.filter((f) => f.isRank === true)[0].titleId
   },
   methods: {
     change() {
       EventBus.$emit(TOGGLE_EVENT)
     },
+    ...mapActions('cityList', ['changeSelectedCity']),
   },
   head() {
     return {

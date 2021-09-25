@@ -5,7 +5,7 @@
         <v-col>
           <v-select
             v-model="titleId"
-            :items="contentsList"
+            :items="items"
             item-text="title"
             item-value="titleId"
             hint="統計項目を選択"
@@ -30,6 +30,10 @@ export default Vue.extend({
       type: Array,
       required: true,
     },
+    isRank: {
+      type: Boolean,
+      required: true,
+    },
   },
   data() {
     return {
@@ -41,12 +45,17 @@ export default Vue.extend({
     }
   },
   computed: {
-    // categoryList() {
-    //   return this.chartList
-    // },
+    items() {
+      if (this.isRank) {
+        // RankChartの対象のみ抽出
+        return this.contentsList.filter((f) => f.isRank === true)
+      } else {
+        return this.contentsList
+      }
+    },
   },
   created() {
-    this.titleId = this.contentsList[0].titleId
+    this.titleId = this.items[0].titleId
   },
 })
 </script>
