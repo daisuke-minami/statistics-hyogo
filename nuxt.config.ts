@@ -233,10 +233,35 @@ const config: NuxtConfig = {
     splash_pages: null,
   },
   generate: {
-    interval: 1000,
-    fallback: true,
-    concurrency: 100,
+    // interval: 1000,
+    // fallback: true,
+    // concurrency: 100,
+    // routes() {
+    //   return routes
+    // },
     routes() {
+      const routes = []
+      const fs = require('fs')
+      // const fileNames = fs.readdirSync('./data')
+      // for (const key in fileNames) {
+      //   const page = JSON.parse(
+      //     fs.readFileSync('./data/' + fileNames[key], 'utf8')
+      //   )
+      //   routes.push({
+      //     route: '/' + page.slug,
+      //     payload: page,
+      //   })
+      // }
+      const page = JSON.parse(
+        fs.readFileSync(
+          './static/pagecontents/educationsports/prefecture/number-of-farmers.json',
+          'utf8'
+        )
+      )
+      routes.push({
+        route: 'educationsports/prefecture/28/number-of-farmers',
+        payload: page,
+      })
       return routes
     },
   },
