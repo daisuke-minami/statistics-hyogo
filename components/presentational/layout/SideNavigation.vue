@@ -240,10 +240,6 @@ export default Vue.extend({
           title: '当サイトについて',
           link: '/about',
         },
-        {
-          title: '参考サイト一覧',
-          link: '/contacts',
-        },
       ]
     },
   },
