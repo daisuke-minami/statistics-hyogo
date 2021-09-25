@@ -25,36 +25,19 @@
 
 <script lang="ts">
 import Vue from 'vue'
-// import { MetaInfo } from 'vue-meta'
-import { EventBus, TOGGLE_EVENT } from '@/utils/tab-event-bus.ts'
+import { EventBus, TOGGLE_EVENT } from '@/utils/tab-event-bus'
 import { mapGetters } from 'vuex'
-import { ContentsType } from '~/utils/formatChart'
-
-type Data = {
-  tab: number
-  items: { label: string; component: string }
-}
-
-type Computed = {
-  contentsId: () => string
-  contentsAll: () => ContentsType[]
-}
-
-type Methods = {
-  change: () => void
-  head: () => MetaInfo
-}
 
 export default Vue.extend({
   // asyncData+$axiosで取得する場合
   // async asyncData({ $axios }) {
-  //   const contentsId = 'other'
+  //   const contentsId = 'administrativefinancial'
   //   const contentsAll = await $axios.$get(`/pagesetting/${contentsId}.json`)
   //   return { contentsId, contentsAll }
   // },
   // asyncData + DynamicImportの場合
-  async asyncData() {
-    const contentsId = 'other'
+  async asyncData({ params }) {
+    const contentsId = params.statisticsClass
     const contentsAll = await import(`~/static/pagesetting/${contentsId}.json`)
     return { contentsId, contentsAll }
   },
@@ -87,7 +70,7 @@ export default Vue.extend({
   },
   head() {
     return {
-      title: '人口・世帯',
+      title: '行財政',
     }
   },
 })
