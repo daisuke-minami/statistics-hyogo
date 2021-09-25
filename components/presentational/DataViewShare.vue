@@ -108,7 +108,7 @@ export default Vue.extend({
       type: String,
       default: '',
     },
-    routes: {
+    route: {
       type: String,
       default: '',
     },

@@ -134,7 +134,6 @@ const options: ThisTypedComponentOptionsWithRecordProps<
         const contents = cloneDeep(d)
 
         // 都道府県の情報を追加
-        contents.prefList = this.prefList
         contents.prefName = this.prefName
         contents.prefCode = this.prefCode
 
@@ -148,6 +147,13 @@ const options: ThisTypedComponentOptionsWithRecordProps<
             contents.cityCode = this.cityCode
             contents.title = `${this.cityName}の${d.title}`
             contents.route = `${this.prefCode}/${this.cityCode}/${contents.titleId}/`
+            break
+          case 'prefectureRank':
+            contents.prefList = this.prefList
+            contents.route = `${this.prefCode}/${contents.titleId}/`
+            break
+          case 'cityRank':
+            contents.route = `${this.prefCode}/${contents.titleId}/`
             break
         }
 

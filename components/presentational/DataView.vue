@@ -75,7 +75,7 @@
       <data-view-share
         v-if="this.$route.query.embed != 'true'"
         :title="title"
-        :routes="routes"
+        :route="route"
         class="Footer-Right"
       />
     </div>
@@ -91,7 +91,7 @@ export default Vue.extend({
       type: String,
       default: '',
     },
-    routes: {
+    route: {
       type: String,
       default: '',
     },
@@ -109,7 +109,7 @@ export default Vue.extend({
       return this.date !== '' ? (new Date(this.date), 'dateTime') : ''
     },
     permalink(): string {
-      return `${this.routes}`
+      return `${this.route}`
     },
   },
   head(): MetaInfo {

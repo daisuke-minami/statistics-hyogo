@@ -14,14 +14,11 @@
               <v-col cols="6">
                 <v-select
                   v-model="select"
-                  :hint="`${select.state}, ${select.abbr}`"
                   :items="items"
-                  item-text="state"
-                  item-value="abbr"
-                  label="Select"
-                  persistent-hint
-                  return-object
-                  single-line
+                  item-text="yearName"
+                  item-value="yearStr"
+                  :menu-props="{ top: true, offsetY: true }"
+                  @change="$emit('input', $event)"
                 />
               </v-col>
             </v-row>
@@ -64,8 +61,9 @@ export default {
         return '_city.l.topojson'
       }
     }
+    console.log(this.select)
     const response = await fetch(
-      `${url}/${this.select.year}/${this.prefCode}/${this.prefCode}${json()}`
+      `${url}/${this.select}/${this.prefCode}/${this.prefCode}${json()}`
     )
     this.topojson = await response.json()
     this.geojson = this._convTopoJsonToGeoJson(this.topojson, 'city')
@@ -80,14 +78,10 @@ export default {
       geojson: null,
       topojson: null,
       bigcityKind: 'all',
-      targetYear: null,
-      select: { state: 'Florida', abbr: 'FL' },
+      select: '20200101',
       items: [
-        { state: 'Florida', abbr: 'FL' },
-        { state: 'Georgia', abbr: 'GA' },
-        { state: 'Nebraska', abbr: 'NE' },
-        { state: 'California', abbr: 'CA' },
-        { state: 'New York', abbr: 'NY' },
+        { yearName: '1920年', yearStr: '19200101' },
+        { yearName: '2020年', yearStr: '20200101' },
       ],
     }
   },
@@ -99,15 +93,12 @@ export default {
         graphId: "'hyogo-population-chart-graph'",
       }
     },
-    Times() {
-      return [
-        { yearName: '1000年', year: '20200101' },
-        { yearName: '1920年', year: '19200101' },
-      ]
-    },
   },
   watch: {
     bigcityKind() {
+      this.$fetch()
+    },
+    select() {
       this.$fetch()
     },
   },

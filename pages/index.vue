@@ -4,7 +4,7 @@
       <!-- 県民局 -->
       <hyogo-kenmin-kyoku-card />
       <!-- 市区町村合併 -->
-      <!-- <hyogo-city-card :pref-code="prefCode" :pref-name="prefName" /> -->
+      <city-area-card :pref-code="prefCode" :pref-name="prefName" />
     </card-row>
   </div>
 </template>
