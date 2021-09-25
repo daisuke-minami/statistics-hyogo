@@ -1,4 +1,4 @@
-﻿{
+{
   "version": "0.1",
   "language": "en",
   "words": [
@@ -17,6 +17,26 @@
     "purgecss",
     "querents",
     "tightenco",
-    "vuetify"
+    "vuetify",
+    "bigcity",
+    "prefs",
+    "prefecture",
+    "city",
+    "prefecturerank",
+    "cityrank",
+    "estat",
+    "resas",
+    "highcharts",
+    "hyogo",
+    "adsense",
+    "topojson",
+    "educationsports",
+    "miningindustry",
+    "administrativefinancial",
+    "laborwage",
+    "landweather",
+    "socialsecurity",
+    "safetyenvironment",
+    "GET_STATS_DATA"
   ]
 }
