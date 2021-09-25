@@ -74,6 +74,7 @@ const config: NuxtConfig = {
       {
         rel: 'preload',
         as: 'fetch',
+        href: 'payload.js',
       },
     ],
   },
