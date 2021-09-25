@@ -12,11 +12,14 @@ import { cloneDeep } from 'lodash'
 import { mapGetters } from 'vuex'
 
 export default {
-  async asyncData({ params }) {
+  async asyncData({ params, payload }) {
+    if (payload) {
+      const contentsAll = payload
+      return { contentsAll }
+    }
     const contentsAll = await import(
       `~/static/pagesetting/${params.statisticsClass}.json`
     )
-    console.log(contentsAll)
     return { contentsAll }
   },
   data() {
