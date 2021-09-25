@@ -23,6 +23,12 @@ const config: NuxtConfig = {
     htmlAttrs: {
       prefix: 'og: http://ogp.me/ns#',
     },
+    // script: [
+    //   {
+    //     'data-ad-client': 'ca-pub-4511811306180988',
+    //     src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js',
+    //   },
+    // ],
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -140,7 +146,7 @@ const config: NuxtConfig = {
     '@nuxtjs/proxy',
     'nuxt-leaflet',
     '@nuxtjs/sitemap',
-    ['@nuxtjs/google-adsense', { id: 'ca-pub-4511811306180988' }],
+    // ['@nuxtjs/google-adsense', { id: 'ca-pub-4511811306180988' }],
     ['@nuxtjs/google-gtag'],
   ],
   sitemap: {
