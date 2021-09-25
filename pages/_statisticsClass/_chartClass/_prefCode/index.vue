@@ -140,20 +140,20 @@ const options: ThisTypedComponentOptionsWithRecordProps<
         switch (this.chartClass) {
           case 'prefecture':
             contents.title = `${this.prefName}の${d.title}`
-            contents.route = `${this.prefCode}/${contents.titleId}/`
+            contents.route = `/${contents.titleId}/`
             break
           case 'city':
             contents.cityName = this.cityName
             contents.cityCode = this.cityCode
             contents.title = `${this.cityName}の${d.title}`
-            contents.route = `${this.prefCode}/${this.cityCode}/${contents.titleId}/`
+            contents.route = `${this.cityCode}/${contents.titleId}/`
             break
           case 'prefectureRank':
             contents.prefList = this.prefList
-            contents.route = `${this.prefCode}/${contents.titleId}/`
+            contents.route = `/${contents.titleId}/`
             break
           case 'cityRank':
-            contents.route = `${this.prefCode}/${contents.titleId}/`
+            contents.route = `/${contents.titleId}/`
             break
         }
 

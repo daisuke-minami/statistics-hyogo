@@ -113,7 +113,11 @@ const options: ThisTypedComponentOptionsWithRecordProps<
         return ('0000000000' + this.contents.prefCode).slice(-2) + '000'
       }
     },
+    estatParams() {
+      return this.contents.estatParams
+    },
     title(): string {
+      console.log(this.estatParams)
       return this.contents.title
     },
     titleId(): string {
