@@ -43,7 +43,7 @@ for path in routes:
 # #OGP画像の生成（都道府県）
 # for item in files_file:
 
-#     #contentsIdディレクトリを作成
+#     #statisticsClassディレクトリを作成
 #     contents_id = item.replace('.json', '')
 #     contentsDirectory = os.path.join(root_dir, 'data/pagecontents/'+contents_id)
 #     pathlib.Path(contentsDirectory).mkdir(exist_ok=True)

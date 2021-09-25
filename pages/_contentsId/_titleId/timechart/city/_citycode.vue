@@ -20,8 +20,8 @@ export default {
     cityList() {
       return cityJson.result
     },
-    contentsId() {
-      return this.$route.params.contentsId
+    statisticsClass() {
+      return this.$route.params.statisticsClass
     },
     titleId() {
       return this.$route.params.titleId
@@ -33,22 +33,22 @@ export default {
       return this.cityList.find((d) => d.cityCode === this.cityCode).cityName
     },
     contentsAll() {
-      return require(`~/static/pagesetting/${this.contentsId}.json`)
+      return require(`~/static/pagesetting/${this.statisticsClass}.json`)
     },
     contents() {
       // console.log(this.contentsAll)
       return this.contentsAll[this.governmentType]
         .map((d) => {
           d.params.cdArea = this.cityCode
-          const contentsId = this.contentsId
+          const statisticsClass = this.statisticsClass
 
           return {
-            contentsId,
+            statisticsClass,
             governmentType: this.governmentType,
             title: `${this.cityName}の${d.title}`,
             titleId: d.titleId,
             additionalDescription: d.additionalDescription,
-            routes: `${contentsId}/${d.titleId}/TimeChart//${this.governmentType}/${this.cityCode}`,
+            routes: `${statisticsClass}/${d.titleId}/TimeChart//${this.governmentType}/${this.cityCode}`,
             unit: d.unit,
             params: d.params,
           }

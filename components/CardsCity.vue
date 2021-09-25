@@ -33,7 +33,7 @@ export default Vue.extend({
     ScaleLoader,
   },
   props: {
-    contentsId: {
+    statisticsClass: {
       type: String,
       required: true,
     },
@@ -70,17 +70,17 @@ export default Vue.extend({
         const cityCode = this.cityCode
         d.params.cdArea = cityCode
 
-        const contentsId = this.contentsId
+        const statisticsClass = this.statisticsClass
 
         return {
           cardComponent: d.cardComponent,
           contents: {
-            contentsId,
+            statisticsClass,
             governmentType: this.governmentType,
             title: `${cityName}の${d.title}`,
             titleId: d.titleId,
             additionalDescription: d.additionalDescription,
-            routes: `${contentsId}/${d.titleId}/timechart/${this.governmentType}/${cityCode}/`,
+            routes: `${statisticsClass}/${d.titleId}/timechart/${this.governmentType}/${cityCode}/`,
             unit: d.unit,
             params: d.params,
           },

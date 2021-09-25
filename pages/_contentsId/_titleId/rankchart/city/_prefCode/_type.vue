@@ -10,9 +10,9 @@ export default {
   // async asyncData({ params }) {
   //   const cityList = (await import(`~/static/codes/citylist.json`)).result
   //   const prefList = (await import(`~/static/codes/preflist.json`)).result
-  //   const contentsId = params.contentsId
-  //   const contentsAll = await import(`~/static/pagesetting/${contentsId}.json`)
-  //   return { cityList, prefList, contentsId, contentsAll }
+  //   const statisticsClass = params.statisticsClass
+  //   const contentsAll = await import(`~/static/pagesetting/${statisticsClass}.json`)
+  //   return { cityList, prefList, statisticsClass, contentsAll }
   // },
   data() {
     return {
@@ -35,11 +35,11 @@ export default {
     titleId() {
       return this.$route.params.titleId
     },
-    contentsId() {
-      return this.$route.params.contentsId
+    statisticsClass() {
+      return this.$route.params.statisticsClass
     },
     contentsAll() {
-      return require(`~/static/pagesetting/${this.contentsId}.json`)
+      return require(`~/static/pagesetting/${this.statisticsClass}.json`)
     },
     contentsList() {
       return this.contentsAll[this.governmentType].filter(
@@ -53,12 +53,12 @@ export default {
           d.params.cdArea = this.cityList.map((d) => d.cityCode)
 
           return {
-            contentsId: this.contentsId,
+            statisticsClass: this.statisticsClass,
             governmentType: this.governmentType,
             title: `市区町村別${d.title}ランキング`,
             titleId: d.titleId,
             additionalDescription: d.additionalDescription,
-            routes: `${this.contentsId}/${d.titleId}/rankchart/${this.governmentType}`,
+            routes: `${this.statisticsClass}/${d.titleId}/rankchart/${this.governmentType}`,
             unit: d.unit,
             params: d.params,
           }

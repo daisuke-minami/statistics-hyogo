@@ -18,7 +18,7 @@ import { mapGetters } from 'vuex'
 import { ContentsType, ContentsList } from '~/utils/formatChart'
 
 type Props = {
-  contentsId: string
+  statisticsClass: string
   contentsAll: ContentsType[]
 }
 
@@ -37,7 +37,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
   Props
 > = {
   props: {
-    contentsId: {
+    statisticsClass: {
       type: String,
       required: true,
     },
@@ -63,7 +63,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
       return this.contentsAll[this.governmentType].map((d) => {
         const prefName = this.prefName
         const prefCode = this.prefCode
-        const contentsId = this.contentsId
+        const statisticsClass = this.statisticsClass
 
         // 都道府県コードを5桁に変換してcdAreaに格納
         d.params.cdArea = ('0000000000' + prefCode).slice(-2) + '000'
@@ -71,12 +71,12 @@ const options: ThisTypedComponentOptionsWithRecordProps<
         return {
           cardComponent: d.cardComponent,
           contents: {
-            contentsId,
+            statisticsClass,
             governmentType: this.governmentType,
             title: `${prefName}の${d.title}`,
             titleId: d.titleId,
             additionalDescription: d.additionalDescription,
-            routes: `${contentsId}/${d.titleId}/timechart/${this.governmentType}/${prefCode}/`,
+            routes: `${statisticsClass}/${d.titleId}/timechart/${this.governmentType}/${prefCode}/`,
             unit: d.unit,
             params: d.params,
           },

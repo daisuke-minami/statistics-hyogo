@@ -20,8 +20,8 @@ export default {
     prefList() {
       return prefJson.result
     },
-    contentsId() {
-      return this.$route.params.contentsId
+    statisticsClass() {
+      return this.$route.params.statisticsClass
     },
     titleId() {
       return this.$route.params.titleId
@@ -34,24 +34,24 @@ export default {
       return this.prefList.find((d) => d.prefCode === this.prefCode).prefName
     },
     contentsAll() {
-      return require(`~/static/pagesetting/${this.contentsId}.json`)
+      return require(`~/static/pagesetting/${this.statisticsClass}.json`)
     },
     contents() {
       // console.log(this.contentsAll)
       return this.contentsAll[this.governmentType]
         .map((d) => {
-          const contentsId = this.contentsId
+          const statisticsClass = this.statisticsClass
 
           // 都道府県コードを5桁に変換してcdAreaに格納
           d.params.cdArea = ('0000000000' + this.prefCode).slice(-2) + '000'
 
           return {
-            contentsId,
+            statisticsClass,
             governmentType: this.governmentType,
             title: `${this.prefName}の${d.title}`,
             titleId: d.titleId,
             additionalDescription: d.additionalDescription,
-            routes: `${contentsId}/${d.titleId}/timechart/${this.governmentType}/${this.prefCode}`,
+            routes: `${statisticsClass}/${d.titleId}/timechart/${this.governmentType}/${this.prefCode}`,
             unit: d.unit,
             params: d.params,
           }
@@ -65,7 +65,7 @@ export default {
     },
   },
   created() {
-    // console.log('contentsId', this.contentsId)
+    // console.log('statisticsClass', this.statisticsClass)
     // console.log('titleId', this.titleId)
     // console.log('prefCode', this.prefCode)
     // console.log('prefList', this.prefList)

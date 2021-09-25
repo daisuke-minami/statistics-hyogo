@@ -8,9 +8,9 @@ import prefJson from '@/static/codes/preflist.json'
 export default {
   // async asyncData({ params }) {
   //   const prefList = (await import(`~/static/codes/preflist.json`)).result
-  //   const contentsId = params.contentsId
-  //   const contentsAll = await import(`~/static/pagesetting/${contentsId}.json`)
-  //   return { prefList, contentsId, contentsAll }
+  //   const statisticsClass = params.statisticsClass
+  //   const contentsAll = await import(`~/static/pagesetting/${statisticsClass}.json`)
+  //   return { prefList, statisticsClass, contentsAll }
   // },
   data() {
     return {
@@ -18,11 +18,11 @@ export default {
     }
   },
   computed: {
-    contentsId() {
-      return this.$route.params.contentsId
+    statisticsClass() {
+      return this.$route.params.statisticsClass
     },
     contentsAll() {
-      return require(`~/static/pagesetting/${this.contentsId}.json`)
+      return require(`~/static/pagesetting/${this.statisticsClass}.json`)
     },
     prefList() {
       return prefJson.result
@@ -44,12 +44,12 @@ export default {
           )
 
           return {
-            contentsId: this.contentsId,
+            statisticsClass: this.statisticsClass,
             governmentType: this.governmentType,
             title: `都道府県別${d.title}ランキング`,
             titleId: d.titleId,
             additionalDescription: d.additionalDescription,
-            routes: `${this.contentsId}/${d.titleId}/rankchart/${this.governmentType}`,
+            routes: `${this.statisticsClass}/${d.titleId}/rankchart/${this.governmentType}`,
             unit: d.unit,
             params: d.params,
           }

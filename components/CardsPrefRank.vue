@@ -36,7 +36,7 @@ export default {
     ScaleLoader,
   },
   props: {
-    contentsId: {
+    statisticsClass: {
       type: String,
       required: true,
     },
@@ -83,12 +83,12 @@ export default {
           )
 
           return {
-            contentsId: this.contentsId,
+            statisticsClass: this.statisticsClass,
             governmentType: this.governmentType,
             title: `都道府県別${d.title}ランキング`,
             titleId: d.titleId,
             additionalDescription: d.additionalDescription,
-            routes: `${this.contentsId}/${d.titleId}/rankchart/${this.governmentType}`,
+            routes: `${this.statisticsClass}/${d.titleId}/rankchart/${this.governmentType}`,
             unit: d.unit,
             params: d.params,
           }

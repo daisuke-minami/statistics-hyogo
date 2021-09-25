@@ -36,7 +36,7 @@ export default {
     ScaleLoader,
   },
   props: {
-    contentsId: {
+    statisticsClass: {
       type: String,
       required: true,
     },
@@ -86,12 +86,12 @@ export default {
           d.params.cdArea = this.cityList.map((d) => d.cityCode)
 
           return {
-            contentsId: this.contentsId,
+            statisticsClass: this.statisticsClass,
             governmentType: this.governmentType,
             title: `${this.prefName}の市区町村別${d.title}ランキング`,
             titleId: d.titleId,
             additionalDescription: d.additionalDescription,
-            routes: `${this.contentsId}/${d.titleId}/rankchart/${this.governmentType}/${this.prefCode}`,
+            routes: `${this.statisticsClass}/${d.titleId}/rankchart/${this.governmentType}/${this.prefCode}`,
             unit: d.unit,
             params: d.params,
           }

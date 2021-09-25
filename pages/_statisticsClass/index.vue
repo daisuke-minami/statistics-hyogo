@@ -14,7 +14,7 @@
         <v-tab-item v-for="(item, i) in items" :key="i" :value="`tab-${i}`">
           <component
             :is="item.component"
-            :contents-id="contentsId"
+            :statistics-class="statisticsClass"
             :contents-all="contentsAll"
           />
         </v-tab-item>
@@ -31,15 +31,17 @@ import { mapGetters } from 'vuex'
 export default Vue.extend({
   // asyncData+$axiosで取得する場合
   // async asyncData({ $axios }) {
-  //   const contentsId = 'administrativefinancial'
-  //   const contentsAll = await $axios.$get(`/pagesetting/${contentsId}.json`)
-  //   return { contentsId, contentsAll }
+  //   const statisticsClass = 'administrativefinancial'
+  //   const contentsAll = await $axios.$get(`/pagesetting/${statisticsClass}.json`)
+  //   return { statisticsClass, contentsAll }
   // },
   // asyncData + DynamicImportの場合
   async asyncData({ params }) {
-    const contentsId = params.statisticsClass
-    const contentsAll = await import(`~/static/pagesetting/${contentsId}.json`)
-    return { contentsId, contentsAll }
+    const statisticsClass = params.statisticsClass
+    const contentsAll = await import(
+      `~/static/pagesetting/${statisticsClass}.json`
+    )
+    return { statisticsClass, contentsAll }
   },
   data() {
     return {

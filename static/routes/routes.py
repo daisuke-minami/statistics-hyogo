@@ -33,7 +33,7 @@ routes = []
 
 # timechart(都道府県)のroutes設定
 for item in files_file:
-    #contentsIdの取得
+    #statisticsClassの取得
     contents_id = item.replace('.json', '')
 
     #titleId（リスト）の取得
@@ -47,7 +47,7 @@ for item in files_file:
 
 # timechart(市区町村)のroutes設定
 for item in files_file:
-    #contentsIdの取得
+    #statisticsClassの取得
     contents_id = item.replace('.json', '')
 
     #titleId（リスト）の取得
@@ -62,7 +62,7 @@ for item in files_file:
 
 # rankchart(都道府県)のroutes設定
 for item in files_file:
-    #contentsIdの取得
+    #statisticsClassの取得
     contents_id = item.replace('.json', '')
 
     #titleId（リスト）の取得

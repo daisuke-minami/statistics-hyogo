@@ -15,7 +15,7 @@ files_file = [f for f in files if os.path.isfile(os.path.join(path, f))]
 #contentsの生成（都道府県）
 for item in files_file:
 
-    #contentsIdディレクトリを作成
+    #statisticsClassディレクトリを作成
     contents_id = item.replace('.json', '')
     contentsDirectory = os.path.join(root_dir, 'static/pagecontents/'+contents_id)
     pathlib.Path(contentsDirectory).mkdir(exist_ok=True)
@@ -45,7 +45,7 @@ for item in files_file:
 #contentsの生成（市区町村）
 for item in files_file:
 
-    #contentsIdディレクトリを作成
+    #statisticsClassディレクトリを作成
     contents_id = item.replace('.json', '')
     contentsDirectory = os.path.join(root_dir, 'static/pagecontents/'+contents_id)
     pathlib.Path(contentsDirectory).mkdir(exist_ok=True)

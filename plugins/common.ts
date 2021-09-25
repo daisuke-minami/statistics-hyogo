@@ -1,8 +1,8 @@
 /** 各クラスのチャートリスト作成
- * @param contentsId - クラス
+ * @param statisticsClass - クラス
  * @param isPref - 都道府県(true) or 市区町村(false)
  */
-const getChartList = (contentsId: string, isPref: boolean) => {
+const getChartList = (statisticsClass: string, isPref: boolean) => {
   const param = () => {
     if (isPref) {
       return 'prefecture'
@@ -11,7 +11,9 @@ const getChartList = (contentsId: string, isPref: boolean) => {
     }
   }
 
-  const arr = process.env.Contents.filter((d) => d.contentsId === contentsId)
+  const arr = process.env.Contents.filter(
+    (d) => d.statisticsClass === statisticsClass
+  )
     .reduce((acc, cur) => {
       if (param() in cur) {
         acc.push(cur)
