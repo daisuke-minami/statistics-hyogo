@@ -22,11 +22,6 @@ export default {
     )
     return { contentsAll }
   },
-  // async fetch() {
-  //   this.contentsAll = await import(
-  //     `~/static/pagesetting/${this.statisticsClass}.json`
-  //   )
-  // },
   data() {
     return {
       cityCode: null,
