@@ -22,9 +22,15 @@ export default {
     )
     return { contentsAll }
   },
+  // async fetch() {
+  //   this.contentsAll = await import(
+  //     `~/static/pagesetting/${this.statisticsClass}.json`
+  //   )
+  // },
   data() {
     return {
       cityCode: null,
+      contentsAll: null,
       // chartClass: 'prefecture',
     }
   },
@@ -62,9 +68,16 @@ export default {
     titleId() {
       return this.$route.params.titleId
     },
+    estatJsonPath() {
+      return `${this.statisticsClass}/${this.governmentType}/${this.titleId}.json`
+    },
     contents() {
-      console.log(this.contentsAll)
-      console.log(this.chartClass)
+      console.log('statisticsClass', this.statisticsClass)
+      console.log('chartClass', this.chartClass)
+      console.log('titleId', this.titleId)
+      console.log('contentsAll', this.contentsAll)
+      console.log('prefCode', this.prefCode)
+      console.log('estatJsonPath', this.estatJsonPath)
       return this.contentsAll[this.governmentType]
         .map((d) => {
           // ShallowCopyを避けるため、lodashのcloneDeepを用いる。

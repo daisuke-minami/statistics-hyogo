@@ -10,7 +10,7 @@ const fs = require('fs')
 const routes = JSON.parse(fs.readFileSync('static/routes/routes.json'))
 const cityList = JSON.parse(fs.readFileSync('static/codes/citylist.json'))
 const prefList = JSON.parse(fs.readFileSync('static/codes/preflist.json'))
-
+const cheerio = require('cheerio')
 require('dotenv').config()
 
 const config: NuxtConfig = {
@@ -220,6 +220,13 @@ const config: NuxtConfig = {
       config.externals = [{ moment: 'moment' }]
     },
   },
+  hooks: {
+    'generate:page': (page) => {
+      const doc = cheerio.load(page.html)
+      doc(`body script`).remove()
+      page.html = doc.html()
+    },
+  },
   purgeCSS: {
     paths: [
       './node_modules/vuetify/dist/vuetify.js',
@@ -238,9 +245,10 @@ const config: NuxtConfig = {
     splash_pages: null,
   },
   generate: {
-    interval: 1000,
+    // interval: 1000,
     fallback: true,
-    concurrency: 100,
+    // concurrency: 100,
+    subFolders: false,
     routes() {
       return routes
     },
