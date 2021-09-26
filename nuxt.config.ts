@@ -245,9 +245,9 @@ const config: NuxtConfig = {
     splash_pages: null,
   },
   generate: {
-    // interval: 1000,
+    interval: 1000,
     fallback: true,
-    // concurrency: 100,
+    concurrency: 100,
     subFolders: false,
     routes() {
       return routes
