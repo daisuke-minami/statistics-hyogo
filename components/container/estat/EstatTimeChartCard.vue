@@ -94,9 +94,12 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     },
   },
   async fetch() {
-    this.estatResponse = await import(
-      `~/static/pagecontents/${this.contents.estatJsonPath}`
-    )
+    // this.estatResponse = await import(
+    //   `~/static/pagecontents/${this.contents.estatJsonPath}`
+    // )
+    const params = this.contents.estatParams
+    params.cdArea = this.cdArea
+    this.estatResponse = await this.$getEstatAPI(params)
   },
   data() {
     return {

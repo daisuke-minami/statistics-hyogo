@@ -23,7 +23,7 @@ const getEstatAPI = async (estatParam: EstatParam) => {
   if (estatParam.cdCat01) {
     url = url + `&cdCat01=${estatParam.cdCat01}`
   }
-  // console.log(url)
+  console.log(url)
   const res = await axios.get(url, {
     mode: 'cors',
     withCredentials: true,
