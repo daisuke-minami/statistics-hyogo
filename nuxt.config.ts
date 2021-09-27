@@ -10,6 +10,8 @@ const fs = require('fs')
 const routes = JSON.parse(fs.readFileSync('static/routes/routes.json'))
 const cityList = JSON.parse(fs.readFileSync('static/codes/citylist.json'))
 const prefList = JSON.parse(fs.readFileSync('static/codes/preflist.json'))
+const { PREF_CODE, API_KEY, ESTAT_APPID, GOOGLE_ANALYTICS_ID, ESTAT_API } =
+  process.env
 require('dotenv').config()
 
 const config: NuxtConfig = {
@@ -282,6 +284,11 @@ const config: NuxtConfig = {
     routes,
     cityList: cityList.result,
     prefList: prefList.result,
+    PREF_CODE,
+    API_KEY,
+    ESTAT_APPID,
+    GOOGLE_ANALYTICS_ID,
+    ESTAT_API,
   },
   router: {
     middleware: 'vuex',

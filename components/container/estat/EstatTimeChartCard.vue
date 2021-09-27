@@ -98,19 +98,18 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     },
   },
   async fetch() {
-    // console.log('estatTimeChart',this.json)
-    if (this.json) {
-      this.estatResponse = this.json
-    } else {
-      this.estatResponse = await import(
-        `~/static/pagecontents/${this.contents.estatJsonPath}`
-      )
-    }
+    // if (this.json) {
+    //   this.estatResponse = this.json
+    // } else {
+    //   this.estatResponse = await import(
+    //     `~/static/pagecontents/${this.contents.estatJsonPath}`
+    //   )
+    // }
 
     // console.log('json', this.json)
-    // const params = this.contents.estatParams
-    // params.cdArea = this.cdArea
-    // this.estatResponse = await this.$getEstatAPI(params)
+    const params = this.contents.estatParams
+    params.cdArea = this.cdArea
+    this.estatResponse = await this.$getEstatAPI(params)
   },
   data() {
     return {
