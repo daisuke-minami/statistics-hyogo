@@ -8,6 +8,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-18.04
+    env:
+      ESTAT_API: localhost:8000
 
     steps:
       - uses: actions/checkout@v2
