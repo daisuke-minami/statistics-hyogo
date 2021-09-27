@@ -90,6 +90,13 @@ const options: ThisTypedComponentOptionsWithRecordProps<
       'getCityList',
       'getCityName',
     ]),
+    ...mapGetters('pageSetting', ['getPageSetting']),
+    statisticsClass() {
+      return this.$route.params.statisticsClass
+    },
+    pageSetting() {
+      return this.getPageSetting(this.statisticsClass)
+    },
     prefList() {
       return this.getPrefList
     },
@@ -105,9 +112,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     cityName() {
       return this.getCityName(this.cityCode)
     },
-    statisticsClass() {
-      return this.$route.params.statisticsClass
-    },
+
     chartClass(): 'prefecture' | 'city' | 'prefectureRank' | 'cityRank' {
       return this.$route.params.chartClass
     },
@@ -129,6 +134,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
       }
     },
     contentsList() {
+      console.log(this.pageSetting)
       return this.contentsAll[this.governmentType].map((d) => {
         // ShallowCopyを避けるため、lodashのcloneDeepを用いる。
         const contents = cloneDeep(d)

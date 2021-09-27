@@ -12,20 +12,20 @@ import { cloneDeep } from 'lodash'
 import { mapGetters } from 'vuex'
 
 export default {
-  async asyncData({ params, payload }) {
-    if (payload) {
-      const contentsAll = payload
-      return { contentsAll }
-    }
-    const contentsAll = await import(
-      `~/static/pagesetting/${params.statisticsClass}.json`
-    )
-    return { contentsAll }
-  },
+  // async asyncData({ params, payload }) {
+  //   if (payload) {
+  //     const contentsAll = payload
+  //     return { contentsAll }
+  //   }
+  //   const contentsAll = await import(
+  //     `~/static/pagesetting/${params.statisticsClass}.json`
+  //   )
+  //   return { contentsAll }
+  // },
   data() {
     return {
       cityCode: null,
-      contentsAll: null,
+      // contentsAll: null,
       // chartClass: 'prefecture',
     }
   },
@@ -36,6 +36,10 @@ export default {
       'getPrefList',
     ]),
     ...mapGetters('cityList', ['getCityList']),
+    ...mapGetters('pageSetting', ['getPageSetting']),
+    pageSetting() {
+      return this.getPageSetting(this.statisticsClass)
+    },
     prefList() {
       return this.getPrefList
     },
@@ -67,13 +71,7 @@ export default {
       return `${this.statisticsClass}/${this.governmentType}/${this.titleId}.json`
     },
     contents() {
-      console.log('statisticsClass', this.statisticsClass)
-      console.log('chartClass', this.chartClass)
-      console.log('titleId', this.titleId)
-      console.log('contentsAll', this.contentsAll)
-      console.log('prefCode', this.prefCode)
-      console.log('estatJsonPath', this.estatJsonPath)
-      return this.contentsAll[this.governmentType]
+      return this.pageSetting[this.governmentType]
         .map((d) => {
           // ShallowCopyを避けるため、lodashのcloneDeepを用いる。
           const contents = cloneDeep(d)
@@ -117,7 +115,7 @@ export default {
     // },
   },
   created() {
-    console.log(this.contents)
+    // console.log(this.contents)
   },
 }
 </script>

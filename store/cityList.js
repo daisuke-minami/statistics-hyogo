@@ -60,6 +60,7 @@ export const actions = {
   // },
   // 環境変数から取得する場合
   fetchCities({ commit }) {
+    // console.log(Object.keys(initialState))
     commit('initCitySet', process.env.cityList)
   },
   changeSelectedCity({ commit }, newCity) {

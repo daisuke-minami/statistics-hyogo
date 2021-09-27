@@ -117,7 +117,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
       return this.contents.estatParams
     },
     title(): string {
-      console.log(this.estatParams)
+      // console.log(this.estatParams)
       return this.contents.title
     },
     titleId(): string {
