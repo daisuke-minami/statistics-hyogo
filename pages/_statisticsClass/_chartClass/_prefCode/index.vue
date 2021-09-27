@@ -65,12 +65,12 @@ const options: ThisTypedComponentOptionsWithRecordProps<
   Computed,
   Props
 > = {
-  async asyncData({ params }) {
-    const contentsAll = await import(
-      `~/static/pagesetting/${params.statisticsClass}.json`
-    )
-    return { contentsAll }
-  },
+  // async asyncData({ params }) {
+  //   const contentsAll = await import(
+  //     `~/static/pagesetting/${params.statisticsClass}.json`
+  //   )
+  //   return { contentsAll }
+  // },
   data() {
     return {
       // chartClass: 'prefecture',
@@ -134,8 +134,8 @@ const options: ThisTypedComponentOptionsWithRecordProps<
       }
     },
     contentsList() {
-      console.log(this.pageSetting)
-      return this.contentsAll[this.governmentType].map((d) => {
+      // console.log(this.pageSetting)
+      return this.pageSetting[this.governmentType].map((d) => {
         // ShallowCopyを避けるため、lodashのcloneDeepを用いる。
         const contents = cloneDeep(d)
 
