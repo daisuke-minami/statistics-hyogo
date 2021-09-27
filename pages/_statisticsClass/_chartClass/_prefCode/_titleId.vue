@@ -4,6 +4,7 @@
     :pref-list="prefList"
     :city-list="cityList"
     :contents="contents"
+    :json="json"
   />
 </template>
 
@@ -12,16 +13,18 @@ import { cloneDeep } from 'lodash'
 import { mapGetters } from 'vuex'
 
 export default {
-  // async asyncData({ params, payload }) {
-  //   if (payload) {
-  //     const contentsAll = payload
-  //     return { contentsAll }
-  //   }
-  //   const contentsAll = await import(
-  //     `~/static/pagesetting/${params.statisticsClass}.json`
-  //   )
-  //   return { contentsAll }
-  // },
+  async asyncData({ params }) {
+    // if (payload) {
+    //   const json = await payload
+    //   console.log(json)
+    //   return { json }
+    // }
+    const json = await import(
+      `~/static/pagecontents/${params.statisticsClass}/${params.chartClass}/${params.titleId}.json`
+    )
+    // console.log(json.default)
+    return { json: json.default }
+  },
   data() {
     return {
       cityCode: null,
@@ -68,14 +71,15 @@ export default {
       return this.$route.params.titleId
     },
     estatJsonPath() {
+      // console.log(this.contents)
       return `${this.statisticsClass}/${this.governmentType}/${this.titleId}.json`
     },
     contents() {
-      console.log('pageSetting', this.pageSetting)
-      console.log('cityList', this.cityList)
-      console.log('prefCode', this.prefCode)
-      console.log('statisticsClass', this.statisticsClass)
-      console.log('titleId', this.titleId)
+      // console.log('pageSetting', this.pageSetting)
+      // console.log('cityList', this.cityList)
+      // console.log('prefCode', this.prefCode)
+      // console.log('statisticsClass', this.statisticsClass)
+      // console.log('titleId', this.titleId)
       return this.pageSetting[this.governmentType]
         .map((d) => {
           // ShallowCopyを避けるため、lodashのcloneDeepを用いる。
@@ -106,6 +110,10 @@ export default {
 
           // estatResponseのパスを追加
           contents.estatJsonPath = `${this.statisticsClass}/${this.governmentType}/${contents.titleId}.json`
+
+          // contents.json = import(
+          //   `~/static/pagecontents/${contents.estatJsonPath}`
+          // )
 
           return {
             ...contents,

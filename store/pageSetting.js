@@ -4,7 +4,7 @@ import { cloneDeep } from 'lodash'
 const initialState = {
   pageSetting: {},
   // landaweather: {},
-  test: {},
+  // test: {},
 }
 
 // ShallowCopyを避けるため、lodashのcloneDeepを用いる。
@@ -50,7 +50,7 @@ export const actions = {
       const data = await import(`~/static/pagesetting/${statisticsClass}.json`)
       res[statisticsClass] = data
     }
-    console.log(res)
+    // console.log(res)
     commit('initPageSet', res)
   },
 }
