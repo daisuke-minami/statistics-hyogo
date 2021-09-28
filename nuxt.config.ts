@@ -243,9 +243,9 @@ const config: NuxtConfig = {
     fallback: true,
     concurrency: 100,
     subFolders: false,
-    routes() {
-      return routes
-    },
+    // routes() {
+    //   return routes
+    // },
     // routes() {
     //   const routes = []
     //   const fs = require('fs')
