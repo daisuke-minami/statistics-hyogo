@@ -106,7 +106,6 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     //   )
     // }
 
-    // console.log('json', this.json)
     const params = this.contents.estatParams
     params.cdArea = this.cdArea
     this.estatResponse = await this.$getEstatAPI(params)
