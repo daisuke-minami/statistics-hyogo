@@ -1,95 +1,11 @@
 {
   "prefecture": [
     {
-      "title": "農家数",
-      "titleId": "number-of-farmers",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
-      "isRank":false,
-      "additionalDescription": [],
-      "estatParams": {
-        "statsDataId": "0000010103",
-        "cdCat01": [
-          "C3102",
-          "C310202",
-          "C310211",
-          "C310212"
-        ]
-      },
-      "series": {
-        "id": "cat01",
-        "item": [
-          {
-            "code": "C3102",
-            "name": "総数"
-          },
-          {
-            "code": "C310202",
-            "name": "自給的農家"
-          },
-          {
-            "code": "C310211",
-            "name": "販売農家（専業農家）"
-          },
-          {
-            "code": "C310212",
-            "name": "販売農家（兼業農家）"
-          }
-        ]
-      }
-    },
-    {
-      "title": "農業産出額",
-      "titleId": "agricultural-output",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
-      "isRank":false,
-      "additionalDescription": [],
-      "estatParams": {
-        "statsDataId": "0000010103",
-        "cdCat01": [
-          "C3101"
-        ]
-      },
-      "series": {
-        "id": "cat01",
-        "item": [
-          {
-            "code": "C3101",
-            "name": "農業産出額"
-          }
-        ]
-      }
-    },
-    {
-      "title": "昼夜間人口比率",
-      "titleId": "day-night-population-ratio",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "line",
-      "isRank":false,
-      "additionalDescription": [],
-      "estatParams": {
-        "statsDataId": "0000010101",
-        "cdCat01": [
-          "A6108"
-        ]
-      },
-      "series": {
-        "id": "cat01",
-        "item": [
-          {
-            "code": "A6108",
-            "name": "昼夜間人口比率"
-          }
-        ]
-      }
-    },
-    {
       "title": "総人口",
       "titleId": "population-all",
       "cardComponent": "estat-time-chart-card",
       "chartType": "line",
-      "isRank":false,
+      "isRank": false,
       "additionalDescription": [],
       "estatParams": {
         "statsDataId": "0000010101",
@@ -118,233 +34,881 @@
       }
     },
     {
-      "title": "就業者数（男女年齢別）",
-      "titleId": "number-of-workers",
-      "cardComponent": "estat-pyramid-chart-card",
-      "additionalDescription": [
-        "就業者 ： 「従業者」と「休業者」を合わせたもの",
-        "従業者 ： 調査週間中に賃金，給料，諸手当，内職収入などの収入を伴う仕事（以下「仕事」という。）を1時間以上した者。なお，家族従業者は，無給であっても仕事をしたとする。",
-        "休業者 ： 仕事を持ちながら，調査週間中に少しも仕事をしなかった者のうち、雇用者で，給料・賃金（休業手当を含む。）の支払を受けている者又は受けることになっている者、または自営業主で，自分の経営する事業を持ったままで，その仕事を休み始めてから30日にならない者"
-      ],
+      "title": "日本人人口",
+      "titleId": "population-japanese",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "line",
+      "isRank": false,
+      "additionalDescription": [],
       "estatParams": {
-        "statsDataId": "0000010106",
+        "statsDataId": "0000010101",
         "cdCat01": [
-          "F210101",
-          "F210102",
-          "F210201",
-          "F210202",
-          "F210301",
-          "F210302",
-          "F210401",
-          "F210402",
-          "F210501",
-          "F210502",
-          "F210601",
-          "F210602",
-          "F210701",
-          "F210702",
-          "F210801",
-          "F210802",
-          "F210901",
-          "F210902",
-          "F211001",
-          "F211002",
-          "F211101",
-          "F211102",
-          "F211201",
-          "F211202",
-          "F211301",
-          "F211302",
-          "F211401",
-          "F211402",
-          "F211501",
-          "F211502"
+          "A1102",
+          "A110201",
+          "A110202"
         ]
       },
       "series": {
         "id": "cat01",
         "item": [
           {
-            "code": "F210101",
+            "code": "A1102",
+            "name": "総数"
+          },
+          {
+            "code": "A110201",
+            "name": "男性"
+          },
+          {
+            "code": "A110202",
+            "name": "女性"
+          }
+        ]
+      }
+    },
+    {
+      "title": "外国人人口",
+      "titleId": "foreign-population",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "line",
+      "isRank": false,
+      "additionalDescription": [],
+      "estatparams": {
+        "statsDataId": "0000010101",
+        "cdCat01": [
+          "A1700",
+          "A170001",
+          "A170002"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "A1700",
+            "name": "総数"
+          },
+          {
+            "code": "A170001",
+            "name": "男性"
+          },
+          {
+            "code": "A170002",
+            "name": "女性"
+          }
+        ]
+      }
+    },
+    {
+      "title": "人口集中地区人口",
+      "titleId": "densely-inhabited-district-population",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "line",
+      "isRank": false,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000010101",
+        "cdCat01": [
+          "A1801",
+          "A180101",
+          "A180102"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "cdCat01": "A1801",
+            "name": "総数"
+          },
+          {
+            "cdCat01": "A180101",
+            "name": "男性"
+          },
+          {
+            "cdCat01": "A180102",
+            "name": "女性"
+          }
+        ]
+      }
+    },
+    {
+      "title": "未婚人口",
+      "titleId": "unmarried-population",
+      "cardComponent": "estat-pyramid-chart-card",
+      "isRank": false,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000010101",
+        "cdCat01": [
+          "A1601011",
+          "A1601012",
+          "A1601021",
+          "A1601022",
+          "A1601031",
+          "A1601032",
+          "A1601041",
+          "A1601042",
+          "A1601051",
+          "A1601052",
+          "A1601061",
+          "A1601062",
+          "A1601071",
+          "A1601072",
+          "A1601081",
+          "A1601082",
+          "A1601091",
+          "A1601092",
+          "A1601101",
+          "A1601102",
+          "A1601111",
+          "A1601112",
+          "A1601121",
+          "A1601122",
+          "A1601131",
+          "A1601132",
+          "A1601141",
+          "A1601142",
+          "A1601151",
+          "A1601152"
+        ]
+      },
+      "series": {
+        "id": "0000010101",
+        "item": [
+          {
             "name": "15～19歳",
-            "man": "F210101",
-            "woman": "F210102"
+            "man": "A1601011",
+            "woman": "A1601012"
           },
           {
             "name": "20～24歳",
-            "man": "F210201",
-            "woman": "F210202"
+            "man": "A1601021",
+            "woman": "A1601022"
           },
           {
             "name": "25～29歳",
-            "man": "F210301",
-            "woman": "F210302"
+            "man": "A1601031",
+            "woman": "A1601032"
           },
           {
             "name": "30～34歳",
-            "man": "F210401",
-            "woman": "F210402"
+            "man": "A1601041",
+            "woman": "A1601042"
           },
           {
             "name": "35～39歳",
-            "man": "F210501",
-            "woman": "F210502"
+            "man": "A1601051",
+            "woman": "A1601052"
           },
           {
             "name": "40～44歳",
-            "man": "F210601",
-            "woman": "F210602"
+            "man": "A1601061",
+            "woman": "A1601062"
           },
           {
             "name": "45～49歳",
-            "man": "F210701",
-            "woman": "F210702"
+            "man": "A1601071",
+            "woman": "A1601072"
           },
           {
             "name": "50～54歳",
-            "man": "F210801",
-            "woman": "F210802"
+            "man": "A1601081",
+            "woman": "A1601082"
           },
           {
             "name": "55～59歳",
-            "man": "F210901",
-            "woman": "F210902"
+            "man": "A1601091",
+            "woman": "A1601092"
           },
           {
             "name": "60～64歳",
-            "man": "F211001",
-            "woman": "F211002"
+            "man": "A1601101",
+            "woman": "A1601102"
           },
           {
             "name": "65～69歳",
-            "man": "F211101",
-            "woman": "F211102"
+            "man": "A1601111",
+            "woman": "A1601112"
           },
           {
             "name": "70～74歳",
-            "man": "F211201",
-            "woman": "F211202"
+            "man": "A1601121",
+            "woman": "A1601122"
           },
           {
             "name": "75～79歳",
-            "man": "F211301",
-            "woman": "F211302"
+            "man": "A1601131",
+            "woman": "A1601132"
+          },
+          {
+            "name": "80～84歳（男）",
+            "man": "A1601141",
+            "woman": "A1601142"
+          },
+          {
+            "name": "85歳以上（男）",
+            "man": "A1601151",
+            "woman": "A1601152"
+          }
+        ]
+      }
+    },
+    {
+      "title": "有配偶人口",
+      "titleId": "married-population",
+      "cardComponent": "estat-pyramid-chart-card",
+      "isRank": false,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000010101",
+        "cdCat01": [
+          "A1602021",
+          "A1602022",
+          "A1602031",
+          "A1602032",
+          "A1602041",
+          "A1602042",
+          "A1602051",
+          "A1602052",
+          "A1602061",
+          "A1602062",
+          "A1602071",
+          "A1602072",
+          "A1602081",
+          "A1602082",
+          "A1602091",
+          "A1602092",
+          "A1602101",
+          "A1602102",
+          "A1602111",
+          "A1602112",
+          "A1602121",
+          "A1602122",
+          "A1602131",
+          "A1602132",
+          "A1602141",
+          "A1602142",
+          "A1602151",
+          "A1602152"
+        ]
+      },
+      "series": {
+        "id": "0000010101",
+        "item": [
+          {
+            "name": "20～24歳",
+            "man": "A1602021",
+            "woman": "A1602022"
+          },
+          {
+            "name": "25～29歳",
+            "man": "A1602031",
+            "woman": "A1602032"
+          },
+          {
+            "name": "30～34歳",
+            "man": "A1602041",
+            "woman": "A1602042"
+          },
+          {
+            "name": "35～39歳",
+            "man": "A1602051",
+            "woman": "A1602052"
+          },
+          {
+            "name": "40～44歳",
+            "man": "A1602061",
+            "woman": "A1602062"
+          },
+          {
+            "name": "45～49歳",
+            "man": "A1602071",
+            "woman": "A1602072"
+          },
+          {
+            "name": "50～54歳",
+            "man": "A1602081",
+            "woman": "A1602082"
+          },
+          {
+            "name": "55～59歳",
+            "man": "A1602091",
+            "woman": "A1602092"
+          },
+          {
+            "name": "60～64歳",
+            "man": "A1602101",
+            "woman": "A1602102"
+          },
+          {
+            "name": "65～69歳",
+            "man": "A1602111",
+            "woman": "A1602112"
+          },
+          {
+            "name": "70～74歳",
+            "man": "A1602121",
+            "woman": "A1602122"
+          },
+          {
+            "name": "75～79歳",
+            "man": "A1602131",
+            "woman": "A1602132"
           },
           {
             "name": "80～84歳",
-            "man": "F211401",
-            "woman": "F211402"
+            "man": "A1602141",
+            "woman": "A1602142"
           },
           {
             "name": "85歳以上",
-            "man": "F211501",
-            "woman": "F211502"
+            "man": "A1602151",
+            "woman": "A1602152"
           }
         ]
       }
     },
     {
-      "title": "総面積",
-      "titleId": "total-area",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "area",
-      "isRank": true,
+      "title": "死別人口",
+      "titleId": "bereavement-population",
+      "cardComponent": "estat-pyramid-chart-card",
+      "isRank": false,
       "additionalDescription": [],
       "estatParams": {
-        "statsDataId": "0000010102",
+        "statsDataId": "0000010101",
         "cdCat01": [
-          "B1101"
+          "A1603031",
+          "A1603032",
+          "A1603041",
+          "A1603042",
+          "A1603051",
+          "A1603052",
+          "A1603061",
+          "A1603062",
+          "A1603071",
+          "A1603072",
+          "A1603081",
+          "A1603082",
+          "A1603091",
+          "A1603092",
+          "A1603101",
+          "A1603102",
+          "A1603111",
+          "A1603112",
+          "A1603121",
+          "A1603122",
+          "A1603131",
+          "A1603132",
+          "A1603141",
+          "A1603142",
+          "A1603151",
+          "A1603152"
         ]
       },
       "series": {
-        "id": "cat01",
+        "id": "0000010101",
         "item": [
           {
-            "code": "B1101",
-            "name": "総数"
+            "name": "20～24歳",
+            "man": "A1603021",
+            "woman": "A1603022"
+          },
+          {
+            "name": "25～29歳",
+            "man": "A1603031",
+            "woman": "A1603032"
+          },
+          {
+            "name": "30～34歳",
+            "man": "A1603041",
+            "woman": "A1603042"
+          },
+          {
+            "name": "35～39歳",
+            "man": "A1603051",
+            "woman": "A1603052"
+          },
+          {
+            "name": "40～44歳",
+            "man": "A1603061",
+            "woman": "A1603062"
+          },
+          {
+            "name": "45～49歳",
+            "man": "A1603071",
+            "woman": "A1603072"
+          },
+          {
+            "name": "50～54歳",
+            "man": "A1603081",
+            "woman": "A1603082"
+          },
+          {
+            "name": "55～59歳",
+            "man": "A1603091",
+            "woman": "A1603092"
+          },
+          {
+            "name": "60～64歳",
+            "man": "A1603101",
+            "woman": "A1603102"
+          },
+          {
+            "name": "65～69歳",
+            "man": "A1603111",
+            "woman": "A1603112"
+          },
+          {
+            "name": "70～74歳",
+            "man": "A1603121",
+            "woman": "A1603122"
+          },
+          {
+            "name": "75～79歳",
+            "man": "A1603131",
+            "woman": "A1603132"
+          },
+          {
+            "name": "80～84歳",
+            "man": "A1603141",
+            "woman": "A1603142"
+          },
+          {
+            "name": "85歳以上",
+            "man": "A1603151",
+            "woman": "A1603152"
           }
         ]
       }
     },
     {
-      "title": "評価総地積（課税対象土地）",
-      "titleId": "evaluation-total-cadastral",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "area",
-      "isRank": true,
+      "title": "離別人口",
+      "titleId": "separated-population",
+      "cardComponent": "estat-pyramid-chart-card",
+      "isRank": false,
       "additionalDescription": [],
       "estatParams": {
-        "statsDataId": "0000010102",
+        "statsDataId": "0000010101",
         "cdCat01": [
-          "B1201",
-          "B120101",
-          "B120102",
-          "B120103",
-          "B120104",
-          "B120105",
-          "B120106",
-          "B120107"
+          "A1604031",
+          "A1604032",
+          "A1604041",
+          "A1604042",
+          "A1604051",
+          "A1604052",
+          "A1604061",
+          "A1604062",
+          "A1604071",
+          "A1604072",
+          "A1604081",
+          "A1604082",
+          "A1604091",
+          "A1604092",
+          "A1604101",
+          "A1604102",
+          "A1604111",
+          "A1604112",
+          "A1604121",
+          "A1604122",
+          "A1604131",
+          "A1604132",
+          "A1604141",
+          "A1604142",
+          "A1604151",
+          "A1604152"
         ]
       },
       "series": {
-        "id": "cat01",
+        "id": "0000010101",
         "item": [
           {
-            "code": "B1201",
-            "name": "総数"
+            "name": "20～24歳",
+            "man": "A1604021",
+            "woman": "A1604022"
           },
           {
-            "code": "B120101",
-            "name": "田"
+            "name": "25～29歳",
+            "man": "A1604031",
+            "woman": "A1604032"
           },
           {
-            "code": "B120102",
-            "name": "畑"
+            "name": "30～34歳",
+            "man": "A1604041",
+            "woman": "A1604042"
           },
           {
-            "code": "B120103",
-            "name": "宅地"
+            "name": "35～39歳",
+            "man": "A1604051",
+            "woman": "A1604052"
           },
           {
-            "code": "B120104",
-            "name": "山林"
+            "name": "40～44歳",
+            "man": "A1604061",
+            "woman": "A1604062"
           },
           {
-            "code": "B120105",
-            "name": "牧場"
+            "name": "45～49歳",
+            "man": "A1604071",
+            "woman": "A1604072"
           },
           {
-            "code": "B120106",
-            "name": "原野"
+            "name": "50～54歳",
+            "man": "A1604081",
+            "woman": "A1604082"
           },
           {
-            "code": "B120107",
-            "name": "その他"
+            "name": "55～59歳",
+            "man": "A1604091",
+            "woman": "A1604092"
+          },
+          {
+            "name": "60～64歳",
+            "man": "A1604101",
+            "woman": "A1604102"
+          },
+          {
+            "name": "65～69歳",
+            "man": "A1604111",
+            "woman": "A1604112"
+          },
+          {
+            "name": "70～74歳",
+            "man": "A1604121",
+            "woman": "A1604122"
+          },
+          {
+            "name": "75～79歳",
+            "man": "A1604131",
+            "woman": "A1604132"
+          },
+          {
+            "name": "80～84歳",
+            "man": "A1604141",
+            "woman": "A1604142"
+          },
+          {
+            "name": "85歳以上",
+            "man": "A1604151",
+            "woman": "A1604152"
           }
         ]
       }
-    }
-  ],
-  "city": [
+    },
     {
-      "title": "農業産出額",
-      "titleId": "agricultural-output",
+      "title": "出生数",
+      "titleId": "number-of-births",
       "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
-      "isRank":false,
+      "isRank": false,
+      "chartType": "line",
       "additionalDescription": [],
       "estatParams": {
-        "statsDataId": "0000020203",
+        "statsDataId": "0000010101",
         "cdCat01": [
-          "C3101"
+          "A4101",
+          "A410101",
+          "A410102"
         ]
       },
       "series": {
         "id": "cat01",
         "item": [
           {
-            "code": "C3101",
-            "name": "農業産出額"
+            "code": "A4101",
+            "name": "総数"
+          },
+          {
+            "code": "A410101",
+            "name": "男性"
+          },
+          {
+            "code": "A410102",
+            "name": "女性"
+          }
+        ]
+      }
+    },
+    {
+      "title": "合計特殊出生率",
+      "titleId": "total-fertility-rate",
+      "cardComponent": "estat-time-chart-card",
+      "isRank": false,
+      "chartType": "line",
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000010101",
+        "cdCat01": ["A4103"]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "A4103",
+            "name": "合計特殊出生率"
+          }
+        ]
+      }
+    },
+    {
+      "title": "死亡数",
+      "titleId": "number-of-deaths",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "line",
+      "isRank": false,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000010101",
+        "cdCat01": [
+          "A4200",
+          "A420001",
+          "A420002"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "A4200",
+            "name": "総数"
+          },
+          {
+            "code": "A420001",
+            "name": "男性"
+          },
+          {
+            "code": "A420002",
+            "name": "女性"
+          }
+        ]
+      }
+    },
+    {
+      "title": "年齢調整死亡率（男性）",
+      "titleId": "age-adjusted-mortality-man",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "line",
+      "isRank": false,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000010101",
+        "cdCat01": ["A424001"]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "A424001",
+            "name": "年齢調整死亡率"
+          }
+        ]
+      }
+    },
+    {
+      "title": "年齢調整死亡率（女性）",
+      "titleId": "age-adjusted-mortality-woman",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "line",
+      "isRank": false,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000010101",
+        "cdCat01": ["A424002"]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "A424002",
+            "name": "年齢調整死亡率"
+          }
+        ]
+      }
+    },
+    {
+      "title": "死産数",
+      "titleId": "stillbirth-one",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "line",
+      "isRank": false,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000010101",
+        "cdCat01": ["A4270"]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "A4270",
+            "name": "死産数"
+          }
+        ]
+      }
+    },
+    {
+      "title": "自然死産数",
+      "titleId": "natural-stillbirth",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "line",
+      "isRank": false,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000010101",
+        "cdCat01": ["A427001"]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "A427001",
+            "name": "自然死産数"
+          }
+        ]
+      }
+    },
+    {
+      "title": "死産数（妊娠満22週以降）",
+      "titleId": "stillbirth-two",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "line",
+      "isRank": false,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000010101",
+        "cdCat01": ["A4271"]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "A4271",
+            "name": "死産数"
+          }
+        ]
+      }
+    },
+    {
+      "title": "早期新生児死亡数",
+      "titleId": "early-neonatal-mortality",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "line",
+      "isRank": false,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000010101",
+        "cdCat01": ["A4272"]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "A4272",
+            "name": "早期新生児死亡数"
+          }
+        ]
+      }
+    },
+    {
+      "title": "新生児死亡数",
+      "titleId": "neonatal-mortality",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "line",
+      "isRank": false,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000010101",
+        "cdCat01": ["A4280"]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "A4280",
+            "name": "新生児死亡数"
+          }
+        ]
+      }
+    },
+    {
+      "title": "乳児死亡数",
+      "titleId": "infant-deaths",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "line",
+      "isRank": false,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000010101",
+        "cdCat01": ["A4281"]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "A4281",
+            "name": "乳児死亡数"
+          }
+        ]
+      }
+    },
+    {
+      "title": "標準化死亡率",
+      "titleId": "standardized-mortality-ratio",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "line",
+      "isRank": false,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000010101",
+        "cdCat01": ["A4301"]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "A4301",
+            "name": "標準化死亡率"
+          }
+        ]
+      }
+    },
+    {
+      "title": "人口集中地区面積",
+      "titleId": "densely-inhabited-area",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "line",
+      "isRank": false,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000010101",
+        "cdCat01": ["A1802"]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "A1802",
+            "name": "人口集中地区面積"
+          }
+        ]
+      }
+    },
+    {
+      "title": "昼間人口",
+      "titleId": "daytime-population",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "line",
+      "isRank": false,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000010101",
+        "cdCat01": ["A6107"]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "A6107",
+            "name": "昼間人口"
           }
         ]
       }
@@ -354,13 +918,11 @@
       "titleId": "day-night-population-ratio",
       "cardComponent": "estat-time-chart-card",
       "chartType": "line",
-      "isRank":false,
+      "isRank": false,
       "additionalDescription": [],
       "estatParams": {
-        "statsDataId": "0000020201",
-        "cdCat01": [
-          "A6108"
-        ]
+        "statsDataId": "0000010101",
+        "cdCat01": ["A6108"]
       },
       "series": {
         "id": "cat01",
@@ -373,24 +935,780 @@
       }
     },
     {
-      "title": "総面積",
-      "titleId": "total-area",
+      "title": "流入人口（県外）",
+      "titleId": "influx-population",
       "cardComponent": "estat-time-chart-card",
-      "chartType": "area",
-      "isRank":true,
+      "chartType": "line",
+      "isRank": false,
       "additionalDescription": [],
       "estatParams": {
-        "statsDataId": "0000020202",
-        "cdCat01": [
-          "B1101"
-        ]
+        "statsDataId": "0000010101",
+        "cdCat01": ["A6106"]
       },
       "series": {
         "id": "cat01",
         "item": [
           {
-            "code": "B1101",
+            "code": "A6106",
+            "name": "流入人口（県外）"
+          }
+        ]
+      }
+    },
+    {
+      "title": "流出人口（県外）",
+      "titleId": "outflow-population",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "line",
+      "isRank": false,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000010101",
+        "cdCat01": ["A6104"]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "A6104",
+            "name": "流出人口（県外）"
+          }
+        ]
+      }
+    },
+    {
+      "title": "転入者数（日本人）",
+      "titleId": "transferees",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "line",
+      "isRank": false,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000010101",
+        "cdCat01": ["A5101"]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "A5101",
+            "name": "転入者数（日本人）"
+          }
+        ]
+      }
+    },
+    {
+      "title": "転出者数（日本人）",
+      "titleId": "outmigrants",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "line",
+      "isRank": false,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000010101",
+        "cdCat01": ["A5102"]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "A5102",
+            "name": "転出者数（日本人）"
+          }
+        ]
+      }
+    },
+    {
+      "title": "結婚件数",
+      "titleId": "marriage",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "column",
+      "isRank": false,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000010101",
+        "cdCat01": ["A9101"]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "A9101",
+            "name": "結婚件数"
+          }
+        ]
+      }
+    },
+    {
+      "title": "離婚件数",
+      "titleId": "divorce",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "column",
+      "isRank": false,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000010101",
+        "cdCat01": ["A9201"]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "A9201",
+            "name": "離婚件数"
+          }
+        ]
+      }
+    },
+    {
+      "title": "出生数",
+      "titleId": "births",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "line",
+      "isRank": false,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000010101",
+        "cdCat01": ["A4101"]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "A4101",
+            "name": "出生数"
+          }
+        ]
+      }
+    },
+    {
+      "title": "死亡数",
+      "titleId": "deaths",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "line",
+      "isRank": false,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000010101",
+        "cdCat01": ["A4200"]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "A4200",
+            "name": "死亡数"
+          }
+        ]
+      }
+    },
+    {
+      "title": "平均婚姻年齢（初婚の夫）",
+      "titleId": "average-marriage-age-man",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "line",
+      "isRank": false,
+      "additionalDescription": [],
+            "estatParams": {
+        "statsDataId": "0000010101",
+        "cdCat01": ["A9111"]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "A9111",
+            "name": "平均婚姻年齢（初婚の夫）"
+          }
+        ]
+      }
+    },
+    {
+      "title": "平均婚姻年齢（初婚の妻）",
+      "titleId": "average-marriage-age-woman",
+   "cardComponent": "estat-time-chart-card",
+      "chartType": "line",
+      "isRank": false,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000010101",
+        "cdCat01": ["A9112"]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "A9112",
+            "name": "平均婚姻年齢（初婚の妻）"
+          }
+        ]
+      }
+    },
+    {
+      "title": "母子世帯数",
+      "titleId": "motherchild-household",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "column",
+      "isRank": false,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000010101",
+        "cdCat01": ["A8401","A840101","A840102","A840103"]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "A8401",
             "name": "総数"
+          },
+          {
+            "code": "A840101",
+            "name": "子供が1人"
+          },
+          {
+            "code": "A840102",
+            "name": "子供が2人"
+          },
+          {
+            "code": "A840103",
+            "name": "子供が3人以上"
+          }
+        ]
+      }
+    },
+    {
+      "title": "父子世帯数",
+      "titleId": "parentchild-household",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "column",
+      "isRank": false,
+      "additionalDescription": [],
+           "estatParams": {
+        "statsDataId": "0000010101",
+        "cdCat01": ["A8501","A850101","A850102","A850103" ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "A8501",
+            "name": "総数"
+          },
+          {
+            "code": "A850101",
+            "name": "子供が1人"
+          },
+          {
+            "code": "A850102",
+            "name": "子供が2人"
+          },
+          {
+            "code": "A850103",
+            "name": "子供が3人以上"
+          }
+        ]
+      }
+    },
+    {
+      "title": "共働き世帯数",
+      "titleId": "double-income-household",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "column",
+      "isRank": false,
+      "additionalDescription": [],
+       "estatParams": {
+        "statsDataId": "0000010106",
+        "cdCat01": ["F1501","F150101","F150102","F150103"]
+      },
+      "series": {
+        "id": "cat01",
+        "series": [
+          {
+            "code": "F1501",
+            "name": "総数"
+          },
+          {
+            "code": "F150101",
+            "name": "子供なし人"
+          },
+          {
+            "code": "F150102",
+            "name": "6歳未満の子供あり"
+          },
+          {
+            "code": "F150103",
+            "name": "18歳未満の子供あり"
+          }
+        ]
+      }
+    }
+  ],
+  "city": [
+    {
+      "title": "総人口",
+      "titleId": "population-all",
+        "cardComponent": "estat-time-chart-card",
+      "chartType": "line",
+      "isRank": false,
+      "additionalDescription": [],
+         "estatParams": {
+        "statsDataId": "0000020201",
+        "cdCat01": ["A1101","A110101", "A110102"]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "A1101",
+            "name": "総数"
+          },
+          {
+            "code": "A110101",
+            "name": "男性"
+          },
+          {
+            "code": "A110102",
+            "name": "女性"
+          }
+        ]
+      }
+    },
+    {
+      "title": "日本人人口",
+      "titleId": "population-japanese",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "line",
+      "isRank": false,
+      "additionalDescription": [],
+        "estatParams": {
+        "statsDataId": "0000020201",
+        "cdCat01": ["A1102","A110201","A110202"]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "A1102",
+            "name": "総数"
+          },
+          {
+            "code": "A110201",
+            "name": "男性"
+          },
+          {
+            "code": "A110202",
+            "name": "女性"
+          }
+        ]
+      }
+    },
+    {
+      "title": "外国人人口",
+      "titleId": "foreign-population",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "line",
+      "isRank": false,
+      "additionalDescription": [],
+       "estatParams": {
+        "statsDataId": "0000020201",
+        "cdCat01": ["A1700"]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "A1700",
+            "name": "総数"
+          }
+        ]
+      }
+    },
+    {
+      "title": "人口集中地区人口",
+      "titleId": "densely-inhabited-district-population",
+        "cardComponent": "estat-time-chart-card",
+      "chartType": "line",
+      "isRank": false,
+      "additionalDescription": [],
+       "estatParams": {
+        "statsDataId": "0000020201",
+        "cdCat01": ["A1801","A180101","A180102"]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "A1801",
+            "name": "総数"
+          },
+          {
+            "code": "A180101",
+            "name": "男性"
+          },
+          {
+            "code": "A180102",
+            "name": "女性"
+          }
+        ]
+      }
+    },
+    {
+      "title": "死亡数",
+      "titleId": "number-of-deaths",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "line",
+      "isRank": false,
+      "additionalDescription": [],
+          "estatParams": {
+        "statsDataId": "0000020201",
+        "cdCat01": ["A4200"]
+      },
+      "series": {
+        "id": "cat01",
+        "series": [
+          {
+            "code": "A4200",
+            "name": "総数"
+          }
+        ]
+      }
+    },
+    {
+      "title": "人口集中地区面積",
+      "titleId": "densely-inhabited-area",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "area",
+      "isRank": false,
+      "additionalDescription": [],
+       "estatParams": {
+        "statsDataId": "0000020201",
+        "cdCat01": ["A1802"]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "A1802",
+            "name": "人口集中地区面積"
+          }
+        ]
+      }
+    },
+    {
+      "title": "昼間人口",
+      "titleId": "daytime-population",
+       "cardComponent": "estat-time-chart-card",
+      "chartType": "line",
+      "isRank": false,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000020201",
+        "cdCat01": ["A6107"]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "A6107",
+            "name": "昼間人口"
+          }
+        ]
+      }
+    },
+    {
+      "title": "昼夜間人口比率",
+      "titleId": "day-night-population-ratio",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "line",
+      "isRank": false,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000020201",
+        "cdCat01": ["A6108"]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "A6108",
+            "name": "昼夜間人口比率"
+          }
+        ]
+      }
+    },
+    {
+      "title": "流入人口（県外）",
+      "titleId": "influx-population",
+     "cardComponent": "estat-time-chart-card",
+      "chartType": "line",
+      "isRank": false,
+      "additionalDescription": [],
+       "estatParams": {
+        "statsDataId": "0000020201",
+        "cdCat01": ["A6106"]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "A6106",
+            "name": "流入人口（県外）"
+          }
+        ]
+      }
+    },
+    {
+      "title": "流入人口（県内他市区町村）",
+      "titleId": "influx-population-hyogo",
+         "cardComponent": "estat-time-chart-card",
+      "chartType": "line",
+      "isRank": false,
+      "additionalDescription": [],
+       "estatParams": {
+        "statsDataId": "0000020201",
+        "cdCat01": ["A6105"]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "A6105",
+            "name": "流入人口（県内他市区町村）"
+          }
+        ]
+      }
+    },
+    {
+      "title": "流出人口（県外）",
+      "titleId": "outflow-population",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "line",
+      "isRank": false,
+      "additionalDescription": [],
+       "estatParams": {
+        "statsDataId": "0000020201",
+        "cdCat01": ["A6104"]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "A6104",
+            "name": "流出人口（県外）"
+          }
+        ]
+      }
+    },
+    {
+      "title": "流出人口（県内他市区町村）",
+      "titleId": "outflow-population-hyogo",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "line",
+      "isRank": false,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000020201",
+        "cdCat01": ["A6103"]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "A6103",
+            "name": "流出人口（県内他市区町村）"
+          }
+        ]
+      }
+    },
+    {
+      "title": "転入者数（日本人）",
+      "titleId": "transferees",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "line",
+      "isRank": false,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000020201",
+        "cdCat01": ["A5101"]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "A5101",
+            "name": "転入者数（日本人）"
+          }
+        ]
+      }
+    },
+    {
+      "title": "転出者数（日本人）",
+            "titleId": "outmigrants",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "line",
+      "isRank": false,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000020201",
+        "cdCat01": ["A5102"]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "A5102",
+            "name": "転出者数（日本人）"
+          }
+        ]
+      }
+    },
+    {
+      "title": "結婚件数",
+      "titleId": "marriage",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "column",
+      "isRank": false,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000020201",
+        "cdCat01": ["A9101"]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "A9101",
+            "name": "結婚件数"
+          }
+        ]
+      }
+    },
+    {
+      "title": "離婚件数",
+      "titleId": "divorce",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "column",
+      "isRank": false,
+      "additionalDescription": [],
+          "estatParams": {
+        "statsDataId": "0000020201",
+        "cdCat01": ["A9201"]
+      },
+      "series": {
+        "id": "0000020201",
+        "item": [
+          {
+            "code": "A9201",
+            "name": "離婚件数"
+          }
+        ]
+      }
+    },
+    {
+      "title": "出生数",
+      "titleId": "births",
+        "cardComponent": "estat-time-chart-card",
+      "chartType": "line",
+      "isRank": false,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000020201",
+        "cdCat01": ["A4101"]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "A4101",
+            "name": "出生数"
+          }
+        ]
+      }
+    },
+    {
+      "title": "死亡数",
+      "titleId": "deaths",
+        "cardComponent": "estat-time-chart-card",
+      "chartType": "line",
+      "isRank": false,
+      "additionalDescription": [],
+       "estatParams": {
+        "statsDataId": "0000020201",
+        "cdCat01": ["A4200"]
+      },
+      "series": {
+        "id": "0000020201",
+        "item": [
+          {
+            "code": "A4200",
+            "name": "死亡数"
+          }
+        ]
+      }
+    },
+    {
+      "title": "母子世帯数",
+      "titleId": "motherchild-household",
+       "cardComponent": "estat-time-chart-card",
+      "chartType": "column",
+      "isRank": false,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000020201",
+        "cdCat01":[ "A8401","A840101","A840102","A840103"]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "A8401",
+            "name": "総数"
+          },
+          {
+            "code": "A840101",
+            "name": "子供が1人"
+          },
+          {
+            "code": "A840102",
+            "name": "子供が2人"
+          },
+          {
+            "code": "A840103",
+            "name": "子供が3人以上"
+          }
+        ]
+      }
+    },
+    {
+      "title": "父子世帯数",
+      "titleId": "parentchild-household",
+     "cardComponent": "estat-time-chart-card",
+      "chartType": "column",
+      "isRank": false,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000020201",
+        "cdCat01":[ "A8501","A850101","A850102","A850103" ]
+      },
+      "series": {
+        "id": "0000020201",
+        "item": [
+          {
+            "code": "A8501",
+            "name": "総数"
+          },
+          {
+            "code": "A850101",
+            "name": "子供が1人"
+          },
+          {
+            "code": "A850102",
+            "name": "子供が2人"
+          },
+          {
+            "code": "A850103",
+            "name": "子供が3人以上"
           }
         ]
       }
