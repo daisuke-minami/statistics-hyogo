@@ -34,8 +34,8 @@ routes = []
 #chartClassの定義
 chartClass =['prefecture','city','prefectureRank','cityRank']
 
-def base_route(statisticsClass,chartClass):
-    routes.append(statisticsClass +'/'+ chartClass +'/'+ PREF_CODE)
+# def base_route(statisticsClass,chartClass):
+#     routes.append('/'+statisticsClass +'/'+ chartClass +'/'+ PREF_CODE+'/')
 
 
 #基本ページのroute設定
@@ -43,7 +43,7 @@ for item in files_file:
     statisticsClass = item.replace('.json', '')
 
     for c in chartClass:
-        routes.append(statisticsClass +'/'+ c +'/'+ PREF_CODE)
+        routes.append('/'+statisticsClass +'/'+ c +'/'+ PREF_CODE+'/')
 
 # timechart(都道府県)のroutes設定
 for item in files_file:
@@ -57,7 +57,7 @@ for item in files_file:
     title_id = [d.get('titleId') for d in contents_prefecture]
 
     for t in title_id:
-        routes.append(statisticsClass +'/prefecture/' + PREF_CODE + '/' + t )
+        routes.append('/'+statisticsClass +'/prefecture/' + PREF_CODE + '/' + t +'/')
 
 # timechart(市区町村)のroutes設定
 # for item in files_file:
