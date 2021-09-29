@@ -105,7 +105,9 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     //     `~/static/pagecontents/${this.contents.estatJsonPath}`
     //   )
     // }
-
+    console.log('EstatTimeChartCardは読み込んでいる')
+    console.log('contents', this.contents)
+    console.log('json', this.json)
     const params = this.contents.estatParams
     params.cdArea = this.cdArea
     this.estatResponse = await this.$getEstatAPI(params)
