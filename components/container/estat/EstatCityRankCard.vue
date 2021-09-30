@@ -81,10 +81,9 @@ export default {
     },
   },
   async fetch() {
-    this.estatResponse = await import(
-      `~/static/pagecontents/${this.contents.estatJsonPath}`
-    )
-    this.estatData = this.$formatEstatData(this.estatResponse, null)
+    const params = this.contents.estatParams
+    params.cdArea = this.cdArea
+    this.estatResponse = await this.$getEstatAPI(params)
     this.targetYear = this.estatData.latestYearInt
   },
   data() {
@@ -96,7 +95,7 @@ export default {
       canvas: true,
       targetYear: null,
       estatResponse: {},
-      estatData: {},
+      // estatData: {},
     }
   },
   computed: {
@@ -106,6 +105,15 @@ export default {
       } else {
         return this.cityList.filter((d) => d.bigCityFlag !== '2')
       }
+    },
+    estatData() {
+      // console.log(this.estatResponse)
+      return this.$formatEstatData(this.estatResponse, null)
+    },
+    cdArea() {
+      return this.cityList.map((d) => {
+        return d.cityCode
+      })
     },
     title() {
       return `市区町村の${this.contents.title}ランキング`
@@ -214,6 +222,8 @@ export default {
       }
     },
     displayData() {
+      console.log(this.chartData)
+      console.log(this.targetYear)
       return this.chartData.filter((f) => f.year === this.targetYear)
     },
   },

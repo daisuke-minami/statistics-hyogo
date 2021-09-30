@@ -98,16 +98,6 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     },
   },
   async fetch() {
-    // if (this.json) {
-    //   this.estatResponse = this.json
-    // } else {
-    //   this.estatResponse = await import(
-    //     `~/static/pagecontents/${this.contents.estatJsonPath}`
-    //   )
-    // }
-    console.log('EstatTimeChartCardは読み込んでいる')
-    console.log('contents', this.contents)
-    console.log('json', this.json)
     const params = this.contents.estatParams
     params.cdArea = this.cdArea
     this.estatResponse = await this.$getEstatAPI(params)
