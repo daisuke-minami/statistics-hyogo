@@ -71,32 +71,39 @@ export default {
     },
   },
   async fetch() {
-    this.estatResponse = await import(
-      `~/static/pagecontents/${this.contents.estatJsonPath}`
-    )
-    this.estatData = this.$formatEstatData(this.estatResponse, null)
+    const params = this.contents.estatParams
+    params.cdArea = this.cdArea
+    this.estatResponse = await this.$getEstatAPI(params)
     this.targetYear = this.estatData.latestYearInt
+    // this.estatResponse = await import(
+    //   `~/static/pagecontents/${this.contents.estatJsonPath}`
+    // )
+    // this.estatData = this.$formatEstatData(this.estatResponse, null)
+    // this.targetYear = this.estatData.latestYearInt
   },
   data() {
     return {
       canvas: true,
-      targetYear: 2015,
+      targetYear: null,
       chartType: 'map',
       estatResponse: {},
-      estatData: {},
+      // estatData: {},
     }
   },
   computed: {
     title() {
       return `都道府県の${this.contents.title}ランキング`
     },
-    // cdArea() {
-    //   return this.contents.prefList.map(
-    //     (d) => ('0000000000' + d.prefCode).slice(-2) + '000'
-    //   )
-    // },
+    cdArea() {
+      return this.contents.prefList.map(
+        (d) => ('0000000000' + d.prefCode).slice(-2) + '000'
+      )
+    },
     titleId() {
       return this.contents.titleId
+    },
+    estatData() {
+      return this.$formatEstatData(this.estatResponse, null)
     },
     statName() {
       return this.estatData.statName

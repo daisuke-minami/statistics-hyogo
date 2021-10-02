@@ -14,21 +14,15 @@ import { mapGetters } from 'vuex'
 
 export default {
   async asyncData({ params }) {
-    // if (payload) {
-    //   const json = await payload
-    //   console.log(json)
-    //   return { json }
-    // }
-    const json = await import(
-      `~/static/pagecontents/${params.statisticsClass}/${params.chartClass}/${params.titleId}.json`
+    const contentsAll = await import(
+      `~/static/pagesetting/${params.statisticsClass}.json`
     )
-    // console.log(json.default)
-    return { json: json.default }
+    return { contentsAll }
   },
   data() {
     return {
       cityCode: null,
-      // contentsAll: null,
+      contentsAll: null,
       // chartClass: 'prefecture',
     }
   },
@@ -110,10 +104,6 @@ export default {
 
           // estatResponseのパスを追加
           contents.estatJsonPath = `${this.statisticsClass}/${this.governmentType}/${contents.titleId}.json`
-
-          // contents.json = import(
-          //   `~/static/pagecontents/${contents.estatJsonPath}`
-          // )
 
           return {
             ...contents,

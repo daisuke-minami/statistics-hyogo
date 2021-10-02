@@ -3,7 +3,7 @@
     <tab-chart-class :statistics-class="statisticsClass" />
 
     <!-- RankChartの場合  -->
-    <div v-if="isRank">
+    <!-- <div v-if="isRank">
       <select-title
         v-model="titleId"
         :contents-list="contentsList"
@@ -19,23 +19,23 @@
           <estat-pref-rank-card :pref-list="prefList" :contents="contents" />
         </card-row>
       </div>
-    </div>
+    </div> -->
 
     <!-- TimeChartの場合  -->
-    <div v-else>
-      <div v-if="isCity">
-        <select-city v-model="cityCode" :city-list="cityList" />
-      </div>
-      <card-row class="DataBlock">
-        <component
-          :is="item.cardComponent"
-          v-for="(item, i) in contentsList"
-          :key="i"
-          :contents="item"
-        />
-      </card-row>
+    <!-- <div v-else> -->
+    <div v-if="isCity">
+      <select-city v-model="cityCode" :city-list="cityList" />
     </div>
+    <card-row class="DataBlock">
+      <component
+        :is="item.cardComponent"
+        v-for="(item, i) in contentsList"
+        :key="i"
+        :contents="item"
+      />
+    </card-row>
   </div>
+  <!-- </div> -->
 </template>
 
 <script lang="ts">

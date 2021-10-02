@@ -95,7 +95,6 @@ export default {
       canvas: true,
       targetYear: null,
       estatResponse: {},
-      // estatData: {},
     }
   },
   computed: {
@@ -107,7 +106,6 @@ export default {
       }
     },
     estatData() {
-      // console.log(this.estatResponse)
       return this.$formatEstatData(this.estatResponse, null)
     },
     cdArea() {
@@ -222,8 +220,6 @@ export default {
       }
     },
     displayData() {
-      console.log(this.chartData)
-      console.log(this.targetYear)
       return this.chartData.filter((f) => f.year === this.targetYear)
     },
   },

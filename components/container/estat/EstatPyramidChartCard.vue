@@ -66,10 +66,9 @@ export default {
     },
   },
   async fetch() {
-    this.estatResponse = await import(
-      `~/static/pagecontents/${this.contents.estatJsonPath}`
-    )
-    this.estatData = this.$formatEstatData(this.estatResponse, this.cdArea)
+    const params = this.contents.estatParams
+    params.cdArea = this.cdArea
+    this.estatResponse = await this.$getEstatAPI(params)
     this.targetYear = this.estatData.latestYearInt
   },
   data() {
@@ -77,7 +76,7 @@ export default {
       canvas: true,
       targetYear: null,
       estatResponse: {},
-      estatData: {},
+      // estatData: {},
     }
   },
   computed: {
@@ -90,6 +89,9 @@ export default {
     },
     title() {
       return this.contents.title
+    },
+    estatData() {
+      return this.$formatEstatData(this.estatResponse, null)
     },
     titleId() {
       return this.contents.titleId

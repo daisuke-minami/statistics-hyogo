@@ -67,39 +67,6 @@
       }
     },
     {
-      "title": "外国人人口",
-      "titleId": "foreign-population",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "line",
-      "isRank": false,
-      "additionalDescription": [],
-      "estatparams": {
-        "statsDataId": "0000010101",
-        "cdCat01": [
-          "A1700",
-          "A170001",
-          "A170002"
-        ]
-      },
-      "series": {
-        "id": "cat01",
-        "item": [
-          {
-            "code": "A1700",
-            "name": "総数"
-          },
-          {
-            "code": "A170001",
-            "name": "男性"
-          },
-          {
-            "code": "A170002",
-            "name": "女性"
-          }
-        ]
-      }
-    },
-    {
       "title": "人口集中地区人口",
       "titleId": "densely-inhabited-district-population",
       "cardComponent": "estat-time-chart-card",
@@ -118,479 +85,16 @@
         "id": "cat01",
         "item": [
           {
-            "cdCat01": "A1801",
+            "code": "A1801",
             "name": "総数"
           },
           {
-            "cdCat01": "A180101",
+            "code": "A180101",
             "name": "男性"
           },
           {
-            "cdCat01": "A180102",
+            "code": "A180102",
             "name": "女性"
-          }
-        ]
-      }
-    },
-    {
-      "title": "未婚人口",
-      "titleId": "unmarried-population",
-      "cardComponent": "estat-pyramid-chart-card",
-      "isRank": false,
-      "additionalDescription": [],
-      "estatParams": {
-        "statsDataId": "0000010101",
-        "cdCat01": [
-          "A1601011",
-          "A1601012",
-          "A1601021",
-          "A1601022",
-          "A1601031",
-          "A1601032",
-          "A1601041",
-          "A1601042",
-          "A1601051",
-          "A1601052",
-          "A1601061",
-          "A1601062",
-          "A1601071",
-          "A1601072",
-          "A1601081",
-          "A1601082",
-          "A1601091",
-          "A1601092",
-          "A1601101",
-          "A1601102",
-          "A1601111",
-          "A1601112",
-          "A1601121",
-          "A1601122",
-          "A1601131",
-          "A1601132",
-          "A1601141",
-          "A1601142",
-          "A1601151",
-          "A1601152"
-        ]
-      },
-      "series": {
-        "id": "0000010101",
-        "item": [
-          {
-            "name": "15～19歳",
-            "man": "A1601011",
-            "woman": "A1601012"
-          },
-          {
-            "name": "20～24歳",
-            "man": "A1601021",
-            "woman": "A1601022"
-          },
-          {
-            "name": "25～29歳",
-            "man": "A1601031",
-            "woman": "A1601032"
-          },
-          {
-            "name": "30～34歳",
-            "man": "A1601041",
-            "woman": "A1601042"
-          },
-          {
-            "name": "35～39歳",
-            "man": "A1601051",
-            "woman": "A1601052"
-          },
-          {
-            "name": "40～44歳",
-            "man": "A1601061",
-            "woman": "A1601062"
-          },
-          {
-            "name": "45～49歳",
-            "man": "A1601071",
-            "woman": "A1601072"
-          },
-          {
-            "name": "50～54歳",
-            "man": "A1601081",
-            "woman": "A1601082"
-          },
-          {
-            "name": "55～59歳",
-            "man": "A1601091",
-            "woman": "A1601092"
-          },
-          {
-            "name": "60～64歳",
-            "man": "A1601101",
-            "woman": "A1601102"
-          },
-          {
-            "name": "65～69歳",
-            "man": "A1601111",
-            "woman": "A1601112"
-          },
-          {
-            "name": "70～74歳",
-            "man": "A1601121",
-            "woman": "A1601122"
-          },
-          {
-            "name": "75～79歳",
-            "man": "A1601131",
-            "woman": "A1601132"
-          },
-          {
-            "name": "80～84歳（男）",
-            "man": "A1601141",
-            "woman": "A1601142"
-          },
-          {
-            "name": "85歳以上（男）",
-            "man": "A1601151",
-            "woman": "A1601152"
-          }
-        ]
-      }
-    },
-    {
-      "title": "有配偶人口",
-      "titleId": "married-population",
-      "cardComponent": "estat-pyramid-chart-card",
-      "isRank": false,
-      "additionalDescription": [],
-      "estatParams": {
-        "statsDataId": "0000010101",
-        "cdCat01": [
-          "A1602021",
-          "A1602022",
-          "A1602031",
-          "A1602032",
-          "A1602041",
-          "A1602042",
-          "A1602051",
-          "A1602052",
-          "A1602061",
-          "A1602062",
-          "A1602071",
-          "A1602072",
-          "A1602081",
-          "A1602082",
-          "A1602091",
-          "A1602092",
-          "A1602101",
-          "A1602102",
-          "A1602111",
-          "A1602112",
-          "A1602121",
-          "A1602122",
-          "A1602131",
-          "A1602132",
-          "A1602141",
-          "A1602142",
-          "A1602151",
-          "A1602152"
-        ]
-      },
-      "series": {
-        "id": "0000010101",
-        "item": [
-          {
-            "name": "20～24歳",
-            "man": "A1602021",
-            "woman": "A1602022"
-          },
-          {
-            "name": "25～29歳",
-            "man": "A1602031",
-            "woman": "A1602032"
-          },
-          {
-            "name": "30～34歳",
-            "man": "A1602041",
-            "woman": "A1602042"
-          },
-          {
-            "name": "35～39歳",
-            "man": "A1602051",
-            "woman": "A1602052"
-          },
-          {
-            "name": "40～44歳",
-            "man": "A1602061",
-            "woman": "A1602062"
-          },
-          {
-            "name": "45～49歳",
-            "man": "A1602071",
-            "woman": "A1602072"
-          },
-          {
-            "name": "50～54歳",
-            "man": "A1602081",
-            "woman": "A1602082"
-          },
-          {
-            "name": "55～59歳",
-            "man": "A1602091",
-            "woman": "A1602092"
-          },
-          {
-            "name": "60～64歳",
-            "man": "A1602101",
-            "woman": "A1602102"
-          },
-          {
-            "name": "65～69歳",
-            "man": "A1602111",
-            "woman": "A1602112"
-          },
-          {
-            "name": "70～74歳",
-            "man": "A1602121",
-            "woman": "A1602122"
-          },
-          {
-            "name": "75～79歳",
-            "man": "A1602131",
-            "woman": "A1602132"
-          },
-          {
-            "name": "80～84歳",
-            "man": "A1602141",
-            "woman": "A1602142"
-          },
-          {
-            "name": "85歳以上",
-            "man": "A1602151",
-            "woman": "A1602152"
-          }
-        ]
-      }
-    },
-    {
-      "title": "死別人口",
-      "titleId": "bereavement-population",
-      "cardComponent": "estat-pyramid-chart-card",
-      "isRank": false,
-      "additionalDescription": [],
-      "estatParams": {
-        "statsDataId": "0000010101",
-        "cdCat01": [
-          "A1603031",
-          "A1603032",
-          "A1603041",
-          "A1603042",
-          "A1603051",
-          "A1603052",
-          "A1603061",
-          "A1603062",
-          "A1603071",
-          "A1603072",
-          "A1603081",
-          "A1603082",
-          "A1603091",
-          "A1603092",
-          "A1603101",
-          "A1603102",
-          "A1603111",
-          "A1603112",
-          "A1603121",
-          "A1603122",
-          "A1603131",
-          "A1603132",
-          "A1603141",
-          "A1603142",
-          "A1603151",
-          "A1603152"
-        ]
-      },
-      "series": {
-        "id": "0000010101",
-        "item": [
-          {
-            "name": "20～24歳",
-            "man": "A1603021",
-            "woman": "A1603022"
-          },
-          {
-            "name": "25～29歳",
-            "man": "A1603031",
-            "woman": "A1603032"
-          },
-          {
-            "name": "30～34歳",
-            "man": "A1603041",
-            "woman": "A1603042"
-          },
-          {
-            "name": "35～39歳",
-            "man": "A1603051",
-            "woman": "A1603052"
-          },
-          {
-            "name": "40～44歳",
-            "man": "A1603061",
-            "woman": "A1603062"
-          },
-          {
-            "name": "45～49歳",
-            "man": "A1603071",
-            "woman": "A1603072"
-          },
-          {
-            "name": "50～54歳",
-            "man": "A1603081",
-            "woman": "A1603082"
-          },
-          {
-            "name": "55～59歳",
-            "man": "A1603091",
-            "woman": "A1603092"
-          },
-          {
-            "name": "60～64歳",
-            "man": "A1603101",
-            "woman": "A1603102"
-          },
-          {
-            "name": "65～69歳",
-            "man": "A1603111",
-            "woman": "A1603112"
-          },
-          {
-            "name": "70～74歳",
-            "man": "A1603121",
-            "woman": "A1603122"
-          },
-          {
-            "name": "75～79歳",
-            "man": "A1603131",
-            "woman": "A1603132"
-          },
-          {
-            "name": "80～84歳",
-            "man": "A1603141",
-            "woman": "A1603142"
-          },
-          {
-            "name": "85歳以上",
-            "man": "A1603151",
-            "woman": "A1603152"
-          }
-        ]
-      }
-    },
-    {
-      "title": "離別人口",
-      "titleId": "separated-population",
-      "cardComponent": "estat-pyramid-chart-card",
-      "isRank": false,
-      "additionalDescription": [],
-      "estatParams": {
-        "statsDataId": "0000010101",
-        "cdCat01": [
-          "A1604031",
-          "A1604032",
-          "A1604041",
-          "A1604042",
-          "A1604051",
-          "A1604052",
-          "A1604061",
-          "A1604062",
-          "A1604071",
-          "A1604072",
-          "A1604081",
-          "A1604082",
-          "A1604091",
-          "A1604092",
-          "A1604101",
-          "A1604102",
-          "A1604111",
-          "A1604112",
-          "A1604121",
-          "A1604122",
-          "A1604131",
-          "A1604132",
-          "A1604141",
-          "A1604142",
-          "A1604151",
-          "A1604152"
-        ]
-      },
-      "series": {
-        "id": "0000010101",
-        "item": [
-          {
-            "name": "20～24歳",
-            "man": "A1604021",
-            "woman": "A1604022"
-          },
-          {
-            "name": "25～29歳",
-            "man": "A1604031",
-            "woman": "A1604032"
-          },
-          {
-            "name": "30～34歳",
-            "man": "A1604041",
-            "woman": "A1604042"
-          },
-          {
-            "name": "35～39歳",
-            "man": "A1604051",
-            "woman": "A1604052"
-          },
-          {
-            "name": "40～44歳",
-            "man": "A1604061",
-            "woman": "A1604062"
-          },
-          {
-            "name": "45～49歳",
-            "man": "A1604071",
-            "woman": "A1604072"
-          },
-          {
-            "name": "50～54歳",
-            "man": "A1604081",
-            "woman": "A1604082"
-          },
-          {
-            "name": "55～59歳",
-            "man": "A1604091",
-            "woman": "A1604092"
-          },
-          {
-            "name": "60～64歳",
-            "man": "A1604101",
-            "woman": "A1604102"
-          },
-          {
-            "name": "65～69歳",
-            "man": "A1604111",
-            "woman": "A1604112"
-          },
-          {
-            "name": "70～74歳",
-            "man": "A1604121",
-            "woman": "A1604122"
-          },
-          {
-            "name": "75～79歳",
-            "man": "A1604131",
-            "woman": "A1604132"
-          },
-          {
-            "name": "80～84歳",
-            "man": "A1604141",
-            "woman": "A1604142"
-          },
-          {
-            "name": "85歳以上",
-            "man": "A1604151",
-            "woman": "A1604152"
           }
         ]
       }
@@ -637,7 +141,9 @@
       "additionalDescription": [],
       "estatParams": {
         "statsDataId": "0000010101",
-        "cdCat01": ["A4103"]
+        "cdCat01": [
+          "A4103"
+        ]
       },
       "series": {
         "id": "cat01",
@@ -683,27 +189,6 @@
       }
     },
     {
-      "title": "年齢調整死亡率（男性）",
-      "titleId": "age-adjusted-mortality-man",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "line",
-      "isRank": false,
-      "additionalDescription": [],
-      "estatParams": {
-        "statsDataId": "0000010101",
-        "cdCat01": ["A424001"]
-      },
-      "series": {
-        "id": "cat01",
-        "item": [
-          {
-            "code": "A424001",
-            "name": "年齢調整死亡率"
-          }
-        ]
-      }
-    },
-    {
       "title": "年齢調整死亡率（女性）",
       "titleId": "age-adjusted-mortality-woman",
       "cardComponent": "estat-time-chart-card",
@@ -712,7 +197,9 @@
       "additionalDescription": [],
       "estatParams": {
         "statsDataId": "0000010101",
-        "cdCat01": ["A424002"]
+        "cdCat01": [
+          "A424002"
+        ]
       },
       "series": {
         "id": "cat01",
@@ -733,7 +220,9 @@
       "additionalDescription": [],
       "estatParams": {
         "statsDataId": "0000010101",
-        "cdCat01": ["A4270"]
+        "cdCat01": [
+          "A4270"
+        ]
       },
       "series": {
         "id": "cat01",
@@ -754,7 +243,9 @@
       "additionalDescription": [],
       "estatParams": {
         "statsDataId": "0000010101",
-        "cdCat01": ["A427001"]
+        "cdCat01": [
+          "A427001"
+        ]
       },
       "series": {
         "id": "cat01",
@@ -775,7 +266,9 @@
       "additionalDescription": [],
       "estatParams": {
         "statsDataId": "0000010101",
-        "cdCat01": ["A4271"]
+        "cdCat01": [
+          "A4271"
+        ]
       },
       "series": {
         "id": "cat01",
@@ -796,7 +289,9 @@
       "additionalDescription": [],
       "estatParams": {
         "statsDataId": "0000010101",
-        "cdCat01": ["A4272"]
+        "cdCat01": [
+          "A4272"
+        ]
       },
       "series": {
         "id": "cat01",
@@ -817,7 +312,9 @@
       "additionalDescription": [],
       "estatParams": {
         "statsDataId": "0000010101",
-        "cdCat01": ["A4280"]
+        "cdCat01": [
+          "A4280"
+        ]
       },
       "series": {
         "id": "cat01",
@@ -838,7 +335,9 @@
       "additionalDescription": [],
       "estatParams": {
         "statsDataId": "0000010101",
-        "cdCat01": ["A4281"]
+        "cdCat01": [
+          "A4281"
+        ]
       },
       "series": {
         "id": "cat01",
@@ -859,7 +358,9 @@
       "additionalDescription": [],
       "estatParams": {
         "statsDataId": "0000010101",
-        "cdCat01": ["A4301"]
+        "cdCat01": [
+          "A4301"
+        ]
       },
       "series": {
         "id": "cat01",
@@ -880,7 +381,9 @@
       "additionalDescription": [],
       "estatParams": {
         "statsDataId": "0000010101",
-        "cdCat01": ["A1802"]
+        "cdCat01": [
+          "A1802"
+        ]
       },
       "series": {
         "id": "cat01",
@@ -901,7 +404,9 @@
       "additionalDescription": [],
       "estatParams": {
         "statsDataId": "0000010101",
-        "cdCat01": ["A6107"]
+        "cdCat01": [
+          "A6107"
+        ]
       },
       "series": {
         "id": "cat01",
@@ -922,7 +427,9 @@
       "additionalDescription": [],
       "estatParams": {
         "statsDataId": "0000010101",
-        "cdCat01": ["A6108"]
+        "cdCat01": [
+          "A6108"
+        ]
       },
       "series": {
         "id": "cat01",
@@ -943,7 +450,9 @@
       "additionalDescription": [],
       "estatParams": {
         "statsDataId": "0000010101",
-        "cdCat01": ["A6106"]
+        "cdCat01": [
+          "A6106"
+        ]
       },
       "series": {
         "id": "cat01",
@@ -964,7 +473,9 @@
       "additionalDescription": [],
       "estatParams": {
         "statsDataId": "0000010101",
-        "cdCat01": ["A6104"]
+        "cdCat01": [
+          "A6104"
+        ]
       },
       "series": {
         "id": "cat01",
@@ -985,7 +496,9 @@
       "additionalDescription": [],
       "estatParams": {
         "statsDataId": "0000010101",
-        "cdCat01": ["A5101"]
+        "cdCat01": [
+          "A5101"
+        ]
       },
       "series": {
         "id": "cat01",
@@ -1006,7 +519,9 @@
       "additionalDescription": [],
       "estatParams": {
         "statsDataId": "0000010101",
-        "cdCat01": ["A5102"]
+        "cdCat01": [
+          "A5102"
+        ]
       },
       "series": {
         "id": "cat01",
@@ -1027,7 +542,9 @@
       "additionalDescription": [],
       "estatParams": {
         "statsDataId": "0000010101",
-        "cdCat01": ["A9101"]
+        "cdCat01": [
+          "A9101"
+        ]
       },
       "series": {
         "id": "cat01",
@@ -1048,7 +565,9 @@
       "additionalDescription": [],
       "estatParams": {
         "statsDataId": "0000010101",
-        "cdCat01": ["A9201"]
+        "cdCat01": [
+          "A9201"
+        ]
       },
       "series": {
         "id": "cat01",
@@ -1069,7 +588,9 @@
       "additionalDescription": [],
       "estatParams": {
         "statsDataId": "0000010101",
-        "cdCat01": ["A4101"]
+        "cdCat01": [
+          "A4101"
+        ]
       },
       "series": {
         "id": "cat01",
@@ -1090,7 +611,9 @@
       "additionalDescription": [],
       "estatParams": {
         "statsDataId": "0000010101",
-        "cdCat01": ["A4200"]
+        "cdCat01": [
+          "A4200"
+        ]
       },
       "series": {
         "id": "cat01",
@@ -1109,9 +632,11 @@
       "chartType": "line",
       "isRank": false,
       "additionalDescription": [],
-            "estatParams": {
+      "estatParams": {
         "statsDataId": "0000010101",
-        "cdCat01": ["A9111"]
+        "cdCat01": [
+          "A9111"
+        ]
       },
       "series": {
         "id": "cat01",
@@ -1126,13 +651,15 @@
     {
       "title": "平均婚姻年齢（初婚の妻）",
       "titleId": "average-marriage-age-woman",
-   "cardComponent": "estat-time-chart-card",
+      "cardComponent": "estat-time-chart-card",
       "chartType": "line",
       "isRank": false,
       "additionalDescription": [],
       "estatParams": {
         "statsDataId": "0000010101",
-        "cdCat01": ["A9112"]
+        "cdCat01": [
+          "A9112"
+        ]
       },
       "series": {
         "id": "cat01",
@@ -1153,7 +680,12 @@
       "additionalDescription": [],
       "estatParams": {
         "statsDataId": "0000010101",
-        "cdCat01": ["A8401","A840101","A840102","A840103"]
+        "cdCat01": [
+          "A8401",
+          "A840101",
+          "A840102",
+          "A840103"
+        ]
       },
       "series": {
         "id": "cat01",
@@ -1178,67 +710,24 @@
       }
     },
     {
-      "title": "父子世帯数",
-      "titleId": "parentchild-household",
+      "title": "年齢調整死亡率（男性）",
+      "titleId": "age-adjusted-mortality-man",
       "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
-      "isRank": false,
+      "chartType": "line",
+      "isRank": true,
       "additionalDescription": [],
-           "estatParams": {
+      "estatParams": {
         "statsDataId": "0000010101",
-        "cdCat01": ["A8501","A850101","A850102","A850103" ]
+        "cdCat01": [
+          "A424001"
+        ]
       },
       "series": {
         "id": "cat01",
         "item": [
           {
-            "code": "A8501",
-            "name": "総数"
-          },
-          {
-            "code": "A850101",
-            "name": "子供が1人"
-          },
-          {
-            "code": "A850102",
-            "name": "子供が2人"
-          },
-          {
-            "code": "A850103",
-            "name": "子供が3人以上"
-          }
-        ]
-      }
-    },
-    {
-      "title": "共働き世帯数",
-      "titleId": "double-income-household",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
-      "isRank": false,
-      "additionalDescription": [],
-       "estatParams": {
-        "statsDataId": "0000010106",
-        "cdCat01": ["F1501","F150101","F150102","F150103"]
-      },
-      "series": {
-        "id": "cat01",
-        "series": [
-          {
-            "code": "F1501",
-            "name": "総数"
-          },
-          {
-            "code": "F150101",
-            "name": "子供なし人"
-          },
-          {
-            "code": "F150102",
-            "name": "6歳未満の子供あり"
-          },
-          {
-            "code": "F150103",
-            "name": "18歳未満の子供あり"
+            "code": "A424001",
+            "name": "年齢調整死亡率"
           }
         ]
       }
@@ -1248,13 +737,17 @@
     {
       "title": "総人口",
       "titleId": "population-all",
-        "cardComponent": "estat-time-chart-card",
+      "cardComponent": "estat-time-chart-card",
       "chartType": "line",
       "isRank": false,
       "additionalDescription": [],
-         "estatParams": {
+      "estatParams": {
         "statsDataId": "0000020201",
-        "cdCat01": ["A1101","A110101", "A110102"]
+        "cdCat01": [
+          "A1101",
+          "A110101",
+          "A110102"
+        ]
       },
       "series": {
         "id": "cat01",
@@ -1275,136 +768,17 @@
       }
     },
     {
-      "title": "日本人人口",
-      "titleId": "population-japanese",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "line",
-      "isRank": false,
-      "additionalDescription": [],
-        "estatParams": {
-        "statsDataId": "0000020201",
-        "cdCat01": ["A1102","A110201","A110202"]
-      },
-      "series": {
-        "id": "cat01",
-        "item": [
-          {
-            "code": "A1102",
-            "name": "総数"
-          },
-          {
-            "code": "A110201",
-            "name": "男性"
-          },
-          {
-            "code": "A110202",
-            "name": "女性"
-          }
-        ]
-      }
-    },
-    {
-      "title": "外国人人口",
-      "titleId": "foreign-population",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "line",
-      "isRank": false,
-      "additionalDescription": [],
-       "estatParams": {
-        "statsDataId": "0000020201",
-        "cdCat01": ["A1700"]
-      },
-      "series": {
-        "id": "cat01",
-        "item": [
-          {
-            "code": "A1700",
-            "name": "総数"
-          }
-        ]
-      }
-    },
-    {
-      "title": "人口集中地区人口",
-      "titleId": "densely-inhabited-district-population",
-        "cardComponent": "estat-time-chart-card",
-      "chartType": "line",
-      "isRank": false,
-      "additionalDescription": [],
-       "estatParams": {
-        "statsDataId": "0000020201",
-        "cdCat01": ["A1801","A180101","A180102"]
-      },
-      "series": {
-        "id": "cat01",
-        "item": [
-          {
-            "code": "A1801",
-            "name": "総数"
-          },
-          {
-            "code": "A180101",
-            "name": "男性"
-          },
-          {
-            "code": "A180102",
-            "name": "女性"
-          }
-        ]
-      }
-    },
-    {
-      "title": "死亡数",
-      "titleId": "number-of-deaths",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "line",
-      "isRank": false,
-      "additionalDescription": [],
-          "estatParams": {
-        "statsDataId": "0000020201",
-        "cdCat01": ["A4200"]
-      },
-      "series": {
-        "id": "cat01",
-        "series": [
-          {
-            "code": "A4200",
-            "name": "総数"
-          }
-        ]
-      }
-    },
-    {
-      "title": "人口集中地区面積",
-      "titleId": "densely-inhabited-area",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "area",
-      "isRank": false,
-      "additionalDescription": [],
-       "estatParams": {
-        "statsDataId": "0000020201",
-        "cdCat01": ["A1802"]
-      },
-      "series": {
-        "id": "cat01",
-        "item": [
-          {
-            "code": "A1802",
-            "name": "人口集中地区面積"
-          }
-        ]
-      }
-    },
-    {
       "title": "昼間人口",
       "titleId": "daytime-population",
-       "cardComponent": "estat-time-chart-card",
+      "cardComponent": "estat-time-chart-card",
       "chartType": "line",
       "isRank": false,
       "additionalDescription": [],
       "estatParams": {
         "statsDataId": "0000020201",
-        "cdCat01": ["A6107"]
+        "cdCat01": [
+          "A6107"
+        ]
       },
       "series": {
         "id": "cat01",
@@ -1425,7 +799,9 @@
       "additionalDescription": [],
       "estatParams": {
         "statsDataId": "0000020201",
-        "cdCat01": ["A6108"]
+        "cdCat01": [
+          "A6108"
+        ]
       },
       "series": {
         "id": "cat01",
@@ -1438,277 +814,70 @@
       }
     },
     {
-      "title": "流入人口（県外）",
-      "titleId": "influx-population",
-     "cardComponent": "estat-time-chart-card",
-      "chartType": "line",
-      "isRank": false,
-      "additionalDescription": [],
-       "estatParams": {
-        "statsDataId": "0000020201",
-        "cdCat01": ["A6106"]
-      },
-      "series": {
-        "id": "cat01",
-        "item": [
-          {
-            "code": "A6106",
-            "name": "流入人口（県外）"
-          }
-        ]
-      }
-    },
-    {
-      "title": "流入人口（県内他市区町村）",
-      "titleId": "influx-population-hyogo",
-         "cardComponent": "estat-time-chart-card",
-      "chartType": "line",
-      "isRank": false,
-      "additionalDescription": [],
-       "estatParams": {
-        "statsDataId": "0000020201",
-        "cdCat01": ["A6105"]
-      },
-      "series": {
-        "id": "cat01",
-        "item": [
-          {
-            "code": "A6105",
-            "name": "流入人口（県内他市区町村）"
-          }
-        ]
-      }
-    },
-    {
-      "title": "流出人口（県外）",
-      "titleId": "outflow-population",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "line",
-      "isRank": false,
-      "additionalDescription": [],
-       "estatParams": {
-        "statsDataId": "0000020201",
-        "cdCat01": ["A6104"]
-      },
-      "series": {
-        "id": "cat01",
-        "item": [
-          {
-            "code": "A6104",
-            "name": "流出人口（県外）"
-          }
-        ]
-      }
-    },
-    {
-      "title": "流出人口（県内他市区町村）",
-      "titleId": "outflow-population-hyogo",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "line",
-      "isRank": false,
-      "additionalDescription": [],
-      "estatParams": {
-        "statsDataId": "0000020201",
-        "cdCat01": ["A6103"]
-      },
-      "series": {
-        "id": "cat01",
-        "item": [
-          {
-            "code": "A6103",
-            "name": "流出人口（県内他市区町村）"
-          }
-        ]
-      }
-    },
-    {
-      "title": "転入者数（日本人）",
-      "titleId": "transferees",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "line",
-      "isRank": false,
-      "additionalDescription": [],
-      "estatParams": {
-        "statsDataId": "0000020201",
-        "cdCat01": ["A5101"]
-      },
-      "series": {
-        "id": "cat01",
-        "item": [
-          {
-            "code": "A5101",
-            "name": "転入者数（日本人）"
-          }
-        ]
-      }
-    },
-    {
-      "title": "転出者数（日本人）",
-            "titleId": "outmigrants",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "line",
-      "isRank": false,
-      "additionalDescription": [],
-      "estatParams": {
-        "statsDataId": "0000020201",
-        "cdCat01": ["A5102"]
-      },
-      "series": {
-        "id": "cat01",
-        "item": [
-          {
-            "code": "A5102",
-            "name": "転出者数（日本人）"
-          }
-        ]
-      }
-    },
-    {
-      "title": "結婚件数",
-      "titleId": "marriage",
+      "title": "農業産出額",
+      "titleId": "agricultural-output",
       "cardComponent": "estat-time-chart-card",
       "chartType": "column",
       "isRank": false,
       "additionalDescription": [],
       "estatParams": {
-        "statsDataId": "0000020201",
-        "cdCat01": ["A9101"]
+        "statsDataId": "0000020203",
+        "cdCat01": [
+          "C3101"
+        ]
       },
       "series": {
         "id": "cat01",
         "item": [
           {
-            "code": "A9101",
-            "name": "結婚件数"
+            "code": "C3101",
+            "name": "農業産出額"
           }
         ]
       }
     },
     {
-      "title": "離婚件数",
-      "titleId": "divorce",
+      "title": "昼夜間人口比率",
+      "titleId": "day-night-population-ratio",
       "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
-      "isRank": false,
-      "additionalDescription": [],
-          "estatParams": {
-        "statsDataId": "0000020201",
-        "cdCat01": ["A9201"]
-      },
-      "series": {
-        "id": "0000020201",
-        "item": [
-          {
-            "code": "A9201",
-            "name": "離婚件数"
-          }
-        ]
-      }
-    },
-    {
-      "title": "出生数",
-      "titleId": "births",
-        "cardComponent": "estat-time-chart-card",
       "chartType": "line",
       "isRank": false,
       "additionalDescription": [],
       "estatParams": {
         "statsDataId": "0000020201",
-        "cdCat01": ["A4101"]
+        "cdCat01": [
+          "A6108"
+        ]
       },
       "series": {
         "id": "cat01",
         "item": [
           {
-            "code": "A4101",
-            "name": "出生数"
+            "code": "A6108",
+            "name": "昼夜間人口比率"
           }
         ]
       }
     },
     {
-      "title": "死亡数",
-      "titleId": "deaths",
-        "cardComponent": "estat-time-chart-card",
-      "chartType": "line",
-      "isRank": false,
-      "additionalDescription": [],
-       "estatParams": {
-        "statsDataId": "0000020201",
-        "cdCat01": ["A4200"]
-      },
-      "series": {
-        "id": "0000020201",
-        "item": [
-          {
-            "code": "A4200",
-            "name": "死亡数"
-          }
-        ]
-      }
-    },
-    {
-      "title": "母子世帯数",
-      "titleId": "motherchild-household",
-       "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
-      "isRank": false,
+      "title": "総面積",
+      "titleId": "total-area",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "area",
+      "isRank": true,
       "additionalDescription": [],
       "estatParams": {
-        "statsDataId": "0000020201",
-        "cdCat01":[ "A8401","A840101","A840102","A840103"]
+        "statsDataId": "0000020202",
+        "cdCat01": [
+          "B1101"
+        ]
       },
       "series": {
         "id": "cat01",
         "item": [
           {
-            "code": "A8401",
+            "code": "B1101",
             "name": "総数"
-          },
-          {
-            "code": "A840101",
-            "name": "子供が1人"
-          },
-          {
-            "code": "A840102",
-            "name": "子供が2人"
-          },
-          {
-            "code": "A840103",
-            "name": "子供が3人以上"
-          }
-        ]
-      }
-    },
-    {
-      "title": "父子世帯数",
-      "titleId": "parentchild-household",
-     "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
-      "isRank": false,
-      "additionalDescription": [],
-      "estatParams": {
-        "statsDataId": "0000020201",
-        "cdCat01":[ "A8501","A850101","A850102","A850103" ]
-      },
-      "series": {
-        "id": "0000020201",
-        "item": [
-          {
-            "code": "A8501",
-            "name": "総数"
-          },
-          {
-            "code": "A850101",
-            "name": "子供が1人"
-          },
-          {
-            "code": "A850102",
-            "name": "子供が2人"
-          },
-          {
-            "code": "A850103",
-            "name": "子供が3人以上"
           }
         ]
       }
