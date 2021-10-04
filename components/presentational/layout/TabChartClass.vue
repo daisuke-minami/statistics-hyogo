@@ -20,8 +20,12 @@ export default {
   },
   computed: {
     ...mapGetters('prefList', ['getSelectedPrefCode']),
+    ...mapGetters('cityList', ['getSelectedCityCode']),
     prefCode() {
       return this.getSelectedPrefCode
+    },
+    cityCode() {
+      return this.getSelectedCityCode
     },
     items() {
       return [
@@ -31,7 +35,7 @@ export default {
         },
         {
           label: '市区町村の統計',
-          link: `/${this.statisticsClass}/city/${this.prefCode}`,
+          link: `/${this.statisticsClass}/city/${this.prefCode}/${this.cityCode}`,
         },
         {
           label: '都道府県ランキング',

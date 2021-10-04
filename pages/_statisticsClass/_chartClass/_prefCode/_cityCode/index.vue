@@ -2,29 +2,10 @@
   <div>
     <tab-chart-class :statistics-class="statisticsClass" />
 
-    <!-- RankChartの場合  -->
-    <!-- <div v-if="isRank">
-      <select-title
-        v-model="titleId"
-        :contents-list="contentsList"
-        :is-rank="isRank"
-      />
-      <div v-if="isCity">
-        <card-row class="DataBlock">
-          <estat-city-rank-card :city-list="cityList" :contents="contents" />
-        </card-row>
-      </div>
-      <div v-else>
-        <card-row class="DataBlock">
-          <estat-pref-rank-card :pref-list="prefList" :contents="contents" />
-        </card-row>
-      </div>
-    </div> -->
-
     <!-- TimeChartの場合  -->
     <!-- <div v-else> -->
     <div v-if="isCity">
-      <select-city v-model="cityCode" :city-list="cityList" />
+      <select-city :path="path" :city-list="cityList" />
     </div>
     <card-row class="DataBlock">
       <component
@@ -71,12 +52,13 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     )
     return { contentsAll }
   },
+  async fetch() {},
   data() {
     return {
       // chartClass: 'prefecture',
       tab: null,
       titleId: null,
-      cityCode: null,
+      // cityCode: null,
     }
   },
   computed: {
@@ -90,13 +72,15 @@ const options: ThisTypedComponentOptionsWithRecordProps<
       'getCityList',
       'getCityName',
     ]),
-    // ...mapGetters('pageSetting', ['getPageSetting']),
     statisticsClass() {
       return this.$route.params.statisticsClass
     },
-    // pageSetting() {
-    //   return this.getPageSetting(this.statisticsClass)
-    // },
+    cityCode() {
+      return this.$route.params.cityCode
+    },
+    path() {
+      return `/${this.statisticsClass}/${this.chartClass}/${this.prefCode}`
+    },
     prefList() {
       return this.getPrefList
     },
@@ -134,12 +118,9 @@ const options: ThisTypedComponentOptionsWithRecordProps<
       }
     },
     contentsList() {
-      // console.log(this.pageSetting)
       return this.contentsAll[this.governmentType].map((d) => {
         // ShallowCopyを避けるため、lodashのcloneDeepを用いる。
         const contents = cloneDeep(d)
-        // console.log(d)
-
         // 都道府県の情報を追加
         contents.prefName = this.prefName
         contents.prefCode = this.prefCode
@@ -163,10 +144,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
             contents.route = `${this.prefCode}/${contents.titleId}/`
             break
         }
-
-        // console.log(contents)
         return {
-          // cardComponent: d.cardComponent,
           ...contents,
         }
       })
@@ -176,18 +154,9 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     },
   },
   watch: {
-    titleId() {
-      // this.$fetch()
-    },
-    cityCode(): void {
-      // this.$fetch()
-      this.changeSelectedCity(this.cityCode)
-    },
+    titleId() {},
   },
-  created(): void {
-    this.cityCode = this.getSelectedCityCode
-    this.titleId = this.contentsList.filter((f) => f.isRank === true)[0].titleId
-  },
+  created(): void {},
   methods: {
     change() {
       EventBus.$emit(TOGGLE_EVENT)
