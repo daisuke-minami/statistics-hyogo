@@ -98,10 +98,8 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     },
   },
   async fetch() {
-    console.log(this.contents)
     const params = this.contents.estatParams
     params.cdArea = this.cdArea
-    console.log(this.cdArea)
     this.estatResponse = await this.$getEstatAPI(params)
   },
   data() {
@@ -123,7 +121,6 @@ const options: ThisTypedComponentOptionsWithRecordProps<
       return this.contents.estatParams
     },
     title(): string {
-      // console.log(this.estatParams)
       return this.contents.title
     },
     titleId(): string {

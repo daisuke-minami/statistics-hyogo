@@ -1,39 +1,6 @@
 {
   "prefecture": [
     {
-      "title": "外国人人口",
-      "titleId": "foreign-population",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "line",
-      "isRank": false,
-      "additionalDescription": [],
-      "estatparams": {
-        "statsDataId": "0000010101",
-        "cdCat01": [
-          "A1700",
-          "A170001",
-          "A170002"
-        ]
-      },
-      "series": {
-        "id": "cat01",
-        "item": [
-          {
-            "code": "A1700",
-            "name": "総数"
-          },
-          {
-            "code": "A170001",
-            "name": "男性"
-          },
-          {
-            "code": "A170002",
-            "name": "女性"
-          }
-        ]
-      }
-    },
-    {
       "title": "有配偶人口",
       "titleId": "married-population",
       "cardComponent": "estat-pyramid-chart-card",
@@ -73,7 +40,7 @@
         ]
       },
       "series": {
-        "id": "0000010101",
+        "id": "cat01",
         "item": [
           {
             "name": "20～24歳",
@@ -186,7 +153,7 @@
         ]
       },
       "series": {
-        "id": "0000010101",
+        "id": "cdCat01",
         "item": [
           {
             "name": "20～24歳",
@@ -452,7 +419,6 @@
     }
   ],
   "city": [
-    
     {
       "title": "流入人口（県外）",
       "titleId": "influx-population",

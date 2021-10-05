@@ -1,5 +1,39 @@
 {
   "prefecture": [
+    
+    {
+      "title": "外国人人口",
+      "titleId": "foreign-population",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "line",
+      "isRank": false,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000010101",
+        "cdCat01": [
+          "A1700",
+          "A170001",
+          "A170002"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "A1700",
+            "name": "総数"
+          },
+          {
+            "code": "A170001",
+            "name": "男性"
+          },
+          {
+            "code": "A170002",
+            "name": "女性"
+          }
+        ]
+      }
+    },
     {
       "title": "総人口",
       "titleId": "population-all",

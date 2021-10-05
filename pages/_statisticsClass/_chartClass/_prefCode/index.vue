@@ -134,11 +134,9 @@ const options: ThisTypedComponentOptionsWithRecordProps<
       }
     },
     contentsList() {
-      // console.log(this.pageSetting)
       return this.contentsAll[this.governmentType].map((d) => {
         // ShallowCopyを避けるため、lodashのcloneDeepを用いる。
         const contents = cloneDeep(d)
-        // console.log(d)
 
         // 都道府県の情報を追加
         contents.prefName = this.prefName

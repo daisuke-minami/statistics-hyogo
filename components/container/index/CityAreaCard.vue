@@ -61,7 +61,6 @@ export default {
         return '_city.l.topojson'
       }
     }
-    console.log(this.select)
     const response = await fetch(
       `${url}/${this.select}/${this.prefCode}/${this.prefCode}${json()}`
     )

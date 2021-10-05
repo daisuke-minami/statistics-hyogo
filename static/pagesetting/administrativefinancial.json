@@ -1,325 +1,277 @@
 {
   "prefecture": [
     {
-      "title": "農家数",
-      "titleId": "number-of-farmers",
+      "title": "一般行政部門職員数",
+      "titleId": "administrative-staff",
       "cardComponent": "estat-time-chart-card",
       "chartType": "column",
-      "isRank":false,
-      "additionalDescription": [],
-      "estatParams": {
-        "statsDataId": "0000010103",
-        "cdCat01": [
-          "C3102",
-          "C310202",
-          "C310211",
-          "C310212"
-        ]
-      },
-      "series": {
-        "id": "cat01",
-        "item": [
-          {
-            "code": "C3102",
-            "name": "総数"
-          },
-          {
-            "code": "C310202",
-            "name": "自給的農家"
-          },
-          {
-            "code": "C310211",
-            "name": "販売農家（専業農家）"
-          },
-          {
-            "code": "C310212",
-            "name": "販売農家（兼業農家）"
-          }
-        ]
-      }
-    },
-    {
-      "title": "農業産出額",
-      "titleId": "agricultural-output",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
-      "isRank":false,
-      "additionalDescription": [],
-      "estatParams": {
-        "statsDataId": "0000010103",
-        "cdCat01": [
-          "C3101"
-        ]
-      },
-      "series": {
-        "id": "cat01",
-        "item": [
-          {
-            "code": "C3101",
-            "name": "農業産出額"
-          }
-        ]
-      }
-    },
-    {
-      "title": "昼夜間人口比率",
-      "titleId": "day-night-population-ratio",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "line",
-      "isRank":false,
-      "additionalDescription": [],
-      "estatParams": {
-        "statsDataId": "0000010101",
-        "cdCat01": [
-          "A6108"
-        ]
-      },
-      "series": {
-        "id": "cat01",
-        "item": [
-          {
-            "code": "A6108",
-            "name": "昼夜間人口比率"
-          }
-        ]
-      }
-    },
-    {
-      "title": "総人口",
-      "titleId": "population-all",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "line",
-      "isRank":false,
-      "additionalDescription": [],
-      "estatParams": {
-        "statsDataId": "0000010101",
-        "cdCat01": [
-          "A1101",
-          "A110101",
-          "A110102"
-        ]
-      },
-      "series": {
-        "id": "cat01",
-        "item": [
-          {
-            "code": "A1101",
-            "name": "総数"
-          },
-          {
-            "code": "A110101",
-            "name": "男性"
-          },
-          {
-            "code": "A110102",
-            "name": "女性"
-          }
-        ]
-      }
-    },
-    {
-      "title": "就業者数（男女年齢別）",
-      "titleId": "number-of-workers",
-      "cardComponent": "estat-pyramid-chart-card",
-      "additionalDescription": [
-        "就業者 ： 「従業者」と「休業者」を合わせたもの",
-        "従業者 ： 調査週間中に賃金，給料，諸手当，内職収入などの収入を伴う仕事（以下「仕事」という。）を1時間以上した者。なお，家族従業者は，無給であっても仕事をしたとする。",
-        "休業者 ： 仕事を持ちながら，調査週間中に少しも仕事をしなかった者のうち、雇用者で，給料・賃金（休業手当を含む。）の支払を受けている者又は受けることになっている者、または自営業主で，自分の経営する事業を持ったままで，その仕事を休み始めてから30日にならない者"
-      ],
-      "estatParams": {
-        "statsDataId": "0000010106",
-        "cdCat01": [
-          "F210101",
-          "F210102",
-          "F210201",
-          "F210202",
-          "F210301",
-          "F210302",
-          "F210401",
-          "F210402",
-          "F210501",
-          "F210502",
-          "F210601",
-          "F210602",
-          "F210701",
-          "F210702",
-          "F210801",
-          "F210802",
-          "F210901",
-          "F210902",
-          "F211001",
-          "F211002",
-          "F211101",
-          "F211102",
-          "F211201",
-          "F211202",
-          "F211301",
-          "F211302",
-          "F211401",
-          "F211402",
-          "F211501",
-          "F211502"
-        ]
-      },
-      "series": {
-        "id": "cat01",
-        "item": [
-          {
-            "code": "F210101",
-            "name": "15～19歳",
-            "man": "F210101",
-            "woman": "F210102"
-          },
-          {
-            "name": "20～24歳",
-            "man": "F210201",
-            "woman": "F210202"
-          },
-          {
-            "name": "25～29歳",
-            "man": "F210301",
-            "woman": "F210302"
-          },
-          {
-            "name": "30～34歳",
-            "man": "F210401",
-            "woman": "F210402"
-          },
-          {
-            "name": "35～39歳",
-            "man": "F210501",
-            "woman": "F210502"
-          },
-          {
-            "name": "40～44歳",
-            "man": "F210601",
-            "woman": "F210602"
-          },
-          {
-            "name": "45～49歳",
-            "man": "F210701",
-            "woman": "F210702"
-          },
-          {
-            "name": "50～54歳",
-            "man": "F210801",
-            "woman": "F210802"
-          },
-          {
-            "name": "55～59歳",
-            "man": "F210901",
-            "woman": "F210902"
-          },
-          {
-            "name": "60～64歳",
-            "man": "F211001",
-            "woman": "F211002"
-          },
-          {
-            "name": "65～69歳",
-            "man": "F211101",
-            "woman": "F211102"
-          },
-          {
-            "name": "70～74歳",
-            "man": "F211201",
-            "woman": "F211202"
-          },
-          {
-            "name": "75～79歳",
-            "man": "F211301",
-            "woman": "F211302"
-          },
-          {
-            "name": "80～84歳",
-            "man": "F211401",
-            "woman": "F211402"
-          },
-          {
-            "name": "85歳以上",
-            "man": "F211501",
-            "woman": "F211502"
-          }
-        ]
-      }
-    },
-    {
-      "title": "総面積",
-      "titleId": "total-area",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "area",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
-        "statsDataId": "0000010102",
+        "statsDataId": "0000010104",
         "cdCat01": [
-          "B1101"
+          "D1201"
         ]
       },
       "series": {
         "id": "cat01",
         "item": [
           {
-            "code": "B1101",
-            "name": "総数"
+            "code": "D1201",
+            "name": "一般行政部門職員数"
           }
         ]
       }
     },
     {
-      "title": "評価総地積（課税対象土地）",
-      "titleId": "evaluation-total-cadastral",
+      "title": "消防部門職員数",
+      "titleId": "fire-department-staff",
       "cardComponent": "estat-time-chart-card",
-      "chartType": "area",
+      "chartType": "column",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
-        "statsDataId": "0000010102",
+        "statsDataId": "0000010104",
         "cdCat01": [
-          "B1201",
-          "B120101",
-          "B120102",
-          "B120103",
-          "B120104",
-          "B120105",
-          "B120106",
-          "B120107"
+          "D1203"
         ]
       },
       "series": {
         "id": "cat01",
         "item": [
           {
-            "code": "B1201",
-            "name": "総数"
-          },
+            "code": "D1203",
+            "name": "消防部門職員数"
+          }
+        ]
+      }
+    },
+    {
+      "title": "教育部門職員数",
+      "titleId": "education-department-staff",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "column",
+      "isRank": true,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000010104",
+        "cdCat01": [
+          "D1204"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
           {
-            "code": "B120101",
-            "name": "田"
-          },
+            "code": "D1204",
+            "name": "教育部門職員数"
+          }
+        ]
+      }
+    },
+    {
+      "title": "警察部門職員数",
+      "titleId": "police-department-staff",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "column",
+      "isRank": true,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000010104",
+        "cdCat01": [
+          "D1205"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
           {
-            "code": "B120102",
-            "name": "畑"
-          },
+            "code": "D1205",
+            "name": "警察部門職員数"
+          }
+        ]
+      }
+    },
+    {
+      "title": "県議会議員数",
+      "titleId": "prefectural-assembly-members",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "column",
+      "isRank": true,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000010104",
+        "cdCat01": [
+          "D1210"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
           {
-            "code": "B120103",
-            "name": "宅地"
-          },
+            "code": "D1210",
+            "name": "県議会議員数"
+          }
+        ]
+      }
+    },
+    {
+      "title": "財政力指数",
+      "titleId": "financial-strength-index",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "column",
+      "isRank": true,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000010104",
+        "cdCat01": [
+          "D2101"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
           {
-            "code": "B120104",
-            "name": "山林"
-          },
+            "code": "D2101",
+            "name": "財政力指数"
+          }
+        ]
+      }
+    },
+    {
+      "title": "実質収支比率",
+      "titleId": "real-balance-ratio",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "column",
+      "isRank": true,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000010104",
+        "cdCat01": [
+          "D2102"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
           {
-            "code": "B120105",
-            "name": "牧場"
-          },
+            "code": "D2102",
+            "name": "実質収支比率"
+          }
+        ]
+      }
+    },
+    {
+      "title": "経常収支比率",
+      "titleId": "current-account-ratio",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "column",
+      "isRank": true,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000010104",
+        "cdCat01": [
+          "D2103"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
           {
-            "code": "B120106",
-            "name": "原野"
-          },
+            "code": "D2103",
+            "name": "経常収支比率"
+          }
+        ]
+      }
+    },
+    {
+      "title": "基準財政収入額",
+      "titleId": "standard-financial-income",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "column",
+      "isRank": true,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000010104",
+        "cdCat01": [
+          "D2105"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
           {
-            "code": "B120107",
-            "name": "その他"
+            "code": "D2105",
+            "name": "基準財政収入額"
+          }
+        ]
+      }
+    },
+    {
+      "title": "基準財政需要額'",
+      "titleId": "standard-financial-demand",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "column",
+      "isRank": true,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000010104",
+        "cdCat01": [
+          "D2106"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "D2106",
+            "name": "基準財政需要額"
+          }
+        ]
+      }
+    },
+    {
+      "title": "実質公債費比率",
+      "titleId": "real-debt-service-ratio",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "column",
+      "isRank": true,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000010104",
+        "cdCat01": [
+          "D2111"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "D2111",
+            "name": "実質公債費比率"
+          }
+        ]
+      }
+    },
+    {
+      "title": "将来負担比率",
+      "titleId": "future-burden-ratio",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "column",
+      "isRank": true,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000010104",
+        "cdCat01": [
+          "D2112"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "D2112",
+            "name": "将来負担比率"
           }
         ]
       }
@@ -327,70 +279,139 @@
   ],
   "city": [
     {
-      "title": "農業産出額",
-      "titleId": "agricultural-output",
+      "title": "一般行政部門職員数",
+      "titleId": "administrative-staff",
       "cardComponent": "estat-time-chart-card",
       "chartType": "column",
-      "isRank":false,
+      "isRank": true,
       "additionalDescription": [],
       "estatParams": {
-        "statsDataId": "0000020203",
+        "statsDataId": "0000020204",
         "cdCat01": [
-          "C3101"
+          "D1202"
         ]
       },
       "series": {
         "id": "cat01",
         "item": [
           {
-            "code": "C3101",
-            "name": "農業産出額"
+            "code": "D1202",
+            "name": "一般行政部門職員数"
           }
         ]
       }
     },
     {
-      "title": "昼夜間人口比率",
-      "titleId": "day-night-population-ratio",
+      "title": "財政力指数",
+      "titleId": "financial-strength-index",
       "cardComponent": "estat-time-chart-card",
-      "chartType": "line",
-      "isRank":false,
+      "chartType": "column",
+      "isRank": true,
       "additionalDescription": [],
       "estatParams": {
-        "statsDataId": "0000020201",
+        "statsDataId": "0000020204",
         "cdCat01": [
-          "A6108"
+          "D2201"
         ]
       },
       "series": {
         "id": "cat01",
         "item": [
           {
-            "code": "A6108",
-            "name": "昼夜間人口比率"
+            "code": "D2201",
+            "name": "財政力指数"
           }
         ]
       }
     },
     {
-      "title": "総面積",
-      "titleId": "total-area",
+      "title": "実質収支比率",
+      "titleId": "real-balance-ratio",
       "cardComponent": "estat-time-chart-card",
-      "chartType": "area",
-      "isRank":true,
+      "chartType": "column",
+      "isRank": true,
       "additionalDescription": [],
       "estatParams": {
-        "statsDataId": "0000020202",
+        "statsDataId": "0000020204",
         "cdCat01": [
-          "B1101"
+          "D2202"
         ]
       },
       "series": {
         "id": "cat01",
         "item": [
           {
-            "code": "B1101",
-            "name": "総数"
+            "code": "D2202",
+            "name": "実質収支比率"
+          }
+        ]
+      }
+    },
+    {
+      "title": "経常収支比率",
+      "titleId": "current-account-ratio",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "column",
+      "isRank": true,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000020204",
+        "cdCat01": [
+          "D2203"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "D2203",
+            "name": "経常収支比率"
+          }
+        ]
+      }
+    },
+    {
+      "title": "基準財政収入額",
+      "titleId": "standard-financial-income",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "column",
+      "isRank": true,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000020204",
+        "cdCat01": [
+          "D2205"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "D2205",
+            "name": "基準財政収入額"
+          }
+        ]
+      }
+    },
+    {
+      "title": "基準財政需要額'",
+      "titleId": "standard-financial-demand",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "column",
+      "isRank": true,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000020204",
+        "cdCat01": [
+          "D2206"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "D2206",
+            "name": "基準財政需要額"
           }
         ]
       }

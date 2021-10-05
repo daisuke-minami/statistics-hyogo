@@ -65,15 +65,9 @@ export default {
       return this.$route.params.titleId
     },
     estatJsonPath() {
-      // console.log(this.contents)
       return `${this.statisticsClass}/${this.governmentType}/${this.titleId}.json`
     },
     contents() {
-      // console.log('pageSetting', this.pageSetting)
-      // console.log('cityList', this.cityList)
-      // console.log('prefCode', this.prefCode)
-      // console.log('statisticsClass', this.statisticsClass)
-      // console.log('titleId', this.titleId)
       return this.pageSetting[this.governmentType]
         .map((d) => {
           // ShallowCopyを避けるため、lodashのcloneDeepを用いる。

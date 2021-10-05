@@ -52,13 +52,13 @@ export default Vue.extend({
     },
   },
   created() {
-    console.log(this.path)
+    // console.log(this.path)
     this.cityCode = this.getSelectedCityCode
   },
   methods: {
     ...mapActions('cityList', ['changeSelectedCity']),
     jumpToCityPage() {
-      console.log(this.cityCode)
+      // console.log(this.cityCode)
       this.changeSelectedCity(this.cityCode)
       this.$router.push(`${this.path}/${this.cityCode}`)
     },

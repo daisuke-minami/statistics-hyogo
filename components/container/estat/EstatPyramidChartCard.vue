@@ -91,7 +91,7 @@ export default {
       return this.contents.title
     },
     estatData() {
-      return this.$formatEstatData(this.estatResponse, null)
+      return this.$formatEstatData(this.estatResponse, this.cdArea)
     },
     titleId() {
       return this.contents.titleId

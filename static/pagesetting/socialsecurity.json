@@ -1,325 +1,866 @@
 {
   "prefecture": [
     {
-      "title": "農家数",
-      "titleId": "number-of-farmers",
+      "title": "国民医療費（総額）",
+      "titleId": "national-medical-expenses",
       "cardComponent": "estat-time-chart-card",
       "chartType": "column",
-      "isRank":false,
-      "additionalDescription": [],
-      "estatParams": {
-        "statsDataId": "0000010103",
-        "cdCat01": [
-          "C3102",
-          "C310202",
-          "C310211",
-          "C310212"
-        ]
-      },
-      "series": {
-        "id": "cat01",
-        "item": [
-          {
-            "code": "C3102",
-            "name": "総数"
-          },
-          {
-            "code": "C310202",
-            "name": "自給的農家"
-          },
-          {
-            "code": "C310211",
-            "name": "販売農家（専業農家）"
-          },
-          {
-            "code": "C310212",
-            "name": "販売農家（兼業農家）"
-          }
-        ]
-      }
-    },
-    {
-      "title": "農業産出額",
-      "titleId": "agricultural-output",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
-      "isRank":false,
-      "additionalDescription": [],
-      "estatParams": {
-        "statsDataId": "0000010103",
-        "cdCat01": [
-          "C3101"
-        ]
-      },
-      "series": {
-        "id": "cat01",
-        "item": [
-          {
-            "code": "C3101",
-            "name": "農業産出額"
-          }
-        ]
-      }
-    },
-    {
-      "title": "昼夜間人口比率",
-      "titleId": "day-night-population-ratio",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "line",
-      "isRank":false,
-      "additionalDescription": [],
-      "estatParams": {
-        "statsDataId": "0000010101",
-        "cdCat01": [
-          "A6108"
-        ]
-      },
-      "series": {
-        "id": "cat01",
-        "item": [
-          {
-            "code": "A6108",
-            "name": "昼夜間人口比率"
-          }
-        ]
-      }
-    },
-    {
-      "title": "総人口",
-      "titleId": "population-all",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "line",
-      "isRank":false,
-      "additionalDescription": [],
-      "estatParams": {
-        "statsDataId": "0000010101",
-        "cdCat01": [
-          "A1101",
-          "A110101",
-          "A110102"
-        ]
-      },
-      "series": {
-        "id": "cat01",
-        "item": [
-          {
-            "code": "A1101",
-            "name": "総数"
-          },
-          {
-            "code": "A110101",
-            "name": "男性"
-          },
-          {
-            "code": "A110102",
-            "name": "女性"
-          }
-        ]
-      }
-    },
-    {
-      "title": "就業者数（男女年齢別）",
-      "titleId": "number-of-workers",
-      "cardComponent": "estat-pyramid-chart-card",
-      "additionalDescription": [
-        "就業者 ： 「従業者」と「休業者」を合わせたもの",
-        "従業者 ： 調査週間中に賃金，給料，諸手当，内職収入などの収入を伴う仕事（以下「仕事」という。）を1時間以上した者。なお，家族従業者は，無給であっても仕事をしたとする。",
-        "休業者 ： 仕事を持ちながら，調査週間中に少しも仕事をしなかった者のうち、雇用者で，給料・賃金（休業手当を含む。）の支払を受けている者又は受けることになっている者、または自営業主で，自分の経営する事業を持ったままで，その仕事を休み始めてから30日にならない者"
-      ],
-      "estatParams": {
-        "statsDataId": "0000010106",
-        "cdCat01": [
-          "F210101",
-          "F210102",
-          "F210201",
-          "F210202",
-          "F210301",
-          "F210302",
-          "F210401",
-          "F210402",
-          "F210501",
-          "F210502",
-          "F210601",
-          "F210602",
-          "F210701",
-          "F210702",
-          "F210801",
-          "F210802",
-          "F210901",
-          "F210902",
-          "F211001",
-          "F211002",
-          "F211101",
-          "F211102",
-          "F211201",
-          "F211202",
-          "F211301",
-          "F211302",
-          "F211401",
-          "F211402",
-          "F211501",
-          "F211502"
-        ]
-      },
-      "series": {
-        "id": "cat01",
-        "item": [
-          {
-            "code": "F210101",
-            "name": "15～19歳",
-            "man": "F210101",
-            "woman": "F210102"
-          },
-          {
-            "name": "20～24歳",
-            "man": "F210201",
-            "woman": "F210202"
-          },
-          {
-            "name": "25～29歳",
-            "man": "F210301",
-            "woman": "F210302"
-          },
-          {
-            "name": "30～34歳",
-            "man": "F210401",
-            "woman": "F210402"
-          },
-          {
-            "name": "35～39歳",
-            "man": "F210501",
-            "woman": "F210502"
-          },
-          {
-            "name": "40～44歳",
-            "man": "F210601",
-            "woman": "F210602"
-          },
-          {
-            "name": "45～49歳",
-            "man": "F210701",
-            "woman": "F210702"
-          },
-          {
-            "name": "50～54歳",
-            "man": "F210801",
-            "woman": "F210802"
-          },
-          {
-            "name": "55～59歳",
-            "man": "F210901",
-            "woman": "F210902"
-          },
-          {
-            "name": "60～64歳",
-            "man": "F211001",
-            "woman": "F211002"
-          },
-          {
-            "name": "65～69歳",
-            "man": "F211101",
-            "woman": "F211102"
-          },
-          {
-            "name": "70～74歳",
-            "man": "F211201",
-            "woman": "F211202"
-          },
-          {
-            "name": "75～79歳",
-            "man": "F211301",
-            "woman": "F211302"
-          },
-          {
-            "name": "80～84歳",
-            "man": "F211401",
-            "woman": "F211402"
-          },
-          {
-            "name": "85歳以上",
-            "man": "F211501",
-            "woman": "F211502"
-          }
-        ]
-      }
-    },
-    {
-      "title": "総面積",
-      "titleId": "total-area",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "area",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
-        "statsDataId": "0000010102",
+        "statsDataId": "0000010110",
         "cdCat01": [
-          "B1101"
+          "J4001"
         ]
       },
       "series": {
         "id": "cat01",
         "item": [
           {
-            "code": "B1101",
-            "name": "総数"
+            "code": "J4001",
+            "name": "国民医療費（総額）"
           }
         ]
       }
     },
     {
-      "title": "評価総地積（課税対象土地）",
-      "titleId": "evaluation-total-cadastral",
+      "title": "老人福祉施設数",
+      "titleId": "welfare-facilities-elderly",
       "cardComponent": "estat-time-chart-card",
-      "chartType": "area",
+      "chartType": "column",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
-        "statsDataId": "0000010102",
+        "statsDataId": "0000010110",
         "cdCat01": [
-          "B1201",
-          "B120101",
-          "B120102",
-          "B120103",
-          "B120104",
-          "B120105",
-          "B120106",
-          "B120107"
+          "J2301"
         ]
       },
       "series": {
         "id": "cat01",
         "item": [
           {
-            "code": "B1201",
+            "code": "J2301",
+            "name": "老人福祉施設数"
+          }
+        ]
+      }
+    },
+    {
+      "title": "国民健康保険被保険者数",
+      "titleId": "number-of-national-health-insurance",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "line",
+      "isRank": true,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000010110",
+        "cdCat01": [
+          "J4101"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "J4101",
+            "name": "国民健康保険被保険者数"
+          }
+        ]
+      }
+    },
+    {
+      "title": "国民健康保険給付金額",
+      "titleId": "national-health-insurance-benefit-amount",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "column",
+      "isRank": true,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000010110",
+        "cdCat01": [
+          "J4108"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "J4108",
+            "name": "国民健康保険給付金額"
+          }
+        ]
+      }
+    },
+    {
+      "title": "生活保護被保護実世帯数",
+      "titleId": "number-of-actual-households-protected-by-livelihood-protection-one",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "column",
+      "isRank": true,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000010110",
+        "cdCat01": [
+          "J1101"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "J1101",
+            "name": "生活保護被保護実世帯数"
+          }
+        ]
+      }
+    },
+    {
+      "title": "現に保護を受けた生活保護被保護実世帯数",
+      "titleId": "number-of-actual-households-protected-by-livelihood-protection-two",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "column",
+      "isRank": true,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000010110",
+        "cdCat01": [
+          "J1102"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "J1102",
+            "name": "現に保護を受けた生活保護被保護実世帯数"
+          }
+        ]
+      }
+    },
+    {
+      "title": "保護開始世帯数",
+      "titleId": "number-of-households-starting-protection",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "column",
+      "isRank": true,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000010110",
+        "cdCat01": [
+          "J1103"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "J1103",
+            "name": "保護開始世帯数"
+          }
+        ]
+      }
+    },
+    {
+      "title": "生活保護扶助世帯数",
+      "titleId": "number-of-welfare-assistance-households",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "column",
+      "isRank": true,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000010110",
+        "cdCat01": [
+          "J1104"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "J1104",
+            "name": "生活保護扶助世帯数"
+          }
+        ]
+      }
+    },
+    {
+      "title": "生活保護被保護実人員",
+      "titleId": "livelihood-protection-protected-actual-personnel",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "column",
+      "isRank": true,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000010110",
+        "cdCat01": [
+          "J1105"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "J1105",
+            "name": "生活保護被保護実人員"
+          }
+        ]
+      }
+    },
+    {
+      "title": "生活保護扶助人員",
+      "titleId": "livelihood-protection-assistance-personnel",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "column",
+      "isRank": true,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000010110",
+        "cdCat01": [
+          "J1106"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "J1106",
+            "name": "生活保護扶助人員"
+          }
+        ]
+      }
+    },
+    {
+      "title": "身体障害者手帳交付数",
+      "titleId": "number-of-handicapped-persons-handbooks-issued",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "column",
+      "isRank": true,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000010110",
+        "cdCat01": [
+          "J1200",
+          "J1201",
+          "J1202",
+          "J1203",
+          "J1204",
+          "J1205"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "J1200",
             "name": "総数"
           },
           {
-            "code": "B120101",
-            "name": "田"
+            "code": "J1201",
+            "name": "視覚障害"
           },
           {
-            "code": "B120102",
-            "name": "畑"
+            "code": "J1202",
+            "name": "聴覚・平衡機能障害"
           },
           {
-            "code": "B120103",
-            "name": "宅地"
+            "code": "J1203",
+            "name": "音声・言語・そしゃく機能障害"
           },
           {
-            "code": "B120104",
-            "name": "山林"
+            "code": "J1204",
+            "name": "肢体不自由障害"
           },
           {
-            "code": "B120105",
-            "name": "牧場"
+            "code": "J1205",
+            "name": "内部障害"
+          }
+        ]
+      }
+    },
+    {
+      "title": "体障害者補装具交付決定件数",
+      "titleId": "number-of-decisions-to-issue-assistive-devices-for-the-physically-handicapped",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "column",
+      "isRank": true,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000010110",
+        "cdCat01": [
+          "J1210"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "J1210",
+            "name": "体障害者補装具交付決定件数"
+          }
+        ]
+      }
+    },
+    {
+      "title": "身体障害者補装具修理決定件数",
+      "titleId": "number-of-decisions-to-repair-assistive-devices-for-the-physically-handicapped",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "column",
+      "isRank": true,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000010110",
+        "cdCat01": [
+          "J1212"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "J1212",
+            "name": "身体障害者補装具修理決定件数"
+          }
+        ]
+      }
+    },
+    {
+      "title": "身体障害者補装具修理負担額",
+      "titleId": "physically-handicapped-prosthesis-repair-burden",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "column",
+      "isRank": true,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000010110",
+        "cdCat01": [
+          "J1213"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "J1213",
+            "name": "身体障害者補装具修理負担額"
+          }
+        ]
+      }
+    },
+    {
+      "title": "精神障害者保健福祉手帳交付件数",
+      "titleId": "number-of-mentally-handicapped-health-and-welfare-notebooks-issued",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "column",
+      "isRank": true,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000010110",
+        "cdCat01": [
+          "J1301",
+          "J130101",
+          "J130102",
+          "J130103"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "J1301",
+            "name": "総数"
           },
           {
-            "code": "B120106",
-            "name": "原野"
+            "code": "J130101",
+            "name": "1級"
           },
           {
-            "code": "B120107",
-            "name": "その他"
+            "code": "J130102",
+            "name": "2級"
+          },
+          {
+            "code": "J130103",
+            "name": "3級"
+          }
+        ]
+      }
+    },
+    {
+      "title": "児童扶養手当受給者数",
+      "titleId": "number-of-child-rearing-allowance-recipients",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "column",
+      "isRank": true,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000010110",
+        "cdCat01": [
+          "J1401"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "J1401",
+            "name": "児童扶養手当受給者数"
+          }
+        ]
+      }
+    },
+    {
+      "title": "知的障害者療育手帳交付数",
+      "titleId": "number-of-rehabilitation-handbooks-for-persons-with-intellectual-disabilities",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "column",
+      "isRank": true,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000010110",
+        "cdCat01": [
+          "J1501"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "J1501",
+            "name": "知的障害者療育手帳交付数"
+          }
+        ]
+      }
+    },
+    {
+      "title": "社会福祉施設数",
+      "titleId": "number-of-social-welfare-facilities",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "column",
+      "isRank": true,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000010110",
+        "cdCat01": [
+          "J2101"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "J2101",
+            "name": "社会福祉施設数"
+          }
+        ]
+      }
+    },
+    {
+      "title": "社会福祉施設数従事者数",
+      "titleId": "number-of-social-welfare-facilities-number-of-workers",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "line",
+      "isRank": true,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000010110",
+        "cdCat01": [
+          "J2103"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "J2103",
+            "name": "社会福祉施設数従事者数"
+          }
+        ]
+      }
+    },
+    {
+      "title": "保護施設数（医療保護施設を除く）",
+      "titleId": "number-of-shelters",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "column",
+      "isRank": true,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000010110",
+        "cdCat01": [
+          "J2201"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "J2201",
+            "name": "保護施設数（医療保護施設を除く）"
+          }
+        ]
+      }
+    },
+    {
+      "title": "保護施設定員数（医療保護施設を含む）",
+      "titleId": "number-of-protection-setting-staff-one",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "line",
+      "isRank": true,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000010110",
+        "cdCat01": [
+          "J2202"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "J2202",
+            "name": "保護施設定員数（医療保護施設を含む）"
+          }
+        ]
+      }
+    },
+    {
+      "title": "保護施設定員数（医療保護施設を除く）",
+      "titleId": "number-of-protection-setting-staff-two",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "line",
+      "isRank": true,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000010110",
+        "cdCat01": [
+          "J2203"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "J2203",
+            "name": "保護施設定員数（医療保護施設を除く）"
+          }
+        ]
+      }
+    },
+    {
+      "title": "保護施設在所者数（医療保護施設を含む）",
+      "titleId": "number-of-people-in-shelters-one",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "line",
+      "isRank": true,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000010110",
+        "cdCat01": [
+          "J2205"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "J2205",
+            "name": "保護施設在所者数（医療保護施設を含む）"
+          }
+        ]
+      }
+    },
+    {
+      "title": "保護施設在所者数（医療保護施設を除く）",
+      "titleId": "number-of-people-in-shelters-two",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "line",
+      "isRank": true,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000010110",
+        "cdCat01": [
+          "J2206"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "J2206",
+            "name": "保護施設在所者数（医療保護施設を除く）vv"
+          }
+        ]
+      }
+    },
+    {
+      "title": "保護施設従事者数（医療保護施設を除く）（専任）",
+      "titleId": "number-of-shelter-workers-one",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "line",
+      "isRank": true,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000010110",
+        "cdCat01": [
+          "J2209"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "J2209",
+            "name": "保護施設従事者数（医療保護施設を除く）"
+          }
+        ]
+      }
+    },
+    {
+      "title": "保護施設従事者数（医療保護施設を除く）（常勤）",
+      "titleId": "number-of-shelter-workers-two",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "line",
+      "isRank": true,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000010110",
+        "cdCat01": [
+          "J2201"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "J2201",
+            "name": "保護施設数（医療保護施設を除く）"
+          }
+        ]
+      }
+    },
+    {
+      "title": "老人福祉施設数",
+      "titleId": "number-of-welfare-facilities-for-the-elderly",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "column",
+      "isRank": true,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000010110",
+        "cdCat01": [
+          "J2301"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "J2301",
+            "name": "老人福祉施設数"
+          }
+        ]
+      }
+    },
+    {
+      "title": "養護老人ホーム定員数",
+      "titleId": "number-of-nursing-homes-for-the-elderly",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "line",
+      "isRank": true,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000010110",
+        "cdCat01": [
+          "J230112"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "J230112",
+            "name": "養護老人ホーム定員数"
+          }
+        ]
+      }
+    },
+    {
+      "title": "養護老人ホーム在所者数",
+      "titleId": "number-of-residents-of-nursing-homes-for-the-elderly",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "line",
+      "isRank": true,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000010110",
+        "cdCat01": [
+          "J230113"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "J230113",
+            "name": "養護老人ホーム在所者数"
+          }
+        ]
+      }
+    },
+    {
+      "title": "養護老人ホーム従事者数",
+      "titleId": "number-of-nursing-home-workers",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "line",
+      "isRank": true,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000010110",
+        "cdCat01": [
+          "J230115"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "J230115",
+            "name": "養護老人ホーム従事者数"
+          }
+        ]
+      }
+    },
+    {
+      "title": "認定こども園数",
+      "titleId": "certified-childrens-garden",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "column",
+      "isRank": true,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "0000010110",
+        "cdCat01": [
+          "J2540",
+          "J2541",
+          "J2542",
+          "J2543",
+          "J2544"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "J2540",
+            "name": "総数"
+          },
+          {
+            "code": "J2541",
+            "name": "幼保連携型"
+          },
+          {
+            "code": "J2542",
+            "name": "幼稚園型"
+          },
+          {
+            "code": "J2543",
+            "name": "保育所型"
+          },
+          {
+            "code": "J2544",
+            "name": "地方裁量型"
+          }
+        ]
+      }
+    },
+    {
+      "title": "健康寿命（男）",
+      "titleId": "healthy-life-expectancy-man",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "line",
+      "isRank": true,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "00000101109",
+        "cdCat01": [
+          "I1601"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "I1601",
+            "name": "健康寿命（男）"
+          }
+        ]
+      }
+    },
+    {
+      "title": "健康寿命（女）",
+      "titleId": "healthy-life-expectancy-woman",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "line",
+      "isRank": true,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "00000101109",
+        "cdCat01": [
+          "I1602"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "I1602",
+            "name": "健康寿命（女）"
+          }
+        ]
+      }
+    },
+    {
+      "title": "妊娠の届出数",
+      "titleId": "number-of-pregnancy-reports",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "line",
+      "isRank": true,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "00000101109",
+        "cdCat01": [
+          "I2201"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "I2201",
+            "name": "妊娠の届出数"
+          }
+        ]
+      }
+    },
+    {
+      "title": "妊産婦保健指導数",
+      "titleId": "number-of-maternal-health-guidance",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "line",
+      "isRank": true,
+      "additionalDescription": [],
+      "estatParams": {
+        "statsDataId": "00000101109",
+        "cdCat01": [
+          "I2211"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
+          {
+            "code": "I2211",
+            "name": "妊産婦保健指導数"
           }
         ]
       }
@@ -327,70 +868,70 @@
   ],
   "city": [
     {
-      "title": "農業産出額",
-      "titleId": "agricultural-output",
+      "title": "老人福祉施設数",
+      "titleId": "welfare-facilities-elderly",
       "cardComponent": "estat-time-chart-card",
       "chartType": "column",
-      "isRank":false,
+      "isRank": true,
       "additionalDescription": [],
       "estatParams": {
-        "statsDataId": "0000020203",
+        "statsDataId": "0000020210",
         "cdCat01": [
-          "C3101"
+          "J2301"
         ]
       },
       "series": {
         "id": "cat01",
         "item": [
           {
-            "code": "C3101",
-            "name": "農業産出額"
+            "code": "J2301",
+            "name": "老人福祉施設数"
           }
         ]
       }
     },
     {
-      "title": "昼夜間人口比率",
-      "titleId": "day-night-population-ratio",
+      "title": "国民健康保険被保険者数",
+      "titleId": "number-of-national-health-insurance",
       "cardComponent": "estat-time-chart-card",
       "chartType": "line",
-      "isRank":false,
+      "isRank": true,
       "additionalDescription": [],
       "estatParams": {
-        "statsDataId": "0000020201",
+        "statsDataId": "0000020210",
         "cdCat01": [
-          "A6108"
+          "J4101"
         ]
       },
       "series": {
         "id": "cat01",
         "item": [
           {
-            "code": "A6108",
-            "name": "昼夜間人口比率"
+            "code": "J4101",
+            "name": "国民健康保険被保険者数"
           }
         ]
       }
     },
     {
-      "title": "総面積",
-      "titleId": "total-area",
+      "title": "国民健康保険給付金額",
+      "titleId": "national-health-insurance-benefit-amount",
       "cardComponent": "estat-time-chart-card",
-      "chartType": "area",
-      "isRank":true,
+      "chartType": "column",
+      "isRank": true,
       "additionalDescription": [],
       "estatParams": {
-        "statsDataId": "0000020202",
+        "statsDataId": "0000020210",
         "cdCat01": [
-          "B1101"
+          "J4108"
         ]
       },
       "series": {
         "id": "cat01",
         "item": [
           {
-            "code": "B1101",
-            "name": "総数"
+            "code": "J4108",
+            "name": "国民健康保険給付金額"
           }
         ]
       }
