@@ -2,30 +2,7 @@
   <div>
     <tab-chart-class :statistics-class="statisticsClass" />
 
-    <!-- RankChartの場合  -->
-    <div v-if="isRank">
-      <select-title
-        v-model="titleId"
-        :contents-list="contentsList"
-        :is-rank="isRank"
-      />
-      <div v-if="isCity">
-        <card-row class="DataBlock">
-          <estat-city-rank-card :city-list="cityList" :contents="contents" />
-        </card-row>
-      </div>
-      <div v-else>
-        <card-row class="DataBlock">
-          <estat-pref-rank-card :pref-list="prefList" :contents="contents" />
-        </card-row>
-      </div>
-    </div>
-
-    <!-- TimeChartの場合  -->
-    <div v-else>
-      <div v-if="isCity">
-        <select-city v-model="cityCode" :city-list="cityList" />
-      </div>
+    <div>
       <card-row class="DataBlock">
         <component
           :is="item.cardComponent"
@@ -73,7 +50,8 @@ const options: ThisTypedComponentOptionsWithRecordProps<
   },
   data() {
     return {
-      // chartClass: 'prefecture',
+      chartClass: 'prefecture',
+      governmentType: 'prefecture',
       tab: null,
       titleId: null,
       cityCode: null,
@@ -112,27 +90,16 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     cityName() {
       return this.getCityName(this.cityCode)
     },
-
-    chartClass(): 'prefecture' | 'city' | 'prefectureRank' | 'cityRank' {
-      return this.$route.params.chartClass
-    },
-    governmentType(): 'prefecture' | 'city' {
-      return this.chartClass.replace('Rank', '')
-    },
-    isCity(): boolean {
-      if (this.governmentType === 'city') {
-        return true
-      } else {
-        return false
-      }
-    },
-    isRank(): boolean {
-      if (this.chartClass.match(/Rank/)) {
-        return true
-      } else {
-        return false
-      }
-    },
+    // governmentType(): 'prefecture' | 'city' {
+    //   return `prefecture`
+    // },
+    // isRank(): boolean {
+    //   if (this.chartClass.match(/Rank/)) {
+    //     return true
+    //   } else {
+    //     return false
+    //   }
+    // },
     contentsList() {
       return this.contentsAll[this.governmentType].map((d) => {
         // ShallowCopyを避けるため、lodashのcloneDeepを用いる。
@@ -142,49 +109,30 @@ const options: ThisTypedComponentOptionsWithRecordProps<
         contents.prefName = this.prefName
         contents.prefCode = this.prefCode
 
-        switch (this.chartClass) {
-          case 'prefecture':
-            contents.title = `${this.prefName}の${d.title}`
-            contents.route = `${this.prefCode}/${contents.titleId}/`
-            break
-          case 'city':
-            contents.cityName = this.cityName
-            contents.cityCode = this.cityCode
-            contents.title = `${this.cityName}の${d.title}`
-            contents.route = `${this.prefCode}/${this.cityCode}/${contents.titleId}/`
-            break
-          case 'prefectureRank':
-            contents.prefList = this.prefList
-            contents.route = `${this.prefCode}/${contents.titleId}/`
-            break
-          case 'cityRank':
-            contents.route = `${this.prefCode}/${contents.titleId}/`
-            break
-        }
+        contents.title = `${this.prefName}の${d.title}`
+        contents.route = `${this.statisticsClass}/${contents.titleId}/`
 
-        // console.log(contents)
         return {
-          // cardComponent: d.cardComponent,
           ...contents,
         }
       })
     },
-    contents() {
-      return this.contentsList.find((f) => f.titleId === this.titleId)
-    },
+    // contents() {
+    //   return this.contentsList.find((f) => f.titleId === this.titleId)
+    // },
   },
   watch: {
-    titleId() {
-      // this.$fetch()
-    },
+    // titleId() {
+    //   // this.$fetch()
+    // },
     // cityCode(): void {
     //   // this.$fetch()
     //   this.changeSelectedCity(this.cityCode)
     // },
   },
   created(): void {
-    this.cityCode = this.getSelectedCityCode
-    this.titleId = this.contentsList.filter((f) => f.isRank === true)[0].titleId
+    // this.cityCode = this.getSelectedCityCode
+    // this.titleId = this.contentsList.filter((f) => f.isRank === true)[0].titleId
   },
   methods: {
     change() {

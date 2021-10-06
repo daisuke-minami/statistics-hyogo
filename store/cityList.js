@@ -64,6 +64,7 @@ export const actions = {
     commit('initCitySet', process.env.cityList)
   },
   changeSelectedCity({ commit }, newCity) {
+    // console.log(newCity)
     commit('changeCity', newCity)
   },
 }

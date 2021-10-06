@@ -230,6 +230,9 @@ export default {
     chartType() {
       this.$fetch()
     },
+    contents() {
+      this.$fetch()
+    },
   },
   created() {},
 }

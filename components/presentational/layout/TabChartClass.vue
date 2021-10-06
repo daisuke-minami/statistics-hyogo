@@ -31,11 +31,11 @@ export default {
       return [
         {
           label: '都道府県の統計',
-          link: `/${this.statisticsClass}/prefecture/${this.prefCode}`,
+          link: `/prefecture/${this.prefCode}/${this.statisticsClass}/`,
         },
         {
           label: '市区町村の統計',
-          link: `/${this.statisticsClass}/city/${this.prefCode}/${this.cityCode}`,
+          link: `/city/${this.prefCode}/${this.cityCode}/${this.statisticsClass}/`,
         },
         {
           label: '都道府県ランキング',

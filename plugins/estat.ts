@@ -52,7 +52,6 @@ type EstatData = {
  * @param response - estat=APIの取得結果
  */
 const formatEstatData = (response: object, cdArea): EstatData => {
-  console.log({ response, cdArea })
   // 統計タイトル等
   const TABLE_INF = response.GET_STATS_DATA.STATISTICAL_DATA.TABLE_INF
   const statName = `政府統計の総合窓口 e-Stat「${TABLE_INF.STAT_NAME.$}」`

@@ -28,7 +28,7 @@
       "titleId": "resident-area",
       "cardComponent": "estat-time-chart-card",
       "chartType": "area",
-      "isRank": false,
+      "isRank": true,
       "additionalDescription": [
         "可住地面積とは、総面積から林野面積と主要湖沼面積を差し引いた、人が住み得る土地をいう"
       ],
@@ -53,7 +53,7 @@
       "titleId": "forest-area-one",
       "cardComponent": "estat-time-chart-card",
       "chartType": "area",
-      "isRank": false,
+      "isRank": true,
       "additionalDescription": [
         "森林面積に森林以外の草生地（野草地）の面積を加えた面積"
       ],
@@ -541,7 +541,7 @@
       "titleId": "resident-area",
       "cardComponent": "estat-time-chart-card",
       "chartType": "area",
-      "isRank": false,
+      "isRank": true,
       "additionalDescription": [
         "可住地面積とは、総面積から林野面積と主要湖沼面積を差し引いた、人が住み得る土地をいう"
       ],

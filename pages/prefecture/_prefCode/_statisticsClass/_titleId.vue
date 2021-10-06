@@ -2,37 +2,9 @@
   <div>
     <tab-chart-class :statistics-class="statisticsClass" />
 
-    <!-- RankChartの場合  -->
-    <div v-if="isRank">
-      <select-title
-        v-model="titleId"
-        :contents-list="contentsList"
-        :is-rank="isRank"
-      />
-      <div v-if="isCity">
-        <card-row class="DataBlock">
-          <estat-city-rank-card :city-list="cityList" :contents="contents" />
-        </card-row>
-      </div>
-      <div v-else>
-        <card-row class="DataBlock">
-          <estat-pref-rank-card :pref-list="prefList" :contents="contents" />
-        </card-row>
-      </div>
-    </div>
-
-    <!-- TimeChartの場合  -->
-    <div v-else>
-      <div v-if="isCity">
-        <select-city v-model="cityCode" :city-list="cityList" />
-      </div>
+    <div>
       <card-row class="DataBlock">
-        <component
-          :is="item.cardComponent"
-          v-for="(item, i) in contentsList"
-          :key="i"
-          :contents="item"
-        />
+        <component :is="contents.cardComponent" :contents="contents" />
       </card-row>
     </div>
   </div>
@@ -40,9 +12,8 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { EventBus, TOGGLE_EVENT } from '@/utils/tab-event-bus.ts'
 import { ThisTypedComponentOptionsWithRecordProps } from 'vue/types/options'
-import { mapActions, mapGetters } from 'vuex'
+import { mapGetters } from 'vuex'
 import { cloneDeep } from 'lodash'
 import { ContentsType, ContentsList } from '~/utils/formatChart'
 
@@ -73,32 +44,18 @@ const options: ThisTypedComponentOptionsWithRecordProps<
   },
   data() {
     return {
-      // chartClass: 'prefecture',
+      chartClass: 'prefecture',
+      governmentType: 'prefecture',
       tab: null,
-      titleId: null,
-      cityCode: null,
     }
   },
   computed: {
-    ...mapGetters('prefList', [
-      'getSelectedPrefCode',
-      'getPrefName',
-      'getPrefList',
-    ]),
-    ...mapGetters('cityList', [
-      'getSelectedCityCode',
-      'getCityList',
-      'getCityName',
-    ]),
-    // ...mapGetters('pageSetting', ['getPageSetting']),
+    ...mapGetters('prefList', ['getSelectedPrefCode', 'getPrefName']),
     statisticsClass() {
       return this.$route.params.statisticsClass
     },
-    // pageSetting() {
-    //   return this.getPageSetting(this.statisticsClass)
-    // },
-    prefList() {
-      return this.getPrefList
+    titleId() {
+      return this.$route.params.titleId
     },
     prefCode(): number {
       return this.getSelectedPrefCode
@@ -112,27 +69,6 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     cityName() {
       return this.getCityName(this.cityCode)
     },
-
-    chartClass(): 'prefecture' | 'city' | 'prefectureRank' | 'cityRank' {
-      return this.$route.params.chartClass
-    },
-    governmentType(): 'prefecture' | 'city' {
-      return this.chartClass.replace('Rank', '')
-    },
-    isCity(): boolean {
-      if (this.governmentType === 'city') {
-        return true
-      } else {
-        return false
-      }
-    },
-    isRank(): boolean {
-      if (this.chartClass.match(/Rank/)) {
-        return true
-      } else {
-        return false
-      }
-    },
     contentsList() {
       return this.contentsAll[this.governmentType].map((d) => {
         // ShallowCopyを避けるため、lodashのcloneDeepを用いる。
@@ -142,29 +78,10 @@ const options: ThisTypedComponentOptionsWithRecordProps<
         contents.prefName = this.prefName
         contents.prefCode = this.prefCode
 
-        switch (this.chartClass) {
-          case 'prefecture':
-            contents.title = `${this.prefName}の${d.title}`
-            contents.route = `${this.prefCode}/${contents.titleId}/`
-            break
-          case 'city':
-            contents.cityName = this.cityName
-            contents.cityCode = this.cityCode
-            contents.title = `${this.cityName}の${d.title}`
-            contents.route = `${this.prefCode}/${this.cityCode}/${contents.titleId}/`
-            break
-          case 'prefectureRank':
-            contents.prefList = this.prefList
-            contents.route = `${this.prefCode}/${contents.titleId}/`
-            break
-          case 'cityRank':
-            contents.route = `${this.prefCode}/${contents.titleId}/`
-            break
-        }
+        contents.title = `${this.prefName}の${d.title}`
+        contents.route = `${this.prefCode}/${contents.titleId}/`
 
-        // console.log(contents)
         return {
-          // cardComponent: d.cardComponent,
           ...contents,
         }
       })
@@ -173,25 +90,8 @@ const options: ThisTypedComponentOptionsWithRecordProps<
       return this.contentsList.find((f) => f.titleId === this.titleId)
     },
   },
-  watch: {
-    titleId() {
-      // this.$fetch()
-    },
-    // cityCode(): void {
-    //   // this.$fetch()
-    //   this.changeSelectedCity(this.cityCode)
-    // },
-  },
-  created(): void {
-    this.cityCode = this.getSelectedCityCode
-    this.titleId = this.contentsList.filter((f) => f.isRank === true)[0].titleId
-  },
-  methods: {
-    change() {
-      EventBus.$emit(TOGGLE_EVENT)
-    },
-    ...mapActions('cityList', ['changeSelectedCity']),
-  },
+  created(): void {},
+  methods: {},
   head() {
     return {
       title: '住宅・土地・建設',

@@ -14,6 +14,7 @@ import { mapGetters } from 'vuex'
 
 export default {
   async asyncData({ params }) {
+    console.log('ここには来ている')
     const contentsAll = await import(
       `~/static/pagesetting/${params.statisticsClass}.json`
     )
@@ -69,6 +70,7 @@ export default {
     },
     contents() {
       return this.pageSetting[this.governmentType]
+        .find((f) => f.titleId === this.titleId)
         .map((d) => {
           // ShallowCopyを避けるため、lodashのcloneDeepを用いる。
           const contents = cloneDeep(d)
@@ -103,7 +105,6 @@ export default {
             ...contents,
           }
         })
-        .find((f) => f.titleId === this.titleId)
     },
     // cardComponent() {
     //   return this.contentsAll[this.governmentType].find(
@@ -112,7 +113,7 @@ export default {
     // },
   },
   created() {
-    // console.log(this.contents)
+    console.log(this.contents)
   },
 }
 </script>

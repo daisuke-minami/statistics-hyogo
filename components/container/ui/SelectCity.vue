@@ -8,7 +8,7 @@
             :items="cityList"
             item-text="cityName"
             item-value="cityCode"
-            @change="jumpToCityPage"
+            @change="changeCity"
           />
         </v-col>
       </v-row>
@@ -30,41 +30,29 @@ export default Vue.extend({
       type: Array,
       required: true,
     },
-    path: {
-      type: String,
-      required: true,
-    },
   },
   data() {
     return {
       cityCode: null,
+      prefCode: '28',
+      statisticsClass: 'landweather',
     }
   },
   computed: {
     ...mapGetters('cityList', ['getSelectedCityCode']),
   },
-  watch: {
-    cityCode() {
-      this.$store.dispatch('cityList/changeSelectedCity', {
-        newCity: this.cityCode,
-      })
-      // $store.dispatch('cityList/changeSelectedCity')Ï
-    },
-  },
+  watch: {},
   created() {
-    // console.log(this.path)
-    this.cityCode = this.getSelectedCityCode
+    // this.cityCode = this.getSelectedCityCode
   },
   methods: {
     ...mapActions('cityList', ['changeSelectedCity']),
-    jumpToCityPage() {
-      // console.log(this.cityCode)
+    changeCity() {
       this.changeSelectedCity(this.cityCode)
-      this.$router.push(`${this.path}/${this.cityCode}`)
+      this.$router.push(
+        `city/${this.prefCode}/${this.cityCode}/${this.statisticsClass}/`
+      )
     },
-    // ...mapActions({
-    //   cityCode: 'changeSelectedCity',
-    // }),
   },
 })
 </script>
