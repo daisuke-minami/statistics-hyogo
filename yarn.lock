@@ -12605,10 +12605,10 @@
   "resolved" "https://registry.npmjs.org/vuex-module-decorators/-/vuex-module-decorators-1.0.1.tgz"
   "version" "1.0.1"
 
-"vuex-persistedstate@^4.0.0":
-  "integrity" "sha512-jDs+awbV9YD2A2F6S5zgtYq1Bjd8v0YldOK6HPv1EJZzGMse0FtZTREfXvA7zlVfq9MpmSZJNmYQVylfpZ5znQ=="
-  "resolved" "https://registry.npmjs.org/vuex-persistedstate/-/vuex-persistedstate-4.0.0.tgz"
-  "version" "4.0.0"
+"vuex-persistedstate@^4.1.0":
+  "integrity" "sha512-3SkEj4NqwM69ikJdFVw6gObeB0NHyspRYMYkR/EbhR0hbvAKyR5gksVhtAfY1UYuWUOCCA0QNGwv9pOwdj+XUQ=="
+  "resolved" "https://registry.npmjs.org/vuex-persistedstate/-/vuex-persistedstate-4.1.0.tgz"
+  "version" "4.1.0"
   dependencies:
     "deepmerge" "^4.2.2"
     "shvl" "^2.0.3"

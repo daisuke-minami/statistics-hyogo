@@ -115,7 +115,7 @@ const config: NuxtConfig = {
       src: '@/plugins/resas',
       ssr: true,
     },
-    { src: '@/plugins/persistedstate', ssr: false },
+    { src: '@/plugins/localStorage', ssr: false },
     { src: '@/plugins/leaflet.js', ssr: false },
     {
       src: '@/plugins/vue-highlightjs',

@@ -26,7 +26,7 @@ export const mutations = {
       state = cloneDeep(initialState)
     } else {
       state.cityList = payload
-      state.selectedCityCode = payload[0].cityCode
+      // state.selectedCityCode = payload[0].cityCode
     }
   },
   changeKinds(state, payload) {

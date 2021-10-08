@@ -2,23 +2,26 @@
   <div>
     <tab-chart-class :statistics-class="statisticsClass" />
 
-    <select-city :city-list="cityList" />
-
-    <card-row class="DataBlock">
-      <component
-        :is="item.cardComponent"
-        v-for="(item, i) in contentsList"
-        :key="i"
-        :contents="item"
+    <div>
+      <select-title
+        v-model="titleId"
+        :contents-list="contentsList"
+        :is-rank="isRank"
       />
-    </card-row>
+      <div>
+        <card-row class="DataBlock">
+          <estat-pref-rank-card :pref-list="prefList" :contents="contents" />
+        </card-row>
+      </div>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
+// import { EventBus, TOGGLE_EVENT } from '@/utils/tab-event-bus.ts'
 import { ThisTypedComponentOptionsWithRecordProps } from 'vue/types/options'
-import { mapGetters } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 import { cloneDeep } from 'lodash'
 import { ContentsType, ContentsList } from '~/utils/formatChart'
 
@@ -47,11 +50,14 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     )
     return { contentsAll }
   },
-  async fetch() {},
   data() {
     return {
-      chartClass: 'city',
-      governmentType: 'city',
+      chartClass: 'prefectureRank',
+      governmentType: 'prefecture',
+      // chartClass: 'prefecture',
+      // tab: null,
+      titleId: null,
+      // cityCode: null,
     }
   },
   computed: {
@@ -65,9 +71,13 @@ const options: ThisTypedComponentOptionsWithRecordProps<
       'getCityList',
       'getCityName',
     ]),
+    // ...mapGetters('pageSetting', ['getPageSetting']),
     statisticsClass() {
       return this.$route.params.statisticsClass
     },
+    // pageSetting() {
+    //   return this.getPageSetting(this.statisticsClass)
+    // },
     prefList() {
       return this.getPrefList
     },
@@ -77,52 +87,53 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     prefName(): string {
       return this.getPrefName(this.prefCode)
     },
-    selectedCityCode() {
-      return this.getSelectedCityCode
-    },
-    cityCode() {
-      return this.$route.params.cityCode
-    },
     cityList() {
       return this.getCityList
     },
     cityName() {
-      // console.log(this.cityCode)
       return this.getCityName(this.cityCode)
     },
     contentsList() {
-      return this.contentsAll[this.governmentType].map((d) => {
-        // ShallowCopyを避けるため、lodashのcloneDeepを用いる。
-        const contents = cloneDeep(d)
-        // 都道府県の情報を追加
-        contents.prefName = this.prefName
-        contents.prefCode = this.prefCode
+      return this.contentsAll[this.governmentType]
+        .filter((f) => f.isRank === true)
+        .map((d) => {
+          // ShallowCopyを避けるため、lodashのcloneDeepを用いる。
+          const contents = cloneDeep(d)
 
-        contents.cityName = this.cityName
-        contents.cityCode = this.cityCode
-        contents.title = `${this.cityName}の${d.title}`
-        contents.route = `${this.statisticsClass}/${contents.titleId}/`
+          // 都道府県の情報を追加
+          contents.prefName = this.prefName
+          contents.prefCode = this.prefCode
 
-        return {
-          ...contents,
-        }
-      })
+          contents.prefList = this.prefList
+          contents.route = `${this.prefCode}/${contents.titleId}/`
+
+          return {
+            ...contents,
+          }
+        })
+    },
+    contents() {
+      return this.contentsList.find((f) => f.titleId === this.titleId)
     },
   },
   watch: {
-    selectedCityCode() {
-      this.$router.push(
-        `/city/${this.prefCode}/${this.selectedCityCode}/${this.statisticsClass}/`
-      )
-      // const url = `/city/${this.prefCode}/${this.selectedCityCode}/${this.statisticsClass}/`
-      // console.log(this.selectedCityCode)
-      // console.log(url)
+    titleId() {
+      // this.$fetch()
     },
+    // cityCode(): void {
+    //   // this.$fetch()
+    //   this.changeSelectedCity(this.cityCode)
+    // },
   },
-  created(): void {},
+  created(): void {
+    this.cityCode = this.getSelectedCityCode
+    this.titleId = this.contentsList.filter((f) => f.isRank === true)[0].titleId
+  },
   methods: {
-    // ...mapActions('cityList', ['changeSelectedCity']),
-    // jumpToCity() {},
+    // change() {
+    //   EventBus.$emit(TOGGLE_EVENT)
+    // },
+    ...mapActions('cityList', ['changeSelectedCity']),
   },
   head() {
     return {

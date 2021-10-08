@@ -35,7 +35,7 @@ export default Vue.extend({
     return {
       cityCode: null,
       prefCode: '28',
-      statisticsClass: 'landweather',
+      statisticsClass: '28',
     }
   },
   computed: {
@@ -49,9 +49,6 @@ export default Vue.extend({
     ...mapActions('cityList', ['changeSelectedCity']),
     changeCity() {
       this.changeSelectedCity(this.cityCode)
-      this.$router.push(
-        `city/${this.prefCode}/${this.cityCode}/${this.statisticsClass}/`
-      )
     },
   },
 })
