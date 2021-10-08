@@ -518,7 +518,7 @@
       "titleId": "total-area",
       "cardComponent": "estat-time-chart-card",
       "chartType": "area",
-      "isRank": false,
+      "isRank": true,
       "additionalDescription": [],
       "estatParams": {
         "statsDataId": "0000020202",
@@ -566,7 +566,7 @@
       "titleId": "forest-area-one",
       "cardComponent": "estat-time-chart-card",
       "chartType": "area",
-      "isRank": false,
+      "isRank": true,
       "additionalDescription": [
         "森林面積に森林以外の草生地（野草地）の面積を加えた面積"
       ],

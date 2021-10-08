@@ -1,6 +1,6 @@
 <template>
   <div>
-    <tab-chart-class :statistics-class="statisticsClass" />
+    <!-- <tab-chart-class :statistics-class="statisticsClass" /> -->
 
     <div>
       <card-row class="DataBlock">

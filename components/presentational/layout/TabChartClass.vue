@@ -39,11 +39,11 @@ export default {
         },
         {
           label: '都道府県ランキング',
-          link: `/${this.statisticsClass}/prefectureRank/${this.prefCode}`,
+          link: `/prefectureRank/${this.prefCode}/${this.statisticsClass}/`,
         },
         {
           label: '市区町村ランキング',
-          link: `/${this.statisticsClass}/cityRank/${this.prefCode}`,
+          link: `/cityRank/${this.prefCode}/${this.statisticsClass}/`,
         },
       ]
     },

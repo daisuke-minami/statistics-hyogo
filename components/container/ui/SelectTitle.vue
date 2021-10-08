@@ -30,10 +30,10 @@ export default Vue.extend({
       type: Array,
       required: true,
     },
-    isRank: {
-      type: Boolean,
-      required: true,
-    },
+    // isRank: {
+    //   type: Boolean,
+    //   required: true,
+    // },
   },
   data() {
     return {
@@ -46,12 +46,13 @@ export default Vue.extend({
   },
   computed: {
     items() {
-      if (this.isRank) {
-        // RankChartの対象のみ抽出
-        return this.contentsList.filter((f) => f.isRank === true)
-      } else {
-        return this.contentsList
-      }
+      return this.contentsList
+      // if (this.isRank) {
+      //   // RankChartの対象のみ抽出
+      //   return this.contentsList.filter((f) => f.isRank === true)
+      // } else {
+      //   return this.contentsList
+      // }
     },
   },
   created() {

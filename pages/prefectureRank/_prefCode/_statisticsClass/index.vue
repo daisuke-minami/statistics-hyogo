@@ -3,11 +3,7 @@
     <tab-chart-class :statistics-class="statisticsClass" />
 
     <div>
-      <select-title
-        v-model="titleId"
-        :contents-list="contentsList"
-        :is-rank="isRank"
-      />
+      <select-title v-model="titleId" :contents-list="contentsList" />
       <div>
         <card-row class="DataBlock">
           <estat-pref-rank-card :pref-list="prefList" :contents="contents" />
@@ -105,7 +101,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
           contents.prefCode = this.prefCode
 
           contents.prefList = this.prefList
-          contents.route = `${this.prefCode}/${contents.titleId}/`
+          contents.route = `../${this.statisticsClass}/${contents.titleId}/`
 
           return {
             ...contents,
