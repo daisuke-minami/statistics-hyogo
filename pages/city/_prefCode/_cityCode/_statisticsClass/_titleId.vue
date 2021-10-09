@@ -1,12 +1,8 @@
 <template>
   <div>
-    <!-- <tab-chart-class :statistics-class="statisticsClass" /> -->
-
-    <div>
-      <card-row class="DataBlock">
-        <component :is="contents.cardComponent" :contents="contents" />
-      </card-row>
-    </div>
+    <card-row class="DataBlock">
+      <component :is="contents.cardComponent" :contents="contents" />
+    </card-row>
   </div>
 </template>
 
