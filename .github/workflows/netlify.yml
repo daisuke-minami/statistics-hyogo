@@ -8,7 +8,10 @@ on:
 jobs:
   build:
     runs-on: ubuntu-18.04
-
+    env:
+      ESTAT_API:  ${{ secrets.ESTAT_API }}
+      ESTAT_APPID:  ${{ secrets.ESTAT_APPID }}
+      
     steps:
       - uses: actions/checkout@v2
 
