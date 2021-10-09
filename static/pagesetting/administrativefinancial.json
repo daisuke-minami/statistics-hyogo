@@ -3,16 +3,21 @@
     {
       "title": "一般行政部門職員数",
       "titleId": "administrative-staff",
-      "cardComponent": "estat-line-chart-card",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "column",
       "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
+      "additionalDescription": [],
+      "estatParams": {
         "statsDataId": "0000010104",
-        "categories": [
+        "cdCat01": [
+          "D1201"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
           {
-            "cdCat01": "D1201",
+            "code": "D1201",
             "name": "一般行政部門職員数"
           }
         ]
@@ -21,16 +26,21 @@
     {
       "title": "消防部門職員数",
       "titleId": "fire-department-staff",
-      "cardComponent": "estat-line-chart-card",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "column",
       "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
+      "additionalDescription": [],
+      "estatParams": {
         "statsDataId": "0000010104",
-        "categories": [
+        "cdCat01": [
+          "D1203"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
           {
-            "cdCat01": "D1203",
+            "code": "D1203",
             "name": "消防部門職員数"
           }
         ]
@@ -39,16 +49,21 @@
     {
       "title": "教育部門職員数",
       "titleId": "education-department-staff",
-      "cardComponent": "estat-line-chart-card",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "column",
       "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
+      "additionalDescription": [],
+      "estatParams": {
         "statsDataId": "0000010104",
-        "categories": [
+        "cdCat01": [
+          "D1204"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
           {
-            "cdCat01": "D1204",
+            "code": "D1204",
             "name": "教育部門職員数"
           }
         ]
@@ -57,16 +72,21 @@
     {
       "title": "警察部門職員数",
       "titleId": "police-department-staff",
-      "cardComponent": "estat-line-chart-card",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "column",
       "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
+      "additionalDescription": [],
+      "estatParams": {
         "statsDataId": "0000010104",
-        "categories": [
+        "cdCat01": [
+          "D1205"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
           {
-            "cdCat01": "D1205",
+            "code": "D1205",
             "name": "警察部門職員数"
           }
         ]
@@ -75,16 +95,21 @@
     {
       "title": "県議会議員数",
       "titleId": "prefectural-assembly-members",
-      "cardComponent": "estat-line-chart-card",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "column",
       "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
+      "additionalDescription": [],
+      "estatParams": {
         "statsDataId": "0000010104",
-        "categories": [
+        "cdCat01": [
+          "D1210"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
           {
-            "cdCat01": "D1210",
+            "code": "D1210",
             "name": "県議会議員数"
           }
         ]
@@ -93,16 +118,21 @@
     {
       "title": "財政力指数",
       "titleId": "financial-strength-index",
-      "cardComponent": "estat-line-chart-card",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "column",
       "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
+      "additionalDescription": [],
+      "estatParams": {
         "statsDataId": "0000010104",
-        "categories": [
+        "cdCat01": [
+          "D2101"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
           {
-            "cdCat01": "D2101",
+            "code": "D2101",
             "name": "財政力指数"
           }
         ]
@@ -111,16 +141,21 @@
     {
       "title": "実質収支比率",
       "titleId": "real-balance-ratio",
-      "cardComponent": "estat-line-chart-card",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "column",
       "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
+      "additionalDescription": [],
+      "estatParams": {
         "statsDataId": "0000010104",
-        "categories": [
+        "cdCat01": [
+          "D2102"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
           {
-            "cdCat01": "D2102",
+            "code": "D2102",
             "name": "実質収支比率"
           }
         ]
@@ -129,16 +164,21 @@
     {
       "title": "経常収支比率",
       "titleId": "current-account-ratio",
-      "cardComponent": "estat-line-chart-card",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "column",
       "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
+      "additionalDescription": [],
+      "estatParams": {
         "statsDataId": "0000010104",
-        "categories": [
+        "cdCat01": [
+          "D2103"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
           {
-            "cdCat01": "D2103",
+            "code": "D2103",
             "name": "経常収支比率"
           }
         ]
@@ -147,16 +187,21 @@
     {
       "title": "基準財政収入額",
       "titleId": "standard-financial-income",
-      "cardComponent": "estat-column-chart-card",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "column",
       "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
+      "additionalDescription": [],
+      "estatParams": {
         "statsDataId": "0000010104",
-        "categories": [
+        "cdCat01": [
+          "D2105"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
           {
-            "cdCat01": "D2105",
+            "code": "D2105",
             "name": "基準財政収入額"
           }
         ]
@@ -165,16 +210,21 @@
     {
       "title": "基準財政需要額'",
       "titleId": "standard-financial-demand",
-      "cardComponent": "estat-column-chart-card",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "column",
       "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
+      "additionalDescription": [],
+      "estatParams": {
         "statsDataId": "0000010104",
-        "categories": [
+        "cdCat01": [
+          "D2106"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
           {
-            "cdCat01": "D2106",
+            "code": "D2106",
             "name": "基準財政需要額"
           }
         ]
@@ -183,16 +233,21 @@
     {
       "title": "実質公債費比率",
       "titleId": "real-debt-service-ratio",
-      "cardComponent": "estat-line-chart-card",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "column",
       "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
+      "additionalDescription": [],
+      "estatParams": {
         "statsDataId": "0000010104",
-        "categories": [
+        "cdCat01": [
+          "D2111"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
           {
-            "cdCat01": "D2111",
+            "code": "D2111",
             "name": "実質公債費比率"
           }
         ]
@@ -201,16 +256,21 @@
     {
       "title": "将来負担比率",
       "titleId": "future-burden-ratio",
-      "cardComponent": "estat-line-chart-card",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "column",
       "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
+      "additionalDescription": [],
+      "estatParams": {
         "statsDataId": "0000010104",
-        "categories": [
+        "cdCat01": [
+          "D2112"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
           {
-            "cdCat01": "D2112",
+            "code": "D2112",
             "name": "将来負担比率"
           }
         ]
@@ -221,16 +281,21 @@
     {
       "title": "一般行政部門職員数",
       "titleId": "administrative-staff",
-      "cardComponent": "estat-line-chart-card",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "column",
       "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
+      "additionalDescription": [],
+      "estatParams": {
         "statsDataId": "0000020204",
-        "categories": [
+        "cdCat01": [
+          "D1202"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
           {
-            "cdCat01": "D1202",
+            "code": "D1202",
             "name": "一般行政部門職員数"
           }
         ]
@@ -239,16 +304,21 @@
     {
       "title": "財政力指数",
       "titleId": "financial-strength-index",
-      "cardComponent": "estat-line-chart-card",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "column",
       "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
+      "additionalDescription": [],
+      "estatParams": {
         "statsDataId": "0000020204",
-        "categories": [
+        "cdCat01": [
+          "D2201"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
           {
-            "cdCat01": "D2201",
+            "code": "D2201",
             "name": "財政力指数"
           }
         ]
@@ -257,16 +327,21 @@
     {
       "title": "実質収支比率",
       "titleId": "real-balance-ratio",
-      "cardComponent": "estat-line-chart-card",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "column",
       "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
+      "additionalDescription": [],
+      "estatParams": {
         "statsDataId": "0000020204",
-        "categories": [
+        "cdCat01": [
+          "D2202"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
           {
-            "cdCat01": "D2202",
+            "code": "D2202",
             "name": "実質収支比率"
           }
         ]
@@ -275,16 +350,21 @@
     {
       "title": "経常収支比率",
       "titleId": "current-account-ratio",
-      "cardComponent": "estat-line-chart-card",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "column",
       "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
+      "additionalDescription": [],
+      "estatParams": {
         "statsDataId": "0000020204",
-        "categories": [
+        "cdCat01": [
+          "D2203"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
           {
-            "cdCat01": "D2203",
+            "code": "D2203",
             "name": "経常収支比率"
           }
         ]
@@ -293,16 +373,21 @@
     {
       "title": "基準財政収入額",
       "titleId": "standard-financial-income",
-      "cardComponent": "estat-column-chart-card",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "column",
       "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
+      "additionalDescription": [],
+      "estatParams": {
         "statsDataId": "0000020204",
-        "categories": [
+        "cdCat01": [
+          "D2205"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
           {
-            "cdCat01": "D2205",
+            "code": "D2205",
             "name": "基準財政収入額"
           }
         ]
@@ -311,16 +396,21 @@
     {
       "title": "基準財政需要額'",
       "titleId": "standard-financial-demand",
-      "cardComponent": "estat-column-chart-card",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "column",
       "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
+      "additionalDescription": [],
+      "estatParams": {
         "statsDataId": "0000020204",
-        "categories": [
+        "cdCat01": [
+          "D2206"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
           {
-            "cdCat01": "D2206",
+            "code": "D2206",
             "name": "基準財政需要額"
           }
         ]

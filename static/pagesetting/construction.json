@@ -3,16 +3,19 @@
     {
       "title": "標準価格（平均価格）（住宅地）",
       "titleId": "standard-price-residential-area",
-      "cardComponent": "estat-column-chart-card",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "column",
       "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
+      "additionalDescription": [],
+      "estatParams": {
         "statsDataId": "0000010103",
-        "categories": [
+        "cdCat01": ["C5401"]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
           {
-            "cdCat01": "C5401",
+            "code": "C5401",
             "name": "標準価格（平均価格）（住宅地）"
           }
         ]
@@ -21,16 +24,19 @@
     {
       "title": "標準価格（平均価格）（商業地）",
       "titleId": "standard-price-commercial-area",
-      "cardComponent": "estat-column-chart-card",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "column",
       "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
+      "additionalDescription": [],
+      "estatParams": {
         "statsDataId": "0000010103",
-        "categories": [
+        "cdCat01": ["C5403"]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
           {
-            "cdCat01": "C5403",
+            "code": "C5403",
             "name": "標準価格（平均価格）（商業地）"
           }
         ]
@@ -39,16 +45,19 @@
     {
       "title": "標準価格（平均価格）（工業地）",
       "titleId": "standard-price-industrial-area",
-      "cardComponent": "estat-column-chart-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
+     "cardComponent": "estat-time-chart-card",
+      "chartType": "column",
+      "isRank": false,
+      "additionalDescription": [],
+       "estatParams": {
         "statsDataId": "0000010103",
-        "categories": [
+        "cdCat01": ["C5405"]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
           {
-            "cdCat01": "C5405",
+            "code": "C5405",
             "name": "標準価格（平均価格）（工業地）"
           }
         ]
@@ -59,52 +68,61 @@
     {
       "title": "標準価格（平均価格）（住宅地）",
       "titleId": "standard-price-residential-area",
-      "cardComponent": "estat-column-chart-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "column",
+      "isRank": false,
+      "additionalDescription": [],
+       "estatParams": {
         "statsDataId": "0000020203",
-        "categories": [
+        "cdCat01": ["C5401"]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
           {
-            "cdCat01": "C5401",
+            "code": "C5401",
             "name": "標準価格（平均価格）（住宅地）"
           }
         ]
       }
     },
-    {
+     {
       "title": "標準価格（平均価格）（商業地）",
       "titleId": "standard-price-commercial-area",
-      "cardComponent": "estat-column-chart-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "column",
+      "isRank": false,
+      "additionalDescription": [],
+      "estatParams": {
         "statsDataId": "0000020203",
-        "categories": [
+        "cdCat01": ["C5403"]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
           {
-            "cdCat01": "C5403",
+            "code": "C5403",
             "name": "標準価格（平均価格）（商業地）"
           }
         ]
       }
     },
-    {
+   {
       "title": "標準価格（平均価格）（工業地）",
       "titleId": "standard-price-industrial-area",
-      "cardComponent": "estat-column-chart-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
+     "cardComponent": "estat-time-chart-card",
+      "chartType": "column",
+      "isRank": false,
+      "additionalDescription": [],
+       "estatParams": {
         "statsDataId": "0000020203",
-        "categories": [
+        "cdCat01": ["C5405"]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
           {
-            "cdCat01": "C5405",
+            "code": "C5405",
             "name": "標準価格（平均価格）（工業地）"
           }
         ]

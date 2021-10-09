@@ -3,16 +3,19 @@
     {
       "title": "製造品出荷額",
       "titleId": "product-shipment-value",
-      "cardComponent": "estat-column-chart-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
+       "cardComponent": "estat-time-chart-card",
+      "chartType": "column",
+      "isRank": false,
+      "additionalDescription": [],
+      "estatParams": {
         "statsDataId": "0000010103",
-        "categories": [
+        "cdCat01": ["C3401"]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
           {
-            "cdCat01": "C3401",
+            "code": "C3401",
             "name": "製造品出荷額"
           }
         ]
@@ -21,16 +24,19 @@
     {
       "title": "製造業付加価値額",
       "titleId": "manufacturing-industry-value-added",
-      "cardComponent": "estat-column-chart-card",
+       "cardComponent": "estat-time-chart-card",
+      "chartType": "column",
       "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
+      "additionalDescription": [ ],
+      "estatParams": {
         "statsDataId": "0000010103",
-        "categories": [
+        "cdCat01": ["C3402"]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
           {
-            "cdCat01": "C3402",
+            "code": "C3402",
             "name": "製造業付加価値額"
           }
         ]
@@ -39,24 +45,31 @@
     {
       "title": "工業用水量",
       "titleId": "industrial-water-volume",
-      "cardComponent": "estat-column-chart-break-card",
-      "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
+     "cardComponent": "estat-time-chart-card",
+      "chartType": "column",
+      "isRank": false,
+      "additionalDescription": [],
+      "estatParams": {
         "statsDataId": "0000010103",
-        "categories": [
+        "cdCat01": [
+          "C3406",
+          "C340601",
+          "C340602"
+        ]
+      },
+     "series": {
+        "id": "cat01",
+        "item": [
           {
-            "cdCat01": "C3406",
+            "code": "C3406",
             "name": "総数"
           },
           {
-            "cdCat01": "C340601",
+            "code": "C340601",
             "name": "淡水"
           },
           {
-            "cdCat01": "C340602",
+            "code": "C340602",
             "name": "海水"
           }
         ]
@@ -67,16 +80,19 @@
     {
       "title": "製造品出荷額",
       "titleId": "product-shipment-value",
-      "cardComponent": "estat-column-chart-card",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "column",
       "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
+      "additionalDescription": [],
+      "estatParams": {
         "statsDataId": "0000020203",
-        "categories": [
+        "cdCat01": ["C3401"]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
           {
-            "cdCat01": "C3401",
+            "code": "C3401",
             "name": "製造品出荷額"
           }
         ]

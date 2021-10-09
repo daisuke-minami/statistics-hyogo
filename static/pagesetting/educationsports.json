@@ -3,16 +3,21 @@
     {
       "title": "幼稚園数",
       "titleId": "kindergartens",
-      "cardComponent": "estat-column-chart-card",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "column",
       "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
+      "additionalDescription": [],
+      "estatParams": {
         "statsDataId": "0000010105",
-        "categories": [
+        "cdCat01": [
+          "E1101"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
           {
-            "cdCat01": "E1101",
+            "code": "E1101",
             "name": "幼稚園数"
           }
         ]
@@ -21,24 +26,31 @@
     {
       "title": "幼稚園教員数",
       "titleId": "kindergarten-teachers",
-      "cardComponent": "estat-line-chart-break-card",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "column",
       "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
+      "additionalDescription": [],
+      "estatParams": {
         "statsDataId": "0000010105",
-        "categories": [
+        "cdCat01": [
+          "E1301",
+          "E130101",
+          "E130102"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
           {
-            "cdCat01": "E1301",
+            "code": "E1301",
             "name": "総数"
           },
           {
-            "cdCat01": "E130101",
+            "code": "E130101",
             "name": "男性"
           },
           {
-            "cdCat01": "E130102",
+            "code": "E130102",
             "name": "女性"
           }
         ]
@@ -47,24 +59,31 @@
     {
       "title": "幼稚園在園者数",
       "titleId": "kindergarten-childrens",
-      "cardComponent": "estat-line-chart-break-card",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "column",
       "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
+      "additionalDescription": [],
+      "estatParams": {
         "statsDataId": "0000010105",
-        "categories": [
+        "cdCat01": [
+          "E1501",
+          "E150104",
+          "E150105"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
           {
-            "cdCat01": "E1501",
+            "code": "E1501",
             "name": "総数"
           },
           {
-            "cdCat01": "E150104",
+            "code": "E150104",
             "name": "男児"
           },
           {
-            "cdCat01": "E150105",
+            "code": "E150105",
             "name": "女児"
           }
         ]
@@ -73,16 +92,21 @@
     {
       "title": "小学校数",
       "titleId": "primary-schools",
-      "cardComponent": "estat-column-chart-card",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "column",
       "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
+      "additionalDescription": [],
+      "estatParams": {
         "statsDataId": "0000010105",
-        "categories": [
+        "cdCat01": [
+          "E2101"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
           {
-            "cdCat01": "E2101",
+            "code": "E2101",
             "name": "小学校数"
           }
         ]
@@ -91,24 +115,31 @@
     {
       "title": "小学校教員数",
       "titleId": "primary-school-teachers",
-      "cardComponent": "estat-line-chart-break-card",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "column",
       "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
+      "additionalDescription": [],
+      "estatParams": {
         "statsDataId": "0000010105",
-        "categories": [
+        "cdCat01": [
+          "E2401",
+          "E240101",
+          "E240102"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
           {
-            "cdCat01": "E2401",
+            "code": "E2401",
             "name": "総数"
           },
           {
-            "cdCat01": "E240101",
+            "code": "E240101",
             "name": "男性"
           },
           {
-            "cdCat01": "E240102",
+            "code": "E240102",
             "name": "女性"
           }
         ]
@@ -117,24 +148,31 @@
     {
       "title": "小学校児童数",
       "titleId": "primary-school-students",
-      "cardComponent": "estat-line-chart-break-card",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "column",
       "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
+      "additionalDescription": [],
+      "estatParams": {
         "statsDataId": "0000010105",
-        "categories": [
+        "cdCat01": [
+          "E2501",
+          "E250104",
+          "E250105"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
           {
-            "cdCat01": "E2501",
+            "code": "E2501",
             "name": "総数"
           },
           {
-            "cdCat01": "E250104",
+            "code": "E250104",
             "name": "男児"
           },
           {
-            "cdCat01": "E250105",
+            "code": "E250105",
             "name": "女児"
           }
         ]
@@ -145,16 +183,21 @@
     {
       "title": "幼稚園数",
       "titleId": "kindergartens",
-      "cardComponent": "estat-column-chart-card",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "column",
       "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
+      "additionalDescription": [],
+      "estatParams": {
         "statsDataId": "0000020205",
-        "categories": [
+        "cdCat01": [
+          "E1101"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
           {
-            "cdCat01": "E1101",
+            "code": "E1101",
             "name": "幼稚園数"
           }
         ]
@@ -163,16 +206,21 @@
     {
       "title": "小学校数",
       "titleId": "primary-schools",
-      "cardComponent": "estat-column-chart-card",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "column",
       "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
+      "additionalDescription": [],
+      "estatParams": {
         "statsDataId": "0000020205",
-        "categories": [
+        "cdCat01": [
+          "E2101"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
           {
-            "cdCat01": "E2101",
+            "code": "E2101",
             "name": "小学校数"
           }
         ]

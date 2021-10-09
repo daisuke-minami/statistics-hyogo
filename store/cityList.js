@@ -26,7 +26,7 @@ export const mutations = {
       state = cloneDeep(initialState)
     } else {
       state.cityList = payload
-      state.selectedCityCode = payload[0].cityCode
+      // state.selectedCityCode = payload[0].cityCode
     }
   },
   changeKinds(state, payload) {
@@ -60,9 +60,11 @@ export const actions = {
   // },
   // 環境変数から取得する場合
   fetchCities({ commit }) {
+    // console.log(Object.keys(initialState))
     commit('initCitySet', process.env.cityList)
   },
   changeSelectedCity({ commit }, newCity) {
+    // console.log(newCity)
     commit('changeCity', newCity)
   },
 }

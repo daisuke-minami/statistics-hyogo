@@ -3,7 +3,6 @@ import os
 import urllib.request
 import pprint
 import pandas as pd
-
 import subprocess
 import ssl
 ssl._create_default_https_context = ssl._create_unverified_context
@@ -23,61 +22,51 @@ with open(c) as j:
     cityList = json.load(j)
     cityCodes = [d.get('cityCode') for d in cityList['result']]
 
-# contentsディレクトリ配下のファイル名を取得
-path = os.path.join(root_dir, 'pagesetting')
-files = os.listdir(path)
-files_file = [f for f in files if os.path.isfile(os.path.join(path, f))]
+# statisticsClassを取得
+c = os.path.join(root_dir, 'config.json')
+with open(c) as j:
+    statistics = json.load(j)
+    statisticsClass = [d.get('id') for d in statistics]
 
 #routesを格納するリストの定義
 routes = []
 
-# timechart(都道府県)のroutes設定
-for item in files_file:
-    #contentsIdの取得
-    contents_id = item.replace('.json', '')
+#chartClassの定義
+chartClass =['prefecture','city','prefectureRank','cityRank']
 
-    #titleId（リスト）の取得
-    j = open(path + '/' + item,'r')
-    contents_all = json.load(j)
-    contents_prefecture = contents_all['prefecture']
-    title_id = [d.get('titleId') for d in contents_prefecture]
+# routes設定
+for item in statisticsClass:
 
-    for v in title_id:
-        routes.append(contents_id +'/' + v + '/timechart/prefecture/' + PREF_CODE)
+    # contentsAllの取得
+    path = os.path.join(root_dir, 'pagesetting')
+    j = open(path + '/' + item + '.json','r')
+    contentsAll = json.load(j)
 
-# timechart(市区町村)のroutes設定
-for item in files_file:
-    #contentsIdの取得
-    contents_id = item.replace('.json', '')
+    # prefecture
+    routes.append('/prefecture/' + PREF_CODE + '/' + item + '/')
+    for d in contentsAll['prefecture']:
+        routes.append('/prefecture/' + PREF_CODE + '/' + item + '/' + d['titleId'] +'/')
 
-    #titleId（リスト）の取得
-    j = open(path + '/' + item,'r')
-    contents_all = json.load(j)
-    contents_city = contents_all['city']
-    title_id = [d.get('titleId') for d in contents_city]
+    # prefectureRank
+    routes.append('/prefectureRank/' + PREF_CODE + '/' + item + '/')
+    for d in contentsAll['prefecture']:
+        if d['isRank']==True:
+            routes.append('/prefectureRank/' + PREF_CODE + '/' + item + '/' + d['titleId'] +'/')
 
-    for t in title_id:
-        for c in cityCodes:
-            routes.append(contents_id +'/' + t + '/timechart/city/' + c)
+    # city
+    for c in cityCodes:
+        routes.append('/city/' + PREF_CODE + '/' + c + '/' + item + '/')
+        for d in contentsAll['city']:
+            routes.append('/city/' + PREF_CODE + '/' + c + '/' + item + '/' + d['titleId'] +'/')
 
-# rankchart(都道府県)のroutes設定
-for item in files_file:
-    #contentsIdの取得
-    contents_id = item.replace('.json', '')
-
-    #titleId（リスト）の取得
-    j = open(path + '/' + item,'r')
-    contents_all = json.load(j)
-    contents_prefecture = contents_all['prefecture']
-    title_id = [d.get('titleId') for d in contents_prefecture if d['isRank'] == True]
-
-    for t in title_id:
-        routes.append(contents_id +'/' + t + '/rankchart/prefecture/map' )
-        routes.append(contents_id +'/' + t + '/rankchart/prefecture/bar' )
+    # cityRank
+    routes.append('/cityRank/' + PREF_CODE + '/' + item + '/')
+    for d in contentsAll['city']:
+        if d['isRank']==True:
+            routes.append('/cityRank/' + PREF_CODE + '/' + item + '/' + d['titleId'] +'/')
 
 
-# print(routes)
-# routes.jsonの書き出し
+
 output = os.path.join(root_dir, 'routes/routes.json')
 with open(output, 'w') as f:
     json.dump(routes, f)

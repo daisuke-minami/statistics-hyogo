@@ -3,16 +3,21 @@
     {
       "title": "原動機付き自転車台数",
       "titleId": "motorized-bicycle",
-      "cardComponent": "estat-column-chart-card",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "column",
       "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
+      "additionalDescription": [],
+      "estatParams": {
         "statsDataId": "0000010108",
-        "categories": [
+        "cdCat01": [
+          "H7208"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
           {
-            "cdCat01": "H7208",
+            "code": "H7208",
             "name": "原動機付き自転車台数"
           }
         ]
@@ -21,16 +26,21 @@
     {
       "title": "運転免許保有者数（大型）",
       "titleId": "number-of-drivers-license-holders-one",
-      "cardComponent": "estat-line-chart-card",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "column",
       "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
+      "additionalDescription": [],
+      "estatParams": {
         "statsDataId": "0000010111",
-        "categories": [
+        "cdCat01": [
+          "K3501"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
           {
-            "cdCat01": "K3501",
+            "code": "K3501",
             "name": "運転免許保有者数（大型）"
           }
         ]
@@ -39,16 +49,21 @@
     {
       "title": "運転免許保有者数（中型）",
       "titleId": "number-of-drivers-license-holders-two",
-      "cardComponent": "estat-line-chart-card",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "column",
       "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
+      "additionalDescription": [],
+      "estatParams": {
         "statsDataId": "0000010111",
-        "categories": [
+        "cdCat01": [
+          "K3502"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
           {
-            "cdCat01": "K3502",
+            "code": "K3502",
             "name": "運転免許保有者数（中型）"
           }
         ]
@@ -57,16 +72,21 @@
     {
       "title": "運転免許保有者数（普通）",
       "titleId": "number-of-drivers-license-holders-three",
-      "cardComponent": "estat-line-chart-card",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "column",
       "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
+      "additionalDescription": [],
+      "estatParams": {
         "statsDataId": "0000010111",
-        "categories": [
+        "cdCat01": [
+          "K3503"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
           {
-            "cdCat01": "K3503",
+            "code": "K3503",
             "name": "運転免許保有者数（普通）"
           }
         ]
@@ -75,16 +95,21 @@
     {
       "title": "高齢者講習受講者数（70〜74歳）",
       "titleId": "number-of-senior-citizens-taking-courses-one",
-      "cardComponent": "estat-line-chart-card",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "column",
       "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
+      "additionalDescription": [],
+      "estatParams": {
         "statsDataId": "0000010111",
-        "categories": [
+        "cdCat01": [
+          "K3504"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
           {
-            "cdCat01": "K3504",
+            "code": "K3504",
             "name": "高齢者講習受講者数（70〜74歳）"
           }
         ]
@@ -93,16 +118,21 @@
     {
       "title": "高齢者講習受講者数（75歳以上）",
       "titleId": "number-of-senior-citizens-taking-courses-two",
-      "cardComponent": "estat-line-chart-card",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "column",
       "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
+      "additionalDescription": [],
+      "estatParams": {
         "statsDataId": "0000010111",
-        "categories": [
+        "cdCat01": [
+          "K3505"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
           {
-            "cdCat01": "K3505",
+            "code": "K3505",
             "name": "高齢者講習受講者数（75歳以上）"
           }
         ]
@@ -113,16 +143,21 @@
     {
       "title": "原動機付き自転車台数",
       "titleId": "motorized-bicycle",
-      "cardComponent": "estat-column-chart-card",
+      "cardComponent": "estat-time-chart-card",
+      "chartType": "column",
       "isRank": true,
-      "additionalDescription": [
-        "このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません"
-      ],
-      "params": {
+      "additionalDescription": [],
+      "estatParams": {
         "statsDataId": "0000020208",
-        "categories": [
+        "cdCat01": [
+          "H7208"
+        ]
+      },
+      "series": {
+        "id": "cat01",
+        "item": [
           {
-            "cdCat01": "H7208",
+            "code": "H7208",
             "name": "原動機付き自転車台数"
           }
         ]

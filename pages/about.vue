@@ -122,18 +122,9 @@
 
 <script lang="ts">
 import Vue from 'vue'
-// // import { MetaInfo } from 'vue-meta'
-
-import AppLink from '@/components/AppLink.vue'
-import PageHeader from '@/components/PageHeader.vue'
-import StaticCard from '@/components/StaticCard.vue'
 
 export default Vue.extend({
-  components: {
-    PageHeader,
-    StaticCard,
-    AppLink,
-  },
+  components: {},
   head(): MetaInfo {
     return {
       title: '当サイトについて' as string,

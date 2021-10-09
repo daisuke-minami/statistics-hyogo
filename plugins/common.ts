@@ -1,32 +1,3 @@
-// import { ContentsType, GovernmentType } from '~/utils/formatChart'
-
-/** 地方自治体の情報を取得する関数
- * @param cdArea - 都道府県コードor市区町村コード（string:5桁）
- */
-const getLocalGovernmentInformation = (cdArea) => {
-  const isPref = () => {
-    if (cdArea.slice(-3) === '000') {
-      return true
-    } else {
-      return false
-    }
-  }
-  const lgName = () => {
-    if (isPref()) {
-      return process.env.prefList.find(
-        (d) => `${('00' + d.prefCode).slice(-2)}000` === cdArea
-      ).prefName
-    } else {
-      return process.env.cityList.find((d) => d.cityCode === cdArea).cityName
-    }
-  }
-  return {
-    lgCode: cdArea,
-    lgName: lgName(),
-    isPref: isPref(),
-  }
-}
-
 /** 各クラスのチャートリスト作成
  * @param contentsId - クラス
  * @param isPref - 都道府県(true) or 市区町村(false)
@@ -108,7 +79,7 @@ const getChartComponent = (chartType) => {
       cardComponent = 'resas-population-card'
       break
     case 'resas-pyramid':
-      cardComponent = 'resas-population-pyramid-chart-card'
+      cardComponent = 'resas-population-pyramid-card'
       break
   }
   return cardComponent
@@ -124,5 +95,5 @@ export default (_, inject) => {
   inject('getChartList', getChartList)
   inject('getUpdate', getUpdate)
   inject('getChartComponent', getChartComponent)
-  inject('getLocalGovernmentInformation', getLocalGovernmentInformation)
+  // inject('getLocalGovernmentInformation', getLocalGovernmentInformation)
 }
