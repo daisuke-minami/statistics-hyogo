@@ -8,6 +8,7 @@
             :items="cityList"
             item-text="cityName"
             item-value="cityCode"
+            hint="市区町村を選択"
             @change="changeCity"
           />
         </v-col>
@@ -20,30 +21,22 @@
 import Vue from 'vue'
 import { mapActions, mapGetters } from 'vuex'
 
-type Props = {
-  cityList: [{ cityCode: string; cityName: string }]
-}
-
 export default Vue.extend({
-  props: {
-    cityList: {
-      type: Array,
-      required: true,
-    },
-  },
+  props: {},
   data() {
     return {
       cityCode: null,
-      prefCode: '28',
-      statisticsClass: '28',
     }
   },
   computed: {
-    ...mapGetters('cityList', ['getSelectedCityCode']),
+    ...mapGetters('cityList', ['getCityList', 'getSelectedCityCode']),
+    cityList() {
+      return this.getCityList
+    },
   },
   watch: {},
   created() {
-    // this.cityCode = this.getSelectedCityCode
+    this.cityCode = this.getSelectedCityCode
   },
   methods: {
     ...mapActions('cityList', ['changeSelectedCity']),

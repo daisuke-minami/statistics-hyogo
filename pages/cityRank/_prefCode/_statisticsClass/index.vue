@@ -13,7 +13,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import { ThisTypedComponentOptionsWithRecordProps } from 'vue/types/options'
-import { mapActions, mapGetters } from 'vuex'
+import { mapGetters } from 'vuex'
 import { cloneDeep } from 'lodash'
 import { ContentsType, ContentsList } from '~/utils/formatChart'
 
@@ -53,19 +53,23 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     ...mapGetters('prefList', [
       'getSelectedPrefCode',
       'getPrefName',
-      'getPrefList',
+      // 'getPrefList',
     ]),
     ...mapGetters('cityList', [
       'getSelectedCityCode',
       'getCityList',
       'getCityName',
     ]),
+    ...mapGetters('setting', ['getStatisticsClassName']),
     statisticsClass() {
       return this.$route.params.statisticsClass
     },
-    prefList() {
-      return this.getPrefList
+    statisticsClassName() {
+      return this.getStatisticsClassName(this.statisticsClass)
     },
+    // prefList() {
+    //   return this.getPrefList
+    // },
     prefCode(): number {
       return this.getSelectedPrefCode
     },
@@ -75,9 +79,9 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     cityList() {
       return this.getCityList
     },
-    cityName() {
-      return this.getCityName(this.cityCode)
-    },
+    // cityName() {
+    //   return this.getCityName(this.cityCode)
+    // },
     contentsList() {
       return this.contentsAll[this.governmentType]
         .filter((f) => f.isRank === true)
@@ -110,11 +114,18 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     this.titleId = this.contentsList.filter((f) => f.isRank === true)[0].titleId
   },
   methods: {
-    ...mapActions('cityList', ['changeSelectedCity']),
+    // ...mapActions('cityList', ['changeSelectedCity']),
   },
   head() {
     return {
-      title: '住宅・土地・建設',
+      title: `${this.prefName}内の${this.statisticsClassName}ランキング`,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: `${this.prefName}内の市区町村の${this.statisticsClassName}に関する統計をまとめています`,
+        },
+      ],
     }
   },
 }

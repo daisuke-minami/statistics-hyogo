@@ -2,7 +2,7 @@
   <div>
     <tab-chart-class :statistics-class="statisticsClass" />
 
-    <select-city :city-list="cityList" />
+    <select-city />
 
     <card-row class="DataBlock">
       <component
@@ -55,21 +55,14 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     }
   },
   computed: {
-    ...mapGetters('prefList', [
-      'getSelectedPrefCode',
-      'getPrefName',
-      'getPrefList',
-    ]),
-    ...mapGetters('cityList', [
-      'getSelectedCityCode',
-      'getCityList',
-      'getCityName',
-    ]),
+    ...mapGetters('prefList', ['getSelectedPrefCode', 'getPrefName']),
+    ...mapGetters('cityList', ['getSelectedCityCode', 'getCityName']),
+    ...mapGetters('setting', ['getStatisticsClassName']),
     statisticsClass() {
       return this.$route.params.statisticsClass
     },
-    prefList() {
-      return this.getPrefList
+    statisticsClassName() {
+      return this.getStatisticsClassName(this.statisticsClass)
     },
     prefCode(): number {
       return this.getSelectedPrefCode
@@ -83,9 +76,6 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     cityCode() {
       return this.$route.params.cityCode
     },
-    cityList() {
-      return this.getCityList
-    },
     cityName() {
       return this.getCityName(this.cityCode)
     },
@@ -93,12 +83,15 @@ const options: ThisTypedComponentOptionsWithRecordProps<
       return this.contentsAll[this.governmentType].map((d) => {
         // ShallowCopyを避けるため、lodashのcloneDeepを用いる。
         const contents = cloneDeep(d)
+
         // 都道府県の情報を追加
         contents.prefName = this.prefName
         contents.prefCode = this.prefCode
 
+        // 市区町村の情報を追加
         contents.cityName = this.cityName
         contents.cityCode = this.cityCode
+
         contents.title = `${this.cityName}の${d.title}`
         contents.route = `../${this.statisticsClass}/${contents.titleId}/`
 
@@ -119,7 +112,14 @@ const options: ThisTypedComponentOptionsWithRecordProps<
   methods: {},
   head() {
     return {
-      title: '住宅・土地・建設',
+      title: `${this.prefName}${this.cityName}の${this.statisticsClassName}`,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: `${this.prefName}${this.cityName}の${this.statisticsClassName}に関する統計をまとめています`,
+        },
+      ],
     }
   },
 }

@@ -1,16 +1,12 @@
 <template>
   <div>
-    <!-- <tab-chart-class :statistics-class="statisticsClass" /> -->
-
-    <div>
-      <card-row class="DataBlock">
-        <component
-          :is="contents.cardComponent"
-          :pref-list="prefList"
-          :contents="contents"
-        />
-      </card-row>
-    </div>
+    <card-row class="DataBlock">
+      <component
+        :is="contents.cardComponent"
+        :pref-list="prefList"
+        :contents="contents"
+      />
+    </card-row>
   </div>
 </template>
 
@@ -20,7 +16,6 @@ import { mapGetters } from 'vuex'
 
 export default {
   async asyncData({ params }) {
-    // console.log('ここには来ている')
     const contentsAll = await import(
       `~/static/pagesetting/${params.statisticsClass}.json`
     )
@@ -39,11 +34,13 @@ export default {
       'getPrefName',
       'getPrefList',
     ]),
-    ...mapGetters('cityList', ['getCityList']),
-    // ...mapGetters('pageSetting', ['getPageSetting']),
-    // pageSetting() {
-    //   return this.getPageSetting(this.statisticsClass)
-    // },
+    ...mapGetters('setting', ['getStatisticsClassName']),
+    statisticsClass() {
+      return this.$route.params.statisticsClass
+    },
+    statisticsClassName() {
+      return this.getStatisticsClassName(this.statisticsClass)
+    },
     prefList() {
       return this.getPrefList
     },
@@ -53,21 +50,11 @@ export default {
     prefName() {
       return this.getPrefName(this.prefCode)
     },
-    cityList() {
-      return this.getCityList
-    },
     cityName() {
       return this.getCityName(this.cityCode)
     },
-    statisticsClass() {
-      return this.$route.params.statisticsClass
-    },
-
     titleId() {
       return this.$route.params.titleId
-    },
-    estatJsonPath() {
-      return `${this.statisticsClass}/${this.governmentType}/${this.titleId}.json`
     },
     contentsList() {
       return this.contentsAll[this.governmentType].map((d) => {
@@ -79,14 +66,10 @@ export default {
         contents.prefCode = this.prefCode
 
         contents.prefList = this.prefList
-        contents.route = `../${this.statisticsClass}/${contents.titleId}/`
+        contents.route = `/${this.chartClass}/${this.prefCode}/${this.statisticsClass}/`
 
         contents.cardComponent = 'estat-pref-rank-card'
 
-        // estatResponseのパスを追加
-        contents.estatJsonPath = `${this.statisticsClass}/${this.governmentType}/${contents.titleId}.json`
-
-        // console.log(d)
         return {
           ...contents,
         }
@@ -95,14 +78,7 @@ export default {
     contents() {
       return this.contentsList.find((f) => f.titleId === this.titleId)
     },
-    // cardComponent() {
-    //   return this.contentsAll[this.governmentType].find(
-    //     (f) => f.titleId === this.titleId
-    //   ).cardComponent
-    // },
   },
-  created() {
-    // console.log(this.contents)
-  },
+  created() {},
 }
 </script>

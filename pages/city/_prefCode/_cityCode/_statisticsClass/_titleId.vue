@@ -51,13 +51,13 @@ const options: ThisTypedComponentOptionsWithRecordProps<
   },
   computed: {
     ...mapGetters('prefList', ['getSelectedPrefCode', 'getPrefName']),
-    ...mapGetters('cityList', [
-      'getSelectedCityCode',
-      'getCityList',
-      'getCityName',
-    ]),
+    ...mapGetters('cityList', ['getSelectedCityCode', 'getCityName']),
+    ...mapGetters('setting', ['getStatisticsClassName']),
     statisticsClass() {
       return this.$route.params.statisticsClass
+    },
+    statisticsClassName() {
+      return this.getStatisticsClassName(this.statisticsClass)
     },
     titleId() {
       return this.$route.params.titleId
@@ -70,9 +70,6 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     },
     cityCode() {
       return this.$route.params.cityCode
-    },
-    cityList() {
-      return this.getCityList
     },
     cityName() {
       return this.getCityName(this.cityCode)
@@ -88,8 +85,9 @@ const options: ThisTypedComponentOptionsWithRecordProps<
 
         contents.cityName = this.cityName
         contents.cityCode = this.cityCode
+
         contents.title = `${this.cityName}の${d.title}`
-        contents.route = `../${this.statisticsClass}/${contents.titleId}/`
+        contents.route = `/${this.chartClass}/${this.prefCode}/${this.cityCode}/${this.statisticsClass}/`
 
         return {
           ...contents,
@@ -104,7 +102,14 @@ const options: ThisTypedComponentOptionsWithRecordProps<
   methods: {},
   head() {
     return {
-      title: '住宅・土地・建設',
+      title: `${this.contents.title}`,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: `${this.contents.title}`,
+        },
+      ],
     }
   },
 }

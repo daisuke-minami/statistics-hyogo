@@ -2,7 +2,7 @@
   <div>
     <static-card>
       <v-row>
-        <v-col>
+        <v-col class="d-flex" cols="12" sm="6">
           <v-select
             v-model="titleId"
             :items="items"
@@ -12,9 +12,6 @@
             persistent-hint
             @change="$emit('input', $event)"
           />
-        </v-col>
-        <v-col>
-          <toggle-rank-value v-model="rankDataType" />
         </v-col>
       </v-row>
     </static-card>

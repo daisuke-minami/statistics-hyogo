@@ -1,12 +1,8 @@
 <template>
   <div>
-    <!-- <tab-chart-class :statistics-class="statisticsClass" /> -->
-
-    <div>
-      <card-row class="DataBlock">
-        <component :is="contents.cardComponent" :contents="contents" />
-      </card-row>
-    </div>
+    <card-row class="DataBlock">
+      <component :is="contents.cardComponent" :contents="contents" />
+    </card-row>
   </div>
 </template>
 
@@ -51,8 +47,12 @@ const options: ThisTypedComponentOptionsWithRecordProps<
   },
   computed: {
     ...mapGetters('prefList', ['getSelectedPrefCode', 'getPrefName']),
+    ...mapGetters('setting', ['getStatisticsClassName']),
     statisticsClass() {
       return this.$route.params.statisticsClass
+    },
+    statisticsClassName() {
+      return this.getStatisticsClassName(this.statisticsClass)
     },
     titleId() {
       return this.$route.params.titleId
@@ -62,12 +62,6 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     },
     prefName(): string {
       return this.getPrefName(this.prefCode)
-    },
-    cityList() {
-      return this.getCityList
-    },
-    cityName() {
-      return this.getCityName(this.cityCode)
     },
     contentsList() {
       return this.contentsAll[this.governmentType].map((d) => {
@@ -79,7 +73,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
         contents.prefCode = this.prefCode
 
         contents.title = `${this.prefName}の${d.title}`
-        contents.route = `${this.prefCode}/${contents.titleId}/`
+        contents.route = `/${this.chartClass}/${this.prefCode}/${this.statisticsClass}/`
 
         return {
           ...contents,
@@ -94,7 +88,14 @@ const options: ThisTypedComponentOptionsWithRecordProps<
   methods: {},
   head() {
     return {
-      title: '住宅・土地・建設',
+      title: `${this.contents.title}`,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: `${this.contents.title}`,
+        },
+      ],
     }
   },
 }

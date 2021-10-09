@@ -50,10 +50,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     return {
       chartClass: 'prefectureRank',
       governmentType: 'prefecture',
-      // chartClass: 'prefecture',
-      // tab: null,
       titleId: null,
-      // cityCode: null,
     }
   },
   computed: {
@@ -62,18 +59,13 @@ const options: ThisTypedComponentOptionsWithRecordProps<
       'getPrefName',
       'getPrefList',
     ]),
-    ...mapGetters('cityList', [
-      'getSelectedCityCode',
-      'getCityList',
-      'getCityName',
-    ]),
-    // ...mapGetters('pageSetting', ['getPageSetting']),
+    ...mapGetters('setting', ['getStatisticsClassName']),
     statisticsClass() {
       return this.$route.params.statisticsClass
     },
-    // pageSetting() {
-    //   return this.getPageSetting(this.statisticsClass)
-    // },
+    statisticsClassName() {
+      return this.getStatisticsClassName(this.statisticsClass)
+    },
     prefList() {
       return this.getPrefList
     },
@@ -82,12 +74,6 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     },
     prefName(): string {
       return this.getPrefName(this.prefCode)
-    },
-    cityList() {
-      return this.getCityList
-    },
-    cityName() {
-      return this.getCityName(this.cityCode)
     },
     contentsList() {
       return this.contentsAll[this.governmentType]
@@ -116,24 +102,24 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     titleId() {
       // this.$fetch()
     },
-    // cityCode(): void {
-    //   // this.$fetch()
-    //   this.changeSelectedCity(this.cityCode)
-    // },
   },
   created(): void {
     this.cityCode = this.getSelectedCityCode
     this.titleId = this.contentsList.filter((f) => f.isRank === true)[0].titleId
   },
   methods: {
-    // change() {
-    //   EventBus.$emit(TOGGLE_EVENT)
-    // },
     ...mapActions('cityList', ['changeSelectedCity']),
   },
   head() {
     return {
-      title: '住宅・土地・建設',
+      title: `都道府県の${this.statisticsClassName}ランキング`,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: `都道府県の${this.statisticsClassName}に関する統計をまとめています`,
+        },
+      ],
     }
   },
 }

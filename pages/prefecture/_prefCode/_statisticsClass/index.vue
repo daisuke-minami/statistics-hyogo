@@ -17,9 +17,8 @@
 
 <script lang="ts">
 import Vue from 'vue'
-// import { EventBus, TOGGLE_EVENT } from '@/utils/tab-event-bus.ts'
 import { ThisTypedComponentOptionsWithRecordProps } from 'vue/types/options'
-import { mapActions, mapGetters } from 'vuex'
+import { mapGetters } from 'vuex'
 import { cloneDeep } from 'lodash'
 import { ContentsType, ContentsList } from '~/utils/formatChart'
 
@@ -52,39 +51,22 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     return {
       chartClass: 'prefecture',
       governmentType: 'prefecture',
-      // tab: null,
-      // titleId: null,
-      cityCode: null,
     }
   },
   computed: {
-    ...mapGetters('prefList', [
-      'getSelectedPrefCode',
-      'getPrefName',
-      'getPrefList',
-    ]),
-    ...mapGetters('cityList', [
-      'getSelectedCityCode',
-      'getCityList',
-      'getCityName',
-    ]),
+    ...mapGetters('prefList', ['getSelectedPrefCode', 'getPrefName']),
+    ...mapGetters('setting', ['getStatisticsClassName']),
     statisticsClass() {
       return this.$route.params.statisticsClass
     },
-    prefList() {
-      return this.getPrefList
+    statisticsClassName() {
+      return this.getStatisticsClassName(this.statisticsClass)
     },
     prefCode(): number {
       return this.getSelectedPrefCode
     },
     prefName(): string {
       return this.getPrefName(this.prefCode)
-    },
-    cityList() {
-      return this.getCityList
-    },
-    cityName() {
-      return this.getCityName(this.cityCode)
     },
     contentsList() {
       return this.contentsAll[this.governmentType].map((d) => {
@@ -106,15 +88,17 @@ const options: ThisTypedComponentOptionsWithRecordProps<
   },
   watch: {},
   created(): void {},
-  methods: {
-    // change() {
-    //   EventBus.$emit(TOGGLE_EVENT)
-    // },
-    ...mapActions('cityList', ['changeSelectedCity']),
-  },
+  methods: {},
   head() {
     return {
-      title: '住宅・土地・建設',
+      title: `${this.prefName}の${this.statisticsClassName}`,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: `${this.prefName}の${this.statisticsClassName}に関する統計をまとめています`,
+        },
+      ],
     }
   },
 }
