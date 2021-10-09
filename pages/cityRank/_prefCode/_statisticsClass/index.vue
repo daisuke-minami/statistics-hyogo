@@ -12,7 +12,6 @@
 
 <script lang="ts">
 import Vue from 'vue'
-// import { EventBus, TOGGLE_EVENT } from '@/utils/tab-event-bus.ts'
 import { ThisTypedComponentOptionsWithRecordProps } from 'vue/types/options'
 import { mapActions, mapGetters } from 'vuex'
 import { cloneDeep } from 'lodash'
@@ -47,10 +46,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     return {
       chartClass: 'cityRank',
       governmentType: 'city',
-      // chartClass: 'prefecture',
-      // tab: null,
       titleId: null,
-      // cityCode: null,
     }
   },
   computed: {
@@ -64,13 +60,9 @@ const options: ThisTypedComponentOptionsWithRecordProps<
       'getCityList',
       'getCityName',
     ]),
-    // ...mapGetters('pageSetting', ['getPageSetting']),
     statisticsClass() {
       return this.$route.params.statisticsClass
     },
-    // pageSetting() {
-    //   return this.getPageSetting(this.statisticsClass)
-    // },
     prefList() {
       return this.getPrefList
     },
@@ -86,27 +78,6 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     cityName() {
       return this.getCityName(this.cityCode)
     },
-
-    // chartClass(): 'prefecture' | 'city' | 'prefectureRank' | 'cityRank' {
-    //   return this.$route.params.chartClass
-    // },
-    // governmentType(): 'prefecture' | 'city' {
-    //   return this.chartClass.replace('Rank', '')
-    // },
-    // isCity(): boolean {
-    //   if (this.governmentType === 'city') {
-    //     return true
-    //   } else {
-    //     return false
-    //   }
-    // },
-    // isRank(): boolean {
-    //   if (this.chartClass.match(/Rank/)) {
-    //     return true
-    //   } else {
-    //     return false
-    //   }
-    // },
     contentsList() {
       return this.contentsAll[this.governmentType]
         .filter((f) => f.isRank === true)
@@ -133,19 +104,12 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     titleId() {
       // this.$fetch()
     },
-    // cityCode(): void {
-    //   // this.$fetch()
-    //   this.changeSelectedCity(this.cityCode)
-    // },
   },
   created(): void {
     this.cityCode = this.getSelectedCityCode
     this.titleId = this.contentsList.filter((f) => f.isRank === true)[0].titleId
   },
   methods: {
-    // change() {
-    //   EventBus.$emit(TOGGLE_EVENT)
-    // },
     ...mapActions('cityList', ['changeSelectedCity']),
   },
   head() {

@@ -87,7 +87,6 @@ const options: ThisTypedComponentOptionsWithRecordProps<
       return this.getCityList
     },
     cityName() {
-      // console.log(this.cityCode)
       return this.getCityName(this.cityCode)
     },
     contentsList() {
@@ -114,16 +113,10 @@ const options: ThisTypedComponentOptionsWithRecordProps<
       this.$router.push(
         `/city/${this.prefCode}/${this.selectedCityCode}/${this.statisticsClass}/`
       )
-      // const url = `/city/${this.prefCode}/${this.selectedCityCode}/${this.statisticsClass}/`
-      // console.log(this.selectedCityCode)
-      // console.log(url)
     },
   },
   created(): void {},
-  methods: {
-    // ...mapActions('cityList', ['changeSelectedCity']),
-    // jumpToCity() {},
-  },
+  methods: {},
   head() {
     return {
       title: '住宅・土地・建設',

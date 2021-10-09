@@ -17,7 +17,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { EventBus, TOGGLE_EVENT } from '@/utils/tab-event-bus.ts'
+// import { EventBus, TOGGLE_EVENT } from '@/utils/tab-event-bus.ts'
 import { ThisTypedComponentOptionsWithRecordProps } from 'vue/types/options'
 import { mapActions, mapGetters } from 'vuex'
 import { cloneDeep } from 'lodash'
@@ -52,8 +52,8 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     return {
       chartClass: 'prefecture',
       governmentType: 'prefecture',
-      tab: null,
-      titleId: null,
+      // tab: null,
+      // titleId: null,
       cityCode: null,
     }
   },
@@ -68,13 +68,9 @@ const options: ThisTypedComponentOptionsWithRecordProps<
       'getCityList',
       'getCityName',
     ]),
-    // ...mapGetters('pageSetting', ['getPageSetting']),
     statisticsClass() {
       return this.$route.params.statisticsClass
     },
-    // pageSetting() {
-    //   return this.getPageSetting(this.statisticsClass)
-    // },
     prefList() {
       return this.getPrefList
     },
@@ -90,16 +86,6 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     cityName() {
       return this.getCityName(this.cityCode)
     },
-    // governmentType(): 'prefecture' | 'city' {
-    //   return `prefecture`
-    // },
-    // isRank(): boolean {
-    //   if (this.chartClass.match(/Rank/)) {
-    //     return true
-    //   } else {
-    //     return false
-    //   }
-    // },
     contentsList() {
       return this.contentsAll[this.governmentType].map((d) => {
         // ShallowCopyを避けるため、lodashのcloneDeepを用いる。
@@ -117,27 +103,13 @@ const options: ThisTypedComponentOptionsWithRecordProps<
         }
       })
     },
-    // contents() {
-    //   return this.contentsList.find((f) => f.titleId === this.titleId)
-    // },
   },
-  watch: {
-    // titleId() {
-    //   // this.$fetch()
-    // },
-    // cityCode(): void {
-    //   // this.$fetch()
-    //   this.changeSelectedCity(this.cityCode)
-    // },
-  },
-  created(): void {
-    // this.cityCode = this.getSelectedCityCode
-    // this.titleId = this.contentsList.filter((f) => f.isRank === true)[0].titleId
-  },
+  watch: {},
+  created(): void {},
   methods: {
-    change() {
-      EventBus.$emit(TOGGLE_EVENT)
-    },
+    // change() {
+    //   EventBus.$emit(TOGGLE_EVENT)
+    // },
     ...mapActions('cityList', ['changeSelectedCity']),
   },
   head() {
