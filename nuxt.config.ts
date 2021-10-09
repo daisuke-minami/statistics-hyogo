@@ -243,34 +243,9 @@ const config: NuxtConfig = {
     fallback: true,
     concurrency: 100,
     subFolders: false,
-    // routes() {
-    //   return routes
-    // },
-    // routes() {
-    //   const routes = []
-    //   const fs = require('fs')
-    //   // const fileNames = fs.readdirSync('./data')
-    //   // for (const key in fileNames) {
-    //   //   const page = JSON.parse(
-    //   //     fs.readFileSync('./data/' + fileNames[key], 'utf8')
-    //   //   )
-    //   //   routes.push({
-    //   //     route: '/' + page.slug,
-    //   //     payload: page,
-    //   //   })
-    //   // }
-    //   const page = JSON.parse(
-    //     fs.readFileSync(
-    //       './static/pagecontents/educationsports/prefecture/number-of-farmers.json',
-    //       'utf8'
-    //     )
-    //   )
-    //   routes.push({
-    //     route: 'educationsports/prefecture/28/number-of-farmers',
-    //     payload: page,
-    //   })
-    //   return routes
-    // },
+    routes() {
+      return routes
+    },
   },
   // /*
   // ** hot read configuration for docker
