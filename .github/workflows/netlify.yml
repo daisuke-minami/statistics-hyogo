@@ -9,9 +9,9 @@ jobs:
   build:
     runs-on: ubuntu-18.04
     env:
-      ESTAT_API:  ${{ secrets.ESTAT_API }}
+      BASE_URL:  ${{ secrets.BASE_URL }}
       ESTAT_APPID:  ${{ secrets.ESTAT_APPID }}
-      
+
     steps:
       - uses: actions/checkout@v2
 
