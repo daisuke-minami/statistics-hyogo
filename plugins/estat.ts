@@ -16,7 +16,7 @@ type EstatParam = {
  */
 const getEstatAPI = async (estatParam: EstatParam) => {
   const statsDataId = estatParam.statsDataId
-  let url = `${process.env.ESTAT_API}/json/getStatsData?appId=${process.env.ESTAT_APPID}&statsDataId=${statsDataId}`
+  let url = `${process.env.BASE_URL}/json/getStatsData?appId=${process.env.ESTAT_APPID}&statsDataId=${statsDataId}`
   if (estatParam.cdArea) {
     url = url + `&cdArea=${estatParam.cdArea}`
   }
