@@ -9,7 +9,6 @@ export const state = () => cloneDeep(initialState)
 
 export const getters = {
   getStatisticsClassName: (state) => (id) => {
-    // console.log(state.statisticsClassList)
     return state.statisticsClassList.find((f) => f.id === id).name
   },
 }

@@ -37,9 +37,7 @@ export default {
   //       .filter((h) => h !== this.headerKey)
   //   },
   // },
-  mounted() {
-    // console.log(this.headerKey)
-  },
+  mounted() {},
 }
 </script>
 
