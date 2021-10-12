@@ -93,7 +93,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
         contents.cityCode = this.cityCode
 
         contents.title = `${this.cityName}の${d.title}`
-        contents.route = `../${this.statisticsClass}/${contents.titleId}/`
+        contents.route = `${process.env.BASE_URL}/${this.chartClass}/${this.prefCode}/${this.statisticsClass}/${contents.titleId}/`
 
         return {
           ...contents,
