@@ -106,9 +106,14 @@ const options: ThisTypedComponentOptionsWithRecordProps<
   created(): void {
     this.cityCode = this.getSelectedCityCode
     this.titleId = this.contentsList.filter((f) => f.isRank === true)[0].titleId
+    this.changeChartClass()
   },
   methods: {
     ...mapActions('cityList', ['changeSelectedCity']),
+    ...mapActions('setting', ['changeSelectedChartClass']),
+    changeChartClass() {
+      this.changeSelectedChartClass(this.chartClass)
+    },
   },
   head() {
     return {

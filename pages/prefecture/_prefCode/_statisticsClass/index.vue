@@ -18,7 +18,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import { ThisTypedComponentOptionsWithRecordProps } from 'vue/types/options'
-import { mapGetters } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 import { cloneDeep } from 'lodash'
 import { ContentsType, ContentsList } from '~/utils/formatChart'
 
@@ -87,8 +87,15 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     },
   },
   watch: {},
-  created(): void {},
-  methods: {},
+  created(): void {
+    this.changeChartClass()
+  },
+  methods: {
+    ...mapActions('setting', ['changeSelectedChartClass']),
+    changeChartClass() {
+      this.changeSelectedChartClass(this.chartClass)
+    },
+  },
   head() {
     return {
       title: `${this.prefName}の${this.statisticsClassName}`,
