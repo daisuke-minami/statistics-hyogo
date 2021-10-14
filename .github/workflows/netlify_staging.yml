@@ -8,6 +8,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-18.04
+      env:
+      BASE_URL:  ${{ secrets.BASE_URL_STAGING }}
+      ESTAT_APPID:  ${{ secrets.ESTAT_APPID }}
 
     steps:
       - uses: actions/checkout@v2
