@@ -55,7 +55,7 @@ export default {
         contents.prefName = this.prefName
         contents.prefCode = this.prefCode
 
-        contents.route = `/${this.chartClass}/${this.prefCode}/${this.statisticsClass}/`
+        contents.route = `${process.env.BASE_URL}/${this.chartClass}/${this.prefCode}/${this.statisticsClass}/`
         contents.cardComponent = 'estat-city-rank-card'
 
         return {

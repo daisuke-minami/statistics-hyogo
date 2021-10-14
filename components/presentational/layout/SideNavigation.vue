@@ -146,8 +146,12 @@ export default Vue.extend({
   },
   computed: {
     ...mapGetters('prefList', ['getSelectedPrefCode']),
+    ...mapGetters('setting', ['getChartClass']),
     prefCode() {
       return this.getSelectedPrefCode
+    },
+    chartClass() {
+      return this.getChartClass
     },
     items(): Item[] {
       return [
@@ -159,82 +163,82 @@ export default Vue.extend({
         {
           iconPath: mdiWeatherPartlyCloudy,
           title: '国土・気象',
-          link: `/prefecture/${this.prefCode}/landweather`,
+          link: `/${this.chartClass}/${this.prefCode}/landweather`,
         },
         {
           iconPath: mdiAccountMultiple,
           title: '人口・世帯',
-          link: `/prefecture/${this.prefCode}/population`,
+          link: `/${this.chartClass}/${this.prefCode}/population`,
         },
         {
           iconPath: mdiCashMultiple,
           title: '労働・賃金',
-          link: `/prefecture/${this.prefCode}/laborwage`,
+          link: `/${this.chartClass}/${this.prefCode}/laborwage`,
         },
         {
           iconPath: mdiFish,
           title: '農林水産業',
-          link: `/prefecture/${this.prefCode}/agriculture`,
+          link: `/${this.chartClass}/${this.prefCode}/agriculture`,
         },
         {
           iconPath: mdiFactory,
           title: '鉱工業',
-          link: `/prefecture/${this.prefCode}/miningindustry`,
+          link: `/${this.chartClass}/${this.prefCode}/miningindustry`,
         },
         {
           iconPath: mdiStore,
           title: '商業・サービス業',
-          link: `/prefecture/${this.prefCode}/commercial`,
+          link: `/${this.chartClass}/${this.prefCode}/commercial`,
         },
         {
           iconPath: mdiOfficeBuilding,
           title: '企業・家計・経済',
-          link: `/prefecture/${this.prefCode}/economy`,
+          link: `/${this.chartClass}/${this.prefCode}/economy`,
         },
         {
           iconPath: mdiHomeAnalytics,
           title: '住宅・土地・建設',
-          link: `/prefecture/${this.prefCode}/construction`,
+          link: `/${this.chartClass}/${this.prefCode}/construction`,
         },
         {
           iconPath: mdiWater,
           title: 'エネルギー・水',
-          link: `/prefecture/${this.prefCode}/energy`,
+          link: `/${this.chartClass}/${this.prefCode}/energy`,
         },
         {
           iconPath: mdiTruck,
           title: '運輸・観光',
-          link: `/prefecture/${this.prefCode}/tourism`,
+          link: `/${this.chartClass}/${this.prefCode}/tourism`,
         },
         {
           iconPath: mdiSchool,
           title: '教育・文化・スポーツ',
-          link: `/prefecture/${this.prefCode}/educationsports`,
+          link: `/${this.chartClass}/${this.prefCode}/educationsports`,
         },
         {
           iconPath: mdiCashUsd,
           title: '行財政',
-          link: `/prefecture/${this.prefCode}/administrativefinancial`,
+          link: `/${this.chartClass}/${this.prefCode}/administrativefinancial`,
         },
         {
           iconPath: mdiSeatbelt,
           title: '司法・安全・環境',
-          link: `/prefecture/${this.prefCode}/safetyenvironment`,
+          link: `/${this.chartClass}/${this.prefCode}/safetyenvironment`,
         },
         {
           iconPath: mdiHospitalBox,
           title: '社会保障・衛生',
-          link: `/prefecture/${this.prefCode}/socialsecurity`,
+          link: `/${this.chartClass}/${this.prefCode}/socialsecurity`,
         },
         {
           iconPath: mdiEarth,
           title: '国際',
-          link: `/prefecture/${this.prefCode}/international`,
+          link: `/${this.chartClass}/${this.prefCode}/international`,
         },
         {
           iconPath: mdiChartTimelineVariant,
           title: 'その他',
-          link: `/prefecture/${this.prefCode}/other`,
+          link: `/${this.chartClass}/${this.prefCode}/other`,
           divider: true,
         },
         {

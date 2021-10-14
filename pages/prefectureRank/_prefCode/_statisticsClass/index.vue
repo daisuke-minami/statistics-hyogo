@@ -87,7 +87,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
           contents.prefCode = this.prefCode
 
           contents.prefList = this.prefList
-          contents.route = `../${this.statisticsClass}/${contents.titleId}/`
+          contents.route = `${process.env.BASE_URL}/${this.chartClass}/${this.prefCode}/${this.statisticsClass}/${contents.titleId}/`
 
           return {
             ...contents,
@@ -106,9 +106,14 @@ const options: ThisTypedComponentOptionsWithRecordProps<
   created(): void {
     this.cityCode = this.getSelectedCityCode
     this.titleId = this.contentsList.filter((f) => f.isRank === true)[0].titleId
+    this.changeChartClass()
   },
   methods: {
     ...mapActions('cityList', ['changeSelectedCity']),
+    ...mapActions('setting', ['changeSelectedChartClass']),
+    changeChartClass() {
+      this.changeSelectedChartClass(this.chartClass)
+    },
   },
   head() {
     return {
