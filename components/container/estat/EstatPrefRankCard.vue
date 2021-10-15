@@ -70,16 +70,17 @@ export default {
       required: true,
     },
   },
+  // APIから取得する場合
+  // async fetch() {
+  //   const params = this.contents.estatParams
+  //   params.cdArea = this.cdArea
+  //   this.estatResponse = await this.$getEstatAPI(params)
+  // },
+  // JSONから取得する場合
   async fetch() {
-    const params = this.contents.estatParams
-    params.cdArea = this.cdArea
-    this.estatResponse = await this.$getEstatAPI(params)
-    this.targetYear = this.estatData.latestYearInt
-    // this.estatResponse = await import(
-    //   `~/static/pagecontents/${this.contents.estatJsonPath}`
-    // )
-    // this.estatData = this.$formatEstatData(this.estatResponse, null)
-    // this.targetYear = this.estatData.latestYearInt
+    this.estatResponse = await import(
+      `~/static/pagecontents/${this.statisticsClass}/${this.governmentType}/${this.titleId}.json`
+    )
   },
   data() {
     return {
@@ -87,7 +88,6 @@ export default {
       targetYear: null,
       chartType: 'map',
       estatResponse: {},
-      // estatData: {},
     }
   },
   computed: {
@@ -218,6 +218,8 @@ export default {
       this.$fetch()
     },
   },
-  created() {},
+  created() {
+    this.targetYear = this.estatData.latestYearInt
+  },
 }
 </script>

@@ -92,10 +92,6 @@ const options: ThisTypedComponentOptionsWithRecordProps<
       type: Object,
       required: true,
     },
-    // json: {
-    //   // type: Module,
-    //   default: null,
-    // },
   },
   // APIから取得する場合
   // async fetch() {
@@ -105,11 +101,9 @@ const options: ThisTypedComponentOptionsWithRecordProps<
   // },
   // JSONから取得する場合
   async fetch() {
-    const res = await import(
+    this.estatResponse = await import(
       `~/static/pagecontents/${this.statisticsClass}/${this.governmentType}/${this.titleId}.json`
     )
-    // params.cdArea = this.cdArea
-    this.estatResponse = res
   },
   data() {
     return {

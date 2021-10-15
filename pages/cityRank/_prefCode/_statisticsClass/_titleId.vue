@@ -51,11 +51,16 @@ export default {
         // ShallowCopyを避けるため、lodashのcloneDeepを用いる。
         const contents = cloneDeep(d)
 
+        // 統計情報を追加
+        contents.statisticsClass = this.statisticsClass
+        contents.chartClass = this.chartClass
+        contents.governmentType = this.governmentType
+
         // 都道府県の情報を追加
         contents.prefName = this.prefName
         contents.prefCode = this.prefCode
 
-        contents.route = `${process.env.BASE_URL}/${this.chartClass}/${this.prefCode}/${this.statisticsClass}/`
+        contents.route = `/${this.chartClass}/${this.prefCode}/${this.statisticsClass}/`
         contents.cardComponent = 'estat-city-rank-card'
 
         return {
