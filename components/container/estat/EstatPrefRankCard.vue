@@ -81,6 +81,8 @@ export default {
     this.estatResponse = await import(
       `~/static/pagecontents/${this.statisticsClass}/${this.governmentType}/${this.titleId}.json`
     )
+    this.targetYear = this.estatData.latestYearInt
+    // console.log('EstatPrefRankCard', this.estatResponse)
   },
   data() {
     return {
@@ -98,6 +100,12 @@ export default {
       return this.contents.prefList.map(
         (d) => ('0000000000' + d.prefCode).slice(-2) + '000'
       )
+    },
+    statisticsClass() {
+      return this.contents.statisticsClass
+    },
+    governmentType() {
+      return this.contents.governmentType
     },
     titleId() {
       return this.contents.titleId
@@ -218,8 +226,6 @@ export default {
       this.$fetch()
     },
   },
-  created() {
-    this.targetYear = this.estatData.latestYearInt
-  },
+  created() {},
 }
 </script>

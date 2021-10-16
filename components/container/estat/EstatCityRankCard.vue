@@ -91,6 +91,7 @@ export default {
     this.estatResponse = await import(
       `~/static/pagecontents/${this.statisticsClass}/${this.governmentType}/${this.titleId}.json`
     )
+    this.targetYear = this.estatData.latestYearInt
   },
   data() {
     return {
@@ -118,6 +119,12 @@ export default {
       return this.cityList.map((d) => {
         return d.cityCode
       })
+    },
+    statisticsClass() {
+      return this.contents.statisticsClass
+    },
+    governmentType() {
+      return this.contents.governmentType
     },
     title() {
       return `市区町村の${this.contents.title}ランキング`
@@ -240,8 +247,6 @@ export default {
       this.$fetch()
     },
   },
-  created() {
-    this.targetYear = this.estatData.latestYearInt
-  },
+  created() {},
 }
 </script>
