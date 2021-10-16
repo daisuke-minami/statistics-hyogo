@@ -105,6 +105,13 @@ const options: ThisTypedComponentOptionsWithRecordProps<
   },
   created(): void {},
   methods: {},
+  mounted() {
+    this.$nextTick(() => {
+      this.$nuxt.$loading.start()
+
+      setTimeout(() => this.$nuxt.$loading.finish(), 500)
+    })
+  },
   head() {
     return {
       title: `${this.contents.title}`,
