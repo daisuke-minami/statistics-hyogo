@@ -791,7 +791,7 @@
       "titleId": "labor-force-population",
       "cardComponent": "estat-time-chart-card",
       "chartType": "line",
-      "isRank": false,
+      "isRank": true,
       "additionalDescription": [
         "労働力人口 ： 15歳以上の人口のうち，「就業者」と「完全失業者」を合わせたもの"
       ],
@@ -825,7 +825,7 @@
       "title": "就業者数",
       "titleId": "number-of-employees",
       "cardComponent": "estat-time-chart-card",
-      "isRank": false,
+      "isRank": true,
       "additionalDescription": [
         "就業者 ： 「従業者」と「休業者」を合わせたもの",
         "従業者 ： 調査週間中に賃金，給料，諸手当，内職収入などの収入を伴う仕事（以下「仕事」という。）を1時間以上した者。なお，家族従業者は，無給であっても仕事をしたとする。",
