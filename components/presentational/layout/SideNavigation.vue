@@ -146,8 +146,12 @@ export default Vue.extend({
   },
   computed: {
     ...mapGetters('prefList', ['getSelectedPrefCode']),
+    ...mapGetters('setting', ['getChartClass']),
     prefCode() {
       return this.getSelectedPrefCode
+    },
+    chartClass() {
+      return this.getChartClass
     },
     items(): Item[] {
       return [
@@ -159,7 +163,7 @@ export default Vue.extend({
         {
           iconPath: mdiWeatherPartlyCloudy,
           title: '国土・気象',
-          link: `/prefecture/${this.prefCode}/landweather/`,
+          link: `/${this.chartClass}/${this.prefCode}/landweather/`,
         },
         {
           iconPath: mdiAccountMultiple,

@@ -241,9 +241,8 @@ const config: NuxtConfig = {
   },
   generate: {
     interval: 1000,
-    fallback: true,
+    crawler: false,
     concurrency: 100,
-    subFolders: false,
     routes() {
       return routes
     },

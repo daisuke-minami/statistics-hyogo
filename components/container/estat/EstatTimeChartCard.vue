@@ -92,15 +92,18 @@ const options: ThisTypedComponentOptionsWithRecordProps<
       type: Object,
       required: true,
     },
-    json: {
-      // type: Module,
-      default: null,
-    },
   },
+  // APIから取得する場合
+  // async fetch() {
+  //   const params = this.contents.estatParams
+  //   params.cdArea = this.cdArea
+  //   this.estatResponse = await this.$getEstatAPI(params)
+  // },
+  // JSONから取得する場合
   async fetch() {
-    const params = this.contents.estatParams
-    params.cdArea = this.cdArea
-    this.estatResponse = await this.$getEstatAPI(params)
+    this.estatResponse = await import(
+      `~/static/pagecontents/${this.statisticsClass}/${this.governmentType}/${this.titleId}.json`
+    )
   },
   data() {
     return {
@@ -116,6 +119,12 @@ const options: ThisTypedComponentOptionsWithRecordProps<
       } else {
         return ('0000000000' + this.contents.prefCode).slice(-2) + '000'
       }
+    },
+    statisticsClass() {
+      return this.contents.statisticsClass
+    },
+    governmentType() {
+      return this.contents.governmentType
     },
     estatParams() {
       return this.contents.estatParams

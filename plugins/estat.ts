@@ -52,6 +52,7 @@ type EstatData = {
  * @param response - estat=APIの取得結果
  */
 const formatEstatData = (response: object, cdArea): EstatData => {
+  // console.log(response)
   // 統計タイトル等
   const TABLE_INF = response.GET_STATS_DATA.STATISTICAL_DATA.TABLE_INF
   const statName = `政府統計の総合窓口 e-Stat「${TABLE_INF.STAT_NAME.$}」`
@@ -72,6 +73,7 @@ const formatEstatData = (response: object, cdArea): EstatData => {
   if (cdArea) {
     value = value.filter((d) => d['@area'] === cdArea)
   }
+  // console.log('value', value)
 
   const times = Array.from(new Set(value.map((d) => d['@time']))).map((d) => {
     // console.log(d)

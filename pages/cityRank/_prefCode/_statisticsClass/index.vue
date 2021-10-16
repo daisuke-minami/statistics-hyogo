@@ -13,7 +13,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import { ThisTypedComponentOptionsWithRecordProps } from 'vue/types/options'
-import { mapGetters } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 import { cloneDeep } from 'lodash'
 import { ContentsType, ContentsList } from '~/utils/formatChart'
 
@@ -89,11 +89,16 @@ const options: ThisTypedComponentOptionsWithRecordProps<
           // ShallowCopyを避けるため、lodashのcloneDeepを用いる。
           const contents = cloneDeep(d)
 
+          // 統計情報を追加
+          contents.statisticsClass = this.statisticsClass
+          contents.chartClass = this.chartClass
+          contents.governmentType = this.governmentType
+
           // 都道府県の情報を追加
           contents.prefName = this.prefName
           contents.prefCode = this.prefCode
 
-          contents.route = `../${this.statisticsClass}/${contents.titleId}/`
+          contents.route = `/${this.chartClass}/${this.prefCode}/${this.statisticsClass}/${contents.titleId}/`
 
           return {
             ...contents,
@@ -112,9 +117,13 @@ const options: ThisTypedComponentOptionsWithRecordProps<
   created(): void {
     this.cityCode = this.getSelectedCityCode
     this.titleId = this.contentsList.filter((f) => f.isRank === true)[0].titleId
+    this.changeChartClass()
   },
   methods: {
-    // ...mapActions('cityList', ['changeSelectedCity']),
+    ...mapActions('setting', ['changeSelectedChartClass']),
+    changeChartClass() {
+      this.changeSelectedChartClass(this.chartClass)
+    },
   },
   head() {
     return {

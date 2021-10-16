@@ -8,14 +8,15 @@ import pathlib
 #ルートディレクトリの設定
 root_dir = pathlib.Path(__file__).parent.parent.parent
 
-#pagesettingディレクトリ配下のファイル名を取得
-path = os.path.join(root_dir, 'static/pagesetting')
-files = os.listdir(path)
-files_file = [f for f in files if os.path.isfile(os.path.join(path, f))]
+# statisticsClassを取得
+c = os.path.join(root_dir, 'static/setting.json')
 
-#chartClassの設定
-# chartClass = ['prefecture','city','prefectureRank','cityRank']
-chartClass = ['prefecture','city']
+with open(c) as j:
+    setting = json.load(j)
+    statisticsClass = [d.get('id') for d in setting['statisticsClass']]
+
+#chartClassの定義
+chartClass =['prefecture','city']
 
 def saveEstatResponse(contents,statistics_type):
     #estatAPIのパラメータ設定
@@ -26,30 +27,31 @@ def saveEstatResponse(contents,statistics_type):
 
     #ファイルに保存
     fileName = contents['titleId']
-    downloadPath = os.path.join(downloadDirectory, fileName + '.json')
+    downloadPath = os.path.join(down, fileName + '.json')
     estat.saveJson(res,downloadPath,ensure_ascii=False)
 
 
 #contentsの生成
-for item in files_file:
-    #statisticsClassディレクトリを作成
-    statistics_class = item.replace('.json', '')
-    contentsDirectory = os.path.join(root_dir, 'static/pagecontents/'+statistics_class)
-    pathlib.Path(contentsDirectory).mkdir(exist_ok=True)
+for item in statisticsClass:
+
+    #ディレクトリを作成
+    directory = os.path.join(root_dir, 'static/pagecontents/'+item)
+    pathlib.Path(directory).mkdir(exist_ok=True)
 
     for type in chartClass:
         #chartClassディレクトリを作成
-        downloadDirectory = os.path.join(contentsDirectory, type)
-        pathlib.Path(downloadDirectory).mkdir(exist_ok=True)
+        down = os.path.join(directory, type)
+        pathlib.Path(down).mkdir(exist_ok=True)
 
         #contentsの取得（都道府県）
-        j = open(path + '/' + item,'r')
+        path = os.path.join(root_dir, 'static/pagesetting')
+        j = open(path + '/' + item+'.json','r')
         contentsList = json.load(j)[type]
 
         for contents in contentsList:
             if 'estatParams' in contents:
                 saveEstatResponse(contents,type)
             # if 'resasUrl' in contents:
-            #     resas.saveResasResponse(contents,downloadDirectory,type)
+            #     resas.saveResasResponse(contents,down,type)
 
 
