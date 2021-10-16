@@ -240,9 +240,9 @@ const config: NuxtConfig = {
     splash_pages: null,
   },
   generate: {
-    interval: 100,
+    interval: 1000,
     crawler: false,
-    concurrency: 10,
+    concurrency: 100,
     routes() {
       return routes
     },

@@ -1,64 +1,24 @@
 {
   "prefecture": [
     {
-      "title": "標準価格（平均価格）（住宅地）",
-      "titleId": "standard-price-residential-area",
+      "title": "建設業者数",
+      "titleId": "number-of-builders",
       "cardComponent": "estat-time-chart-card",
       "chartType": "column",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
         "statsDataId": "0000010103",
-        "cdCat01": ["C5401"]
-      },
-      "series": {
-        "id": "cat01",
-        "item": [
-          {
-            "code": "C5401",
-            "name": "標準価格（平均価格）（住宅地）"
-          }
+        "cdCat01": [
+          "C3306"
         ]
-      }
-    },
-    {
-      "title": "標準価格（平均価格）（商業地）",
-      "titleId": "standard-price-commercial-area",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
-      "isRank": true,
-      "additionalDescription": [],
-      "estatParams": {
-        "statsDataId": "0000010103",
-        "cdCat01": ["C5403"]
       },
       "series": {
         "id": "cat01",
         "item": [
           {
-            "code": "C5403",
-            "name": "標準価格（平均価格）（商業地）"
-          }
-        ]
-      }
-    },
-    {
-      "title": "標準価格（平均価格）（工業地）",
-      "titleId": "standard-price-industrial-area",
-     "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
-      "isRank": false,
-      "additionalDescription": [],
-       "estatParams": {
-        "statsDataId": "0000010103",
-        "cdCat01": ["C5405"]
-      },
-      "series": {
-        "id": "cat01",
-        "item": [
-          {
-            "code": "C5405",
-            "name": "標準価格（平均価格）（工業地）"
+            "code": "C3306",
+            "name": "建設業者数"
           }
         ]
       }
@@ -70,11 +30,13 @@
       "titleId": "standard-price-residential-area",
       "cardComponent": "estat-time-chart-card",
       "chartType": "column",
-      "isRank": false,
+      "isRank": true,
       "additionalDescription": [],
-       "estatParams": {
+      "estatParams": {
         "statsDataId": "0000020203",
-        "cdCat01": ["C5401"]
+        "cdCat01": [
+          "C5401"
+        ]
       },
       "series": {
         "id": "cat01",
@@ -82,48 +44,6 @@
           {
             "code": "C5401",
             "name": "標準価格（平均価格）（住宅地）"
-          }
-        ]
-      }
-    },
-     {
-      "title": "標準価格（平均価格）（商業地）",
-      "titleId": "standard-price-commercial-area",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
-      "isRank": false,
-      "additionalDescription": [],
-      "estatParams": {
-        "statsDataId": "0000020203",
-        "cdCat01": ["C5403"]
-      },
-      "series": {
-        "id": "cat01",
-        "item": [
-          {
-            "code": "C5403",
-            "name": "標準価格（平均価格）（商業地）"
-          }
-        ]
-      }
-    },
-   {
-      "title": "標準価格（平均価格）（工業地）",
-      "titleId": "standard-price-industrial-area",
-     "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
-      "isRank": false,
-      "additionalDescription": [],
-       "estatParams": {
-        "statsDataId": "0000020203",
-        "cdCat01": ["C5405"]
-      },
-      "series": {
-        "id": "cat01",
-        "item": [
-          {
-            "code": "C5405",
-            "name": "標準価格（平均価格）（工業地）"
           }
         ]
       }

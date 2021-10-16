@@ -84,6 +84,11 @@ const options: ThisTypedComponentOptionsWithRecordProps<
         // ShallowCopyを避けるため、lodashのcloneDeepを用いる。
         const contents = cloneDeep(d)
 
+        // 統計情報を追加
+        contents.statisticsClass = this.statisticsClass
+        contents.chartClass = this.chartClass
+        contents.governmentType = this.governmentType
+
         // 都道府県の情報を追加
         contents.prefName = this.prefName
         contents.prefCode = this.prefCode
@@ -93,7 +98,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
         contents.cityCode = this.cityCode
 
         contents.title = `${this.cityName}の${d.title}`
-        contents.route = `${process.env.BASE_URL}/${this.chartClass}/${this.prefCode}/${this.statisticsClass}/${contents.titleId}/`
+        contents.route = `/${this.chartClass}/${this.prefCode}/${this.statisticsClass}/${contents.titleId}/`
 
         return {
           ...contents,

@@ -23,7 +23,7 @@ with open(c) as j:
     cityCodes = [d.get('cityCode') for d in cityList['result']]
 
 # statisticsClassを取得
-c = os.path.join(root_dir, 'config.json')
+c = os.path.join(root_dir, 'setting.json')
 with open(c) as j:
     statistics = json.load(j)
     statisticsClass = [d.get('id') for d in statistics]
