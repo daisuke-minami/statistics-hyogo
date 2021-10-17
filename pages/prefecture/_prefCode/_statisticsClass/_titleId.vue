@@ -90,6 +90,13 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     },
   },
   created(): void {},
+  mounted() {
+    this.$nextTick(() => {
+      this.$nuxt.$loading.start()
+
+      setTimeout(() => this.$nuxt.$loading.finish(), 500)
+    })
+  },
   methods: {},
   head() {
     return {

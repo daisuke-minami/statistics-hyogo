@@ -101,6 +101,13 @@ const options: ThisTypedComponentOptionsWithRecordProps<
       this.changeSelectedChartClass(this.chartClass)
     },
   },
+  mounted() {
+    this.$nextTick(() => {
+      this.$nuxt.$loading.start()
+
+      setTimeout(() => this.$nuxt.$loading.finish(), 500)
+    })
+  },
   head() {
     return {
       title: `${this.prefName}の${this.statisticsClassName}`,
