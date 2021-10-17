@@ -112,7 +112,7 @@
       "titleId": "garbage-discharged",
       "cardComponent": "estat-time-chart-card",
       "chartType": "column",
-      "isRank": false,
+      "isRank": true,
       "additionalDescription": [],
       "estatParams": {
         "statsDataId": "0000020208",

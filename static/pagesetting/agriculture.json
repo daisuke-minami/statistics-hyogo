@@ -326,7 +326,7 @@
       "cardComponent": "estat-time-chart-card",
       "additionalDescription": [],
       "chartType": "column",
-      "isRank": false,
+      "isRank": true,
       "estatParams": {
         "statsDataId": "0000020203",
         "cdCat01": [
@@ -349,7 +349,7 @@
       "cardComponent": "estat-time-chart-card",
       "additionalDescription": [],
       "chartType": "area",
-      "isRank": false,
+      "isRank": true,
       "estatParams": {
         "statsDataId": "0000020203",
         "cdCat01": [
