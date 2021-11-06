@@ -1,7 +1,14 @@
 <template>
   <div>
     <v-tabs hide-slider>
-      <v-tab v-for="(item, i) in items" :key="i" :to="item.link">
+      <v-tab
+        v-for="(item, i) in items"
+        :key="i"
+        :to="item.link"
+        nuxt
+        exact
+        @click="change"
+      >
         {{ item.label }}
       </v-tab>
     </v-tabs>

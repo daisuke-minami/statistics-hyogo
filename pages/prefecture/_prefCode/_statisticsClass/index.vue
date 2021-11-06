@@ -4,7 +4,7 @@
 
     <div>
       <card-row class="DataBlock">
-        <component
+        <lazy-component
           :is="item.cardComponent"
           v-for="(item, i) in contentsList"
           :key="i"

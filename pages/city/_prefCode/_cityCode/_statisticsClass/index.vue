@@ -5,7 +5,7 @@
     <select-city />
 
     <card-row class="DataBlock">
-      <component
+      <lazy-component
         :is="item.cardComponent"
         v-for="(item, i) in contentsList"
         :key="i"
@@ -98,7 +98,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
         contents.cityCode = this.cityCode
 
         contents.title = `${this.cityName}の${d.title}`
-        contents.route = `/${this.chartClass}/${this.prefCode}/${this.statisticsClass}/${contents.titleId}/`
+        contents.route = `/${this.chartClass}/${this.prefCode}/${this.cityCode}/${this.statisticsClass}/${contents.titleId}/`
 
         return {
           ...contents,
@@ -114,6 +114,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     },
   },
   created(): void {
+    this.cityCode = this.getSelectedCityCode
     this.changeChartClass()
   },
   methods: {

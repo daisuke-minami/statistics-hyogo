@@ -1,7 +1,7 @@
 <template>
   <div>
     <card-row class="DataBlock">
-      <component
+      <lazy-component
         :is="contents.cardComponent"
         :pref-list="prefList"
         :contents="contents"

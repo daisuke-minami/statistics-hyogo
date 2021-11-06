@@ -21,7 +21,7 @@
               />
             </template>
 
-            <component
+            <lazy-component
               :is="chartComponent"
               v-show="canvas"
               :display-data="displayData"
