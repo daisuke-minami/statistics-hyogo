@@ -218,6 +218,7 @@ const config: NuxtConfig = {
         },
       },
     },
+    parallel: true,
     extend(config) {
       config.externals = [{ moment: 'moment' }]
     },
@@ -240,9 +241,19 @@ const config: NuxtConfig = {
     splash_pages: null,
   },
   generate: {
+    cache: {
+      ignore: [
+        '.nuxt', // buildDir
+        'dist', // generate.dir
+        'node_modules',
+        '.**/*',
+        '.*',
+        'README.md',
+      ],
+    },
     interval: 1000,
     crawler: false,
-    concurrency: 100,
+    concurrency: 50,
     routes() {
       return routes
     },

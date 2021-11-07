@@ -94,17 +94,17 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     },
   },
   // APIから取得する場合
-  // async fetch() {
-  //   const params = this.contents.estatParams
-  //   params.cdArea = this.cdArea
-  //   this.estatResponse = await this.$getEstatAPI(params)
-  // },
-  // JSONから取得する場合
   async fetch() {
-    this.estatResponse = await import(
-      `~/static/pagecontents/${this.statisticsClass}/${this.governmentType}/${this.titleId}.json`
-    )
+    const params = this.contents.estatParams
+    params.cdArea = this.cdArea
+    this.estatResponse = await this.$getEstatAPI(params)
   },
+  // JSONから取得する場合
+  // async fetch() {
+  //   this.estatResponse = await import(
+  //     `~/static/pagecontents/${this.statisticsClass}/${this.governmentType}/${this.titleId}.json`
+  //   )
+  // },
   data() {
     return {
       canvas: true,
