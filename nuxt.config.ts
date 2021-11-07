@@ -218,7 +218,6 @@ const config: NuxtConfig = {
         },
       },
     },
-    parallel: true,
     extend(config) {
       config.externals = [{ moment: 'moment' }]
     },
