@@ -75,6 +75,7 @@ export default {
     const params = this.contents.estatParams
     params.cdArea = this.cdArea
     this.estatResponse = await this.$getEstatAPI(params)
+    this.targetYear = this.estatData.latestYearInt
   },
   // JSONから取得する場合
   // async fetch() {
