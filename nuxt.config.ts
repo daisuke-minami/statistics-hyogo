@@ -159,7 +159,8 @@ const config: NuxtConfig = {
   sitemap: {
     path: '/sitemap.xml',
     hostname: 'https://statistics-hyogo.com',
-    cacheTime: 1000 * 60 * 15,
+    cacheTime: 1000 * 60 * 60,
+    gzip: true,
     generate: false,
     routes() {
       return routes
@@ -252,7 +253,7 @@ const config: NuxtConfig = {
     },
     interval: 1000,
     crawler: false,
-    concurrency: 50,
+    concurrency: 1,
     routes() {
       return routes
     },
