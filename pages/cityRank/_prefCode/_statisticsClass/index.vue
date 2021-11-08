@@ -50,11 +50,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     }
   },
   computed: {
-    ...mapGetters('prefList', [
-      'getSelectedPrefCode',
-      'getPrefName',
-      // 'getPrefList',
-    ]),
+    ...mapGetters('prefList', ['getSelectedPrefCode', 'getPrefName']),
     ...mapGetters('cityList', [
       'getSelectedCityCode',
       'getCityList',
@@ -67,9 +63,6 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     statisticsClassName() {
       return this.getStatisticsClassName(this.statisticsClass)
     },
-    // prefList() {
-    //   return this.getPrefList
-    // },
     prefCode(): number {
       return this.getSelectedPrefCode
     },

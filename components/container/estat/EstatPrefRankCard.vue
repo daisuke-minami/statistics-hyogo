@@ -82,7 +82,6 @@ export default {
       `~/static/pagecontents/${this.statisticsClass}/${this.governmentType}/${this.titleId}.json`
     )
     this.targetYear = this.estatData.latestYearInt
-    // console.log('EstatPrefRankCard', this.estatResponse)
   },
   data() {
     return {

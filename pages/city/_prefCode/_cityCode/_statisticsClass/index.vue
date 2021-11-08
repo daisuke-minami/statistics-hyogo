@@ -73,9 +73,9 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     selectedCityCode() {
       return this.getSelectedCityCode
     },
-    cityCode() {
-      return this.$route.params.cityCode
-    },
+    // cityCode() {
+    //   return this.$route.params.cityCode
+    // },
     cityName() {
       return this.getCityName(this.cityCode)
     },

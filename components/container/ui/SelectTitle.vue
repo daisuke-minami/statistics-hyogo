@@ -27,29 +27,15 @@ export default Vue.extend({
       type: Array,
       required: true,
     },
-    // isRank: {
-    //   type: Boolean,
-    //   required: true,
-    // },
   },
   data() {
     return {
-      rankDataType: 'all',
-      categoryCode: '',
-      canvas: true,
-      row: null,
       titleId: '',
     }
   },
   computed: {
     items() {
       return this.contentsList
-      // if (this.isRank) {
-      //   // RankChartの対象のみ抽出
-      //   return this.contentsList.filter((f) => f.isRank === true)
-      // } else {
-      //   return this.contentsList
-      // }
     },
   },
   created() {
