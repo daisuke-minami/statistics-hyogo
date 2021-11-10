@@ -81,19 +81,19 @@ export default {
     },
   },
   // APIから取得する場合
-  async fetch() {
-    const params = this.contents.estatParams
-    params.cdArea = this.cdArea
-    this.estatResponse = await this.$getEstatAPI(params)
-    this.targetYear = this.estatData.latestYearInt
-  },
-  // JSONから取得する場合
   // async fetch() {
-  //   this.estatResponse = await import(
-  //     `~/static/pagecontents/${this.statisticsClass}/${this.governmentType}/${this.titleId}.json`
-  //   )
-  //   this.targetYear = this.estatData.latestYearInt
+  //   const params = this.contents.estatParams
+  //   params.cdArea = this.cdArea
+  //   this.estatResponse = await this.$getEstatAPI(params)
+  //   this.targetYear = this.latestYearInt
   // },
+  // JSONから取得する場合
+  async fetch() {
+    this.estatResponse = await import(
+      `~/static/pagecontents/${this.statisticsClass}/${this.governmentType}/${this.titleId}.json`
+    )
+    this.targetYear = this.latestYearInt
+  },
   data() {
     return {
       mdiChartBar,
@@ -113,9 +113,6 @@ export default {
         return this.cityList.filter((d) => d.bigCityFlag !== '2')
       }
     },
-    estatData() {
-      return this.$formatEstatData(this.estatResponse, null)
-    },
     cdArea() {
       return this.cityList.map((d) => {
         return d.cityCode
@@ -134,10 +131,14 @@ export default {
       return this.contents.titleId
     },
     statName() {
-      return this.estatData.statName
+      const TABLE_INF =
+        this.estatResponse.GET_STATS_DATA.STATISTICAL_DATA.TABLE_INF
+      return `政府統計の総合窓口 e-Stat「${TABLE_INF.STAT_NAME.$}」`
     },
     statUrl() {
-      return this.estatData.statUrl
+      const TABLE_INF =
+        this.estatResponse.GET_STATS_DATA.STATISTICAL_DATA.TABLE_INF
+      return `https://www.e-stat.go.jp/dbview?sid=${TABLE_INF['@id']}`
     },
     estatCredit() {
       return [
@@ -157,23 +158,36 @@ export default {
       return this.contents.route
     },
     times() {
-      const times = this.estatData.times
+      const value =
+        this.estatResponse.GET_STATS_DATA.STATISTICAL_DATA.DATA_INF.VALUE
+      const times = Array.from(new Set(value.map((d) => d['@time']))).map(
+        (d) => {
+          return {
+            yearInt: parseInt(d.substr(0, 4)),
+            yearStr: d,
+            yearName: `${d.substr(0, 4)}年`,
+          }
+        }
+      )
       return times.sort((a, b) => {
         if (a.yearStr > b.yearStr) return -1
         if (a.yearStr < b.yearStr) return 1
         return 0
       })
     },
+    latestYearInt() {
+      return this.times[0].yearInt
+    },
     chartData() {
+      const value =
+        this.estatResponse.GET_STATS_DATA.STATISTICAL_DATA.DATA_INF.VALUE
       return this.times.map((d) => {
-        const value = this.estatData.value.filter(
-          (f) => f['@time'] === d.yearStr
-        )
+        const v = value.filter((f) => f['@time'] === d.yearStr)
         return {
           year: d.yearInt,
           name: this.title,
           data: this.cityList.map((d) => {
-            const data = value.find((f) => f['@area'] === d.cityCode)
+            const data = v.find((f) => f['@area'] === d.cityCode)
             if (data) {
               return {
                 cityCode: d.cityCode,

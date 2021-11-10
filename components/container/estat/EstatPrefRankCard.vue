@@ -82,7 +82,7 @@ export default {
     this.estatResponse = await import(
       `~/static/pagecontents/${this.statisticsClass}/${this.governmentType}/${this.titleId}.json`
     )
-    this.targetYear = this.estatData.latestYearInt
+    this.targetYear = this.latestYearInt
   },
   data() {
     return {
@@ -110,14 +110,15 @@ export default {
     titleId() {
       return this.contents.titleId
     },
-    estatData() {
-      return this.$formatEstatData(this.estatResponse, null)
-    },
     statName() {
-      return this.estatData.statName
+      const TABLE_INF =
+        this.estatResponse.GET_STATS_DATA.STATISTICAL_DATA.TABLE_INF
+      return `政府統計の総合窓口 e-Stat「${TABLE_INF.STAT_NAME.$}」`
     },
     statUrl() {
-      return this.estatData.statUrl
+      const TABLE_INF =
+        this.estatResponse.GET_STATS_DATA.STATISTICAL_DATA.TABLE_INF
+      return `https://www.e-stat.go.jp/dbview?sid=${TABLE_INF['@id']}`
     },
     estatCredit() {
       return [
@@ -137,24 +138,37 @@ export default {
       return this.contents.route
     },
     times() {
-      const times = this.estatData.times
+      const value =
+        this.estatResponse.GET_STATS_DATA.STATISTICAL_DATA.DATA_INF.VALUE
+      const times = Array.from(new Set(value.map((d) => d['@time']))).map(
+        (d) => {
+          return {
+            yearInt: parseInt(d.substr(0, 4)),
+            yearStr: d,
+            yearName: `${d.substr(0, 4)}年`,
+          }
+        }
+      )
       return times.sort((a, b) => {
         if (a.yearStr > b.yearStr) return -1
         if (a.yearStr < b.yearStr) return 1
         return 0
       })
     },
+    latestYearInt() {
+      return this.times[0].yearInt
+    },
     chartData() {
+      const value =
+        this.estatResponse.GET_STATS_DATA.STATISTICAL_DATA.DATA_INF.VALUE
       return this.times.map((d) => {
-        const value = this.estatData.value.filter(
-          (f) => f['@time'] === d.yearStr
-        )
+        const v = value.filter((f) => f['@time'] === d.yearStr)
         return {
           year: d.yearInt,
           name: this.title,
           data: this.prefList.map((d) => {
             const cdArea = ('0000000000' + d.prefCode).slice(-2) + '000'
-            const data = value.find((f) => f['@area'] === cdArea)
+            const data = v.find((f) => f['@area'] === cdArea)
             if (data) {
               return {
                 prefCode: cdArea,

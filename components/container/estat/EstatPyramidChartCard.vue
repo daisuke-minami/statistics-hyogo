@@ -90,17 +90,18 @@ export default {
     title() {
       return this.contents.title
     },
-    estatData() {
-      return this.$formatEstatData(this.estatResponse, this.cdArea)
-    },
     titleId() {
       return this.contents.titleId
     },
     statName() {
-      return this.estatData.statName
+      const TABLE_INF =
+        this.estatResponse.GET_STATS_DATA.STATISTICAL_DATA.TABLE_INF
+      return `政府統計の総合窓口 e-Stat「${TABLE_INF.STAT_NAME.$}」`
     },
     statUrl() {
-      return this.estatData.statUrl
+      const TABLE_INF =
+        this.estatResponse.GET_STATS_DATA.STATISTICAL_DATA.TABLE_INF
+      return `https://www.e-stat.go.jp/dbview?sid=${TABLE_INF['@id']}`
     },
     route() {
       return this.contents.route
@@ -114,7 +115,17 @@ export default {
       return this.contents.additionalDescription.concat(this.estatCredit)
     },
     times() {
-      const times = this.estatData.times
+      const value =
+        this.estatResponse.GET_STATS_DATA.STATISTICAL_DATA.DATA_INF.VALUE
+      const times = Array.from(new Set(value.map((d) => d['@time']))).map(
+        (d) => {
+          return {
+            yearInt: parseInt(d.substr(0, 4)),
+            yearStr: d,
+            yearName: `${d.substr(0, 4)}年`,
+          }
+        }
+      )
       return times.sort((a, b) => {
         if (a.yearStr > b.yearStr) return -1
         if (a.yearStr < b.yearStr) return 1
@@ -122,11 +133,13 @@ export default {
       })
     },
     dataByTime() {
+      const value =
+        this.estatResponse.GET_STATS_DATA.STATISTICAL_DATA.DATA_INF.VALUE
       return this.times
         .map((d) => {
           return {
             year: d.yearInt,
-            data: this.estatData.value.filter((f) => f['@time'] === d.yearStr),
+            data: value.filter((f) => f['@time'] === d.yearStr),
           }
         })
         .filter((f) => f.data.length !== 0)
