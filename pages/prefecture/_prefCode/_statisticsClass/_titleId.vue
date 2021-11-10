@@ -86,6 +86,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
       })
     },
     contents() {
+      // console.log(this.contentsList)
       return this.contentsList.find((f) => f.titleId === this.titleId)
     },
   },

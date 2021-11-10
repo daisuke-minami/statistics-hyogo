@@ -16,7 +16,6 @@ const { PREF_CODE, API_KEY, ESTAT_APPID, GOOGLE_ANALYTICS_ID, BASE_URL } =
 require('dotenv').config()
 
 const config: NuxtConfig = {
-  // ssr: 'true',
   target: 'static',
   /*
    ** Headers of the page

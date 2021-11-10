@@ -21,11 +21,11 @@
               />
             </template>
 
-            <lazy-component
+            <!-- <lazy-component
               :is="chartComponent"
               v-show="canvas"
               :display-data="displayData"
-            />
+            /> -->
 
             <template v-slot:description>
               <p>最終更新日：{{ lastUpdate }}</p>
@@ -95,7 +95,13 @@ const options: ThisTypedComponentOptionsWithRecordProps<
   async fetch() {
     const params = this.contents.estatParams
     params.cdArea = this.cdArea
-    this.estatResponse = await this.$getEstatAPI(params)
+    // console.log(this.contents)
+    const { data } = await this.$estat.get(
+      `${process.env.BASE_URL}/json/getStatsData`,
+      { params }
+    )
+    // console.log(data)
+    this.estatResponse = data
   },
   // JSONから取得する場合
   // async fetch() {
