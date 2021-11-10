@@ -61,14 +61,12 @@
 <script lang="ts">
 import Vue from 'vue'
 import { ThisTypedComponentOptionsWithRecordProps } from 'vue/types/options'
-// import { cloneDeep } from 'lodash'
 
 type Computed = {
   title: () => string
   titleId: () => string
   additionalDescription: () => string
   routes: () => string
-  docURL: () => string
   chartData: () => void
   displayData: () => void
   yAxisData: () => void
@@ -135,11 +133,15 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     titleId(): string {
       return this.contents.titleId
     },
-    statName() {
-      return this.estatData.statName
+    statName(): string {
+      const TABLE_INF =
+        this.estatResponse.GET_STATS_DATA.STATISTICAL_DATA.TABLE_INF
+      return `政府統計の総合窓口 e-Stat「${TABLE_INF.STAT_NAME.$}」`
     },
-    statUrl() {
-      return this.estatData.statUrl
+    statUrl(): string {
+      const TABLE_INF =
+        this.estatResponse.GET_STATS_DATA.STATISTICAL_DATA.TABLE_INF
+      return `https://www.e-stat.go.jp/dbview?sid=${TABLE_INF['@id']}`
     },
     route(): string {
       return this.contents.route
@@ -168,12 +170,11 @@ const options: ThisTypedComponentOptionsWithRecordProps<
         return true
       }
     },
-    estatData() {
-      return this.$formatEstatData(this.estatResponse, this.cdArea)
-    },
     chartData() {
       const series = this.contents.series
-      const value = this.estatData.value
+      const value =
+        this.estatResponse.GET_STATS_DATA.STATISTICAL_DATA.DATA_INF.VALUE
+
       return series.item.map((d) => {
         return {
           name: d.name,
@@ -190,7 +191,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
         }
       })
     },
-    estatCredit(): [] {
+    estatCredit() {
       return [
         'このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません',
       ]
@@ -198,9 +199,9 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     additionalDescription() {
       return this.contents.additionalDescription.concat(this.estatCredit)
     },
-    docURL() {
-      return 'test'
-    },
+    // docURL() {
+    //   return 'test'
+    // },
     displayInfo() {
       const infoData = this.chartData[0]
       const length = infoData.data.length
@@ -211,7 +212,15 @@ const options: ThisTypedComponentOptionsWithRecordProps<
       }
     },
     times() {
-      return this.estatData.classInfo
+      const CLASS_OBJ =
+        this.estatResponse.GET_STATS_DATA.STATISTICAL_DATA.CLASS_INF.CLASS_OBJ
+      const classInfo = CLASS_OBJ.map((item) => {
+        return {
+          id: item['@id'],
+          data: item.CLASS,
+        }
+      })
+      return classInfo
         .find((f) => f.id === 'time')
         .data.map((d) => {
           return {
