@@ -5,9 +5,9 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-import Highcharts from 'highcharts'
 import { cloneDeep } from 'lodash'
+import * as topojson from 'topojson-client'
+import Highcharts from 'highcharts'
 
 export default {
   props: {
@@ -15,34 +15,25 @@ export default {
       type: Array,
       required: true,
     },
-    bigcityKind: {
-      type: String,
-      default: 'all',
+    topoJson: {
+      type: Object,
+      required: true,
     },
-    // yAxisData: {
-    //   type: Array,
-    //   required: true,
-    // },
   },
   computed: {
-    ...mapGetters('topojson', ['getMaps']),
     series() {
       const series = cloneDeep(this.displayData)
       series[0].joinBy = ['N03_007', 'cityCode']
       series[0].states = { hover: { color: '#a4edba' } }
       return series
     },
-    map() {
-      if (this.bigcityKind === 'all') {
-        return this.getMaps.prefMapDc
-      } else {
-        return this.getMaps.prefMap
-      }
+    geoJson() {
+      return topojson.feature(this.topoJson, this.topoJson.objects.city)
     },
     chartOptions() {
       return {
         chart: {
-          map: this.map,
+          map: this.geoJson,
         },
         title: {
           text: null,

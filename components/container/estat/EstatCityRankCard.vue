@@ -24,16 +24,12 @@
               <map-chart-city
                 v-show="canvas"
                 :display-data="displayData"
-                :bigcity-kind="bigcityKind"
+                :topo-json="topoJson"
               />
             </div>
 
             <div v-if="chartType === 'bar'">
-              <bar-chart
-                v-show="canvas"
-                :display-data="displayData"
-                :bigcity-kind="bigcityKind"
-              />
+              <bar-chart v-show="canvas" :display-data="displayData" />
             </div>
 
             <template v-slot:description>
@@ -69,6 +65,7 @@
 
 <script>
 import { mdiChartBar, mdiDatabaseCog } from '@mdi/js'
+import axios from 'axios'
 export default {
   props: {
     cityList: {
@@ -93,6 +90,18 @@ export default {
       `~/static/pagecontents/${this.statisticsClass}/${this.governmentType}/${this.titleId}.json`
     )
     this.targetYear = this.latestYearInt
+
+    // topojsonを取得
+    const code = ('00' + this.prefCode).slice(-2)
+
+    const cityMapDc = await axios.get(
+      `https://geoshape.ex.nii.ac.jp/city/topojson/20200101/${code}/${code}_city_dc.l.topojson`
+    )
+    const cityMap = await axios.get(
+      `https://geoshape.ex.nii.ac.jp/city/topojson/20200101/${code}/${code}_city.l.topojson`
+    )
+    this.cityMapDc = cityMapDc.data
+    this.cityMap = cityMap.data
   },
   data() {
     return {
@@ -102,6 +111,8 @@ export default {
       chartType: 'map',
       canvas: true,
       targetYear: null,
+      cityMap: null,
+      cityMapDc: null,
       estatResponse: {},
     }
   },
@@ -118,11 +129,21 @@ export default {
         return d.cityCode
       })
     },
+    topoJson() {
+      if (this.bigcityKind === 'all') {
+        return this.cityMapDc
+      } else {
+        return this.cityMap
+      }
+    },
     statisticsClass() {
       return this.contents.statisticsClass
     },
     governmentType() {
       return this.contents.governmentType
+    },
+    prefCode() {
+      return this.contents.prefCode
     },
     title() {
       return `市区町村の${this.contents.title}ランキング`

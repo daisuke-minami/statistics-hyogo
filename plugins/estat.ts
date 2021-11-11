@@ -23,7 +23,7 @@ export default function ({ $axios }, inject) {
 
   api.onRequest((config) => {
     console.log('URL ' + config.url)
-    console.log('Params ' + config.params)
+    // console.log('Params ' + config.params)
   })
 
   inject('estat', api)

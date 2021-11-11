@@ -21,11 +21,11 @@
               />
             </template>
 
-            <!-- <lazy-component
+            <lazy-component
               :is="chartComponent"
               v-show="canvas"
               :display-data="displayData"
-            /> -->
+            />
 
             <template v-slot:description>
               <p>最終更新日：{{ lastUpdate }}</p>

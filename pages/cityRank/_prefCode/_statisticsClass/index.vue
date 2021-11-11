@@ -72,14 +72,10 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     cityList() {
       return this.getCityList
     },
-    // cityName() {
-    //   return this.getCityName(this.cityCode)
-    // },
     contentsList() {
       return this.contentsAll[this.governmentType]
         .filter((f) => f.isRank === true)
         .map((d) => {
-          // ShallowCopyを避けるため、lodashのcloneDeepを用いる。
           const contents = cloneDeep(d)
 
           // 統計情報を追加
