@@ -177,6 +177,12 @@ const config: NuxtConfig = {
         '^/json/': '/',
       },
     },
+    '/topojson/': {
+      target: 'https://geoshape.ex.nii.ac.jp/city/topojson',
+      pathRewrite: {
+        '^/topojson/': '/',
+      },
+    },
   },
   /*
    ** vuetify module configuration

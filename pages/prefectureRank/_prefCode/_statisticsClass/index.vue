@@ -15,11 +15,9 @@
 
 <script lang="ts">
 import Vue from 'vue'
-// import { EventBus, TOGGLE_EVENT } from '@/utils/tab-event-bus.ts'
 import { ThisTypedComponentOptionsWithRecordProps } from 'vue/types/options'
 import { mapActions, mapGetters } from 'vuex'
 import { cloneDeep } from 'lodash'
-// import axios from 'axios'
 import { ContentsType, ContentsList } from '~/utils/formatChart'
 
 type Props = {
@@ -42,15 +40,13 @@ const options: ThisTypedComponentOptionsWithRecordProps<
   Props
 > = {
   async asyncData({ params, $axios }) {
-    const contentsAll = await import(
-      `~/static/pagesetting/${params.statisticsClass}.json`
-    )
-    const prefMap = await $axios.$get(
-      `https://geoshape.ex.nii.ac.jp/city/topojson/20200101/jp_pref.c.topojson`
-    )
-    // const prefMap = await import(`~/static/topojson/prefMap.topojson`)
-
-    return { contentsAll, prefMap }
+    const [contentsAll, prefMap] = await Promise.all([
+      import(`~/static/pagesetting/${params.statisticsClass}.json`),
+      $axios.get(
+        `${process.env.BASE_URL}/topojson/20200101/jp_pref.c.topojson`
+      ),
+    ])
+    return { contentsAll, prefMap: prefMap.data }
   },
   data() {
     return {
@@ -97,7 +93,8 @@ const options: ThisTypedComponentOptionsWithRecordProps<
           contents.prefName = this.prefName
           contents.prefCode = this.prefCode
 
-          contents.topojson = this.prefMap
+          // console.log(this.prefMap)
+          contents.prefMap = this.prefMap
           contents.prefList = this.prefList
           contents.route = `/${this.chartClass}/${this.prefCode}/${this.statisticsClass}/${contents.titleId}/`
 

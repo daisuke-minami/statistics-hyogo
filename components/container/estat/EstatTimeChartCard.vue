@@ -95,12 +95,10 @@ const options: ThisTypedComponentOptionsWithRecordProps<
   async fetch() {
     const params = this.contents.estatParams
     params.cdArea = this.cdArea
-    // console.log(this.contents)
     const { data } = await this.$estat.get(
       `${process.env.BASE_URL}/json/getStatsData`,
       { params }
     )
-    // console.log(data)
     this.estatResponse = data
   },
   // JSONから取得する場合

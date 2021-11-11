@@ -15,11 +15,14 @@ import { cloneDeep } from 'lodash'
 import { mapGetters } from 'vuex'
 
 export default {
-  async asyncData({ params }) {
-    const contentsAll = await import(
-      `~/static/pagesetting/${params.statisticsClass}.json`
-    )
-    return { contentsAll }
+  async asyncData({ params, $axios }) {
+    const [contentsAll, prefMap] = await Promise.all([
+      import(`~/static/pagesetting/${params.statisticsClass}.json`),
+      $axios.get(
+        `${process.env.BASE_URL}/topojson/20200101/jp_pref.c.topojson`
+      ),
+    ])
+    return { contentsAll, prefMap: prefMap.data }
   },
   data() {
     return {
@@ -70,6 +73,7 @@ export default {
         contents.prefName = this.prefName
         contents.prefCode = this.prefCode
 
+        contents.prefMap = this.prefMap
         contents.prefList = this.prefList
         contents.route = `/${this.chartClass}/${this.prefCode}/${this.statisticsClass}/`
 

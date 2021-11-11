@@ -21,10 +21,9 @@ export default function ({ $axios }, inject) {
 
   api.setBaseURL(`${process.env.BASE_URL}/json/getStatsData`)
 
-  api.onRequest((config) => {
-    console.log('URL ' + config.url)
-    // console.log('Params ' + config.params)
-  })
+  // api.onRequest((config) => {
+  //   // console.log('URL ' + config.url)
+  // })
 
   inject('estat', api)
 }
