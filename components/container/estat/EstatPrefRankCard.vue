@@ -77,23 +77,23 @@ export default {
     },
   },
   // APIから取得する場合
-  async fetch() {
-    const params = this.contents.estatParams
-    params.cdArea = this.cdArea
-    const { data } = await this.$estat.get(
-      `${process.env.BASE_URL}/json/getStatsData`,
-      { params }
-    )
-    this.estatResponse = data
-    this.targetYear = this.latestYearInt
-  },
-  // JSONから取得する場合
   // async fetch() {
-  //   this.estatResponse = await import(
-  //     `~/static/pagecontents/${this.statisticsClass}/${this.governmentType}/${this.titleId}.json`
+  //   const params = this.contents.estatParams
+  //   params.cdArea = this.cdArea
+  //   const { data } = await this.$estat.get(
+  //     `${process.env.BASE_URL}/json/getStatsData`,
+  //     { params }
   //   )
+  //   this.estatResponse = data
   //   this.targetYear = this.latestYearInt
   // },
+  // JSONから取得する場合
+  async fetch() {
+    this.estatResponse = await import(
+      `~/static/pagecontents/${this.statisticsClass}/${this.governmentType}/${this.titleId}.json`
+    )
+    this.targetYear = this.latestYearInt
+  },
   data() {
     return {
       canvas: true,

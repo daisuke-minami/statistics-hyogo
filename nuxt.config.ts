@@ -143,6 +143,7 @@ const config: NuxtConfig = {
    ** Nuxt.js modules
    */
   modules: [
+    'nuxt-highlightjs',
     '@nuxtjs/pwa',
     ['@nuxtjs/dotenv', { filename: `.env.${environment}` }],
     'nuxt-svg-loader',
