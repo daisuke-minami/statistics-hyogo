@@ -143,6 +143,7 @@ const config: NuxtConfig = {
    ** Nuxt.js modules
    */
   modules: [
+    // '@nuxtjs/markdownit',
     'nuxt-highlightjs',
     '@nuxtjs/pwa',
     ['@nuxtjs/dotenv', { filename: `.env.${environment}` }],
@@ -156,6 +157,9 @@ const config: NuxtConfig = {
     // ['@nuxtjs/google-adsense', { id: 'ca-pub-4511811306180988' }],
     ['@nuxtjs/google-gtag'],
   ],
+  markdownit: {
+    injected: true,
+  },
   sitemap: {
     path: '/sitemap.xml',
     hostname: 'https://statistics-hyogo.com',
