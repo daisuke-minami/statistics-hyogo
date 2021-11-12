@@ -64,6 +64,7 @@
     "leaflet": "^1.7.1",
     "nuxt": "^2.15.4",
     "nuxt-generate-cluster": "^2.7.0",
+    "nuxt-highlightjs": "^1.0.1",
     "nuxt-leaflet": "^0.0.25",
     "nuxt-property-decorator": "^2.9.1",
     "sass-loader": "^10.1.1",

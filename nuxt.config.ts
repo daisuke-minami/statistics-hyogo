@@ -143,6 +143,8 @@ const config: NuxtConfig = {
    ** Nuxt.js modules
    */
   modules: [
+    // '@nuxtjs/markdownit',
+    'nuxt-highlightjs',
     '@nuxtjs/pwa',
     ['@nuxtjs/dotenv', { filename: `.env.${environment}` }],
     'nuxt-svg-loader',
@@ -155,6 +157,9 @@ const config: NuxtConfig = {
     // ['@nuxtjs/google-adsense', { id: 'ca-pub-4511811306180988' }],
     ['@nuxtjs/google-gtag'],
   ],
+  markdownit: {
+    injected: true,
+  },
   sitemap: {
     path: '/sitemap.xml',
     hostname: 'https://statistics-hyogo.com',
@@ -246,16 +251,6 @@ const config: NuxtConfig = {
     splash_pages: null,
   },
   generate: {
-    // cache: {
-    //   ignore: [
-    //     '.nuxt', // buildDir
-    //     'dist', // generate.dir
-    //     'node_modules',
-    //     '.**/*',
-    //     '.*',
-    //     'README.md',
-    //   ],
-    // },
     interval: 1000,
     crawler: false,
     concurrency: 1,

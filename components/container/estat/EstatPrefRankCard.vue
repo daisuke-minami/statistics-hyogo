@@ -80,8 +80,12 @@ export default {
   // async fetch() {
   //   const params = this.contents.estatParams
   //   params.cdArea = this.cdArea
-  //   this.estatResponse = await this.$getEstatAPI(params)
-  //   this.targetYear = this.estatData.latestYearInt
+  //   const { data } = await this.$estat.get(
+  //     `${process.env.BASE_URL}/json/getStatsData`,
+  //     { params }
+  //   )
+  //   this.estatResponse = data
+  //   this.targetYear = this.latestYearInt
   // },
   // JSONから取得する場合
   async fetch() {
