@@ -188,7 +188,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
               return {
                 x: parseInt(d['@time'].substr(0, 4)),
                 y: parseFloat(d.$),
-                unit: d['@unit'],
+                // unit: d['@unit'],
               }
             }),
           unit: value[0]['@unit'],

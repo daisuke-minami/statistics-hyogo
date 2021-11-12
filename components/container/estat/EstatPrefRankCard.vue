@@ -63,7 +63,7 @@
 </template>
 
 <script>
-// import axios from 'axios'
+import axios from 'axios'
 
 export default {
   props: {
@@ -93,12 +93,18 @@ export default {
       `~/static/pagecontents/${this.statisticsClass}/${this.governmentType}/${this.titleId}.json`
     )
     this.targetYear = this.latestYearInt
+
+    const prefMap = await axios.get(
+      `https://geoshape.ex.nii.ac.jp/city/topojson/20200101/jp_pref.c.topojson`
+    )
+    this.prefMap = prefMap.data
   },
   data() {
     return {
       canvas: true,
       targetYear: null,
       chartType: 'map',
+      prefMap: {},
       estatResponse: {},
     }
   },
@@ -148,7 +154,7 @@ export default {
       return this.contents.route
     },
     topoJson() {
-      return this.contents.prefMap
+      return this.prefMap
     },
     times() {
       const value =

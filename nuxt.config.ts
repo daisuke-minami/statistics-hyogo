@@ -251,17 +251,7 @@ const config: NuxtConfig = {
     splash_pages: null,
   },
   generate: {
-    // cache: {
-    //   ignore: [
-    //     '.nuxt', // buildDir
-    //     'dist', // generate.dir
-    //     'node_modules',
-    //     '.**/*',
-    //     '.*',
-    //     'README.md',
-    //   ],
-    // },
-    interval: 1000,
+    interval: 100,
     crawler: false,
     concurrency: 1,
     routes() {
