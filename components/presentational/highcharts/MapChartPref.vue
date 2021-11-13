@@ -4,12 +4,13 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent, computed } from '@nuxtjs/composition-api'
 import { cloneDeep } from 'lodash'
 import * as topojson from 'topojson-client'
-import Highcharts from 'highcharts'
+// import Highcharts from 'highcharts'
 
-export default {
+export default defineComponent({
   props: {
     displayData: {
       type: Array,
@@ -20,20 +21,21 @@ export default {
       required: true,
     },
   },
-  computed: {
-    series() {
-      const series = cloneDeep(this.displayData)
+  setup(props) {
+    const series = computed(() => {
+      const series = cloneDeep(props.displayData)
       series[0].joinBy = ['N03_001', 'prefName']
       series[0].states = { hover: { color: '#a4edba' } }
+      // console.log(series)
       return series
-    },
-    geoJson() {
-      return topojson.feature(this.topoJson, this.topoJson.objects.pref)
-    },
-    chartOptions() {
+    })
+    const geoJson = computed(() => {
+      return topojson.feature(props.topoJson, props.topoJson.objects.pref)
+    })
+    const chartOptions = computed(() => {
       return {
         chart: {
-          map: this.geoJson,
+          map: geoJson.value,
         },
         title: {
           text: null,
@@ -52,26 +54,23 @@ export default {
         },
         colorAxis: {
           min: 0,
-          max: this.displayData[0].max,
+          max: props.displayData[0].max,
         },
         tooltip: {
-          formatter() {
-            return `${this.point.prefName}</b>:<br>${Highcharts.numberFormat(
-              this.point.value,
-              0,
-              '',
-              ','
-            )} ${this.point.unit}`
-          },
+          pointFormat:
+            '<span style="color:{series.color}">{point.prefName}</span>: <b>{point.value}{point.unit}</b><br/>',
         },
         credits: {
           enabled: false,
         },
-        series: this.series,
+        series: series.value,
       }
-    },
+    })
+    return {
+      chartOptions,
+    }
   },
-}
+})
 </script>
 
 <style lang="sass" scoped>
