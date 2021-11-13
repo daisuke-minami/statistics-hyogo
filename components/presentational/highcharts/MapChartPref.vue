@@ -25,7 +25,6 @@ export default defineComponent({
       const series = cloneDeep(props.displayData)
       series[0].joinBy = ['N03_001', 'prefName']
       series[0].states = { hover: { color: '#a4edba' } }
-      // console.log(series)
       return series
     })
     const geoJson = computed(() => {
