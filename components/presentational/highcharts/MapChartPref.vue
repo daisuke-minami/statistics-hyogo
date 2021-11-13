@@ -8,7 +8,6 @@
 import { defineComponent, computed } from '@nuxtjs/composition-api'
 import { cloneDeep } from 'lodash'
 import * as topojson from 'topojson-client'
-// import Highcharts from 'highcharts'
 
 export default defineComponent({
   props: {
