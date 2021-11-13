@@ -6,7 +6,6 @@ const initialState = {
   selectedCityCode: null,
 }
 
-// ShallowCopyを避けるため、lodashのcloneDeepを用いる。
 export const state = () => cloneDeep(initialState)
 
 export const getters = {

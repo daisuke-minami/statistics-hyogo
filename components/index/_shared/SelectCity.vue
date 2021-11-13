@@ -5,7 +5,7 @@
         <v-col class="d-flex" cols="12" sm="6">
           <v-select
             v-model="cityCode"
-            :items="cityList"
+            :items="innnerCityList"
             item-text="cityName"
             item-value="cityCode"
             hint="市区町村を選択"
@@ -19,30 +19,30 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { mapActions, mapGetters } from 'vuex'
+// import { mapActions } from 'vuex'
 
 export default Vue.extend({
-  props: {},
+  props: {
+    cityList: {
+      type: Array,
+      required: true,
+    },
+  },
   data() {
     return {
       cityCode: null,
     }
   },
   computed: {
-    ...mapGetters('cityList', ['getCityList', 'getSelectedCityCode']),
-    cityList() {
-      return this.getCityList
+    innnetCityList() {
+      console.log(this.cityList)
+      return this.cityList
     },
   },
   watch: {},
   created() {
     this.cityCode = this.getSelectedCityCode
   },
-  methods: {
-    ...mapActions('cityList', ['changeSelectedCity']),
-    changeCity() {
-      this.changeSelectedCity(this.cityCode)
-    },
-  },
+  methods: {},
 })
 </script>

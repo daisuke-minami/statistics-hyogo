@@ -2,7 +2,20 @@
   <div>
     <tab-chart-class :statistics-class="statisticsClass" />
 
-    <select-city />
+    <static-card>
+      <v-row>
+        <v-col class="d-flex" cols="12" sm="6">
+          <v-select
+            v-model="selectedCity"
+            :items="cityList"
+            item-text="cityName"
+            item-value="cityCode"
+            return-object
+            @change="changeCity"
+          />
+        </v-col>
+      </v-row>
+    </static-card>
 
     <card-row class="DataBlock">
       <lazy-component
@@ -52,11 +65,16 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     return {
       chartClass: 'city',
       governmentType: 'city',
+      selectedCity: null,
     }
   },
   computed: {
     ...mapGetters('prefList', ['getSelectedPrefCode', 'getPrefName']),
-    ...mapGetters('cityList', ['getSelectedCityCode', 'getCityName']),
+    ...mapGetters('cityList', [
+      'getSelectedCityCode',
+      'getCityList',
+      'getCityName',
+    ]),
     ...mapGetters('setting', ['getStatisticsClassName']),
     statisticsClass() {
       return this.$route.params.statisticsClass
@@ -73,15 +91,17 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     selectedCityCode() {
       return this.getSelectedCityCode
     },
-    cityCode() {
+    innerCityCode() {
       return this.$route.params.cityCode
     },
-    cityName() {
-      return this.getCityName(this.cityCode)
+    cityList() {
+      return this.getCityList
+    },
+    innerCityName() {
+      return this.getCityName(this.innerCityCode)
     },
     contentsList() {
       return this.contentsAll[this.governmentType].map((d) => {
-        // ShallowCopyを避けるため、lodashのcloneDeepを用いる。
         const contents = cloneDeep(d)
 
         // 統計情報を追加
@@ -94,11 +114,11 @@ const options: ThisTypedComponentOptionsWithRecordProps<
         contents.prefCode = this.prefCode
 
         // 市区町村の情報を追加
-        contents.cityName = this.cityName
-        contents.cityCode = this.cityCode
+        contents.cityName = this.innerCityName
+        contents.cityCode = this.innerCityCode
 
         contents.title = `${this.cityName}の${d.title}`
-        contents.route = `/${this.chartClass}/${this.prefCode}/${this.cityCode}/${this.statisticsClass}/${contents.titleId}/`
+        contents.route = `/${this.chartClass}/${this.prefCode}/${this.innerCityCode}/${this.statisticsClass}/${contents.titleId}/`
 
         return {
           ...contents,
@@ -107,9 +127,11 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     },
   },
   watch: {
-    selectedCityCode() {
+    selectedCity() {
+      console.log(this.selectedCity)
+      const selectedCityCode = this.selectedCity.cityCode
       this.$router.push(
-        `/city/${this.prefCode}/${this.selectedCityCode}/${this.statisticsClass}/`
+        `/city/${this.prefCode}/${selectedCityCode}/${this.statisticsClass}/`
       )
     },
   },
@@ -119,8 +141,12 @@ const options: ThisTypedComponentOptionsWithRecordProps<
   },
   methods: {
     ...mapActions('setting', ['changeSelectedChartClass']),
+    ...mapActions('cityList', ['changeSelectedCity']),
     changeChartClass() {
       this.changeSelectedChartClass(this.chartClass)
+    },
+    changeCity() {
+      this.changeSelectedCity(this.cityCode)
     },
   },
   mounted() {
