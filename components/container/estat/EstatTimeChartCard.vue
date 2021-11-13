@@ -21,6 +21,8 @@
               />
             </template>
 
+            <toggle-column-line v-model="columnline" />
+
             <lazy-component
               :is="chartComponent"
               v-show="canvas"
@@ -61,6 +63,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import { ThisTypedComponentOptionsWithRecordProps } from 'vue/types/options'
+import { getGraphSeriesStyle } from '@/utils/colors'
 
 type Computed = {
   title: () => string
@@ -110,6 +113,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
   data() {
     return {
       canvas: true,
+      columnline: 'column',
       dataKind: 'all',
       estatResponse: {},
     }
@@ -151,18 +155,8 @@ const options: ThisTypedComponentOptionsWithRecordProps<
       return this.contents.route
     },
     chartComponent() {
-      let chartComponent
-      switch (this.contents.chartType) {
-        case 'area':
-          chartComponent = 'area-chart'
-          break
-        case 'line':
-          chartComponent = 'line-chart'
-          break
-        case 'column':
-          chartComponent = 'column-chart'
-          break
-      }
+      const chartComponent =
+        this.columnline === 'column' ? 'column-chart' : 'line-chart'
       return chartComponent
     },
     isSelector() {
@@ -176,10 +170,11 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     },
     chartData() {
       const series = this.contents.series
+      const style = getGraphSeriesStyle(series.length)
       const value =
         this.estatResponse.GET_STATS_DATA.STATISTICAL_DATA.DATA_INF.VALUE
 
-      return series.item.map((d) => {
+      return series.item.map((d, i) => {
         return {
           name: d.name,
           data: value
@@ -188,10 +183,10 @@ const options: ThisTypedComponentOptionsWithRecordProps<
               return {
                 x: parseInt(d['@time'].substr(0, 4)),
                 y: parseFloat(d.$),
-                // unit: d['@unit'],
+                unit: d['@unit'],
               }
             }),
-          unit: value[0]['@unit'],
+          color: style[i].color,
         }
       })
     },
@@ -203,9 +198,6 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     additionalDescription() {
       return this.contents.additionalDescription.concat(this.estatCredit)
     },
-    // docURL() {
-    //   return 'test'
-    // },
     displayInfo() {
       const infoData = this.chartData[0]
       const length = infoData.data.length

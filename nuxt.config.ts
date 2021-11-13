@@ -91,6 +91,7 @@ const config: NuxtConfig = {
    ** Plugins to load before mounting the App
    */
   plugins: [
+    { src: '@/plugins/composition-api', ssr: true },
     {
       src: '@/plugins/axios',
       ssr: true,
@@ -126,6 +127,7 @@ const config: NuxtConfig = {
    ** Nuxt.js dev-modules
    */
   buildModules: [
+    '@nuxtjs/composition-api/module',
     '@nuxtjs/stylelint-module',
     '@nuxtjs/pwa',
     '@nuxtjs/vuetify',

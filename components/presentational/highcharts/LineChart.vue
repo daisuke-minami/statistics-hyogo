@@ -4,22 +4,35 @@
   </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent, computed } from '@nuxtjs/composition-api'
+import { cloneDeep } from 'lodash'
+
+type Series = {
+  name: string
+  data: {
+    x: number
+    y: number
+    unit: string
+  }
+  color: string
+}
+type Props = {
+  displaydata: Series[]
+}
+
+export default defineComponent({
   props: {
     displayData: {
       type: Array,
-      required: true,
+      default: () => [],
     },
   },
-  data() {
-    return {}
-  },
-  computed: {
-    yAxisData() {
-      return [{ opposite: false }]
-    },
-    chartOptions() {
+  setup(props) {
+    const series = computed((): Series[] => {
+      return cloneDeep(props.displayData)
+    })
+    const chartOptions = computed(() => {
       return {
         chart: {
           height: 280,
@@ -37,19 +50,12 @@ export default {
           },
           crosshair: true,
         },
-        yAxis: this.yAxisData.map((item) => ({
-          max: item.max,
-          min: item.min,
-          opposite: item.opposite,
+        yAxis: {
+          opposite: true,
           title: {
             text: '',
           },
-          labels: {
-            formatter() {
-              return this.value.toLocaleString()
-            },
-          },
-        })),
+        },
         plotOptions: {
           series: {
             animation: false,
@@ -66,17 +72,20 @@ export default {
         },
         tooltip: {
           pointFormat:
-            '<span style="color:{series.color}">{series.name}</span>: <b>{point.y}{point.unit}</b> <br/>',
+            '<span style="color:{series.color}">{series.name}</span>: <b>{point.y}{point.unit}</b> ({point.percentage:.0f}%)<br/>',
           shared: true,
         },
         credits: {
           enabled: false,
         },
-        series: this.displayData,
+        series: series.value,
       }
-    },
+    })
+    return {
+      chartOptions,
+    }
   },
-}
+})
 </script>
 
 <style lang="sass" scoped>
