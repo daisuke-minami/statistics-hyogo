@@ -3,8 +3,8 @@
     {
       "title": "国民医療費（総額）",
       "titleId": "national-medical-expenses",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
+      "cardComponent": "estat-time-chart-single-multi",
+      
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -26,8 +26,8 @@
     {
       "title": "老人福祉施設数",
       "titleId": "welfare-facilities-elderly",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
+      "cardComponent": "estat-time-chart-single-multi",
+      
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -49,8 +49,8 @@
     {
       "title": "国民健康保険被保険者数",
       "titleId": "number-of-national-health-insurance",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "line",
+      "cardComponent": "estat-time-chart-single-multi",
+      
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -72,8 +72,8 @@
     {
       "title": "国民健康保険給付金額",
       "titleId": "national-health-insurance-benefit-amount",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
+      "cardComponent": "estat-time-chart-single-multi",
+      
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -95,8 +95,8 @@
     {
       "title": "生活保護被保護実世帯数",
       "titleId": "number-of-actual-households-protected-by-livelihood-protection-one",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
+      "cardComponent": "estat-time-chart-single-multi",
+      
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -118,8 +118,8 @@
     {
       "title": "現に保護を受けた生活保護被保護実世帯数",
       "titleId": "number-of-actual-households-protected-by-livelihood-protection-two",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
+      "cardComponent": "estat-time-chart-single-multi",
+      
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -141,8 +141,8 @@
     {
       "title": "保護開始世帯数",
       "titleId": "number-of-households-starting-protection",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
+      "cardComponent": "estat-time-chart-single-multi",
+      
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -164,8 +164,8 @@
     {
       "title": "生活保護扶助世帯数",
       "titleId": "number-of-welfare-assistance-households",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
+      "cardComponent": "estat-time-chart-single-multi",
+      
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -187,8 +187,8 @@
     {
       "title": "生活保護被保護実人員",
       "titleId": "livelihood-protection-protected-actual-personnel",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
+      "cardComponent": "estat-time-chart-single-multi",
+      
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -210,8 +210,8 @@
     {
       "title": "生活保護扶助人員",
       "titleId": "livelihood-protection-assistance-personnel",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
+      "cardComponent": "estat-time-chart-single-multi",
+      
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -233,8 +233,8 @@
     {
       "title": "身体障害者手帳交付数",
       "titleId": "number-of-handicapped-persons-handbooks-issued",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
+      "cardComponent": "estat-time-chart-single-multi",
+      
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -281,8 +281,8 @@
     {
       "title": "体障害者補装具交付決定件数",
       "titleId": "number-of-decisions-to-issue-assistive-devices-for-the-physically-handicapped",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
+      "cardComponent": "estat-time-chart-single-multi",
+      
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -304,8 +304,8 @@
     {
       "title": "身体障害者補装具修理決定件数",
       "titleId": "number-of-decisions-to-repair-assistive-devices-for-the-physically-handicapped",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
+      "cardComponent": "estat-time-chart-single-multi",
+      
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -327,8 +327,8 @@
     {
       "title": "身体障害者補装具修理負担額",
       "titleId": "physically-handicapped-prosthesis-repair-burden",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
+      "cardComponent": "estat-time-chart-single-multi",
+      
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -350,8 +350,8 @@
     {
       "title": "精神障害者保健福祉手帳交付件数",
       "titleId": "number-of-mentally-handicapped-health-and-welfare-notebooks-issued",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
+      "cardComponent": "estat-time-chart-single-multi",
+      
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -388,8 +388,8 @@
     {
       "title": "児童扶養手当受給者数",
       "titleId": "number-of-child-rearing-allowance-recipients",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
+      "cardComponent": "estat-time-chart-single-multi",
+      
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -411,8 +411,8 @@
     {
       "title": "知的障害者療育手帳交付数",
       "titleId": "number-of-rehabilitation-handbooks-for-persons-with-intellectual-disabilities",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
+      "cardComponent": "estat-time-chart-single-multi",
+      
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -434,8 +434,8 @@
     {
       "title": "社会福祉施設数",
       "titleId": "number-of-social-welfare-facilities",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
+      "cardComponent": "estat-time-chart-single-multi",
+      
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -457,8 +457,8 @@
     {
       "title": "社会福祉施設数従事者数",
       "titleId": "number-of-social-welfare-facilities-number-of-workers",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "line",
+      "cardComponent": "estat-time-chart-single-multi",
+      
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -480,8 +480,8 @@
     {
       "title": "保護施設数（医療保護施設を除く）",
       "titleId": "number-of-shelters",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
+      "cardComponent": "estat-time-chart-single-multi",
+      
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -503,8 +503,8 @@
     {
       "title": "保護施設定員数（医療保護施設を含む）",
       "titleId": "number-of-protection-setting-staff-one",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "line",
+      "cardComponent": "estat-time-chart-single-multi",
+      
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -526,8 +526,8 @@
     {
       "title": "保護施設定員数（医療保護施設を除く）",
       "titleId": "number-of-protection-setting-staff-two",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "line",
+      "cardComponent": "estat-time-chart-single-multi",
+      
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -549,8 +549,8 @@
     {
       "title": "保護施設在所者数（医療保護施設を含む）",
       "titleId": "number-of-people-in-shelters-one",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "line",
+      "cardComponent": "estat-time-chart-single-multi",
+      
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -572,8 +572,8 @@
     {
       "title": "保護施設在所者数（医療保護施設を除く）",
       "titleId": "number-of-people-in-shelters-two",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "line",
+      "cardComponent": "estat-time-chart-single-multi",
+      
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -595,8 +595,8 @@
     {
       "title": "保護施設従事者数（医療保護施設を除く）（専任）",
       "titleId": "number-of-shelter-workers-one",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "line",
+      "cardComponent": "estat-time-chart-single-multi",
+      
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -618,8 +618,8 @@
     {
       "title": "保護施設従事者数（医療保護施設を除く）（常勤）",
       "titleId": "number-of-shelter-workers-two",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "line",
+      "cardComponent": "estat-time-chart-single-multi",
+      
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -641,8 +641,8 @@
     {
       "title": "老人福祉施設数",
       "titleId": "number-of-welfare-facilities-for-the-elderly",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
+      "cardComponent": "estat-time-chart-single-multi",
+      
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -664,8 +664,8 @@
     {
       "title": "養護老人ホーム定員数",
       "titleId": "number-of-nursing-homes-for-the-elderly",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "line",
+      "cardComponent": "estat-time-chart-single-multi",
+      
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -687,8 +687,8 @@
     {
       "title": "養護老人ホーム在所者数",
       "titleId": "number-of-residents-of-nursing-homes-for-the-elderly",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "line",
+      "cardComponent": "estat-time-chart-single-multi",
+      
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -710,8 +710,8 @@
     {
       "title": "養護老人ホーム従事者数",
       "titleId": "number-of-nursing-home-workers",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "line",
+      "cardComponent": "estat-time-chart-single-multi",
+      
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -733,8 +733,8 @@
     {
       "title": "認定こども園数",
       "titleId": "certified-childrens-garden",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
+      "cardComponent": "estat-time-chart-single-multi",
+      
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -776,8 +776,8 @@
     {
       "title": "健康寿命（男）",
       "titleId": "healthy-life-expectancy-man",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "line",
+      "cardComponent": "estat-time-chart-single-multi",
+      
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -799,8 +799,8 @@
     {
       "title": "健康寿命（女）",
       "titleId": "healthy-life-expectancy-woman",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "line",
+      "cardComponent": "estat-time-chart-single-multi",
+      
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -822,8 +822,8 @@
     {
       "title": "妊娠の届出数",
       "titleId": "number-of-pregnancy-reports",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "line",
+      "cardComponent": "estat-time-chart-single-multi",
+      
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -845,8 +845,8 @@
     {
       "title": "妊産婦保健指導数",
       "titleId": "number-of-maternal-health-guidance",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "line",
+      "cardComponent": "estat-time-chart-single-multi",
+      
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -870,8 +870,8 @@
     {
       "title": "老人福祉施設数",
       "titleId": "welfare-facilities-elderly",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
+      "cardComponent": "estat-time-chart-single-multi",
+      
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -893,8 +893,8 @@
     {
       "title": "国民健康保険被保険者数",
       "titleId": "number-of-national-health-insurance",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "line",
+      "cardComponent": "estat-time-chart-single-multi",
+      
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -916,8 +916,8 @@
     {
       "title": "国民健康保険給付金額",
       "titleId": "national-health-insurance-benefit-amount",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
+      "cardComponent": "estat-time-chart-single-multi",
+      
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {

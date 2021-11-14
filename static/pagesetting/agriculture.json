@@ -3,8 +3,7 @@
     {
       "title": "農林漁業者",
       "titleId": "agriculture-forestry-fisher",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "line",
+      "cardComponent": "estat-time-chart-single",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -26,8 +25,7 @@
     {
       "title": "農林漁業雇用者",
       "titleId": "agriculture-forestry-and-fisheries-employers",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "line",
+      "cardComponent": "estat-time-chart-single-multi",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -59,8 +57,7 @@
     {
       "title": "農業産出額",
       "titleId": "agricultural-output",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
+      "cardComponent": "estat-time-chart-single",
       "isRank": false,
       "additionalDescription": [],
       "estatParams": {
@@ -82,8 +79,7 @@
     {
       "title": "農家数",
       "titleId": "number-of-farmers",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
+      "cardComponent": "estat-time-chart-single-multi",
       "isRank": false,
       "additionalDescription": [],
       "estatParams": {
@@ -120,8 +116,7 @@
     {
       "title": "農業就業人口（販売農家）",
       "titleId": "agricultural-working-population",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "line",
+      "cardComponent": "estat-time-chart-single-multi",
       "isRank": false,
       "additionalDescription": [],
       "estatParams": {
@@ -153,8 +148,7 @@
     {
       "title": "耕地面積",
       "titleId": "agricultural-land-area",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "area",
+      "cardComponent": "estat-time-chart-single-multi",
       "isRank": false,
       "additionalDescription": [],
       "estatParams": {
@@ -186,8 +180,7 @@
     {
       "title": "漁業産出額",
       "titleId": "fishery-output",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
+      "cardComponent": "estat-time-chart-single-multi",
       "isRank": false,
       "additionalDescription": [],
       "estatParams": {
@@ -219,8 +212,7 @@
     {
       "title": "養殖収穫量",
       "titleId": "aquaculture-yield",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
+      "cardComponent": "estat-time-chart-single-multi",
       "isRank": false,
       "additionalDescription": [],
       "estatParams": {
@@ -252,8 +244,7 @@
     {
       "title": "農地転用面積",
       "titleId": "agricultural-land-conversion-area",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "area",
+      "cardComponent": "estat-time-chart-single",
       "isRank": false,
       "additionalDescription": [],
       "estatParams": {
@@ -275,8 +266,7 @@
     {
       "title": "耕地放棄面積",
       "titleId": "abandoned-cultivated-area",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "area",
+      "cardComponent": "estat-time-chart-single",
       "isRank": false,
       "additionalDescription": [],
       "estatParams": {
@@ -298,8 +288,7 @@
     {
       "title": "林道延長",
       "titleId": "forest-road-extension",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "line",
+      "cardComponent": "estat-time-chart-single",
       "isRank": false,
       "additionalDescription": [],
       "estatParams": {
@@ -323,9 +312,8 @@
     {
       "title": "農業産出額",
       "titleId": "agricultural-output",
-      "cardComponent": "estat-time-chart-card",
+      "cardComponent": "estat-time-chart-single",
       "additionalDescription": [],
-      "chartType": "column",
       "isRank": true,
       "estatParams": {
         "statsDataId": "0000020203",
@@ -346,9 +334,8 @@
     {
       "title": "耕地放棄面積",
       "titleId": "abandoned-cultivated-area",
-      "cardComponent": "estat-time-chart-card",
+      "cardComponent": "estat-time-chart-single",
       "additionalDescription": [],
-      "chartType": "area",
       "isRank": true,
       "estatParams": {
         "statsDataId": "0000020203",

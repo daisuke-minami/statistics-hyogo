@@ -3,8 +3,7 @@
     {
       "title": "建設業者数",
       "titleId": "number-of-builders",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
+      "cardComponent": "estat-time-chart-single",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -28,8 +27,7 @@
     {
       "title": "標準価格（平均価格）（住宅地）",
       "titleId": "standard-price-residential-area",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
+      "cardComponent": "estat-time-chart-single",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {

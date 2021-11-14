@@ -3,13 +3,14 @@
     {
       "title": "製造品出荷額",
       "titleId": "product-shipment-value",
-       "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
+      "cardComponent": "estat-time-chart-single",
       "isRank": false,
       "additionalDescription": [],
       "estatParams": {
         "statsDataId": "0000010103",
-        "cdCat01": ["C3401"]
+        "cdCat01": [
+          "C3401"
+        ]
       },
       "series": {
         "id": "cat01",
@@ -24,13 +25,14 @@
     {
       "title": "製造業付加価値額",
       "titleId": "manufacturing-industry-value-added",
-       "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
+      "cardComponent": "estat-time-chart-single",
       "isRank": true,
-      "additionalDescription": [ ],
+      "additionalDescription": [],
       "estatParams": {
         "statsDataId": "0000010103",
-        "cdCat01": ["C3402"]
+        "cdCat01": [
+          "C3402"
+        ]
       },
       "series": {
         "id": "cat01",
@@ -45,8 +47,7 @@
     {
       "title": "工業用水量",
       "titleId": "industrial-water-volume",
-     "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
+      "cardComponent": "estat-time-chart-single-multi",
       "isRank": false,
       "additionalDescription": [],
       "estatParams": {
@@ -57,7 +58,7 @@
           "C340602"
         ]
       },
-     "series": {
+      "series": {
         "id": "cat01",
         "item": [
           {
@@ -80,13 +81,14 @@
     {
       "title": "製造品出荷額",
       "titleId": "product-shipment-value",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
+      "cardComponent": "estat-time-chart-single",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
         "statsDataId": "0000020203",
-        "cdCat01": ["C3401"]
+        "cdCat01": [
+          "C3401"
+        ]
       },
       "series": {
         "id": "cat01",

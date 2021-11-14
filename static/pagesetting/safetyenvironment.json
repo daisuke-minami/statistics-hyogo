@@ -3,8 +3,7 @@
     {
       "title": "交通事故発生件数",
       "titleId": "traffic-accident",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
+      "cardComponent": "estat-time-chart-single",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -26,8 +25,7 @@
     {
       "title": "刑法犯認知件数",
       "titleId": "criminal-law-offender",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
+      "cardComponent": "estat-time-chart-single",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -49,8 +47,7 @@
     {
       "title": "交通事故死傷者数",
       "titleId": "traffic-accident-casualties",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "line",
+      "cardComponent": "estat-time-chart-single",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -72,8 +69,7 @@
     {
       "title": "消防本部・署数",
       "titleId": "fire-department",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
+      "cardComponent": "estat-time-chart-single",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -95,8 +91,7 @@
     {
       "title": "消防機関出動回数",
       "titleId": "fire-department-dispatch",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "line",
+      "cardComponent": "estat-time-chart-single",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -118,8 +113,7 @@
     {
       "title": "消防団数",
       "titleId": "fire-brigade",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
+      "cardComponent": "estat-time-chart-single-multi",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -151,8 +145,7 @@
     {
       "title": "消防団員数",
       "titleId": "fire-brigade-member",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "line",
+      "cardComponent": "estat-time-chart-single",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -174,8 +167,7 @@
     {
       "title": "救急出動件数",
       "titleId": "emergency-dispatches",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
+      "cardComponent": "estat-time-chart-single",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -197,8 +189,7 @@
     {
       "title": "出火件数",
       "titleId": "number-of-fires",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
+      "cardComponent": "estat-time-chart-single",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -220,8 +211,7 @@
     {
       "title": "建物火災出火件数",
       "titleId": "number-of-building-fires",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
+      "cardComponent": "estat-time-chart-single",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -243,8 +233,7 @@
     {
       "title": "建物焼損床面積",
       "titleId": "building-burned-floor-area",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
+      "cardComponent": "estat-time-chart-single",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -266,8 +255,7 @@
     {
       "title": "火災損害額",
       "titleId": "fire-damage-amount",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
+      "cardComponent": "estat-time-chart-single",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -289,8 +277,7 @@
     {
       "title": "建物火災損害額",
       "titleId": "building-fire-damage-amount",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
+      "cardComponent": "estat-time-chart-single",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -312,8 +299,7 @@
     {
       "title": "火災死傷者数",
       "titleId": "number-of-fire-casualties",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "line",
+      "cardComponent": "estat-time-chart-single-multi",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -345,8 +331,7 @@
     {
       "title": "火災保険新契約件数",
       "titleId": "number-of-new-fire-insurance-contracts",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "line",
+      "cardComponent": "estat-time-chart-single",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -368,8 +353,7 @@
     {
       "title": "火災保険新規契約金額",
       "titleId": "fire-insurance-new-contract-amount",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
+      "cardComponent": "estat-time-chart-single",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -391,8 +375,7 @@
     {
       "title": "火災保険保険金支払件数",
       "titleId": "number-of-fire-insurance-claims-paid",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "line",
+      "cardComponent": "estat-time-chart-single",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -414,8 +397,7 @@
     {
       "title": "火災保険保険金支払金額",
       "titleId": "fire-insurance-insurance-payment-amount",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
+      "cardComponent": "estat-time-chart-single",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -437,8 +419,7 @@
     {
       "title": "任意自動車保険契約台数",
       "titleId": "number-of-voluntary-automobile-insurance-contracts",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
+      "cardComponent": "estat-time-chart-single",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -460,8 +441,7 @@
     {
       "title": "任意自動車保険契約保険料",
       "titleId": "voluntary-car-insurance-contract-premium",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
+      "cardComponent": "estat-time-chart-single",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -483,8 +463,7 @@
     {
       "title": "任意自動車保険保険金支払件数",
       "titleId": "number-of-voluntary-automobile-insurance-claims-paid",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "line",
+      "cardComponent": "estat-time-chart-single",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -506,8 +485,7 @@
     {
       "title": "任意自動車保険保険金支払金額",
       "titleId": "voluntary-car-insurance-insurance-payment-amount",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
+      "cardComponent": "estat-time-chart-single",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -529,8 +507,7 @@
     {
       "title": "任意自動車保険普及率（車両）",
       "titleId": "voluntary-car-insurance-penetration-rate-one",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "line",
+      "cardComponent": "estat-time-chart-single",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -552,8 +529,7 @@
     {
       "title": "任意自動車保険普及率（対人）",
       "titleId": "voluntary-car-insurance-penetration-rate-two",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "line",
+      "cardComponent": "estat-time-chart-single",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -575,8 +551,7 @@
     {
       "title": "任意自動車保険普及率（対物）",
       "titleId": "voluntary-car-insurance-penetration-rate-three",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "line",
+      "cardComponent": "estat-time-chart-single",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -598,8 +573,7 @@
     {
       "title": "任意自動車保険普及率（搭乗者傷害）",
       "titleId": "voluntary-car-insurance-penetration-rate-four",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "line",
+      "cardComponent": "estat-time-chart-single",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -621,8 +595,7 @@
     {
       "title": "防犯ボランティア団体数",
       "titleId": "number-of-crime-prevention-volunteer-groups",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "line",
+      "cardComponent": "estat-time-chart-single",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -644,8 +617,7 @@
     {
       "title": "防犯ボランティア講構成員数",
       "titleId": "number-of-crime-prevention-volunteer-members",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "line",
+      "cardComponent": "estat-time-chart-single",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -667,8 +639,7 @@
     {
       "title": "温室効果ガス算定排出量（実数）",
       "titleId": "calculated-greenhouse-gas-emissions-one",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
+      "cardComponent": "estat-time-chart-single",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -690,8 +661,7 @@
     {
       "title": "温室効果ガス算定排出量（率）",
       "titleId": "calculated-greenhouse-gas-emissions-two",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "line",
+      "cardComponent": "estat-time-chart-single",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -713,8 +683,7 @@
     {
       "title": "水質汚濁防止法上の特定事業所数",
       "titleId": "water-pollution-control-law",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
+      "cardComponent": "estat-time-chart-single",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -736,8 +705,7 @@
     {
       "title": "ばい煙発生施設数",
       "titleId": "number-of-soot-and-smoke-generating-facilities",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
+      "cardComponent": "estat-time-chart-single-multi",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -769,8 +737,7 @@
     {
       "title": "公害苦情件数（典型7公害）",
       "titleId": "number-of-pollution-complaints",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
+      "cardComponent": "estat-time-chart-single-multi",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -827,8 +794,7 @@
     {
       "title": "公害苦情受付件数",
       "titleId": "number-of-pollution-complaints-received",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
+      "cardComponent": "estat-time-chart-single-multi",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -860,8 +826,7 @@
     {
       "title": "公害苦情処理件数",
       "titleId": "number-of-pollution-complaints-handled",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
+      "cardComponent": "estat-time-chart-single-multi",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -893,8 +858,7 @@
     {
       "title": "災害被害額",
       "titleId": "disaster-damage-amount",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
+      "cardComponent": "estat-time-chart-single",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -916,8 +880,7 @@
     {
       "title": "建物被害床上浸水",
       "titleId": "flooding-on-the-floor",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
+      "cardComponent": "estat-time-chart-single",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -939,8 +902,7 @@
     {
       "title": "建物被害床下浸水",
       "titleId": "flooding-under-the-floor",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
+      "cardComponent": "estat-time-chart-single",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -962,8 +924,7 @@
     {
       "title": "自然災害による罹災世帯数",
       "titleId": "number-of-affected-households",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
+      "cardComponent": "estat-time-chart-single",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -985,8 +946,7 @@
     {
       "title": "自然災害による罹災者数",
       "titleId": "number-of-victims",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "line",
+      "cardComponent": "estat-time-chart-single",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -1008,8 +968,7 @@
     {
       "title": "外国人被疑事件受理人員",
       "titleId": "personnel-accepting-alleged-foreigners",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "line",
+      "cardComponent": "estat-time-chart-single-multi",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -1041,8 +1000,7 @@
     {
       "title": "出入国管理及び難民認定法の送致件数",
       "titleId": "immigration-control-one",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "line",
+      "cardComponent": "estat-time-chart-single",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -1064,8 +1022,7 @@
     {
       "title": "出入国管理及び難民認定法の送致人員",
       "titleId": "immigration-control-two",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "line",
+      "cardComponent": "estat-time-chart-single",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -1087,8 +1044,7 @@
     {
       "title": "道路交通法違反検挙総件数（告知・送致）",
       "titleId": "violation-of-the-road-traffic-act",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "line",
+      "cardComponent": "estat-time-chart-single",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -1110,8 +1066,7 @@
     {
       "title": "交通事故事件件数",
       "titleId": "number-of-traffic-accidents",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "line",
+      "cardComponent": "estat-time-chart-single",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -1133,8 +1088,7 @@
     {
       "title": "交通事故事件少年件数",
       "titleId": "number-of-traffic-accidents-boys",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "line",
+      "cardComponent": "estat-time-chart-single",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -1156,8 +1110,7 @@
     {
       "title": "交通事故事件人員",
       "titleId": "traffic-accident-personnel",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "line",
+      "cardComponent": "estat-time-chart-single",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -1179,8 +1132,7 @@
     {
       "title": "触法少年補導人員",
       "titleId": "tactile-boy-guidance-personnel",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "line",
+      "cardComponent": "estat-time-chart-single",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -1202,8 +1154,7 @@
     {
       "title": "少年保護事件新受入人員",
       "titleId": "newly-accepted-juvenile-protection-case",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "line",
+      "cardComponent": "estat-time-chart-single",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -1225,8 +1176,7 @@
     {
       "title": "民事事件件数",
       "titleId": "number-of-civil-cases",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "line",
+      "cardComponent": "estat-time-chart-single",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -1248,8 +1198,7 @@
     {
       "title": "行政事件件数",
       "titleId": "number-of-administrative-cases",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "line",
+      "cardComponent": "estat-time-chart-single",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -1271,8 +1220,7 @@
     {
       "title": "家事事件件数",
       "titleId": "number-of-domestic-affairs",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "line",
+      "cardComponent": "estat-time-chart-single",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -1294,8 +1242,7 @@
     {
       "title": "警察官数",
       "titleId": "number-of-police-officers",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "line",
+      "cardComponent": "estat-time-chart-single",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -1317,8 +1264,7 @@
     {
       "title": "特別法犯検挙件数",
       "titleId": "number-of-arrests-for-special-law-offenses",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
+      "cardComponent": "estat-time-chart-single",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -1340,8 +1286,7 @@
     {
       "title": "特別法犯検挙人員",
       "titleId": "special-law-offenders-arrested",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
+      "cardComponent": "estat-time-chart-single",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -1363,8 +1308,7 @@
     {
       "title": "覚せい剤取締検挙件数",
       "titleId": "number-of-stimulant-drug-control-law-arrests",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
+      "cardComponent": "estat-time-chart-single",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -1386,8 +1330,7 @@
     {
       "title": "覚せい剤取締検挙人員",
       "titleId": "stimulant-drug-control-arrest-personnel",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
+      "cardComponent": "estat-time-chart-single",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -1409,8 +1352,7 @@
     {
       "title": "売春事犯の検挙件数",
       "titleId": "number-of-arrests-for-prostitution-offenders",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
+      "cardComponent": "estat-time-chart-single",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -1432,8 +1374,7 @@
     {
       "title": "売春事犯の検挙人員",
       "titleId": "arrested-personnel-for-prostitution-offenders",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
+      "cardComponent": "estat-time-chart-single",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -1457,8 +1398,7 @@
     {
       "title": "交通事故発生件数",
       "titleId": "traffic-accident",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
+      "cardComponent": "estat-time-chart-single",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -1480,8 +1420,7 @@
     {
       "title": "刑法犯認知件数",
       "titleId": "criminal-law-offender",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
+      "cardComponent": "estat-time-chart-single",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {

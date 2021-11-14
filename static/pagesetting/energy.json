@@ -3,13 +3,14 @@
     {
       "title": "発電電力量",
       "titleId": "power-generation",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
+      "cardComponent": "estat-time-chart-single",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
         "statsDataId": "0000010108",
-        "cdCat01": ["H5104"]
+        "cdCat01": [
+          "H5104"
+        ]
       },
       "series": {
         "id": "cat01",
@@ -24,13 +25,14 @@
     {
       "title": "電力需要量",
       "titleId": "electricity-demand",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
+      "cardComponent": "estat-time-chart-single",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
         "statsDataId": "0000010108",
-        "cdCat01": ["H5105"]
+        "cdCat01": [
+          "H5105"
+        ]
       },
       "series": {
         "id": "cat01",
@@ -45,13 +47,14 @@
     {
       "title": "ガソリン販売量",
       "titleId": "gasoline-sales-volume",
-     "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
+      "cardComponent": "estat-time-chart-single",
       "isRank": false,
       "additionalDescription": [],
       "estatParams": {
         "statsDataId": "0000010108",
-        "cdCat01": ["H5205"]
+        "cdCat01": [
+          "H5205"
+        ]
       },
       "series": {
         "id": "cat01",
@@ -66,13 +69,14 @@
     {
       "title": "都市ガス販売量",
       "titleId": "city-gas-sales-volume",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
+      "cardComponent": "estat-time-chart-single",
       "isRank": false,
       "additionalDescription": [],
-       "estatParams": {
+      "estatParams": {
         "statsDataId": "0000010108",
-        "cdCat01": ["H5206"]
+        "cdCat01": [
+          "H5206"
+        ]
       },
       "series": {
         "id": "cat01",
@@ -87,13 +91,14 @@
     {
       "title": "ごみ総排出量",
       "titleId": "garbage-discharged",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
+      "cardComponent": "estat-time-chart-single",
       "isRank": false,
       "additionalDescription": [],
       "estatParams": {
         "statsDataId": "0000010108",
-        "cdCat01": ["H5609"]
+        "cdCat01": [
+          "H5609"
+        ]
       },
       "series": {
         "id": "cat01",
@@ -110,13 +115,14 @@
     {
       "title": "ごみ総排出量",
       "titleId": "garbage-discharged",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
+      "cardComponent": "estat-time-chart-single",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
         "statsDataId": "0000020208",
-        "cdCat01": ["H5609"]
+        "cdCat01": [
+          "H5609"
+        ]
       },
       "series": {
         "id": "cat01",

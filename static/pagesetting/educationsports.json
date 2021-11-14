@@ -3,8 +3,7 @@
     {
       "title": "幼稚園数",
       "titleId": "kindergartens",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
+      "cardComponent": "estat-time-chart-single",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -26,8 +25,7 @@
     {
       "title": "幼稚園教員数",
       "titleId": "kindergarten-teachers",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
+      "cardComponent": "estat-time-chart-single-multi",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -59,8 +57,7 @@
     {
       "title": "幼稚園在園者数",
       "titleId": "kindergarten-childrens",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
+      "cardComponent": "estat-time-chart-single-multi",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -92,8 +89,7 @@
     {
       "title": "小学校数",
       "titleId": "primary-schools",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
+      "cardComponent": "estat-time-chart-single",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -115,8 +111,7 @@
     {
       "title": "小学校教員数",
       "titleId": "primary-school-teachers",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
+      "cardComponent": "estat-time-chart-single-multi",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -148,8 +143,7 @@
     {
       "title": "小学校児童数",
       "titleId": "primary-school-students",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
+      "cardComponent": "estat-time-chart-single-multi",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -183,8 +177,7 @@
     {
       "title": "幼稚園数",
       "titleId": "kindergartens",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
+      "cardComponent": "estat-time-chart-single",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -206,8 +199,7 @@
     {
       "title": "小学校数",
       "titleId": "primary-schools",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
+      "cardComponent": "estat-time-chart-single",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {

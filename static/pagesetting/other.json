@@ -3,9 +3,8 @@
     {
       "title": "農家数",
       "titleId": "number-of-farmers",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
-      "isRank":false,
+      "cardComponent": "estat-time-chart-single-multi",
+      "isRank": false,
       "additionalDescription": [],
       "estatParams": {
         "statsDataId": "0000010103",
@@ -41,9 +40,8 @@
     {
       "title": "農業産出額",
       "titleId": "agricultural-output",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
-      "isRank":false,
+      "cardComponent": "estat-time-chart-single",
+      "isRank": false,
       "additionalDescription": [],
       "estatParams": {
         "statsDataId": "0000010103",
@@ -64,9 +62,8 @@
     {
       "title": "昼夜間人口比率",
       "titleId": "day-night-population-ratio",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "line",
-      "isRank":false,
+      "cardComponent": "estat-time-chart-single",
+      "isRank": false,
       "additionalDescription": [],
       "estatParams": {
         "statsDataId": "0000010101",
@@ -85,39 +82,6 @@
       }
     },
     {
-      "title": "総人口",
-      "titleId": "population-all",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "line",
-      "isRank":false,
-      "additionalDescription": [],
-      "estatParams": {
-        "statsDataId": "0000010101",
-        "cdCat01": [
-          "A1101",
-          "A110101",
-          "A110102"
-        ]
-      },
-      "series": {
-        "id": "cat01",
-        "item": [
-          {
-            "code": "A1101",
-            "name": "総数"
-          },
-          {
-            "code": "A110101",
-            "name": "男性"
-          },
-          {
-            "code": "A110102",
-            "name": "女性"
-          }
-        ]
-      }
-    },
-    {
       "title": "就業者数（男女年齢別）",
       "titleId": "number-of-workers",
       "cardComponent": "estat-pyramid-chart-card",
@@ -126,7 +90,7 @@
         "従業者 ： 調査週間中に賃金，給料，諸手当，内職収入などの収入を伴う仕事（以下「仕事」という。）を1時間以上した者。なお，家族従業者は，無給であっても仕事をしたとする。",
         "休業者 ： 仕事を持ちながら，調査週間中に少しも仕事をしなかった者のうち、雇用者で，給料・賃金（休業手当を含む。）の支払を受けている者又は受けることになっている者、または自営業主で，自分の経営する事業を持ったままで，その仕事を休み始めてから30日にならない者"
       ],
-      "isRank":false,
+      "isRank": false,
       "estatParams": {
         "statsDataId": "0000010106",
         "cdCat01": [
@@ -247,8 +211,7 @@
     {
       "title": "総面積",
       "titleId": "total-area",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "area",
+      "cardComponent": "estat-time-chart-single-multi",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -270,8 +233,7 @@
     {
       "title": "評価総地積（課税対象土地）",
       "titleId": "evaluation-total-cadastral",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "area",
+      "cardComponent": "estat-time-chart-single-multi",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -330,9 +292,8 @@
     {
       "title": "農業産出額",
       "titleId": "agricultural-output",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
-      "isRank":false,
+      "cardComponent": "estat-time-chart-single-multi",
+      "isRank": false,
       "additionalDescription": [],
       "estatParams": {
         "statsDataId": "0000020203",
@@ -353,9 +314,8 @@
     {
       "title": "昼夜間人口比率",
       "titleId": "day-night-population-ratio",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "line",
-      "isRank":false,
+      "cardComponent": "estat-time-chart-single-multi",
+      "isRank": false,
       "additionalDescription": [],
       "estatParams": {
         "statsDataId": "0000020201",
@@ -376,9 +336,8 @@
     {
       "title": "総面積",
       "titleId": "total-area",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "area",
-      "isRank":true,
+      "cardComponent": "estat-time-chart-single-multi",
+      "isRank": true,
       "additionalDescription": [],
       "estatParams": {
         "statsDataId": "0000020202",

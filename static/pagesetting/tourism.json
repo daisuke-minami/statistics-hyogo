@@ -3,8 +3,7 @@
     {
       "title": "原動機付き自転車台数",
       "titleId": "motorized-bicycle",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
+      "cardComponent": "estat-time-chart-single",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -26,8 +25,7 @@
     {
       "title": "運転免許保有者数（大型）",
       "titleId": "number-of-drivers-license-holders-one",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
+      "cardComponent": "estat-time-chart-single",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -49,8 +47,7 @@
     {
       "title": "運転免許保有者数（中型）",
       "titleId": "number-of-drivers-license-holders-two",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
+      "cardComponent": "estat-time-chart-single",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -72,8 +69,7 @@
     {
       "title": "運転免許保有者数（普通）",
       "titleId": "number-of-drivers-license-holders-three",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
+      "cardComponent": "estat-time-chart-single",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -95,8 +91,7 @@
     {
       "title": "高齢者講習受講者数（70〜74歳）",
       "titleId": "number-of-senior-citizens-taking-courses-one",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
+      "cardComponent": "estat-time-chart-single",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -118,8 +113,7 @@
     {
       "title": "高齢者講習受講者数（75歳以上）",
       "titleId": "number-of-senior-citizens-taking-courses-two",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
+      "cardComponent": "estat-time-chart-single",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
@@ -143,8 +137,7 @@
     {
       "title": "原動機付き自転車台数",
       "titleId": "motorized-bicycle",
-      "cardComponent": "estat-time-chart-card",
-      "chartType": "column",
+      "cardComponent": "estat-time-chart-single",
       "isRank": true,
       "additionalDescription": [],
       "estatParams": {
