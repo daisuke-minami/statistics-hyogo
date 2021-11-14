@@ -1,9 +1,15 @@
 import { cloneDeep } from 'lodash'
-// import axios from 'axios'
+
+// type City = {
+//   prefCode: number
+//   cityName: string
+//   cityCode: string
+//   bigCityFlag: string
+// }
 
 const initialState = {
   cityList: [],
-  selectedCityCode: null,
+  // selectedCity: null,
 }
 
 export const state = () => cloneDeep(initialState)
@@ -12,9 +18,12 @@ export const getters = {
   getCityList(state) {
     return state.cityList
   },
-  getSelectedCityCode(state) {
-    return state.selectedCityCode
+  getCity: (state) => (cityCode) => {
+    return state.cityList.find((d) => d.cityCode === cityCode)
   },
+  // getSelectedCity(state) {
+  //   return state.selectedCity
+  // },
   getCityName: (state) => (cityCode) => {
     return state.cityList.find((d) => d.cityCode === cityCode).cityName
   },
@@ -25,7 +34,6 @@ export const mutations = {
       state = cloneDeep(initialState)
     } else {
       state.cityList = payload
-      // state.selectedCityCode = payload[0].cityCode
     }
   },
   changeKinds(state, payload) {
@@ -35,13 +43,13 @@ export const mutations = {
       state.bigcityKind = payload
     }
   },
-  changeCity(state, payload) {
-    if (payload === null) {
-      state = cloneDeep(initialState)
-    } else {
-      state.selectedCityCode = payload
-    }
-  },
+  // changeCity(state, payload) {
+  //   if (payload === null) {
+  //     state = cloneDeep(initialState)
+  //   } else {
+  //     state.selectedCity = payload
+  //   }
+  // },
 }
 
 export const actions = {
@@ -61,7 +69,7 @@ export const actions = {
   fetchCities({ commit }) {
     commit('initCitySet', process.env.cityList)
   },
-  changeSelectedCity({ commit }, newCity) {
-    commit('changeCity', newCity)
-  },
+  // changeSelectedCity({ commit }, newCity) {
+  //   commit('changeCity', newCity)
+  // },
 }

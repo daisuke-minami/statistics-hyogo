@@ -15,7 +15,7 @@
 
             <template v-if="isSelector" v-slot:button>
               <toggle-break
-                v-model="dataKind"
+                v-model="allbreak"
                 :target-id="contents.titleId"
                 :style="{ display: canvas ? 'inline-block' : 'none' }"
               />
@@ -61,119 +61,112 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-import { ThisTypedComponentOptionsWithRecordProps } from 'vue/types/options'
+import {
+  defineComponent,
+  ref,
+  computed,
+  useFetch,
+} from '@nuxtjs/composition-api'
 import { getGraphSeriesStyle } from '@/utils/colors'
 
-type Computed = {
-  title: () => string
-  titleId: () => string
-  additionalDescription: () => string
-  routes: () => string
-  chartData: () => void
-  displayData: () => void
-  yAxisData: () => void
+type Series = {
+  name: string
+  data: {
+    x: number
+    y: number
+    unit: string
+  }
+  color: string
 }
 
-type Methods = {}
-
-type Props = {
-  contents: object
+type Times = {
+  yearInt: number
+  yearStr: string
 }
 
-const options: ThisTypedComponentOptionsWithRecordProps<
-  Vue,
-  Data,
-  Methods,
-  Computed,
-  Props
-> = {
+export default defineComponent({
   props: {
     contents: {
       type: Object,
       required: true,
     },
   },
-  // APIから取得する場合
-  async fetch() {
-    const params = this.contents.estatParams
-    params.cdArea = this.cdArea
-    const { data } = await this.$estat.get(
-      `${process.env.BASE_URL}/json/getStatsData`,
-      { params }
-    )
-    this.estatResponse = data
-  },
-  // JSONから取得する場合
-  // async fetch() {
-  //   this.estatResponse = await import(
-  //     `~/static/pagecontents/${this.statisticsClass}/${this.governmentType}/${this.titleId}.json`
-  //   )
-  // },
-  data() {
-    return {
-      canvas: true,
-      columnline: 'column',
-      dataKind: 'all',
-      estatResponse: {},
-    }
-  },
-  computed: {
-    cdArea() {
-      if (this.contents.cityCode) {
-        return this.contents.cityCode
+  setup(props, context) {
+    const canvas = ref<boolean>(true)
+
+    const cdArea = computed((): string => {
+      if (props.contents.cityCode) {
+        return props.contents.cityCode
       } else {
-        return ('0000000000' + this.contents.prefCode).slice(-2) + '000'
+        return ('0000000000' + props.contents.prefCode).slice(-2) + '000'
       }
-    },
-    statisticsClass() {
-      return this.contents.statisticsClass
-    },
-    governmentType() {
-      return this.contents.governmentType
-    },
-    estatParams() {
-      return this.contents.estatParams
-    },
-    title(): string {
-      return this.contents.title
-    },
-    titleId(): string {
-      return this.contents.titleId
-    },
-    statName(): string {
-      const TABLE_INF =
-        this.estatResponse.GET_STATS_DATA.STATISTICAL_DATA.TABLE_INF
-      return `政府統計の総合窓口 e-Stat「${TABLE_INF.STAT_NAME.$}」`
-    },
-    statUrl(): string {
-      const TABLE_INF =
-        this.estatResponse.GET_STATS_DATA.STATISTICAL_DATA.TABLE_INF
-      return `https://www.e-stat.go.jp/dbview?sid=${TABLE_INF['@id']}`
-    },
-    route(): string {
-      return this.contents.route
-    },
-    chartComponent() {
+    })
+
+    const estatResponse = ref({})
+    useFetch(async () => {
+      const params = props.contents.estatParams
+      params.cdArea = cdArea.value
+
+      const { data } = await context.root.$estat.get(
+        `${process.env.BASE_URL}/json/getStatsData`,
+        { params }
+      )
+      estatResponse.value = data
+    })
+
+    // columnChartとlineChartの切替
+    const columnline = ref<string>('column')
+    const chartComponent = computed((): string => {
       const chartComponent =
-        this.columnline === 'column' ? 'column-chart' : 'line-chart'
+        columnline.value === 'column' ? 'column-chart' : 'line-chart'
       return chartComponent
-    },
-    isSelector() {
-      // 系列が複数の場合はデータセレクタを表示させる
-      const num = Object.keys(this.contents.series.item).length
+    })
+
+    const isSelector = computed(() => {
+      const num = Object.keys(props.contents.series.item).length
       if (num === 1) {
         return false
       } else {
         return true
       }
-    },
-    chartData() {
-      const series = this.contents.series
+    })
+
+    const title = computed((): string => {
+      return props.contents.title
+    })
+    const titleId = computed((): string => {
+      return props.contents.titleId
+    })
+
+    const statisticsClass = computed((): string => {
+      return props.contents.statisticsClass
+    })
+
+    const governmentType = computed((): string => {
+      return props.contents.governmentType
+    })
+
+    const statName = computed((): string => {
+      const TABLE_INF =
+        estatResponse.value.GET_STATS_DATA.STATISTICAL_DATA.TABLE_INF
+      return `政府統計の総合窓口 e-Stat「${TABLE_INF.STAT_NAME.$}」`
+    })
+
+    const statUrl = computed((): string => {
+      const TABLE_INF =
+        estatResponse.value.GET_STATS_DATA.STATISTICAL_DATA.TABLE_INF
+      return `https://www.e-stat.go.jp/dbview?sid=${TABLE_INF['@id']}`
+    })
+
+    const route = computed((): string => {
+      return props.contents.route
+    })
+
+    const chartData = computed((): Series[] => {
+      const series = props.contents.series
       const style = getGraphSeriesStyle(series.length)
       const value =
-        this.estatResponse.GET_STATS_DATA.STATISTICAL_DATA.DATA_INF.VALUE
-
+        estatResponse.value.GET_STATS_DATA.STATISTICAL_DATA.DATA_INF.VALUE
       return series.item.map((d, i) => {
         return {
           name: d.name,
@@ -189,27 +182,29 @@ const options: ThisTypedComponentOptionsWithRecordProps<
           color: style[i].color,
         }
       })
-    },
-    estatCredit() {
-      return [
-        'このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません',
-      ]
-    },
-    additionalDescription() {
-      return this.contents.additionalDescription.concat(this.estatCredit)
-    },
-    displayInfo() {
-      const infoData = this.chartData[0]
+    })
+
+    // 注釈
+    const estatCredit = ref<string>(
+      'このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません'
+    )
+    const additionalDescription = computed((): string => {
+      return props.contents.additionalDescription.concat(estatCredit.value)
+    })
+
+    const displayInfo = computed(() => {
+      const infoData = chartData.value[0]
       const length = infoData.data.length
       return {
         lText: infoData.data[length - 1].y.toLocaleString(),
         sText: infoData.data[length - 1].x + '年の' + infoData.name,
         unit: infoData.unit,
       }
-    },
-    times() {
+    })
+
+    const times = computed((): Times[] => {
       const CLASS_OBJ =
-        this.estatResponse.GET_STATS_DATA.STATISTICAL_DATA.CLASS_INF.CLASS_OBJ
+        estatResponse.value.GET_STATS_DATA.STATISTICAL_DATA.CLASS_INF.CLASS_OBJ
       const classInfo = CLASS_OBJ.map((item) => {
         return {
           id: item['@id'],
@@ -224,11 +219,13 @@ const options: ThisTypedComponentOptionsWithRecordProps<
             yearStr: d['@code'],
           }
         })
-    },
-    tableHeaders() {
+    })
+
+    // テーブル
+    const tableHeaders = computed(() => {
       return [
         { text: '年', value: 'year', width: '80px' },
-        ...this.chartData.map((d) => {
+        ...chartData.value.map((d) => {
           return {
             text: d.name,
             value: d.name,
@@ -237,12 +234,12 @@ const options: ThisTypedComponentOptionsWithRecordProps<
           }
         }),
       ]
-    },
-    tableData() {
-      return this.times.map((d) => {
+    })
+    const tableData = computed(() => {
+      return times.value.map((d) => {
         return Object.assign(
           { year: `${d.yearInt}年` },
-          ...this.chartData.map((item) => {
+          ...chartData.value.map((item) => {
             const value = item.data.find((f) => f.x === d.yearInt)
             if (value) {
               return {
@@ -254,26 +251,49 @@ const options: ThisTypedComponentOptionsWithRecordProps<
           })
         )
       })
-    },
-    displayData() {
-      if (this.dataKind === 'all') {
-        return this.chartData.slice(0, 1)
+    })
+
+    // 総数／内訳の切替
+    const allbreak = ref<string>('all')
+    const displayData = computed(() => {
+      if (allbreak.value === 'all') {
+        return chartData.value.slice(0, 1)
       } else {
-        return this.chartData.slice(1)
+        return chartData.value.slice(1)
       }
-    },
-    lastUpdate() {
+    })
+
+    const lastUpdate = computed((): string => {
       if (process.browser) {
         const day = new Date(document.lastModified)
         return `${day.getFullYear()}年${day.getMonth() + 1}月${day.getDate()}日`
       } else {
         return ''
       }
-    },
-  },
-  methods: {},
-  created() {},
-}
+    })
 
-export default Vue.extend(options)
+    return {
+      lastUpdate,
+      allbreak,
+      displayData,
+      additionalDescription,
+      statName,
+      statUrl,
+      tableHeaders,
+      tableData,
+      route,
+      canvas,
+      columnline,
+      displayInfo,
+      governmentType,
+      statisticsClass,
+      title,
+      times,
+      titleId,
+      isSelector,
+      chartData,
+      chartComponent,
+    }
+  },
+})
 </script>

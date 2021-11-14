@@ -35,13 +35,13 @@ export default Vue.extend({
   },
   computed: {
     innnetCityList() {
-      console.log(this.cityList)
+      // console.log(this.cityList)
       return this.cityList
     },
   },
   watch: {},
   created() {
-    this.cityCode = this.getSelectedCityCode
+    // this.cityCode = this.getSelectedCityCode
   },
   methods: {},
 })

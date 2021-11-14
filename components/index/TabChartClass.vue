@@ -20,16 +20,17 @@ export default {
   },
   computed: {
     ...mapGetters('prefList', ['getSelectedPrefCode']),
-    ...mapGetters('cityList', ['getCityList', 'getSelectedCityCode']),
+    ...mapGetters('cityList', ['getCityList', 'getSelectedCity']),
     prefCode() {
       return this.getSelectedPrefCode
     },
     cityCode() {
-      if (!this.getSelectedCityCode) {
-        return this.getCityList[0].cityCode
-      } else {
-        return this.getSelectedCityCode
-      }
+      return this.getCityList[0].cityCode
+      // if (!this.getSelectedCity) {
+      //   return this.getCityList[0].cityCode
+      // } else {
+      //   return this.getSelectedCity.cityCode
+      // }
     },
     items() {
       return [

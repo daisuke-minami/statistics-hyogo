@@ -47,7 +47,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
   },
   computed: {
     ...mapGetters('prefList', ['getSelectedPrefCode', 'getPrefName']),
-    ...mapGetters('cityList', ['getSelectedCityCode', 'getCityName']),
+    ...mapGetters('cityList', ['getSelectedCity', 'getCityName']),
     ...mapGetters('setting', ['getStatisticsClassName']),
     statisticsClass() {
       return this.$route.params.statisticsClass

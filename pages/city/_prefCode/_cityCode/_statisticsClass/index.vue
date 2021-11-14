@@ -11,7 +11,6 @@
             item-text="cityName"
             item-value="cityCode"
             return-object
-            @change="changeCity"
           />
         </v-col>
       </v-row>
@@ -70,11 +69,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
   },
   computed: {
     ...mapGetters('prefList', ['getSelectedPrefCode', 'getPrefName']),
-    ...mapGetters('cityList', [
-      'getSelectedCityCode',
-      'getCityList',
-      'getCityName',
-    ]),
+    ...mapGetters('cityList', ['getCity', 'getCityList', 'getCityName']),
     ...mapGetters('setting', ['getStatisticsClassName']),
     statisticsClass() {
       return this.$route.params.statisticsClass
@@ -88,17 +83,8 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     prefName(): string {
       return this.getPrefName(this.prefCode)
     },
-    selectedCityCode() {
-      return this.getSelectedCityCode
-    },
-    innerCityCode() {
-      return this.$route.params.cityCode
-    },
     cityList() {
       return this.getCityList
-    },
-    innerCityName() {
-      return this.getCityName(this.innerCityCode)
     },
     contentsList() {
       return this.contentsAll[this.governmentType].map((d) => {
@@ -114,8 +100,8 @@ const options: ThisTypedComponentOptionsWithRecordProps<
         contents.prefCode = this.prefCode
 
         // 市区町村の情報を追加
-        contents.cityName = this.innerCityName
-        contents.cityCode = this.innerCityCode
+        contents.cityName = this.selectedCity.cityName
+        contents.cityCode = this.selectedCity.cityCode
 
         contents.title = `${this.cityName}の${d.title}`
         contents.route = `/${this.chartClass}/${this.prefCode}/${this.innerCityCode}/${this.statisticsClass}/${contents.titleId}/`
@@ -128,7 +114,6 @@ const options: ThisTypedComponentOptionsWithRecordProps<
   },
   watch: {
     selectedCity() {
-      console.log(this.selectedCity)
       const selectedCityCode = this.selectedCity.cityCode
       this.$router.push(
         `/city/${this.prefCode}/${selectedCityCode}/${this.statisticsClass}/`
@@ -136,17 +121,13 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     },
   },
   created(): void {
-    this.cityCode = this.getSelectedCityCode
+    this.selectedCity = this.getCity(this.$route.params.cityCode)
     this.changeChartClass()
   },
   methods: {
     ...mapActions('setting', ['changeSelectedChartClass']),
-    ...mapActions('cityList', ['changeSelectedCity']),
     changeChartClass() {
       this.changeSelectedChartClass(this.chartClass)
-    },
-    changeCity() {
-      this.changeSelectedCity(this.cityCode)
     },
   },
   mounted() {
