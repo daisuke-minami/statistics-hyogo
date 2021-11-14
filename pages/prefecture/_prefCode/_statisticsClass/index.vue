@@ -9,6 +9,13 @@
           v-for="(item, i) in contentsList"
           :key="i"
           :contents="item"
+          :annotation="item.annotation"
+          :routing-path="item.routingPath"
+          :title="item.title"
+          :title-id="item.titleId"
+          :selected-pref="selectedPref"
+          :selected-city="selecterCity"
+          :government-type="governmentType"
         />
       </card-row>
     </div>
@@ -54,13 +61,23 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     }
   },
   computed: {
-    ...mapGetters('prefList', ['getSelectedPrefCode', 'getPrefName']),
+    ...mapGetters('prefList', [
+      'getSelectedPrefCode',
+      'getSelectedPref',
+      'getPrefName',
+    ]),
     ...mapGetters('setting', ['getStatisticsClassName']),
     statisticsClass() {
       return this.$route.params.statisticsClass
     },
     statisticsClassName() {
       return this.getStatisticsClassName(this.statisticsClass)
+    },
+    selectedPref() {
+      return this.getSelectedPref
+    },
+    selecterCity() {
+      return {}
     },
     prefCode(): number {
       return this.getSelectedPrefCode
@@ -83,7 +100,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
         contents.prefCode = this.prefCode
 
         contents.title = `${this.prefName}の${d.title}`
-        contents.route = `/${this.chartClass}/${this.prefCode}/${this.statisticsClass}/${contents.titleId}/`
+        contents.routingPath = `/${this.chartClass}/${this.prefCode}/${this.statisticsClass}/${contents.titleId}/`
 
         return {
           ...contents,

@@ -5,7 +5,7 @@
       "titleId": "agriculture-forestry-fisher",
       "cardComponent": "estat-time-chart-single",
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010106",
         "cdCat01": [
@@ -27,7 +27,7 @@
       "titleId": "agriculture-forestry-and-fisheries-employers",
       "cardComponent": "estat-time-chart-single-multi",
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010106",
         "cdCat01": [
@@ -59,7 +59,7 @@
       "titleId": "agricultural-output",
       "cardComponent": "estat-time-chart-single",
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010103",
         "cdCat01": [
@@ -81,7 +81,7 @@
       "titleId": "number-of-farmers",
       "cardComponent": "estat-time-chart-single-multi",
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010103",
         "cdCat01": [
@@ -118,7 +118,7 @@
       "titleId": "agricultural-working-population",
       "cardComponent": "estat-time-chart-single-multi",
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010103",
         "cdCat01": [
@@ -150,7 +150,7 @@
       "titleId": "agricultural-land-area",
       "cardComponent": "estat-time-chart-single-multi",
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010103",
         "cdCat01": [
@@ -182,7 +182,7 @@
       "titleId": "fishery-output",
       "cardComponent": "estat-time-chart-single-multi",
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010103",
         "cdCat01": [
@@ -214,7 +214,7 @@
       "titleId": "aquaculture-yield",
       "cardComponent": "estat-time-chart-single-multi",
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010103",
         "cdCat01": [
@@ -246,7 +246,7 @@
       "titleId": "agricultural-land-conversion-area",
       "cardComponent": "estat-time-chart-single",
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010103",
         "cdCat01": [
@@ -268,7 +268,7 @@
       "titleId": "abandoned-cultivated-area",
       "cardComponent": "estat-time-chart-single",
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010103",
         "cdCat01": [
@@ -290,7 +290,7 @@
       "titleId": "forest-road-extension",
       "cardComponent": "estat-time-chart-single",
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010103",
         "cdCat01": [
@@ -313,7 +313,7 @@
       "title": "農業産出額",
       "titleId": "agricultural-output",
       "cardComponent": "estat-time-chart-single",
-      "additionalDescription": [],
+      "annotation": [],
       "isRank": true,
       "estatParams": {
         "statsDataId": "0000020203",
@@ -335,7 +335,7 @@
       "title": "耕地放棄面積",
       "titleId": "abandoned-cultivated-area",
       "cardComponent": "estat-time-chart-single",
-      "additionalDescription": [],
+      "annotation": [],
       "isRank": true,
       "estatParams": {
         "statsDataId": "0000020203",

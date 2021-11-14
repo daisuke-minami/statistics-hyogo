@@ -5,7 +5,7 @@
       "titleId": "married-population",
       "cardComponent": "estat-pyramid-chart-card",
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010101",
         "cdCat01": [
@@ -120,7 +120,7 @@
       "titleId": "bereavement-population",
       "cardComponent": "estat-pyramid-chart-card",
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010101",
         "cdCat01": [
@@ -233,7 +233,7 @@
       "titleId": "separated-population",
       "cardComponent": "estat-pyramid-chart-card",
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010101",
         "cdCat01": [
@@ -347,7 +347,7 @@
       "cardComponent": "estat-time-chart-single-multi",
       
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010101",
         "cdCat01": [
@@ -385,7 +385,7 @@
       "cardComponent": "estat-time-chart-single-multi",
       
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010106",
         "cdCat01": [
@@ -425,7 +425,7 @@
       "cardComponent": "estat-time-chart-single-multi",
       
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000020201",
         "cdCat01": [
@@ -448,7 +448,7 @@
       "cardComponent": "estat-time-chart-single-multi",
       
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000020201",
         "cdCat01": [
@@ -471,7 +471,7 @@
       "cardComponent": "estat-time-chart-single-multi",
       
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000020201",
         "cdCat01": [
@@ -494,7 +494,7 @@
       "cardComponent": "estat-time-chart-single-multi",
       
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000020201",
         "cdCat01": [
@@ -517,7 +517,7 @@
       "cardComponent": "estat-time-chart-single-multi",
       
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000020201",
         "cdCat01": [
@@ -540,7 +540,7 @@
       "cardComponent": "estat-time-chart-single-multi",
       
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000020201",
         "cdCat01": [
@@ -563,7 +563,7 @@
       "cardComponent": "estat-time-chart-single-multi",
       
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000020201",
         "cdCat01": [
@@ -586,7 +586,7 @@
       "cardComponent": "estat-time-chart-single-multi",
       
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000020201",
         "cdCat01": [
@@ -609,7 +609,7 @@
       "cardComponent": "estat-time-chart-single-multi",
       
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000020201",
         "cdCat01": [
@@ -632,7 +632,7 @@
       "cardComponent": "estat-time-chart-single-multi",
       
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000020201",
         "cdCat01": [
@@ -655,7 +655,7 @@
       "cardComponent": "estat-time-chart-single-multi",
       
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000020201",
         "cdCat01": [
@@ -693,7 +693,7 @@
       "cardComponent": "estat-time-chart-single-multi",
       
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000020201",
         "cdCat01": [

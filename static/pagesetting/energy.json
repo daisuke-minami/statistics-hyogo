@@ -5,7 +5,7 @@
       "titleId": "power-generation",
       "cardComponent": "estat-time-chart-single",
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010108",
         "cdCat01": [
@@ -27,7 +27,7 @@
       "titleId": "electricity-demand",
       "cardComponent": "estat-time-chart-single",
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010108",
         "cdCat01": [
@@ -49,7 +49,7 @@
       "titleId": "gasoline-sales-volume",
       "cardComponent": "estat-time-chart-single",
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010108",
         "cdCat01": [
@@ -71,7 +71,7 @@
       "titleId": "city-gas-sales-volume",
       "cardComponent": "estat-time-chart-single",
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010108",
         "cdCat01": [
@@ -93,7 +93,7 @@
       "titleId": "garbage-discharged",
       "cardComponent": "estat-time-chart-single",
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010108",
         "cdCat01": [
@@ -117,7 +117,7 @@
       "titleId": "garbage-discharged",
       "cardComponent": "estat-time-chart-single",
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000020208",
         "cdCat01": [

@@ -5,7 +5,7 @@
       "titleId": "kindergartens",
       "cardComponent": "estat-time-chart-single",
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010105",
         "cdCat01": [
@@ -27,7 +27,7 @@
       "titleId": "kindergarten-teachers",
       "cardComponent": "estat-time-chart-single-multi",
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010105",
         "cdCat01": [
@@ -59,7 +59,7 @@
       "titleId": "kindergarten-childrens",
       "cardComponent": "estat-time-chart-single-multi",
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010105",
         "cdCat01": [
@@ -91,7 +91,7 @@
       "titleId": "primary-schools",
       "cardComponent": "estat-time-chart-single",
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010105",
         "cdCat01": [
@@ -113,7 +113,7 @@
       "titleId": "primary-school-teachers",
       "cardComponent": "estat-time-chart-single-multi",
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010105",
         "cdCat01": [
@@ -145,7 +145,7 @@
       "titleId": "primary-school-students",
       "cardComponent": "estat-time-chart-single-multi",
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010105",
         "cdCat01": [
@@ -179,7 +179,7 @@
       "titleId": "kindergartens",
       "cardComponent": "estat-time-chart-single",
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000020205",
         "cdCat01": [
@@ -201,7 +201,7 @@
       "titleId": "primary-schools",
       "cardComponent": "estat-time-chart-single",
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000020205",
         "cdCat01": [

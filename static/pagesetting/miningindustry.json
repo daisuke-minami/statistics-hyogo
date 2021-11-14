@@ -5,7 +5,7 @@
       "titleId": "product-shipment-value",
       "cardComponent": "estat-time-chart-single",
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010103",
         "cdCat01": [
@@ -27,7 +27,7 @@
       "titleId": "manufacturing-industry-value-added",
       "cardComponent": "estat-time-chart-single",
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010103",
         "cdCat01": [
@@ -49,7 +49,7 @@
       "titleId": "industrial-water-volume",
       "cardComponent": "estat-time-chart-single-multi",
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010103",
         "cdCat01": [
@@ -83,7 +83,7 @@
       "titleId": "product-shipment-value",
       "cardComponent": "estat-time-chart-single",
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000020203",
         "cdCat01": [

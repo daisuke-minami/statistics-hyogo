@@ -5,7 +5,7 @@
       "titleId": "gross-fomestic-product-h23",
       "cardComponent": "estat-time-chart-single-multi",
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010103",
         "cdCat01": [
@@ -42,7 +42,7 @@
       "titleId": "prefectural-income-h23",
       "cardComponent": "estat-time-chart-single",
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010103",
         "cdCat01": [
@@ -64,7 +64,7 @@
       "titleId": "private-final-consumption-expenditure-nominal",
       "cardComponent": "estat-time-chart-single",
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010103",
         "cdCat01": [
@@ -86,7 +86,7 @@
       "titleId": "private-final-consumption-expenditure-real",
       "cardComponent": "estat-time-chart-single",
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010103",
         "cdCat01": [
@@ -108,7 +108,7 @@
       "titleId": "government-final-consumption-expenditure-nominal",
       "cardComponent": "estat-time-chart-single",
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010103",
         "cdCat01": [
@@ -130,7 +130,7 @@
       "titleId": "government-final-consumption-expenditure-real",
       "cardComponent": "estat-time-chart-single",
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010103",
         "cdCat01": [
@@ -152,7 +152,7 @@
       "titleId": "prefectural-total-capital-formation-nominal",
       "cardComponent": "estat-time-chart-single-multi",
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010103",
         "cdCat01": [
@@ -184,7 +184,7 @@
       "titleId": "prefectural-total-capital-formation-real",
       "cardComponent": "estat-time-chart-single-multi",
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010103",
         "cdCat01": [
@@ -216,7 +216,7 @@
       "titleId": "taxable-income",
       "cardComponent": "estat-time-chart-single",
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010103",
         "cdCat01": [
@@ -238,7 +238,7 @@
       "titleId": "number-of-taxpayers-one",
       "cardComponent": "estat-time-chart-single",
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010103",
         "cdCat01": [
@@ -260,7 +260,7 @@
       "titleId": "number-of-taxpayers-two",
       "cardComponent": "estat-time-chart-single",
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010103",
         "cdCat01": [
@@ -282,7 +282,7 @@
       "titleId": "number-of-establishments-one",
       "cardComponent": "estat-time-chart-single-multi",
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010103",
         "cdCat01": [
@@ -319,7 +319,7 @@
       "titleId": "number-of-establishments-two",
       "cardComponent": "estat-time-chart-single-multi",
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010103",
         "cdCat01": [
@@ -356,7 +356,7 @@
       "titleId": "number-of-employees-one",
       "cardComponent": "estat-time-chart-single-multi",
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010103",
         "cdCat01": [
@@ -393,7 +393,7 @@
       "titleId": "number-of-employees-two",
       "cardComponent": "estat-time-chart-single-multi",
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010103",
         "cdCat01": [
@@ -430,7 +430,7 @@
       "titleId": "sales-amount",
       "cardComponent": "estat-time-chart-single-multi",
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010103",
         "cdCat01": [
@@ -537,7 +537,7 @@
       "titleId": "value-added-amount",
       "cardComponent": "estat-time-chart-single-multi",
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010103",
         "cdCat01": [
@@ -644,7 +644,7 @@
       "titleId": "consumer-price-index",
       "cardComponent": "estat-time-chart-single",
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010103",
         "cdCat01": [
@@ -666,7 +666,7 @@
       "titleId": "real-income",
       "cardComponent": "estat-time-chart-single-multi",
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010112",
         "cdCat01": [
@@ -698,7 +698,7 @@
       "titleId": "consumption-expenditure-two",
       "cardComponent": "estat-time-chart-single-multi",
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010112",
         "cdCat01": [
@@ -770,7 +770,7 @@
       "titleId": "consumption-expenditure-one",
       "cardComponent": "estat-time-chart-single-multi",
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010112",
         "cdCat01": [
@@ -842,7 +842,7 @@
       "titleId": "current-savings-one",
       "cardComponent": "estat-time-chart-single-multi",
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010112",
         "cdCat01": [
@@ -879,7 +879,7 @@
       "titleId": "current-savings-two",
       "cardComponent": "estat-time-chart-single-multi",
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010112",
         "cdCat01": [
@@ -916,7 +916,7 @@
       "titleId": "current-debt-one",
       "cardComponent": "estat-time-chart-single",
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010112",
         "cdCat01": [
@@ -938,7 +938,7 @@
       "titleId": "current-debt-two",
       "cardComponent": "estat-time-chart-single",
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010112",
         "cdCat01": [
@@ -960,7 +960,7 @@
       "titleId": "average-annual-income-one",
       "cardComponent": "estat-time-chart-single",
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010112",
         "cdCat01": [
@@ -982,7 +982,7 @@
       "titleId": "average-annual-income-two",
       "cardComponent": "estat-time-chart-single",
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010112",
         "cdCat01": [
@@ -1004,7 +1004,7 @@
       "titleId": "gini-coefficient-of-annual-income-one",
       "cardComponent": "estat-time-chart-single",
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010112",
         "cdCat01": [
@@ -1026,7 +1026,7 @@
       "titleId": "gini-coefficient-of-annual-income-two",
       "cardComponent": "estat-time-chart-single",
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010112",
         "cdCat01": [
@@ -1048,7 +1048,7 @@
       "titleId": "gini-coefficient-of-current-savings-one",
       "cardComponent": "estat-time-chart-single",
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010112",
         "cdCat01": [
@@ -1070,7 +1070,7 @@
       "titleId": "gini-coefficient-of-current-savings-two",
       "cardComponent": "estat-time-chart-single",
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010112",
         "cdCat01": [
@@ -1094,7 +1094,7 @@
       "titleId": "taxable-income",
       "cardComponent": "estat-time-chart-single",
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000020203",
         "cdCat01": [

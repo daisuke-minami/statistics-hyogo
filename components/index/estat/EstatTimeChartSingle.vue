@@ -4,7 +4,7 @@
       <template>
         <v-card :loading="$fetchState.pending" class="DataView">
           <p v-if="$fetchState.pending" />
-          <data-view v-else :title="title" :route="route">
+          <data-view v-else :title="title" :route="routingPath">
             <h4 :id="titleId" class="visually-hidden">
               {{ title }}
             </h4>
@@ -43,7 +43,7 @@
             </template>
 
             <template v-slot:footer>
-              <app-link :to="statUrl"> {{ statName }} </app-link>
+              <app-link :to="source.url"> {{ source.name }} </app-link>
             </template>
           </data-view>
         </v-card>
@@ -76,24 +76,64 @@ type Times = {
   yearStr: string
 }
 
+type Props = {
+  contents: object
+  routingPath: string
+  selectedPref: object
+  selectedCity: object
+  governmentType: string
+  title: string
+  titleId: string
+  annotation: string[]
+}
+
 export default defineComponent({
   props: {
     contents: {
       type: Object,
       required: true,
     },
+    routingPath: {
+      type: String,
+      required: true,
+    },
+    selectedPref: {
+      type: Object,
+      required: true,
+    },
+    selectedCity: {
+      type: Object,
+      required: true,
+    },
+    governmentType: {
+      type: String,
+      required: true,
+    },
+    title: {
+      type: String,
+      required: true,
+    },
+    titleId: {
+      type: String,
+      required: true,
+    },
+    annotation: {
+      type: Array,
+      required: true,
+    },
   },
-  setup(props, context) {
+  setup(props: Props, context) {
     const canvas = ref<boolean>(true)
 
     const cdArea = computed((): string => {
-      if (props.contents.cityCode) {
-        return props.contents.cityCode
+      if (props.governmentType === 'city') {
+        return props.selectedCity.cityCode
       } else {
-        return ('0000000000' + props.contents.prefCode).slice(-2) + '000'
+        return ('0000000000' + props.selectedPref.prefCode).slice(-2) + '000'
       }
     })
 
+    // eStat-APIからデータを取得
     const estatResponse = ref({})
     useFetch(async () => {
       const params = props.contents.estatParams
@@ -114,35 +154,13 @@ export default defineComponent({
       return chartComponent
     })
 
-    const title = computed((): string => {
-      return props.contents.title
-    })
-    const titleId = computed((): string => {
-      return props.contents.titleId
-    })
-
-    const statisticsClass = computed((): string => {
-      return props.contents.statisticsClass
-    })
-
-    const governmentType = computed((): string => {
-      return props.contents.governmentType
-    })
-
-    const statName = computed((): string => {
+    const source = computed((): Source => {
       const TABLE_INF =
         estatResponse.value.GET_STATS_DATA.STATISTICAL_DATA.TABLE_INF
-      return `政府統計の総合窓口 e-Stat「${TABLE_INF.STAT_NAME.$}」`
-    })
-
-    const statUrl = computed((): string => {
-      const TABLE_INF =
-        estatResponse.value.GET_STATS_DATA.STATISTICAL_DATA.TABLE_INF
-      return `https://www.e-stat.go.jp/dbview?sid=${TABLE_INF['@id']}`
-    })
-
-    const route = computed((): string => {
-      return props.contents.route
+      return {
+        name: `政府統計の総合窓口 e-Stat「${TABLE_INF.STAT_NAME.$}」`,
+        url: `https://www.e-stat.go.jp/dbview?sid=${TABLE_INF['@id']}`,
+      }
     })
 
     const chartData = computed((): Series[] => {
@@ -171,8 +189,8 @@ export default defineComponent({
     const estatCredit = ref<string>(
       'このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません'
     )
-    const additionalDescription = computed((): string => {
-      return props.contents.additionalDescription.concat(estatCredit.value)
+    const additionalDescription = computed((): string[] => {
+      return props.annotation.concat(estatCredit.value)
     })
 
     const displayInfo = computed(() => {
@@ -251,23 +269,14 @@ export default defineComponent({
 
     return {
       lastUpdate,
-      // allbreak,
       displayData,
       additionalDescription,
-      statName,
-      statUrl,
+      source,
       tableHeaders,
       tableData,
-      route,
       canvas,
       columnline,
       displayInfo,
-      governmentType,
-      statisticsClass,
-      title,
-      times,
-      titleId,
-      chartData,
       chartComponent,
     }
   },

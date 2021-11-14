@@ -6,7 +6,7 @@
       "cardComponent": "estat-time-chart-single",
       
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010102",
         "cdCat01": [
@@ -29,7 +29,7 @@
       "cardComponent": "estat-time-chart-single",
       
       "isRank": true,
-      "additionalDescription": [
+      "annotation": [
         "可住地面積とは、総面積から林野面積と主要湖沼面積を差し引いた、人が住み得る土地をいう"
       ],
       "estatParams": {
@@ -54,7 +54,7 @@
       "cardComponent": "estat-time-chart-single",
       
       "isRank": true,
-      "additionalDescription": [
+      "annotation": [
         "森林面積に森林以外の草生地（野草地）の面積を加えた面積"
       ],
       "estatParams": {
@@ -79,7 +79,7 @@
       "cardComponent": "estat-time-chart-single",
       
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010102",
         "cdCat01": [
@@ -102,7 +102,7 @@
       "cardComponent": "estat-time-chart-single-multi",
       
       "isRank": false,
-      "additionalDescription": [
+      "annotation": [
         "地方税法第342条に基づき，固定資産税の課税客体とされた土地の面積の合計として，都道府県知事から総務大臣に対し，固定資産（土地）の価格等の概要調書によって報告された数値"
       ],
       "estatParams": {
@@ -162,7 +162,7 @@
       "cardComponent": "estat-time-chart-single",
       
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010102",
         "cdCat01": [
@@ -185,7 +185,7 @@
       "cardComponent": "estat-time-chart-single",
       
       "isRank": false,
-      "additionalDescription": [
+      "annotation": [
         "自然公園とは、優れた自然の風景地に区域を画して設けられる公園のことをいい、その風景地の内容や指定方法により「国立公園」、「国定公園」、「都道府県立自然公園」の3種類に区分される"
       ],
       "estatParams": {
@@ -210,7 +210,7 @@
       "cardComponent": "estat-time-chart-single",
       
       "isRank": false,
-      "additionalDescription": [
+      "annotation": [
         "国立公園：日本の中で特に優れた自然の風景地であり、環境大臣が指定する"
       ],
       "estatParams": {
@@ -235,7 +235,7 @@
       "cardComponent": "estat-time-chart-single",
       
       "isRank": false,
-      "additionalDescription": [
+      "annotation": [
         "国定公園：国立公園に準ずる優れた自然の風景地であり、都道府県の申し出を受けて環境大臣が指定する"
       ],
       "estatParams": {
@@ -260,7 +260,7 @@
       "cardComponent": "estat-time-chart-single",
       
       "isRank": false,
-      "additionalDescription": [
+      "annotation": [
         "都道府県立自然公園：都道府県の風景を代表する傑出した自然の風景地であり、都道府県知事が指定する"
       ],
       "estatParams": {
@@ -285,7 +285,7 @@
       "cardComponent": "estat-time-chart-single",
       
       "isRank": false,
-      "additionalDescription": [
+      "annotation": [
         "都道府県立自然公園：都道府県の風景を代表する傑出した自然の風景地であり、都道府県知事が指定する"
       ],
       "estatParams": {
@@ -310,7 +310,7 @@
       "cardComponent": "estat-time-chart-single",
       
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010102",
         "cdCat01": [
@@ -333,7 +333,7 @@
       "cardComponent": "estat-time-chart-single",
       
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010102",
         "cdCat01": [
@@ -356,7 +356,7 @@
       "cardComponent": "estat-time-chart-single",
       
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010102",
         "cdCat01": [
@@ -379,7 +379,7 @@
       "cardComponent": "estat-time-chart-single",
       
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010102",
         "cdCat01": [
@@ -402,7 +402,7 @@
       "cardComponent": "estat-time-chart-single",
       
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010102",
         "cdCat01": [
@@ -425,7 +425,7 @@
       "cardComponent": "estat-time-chart-single",
       
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010102",
         "cdCat01": [
@@ -448,7 +448,7 @@
       "cardComponent": "estat-time-chart-single",
       
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010102",
         "cdCat01": [
@@ -471,7 +471,7 @@
       "cardComponent": "estat-time-chart-single",
       
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010102",
         "cdCat01": [
@@ -494,7 +494,7 @@
       "cardComponent": "estat-time-chart-single",
       
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010102",
         "cdCat01": [
@@ -519,7 +519,7 @@
       "cardComponent": "estat-time-chart-single",
       
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000020202",
         "cdCat01": [
@@ -542,7 +542,7 @@
       "cardComponent": "estat-time-chart-single-multi",
       
       "isRank": true,
-      "additionalDescription": [
+      "annotation": [
         "可住地面積とは、総面積から林野面積と主要湖沼面積を差し引いた、人が住み得る土地をいう"
       ],
       "estatParams": {
@@ -567,7 +567,7 @@
       "cardComponent": "estat-time-chart-single-multi",
       
       "isRank": true,
-      "additionalDescription": [
+      "annotation": [
         "森林面積に森林以外の草生地（野草地）の面積を加えた面積"
       ],
       "estatParams": {
@@ -592,7 +592,7 @@
       "cardComponent": "estat-time-chart-single-multi",
       
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000020202",
         "cdCat01": [

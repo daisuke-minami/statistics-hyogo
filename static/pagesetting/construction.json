@@ -5,7 +5,7 @@
       "titleId": "number-of-builders",
       "cardComponent": "estat-time-chart-single",
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010103",
         "cdCat01": [
@@ -29,7 +29,7 @@
       "titleId": "standard-price-residential-area",
       "cardComponent": "estat-time-chart-single",
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000020203",
         "cdCat01": [

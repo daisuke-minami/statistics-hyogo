@@ -4,6 +4,10 @@ import { cloneDeep } from 'lodash'
 const initialState = {
   prefList: [],
   selectedPrefCode: 28,
+  selectedPref: {
+    prefCode: 28,
+    prefName: '兵庫県',
+  },
 }
 
 // ShallowCopyを避けるため、lodashのcloneDeepを用いる。
@@ -15,6 +19,9 @@ export const getters = {
   },
   getSelectedPrefCode(state) {
     return state.selectedPrefCode
+  },
+  getSelectedPref(state) {
+    return state.selectedPref
   },
   getPrefName: (state) => (prefCode) => {
     return state.prefList.find((d) => d.prefCode === prefCode).prefName

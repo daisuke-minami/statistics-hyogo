@@ -5,7 +5,7 @@
       "titleId": "foreign-residents",
       "cardComponent": "estat-time-chart-single-multi",
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010101",
         "cdCat01": [

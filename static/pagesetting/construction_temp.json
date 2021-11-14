@@ -6,7 +6,7 @@
       "cardComponent": "estat-time-chart-single-multi",
       
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010103",
         "cdCat01": ["C3306"]
@@ -27,7 +27,7 @@
       "cardComponent": "estat-time-chart-single-multi",
       
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010103",
         "cdCat01": ["C5403"]
@@ -48,7 +48,7 @@
      "cardComponent": "estat-time-chart-single-multi",
       
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
        "estatParams": {
         "statsDataId": "0000010103",
         "cdCat01": ["C5405"]
@@ -71,7 +71,7 @@
       "cardComponent": "estat-time-chart-single-multi",
       
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
        "estatParams": {
         "statsDataId": "0000020203",
         "cdCat01": ["C5401"]
@@ -92,7 +92,7 @@
       "cardComponent": "estat-time-chart-single-multi",
       
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000020203",
         "cdCat01": ["C5403"]
@@ -113,7 +113,7 @@
      "cardComponent": "estat-time-chart-single-multi",
       
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
        "estatParams": {
         "statsDataId": "0000020203",
         "cdCat01": ["C5405"]

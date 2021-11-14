@@ -5,7 +5,7 @@
       "titleId": "number-of-commercial-establishments",
       "cardComponent": "estat-time-chart-single-multi",
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010103",
         "cdCat01": [
@@ -39,7 +39,7 @@
       "titleId": "number-of-commercial-establishments",
       "cardComponent": "estat-time-chart-single-multi",
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000020203",
         "cdCat01": [

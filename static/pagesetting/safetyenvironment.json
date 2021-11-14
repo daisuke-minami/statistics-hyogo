@@ -5,7 +5,7 @@
       "titleId": "traffic-accident",
       "cardComponent": "estat-time-chart-single",
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010111",
         "cdCat01": [
@@ -27,7 +27,7 @@
       "titleId": "criminal-law-offender",
       "cardComponent": "estat-time-chart-single",
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010111",
         "cdCat01": [
@@ -49,7 +49,7 @@
       "titleId": "traffic-accident-casualties",
       "cardComponent": "estat-time-chart-single",
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010111",
         "cdCat01": [
@@ -71,7 +71,7 @@
       "titleId": "fire-department",
       "cardComponent": "estat-time-chart-single",
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010111",
         "cdCat01": [
@@ -93,7 +93,7 @@
       "titleId": "fire-department-dispatch",
       "cardComponent": "estat-time-chart-single",
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010111",
         "cdCat01": [
@@ -115,7 +115,7 @@
       "titleId": "fire-brigade",
       "cardComponent": "estat-time-chart-single-multi",
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010111",
         "cdCat01": [
@@ -147,7 +147,7 @@
       "titleId": "fire-brigade-member",
       "cardComponent": "estat-time-chart-single",
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010111",
         "cdCat01": [
@@ -169,7 +169,7 @@
       "titleId": "emergency-dispatches",
       "cardComponent": "estat-time-chart-single",
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010111",
         "cdCat01": [
@@ -191,7 +191,7 @@
       "titleId": "number-of-fires",
       "cardComponent": "estat-time-chart-single",
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010111",
         "cdCat01": [
@@ -213,7 +213,7 @@
       "titleId": "number-of-building-fires",
       "cardComponent": "estat-time-chart-single",
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010111",
         "cdCat01": [
@@ -235,7 +235,7 @@
       "titleId": "building-burned-floor-area",
       "cardComponent": "estat-time-chart-single",
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010111",
         "cdCat01": [
@@ -257,7 +257,7 @@
       "titleId": "fire-damage-amount",
       "cardComponent": "estat-time-chart-single",
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010111",
         "cdCat01": [
@@ -279,7 +279,7 @@
       "titleId": "building-fire-damage-amount",
       "cardComponent": "estat-time-chart-single",
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010111",
         "cdCat01": [
@@ -301,7 +301,7 @@
       "titleId": "number-of-fire-casualties",
       "cardComponent": "estat-time-chart-single-multi",
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010111",
         "cdCat01": [
@@ -333,7 +333,7 @@
       "titleId": "number-of-new-fire-insurance-contracts",
       "cardComponent": "estat-time-chart-single",
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010111",
         "cdCat01": [
@@ -355,7 +355,7 @@
       "titleId": "fire-insurance-new-contract-amount",
       "cardComponent": "estat-time-chart-single",
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010111",
         "cdCat01": [
@@ -377,7 +377,7 @@
       "titleId": "number-of-fire-insurance-claims-paid",
       "cardComponent": "estat-time-chart-single",
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010111",
         "cdCat01": [
@@ -399,7 +399,7 @@
       "titleId": "fire-insurance-insurance-payment-amount",
       "cardComponent": "estat-time-chart-single",
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010111",
         "cdCat01": [
@@ -421,7 +421,7 @@
       "titleId": "number-of-voluntary-automobile-insurance-contracts",
       "cardComponent": "estat-time-chart-single",
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010111",
         "cdCat01": [
@@ -443,7 +443,7 @@
       "titleId": "voluntary-car-insurance-contract-premium",
       "cardComponent": "estat-time-chart-single",
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010111",
         "cdCat01": [
@@ -465,7 +465,7 @@
       "titleId": "number-of-voluntary-automobile-insurance-claims-paid",
       "cardComponent": "estat-time-chart-single",
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010111",
         "cdCat01": [
@@ -487,7 +487,7 @@
       "titleId": "voluntary-car-insurance-insurance-payment-amount",
       "cardComponent": "estat-time-chart-single",
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010111",
         "cdCat01": [
@@ -509,7 +509,7 @@
       "titleId": "voluntary-car-insurance-penetration-rate-one",
       "cardComponent": "estat-time-chart-single",
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010111",
         "cdCat01": [
@@ -531,7 +531,7 @@
       "titleId": "voluntary-car-insurance-penetration-rate-two",
       "cardComponent": "estat-time-chart-single",
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010111",
         "cdCat01": [
@@ -553,7 +553,7 @@
       "titleId": "voluntary-car-insurance-penetration-rate-three",
       "cardComponent": "estat-time-chart-single",
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010111",
         "cdCat01": [
@@ -575,7 +575,7 @@
       "titleId": "voluntary-car-insurance-penetration-rate-four",
       "cardComponent": "estat-time-chart-single",
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010111",
         "cdCat01": [
@@ -597,7 +597,7 @@
       "titleId": "number-of-crime-prevention-volunteer-groups",
       "cardComponent": "estat-time-chart-single",
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010111",
         "cdCat01": [
@@ -619,7 +619,7 @@
       "titleId": "number-of-crime-prevention-volunteer-members",
       "cardComponent": "estat-time-chart-single",
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010111",
         "cdCat01": [
@@ -641,7 +641,7 @@
       "titleId": "calculated-greenhouse-gas-emissions-one",
       "cardComponent": "estat-time-chart-single",
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010111",
         "cdCat01": [
@@ -663,7 +663,7 @@
       "titleId": "calculated-greenhouse-gas-emissions-two",
       "cardComponent": "estat-time-chart-single",
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010111",
         "cdCat01": [
@@ -685,7 +685,7 @@
       "titleId": "water-pollution-control-law",
       "cardComponent": "estat-time-chart-single",
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010111",
         "cdCat01": [
@@ -707,7 +707,7 @@
       "titleId": "number-of-soot-and-smoke-generating-facilities",
       "cardComponent": "estat-time-chart-single-multi",
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010111",
         "cdCat01": [
@@ -739,7 +739,7 @@
       "titleId": "number-of-pollution-complaints",
       "cardComponent": "estat-time-chart-single-multi",
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010111",
         "cdCat01": [
@@ -796,7 +796,7 @@
       "titleId": "number-of-pollution-complaints-received",
       "cardComponent": "estat-time-chart-single-multi",
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010111",
         "cdCat01": [
@@ -828,7 +828,7 @@
       "titleId": "number-of-pollution-complaints-handled",
       "cardComponent": "estat-time-chart-single-multi",
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010111",
         "cdCat01": [
@@ -860,7 +860,7 @@
       "titleId": "disaster-damage-amount",
       "cardComponent": "estat-time-chart-single",
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010111",
         "cdCat01": [
@@ -882,7 +882,7 @@
       "titleId": "flooding-on-the-floor",
       "cardComponent": "estat-time-chart-single",
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010111",
         "cdCat01": [
@@ -904,7 +904,7 @@
       "titleId": "flooding-under-the-floor",
       "cardComponent": "estat-time-chart-single",
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010111",
         "cdCat01": [
@@ -926,7 +926,7 @@
       "titleId": "number-of-affected-households",
       "cardComponent": "estat-time-chart-single",
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010111",
         "cdCat01": [
@@ -948,7 +948,7 @@
       "titleId": "number-of-victims",
       "cardComponent": "estat-time-chart-single",
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010111",
         "cdCat01": [
@@ -970,7 +970,7 @@
       "titleId": "personnel-accepting-alleged-foreigners",
       "cardComponent": "estat-time-chart-single-multi",
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010111",
         "cdCat01": [
@@ -1002,7 +1002,7 @@
       "titleId": "immigration-control-one",
       "cardComponent": "estat-time-chart-single",
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010111",
         "cdCat01": [
@@ -1024,7 +1024,7 @@
       "titleId": "immigration-control-two",
       "cardComponent": "estat-time-chart-single",
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010111",
         "cdCat01": [
@@ -1046,7 +1046,7 @@
       "titleId": "violation-of-the-road-traffic-act",
       "cardComponent": "estat-time-chart-single",
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010111",
         "cdCat01": [
@@ -1068,7 +1068,7 @@
       "titleId": "number-of-traffic-accidents",
       "cardComponent": "estat-time-chart-single",
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010111",
         "cdCat01": [
@@ -1090,7 +1090,7 @@
       "titleId": "number-of-traffic-accidents-boys",
       "cardComponent": "estat-time-chart-single",
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010111",
         "cdCat01": [
@@ -1112,7 +1112,7 @@
       "titleId": "traffic-accident-personnel",
       "cardComponent": "estat-time-chart-single",
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010111",
         "cdCat01": [
@@ -1134,7 +1134,7 @@
       "titleId": "tactile-boy-guidance-personnel",
       "cardComponent": "estat-time-chart-single",
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010111",
         "cdCat01": [
@@ -1156,7 +1156,7 @@
       "titleId": "newly-accepted-juvenile-protection-case",
       "cardComponent": "estat-time-chart-single",
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010111",
         "cdCat01": [
@@ -1178,7 +1178,7 @@
       "titleId": "number-of-civil-cases",
       "cardComponent": "estat-time-chart-single",
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010111",
         "cdCat01": [
@@ -1200,7 +1200,7 @@
       "titleId": "number-of-administrative-cases",
       "cardComponent": "estat-time-chart-single",
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010111",
         "cdCat01": [
@@ -1222,7 +1222,7 @@
       "titleId": "number-of-domestic-affairs",
       "cardComponent": "estat-time-chart-single",
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010111",
         "cdCat01": [
@@ -1244,7 +1244,7 @@
       "titleId": "number-of-police-officers",
       "cardComponent": "estat-time-chart-single",
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010111",
         "cdCat01": [
@@ -1266,7 +1266,7 @@
       "titleId": "number-of-arrests-for-special-law-offenses",
       "cardComponent": "estat-time-chart-single",
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010111",
         "cdCat01": [
@@ -1288,7 +1288,7 @@
       "titleId": "special-law-offenders-arrested",
       "cardComponent": "estat-time-chart-single",
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010111",
         "cdCat01": [
@@ -1310,7 +1310,7 @@
       "titleId": "number-of-stimulant-drug-control-law-arrests",
       "cardComponent": "estat-time-chart-single",
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010111",
         "cdCat01": [
@@ -1332,7 +1332,7 @@
       "titleId": "stimulant-drug-control-arrest-personnel",
       "cardComponent": "estat-time-chart-single",
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010111",
         "cdCat01": [
@@ -1354,7 +1354,7 @@
       "titleId": "number-of-arrests-for-prostitution-offenders",
       "cardComponent": "estat-time-chart-single",
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010111",
         "cdCat01": [
@@ -1376,7 +1376,7 @@
       "titleId": "arrested-personnel-for-prostitution-offenders",
       "cardComponent": "estat-time-chart-single",
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010111",
         "cdCat01": [
@@ -1400,7 +1400,7 @@
       "titleId": "traffic-accident",
       "cardComponent": "estat-time-chart-single",
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000020211",
         "cdCat01": [
@@ -1422,7 +1422,7 @@
       "titleId": "criminal-law-offender",
       "cardComponent": "estat-time-chart-single",
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000020211",
         "cdCat01": [

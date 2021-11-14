@@ -5,7 +5,7 @@
       "titleId": "foreign-population",
       "cardComponent": "estat-time-chart-single-multi",
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010101",
         "cdCat01": [
@@ -37,7 +37,7 @@
       "titleId": "population-all",
       "cardComponent": "estat-time-chart-single-multi",
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010101",
         "cdCat01": [
@@ -69,7 +69,7 @@
       "titleId": "population-japanese",
       "cardComponent": "estat-time-chart-single-multi",
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010101",
         "cdCat01": [
@@ -101,7 +101,7 @@
       "titleId": "densely-inhabited-district-population",
       "cardComponent": "estat-time-chart-single-multi",
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010101",
         "cdCat01": [
@@ -133,7 +133,7 @@
       "titleId": "number-of-births",
       "cardComponent": "estat-time-chart-single-multi",
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010101",
         "cdCat01": [
@@ -165,7 +165,7 @@
       "titleId": "total-fertility-rate",
       "cardComponent": "estat-time-chart-single",
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010101",
         "cdCat01": [
@@ -187,7 +187,7 @@
       "titleId": "number-of-deaths",
       "cardComponent": "estat-time-chart-single-multi",
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010101",
         "cdCat01": [
@@ -219,7 +219,7 @@
       "titleId": "age-adjusted-mortality-woman",
       "cardComponent": "estat-time-chart-single",
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010101",
         "cdCat01": [
@@ -241,7 +241,7 @@
       "titleId": "stillbirth-one",
       "cardComponent": "estat-time-chart-single",
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010101",
         "cdCat01": [
@@ -263,7 +263,7 @@
       "titleId": "natural-stillbirth",
       "cardComponent": "estat-time-chart-single",
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010101",
         "cdCat01": [
@@ -285,7 +285,7 @@
       "titleId": "stillbirth-two",
       "cardComponent": "estat-time-chart-single",
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010101",
         "cdCat01": [
@@ -307,7 +307,7 @@
       "titleId": "early-neonatal-mortality",
       "cardComponent": "estat-time-chart-single",
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010101",
         "cdCat01": [
@@ -329,7 +329,7 @@
       "titleId": "neonatal-mortality",
       "cardComponent": "estat-time-chart-single",
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010101",
         "cdCat01": [
@@ -351,7 +351,7 @@
       "titleId": "infant-deaths",
       "cardComponent": "estat-time-chart-single",
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010101",
         "cdCat01": [
@@ -373,7 +373,7 @@
       "titleId": "standardized-mortality-ratio",
       "cardComponent": "estat-time-chart-single",
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010101",
         "cdCat01": [
@@ -395,7 +395,7 @@
       "titleId": "densely-inhabited-area",
       "cardComponent": "estat-time-chart-single",
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010101",
         "cdCat01": [
@@ -417,7 +417,7 @@
       "titleId": "daytime-population",
       "cardComponent": "estat-time-chart-single",
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010101",
         "cdCat01": [
@@ -439,7 +439,7 @@
       "titleId": "day-night-population-ratio",
       "cardComponent": "estat-time-chart-single",
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010101",
         "cdCat01": [
@@ -461,7 +461,7 @@
       "titleId": "influx-population",
       "cardComponent": "estat-time-chart-single",
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010101",
         "cdCat01": [
@@ -483,7 +483,7 @@
       "titleId": "outflow-population",
       "cardComponent": "estat-time-chart-single",
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010101",
         "cdCat01": [
@@ -505,7 +505,7 @@
       "titleId": "transferees",
       "cardComponent": "estat-time-chart-single",
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010101",
         "cdCat01": [
@@ -527,7 +527,7 @@
       "titleId": "outmigrants",
       "cardComponent": "estat-time-chart-single",
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010101",
         "cdCat01": [
@@ -549,7 +549,7 @@
       "titleId": "marriage",
       "cardComponent": "estat-time-chart-single",
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010101",
         "cdCat01": [
@@ -571,7 +571,7 @@
       "titleId": "divorce",
       "cardComponent": "estat-time-chart-single",
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010101",
         "cdCat01": [
@@ -593,7 +593,7 @@
       "titleId": "births",
       "cardComponent": "estat-time-chart-single",
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010101",
         "cdCat01": [
@@ -615,7 +615,7 @@
       "titleId": "deaths",
       "cardComponent": "estat-time-chart-single",
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010101",
         "cdCat01": [
@@ -637,7 +637,7 @@
       "titleId": "average-marriage-age-man",
       "cardComponent": "estat-time-chart-single",
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010101",
         "cdCat01": [
@@ -659,7 +659,7 @@
       "titleId": "average-marriage-age-woman",
       "cardComponent": "estat-time-chart-single",
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010101",
         "cdCat01": [
@@ -681,7 +681,7 @@
       "titleId": "motherchild-household",
       "cardComponent": "estat-time-chart-single-multi",
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010101",
         "cdCat01": [
@@ -718,7 +718,7 @@
       "titleId": "age-adjusted-mortality-man",
       "cardComponent": "estat-time-chart-single",
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010101",
         "cdCat01": [
@@ -742,7 +742,7 @@
       "titleId": "population-all",
       "cardComponent": "estat-time-chart-single-multi",
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000020201",
         "cdCat01": [
@@ -774,7 +774,7 @@
       "titleId": "daytime-population",
       "cardComponent": "estat-time-chart-single",
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000020201",
         "cdCat01": [
@@ -796,7 +796,7 @@
       "titleId": "day-night-population-ratio",
       "cardComponent": "estat-time-chart-single",
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000020201",
         "cdCat01": [
@@ -818,7 +818,7 @@
       "titleId": "agricultural-output",
       "cardComponent": "estat-time-chart-single",
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000020203",
         "cdCat01": [
@@ -840,7 +840,7 @@
       "titleId": "day-night-population-ratio",
       "cardComponent": "estat-time-chart-single",
       "isRank": false,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000020201",
         "cdCat01": [

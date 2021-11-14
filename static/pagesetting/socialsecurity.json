@@ -5,7 +5,7 @@
       "titleId": "national-medical-expenses",
       "cardComponent": "estat-time-chart-single",
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000010110",
         "cdCat01": [
@@ -29,7 +29,7 @@
       "titleId": "welfare-facilities-elderly",
       "cardComponent": "estat-time-chart-single",
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000020210",
         "cdCat01": [
@@ -51,7 +51,7 @@
       "titleId": "number-of-national-health-insurance",
       "cardComponent": "estat-time-chart-single",
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000020210",
         "cdCat01": [
@@ -73,7 +73,7 @@
       "titleId": "national-health-insurance-benefit-amount",
       "cardComponent": "estat-time-chart-single",
       "isRank": true,
-      "additionalDescription": [],
+      "annotation": [],
       "estatParams": {
         "statsDataId": "0000020210",
         "cdCat01": [
