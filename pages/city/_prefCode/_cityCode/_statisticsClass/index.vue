@@ -22,6 +22,13 @@
         v-for="(item, i) in contentsList"
         :key="i"
         :contents="item"
+        :annotation="item.annotation"
+        :routing-path="item.routingPath"
+        :title="item.title"
+        :title-id="item.titleId"
+        :selected-pref="selectedPref"
+        :selected-city="selectedCity"
+        :government-type="governmentType"
       />
     </card-row>
   </div>
@@ -68,7 +75,11 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     }
   },
   computed: {
-    ...mapGetters('prefList', ['getSelectedPrefCode', 'getPrefName']),
+    ...mapGetters('prefList', [
+      'getSelectedPrefCode',
+      'getSelectedPref',
+      'getPrefName',
+    ]),
     ...mapGetters('cityList', ['getCity', 'getCityList', 'getCityName']),
     ...mapGetters('setting', ['getStatisticsClassName']),
     statisticsClass() {
@@ -86,6 +97,10 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     cityList() {
       return this.getCityList
     },
+    selectedPref() {
+      return this.getSelectedPref
+    },
+
     contentsList() {
       return this.contentsAll[this.governmentType].map((d) => {
         const contents = cloneDeep(d)
@@ -104,7 +119,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
         contents.cityCode = this.selectedCity.cityCode
 
         contents.title = `${this.cityName}の${d.title}`
-        contents.route = `/${this.chartClass}/${this.prefCode}/${this.innerCityCode}/${this.statisticsClass}/${contents.titleId}/`
+        contents.routingPath = `/${this.chartClass}/${this.prefCode}/${this.innerCityCode}/${this.statisticsClass}/${contents.titleId}/`
 
         return {
           ...contents,

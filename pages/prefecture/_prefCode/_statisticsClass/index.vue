@@ -14,7 +14,7 @@
           :title="item.title"
           :title-id="item.titleId"
           :selected-pref="selectedPref"
-          :selected-city="selecterCity"
+          :selected-city="selectedCity"
           :government-type="governmentType"
         />
       </card-row>
@@ -76,7 +76,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     selectedPref() {
       return this.getSelectedPref
     },
-    selecterCity() {
+    selectedCity() {
       return {}
     },
     prefCode(): number {

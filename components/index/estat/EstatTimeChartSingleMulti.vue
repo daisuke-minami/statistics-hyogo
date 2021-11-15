@@ -178,11 +178,11 @@ export default defineComponent({
       const style = getGraphSeriesStyle(series.length)
       const value =
         estatResponse.value.GET_STATS_DATA.STATISTICAL_DATA.DATA_INF.VALUE
-      return series.item.map((d, i) => {
+      return series.map((d, i) => {
         return {
           name: d.name,
           data: value
-            .filter((f) => f[`@${series.id}`] === d.code)
+            .filter((f) => f[`@${d.id}`] === d.code)
             .map((d) => {
               return {
                 x: parseInt(d['@time'].substr(0, 4)),
