@@ -2,8 +2,9 @@
   <div>
     <tab-chart-class :statistics-class="statisticsClass" />
 
-    <div>
-      <card-row class="DataBlock">
+    <div :loading="$fetchState.pending">
+      <p v-if="$fetchState.pending" />
+      <card-row v-else class="DataBlock">
         <lazy-component
           :is="item.cardComponent"
           v-for="(item, i) in contentsList"
@@ -23,122 +24,78 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-import { ThisTypedComponentOptionsWithRecordProps } from 'vue/types/options'
-import { mapActions, mapGetters } from 'vuex'
-import { cloneDeep } from 'lodash'
-import { ContentsType, ContentsList } from '~/utils/formatChart'
+import {
+  defineComponent,
+  ref,
+  computed,
+  useFetch,
+  useMeta,
+  useStore,
+} from '@nuxtjs/composition-api'
 
-type Props = {
-  statisticsClass: string
-  contentsAll: ContentsType[]
-}
+export default defineComponent({
+  head: {},
+  setup(_, context) {
+    const store = useStore()
+    const route = context.root.$route
+    const chartClass = ref<string>('prefecture')
+    const governmentType = ref<string>('prefecture')
 
-type Computed = {
-  prefInfomation: () => { prefName: string; prefCode: string }
-  contentsList: () => ContentsList[]
-}
+    const statisticsClass = computed((): string => {
+      return route.params.statisticsClass
+    })
 
-type Methods = {}
+    const contentsAll = ref({})
+    useFetch(async () => {
+      const data = await import(
+        `~/static/pagesetting/${route.params.statisticsClass}.json`
+      )
+      contentsAll.value = data
+    })
 
-const options: ThisTypedComponentOptionsWithRecordProps<
-  Vue,
-  Data,
-  Methods,
-  Computed,
-  Props
-> = {
-  async asyncData({ params }) {
-    const contentsAll = await import(
-      `~/static/pagesetting/${params.statisticsClass}.json`
-    )
-    return { contentsAll }
-  },
-  data() {
-    return {
-      chartClass: 'prefecture',
-      governmentType: 'prefecture',
-    }
-  },
-  computed: {
-    ...mapGetters('prefList', [
-      'getSelectedPrefCode',
-      'getSelectedPref',
-      'getPrefName',
-    ]),
-    ...mapGetters('setting', ['getStatisticsClassName']),
-    statisticsClass() {
-      return this.$route.params.statisticsClass
-    },
-    statisticsClassName() {
-      return this.getStatisticsClassName(this.statisticsClass)
-    },
-    selectedPref() {
-      return this.getSelectedPref
-    },
-    selectedCity() {
-      return {}
-    },
-    prefCode(): number {
-      return this.getSelectedPrefCode
-    },
-    prefName(): string {
-      return this.getPrefName(this.prefCode)
-    },
-    contentsList() {
-      return this.contentsAll[this.governmentType].map((d) => {
-        // ShallowCopyを避けるため、lodashのcloneDeepを用いる。
-        const contents = cloneDeep(d)
-
-        // 統計情報を追加
-        contents.statisticsClass = this.statisticsClass
-        contents.chartClass = this.chartClass
-        contents.governmentType = this.governmentType
-
-        // 都道府県の情報を追加
-        contents.prefName = this.prefName
-        contents.prefCode = this.prefCode
-
-        contents.title = `${this.prefName}の${d.title}`
-        contents.routingPath = `/${this.chartClass}/${this.prefCode}/${this.statisticsClass}/${contents.titleId}/`
-
+    const contentsList = computed((): object => {
+      return contentsAll.value[governmentType.value].map((d) => {
         return {
-          ...contents,
+          title: `${selectedPref.value.prefName}の${d.title}`,
+          titleId: d.titleId,
+          cardComponent: d.cardComponent,
+          annotation: d.annotation,
+          estatParams: d.estatParams,
+          series: d.series,
+          routingPath: `/${chartClass.value}/${selectedPref.value.prefCode}/${statisticsClass.value}/${d.titleId}/`,
         }
       })
-    },
-  },
-  watch: {},
-  created(): void {
-    this.changeChartClass()
-  },
-  methods: {
-    ...mapActions('setting', ['changeSelectedChartClass']),
-    changeChartClass() {
-      this.changeSelectedChartClass(this.chartClass)
-    },
-  },
-  mounted() {
-    this.$nextTick(() => {
-      this.$nuxt.$loading.start()
-
-      setTimeout(() => this.$nuxt.$loading.finish(), 500)
     })
-  },
-  head() {
-    return {
-      title: `${this.prefName}の${this.statisticsClassName}`,
+
+    // 都道府県／市区町村の情報
+    const selectedPref = computed(
+      () => store.getters['prefList/getSelectedPref']
+    )
+    const selectedCity = ref<object>({})
+
+    // メタ
+    const metaTitle = computed(() => {
+      return `${selectedPref.value.prefName}の${statisticsClass.value}`
+    })
+    useMeta(() => ({
+      title: metaTitle.value,
       meta: [
         {
           hid: 'description',
           name: 'description',
-          content: `${this.prefName}の${this.statisticsClassName}に関する統計をまとめています`,
+          content: `統計をまとめています`,
         },
       ],
+    }))
+
+    return {
+      contentsList,
+      selectedPref,
+      selectedCity,
+      governmentType,
     }
   },
-}
-export default Vue.extend(options)
+})
 </script>
 
 <style lang="scss" scoped>
