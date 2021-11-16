@@ -142,7 +142,7 @@ export default defineComponent({
   setup(props: Props, context) {
     const canvas = ref<boolean>(true)
 
-    console.log(props.selectedCity)
+    // console.log(props.selectedCity)
     const cdArea = computed((): string => {
       if (props.governmentType === 'city') {
         return props.selectedCity.cityCode
