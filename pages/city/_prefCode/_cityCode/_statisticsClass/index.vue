@@ -16,156 +16,193 @@
       </v-row>
     </static-card>
 
-    <card-row class="DataBlock">
-      <lazy-component
-        :is="item.cardComponent"
-        v-for="(item, i) in contentsList"
-        :key="i"
-        :contents="item"
-        :annotation="item.annotation"
-        :routing-path="item.routingPath"
-        :title="item.title"
-        :title-id="item.titleId"
-        :selected-pref="selectedPref"
-        :selected-city="selectedCity"
-        :government-type="governmentType"
-      />
-    </card-row>
+    <div :loading="$fetchState.pending">
+      <p v-if="$fetchState.pending" />
+      <card-row v-else class="DataBlock">
+        <lazy-component
+          :is="item.cardComponent"
+          v-for="(item, i) in contentsList"
+          :key="i"
+          :series="item.series"
+          :estat-params="item.estatParams"
+          :annotation="item.annotation"
+          :routing-path="item.routingPath"
+          :title="item.title"
+          :title-id="item.titleId"
+          :selected-pref="selectedPref"
+          :selected-city="selectedCity"
+          :government-type="governmentType"
+        />
+      </card-row>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-import { ThisTypedComponentOptionsWithRecordProps } from 'vue/types/options'
-import { mapActions, mapGetters } from 'vuex'
-import { cloneDeep } from 'lodash'
-import { ContentsType, ContentsList } from '~/utils/formatChart'
+import {
+  defineComponent,
+  ref,
+  computed,
+  useFetch,
+  useMeta,
+  useStore,
+  useRoute,
+  useRouter,
+  watch,
+} from '@nuxtjs/composition-api'
 
-type Props = {
-  statisticsClass: string
-  contentsAll: ContentsType[]
-}
+export default defineComponent({
+  head: {},
+  setup() {
+    const store = useStore()
+    const route = useRoute()
+    const router = useRouter()
+    const chartClass = ref<string>('city')
+    const governmentType = ref<string>('city')
 
-type Computed = {
-  prefInfomation: () => { prefName: string; prefCode: string }
-  contentsList: () => ContentsList[]
-}
+    const statisticsClass = computed((): string => {
+      return route.value.params.statisticsClass
+    })
 
-type Methods = {}
+    const contentsAll = ref({})
+    useFetch(async () => {
+      const data = await import(
+        `~/static/pagesetting/${route.value.params.statisticsClass}.json`
+      )
+      contentsAll.value = data
+    })
 
-const options: ThisTypedComponentOptionsWithRecordProps<
-  Vue,
-  Data,
-  Methods,
-  Computed,
-  Props
-> = {
-  async asyncData({ params }) {
-    const contentsAll = await import(
-      `~/static/pagesetting/${params.statisticsClass}.json`
-    )
-    return { contentsAll }
-  },
-  async fetch() {},
-  data() {
-    return {
-      chartClass: 'city',
-      governmentType: 'city',
-      selectedCity: null,
-    }
-  },
-  computed: {
-    ...mapGetters('prefList', [
-      'getSelectedPrefCode',
-      'getSelectedPref',
-      'getPrefName',
-    ]),
-    ...mapGetters('cityList', ['getCity', 'getCityList', 'getCityName']),
-    ...mapGetters('setting', ['getStatisticsClassName']),
-    statisticsClass() {
-      return this.$route.params.statisticsClass
-    },
-    statisticsClassName() {
-      return this.getStatisticsClassName(this.statisticsClass)
-    },
-    prefCode(): number {
-      return this.getSelectedPrefCode
-    },
-    prefName(): string {
-      return this.getPrefName(this.prefCode)
-    },
-    cityList() {
-      return this.getCityList
-    },
-    selectedPref() {
-      return this.getSelectedPref
-    },
-
-    contentsList() {
-      return this.contentsAll[this.governmentType].map((d) => {
-        const contents = cloneDeep(d)
-
-        // 統計情報を追加
-        contents.statisticsClass = this.statisticsClass
-        contents.chartClass = this.chartClass
-        contents.governmentType = this.governmentType
-
-        // 都道府県の情報を追加
-        contents.prefName = this.prefName
-        contents.prefCode = this.prefCode
-
-        // 市区町村の情報を追加
-        contents.cityName = this.selectedCity.cityName
-        contents.cityCode = this.selectedCity.cityCode
-
-        contents.title = `${this.cityName}の${d.title}`
-        contents.routingPath = `/${this.chartClass}/${this.prefCode}/${this.innerCityCode}/${this.statisticsClass}/${contents.titleId}/`
-
+    const contentsList = computed((): object => {
+      return contentsAll.value[governmentType.value].map((d) => {
         return {
-          ...contents,
+          title: `${selectedCity.value.cityName}の${d.title}`,
+          titleId: d.titleId,
+          cardComponent: d.cardComponent,
+          annotation: d.annotation,
+          estatParams: d.estatParams,
+          series: d.series,
+          routingPath: `/${chartClass.value}/${selectedPref.value.prefCode}/${statisticsClass.value}/${d.titleId}/`,
         }
       })
-    },
-  },
-  watch: {
-    selectedCity() {
-      const selectedCityCode = this.selectedCity.cityCode
-      this.$router.push(
-        `/city/${this.prefCode}/${selectedCityCode}/${this.statisticsClass}/`
-      )
-    },
-  },
-  created(): void {
-    this.selectedCity = this.getCity(this.$route.params.cityCode)
-    this.changeChartClass()
-  },
-  methods: {
-    ...mapActions('setting', ['changeSelectedChartClass']),
-    changeChartClass() {
-      this.changeSelectedChartClass(this.chartClass)
-    },
-  },
-  mounted() {
-    this.$nextTick(() => {
-      this.$nuxt.$loading.start()
-
-      setTimeout(() => this.$nuxt.$loading.finish(), 500)
     })
-  },
-  head() {
-    return {
-      title: `${this.prefName}${this.cityName}の${this.statisticsClassName}`,
+
+    // 都道府県／市区町村の情報
+    const selectedPref = computed(
+      () => store.getters['prefList/getSelectedPref']
+    )
+
+    const cityList = computed(() => store.getters['cityList/getCityList'])
+    const cityCode = route.value.params.cityCode
+    const selectedCity = ref<object>(
+      store.getters['cityList/getCity'](cityCode)
+    )
+
+    // console.log(selectedCity.value)
+    watch(selectedCity, () =>
+      router.push(
+        `/city/${selectedPref.value.prefCode}/${selectedCity.value.cityCode}/${statisticsClass.value}/`
+      )
+    )
+
+    // メタ
+    const metaTitle = computed(() => {
+      return `${selectedPref.value.prefName}の${statisticsClass.value}`
+    })
+    useMeta(() => ({
+      title: metaTitle.value,
       meta: [
         {
           hid: 'description',
           name: 'description',
-          content: `${this.prefName}${this.cityName}の${this.statisticsClassName}に関する統計をまとめています`,
+          content: `統計をまとめています`,
         },
       ],
+    }))
+
+    return {
+      cityList,
+      contentsList,
+      statisticsClass,
+      selectedPref,
+      selectedCity,
+      governmentType,
     }
   },
-}
-export default Vue.extend(options)
+})
+
+// const options: ThisTypedComponentOptionsWithRecordProps<
+//   Vue,
+//   Data,
+//   Methods,
+//   Computed,
+//   Props
+// > = {
+//   async asyncData({ params }) {
+//     const contentsAll = await import(
+//       `~/static/pagesetting/${params.statisticsClass}.json`
+//     )
+//     return { contentsAll }
+//   },
+//   async fetch() {},
+//   data() {
+//     return {
+//       chartClass: 'city',
+//       governmentType: 'city',
+//       selectedCity: null,
+//     }
+//   },
+//   computed: {
+//     ...mapGetters('prefList', [
+//       'getSelectedPrefCode',
+//       'getSelectedPref',
+//       'getPrefName',
+//     ]),
+//     ...mapGetters('cityList', ['getCity', 'getCityList', 'getCityName']),
+//     ...mapGetters('setting', ['getStatisticsClassName']),
+
+//     cityList() {
+//       return this.getCityList
+//     },
+
+//   watch: {
+//     selectedCity() {
+//       const selectedCityCode = this.selectedCity.cityCode
+//       this.$router.push(
+//         `/city/${this.prefCode}/${selectedCityCode}/${this.statisticsClass}/`
+//       )
+//     },
+//   },
+//   created(): void {
+//     this.selectedCity = this.getCity(this.$route.params.cityCode)
+//     this.changeChartClass()
+//   },
+//   methods: {
+//     ...mapActions('setting', ['changeSelectedChartClass']),
+//     changeChartClass() {
+//       this.changeSelectedChartClass(this.chartClass)
+//     },
+//   },
+//   mounted() {
+//     this.$nextTick(() => {
+//       this.$nuxt.$loading.start()
+
+//       setTimeout(() => this.$nuxt.$loading.finish(), 500)
+//     })
+//   },
+//   head() {
+//     return {
+//       title: `${this.prefName}${this.cityName}の${this.statisticsClassName}`,
+//       meta: [
+//         {
+//           hid: 'description',
+//           name: 'description',
+//           content: `${this.prefName}${this.cityName}の${this.statisticsClassName}に関する統計をまとめています`,
+//         },
+//       ],
+//     }
+//   },
+// }
+// export default Vue.extend(options)
 </script>
 
 <style lang="scss" scoped>

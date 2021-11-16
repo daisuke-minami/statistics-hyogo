@@ -1,15 +1,14 @@
 import { cloneDeep } from 'lodash'
 
-// type City = {
-//   prefCode: number
-//   cityName: string
-//   cityCode: string
-//   bigCityFlag: string
-// }
+export type City = {
+  prefCode: number
+  cityName: string
+  cityCode: string
+  bigCityFlag: string
+}
 
 const initialState = {
   cityList: [],
-  // selectedCity: null,
 }
 
 export const state = () => cloneDeep(initialState)
@@ -21,9 +20,6 @@ export const getters = {
   getCity: (state) => (cityCode) => {
     return state.cityList.find((d) => d.cityCode === cityCode)
   },
-  // getSelectedCity(state) {
-  //   return state.selectedCity
-  // },
   getCityName: (state) => (cityCode) => {
     return state.cityList.find((d) => d.cityCode === cityCode).cityName
   },
@@ -43,13 +39,6 @@ export const mutations = {
       state.bigcityKind = payload
     }
   },
-  // changeCity(state, payload) {
-  //   if (payload === null) {
-  //     state = cloneDeep(initialState)
-  //   } else {
-  //     state.selectedCity = payload
-  //   }
-  // },
 }
 
 export const actions = {
@@ -69,7 +58,4 @@ export const actions = {
   fetchCities({ commit }) {
     commit('initCitySet', process.env.cityList)
   },
-  // changeSelectedCity({ commit }, newCity) {
-  //   commit('changeCity', newCity)
-  // },
 }

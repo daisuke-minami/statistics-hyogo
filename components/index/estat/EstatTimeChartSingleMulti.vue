@@ -15,7 +15,7 @@
 
             <toggle-break
               v-model="allbreak"
-              :target-id="contents.titleId"
+              :target-id="titleId"
               :style="{ display: canvas ? 'inline-block' : 'none' }"
             />
 
@@ -66,6 +66,7 @@ import {
   useFetch,
 } from '@nuxtjs/composition-api'
 import { getGraphSeriesStyle } from '@/utils/colors'
+import { EstatParams } from '@/plugins/estat'
 
 type Series = {
   name: string
@@ -88,7 +89,8 @@ type Source = {
 }
 
 type Props = {
-  contents: object
+  series: object
+  estatParams: EstatParams
   routingPath: string
   selectedPref: object
   selectedCity: object
@@ -100,7 +102,11 @@ type Props = {
 
 export default defineComponent({
   props: {
-    contents: {
+    series: {
+      type: Array,
+      required: true,
+    },
+    estatParams: {
       type: Object,
       required: true,
     },
@@ -136,6 +142,7 @@ export default defineComponent({
   setup(props: Props, context) {
     const canvas = ref<boolean>(true)
 
+    console.log(props.selectedCity)
     const cdArea = computed((): string => {
       if (props.governmentType === 'city') {
         return props.selectedCity.cityCode
@@ -147,7 +154,7 @@ export default defineComponent({
     // eStat-APIからデータを取得
     const estatResponse = ref({})
     useFetch(async () => {
-      const params = props.contents.estatParams
+      const params: EstatParams = props.estatParams
       params.cdArea = cdArea.value
       const { data } = await context.root.$estat.get(
         `${process.env.BASE_URL}/json/getStatsData`,
@@ -155,7 +162,10 @@ export default defineComponent({
       )
       estatResponse.value = data
     })
-
+    // watch(
+    //   () => props,
+    //   () => fetch()
+    // )
     // columnChartとlineChartの切替
     const columnline = ref<string>('column')
     const chartComponent = computed((): string => {
@@ -174,11 +184,10 @@ export default defineComponent({
     })
 
     const chartData = computed((): Series[] => {
-      const series = props.contents.series
-      const style = getGraphSeriesStyle(series.length)
+      const style = getGraphSeriesStyle(props.series.length)
       const value =
         estatResponse.value.GET_STATS_DATA.STATISTICAL_DATA.DATA_INF.VALUE
-      return series.map((d, i) => {
+      return props.series.map((d, i) => {
         return {
           name: d.name,
           data: value

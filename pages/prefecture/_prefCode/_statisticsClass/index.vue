@@ -9,7 +9,8 @@
           :is="item.cardComponent"
           v-for="(item, i) in contentsList"
           :key="i"
-          :contents="item"
+          :series="item.series"
+          :estat-params="item.estatParams"
           :annotation="item.annotation"
           :routing-path="item.routingPath"
           :title="item.title"
@@ -31,24 +32,25 @@ import {
   useFetch,
   useMeta,
   useStore,
+  useRoute,
 } from '@nuxtjs/composition-api'
 
 export default defineComponent({
   head: {},
-  setup(_, context) {
+  setup() {
     const store = useStore()
-    const route = context.root.$route
+    const route = useRoute()
     const chartClass = ref<string>('prefecture')
     const governmentType = ref<string>('prefecture')
 
     const statisticsClass = computed((): string => {
-      return route.params.statisticsClass
+      return route.value.params.statisticsClass
     })
 
     const contentsAll = ref({})
     useFetch(async () => {
       const data = await import(
-        `~/static/pagesetting/${route.params.statisticsClass}.json`
+        `~/static/pagesetting/${route.value.params.statisticsClass}.json`
       )
       contentsAll.value = data
     })
@@ -90,6 +92,7 @@ export default defineComponent({
 
     return {
       contentsList,
+      statisticsClass,
       selectedPref,
       selectedCity,
       governmentType,

@@ -77,7 +77,8 @@ type Times = {
 }
 
 type Props = {
-  contents: object
+  series: object
+  estatParams: object
   routingPath: string
   selectedPref: object
   selectedCity: object
@@ -89,7 +90,11 @@ type Props = {
 
 export default defineComponent({
   props: {
-    contents: {
+    series: {
+      type: Array,
+      required: true,
+    },
+    estatParams: {
       type: Object,
       required: true,
     },
@@ -136,7 +141,7 @@ export default defineComponent({
     // eStat-APIからデータを取得
     const estatResponse = ref({})
     useFetch(async () => {
-      const params = props.contents.estatParams
+      const params = props.estatParams
       params.cdArea = cdArea.value
 
       const { data } = await context.root.$estat.get(
@@ -164,12 +169,10 @@ export default defineComponent({
     })
 
     const chartData = computed((): Series[] => {
-      const series = props.contents.series
-      // console.log(series)
-      const style = getGraphSeriesStyle(series.length)
+      const style = getGraphSeriesStyle(props.series.length)
       const value =
         estatResponse.value.GET_STATS_DATA.STATISTICAL_DATA.DATA_INF.VALUE
-      return series.map((d, i) => {
+      return props.series.map((d, i) => {
         return {
           name: d.name,
           data: value

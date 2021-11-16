@@ -1,5 +1,13 @@
 import qs from 'qs'
 
+export type EstatParams = {
+  statsDataId: string
+  cdArea: string[] | null | undefined
+  cdCat01: string[] | null | undefined
+  cdCat02: string[] | null | undefined
+  cdTab: string[] | null | undefined
+}
+
 export default function ({ $axios }, inject) {
   const api = $axios.create({
     headers: {
