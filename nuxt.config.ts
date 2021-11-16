@@ -9,8 +9,8 @@ const environment = process.env.NODE_ENV || 'development'
 const fs = require('fs')
 const routes = JSON.parse(fs.readFileSync('static/routes/routes.json'))
 const setting = JSON.parse(fs.readFileSync('static/setting.json'))
-const cityList = JSON.parse(fs.readFileSync('static/codes/citylist.json'))
-const prefList = JSON.parse(fs.readFileSync('static/codes/preflist.json'))
+// const cityList = JSON.parse(fs.readFileSync('static/codes/citylist.json'))
+const prefList = JSON.parse(fs.readFileSync('data/codes/preflist.json'))
 const { PREF_CODE, API_KEY, ESTAT_APPID, GOOGLE_ANALYTICS_ID, BASE_URL } =
   process.env
 require('dotenv').config()
@@ -270,7 +270,7 @@ const config: NuxtConfig = {
   },
   env: {
     routes,
-    cityList: cityList.result,
+    // cityList: cityList.result,
     prefList: prefList.result,
     PREF_CODE,
     API_KEY,

@@ -39,20 +39,8 @@ export const mutations = {
 }
 
 export const actions = {
-  // RESAS-APIから取得する場合
-  // async fetchCities({ commit }) {
-  //   const res = await axios.get(
-  //     'https://opendata.resas-portal.go.jp/api/v1/cities?prefCode=28',
-  //     {
-  //       headers: {
-  //         'X-API-KEY': process.env.API_KEY,
-  //       },
-  //     }
-  //   )
-  //   if (res.data.result) commit('initCitySet', res.data.result)
-  // },
-  // 環境変数から取得する場合
-  fetchCities({ commit }) {
-    commit('initCitySet', process.env.cityList)
+  async fetchCities({ commit }) {
+    const data = await import('~/data/codes/citylist.json')
+    if (data.result) commit('initCitySet', data.result)
   },
 }
