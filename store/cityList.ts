@@ -7,36 +7,33 @@ export type City = {
   bigCityFlag: string
 }
 
-const initialState = {
+type State = {
+  cityList: City[]
+}
+
+const initialState: State = {
   cityList: [],
 }
 
 export const state = () => cloneDeep(initialState)
 
 export const getters = {
-  getCityList(state) {
+  getCityList(state: State) {
     return state.cityList
   },
-  getCity: (state) => (cityCode) => {
+  getCity: (state: State) => (cityCode: string) => {
     return state.cityList.find((d) => d.cityCode === cityCode)
   },
-  getCityName: (state) => (cityCode) => {
+  getCityName: (state: State) => (cityCode: string) => {
     return state.cityList.find((d) => d.cityCode === cityCode).cityName
   },
 }
 export const mutations = {
-  initCitySet(state, payload) {
+  initCitySet(state: State, payload: City[]) {
     if (payload === null) {
       state = cloneDeep(initialState)
     } else {
       state.cityList = payload
-    }
-  },
-  changeKinds(state, payload) {
-    if (payload === null) {
-      state = cloneDeep(initialState)
-    } else {
-      state.bigcityKind = payload
     }
   },
 }
