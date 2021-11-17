@@ -64,8 +64,6 @@
 
 <script>
 import axios from 'axios'
-// import { cloneDeep } from 'lodash'
-import { mapGetters } from 'vuex'
 
 export default {
   props: {
@@ -73,22 +71,20 @@ export default {
       type: Array,
       required: true,
     },
-    contents: {
-      type: Object,
-      required: true,
-    },
+    // contents: {
+    //   type: Object,
+    //   required: true,
+    // },
   },
   // APIから取得する場合
   async fetch() {
-    const params = this.contents.estatParams
-    // params.cdArea = this.cdArea
-    // console.log(params)
+    const params = this.estatParams
+    params.cdArea = this.cdArea
     const { data } = await this.$estat.get(
       `${process.env.BASE_URL}/json/getStatsData`,
       { params }
     )
     this.estatResponse = data
-    // console.log(data)
     this.targetYear = this.latestYearInt
 
     const prefMap = await axios.get(
@@ -110,6 +106,30 @@ export default {
   // },
   data() {
     return {
+      title: '総人口',
+      titleId: 'population-all',
+      annotation: [],
+      estatParams: {
+        statsDataId: '0000010101',
+        cdCat01: ['A1101', 'A110101', 'A110102'],
+      },
+      series: [
+        {
+          id: 'cat01',
+          code: 'A1101',
+          name: '総数',
+        },
+        {
+          id: 'cat01',
+          code: 'A110101',
+          name: '男性',
+        },
+        {
+          id: 'cat01',
+          code: 'A110102',
+          name: '女性',
+        },
+      ],
       canvas: true,
       targetYear: null,
       chartType: 'map',
@@ -118,17 +138,11 @@ export default {
     }
   },
   computed: {
-    ...mapGetters('prefList', ['getPrefList']),
-    title() {
-      return `都道府県の${this.contents.title}ランキング`
-    },
-    // prefList() {
-    //   return this.getPrefList
+    // title() {
+    //   return `都道府県の${this.contents.title}ランキング`
     // },
     cdArea() {
-      // const c = this.prefList
-      // const prefList = this.store.getters['prefList/getPrefList'])
-      return this.getPrefList.map(
+      return this.prefList.map(
         (d) => ('0000000000' + d.prefCode).slice(-2) + '000'
       )
     },
@@ -138,9 +152,9 @@ export default {
     governmentType() {
       return this.contents.governmentType
     },
-    titleId() {
-      return this.contents.titleId
-    },
+    // titleId() {
+    //   return this.contents.titleId
+    // },
     statName() {
       const TABLE_INF =
         this.estatResponse.GET_STATS_DATA.STATISTICAL_DATA.TABLE_INF
@@ -160,10 +174,10 @@ export default {
       return ['『歴史的行政区域データセットβ版』（CODH作成）']
     },
     additionalDescription() {
-      return this.contents.annotation.concat(this.estatCredit, this.codhCredit)
+      return this.annotation.concat(this.estatCredit, this.codhCredit)
     },
     route() {
-      return this.contents.route
+      return `test`
     },
     topoJson() {
       return this.prefMap

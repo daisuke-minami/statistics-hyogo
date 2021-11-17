@@ -1,0 +1,98 @@
+{
+  "prefecture": [
+    {
+      "title": "製造品出荷額",
+      "titleId": "product-shipment-value",
+      "cardComponent": "estat-time-chart-single",
+      "isRank": false,
+      "annotation": [],
+      "estatParams": {
+        "statsDataId": "0000010103",
+        "cdCat01": [
+          "C3401"
+        ]
+      },
+      "series": [
+        {
+          "id": "cat01",
+          "code": "C3401",
+          "name": "製造品出荷額"
+        }
+      ]
+    },
+    {
+      "title": "製造業付加価値額",
+      "titleId": "manufacturing-industry-value-added",
+      "cardComponent": "estat-time-chart-single",
+      "isRank": true,
+      "annotation": [],
+      "estatParams": {
+        "statsDataId": "0000010103",
+        "cdCat01": [
+          "C3402"
+        ]
+      },
+      "series": [
+        {
+          "id": "cat01",
+          "code": "C3402",
+          "name": "製造業付加価値額"
+        }
+      ]
+    },
+    {
+      "title": "工業用水量",
+      "titleId": "industrial-water-volume",
+      "cardComponent": "estat-time-chart-single-multi",
+      "isRank": false,
+      "annotation": [],
+      "estatParams": {
+        "statsDataId": "0000010103",
+        "cdCat01": [
+          "C3406",
+          "C340601",
+          "C340602"
+        ]
+      },
+      "series": [
+        {
+          "id": "cat01",
+          "code": "C3406",
+          "name": "総数"
+        },
+        {
+          "id": "cat01",
+          "code": "C340601",
+          "name": "淡水"
+        },
+        {
+          "id": "cat01",
+          "code": "C340602",
+          "name": "海水"
+        }
+      ]
+    }
+  ],
+  "city": [
+    {
+      "title": "製造品出荷額",
+      "titleId": "product-shipment-value",
+      "cardComponent": "estat-time-chart-single",
+      "isRank": true,
+      "annotation": [],
+      "estatParams": {
+        "statsDataId": "0000020203",
+        "cdCat01": [
+          "C3401"
+        ]
+      },
+      "series": [
+        {
+          "id": "cat01",
+          "code": "C3401",
+          "name": "製造品出荷額"
+        }
+      ]
+    }
+  ]
+}

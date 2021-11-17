@@ -1,0 +1,86 @@
+{
+  "prefecture": [
+    {
+      "title": "国民医療費（総額）",
+      "titleId": "national-medical-expenses",
+      "cardComponent": "estat-time-chart-single",
+      "isRank": true,
+      "annotation": [],
+      "estatParams": {
+        "statsDataId": "0000010110",
+        "cdCat01": [
+          "J4001"
+        ]
+      },
+      "series": [
+        {
+          "id": "cat01",
+          "code": "J4001",
+          "name": "国民医療費（総額）"
+        }
+      ]
+    }
+  ],
+  "city": [
+    {
+      "title": "老人福祉施設数",
+      "titleId": "welfare-facilities-elderly",
+      "cardComponent": "estat-time-chart-single",
+      "isRank": true,
+      "annotation": [],
+      "estatParams": {
+        "statsDataId": "0000020210",
+        "cdCat01": [
+          "J2301"
+        ]
+      },
+      "series": [
+        {
+          "id": "cat01",
+          "code": "J2301",
+          "name": "老人福祉施設数"
+        }
+      ]
+    },
+    {
+      "title": "国民健康保険被保険者数",
+      "titleId": "number-of-national-health-insurance",
+      "cardComponent": "estat-time-chart-single",
+      "isRank": true,
+      "annotation": [],
+      "estatParams": {
+        "statsDataId": "0000020210",
+        "cdCat01": [
+          "J4101"
+        ]
+      },
+      "series": [
+        {
+          "id": "cat01",
+          "code": "J4101",
+          "name": "国民健康保険被保険者数"
+        }
+      ]
+    },
+    {
+      "title": "国民健康保険給付金額",
+      "titleId": "national-health-insurance-benefit-amount",
+      "cardComponent": "estat-time-chart-single",
+      "isRank": true,
+      "annotation": [],
+      "estatParams": {
+        "statsDataId": "0000020210",
+        "cdCat01": [
+          "J4108"
+        ]
+      },
+      "series": [
+        {
+          "id": "cat01",
+          "code": "J4108",
+          "name": "国民健康保険給付金額"
+        }
+      ]
+    }
+  ]
+}

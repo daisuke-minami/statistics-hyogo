@@ -2,149 +2,216 @@
   <div>
     <tab-chart-class :statistics-class="statisticsClass" />
 
+    <!-- <card-row class="DataBlock">
+      <population-card :pref-list="prefList" />
+    </card-row> -->
+
+    <select-title v-model="titleId" :contents-list="contentsList" />
     <div>
-      <select-title v-model="titleId" :contents-list="contentsList" />
-      <div>
-        <card-row class="DataBlock">
-          <estat-pref-rank-card :pref-list="prefList" :contents="contents" />
-        </card-row>
-      </div>
+      <card-row class="DataBlock">
+        <estat-pref-rank-card :pref-list="prefList" :contents="contents" />
+      </card-row>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-import { ThisTypedComponentOptionsWithRecordProps } from 'vue/types/options'
-import { mapActions, mapGetters } from 'vuex'
-import { cloneDeep } from 'lodash'
-import { ContentsType, ContentsList } from '~/utils/formatChart'
+import {
+  defineComponent,
+  ref,
+  computed,
+  // useFetch,
+  // useMeta,
+  useStore,
+  useRoute,
+} from '@nuxtjs/composition-api'
+// import axios from 'axios'
 
-type Props = {
-  statisticsClass: string
-  contentsAll: ContentsType[]
-}
+// 総人口
+const PopulationCard = () =>
+  import('@/components/index/prefectureRank/Population.vue')
 
-type Computed = {
-  prefInfomation: () => { prefName: string; prefCode: string }
-  contentsList: () => ContentsList[]
-}
-
-type Methods = {}
-
-const options: ThisTypedComponentOptionsWithRecordProps<
-  Vue,
-  Data,
-  Methods,
-  Computed,
-  Props
-> = {
-  async asyncData({ params, $axios }) {
-    const [contentsAll, prefMap] = await Promise.all([
-      import(`~/static/pagesetting/${params.statisticsClass}.json`),
-      $axios.get(
-        `${process.env.BASE_URL}/topojson/20200101/jp_pref.c.topojson`
-      ),
-    ])
-    return { contentsAll, prefMap: prefMap.data }
+export default defineComponent({
+  head: {},
+  components: {
+    PopulationCard,
+    // PageHeader,
+    // SiteTopUpper,
   },
-  data() {
-    return {
-      chartClass: 'prefectureRank',
-      governmentType: 'prefecture',
-      titleId: null,
-    }
-  },
-  computed: {
-    ...mapGetters('prefList', [
-      'getSelectedPrefCode',
-      'getPrefName',
-      'getPrefList',
-    ]),
-    ...mapGetters('setting', ['getStatisticsClassName']),
-    statisticsClass() {
-      return this.$route.params.statisticsClass
-    },
-    statisticsClassName() {
-      return this.getStatisticsClassName(this.statisticsClass)
-    },
-    prefList() {
-      return this.getPrefList
-    },
-    prefCode(): number {
-      return this.getSelectedPrefCode
-    },
-    prefName(): string {
-      return this.getPrefName(this.prefCode)
-    },
-    contentsList() {
-      return this.contentsAll[this.governmentType]
-        .filter((f) => f.isRank === true)
-        .map((d) => {
-          // ShallowCopyを避けるため、lodashのcloneDeepを用いる。
-          const contents = cloneDeep(d)
+  setup() {
+    const store = useStore()
+    const route = useRoute()
+    const chartClass = ref<string>('prefecture')
+    const governmentType = ref<string>('prefecture')
 
-          // 統計情報を追加
-          contents.statisticsClass = this.statisticsClass
-          contents.chartClass = this.chartClass
-          contents.governmentType = this.governmentType
-
-          // 都道府県の情報を追加
-          contents.prefName = this.prefName
-          contents.prefCode = this.prefCode
-
-          // console.log(this.prefMap)
-          contents.prefMap = this.prefMap
-          contents.prefList = this.prefList
-          contents.route = `/${this.chartClass}/${this.prefCode}/${this.statisticsClass}/${contents.titleId}/`
-
-          return {
-            ...contents,
-          }
-        })
-    },
-    contents() {
-      return this.contentsList.find((f) => f.titleId === this.titleId)
-    },
-  },
-  watch: {
-    titleId() {
-      // this.$fetch()
-    },
-  },
-  created(): void {
-    this.cityCode = this.getSelectedCity.cityCode
-    this.titleId = this.contentsList.filter((f) => f.isRank === true)[0].titleId
-    this.changeChartClass()
-  },
-  methods: {
-    ...mapActions('cityList', ['changeSelectedCity']),
-    ...mapActions('setting', ['changeSelectedChartClass']),
-    changeChartClass() {
-      this.changeSelectedChartClass(this.chartClass)
-    },
-  },
-  mounted() {
-    this.$nextTick(() => {
-      this.$nuxt.$loading.start()
-
-      setTimeout(() => this.$nuxt.$loading.finish(), 500)
+    const statisticsClass = computed((): string => {
+      return route.value.params.statisticsClass
     })
-  },
-  head() {
+
+    // contentsとtopojsonを取得
+    // const contentsAll = ref({})
+    // const prefMap = ref({})
+    // useFetch(async () => {
+    //   const [contents, topojson] = await Promise.all([
+    //     import(`~/static/pagesetting/${statisticsClass.value}.json`),
+    //     axios.get(
+    //       `${process.env.BASE_URL}/topojson/20200101/jp_pref.c.topojson`
+    //     ),
+    //   ])
+    //   // console.log(contents)
+    //   // contentsAll.value = contents
+    //   prefMap.value = topojson
+    // })
+
+    const selectedPref = computed(
+      () => store.getters['prefList/getSelectedPref']
+    )
+
+    const contentsAll = computed(() =>
+      store.getters['setting/getContentsList']('landweather')
+    )
+    const contentsList = computed((): [] => {
+      console.log(contentsAll.value)
+      return contentsAll.value[governmentType.value].map((d) => {
+        return {
+          title: d.title,
+          titleId: d.titleId,
+          cardComponent: d.cardComponent,
+          annotation: d.annotation,
+          estatParams: d.estatParams,
+          series: d.series,
+          routingPath: `/${chartClass.value}/${selectedPref.value.prefCode}/${statisticsClass.value}/${d.titleId}/`,
+        }
+      })
+    })
+
+    const titleId = ref<string>(contentsList.value[0].titleId)
+
+    const contents = computed((): object => {
+      return contentsList.value.find((f) => f.titleId === titleId.value)
+    })
+
+    // 都道府県リスト
+    const prefList = computed(() => store.getters['prefList/getPrefList'])
+    console.log(prefList)
     return {
-      title: `都道府県の${this.statisticsClassName}ランキング`,
-      meta: [
-        {
-          hid: 'description',
-          name: 'description',
-          content: `都道府県の${this.statisticsClassName}に関する統計をまとめています`,
-        },
-      ],
+      contents,
+      contentsList,
+      titleId,
+      statisticsClass,
+      prefList,
+      governmentType,
     }
   },
-}
-export default Vue.extend(options)
+})
+
+// type Computed = {
+//   prefInfomation: () => { prefName: string; prefCode: string }
+//   contentsList: () => ContentsList[]
+// }
+
+// type Methods = {}
+
+// const options: ThisTypedComponentOptionsWithRecordProps<
+//   Vue,
+//   Data,
+//   Methods,
+//   Computed,
+//   Props
+// > = {
+//   async asyncData({ params, $axios }) {
+//     const [contentsAll, prefMap] = await Promise.all([
+//       import(`~/static/pagesetting/${params.statisticsClass}.json`),
+//       $axios.get(
+//         `${process.env.BASE_URL}/topojson/20200101/jp_pref.c.topojson`
+//       ),
+//     ])
+//     return { contentsAll, prefMap: prefMap.data }
+//   },
+//   data() {
+//     return {
+//       chartClass: 'prefectureRank',
+//       governmentType: 'prefecture',
+//       titleId: null,
+//     }
+//   },
+//   computed: {
+//     ...mapGetters('prefList', [
+//       'getSelectedPrefCode',
+//       'getPrefName',
+//       'getPrefList',
+//     ]),
+//     ...mapGetters('setting', ['getStatisticsClassName']),
+
+//     prefCode(): number {
+//       return this.getSelectedPrefCode
+//     },
+//     prefName(): string {
+//       return this.getPrefName(this.prefCode)
+//     },
+//     contentsList() {
+//       return this.contentsAll[this.governmentType]
+//         .filter((f) => f.isRank === true)
+//         .map((d) => {
+//           // ShallowCopyを避けるため、lodashのcloneDeepを用いる。
+//           const contents = cloneDeep(d)
+
+//           // 都道府県の情報を追加
+//           contents.prefName = this.prefName
+//           contents.prefCode = this.prefCode
+
+//           // console.log(this.prefMap)
+//           contents.prefMap = this.prefMap
+//           contents.prefList = this.prefList
+//           contents.route = `/${this.chartClass}/${this.prefCode}/${this.statisticsClass}/${contents.titleId}/`
+
+//           return {
+//             ...contents,
+//           }
+//         })
+//     },
+//     contents() {
+//       return this.contentsList.find((f) => f.titleId === this.titleId)
+//     },
+//   },
+//   watch: {
+//     titleId() {
+//       // this.$fetch()
+//     },
+//   },
+//   created(): void {
+//     this.cityCode = this.getSelectedCity.cityCode
+//     this.titleId = this.contentsList.filter((f) => f.isRank === true)[0].titleId
+//     this.changeChartClass()
+//   },
+//   methods: {
+//     ...mapActions('cityList', ['changeSelectedCity']),
+//     ...mapActions('setting', ['changeSelectedChartClass']),
+//     changeChartClass() {
+//       this.changeSelectedChartClass(this.chartClass)
+//     },
+//   },
+//   mounted() {
+//     this.$nextTick(() => {
+//       this.$nuxt.$loading.start()
+
+//       setTimeout(() => this.$nuxt.$loading.finish(), 500)
+//     })
+//   },
+//   head() {
+//     return {
+//       title: `都道府県の${this.statisticsClassName}ランキング`,
+//       meta: [
+//         {
+//           hid: 'description',
+//           name: 'description',
+//           content: `都道府県の${this.statisticsClassName}に関する統計をまとめています`,
+//         },
+//       ],
+//     }
+//   },
+// }
+// export default Vue.extend(options)
 </script>
 
 <style lang="scss" scoped>

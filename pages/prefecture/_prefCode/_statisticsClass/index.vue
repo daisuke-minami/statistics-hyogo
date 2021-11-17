@@ -85,7 +85,7 @@ export default defineComponent({
         {
           hid: 'description',
           name: 'description',
-          content: `統計をまとめています`,
+          content: `統計`,
         },
       ],
     }))
