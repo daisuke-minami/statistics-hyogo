@@ -1,6 +1,20 @@
 <template>
   <div>
-    <tab-chart-class :statistics-class="statisticsClass" />
+    <tab-chart-class :statistics-class="mainCat" />
+
+    <static-card>
+      <v-row>
+        <v-col class="d-flex" cols="12" sm="6">
+          <v-select
+            v-model="selectedCity"
+            :items="cityList"
+            item-text="cityName"
+            item-value="cityCode"
+            return-object
+          />
+        </v-col>
+      </v-row>
+    </static-card>
 
     <div :loading="$fetchState.pending">
       <p v-if="$fetchState.pending" />
@@ -33,6 +47,8 @@ import {
   useMeta,
   useStore,
   useRoute,
+  useRouter,
+  watch,
 } from '@nuxtjs/composition-api'
 
 export default defineComponent({
@@ -40,17 +56,18 @@ export default defineComponent({
   setup() {
     const store = useStore()
     const route = useRoute()
-    const chartClass = ref<string>('prefecture')
-    const governmentType = ref<string>('prefecture')
+    const router = useRouter()
+    const chartClass = ref<string>('city')
+    const governmentType = ref<string>('city')
 
-    const statisticsClass = computed((): string => {
-      return route.value.params.statisticsClass
+    const mainCat = computed((): string => {
+      return route.value.params.mainCat
     })
 
     const contentsAll = ref({})
     useFetch(async () => {
       const data = await import(
-        `~/static/pagesetting/${route.value.params.statisticsClass}.json`
+        `~/static/pagesetting/${route.value.params.mainCat}.json`
       )
       contentsAll.value = data
     })
@@ -58,13 +75,13 @@ export default defineComponent({
     const contentsList = computed((): object => {
       return contentsAll.value[governmentType.value].map((d) => {
         return {
-          title: `${selectedPref.value.prefName}の${d.title}`,
+          title: `${selectedCity.value.cityName}の${d.title}`,
           titleId: d.titleId,
           cardComponent: d.cardComponent,
           annotation: d.annotation,
           estatParams: d.estatParams,
           series: d.series,
-          routingPath: `/${chartClass.value}/${selectedPref.value.prefCode}/${statisticsClass.value}/${d.titleId}/`,
+          routingPath: `/${chartClass.value}/${selectedPref.value.prefCode}/${mainCat.value}/${d.titleId}/`,
         }
       })
     })
@@ -73,11 +90,23 @@ export default defineComponent({
     const selectedPref = computed(
       () => store.getters['prefList/getSelectedPref']
     )
-    const selectedCity = ref<object>({})
+
+    const cityList = computed(() => store.getters['cityList/getCityList'])
+    const cityCode = route.value.params.cityCode
+    const selectedCity = ref<object>(
+      store.getters['cityList/getCity'](cityCode)
+    )
+
+    // console.log(selectedCity.value)
+    watch(selectedCity, () =>
+      router.push(
+        `/city/${selectedPref.value.prefCode}/${selectedCity.value.cityCode}/${mainCat.value}/`
+      )
+    )
 
     // メタ
     const metaTitle = computed(() => {
-      return `${selectedPref.value.prefName}の${statisticsClass.value}`
+      return `${selectedPref.value.prefName}の${mainCat.value}`
     })
     useMeta(() => ({
       title: metaTitle.value,
@@ -85,20 +114,95 @@ export default defineComponent({
         {
           hid: 'description',
           name: 'description',
-          content: `統計`,
+          content: `統計をまとめています`,
         },
       ],
     }))
 
     return {
+      cityList,
       contentsList,
-      statisticsClass,
+      mainCat,
       selectedPref,
       selectedCity,
       governmentType,
     }
   },
 })
+
+// const options: ThisTypedComponentOptionsWithRecordProps<
+//   Vue,
+//   Data,
+//   Methods,
+//   Computed,
+//   Props
+// > = {
+//   async asyncData({ params }) {
+//     const contentsAll = await import(
+//       `~/static/pagesetting/${params.mainCat}.json`
+//     )
+//     return { contentsAll }
+//   },
+//   async fetch() {},
+//   data() {
+//     return {
+//       chartClass: 'city',
+//       governmentType: 'city',
+//       selectedCity: null,
+//     }
+//   },
+//   computed: {
+//     ...mapGetters('prefList', [
+//       'getSelectedPrefCode',
+//       'getSelectedPref',
+//       'getPrefName',
+//     ]),
+//     ...mapGetters('cityList', ['getCity', 'getCityList', 'getCityName']),
+//     ...mapGetters('setting', ['getStatisticsClassName']),
+
+//     cityList() {
+//       return this.getCityList
+//     },
+
+//   watch: {
+//     selectedCity() {
+//       const selectedCityCode = this.selectedCity.cityCode
+//       this.$router.push(
+//         `/city/${this.prefCode}/${selectedCityCode}/${this.mainCat}/`
+//       )
+//     },
+//   },
+//   created(): void {
+//     this.selectedCity = this.getCity(this.$route.params.cityCode)
+//     this.changeChartClass()
+//   },
+//   methods: {
+//     ...mapActions('setting', ['changeSelectedChartClass']),
+//     changeChartClass() {
+//       this.changeSelectedChartClass(this.chartClass)
+//     },
+//   },
+//   mounted() {
+//     this.$nextTick(() => {
+//       this.$nuxt.$loading.start()
+
+//       setTimeout(() => this.$nuxt.$loading.finish(), 500)
+//     })
+//   },
+//   head() {
+//     return {
+//       title: `${this.prefName}${this.cityName}の${this.mainCatName}`,
+//       meta: [
+//         {
+//           hid: 'description',
+//           name: 'description',
+//           content: `${this.prefName}${this.cityName}の${this.mainCatName}に関する統計をまとめています`,
+//         },
+//       ],
+//     }
+//   },
+// }
+// export default Vue.extend(options)
 </script>
 
 <style lang="scss" scoped>

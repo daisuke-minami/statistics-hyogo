@@ -8,12 +8,12 @@ import pathlib
 # ルートディレクトリの設定
 root_dir = pathlib.Path(__file__).parent.parent.parent
 
-# statisticsClassを取得
+# mainCatを取得
 c = os.path.join(root_dir, 'static/setting.json')
 
 with open(c) as j:
     setting = json.load(j)
-    statisticsClass = [d.get('id') for d in setting['statisticsClass']]
+    mainCat = [d.get('id') for d in setting['mainCat']]
 
 # chartClassの定義
 chartClass = ['prefecture', 'city']
@@ -35,7 +35,7 @@ def saveEstatResponse(contents):
 
 
 # contentsの生成
-for item in statisticsClass:
+for item in mainCat:
 
     # ディレクトリを作成
     directory = os.path.join(root_dir, 'static/pagecontents/'+item)

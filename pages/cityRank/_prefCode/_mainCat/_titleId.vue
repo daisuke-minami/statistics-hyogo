@@ -3,7 +3,7 @@
     <card-row class="DataBlock">
       <lazy-component
         :is="contents.cardComponent"
-        :pref-list="prefList"
+        :city-list="cityList"
         :contents="contents"
       />
     </card-row>
@@ -15,46 +15,33 @@ import { cloneDeep } from 'lodash'
 import { mapGetters } from 'vuex'
 
 export default {
-  async asyncData({ params, $axios }) {
-    const [contentsAll, prefMap] = await Promise.all([
-      import(`~/static/pagesetting/${params.statisticsClass}.json`),
-      $axios.get(
-        `${process.env.BASE_URL}/topojson/20200101/jp_pref.c.topojson`
-      ),
-    ])
-    return { contentsAll, prefMap: prefMap.data }
+  async asyncData({ params }) {
+    const contentsAll = await import(
+      `~/static/pagesetting/${params.mainCat}.json`
+    )
+    return { contentsAll }
   },
   data() {
     return {
-      chartClass: 'prefectureRank',
-      governmentType: 'prefecture',
+      chartClass: 'cityRank',
+      governmentType: 'city',
       cityCode: null,
     }
   },
   computed: {
-    ...mapGetters('prefList', [
-      'getSelectedPrefCode',
-      'getPrefName',
-      'getPrefList',
-    ]),
-    ...mapGetters('setting', ['getStatisticsClassName']),
-    statisticsClass() {
-      return this.$route.params.statisticsClass
-    },
-    statisticsClassName() {
-      return this.getStatisticsClassName(this.statisticsClass)
-    },
-    prefList() {
-      return this.getPrefList
-    },
+    ...mapGetters('prefList', ['getSelectedPrefCode', 'getPrefName']),
+    ...mapGetters('cityList', ['getCityList']),
     prefCode() {
       return this.getSelectedPrefCode
     },
     prefName() {
       return this.getPrefName(this.prefCode)
     },
-    cityName() {
-      return this.getCityName(this.cityCode)
+    cityList() {
+      return this.getCityList
+    },
+    mainCat() {
+      return this.$route.params.mainCat
     },
     titleId() {
       return this.$route.params.titleId
@@ -65,7 +52,7 @@ export default {
         const contents = cloneDeep(d)
 
         // 統計情報を追加
-        contents.statisticsClass = this.statisticsClass
+        contents.mainCat = this.mainCat
         contents.chartClass = this.chartClass
         contents.governmentType = this.governmentType
 
@@ -73,11 +60,8 @@ export default {
         contents.prefName = this.prefName
         contents.prefCode = this.prefCode
 
-        contents.prefMap = this.prefMap
-        contents.prefList = this.prefList
-        contents.route = `/${this.chartClass}/${this.prefCode}/${this.statisticsClass}/`
-
-        contents.cardComponent = 'estat-pref-rank-card'
+        contents.route = `/${this.chartClass}/${this.prefCode}/${this.mainCat}/`
+        contents.cardComponent = 'estat-city-rank-card'
 
         return {
           ...contents,

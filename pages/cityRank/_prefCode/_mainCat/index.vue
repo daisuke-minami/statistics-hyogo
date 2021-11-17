@@ -1,6 +1,6 @@
 <template>
   <div>
-    <tab-chart-class :statistics-class="statisticsClass" />
+    <tab-chart-class :statistics-class="mainCat" />
 
     <select-title v-model="titleId" :contents-list="contentsList" />
 
@@ -18,7 +18,7 @@ import { cloneDeep } from 'lodash'
 import { ContentsType, ContentsList } from '~/utils/formatChart'
 
 type Props = {
-  statisticsClass: string
+  mainCat: string
   contentsAll: ContentsType[]
 }
 
@@ -38,7 +38,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
 > = {
   async asyncData({ params }) {
     const contentsAll = await import(
-      `~/static/pagesetting/${params.statisticsClass}.json`
+      `~/static/pagesetting/${params.mainCat}.json`
     )
     return { contentsAll }
   },
@@ -57,11 +57,11 @@ const options: ThisTypedComponentOptionsWithRecordProps<
       'getCityName',
     ]),
     ...mapGetters('setting', ['getStatisticsClassName']),
-    statisticsClass() {
-      return this.$route.params.statisticsClass
+    mainCat() {
+      return this.$route.params.mainCat
     },
-    statisticsClassName() {
-      return this.getStatisticsClassName(this.statisticsClass)
+    mainCatName() {
+      return this.getStatisticsClassName(this.mainCat)
     },
     prefCode(): number {
       return this.getSelectedPrefCode
@@ -79,7 +79,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
           const contents = cloneDeep(d)
 
           // 統計情報を追加
-          contents.statisticsClass = this.statisticsClass
+          contents.mainCat = this.mainCat
           contents.chartClass = this.chartClass
           contents.governmentType = this.governmentType
 
@@ -87,7 +87,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
           contents.prefName = this.prefName
           contents.prefCode = this.prefCode
 
-          contents.route = `/${this.chartClass}/${this.prefCode}/${this.statisticsClass}/${contents.titleId}/`
+          contents.route = `/${this.chartClass}/${this.prefCode}/${this.mainCat}/${contents.titleId}/`
 
           return {
             ...contents,
@@ -123,12 +123,12 @@ const options: ThisTypedComponentOptionsWithRecordProps<
   },
   head() {
     return {
-      title: `${this.prefName}内の${this.statisticsClassName}ランキング`,
+      title: `${this.prefName}内の${this.mainCatName}ランキング`,
       meta: [
         {
           hid: 'description',
           name: 'description',
-          content: `${this.prefName}内の市区町村の${this.statisticsClassName}に関する統計をまとめています`,
+          content: `${this.prefName}内の市区町村の${this.mainCatName}に関する統計をまとめています`,
         },
       ],
     }

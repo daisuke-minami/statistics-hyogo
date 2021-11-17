@@ -14,7 +14,7 @@ import { cloneDeep } from 'lodash'
 import { ContentsType, ContentsList } from '~/utils/formatChart'
 
 type Props = {
-  statisticsClass: string
+  mainCat: string
   contentsAll: ContentsType[]
 }
 
@@ -34,26 +34,25 @@ const options: ThisTypedComponentOptionsWithRecordProps<
 > = {
   async asyncData({ params }) {
     const contentsAll = await import(
-      `~/static/pagesetting/${params.statisticsClass}.json`
+      `~/static/pagesetting/${params.mainCat}.json`
     )
     return { contentsAll }
   },
   data() {
     return {
-      chartClass: 'city',
-      governmentType: 'city',
+      chartClass: 'prefecture',
+      governmentType: 'prefecture',
       tab: null,
     }
   },
   computed: {
     ...mapGetters('prefList', ['getSelectedPrefCode', 'getPrefName']),
-    ...mapGetters('cityList', ['getSelectedCity', 'getCityName']),
     ...mapGetters('setting', ['getStatisticsClassName']),
-    statisticsClass() {
-      return this.$route.params.statisticsClass
+    mainCat() {
+      return this.$route.params.mainCat
     },
-    statisticsClassName() {
-      return this.getStatisticsClassName(this.statisticsClass)
+    mainCatName() {
+      return this.getStatisticsClassName(this.mainCat)
     },
     titleId() {
       return this.$route.params.titleId
@@ -64,19 +63,13 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     prefName(): string {
       return this.getPrefName(this.prefCode)
     },
-    cityCode() {
-      return this.$route.params.cityCode
-    },
-    cityName() {
-      return this.getCityName(this.cityCode)
-    },
     contentsList() {
       return this.contentsAll[this.governmentType].map((d) => {
         // ShallowCopyを避けるため、lodashのcloneDeepを用いる。
         const contents = cloneDeep(d)
 
         // 統計情報を追加
-        contents.statisticsClass = this.statisticsClass
+        contents.mainCat = this.mainCat
         contents.chartClass = this.chartClass
         contents.governmentType = this.governmentType
 
@@ -84,11 +77,8 @@ const options: ThisTypedComponentOptionsWithRecordProps<
         contents.prefName = this.prefName
         contents.prefCode = this.prefCode
 
-        contents.cityName = this.cityName
-        contents.cityCode = this.cityCode
-
-        contents.title = `${this.cityName}の${d.title}`
-        contents.route = `/${this.chartClass}/${this.prefCode}/${this.cityCode}/${this.statisticsClass}/`
+        contents.title = `${this.prefName}の${d.title}`
+        contents.route = `/${this.chartClass}/${this.prefCode}/${this.mainCat}/`
 
         return {
           ...contents,
@@ -96,11 +86,11 @@ const options: ThisTypedComponentOptionsWithRecordProps<
       })
     },
     contents() {
+      // console.log(this.contentsList)
       return this.contentsList.find((f) => f.titleId === this.titleId)
     },
   },
   created(): void {},
-  methods: {},
   mounted() {
     this.$nextTick(() => {
       this.$nuxt.$loading.start()
@@ -108,6 +98,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
       setTimeout(() => this.$nuxt.$loading.finish(), 500)
     })
   },
+  methods: {},
   head() {
     return {
       title: `${this.contents.title}`,

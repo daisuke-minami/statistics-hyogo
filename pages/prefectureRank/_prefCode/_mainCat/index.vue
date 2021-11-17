@@ -1,6 +1,6 @@
 <template>
   <div>
-    <tab-chart-class :statistics-class="statisticsClass" />
+    <tab-chart-class :statistics-class="mainCat" />
 
     <!-- <card-row class="DataBlock">
       <population-card :pref-list="prefList" />
@@ -20,8 +20,6 @@ import {
   defineComponent,
   ref,
   computed,
-  // useFetch,
-  // useMeta,
   useStore,
   useRoute,
 } from '@nuxtjs/composition-api'
@@ -44,8 +42,8 @@ export default defineComponent({
     const chartClass = ref<string>('prefecture')
     const governmentType = ref<string>('prefecture')
 
-    const statisticsClass = computed((): string => {
-      return route.value.params.statisticsClass
+    const mainCat = computed((): string => {
+      return route.value.params.mainCat
     })
 
     // contentsとtopojsonを取得
@@ -53,7 +51,7 @@ export default defineComponent({
     // const prefMap = ref({})
     // useFetch(async () => {
     //   const [contents, topojson] = await Promise.all([
-    //     import(`~/static/pagesetting/${statisticsClass.value}.json`),
+    //     import(`~/static/pagesetting/${mainCat.value}.json`),
     //     axios.get(
     //       `${process.env.BASE_URL}/topojson/20200101/jp_pref.c.topojson`
     //     ),
@@ -80,7 +78,7 @@ export default defineComponent({
           annotation: d.annotation,
           estatParams: d.estatParams,
           series: d.series,
-          routingPath: `/${chartClass.value}/${selectedPref.value.prefCode}/${statisticsClass.value}/${d.titleId}/`,
+          routingPath: `/${chartClass.value}/${selectedPref.value.prefCode}/${mainCat.value}/${d.titleId}/`,
         }
       })
     })
@@ -98,7 +96,7 @@ export default defineComponent({
       contents,
       contentsList,
       titleId,
-      statisticsClass,
+      mainCat,
       prefList,
       governmentType,
     }
@@ -121,7 +119,7 @@ export default defineComponent({
 // > = {
 //   async asyncData({ params, $axios }) {
 //     const [contentsAll, prefMap] = await Promise.all([
-//       import(`~/static/pagesetting/${params.statisticsClass}.json`),
+//       import(`~/static/pagesetting/${params.mainCat}.json`),
 //       $axios.get(
 //         `${process.env.BASE_URL}/topojson/20200101/jp_pref.c.topojson`
 //       ),
@@ -163,7 +161,7 @@ export default defineComponent({
 //           // console.log(this.prefMap)
 //           contents.prefMap = this.prefMap
 //           contents.prefList = this.prefList
-//           contents.route = `/${this.chartClass}/${this.prefCode}/${this.statisticsClass}/${contents.titleId}/`
+//           contents.route = `/${this.chartClass}/${this.prefCode}/${this.mainCat}/${contents.titleId}/`
 
 //           return {
 //             ...contents,
@@ -200,12 +198,12 @@ export default defineComponent({
 //   },
 //   head() {
 //     return {
-//       title: `都道府県の${this.statisticsClassName}ランキング`,
+//       title: `都道府県の${this.mainCatName}ランキング`,
 //       meta: [
 //         {
 //           hid: 'description',
 //           name: 'description',
-//           content: `都道府県の${this.statisticsClassName}に関する統計をまとめています`,
+//           content: `都道府県の${this.mainCatName}に関する統計をまとめています`,
 //         },
 //       ],
 //     }

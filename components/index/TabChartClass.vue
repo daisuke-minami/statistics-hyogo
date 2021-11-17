@@ -13,7 +13,7 @@ import { mapGetters } from 'vuex'
 
 export default {
   props: {
-    statisticsClass: {
+    mainCat: {
       type: String,
       required: true,
     },
@@ -36,19 +36,19 @@ export default {
       return [
         {
           label: '都道府県の統計',
-          link: `/prefecture/${this.prefCode}/${this.statisticsClass}/`,
+          link: `/prefecture/${this.prefCode}/${this.mainCat}/`,
         },
         {
           label: '市区町村の統計',
-          link: `/city/${this.prefCode}/${this.cityCode}/${this.statisticsClass}/`,
+          link: `/city/${this.prefCode}/${this.cityCode}/${this.mainCat}/`,
         },
         {
           label: '都道府県ランキング',
-          link: `/prefectureRank/${this.prefCode}/${this.statisticsClass}/`,
+          link: `/prefectureRank/${this.prefCode}/${this.mainCat}/`,
         },
         {
           label: '市区町村ランキング',
-          link: `/cityRank/${this.prefCode}/${this.statisticsClass}/`,
+          link: `/cityRank/${this.prefCode}/${this.mainCat}/`,
         },
       ]
     },

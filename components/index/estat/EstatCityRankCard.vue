@@ -87,7 +87,7 @@ export default {
   // JSONから取得する場合
   async fetch() {
     this.estatResponse = await import(
-      `~/static/pagecontents/${this.statisticsClass}/${this.governmentType}/${this.titleId}.json`
+      `~/static/pagecontents/${this.mainCat}/${this.governmentType}/${this.titleId}.json`
     )
     this.targetYear = this.latestYearInt
 
@@ -136,8 +136,8 @@ export default {
         return this.cityMap
       }
     },
-    statisticsClass() {
-      return this.contents.statisticsClass
+    mainCat() {
+      return this.contents.mainCat
     },
     governmentType() {
       return this.contents.governmentType
