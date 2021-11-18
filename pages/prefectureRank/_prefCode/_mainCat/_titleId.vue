@@ -17,7 +17,7 @@ import { mapGetters } from 'vuex'
 export default {
   async asyncData({ params, $axios }) {
     const [contentsAll, prefMap] = await Promise.all([
-      import(`~/static/pagesetting/${params.mainCat}.json`),
+      import(`~/static/pagesetting/${params.statField}.json`),
       $axios.get(
         `${process.env.BASE_URL}/topojson/20200101/jp_pref.c.topojson`
       ),
@@ -38,11 +38,11 @@ export default {
       'getPrefList',
     ]),
     ...mapGetters('setting', ['getStatisticsClassName']),
-    mainCat() {
-      return this.$route.params.mainCat
+    statField() {
+      return this.$route.params.statField
     },
-    mainCatName() {
-      return this.getStatisticsClassName(this.mainCat)
+    statFieldName() {
+      return this.getStatisticsClassName(this.statField)
     },
     prefList() {
       return this.getPrefList
@@ -65,7 +65,7 @@ export default {
         const contents = cloneDeep(d)
 
         // 統計情報を追加
-        contents.mainCat = this.mainCat
+        contents.statField = this.statField
         contents.chartClass = this.chartClass
         contents.governmentType = this.governmentType
 
@@ -75,7 +75,7 @@ export default {
 
         contents.prefMap = this.prefMap
         contents.prefList = this.prefList
-        contents.route = `/${this.chartClass}/${this.prefCode}/${this.mainCat}/`
+        contents.route = `/${this.chartClass}/${this.prefCode}/${this.statField}/`
 
         contents.cardComponent = 'estat-pref-rank-card'
 

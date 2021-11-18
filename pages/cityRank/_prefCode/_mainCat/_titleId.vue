@@ -17,7 +17,7 @@ import { mapGetters } from 'vuex'
 export default {
   async asyncData({ params }) {
     const contentsAll = await import(
-      `~/static/pagesetting/${params.mainCat}.json`
+      `~/static/pagesetting/${params.statField}.json`
     )
     return { contentsAll }
   },
@@ -40,8 +40,8 @@ export default {
     cityList() {
       return this.getCityList
     },
-    mainCat() {
-      return this.$route.params.mainCat
+    statField() {
+      return this.$route.params.statField
     },
     titleId() {
       return this.$route.params.titleId
@@ -52,7 +52,7 @@ export default {
         const contents = cloneDeep(d)
 
         // 統計情報を追加
-        contents.mainCat = this.mainCat
+        contents.statField = this.statField
         contents.chartClass = this.chartClass
         contents.governmentType = this.governmentType
 
@@ -60,7 +60,7 @@ export default {
         contents.prefName = this.prefName
         contents.prefCode = this.prefCode
 
-        contents.route = `/${this.chartClass}/${this.prefCode}/${this.mainCat}/`
+        contents.route = `/${this.chartClass}/${this.prefCode}/${this.statField}/`
         contents.cardComponent = 'estat-city-rank-card'
 
         return {

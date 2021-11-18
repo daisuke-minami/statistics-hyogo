@@ -275,7 +275,7 @@ const config: NuxtConfig = {
     ESTAT_APPID,
     GOOGLE_ANALYTICS_ID,
     BASE_URL,
-    mainCatList: setting.mainCat,
+    statFieldList: setting.statField,
   },
   router: {
     middleware: 'vuex',

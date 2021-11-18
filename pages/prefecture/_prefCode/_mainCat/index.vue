@@ -1,7 +1,7 @@
 <template>
   <div>
     <select-city />
-    <tab-chart-class :statistics-class="mainCat" />
+    <tab-chart-class :statistics-class="statField" />
 
     <div :loading="$fetchState.pending">
       <p v-if="$fetchState.pending" />
@@ -44,14 +44,14 @@ export default defineComponent({
     const chartClass = ref<string>('prefecture')
     const governmentType = ref<string>('prefecture')
 
-    const mainCat = computed((): string => {
-      return route.value.params.mainCat
+    const statField = computed((): string => {
+      return route.value.params.statField
     })
 
     const contentsAll = ref({})
     useFetch(async () => {
       const data = await import(
-        `~/static/pagesetting/${route.value.params.mainCat}.json`
+        `~/static/pagesetting/${route.value.params.statField}.json`
       )
       contentsAll.value = data
     })
@@ -65,7 +65,7 @@ export default defineComponent({
           annotation: d.annotation,
           estatParams: d.estatParams,
           series: d.series,
-          routingPath: `/${chartClass.value}/${selectedPref.value.prefCode}/${mainCat.value}/${d.titleId}/`,
+          routingPath: `/${chartClass.value}/${selectedPref.value.prefCode}/${statField.value}/${d.titleId}/`,
         }
       })
     })
@@ -78,7 +78,7 @@ export default defineComponent({
 
     // メタ
     const metaTitle = computed(() => {
-      return `${selectedPref.value.prefName}の${mainCat.value}`
+      return `${selectedPref.value.prefName}の${statField.value}`
     })
     useMeta(() => ({
       title: metaTitle.value,
@@ -93,7 +93,7 @@ export default defineComponent({
 
     return {
       contentsList,
-      mainCat,
+      statField,
       selectedPref,
       selectedCity,
       governmentType,

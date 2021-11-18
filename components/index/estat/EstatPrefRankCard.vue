@@ -99,7 +99,7 @@ export default {
   // JSONから取得する場合
   // async fetch() {
   //   this.estatResponse = await import(
-  //     `~/static/pagecontents/${this.mainCat}/${this.governmentType}/${this.titleId}.json`
+  //     `~/static/pagecontents/${this.statField}/${this.governmentType}/${this.titleId}.json`
   //   )
   //   this.targetYear = this.latestYearInt
 
@@ -132,8 +132,8 @@ export default {
         (d) => ('0000000000' + d.prefCode).slice(-2) + '000'
       )
     },
-    mainCat() {
-      return this.contents.mainCat
+    statField() {
+      return this.contents.statField
     },
     governmentType() {
       return this.contents.governmentType

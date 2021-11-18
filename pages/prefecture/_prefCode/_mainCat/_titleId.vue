@@ -14,7 +14,7 @@ import { cloneDeep } from 'lodash'
 import { ContentsType, ContentsList } from '~/utils/formatChart'
 
 type Props = {
-  mainCat: string
+  statField: string
   contentsAll: ContentsType[]
 }
 
@@ -34,7 +34,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
 > = {
   async asyncData({ params }) {
     const contentsAll = await import(
-      `~/static/pagesetting/${params.mainCat}.json`
+      `~/static/pagesetting/${params.statField}.json`
     )
     return { contentsAll }
   },
@@ -48,11 +48,11 @@ const options: ThisTypedComponentOptionsWithRecordProps<
   computed: {
     ...mapGetters('prefList', ['getSelectedPrefCode', 'getPrefName']),
     ...mapGetters('setting', ['getStatisticsClassName']),
-    mainCat() {
-      return this.$route.params.mainCat
+    statField() {
+      return this.$route.params.statField
     },
-    mainCatName() {
-      return this.getStatisticsClassName(this.mainCat)
+    statFieldName() {
+      return this.getStatisticsClassName(this.statField)
     },
     titleId() {
       return this.$route.params.titleId
@@ -69,7 +69,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
         const contents = cloneDeep(d)
 
         // 統計情報を追加
-        contents.mainCat = this.mainCat
+        contents.statField = this.statField
         contents.chartClass = this.chartClass
         contents.governmentType = this.governmentType
 
@@ -78,7 +78,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
         contents.prefCode = this.prefCode
 
         contents.title = `${this.prefName}の${d.title}`
-        contents.route = `/${this.chartClass}/${this.prefCode}/${this.mainCat}/`
+        contents.route = `/${this.chartClass}/${this.prefCode}/${this.statField}/`
 
         return {
           ...contents,

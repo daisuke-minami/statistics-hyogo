@@ -21,21 +21,34 @@ import { defineComponent, computed, useStore } from '@nuxtjs/composition-api'
 import { EventBus, TOGGLE_EVENT } from '@/utils/tab-event-bus'
 import { City } from '~/store/cityList'
 
-type Computed = {
-  cityList: () => City[]
-  items: () => { label: string; path: string }
+type Props = {
+  statField: string
+}
+
+type TabItem = {
+  label: string
+  path: string
 }
 
 export default defineComponent({
-  setup() {
+  props: {
+    statField: {
+      type: String,
+      required: true,
+    },
+  },
+  setup(props: Props) {
+    // ストアから都道府県と市区町村リストを取得
     const store = useStore()
-    const cityList = computed(() => store.getters['cityList/getCityList'])
+    const cityList = computed(
+      (): City[] => store.getters['cityList/getCityList']
+    )
 
-    const items = computed(() =>
+    const items = computed((): TabItem[] =>
       cityList.value.map((d: City) => {
         return {
           label: d.cityName,
-          path: `/${d.cityCode}`,
+          path: `/${props.statField}/${d.cityCode}`,
         }
       })
     )

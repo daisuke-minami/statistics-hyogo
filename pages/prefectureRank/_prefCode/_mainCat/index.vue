@@ -1,17 +1,7 @@
 <template>
   <div>
-    <tab-chart-class :statistics-class="mainCat" />
-
-    <!-- <card-row class="DataBlock">
-      <population-card :pref-list="prefList" />
-    </card-row> -->
-
-    <select-title v-model="titleId" :contents-list="contentsList" />
-    <div>
-      <card-row class="DataBlock">
-        <estat-pref-rank-card :pref-list="prefList" :contents="contents" />
-      </card-row>
-    </div>
+    <tab-chart-class :statistics-class="statField" />
+    <!--  -->
   </div>
 </template>
 
@@ -26,13 +16,13 @@ import {
 // import axios from 'axios'
 
 // 総人口
-const PopulationCard = () =>
-  import('@/components/index/prefectureRank/Population.vue')
+// const PopulationCard = () =>
+//   import('@/components/index/prefectureRank/Population.vue')
 
 export default defineComponent({
   head: {},
   components: {
-    PopulationCard,
+    // PopulationCard,
     // PageHeader,
     // SiteTopUpper,
   },
@@ -42,8 +32,8 @@ export default defineComponent({
     const chartClass = ref<string>('prefecture')
     const governmentType = ref<string>('prefecture')
 
-    const mainCat = computed((): string => {
-      return route.value.params.mainCat
+    const statField = computed((): string => {
+      return route.value.params.statField
     })
 
     // contentsとtopojsonを取得
@@ -51,7 +41,7 @@ export default defineComponent({
     // const prefMap = ref({})
     // useFetch(async () => {
     //   const [contents, topojson] = await Promise.all([
-    //     import(`~/static/pagesetting/${mainCat.value}.json`),
+    //     import(`~/static/pagesetting/${statField.value}.json`),
     //     axios.get(
     //       `${process.env.BASE_URL}/topojson/20200101/jp_pref.c.topojson`
     //     ),
@@ -69,7 +59,7 @@ export default defineComponent({
       store.getters['setting/getContentsList']('landweather')
     )
     const contentsList = computed((): [] => {
-      console.log(contentsAll.value)
+      // console.log(contentsAll.value)
       return contentsAll.value[governmentType.value].map((d) => {
         return {
           title: d.title,
@@ -78,7 +68,7 @@ export default defineComponent({
           annotation: d.annotation,
           estatParams: d.estatParams,
           series: d.series,
-          routingPath: `/${chartClass.value}/${selectedPref.value.prefCode}/${mainCat.value}/${d.titleId}/`,
+          routingPath: `/${chartClass.value}/${selectedPref.value.prefCode}/${statField.value}/${d.titleId}/`,
         }
       })
     })
@@ -91,12 +81,12 @@ export default defineComponent({
 
     // 都道府県リスト
     const prefList = computed(() => store.getters['prefList/getPrefList'])
-    console.log(prefList)
+    // console.log(prefList)
     return {
       contents,
       contentsList,
       titleId,
-      mainCat,
+      statField,
       prefList,
       governmentType,
     }
@@ -119,7 +109,7 @@ export default defineComponent({
 // > = {
 //   async asyncData({ params, $axios }) {
 //     const [contentsAll, prefMap] = await Promise.all([
-//       import(`~/static/pagesetting/${params.mainCat}.json`),
+//       import(`~/static/pagesetting/${params.statField}.json`),
 //       $axios.get(
 //         `${process.env.BASE_URL}/topojson/20200101/jp_pref.c.topojson`
 //       ),
@@ -161,7 +151,7 @@ export default defineComponent({
 //           // console.log(this.prefMap)
 //           contents.prefMap = this.prefMap
 //           contents.prefList = this.prefList
-//           contents.route = `/${this.chartClass}/${this.prefCode}/${this.mainCat}/${contents.titleId}/`
+//           contents.route = `/${this.chartClass}/${this.prefCode}/${this.statField}/${contents.titleId}/`
 
 //           return {
 //             ...contents,
@@ -198,12 +188,12 @@ export default defineComponent({
 //   },
 //   head() {
 //     return {
-//       title: `都道府県の${this.mainCatName}ランキング`,
+//       title: `都道府県の${this.statFieldName}ランキング`,
 //       meta: [
 //         {
 //           hid: 'description',
 //           name: 'description',
-//           content: `都道府県の${this.mainCatName}に関する統計をまとめています`,
+//           content: `都道府県の${this.statFieldName}に関する統計をまとめています`,
 //         },
 //       ],
 //     }

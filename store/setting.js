@@ -18,7 +18,7 @@ import International from '@/data/pagesetting/international.json'
 import Other from '@/data/pagesetting/other.json'
 
 const initialState = {
-  mainCatList: [],
+  statFieldList: [],
   chartClass: null,
   landweather: LandWeather,
   population: Population,
@@ -43,7 +43,7 @@ export const state = () => cloneDeep(initialState)
 
 export const getters = {
   getStatisticsClassName: (state) => (id) => {
-    return state.mainCatList.find((f) => f.id === id).name
+    return state.statFieldList.find((f) => f.id === id).name
   },
   getChartClass: (state) => {
     return state.chartClass
@@ -57,7 +57,7 @@ export const mutations = {
     if (payload === null) {
       state = cloneDeep(initialState)
     } else {
-      state.mainCatList = payload
+      state.statFieldList = payload
     }
   },
   changeChartClass(state, payload) {
@@ -71,7 +71,7 @@ export const mutations = {
 
 export const actions = {
   fetchSetting({ commit }) {
-    commit('initStatisticsClass', process.env.mainCatList)
+    commit('initStatisticsClass', process.env.statFieldList)
     commit('changeChartClass', 'prefecture')
   },
   changeSelectedChartClass({ commit }, newChartClass) {

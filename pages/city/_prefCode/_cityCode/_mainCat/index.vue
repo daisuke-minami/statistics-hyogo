@@ -1,6 +1,6 @@
 <template>
   <div>
-    <tab-chart-class :statistics-class="mainCat" />
+    <tab-chart-class :statistics-class="statField" />
 
     <static-card>
       <v-row>
@@ -60,14 +60,14 @@ export default defineComponent({
     const chartClass = ref<string>('city')
     const governmentType = ref<string>('city')
 
-    const mainCat = computed((): string => {
-      return route.value.params.mainCat
+    const statField = computed((): string => {
+      return route.value.params.statField
     })
 
     const contentsAll = ref({})
     useFetch(async () => {
       const data = await import(
-        `~/static/pagesetting/${route.value.params.mainCat}.json`
+        `~/static/pagesetting/${route.value.params.statField}.json`
       )
       contentsAll.value = data
     })
@@ -81,7 +81,7 @@ export default defineComponent({
           annotation: d.annotation,
           estatParams: d.estatParams,
           series: d.series,
-          routingPath: `/${chartClass.value}/${selectedPref.value.prefCode}/${mainCat.value}/${d.titleId}/`,
+          routingPath: `/${chartClass.value}/${selectedPref.value.prefCode}/${statField.value}/${d.titleId}/`,
         }
       })
     })
@@ -100,13 +100,13 @@ export default defineComponent({
     // console.log(selectedCity.value)
     watch(selectedCity, () =>
       router.push(
-        `/city/${selectedPref.value.prefCode}/${selectedCity.value.cityCode}/${mainCat.value}/`
+        `/city/${selectedPref.value.prefCode}/${selectedCity.value.cityCode}/${statField.value}/`
       )
     )
 
     // メタ
     const metaTitle = computed(() => {
-      return `${selectedPref.value.prefName}の${mainCat.value}`
+      return `${selectedPref.value.prefName}の${statField.value}`
     })
     useMeta(() => ({
       title: metaTitle.value,
@@ -122,7 +122,7 @@ export default defineComponent({
     return {
       cityList,
       contentsList,
-      mainCat,
+      statField,
       selectedPref,
       selectedCity,
       governmentType,
@@ -139,7 +139,7 @@ export default defineComponent({
 // > = {
 //   async asyncData({ params }) {
 //     const contentsAll = await import(
-//       `~/static/pagesetting/${params.mainCat}.json`
+//       `~/static/pagesetting/${params.statField}.json`
 //     )
 //     return { contentsAll }
 //   },
@@ -168,7 +168,7 @@ export default defineComponent({
 //     selectedCity() {
 //       const selectedCityCode = this.selectedCity.cityCode
 //       this.$router.push(
-//         `/city/${this.prefCode}/${selectedCityCode}/${this.mainCat}/`
+//         `/city/${this.prefCode}/${selectedCityCode}/${this.statField}/`
 //       )
 //     },
 //   },
@@ -191,12 +191,12 @@ export default defineComponent({
 //   },
 //   head() {
 //     return {
-//       title: `${this.prefName}${this.cityName}の${this.mainCatName}`,
+//       title: `${this.prefName}${this.cityName}の${this.statFieldName}`,
 //       meta: [
 //         {
 //           hid: 'description',
 //           name: 'description',
-//           content: `${this.prefName}${this.cityName}の${this.mainCatName}に関する統計をまとめています`,
+//           content: `${this.prefName}${this.cityName}の${this.statFieldName}に関する統計をまとめています`,
 //         },
 //       ],
 //     }

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <tab-chart-class :statistics-class="mainCat" />
+    <tab-chart-class :statistics-class="statField" />
 
     <select-title v-model="titleId" :contents-list="contentsList" />
 
@@ -18,7 +18,7 @@ import { cloneDeep } from 'lodash'
 import { ContentsType, ContentsList } from '~/utils/formatChart'
 
 type Props = {
-  mainCat: string
+  statField: string
   contentsAll: ContentsType[]
 }
 
@@ -38,7 +38,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
 > = {
   async asyncData({ params }) {
     const contentsAll = await import(
-      `~/static/pagesetting/${params.mainCat}.json`
+      `~/static/pagesetting/${params.statField}.json`
     )
     return { contentsAll }
   },
@@ -57,11 +57,11 @@ const options: ThisTypedComponentOptionsWithRecordProps<
       'getCityName',
     ]),
     ...mapGetters('setting', ['getStatisticsClassName']),
-    mainCat() {
-      return this.$route.params.mainCat
+    statField() {
+      return this.$route.params.statField
     },
-    mainCatName() {
-      return this.getStatisticsClassName(this.mainCat)
+    statFieldName() {
+      return this.getStatisticsClassName(this.statField)
     },
     prefCode(): number {
       return this.getSelectedPrefCode
@@ -79,7 +79,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
           const contents = cloneDeep(d)
 
           // 統計情報を追加
-          contents.mainCat = this.mainCat
+          contents.statField = this.statField
           contents.chartClass = this.chartClass
           contents.governmentType = this.governmentType
 
@@ -87,7 +87,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
           contents.prefName = this.prefName
           contents.prefCode = this.prefCode
 
-          contents.route = `/${this.chartClass}/${this.prefCode}/${this.mainCat}/${contents.titleId}/`
+          contents.route = `/${this.chartClass}/${this.prefCode}/${this.statField}/${contents.titleId}/`
 
           return {
             ...contents,
@@ -123,12 +123,12 @@ const options: ThisTypedComponentOptionsWithRecordProps<
   },
   head() {
     return {
-      title: `${this.prefName}内の${this.mainCatName}ランキング`,
+      title: `${this.prefName}内の${this.statFieldName}ランキング`,
       meta: [
         {
           hid: 'description',
           name: 'description',
-          content: `${this.prefName}内の市区町村の${this.mainCatName}に関する統計をまとめています`,
+          content: `${this.prefName}内の市区町村の${this.statFieldName}に関する統計をまとめています`,
         },
       ],
     }
