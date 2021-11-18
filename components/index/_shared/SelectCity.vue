@@ -57,14 +57,14 @@ export default defineComponent({
       return [
         {
           label: selectedPref.value.prefName,
-          path: `/${props.statField}/${toFiveDigit(
-            selectedPref.value.prefCode
-          )}`,
+          path: `/${toFiveDigit(selectedPref.value.prefCode)}/${
+            props.statField
+          }`,
         },
         ...cityList.map((d: City) => {
           return {
             label: d.cityName,
-            path: `/${props.statField}/${d.cityCode}`,
+            path: `/${d.cityCode}/${props.statField}`,
           }
         }),
       ]

@@ -26,15 +26,9 @@ export const getters = {
   getPrefList(state: State) {
     return state.prefList
   },
-  // getSelectedPrefCode(state: State) {
-  //   return state.selectedPref.prefCode
-  // },
   getSelectedPref(state: State) {
     return state.selectedPref
   },
-  // getPrefName: (state: State) => (prefCode: number) => {
-  //   return state.prefList.find((d) => d.prefCode === prefCode).prefName
-  // },
 }
 
 export const mutations = {

@@ -48,8 +48,8 @@ export const getters = {
   getChartClass: (state) => {
     return state.chartClass
   },
-  getContentsList: (state) => (id) => {
-    return state[`${id}`]
+  getTitleList: (state) => (statField, govType) => {
+    return state[`${statField}`][`${govType}`]
   },
 }
 export const mutations = {
