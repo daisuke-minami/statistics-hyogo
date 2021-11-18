@@ -1,5 +1,6 @@
 <template>
   <div>
+    <select-city />
     <tab-chart-class :statistics-class="mainCat" />
 
     <div :loading="$fetchState.pending">

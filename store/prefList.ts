@@ -36,6 +36,7 @@ export const getters = {
     return state.prefList.find((d) => d.prefCode === prefCode).prefName
   },
 }
+
 export const mutations = {
   initPrefSet(state: State, payload: Pref[]) {
     if (payload === null) {
