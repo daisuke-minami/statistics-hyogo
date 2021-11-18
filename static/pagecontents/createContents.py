@@ -49,7 +49,7 @@ for item in statField:
     #     pathlib.Path(down).mkdir(exist_ok=True)
 
     #     #contentsの取得（都道府県）
-    #     path = os.path.join(root_dir, 'static/pagesetting')
+    #     path = os.path.join(root_dir, 'data/pagesetting')
     #     j = open(path + '/' + item+'.json','r')
     #     contentsList = json.load(j)[type]
 
@@ -63,7 +63,7 @@ for item in statField:
     down = os.path.join(directory, 'prefecture')
     pathlib.Path(down).mkdir(exist_ok=True)
 
-    path = os.path.join(root_dir, 'static/pagesetting')
+    path = os.path.join(root_dir, 'data/pagesetting')
     j = open(path + '/' + item+'.json', 'r')
     contentsList = json.load(j)['prefecture']
 

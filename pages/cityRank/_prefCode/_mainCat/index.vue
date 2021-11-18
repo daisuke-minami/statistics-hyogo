@@ -38,7 +38,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
 > = {
   async asyncData({ params }) {
     const contentsAll = await import(
-      `~/static/pagesetting/${params.statField}.json`
+      `~/data/pagesetting/${params.statField}.json`
     )
     return { contentsAll }
   },

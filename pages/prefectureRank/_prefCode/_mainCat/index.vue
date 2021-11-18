@@ -41,7 +41,7 @@ export default defineComponent({
     // const prefMap = ref({})
     // useFetch(async () => {
     //   const [contents, topojson] = await Promise.all([
-    //     import(`~/static/pagesetting/${statField.value}.json`),
+    //     import(`~/data/pagesetting/${statField.value}.json`),
     //     axios.get(
     //       `${process.env.BASE_URL}/topojson/20200101/jp_pref.c.topojson`
     //     ),
@@ -109,7 +109,7 @@ export default defineComponent({
 // > = {
 //   async asyncData({ params, $axios }) {
 //     const [contentsAll, prefMap] = await Promise.all([
-//       import(`~/static/pagesetting/${params.statField}.json`),
+//       import(`~/data/pagesetting/${params.statField}.json`),
 //       $axios.get(
 //         `${process.env.BASE_URL}/topojson/20200101/jp_pref.c.topojson`
 //       ),

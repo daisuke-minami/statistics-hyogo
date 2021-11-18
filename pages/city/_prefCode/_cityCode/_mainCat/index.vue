@@ -67,7 +67,7 @@ export default defineComponent({
     const contentsAll = ref({})
     useFetch(async () => {
       const data = await import(
-        `~/static/pagesetting/${route.value.params.statField}.json`
+        `~/data/pagesetting/${route.value.params.statField}.json`
       )
       contentsAll.value = data
     })
@@ -139,7 +139,7 @@ export default defineComponent({
 // > = {
 //   async asyncData({ params }) {
 //     const contentsAll = await import(
-//       `~/static/pagesetting/${params.statField}.json`
+//       `~/data/pagesetting/${params.statField}.json`
 //     )
 //     return { contentsAll }
 //   },

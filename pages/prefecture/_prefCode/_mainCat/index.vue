@@ -51,7 +51,7 @@ export default defineComponent({
     const contentsAll = ref({})
     useFetch(async () => {
       const data = await import(
-        `~/static/pagesetting/${route.value.params.statField}.json`
+        `~/data/pagesetting/${route.value.params.statField}.json`
       )
       contentsAll.value = data
     })

@@ -17,7 +17,7 @@ import { mapGetters } from 'vuex'
 export default {
   async asyncData({ params, $axios }) {
     const [contentsAll, prefMap] = await Promise.all([
-      import(`~/static/pagesetting/${params.statField}.json`),
+      import(`~/data/pagesetting/${params.statField}.json`),
       $axios.get(
         `${process.env.BASE_URL}/topojson/20200101/jp_pref.c.topojson`
       ),
