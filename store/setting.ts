@@ -1,5 +1,6 @@
 import { cloneDeep } from 'lodash'
 
+// コンテンツ情報
 import LandWeather from '@/data/pagesetting/landweather.json'
 import Population from '@/data/pagesetting/population.json'
 import LaborWage from '@/data/pagesetting/laborwage.json'
@@ -16,6 +17,23 @@ import Safetyenvironment from '@/data/pagesetting/safetyenvironment.json'
 import SocialSecurity from '@/data/pagesetting/socialsecurity.json'
 import International from '@/data/pagesetting/international.json'
 import Other from '@/data/pagesetting/other.json'
+
+// 型定義
+import { EstatParams } from '@/plugins/estat'
+
+export type Series = {
+  id: string
+  code: string
+  name: string
+}
+
+export type Contents = {
+  title: string
+  titleId: string
+  annotation: string[]
+  estatParams: EstatParams
+  series: Series[]
+}
 
 const initialState = {
   statFieldList: [],

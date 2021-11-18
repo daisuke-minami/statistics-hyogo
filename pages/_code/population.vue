@@ -13,6 +13,7 @@ import {
   useRoute,
   useStore,
 } from '@nuxtjs/composition-api'
+import { Contents } from '@/store/setting'
 
 type Government = 'prefecture' | 'city'
 
@@ -34,10 +35,10 @@ export default defineComponent({
 
     // ストアから統計項目リストを取得
     const store = useStore()
-    const titleList = computed(() =>
+    const contentsList = computed((): Contents[] =>
       store.getters['setting/getTitleList'](statField.value, govType.value)
     )
-    console.log(titleList)
+    console.log(contentsList)
 
     return {
       statField,
