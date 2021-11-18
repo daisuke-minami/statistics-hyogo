@@ -39,7 +39,7 @@
     {
       "title": "ガソリン販売量",
       "titleId": "gasoline-sales-volume",
-      "isRank": false,
+      
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000010108",
@@ -58,7 +58,7 @@
     {
       "title": "都市ガス販売量",
       "titleId": "city-gas-sales-volume",
-      "isRank": false,
+      
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000010108",
@@ -77,7 +77,7 @@
     {
       "title": "ごみ総排出量",
       "titleId": "garbage-discharged",
-      "isRank": false,
+      
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000010108",

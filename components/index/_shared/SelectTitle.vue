@@ -2,7 +2,7 @@
   <div>
     <static-card>
       <v-row>
-        <v-col class="d-flex" cols="12" sm="6">
+        <v-col class="d-flex" cols="12" sm="12">
           <v-row align="center" justify="space-around">
             <v-btn text> Normal </v-btn>
             <v-btn text> Primary </v-btn>

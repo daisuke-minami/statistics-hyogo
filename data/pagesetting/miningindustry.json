@@ -3,7 +3,7 @@
     {
       "title": "製造品出荷額",
       "titleId": "product-shipment-value",
-      "isRank": false,
+      
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000010103",
@@ -40,7 +40,7 @@
     {
       "title": "工業用水量",
       "titleId": "industrial-water-volume",
-      "isRank": false,
+      
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000010103",

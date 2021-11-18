@@ -43,7 +43,7 @@
     {
       "title": "標準価格（平均価格）（工業地）",
       "titleId": "standard-price-industrial-area",
-      "isRank": false,
+      
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000010103",
@@ -66,7 +66,7 @@
     {
       "title": "標準価格（平均価格）（住宅地）",
       "titleId": "standard-price-residential-area",
-      "isRank": false,
+      
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000020203",
@@ -87,7 +87,7 @@
     {
       "title": "標準価格（平均価格）（商業地）",
       "titleId": "standard-price-commercial-area",
-      "isRank": false,
+      
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000020203",
@@ -108,7 +108,7 @@
     {
       "title": "標準価格（平均価格）（工業地）",
       "titleId": "standard-price-industrial-area",
-      "isRank": false,
+      
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000020203",

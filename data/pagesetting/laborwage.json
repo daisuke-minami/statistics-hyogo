@@ -103,7 +103,7 @@
     {
       "title": "非労働力人口",
       "titleId": "non-labor-population",
-      "isRank": false,
+      
       "annotation": [
         "非労働力人口 ： 15歳以上の人口のうち，「就業者」と「完全失業者」以外の者"
       ],
@@ -137,7 +137,7 @@
       "title": "完全失業者数",
       "titleId": "number-of-unemployed",
       "annotation": [],
-      "isRank": false,
+      
       "estatParams": {
         "statsDataId": "0000020206",
         "cdCat01": [
@@ -168,7 +168,7 @@
       "title": "第１次産業就業者数",
       "titleId": "primary-industry",
       "annotation": [],
-      "isRank": false,
+      
       "estatParams": {
         "statsDataId": "0000020206",
         "cdCat01": [
@@ -187,7 +187,7 @@
       "title": "第２次産業就業者数",
       "titleId": "secondary-industry",
       "annotation": [],
-      "isRank": false,
+      
       "estatParams": {
         "statsDataId": "0000020206",
         "cdCat01": [
@@ -206,7 +206,7 @@
       "title": "第３次産業就業者数",
       "titleId": "tertiary-industry",
       "annotation": [],
-      "isRank": false,
+      
       "estatParams": {
         "statsDataId": "0000020206",
         "cdCat01": [
@@ -224,7 +224,7 @@
     {
       "title": "市区町内で従業している就業者数",
       "titleId": "number-of-employees-in-the-city",
-      "isRank": false,
+      
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000020206",
@@ -255,7 +255,7 @@
     {
       "title": "市区町外（県内）で従業している就業者数",
       "titleId": "number-of-employees-outside-city",
-      "isRank": false,
+      
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000020206",
@@ -286,7 +286,7 @@
     {
       "title": "市区町外（県外）で従業している就業者数",
       "titleId": "number-of-employees-outside-prefecture",
-      "isRank": false,
+      
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000020206",

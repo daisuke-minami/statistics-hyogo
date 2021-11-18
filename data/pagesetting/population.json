@@ -3,7 +3,6 @@
     {
       "title": "外国人人口",
       "titleId": "foreign-population",
-      "isRank": false,
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000010101",
@@ -34,7 +33,6 @@
     {
       "title": "総人口",
       "titleId": "population-all",
-      "isRank": false,
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000010101",
@@ -65,7 +63,6 @@
     {
       "title": "日本人人口",
       "titleId": "population-japanese",
-      "isRank": false,
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000010101",
@@ -96,7 +93,6 @@
     {
       "title": "人口集中地区人口",
       "titleId": "densely-inhabited-district-population",
-      "isRank": false,
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000010101",
@@ -127,7 +123,6 @@
     {
       "title": "出生数",
       "titleId": "number-of-births",
-      "isRank": false,
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000010101",
@@ -158,7 +153,6 @@
     {
       "title": "合計特殊出生率",
       "titleId": "total-fertility-rate",
-      "isRank": false,
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000010101",
@@ -177,7 +171,6 @@
     {
       "title": "死亡数",
       "titleId": "number-of-deaths",
-      "isRank": false,
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000010101",
@@ -208,7 +201,6 @@
     {
       "title": "年齢調整死亡率（女性）",
       "titleId": "age-adjusted-mortality-woman",
-      "isRank": false,
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000010101",
@@ -227,7 +219,6 @@
     {
       "title": "死産数",
       "titleId": "stillbirth-one",
-      "isRank": false,
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000010101",
@@ -246,7 +237,6 @@
     {
       "title": "自然死産数",
       "titleId": "natural-stillbirth",
-      "isRank": false,
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000010101",
@@ -265,7 +255,6 @@
     {
       "title": "死産数（妊娠満22週以降）",
       "titleId": "stillbirth-two",
-      "isRank": false,
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000010101",
@@ -284,7 +273,6 @@
     {
       "title": "早期新生児死亡数",
       "titleId": "early-neonatal-mortality",
-      "isRank": false,
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000010101",
@@ -303,7 +291,6 @@
     {
       "title": "新生児死亡数",
       "titleId": "neonatal-mortality",
-      "isRank": false,
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000010101",
@@ -322,7 +309,6 @@
     {
       "title": "乳児死亡数",
       "titleId": "infant-deaths",
-      "isRank": false,
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000010101",
@@ -341,7 +327,6 @@
     {
       "title": "標準化死亡率",
       "titleId": "standardized-mortality-ratio",
-      "isRank": false,
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000010101",
@@ -360,7 +345,6 @@
     {
       "title": "人口集中地区面積",
       "titleId": "densely-inhabited-area",
-      "isRank": false,
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000010101",
@@ -379,7 +363,6 @@
     {
       "title": "昼間人口",
       "titleId": "daytime-population",
-      "isRank": false,
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000010101",
@@ -398,7 +381,6 @@
     {
       "title": "昼夜間人口比率",
       "titleId": "day-night-population-ratio",
-      "isRank": false,
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000010101",
@@ -417,7 +399,6 @@
     {
       "title": "流入人口（県外）",
       "titleId": "influx-population",
-      "isRank": false,
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000010101",
@@ -436,7 +417,6 @@
     {
       "title": "流出人口（県外）",
       "titleId": "outflow-population",
-      "isRank": false,
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000010101",
@@ -455,7 +435,6 @@
     {
       "title": "転入者数（日本人）",
       "titleId": "transferees",
-      "isRank": false,
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000010101",
@@ -474,7 +453,6 @@
     {
       "title": "転出者数（日本人）",
       "titleId": "outmigrants",
-      "isRank": false,
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000010101",
@@ -493,7 +471,6 @@
     {
       "title": "結婚件数",
       "titleId": "marriage",
-      "isRank": false,
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000010101",
@@ -512,7 +489,6 @@
     {
       "title": "離婚件数",
       "titleId": "divorce",
-      "isRank": false,
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000010101",
@@ -531,7 +507,6 @@
     {
       "title": "出生数",
       "titleId": "births",
-      "isRank": false,
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000010101",
@@ -550,7 +525,6 @@
     {
       "title": "死亡数",
       "titleId": "deaths",
-      "isRank": false,
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000010101",
@@ -569,7 +543,6 @@
     {
       "title": "平均婚姻年齢（初婚の夫）",
       "titleId": "average-marriage-age-man",
-      "isRank": false,
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000010101",
@@ -588,7 +561,6 @@
     {
       "title": "平均婚姻年齢（初婚の妻）",
       "titleId": "average-marriage-age-woman",
-      "isRank": false,
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000010101",
@@ -607,7 +579,6 @@
     {
       "title": "母子世帯数",
       "titleId": "motherchild-household",
-      "isRank": false,
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000010101",
@@ -664,7 +635,6 @@
     {
       "title": "総人口",
       "titleId": "population-all",
-      "isRank": false,
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000020201",
@@ -695,7 +665,6 @@
     {
       "title": "昼間人口",
       "titleId": "daytime-population",
-      "isRank": false,
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000020201",
@@ -714,7 +683,6 @@
     {
       "title": "昼夜間人口比率",
       "titleId": "day-night-population-ratio",
-      "isRank": false,
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000020201",
@@ -733,7 +701,6 @@
     {
       "title": "農業産出額",
       "titleId": "agricultural-output",
-      "isRank": false,
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000020203",
@@ -752,7 +719,6 @@
     {
       "title": "昼夜間人口比率",
       "titleId": "day-night-population-ratio",
-      "isRank": false,
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000020201",

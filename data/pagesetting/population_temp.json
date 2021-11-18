@@ -4,7 +4,7 @@
       "title": "有配偶人口",
       "titleId": "married-population",
       "cardComponent": "estat-pyramid-chart-card",
-      "isRank": false,
+      
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000010101",
@@ -119,7 +119,7 @@
       "title": "死別人口",
       "titleId": "bereavement-population",
       "cardComponent": "estat-pyramid-chart-card",
-      "isRank": false,
+      
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000010101",
@@ -232,7 +232,7 @@
       "title": "離別人口",
       "titleId": "separated-population",
       "cardComponent": "estat-pyramid-chart-card",
-      "isRank": false,
+      
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000010101",
@@ -346,7 +346,7 @@
       "titleId": "parentchild-household",
       
       
-      "isRank": false,
+      
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000010101",
@@ -384,7 +384,7 @@
       "titleId": "double-income-household",
       
       
-      "isRank": false,
+      
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000010106",
@@ -424,7 +424,7 @@
       "titleId": "influx-population",
       
       
-      "isRank": false,
+      
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000020201",
@@ -447,7 +447,7 @@
       "titleId": "influx-population-hyogo",
       
       
-      "isRank": false,
+      
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000020201",
@@ -470,7 +470,7 @@
       "titleId": "outflow-population",
       
       
-      "isRank": false,
+      
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000020201",
@@ -493,7 +493,7 @@
       "titleId": "outflow-population-hyogo",
       
       
-      "isRank": false,
+      
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000020201",
@@ -516,7 +516,7 @@
       "titleId": "transferees",
       
       
-      "isRank": false,
+      
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000020201",
@@ -539,7 +539,7 @@
       "titleId": "outmigrants",
       
       
-      "isRank": false,
+      
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000020201",
@@ -562,7 +562,7 @@
       "titleId": "marriage",
       
       
-      "isRank": false,
+      
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000020201",
@@ -585,7 +585,7 @@
       "titleId": "divorce",
       
       
-      "isRank": false,
+      
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000020201",
@@ -608,7 +608,7 @@
       "titleId": "births",
       
       
-      "isRank": false,
+      
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000020201",
@@ -631,7 +631,7 @@
       "titleId": "deaths",
       
       
-      "isRank": false,
+      
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000020201",
@@ -654,7 +654,7 @@
       "titleId": "motherchild-household",
       
       
-      "isRank": false,
+      
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000020201",
@@ -692,7 +692,7 @@
       "titleId": "parentchild-household",
       
       
-      "isRank": false,
+      
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000020201",
