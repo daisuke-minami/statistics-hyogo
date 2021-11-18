@@ -20,6 +20,7 @@
 import { defineComponent, computed, useStore } from '@nuxtjs/composition-api'
 import { EventBus, TOGGLE_EVENT } from '@/utils/tab-event-bus'
 import { City } from '~/store/cityList'
+import { Pref } from '~/store/prefList'
 
 type Props = {
   statField: string
@@ -40,18 +41,34 @@ export default defineComponent({
   setup(props: Props) {
     // ストアから都道府県と市区町村リストを取得
     const store = useStore()
-    const cityList = computed(
+    const { value: cityList } = computed(
       (): City[] => store.getters['cityList/getCityList']
     )
-
-    const items = computed((): TabItem[] =>
-      cityList.value.map((d: City) => {
-        return {
-          label: d.cityName,
-          path: `/${props.statField}/${d.cityCode}`,
-        }
-      })
+    const selectedPref = computed(
+      (): Pref => store.getters['prefList/getSelectedPref']
     )
+
+    function toFiveDigit(code: number): string {
+      return ('0000000000' + code).slice(-2) + '000'
+    }
+
+    // タブ項目を生成
+    const items = computed((): TabItem[] => {
+      return [
+        {
+          label: selectedPref.value.prefName,
+          path: `/${props.statField}/${toFiveDigit(
+            selectedPref.value.prefCode
+          )}`,
+        },
+        ...cityList.map((d: City) => {
+          return {
+            label: d.cityName,
+            path: `/${props.statField}/${d.cityCode}`,
+          }
+        }),
+      ]
+    })
 
     const change = (): void => {
       EventBus.$emit(TOGGLE_EVENT)

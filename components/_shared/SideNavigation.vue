@@ -100,6 +100,13 @@
 
 <script lang="ts">
 import {
+  defineComponent,
+  reactive,
+  useStore,
+  computed,
+} from '@nuxtjs/composition-api'
+
+import {
   mdiWeatherPartlyCloudy,
   mdiAccountMultiple,
   mdiCashMultiple,
@@ -119,11 +126,10 @@ import {
   mdiSeatbelt,
   mdiMenu,
 } from '@mdi/js'
-import Vue from 'vue'
 
-import { mapGetters } from 'vuex'
+import { Pref } from '~/store/prefList'
 
-type Item = {
+type MenuItem = {
   iconPath?: string
   svg?: string
   title: string
@@ -131,29 +137,33 @@ type Item = {
   divider?: boolean
 }
 
-export default Vue.extend({
+export default defineComponent({
   props: {
     isNaviOpen: {
       type: Boolean,
       required: true,
     },
   },
-  data() {
-    return {
+  setup() {
+    const data = reactive({
       mdiClose,
       mdiMenu,
+    })
+
+    // ストアから都道府県を取得
+    const store = useStore()
+    const selectedPref = computed(
+      (): Pref => store.getters['prefList/getSelectedPref']
+    )
+
+    // 都道府県コードを5桁文字列に変換
+    function toFiveDigit(code: number): string {
+      return ('0000000000' + code).slice(-2) + '000'
     }
-  },
-  computed: {
-    ...mapGetters('prefList', ['getSelectedPrefCode']),
-    ...mapGetters('setting', ['getChartClass']),
-    prefCode() {
-      return this.getSelectedPrefCode
-    },
-    chartClass() {
-      return this.getChartClass
-    },
-    items(): Item[] {
+    const prefCode: string = toFiveDigit(selectedPref.value.prefCode)
+
+    // メニュー項目
+    const items = computed((): MenuItem[] => {
       return [
         {
           iconPath: mdiChartTimelineVariant,
@@ -163,82 +173,82 @@ export default Vue.extend({
         {
           iconPath: mdiWeatherPartlyCloudy,
           title: '国土・気象',
-          link: `/${this.chartClass}/${this.prefCode}/landweather/`,
+          link: `/${prefCode}/landweather/`,
         },
         {
           iconPath: mdiAccountMultiple,
           title: '人口・世帯',
-          link: `/prefecture/${this.prefCode}/population/`,
+          link: `/${prefCode}/population/`,
         },
         {
           iconPath: mdiCashMultiple,
           title: '労働・賃金',
-          link: `/prefecture/${this.prefCode}/laborwage/`,
+          link: `/${prefCode}/laborwage/`,
         },
         {
           iconPath: mdiFish,
           title: '農林水産業',
-          link: `/prefecture/${this.prefCode}/agriculture/`,
+          link: `/${prefCode}/agriculture/`,
         },
         {
           iconPath: mdiFactory,
           title: '鉱工業',
-          link: `/prefecture/${this.prefCode}/miningindustry/`,
+          link: `/${prefCode}/miningindustry/`,
         },
         {
           iconPath: mdiStore,
           title: '商業・サービス業',
-          link: `/prefecture/${this.prefCode}/commercial/`,
+          link: `/${prefCode}/commercial/`,
         },
         {
           iconPath: mdiOfficeBuilding,
           title: '企業・家計・経済',
-          link: `/prefecture/${this.prefCode}/economy/`,
+          link: `/${prefCode}/economy/`,
         },
         {
           iconPath: mdiHomeAnalytics,
           title: '住宅・土地・建設',
-          link: `/prefecture/${this.prefCode}/construction/`,
+          link: `/${prefCode}/construction/`,
         },
         {
           iconPath: mdiWater,
           title: 'エネルギー・水',
-          link: `/prefecture/${this.prefCode}/energy/`,
+          link: `/${prefCode}/energy/`,
         },
         {
           iconPath: mdiTruck,
           title: '運輸・観光',
-          link: `/prefecture/${this.prefCode}/tourism/`,
+          link: `/${prefCode}/tourism/`,
         },
         {
           iconPath: mdiSchool,
           title: '教育・文化・スポーツ',
-          link: `/prefecture/${this.prefCode}/educationsports/`,
+          link: `/${prefCode}/educationsports/`,
         },
         {
           iconPath: mdiCashUsd,
           title: '行財政',
-          link: `/prefecture/${this.prefCode}/administrativefinancial/`,
+          link: `/${prefCode}/administrativefinancial/`,
         },
         {
           iconPath: mdiSeatbelt,
           title: '司法・安全・環境',
-          link: `/prefecture/${this.prefCode}/safetyenvironment/`,
+          link: `/${prefCode}/safetyenvironment/`,
         },
         {
           iconPath: mdiHospitalBox,
           title: '社会保障・衛生',
-          link: `/prefecture/${this.prefCode}/socialsecurity/`,
+          link: `/${prefCode}/socialsecurity/`,
         },
         {
           iconPath: mdiEarth,
           title: '国際',
-          link: `/prefecture/${this.prefCode}/international/`,
+          link: `/${prefCode}/international/`,
         },
         {
           iconPath: mdiChartTimelineVariant,
           title: 'その他',
-          link: `/prefecture/${this.prefCode}/other/`,
+          link: `/${prefCode}/other/`,
           divider: true,
         },
         {
@@ -251,21 +261,30 @@ export default Vue.extend({
           link: '/about/',
         },
       ]
-    },
-  },
-  watch: {
-    $route: 'handleChageRoute',
-  },
-  methods: {
-    handleChageRoute() {
-      // nuxt-link で遷移するとフォーカスが残り続けるので $route を監視して SideNavigation にフォーカスする
-      return this.$nextTick().then(() => {
-        const $Side = this.$refs.Side as HTMLEmbedElement | undefined
-        if ($Side) {
-          $Side.focus()
-        }
-      })
-    },
+    })
+
+    // nuxt-link で遷移するとフォーカスが残り続けるので $route を監視して SideNavigation にフォーカスする
+    // const route = useRoute()
+    // const Side = ref(null)
+    // onMounted(() => {
+    //   console.log(Side.value)
+    // })
+    // // const root = ref(null)
+    // watch(route, () => handleChageRoute())
+    // const handleChageRoute = () => {
+    //   return root.$nextTick().then(() => {
+    //     const $Side = Side.value as HTMLEmbedElement | undefined
+    //     if ($Side) {
+    //       $Side.focus()
+    //     }
+    //   })
+    // }
+
+    return {
+      items,
+      mdiClose: data.mdiClose,
+      mdiMenu: data.mdiMenu,
+    }
   },
 })
 </script>
