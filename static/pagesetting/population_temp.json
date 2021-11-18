@@ -344,7 +344,7 @@
     {
       "title": "父子世帯数",
       "titleId": "parentchild-household",
-      "cardComponent": "estat-time-chart-single-multi",
+      
       
       "isRank": false,
       "annotation": [],
@@ -382,7 +382,7 @@
     {
       "title": "共働き世帯数",
       "titleId": "double-income-household",
-      "cardComponent": "estat-time-chart-single-multi",
+      
       
       "isRank": false,
       "annotation": [],
@@ -422,7 +422,7 @@
     {
       "title": "流入人口（県外）",
       "titleId": "influx-population",
-      "cardComponent": "estat-time-chart-single-multi",
+      
       
       "isRank": false,
       "annotation": [],
@@ -445,7 +445,7 @@
     {
       "title": "流入人口（県内他市区町村）",
       "titleId": "influx-population-hyogo",
-      "cardComponent": "estat-time-chart-single-multi",
+      
       
       "isRank": false,
       "annotation": [],
@@ -468,7 +468,7 @@
     {
       "title": "流出人口（県外）",
       "titleId": "outflow-population",
-      "cardComponent": "estat-time-chart-single-multi",
+      
       
       "isRank": false,
       "annotation": [],
@@ -491,7 +491,7 @@
     {
       "title": "流出人口（県内他市区町村）",
       "titleId": "outflow-population-hyogo",
-      "cardComponent": "estat-time-chart-single-multi",
+      
       
       "isRank": false,
       "annotation": [],
@@ -514,7 +514,7 @@
     {
       "title": "転入者数（日本人）",
       "titleId": "transferees",
-      "cardComponent": "estat-time-chart-single-multi",
+      
       
       "isRank": false,
       "annotation": [],
@@ -537,7 +537,7 @@
     {
       "title": "転出者数（日本人）",
       "titleId": "outmigrants",
-      "cardComponent": "estat-time-chart-single-multi",
+      
       
       "isRank": false,
       "annotation": [],
@@ -560,7 +560,7 @@
     {
       "title": "結婚件数",
       "titleId": "marriage",
-      "cardComponent": "estat-time-chart-single-multi",
+      
       
       "isRank": false,
       "annotation": [],
@@ -583,7 +583,7 @@
     {
       "title": "離婚件数",
       "titleId": "divorce",
-      "cardComponent": "estat-time-chart-single-multi",
+      
       
       "isRank": false,
       "annotation": [],
@@ -606,7 +606,7 @@
     {
       "title": "出生数",
       "titleId": "births",
-      "cardComponent": "estat-time-chart-single-multi",
+      
       
       "isRank": false,
       "annotation": [],
@@ -629,7 +629,7 @@
     {
       "title": "死亡数",
       "titleId": "deaths",
-      "cardComponent": "estat-time-chart-single-multi",
+      
       
       "isRank": false,
       "annotation": [],
@@ -652,7 +652,7 @@
     {
       "title": "母子世帯数",
       "titleId": "motherchild-household",
-      "cardComponent": "estat-time-chart-single-multi",
+      
       
       "isRank": false,
       "annotation": [],
@@ -690,7 +690,7 @@
     {
       "title": "父子世帯数",
       "titleId": "parentchild-household",
-      "cardComponent": "estat-time-chart-single-multi",
+      
       
       "isRank": false,
       "annotation": [],

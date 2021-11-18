@@ -3,8 +3,8 @@
     {
       "title": "在留外国人数",
       "titleId": "foreign-residents",
-      "cardComponent": "estat-time-chart-single-multi",
-      "isRank": true,
+      
+      
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000010101",

@@ -3,8 +3,6 @@
     {
       "title": "総面積",
       "titleId": "total-area",
-      "cardComponent": "estat-time-chart-single",
-      "isRank": true,
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000010102",
@@ -23,8 +21,6 @@
     {
       "title": "可住地面積",
       "titleId": "resident-area",
-      "cardComponent": "estat-time-chart-single",
-      "isRank": true,
       "annotation": [
         "可住地面積とは、総面積から林野面積と主要湖沼面積を差し引いた、人が住み得る土地をいう"
       ],
@@ -45,8 +41,6 @@
     {
       "title": "林野面積",
       "titleId": "forest-area-one",
-      "cardComponent": "estat-time-chart-single",
-      "isRank": true,
       "annotation": [
         "森林面積に森林以外の草生地（野草地）の面積を加えた面積"
       ],
@@ -67,7 +61,6 @@
     {
       "title": "森林面積",
       "titleId": "forest-area-two",
-      "cardComponent": "estat-time-chart-single",
       "isRank": false,
       "annotation": [],
       "estatParams": {
@@ -87,7 +80,6 @@
     {
       "title": "評価総地積（課税対象土地）",
       "titleId": "evaluation-total-cadastral",
-      "cardComponent": "estat-time-chart-single-multi",
       "isRank": false,
       "annotation": [
         "地方税法第342条に基づき，固定資産税の課税客体とされた土地の面積の合計として，都道府県知事から総務大臣に対し，固定資産（土地）の価格等の概要調書によって報告された数値"
@@ -151,7 +143,6 @@
     {
       "title": "人工造林面積",
       "titleId": "artificial-afforestation-area",
-      "cardComponent": "estat-time-chart-single",
       "isRank": false,
       "annotation": [],
       "estatParams": {
@@ -171,7 +162,6 @@
     {
       "title": "自然公園面積",
       "titleId": "natural-park-area",
-      "cardComponent": "estat-time-chart-single",
       "isRank": false,
       "annotation": [
         "自然公園とは、優れた自然の風景地に区域を画して設けられる公園のことをいい、その風景地の内容や指定方法により「国立公園」、「国定公園」、「都道府県立自然公園」の3種類に区分される"
@@ -193,7 +183,6 @@
     {
       "title": "国立公園面積",
       "titleId": "national-park-area-one",
-      "cardComponent": "estat-time-chart-single",
       "isRank": false,
       "annotation": [
         "国立公園：日本の中で特に優れた自然の風景地であり、環境大臣が指定する"
@@ -215,7 +204,6 @@
     {
       "title": "国定公園面積",
       "titleId": "national-park-area-two",
-      "cardComponent": "estat-time-chart-single",
       "isRank": false,
       "annotation": [
         "国定公園：国立公園に準ずる優れた自然の風景地であり、都道府県の申し出を受けて環境大臣が指定する"
@@ -237,7 +225,6 @@
     {
       "title": "都道府県立自然公園数",
       "titleId": "number-of-prefectural-natural-parks",
-      "cardComponent": "estat-time-chart-single",
       "isRank": false,
       "annotation": [
         "都道府県立自然公園：都道府県の風景を代表する傑出した自然の風景地であり、都道府県知事が指定する"
@@ -259,7 +246,6 @@
     {
       "title": "都道府県立自然公園面積",
       "titleId": "prefectural-natural-park-area",
-      "cardComponent": "estat-time-chart-single",
       "isRank": false,
       "annotation": [
         "都道府県立自然公園：都道府県の風景を代表する傑出した自然の風景地であり、都道府県知事が指定する"
@@ -281,7 +267,6 @@
     {
       "title": "年間降水量",
       "titleId": "precipitation-amount",
-      "cardComponent": "estat-time-chart-single",
       "isRank": false,
       "annotation": [],
       "estatParams": {
@@ -301,7 +286,6 @@
     {
       "title": "年平均相対湿度",
       "titleId": "relative-humidity",
-      "cardComponent": "estat-time-chart-single",
       "isRank": false,
       "annotation": [],
       "estatParams": {
@@ -321,7 +305,6 @@
     {
       "title": "最高気温",
       "titleId": "highest-temperature",
-      "cardComponent": "estat-time-chart-single",
       "isRank": false,
       "annotation": [],
       "estatParams": {
@@ -341,7 +324,6 @@
     {
       "title": "最低気温",
       "titleId": "lowest-temperature",
-      "cardComponent": "estat-time-chart-single",
       "isRank": false,
       "annotation": [],
       "estatParams": {
@@ -361,7 +343,6 @@
     {
       "title": "快晴日数",
       "titleId": "sunny-days",
-      "cardComponent": "estat-time-chart-single",
       "isRank": false,
       "annotation": [],
       "estatParams": {
@@ -381,7 +362,6 @@
     {
       "title": "曇天日数",
       "titleId": "cloudy-days",
-      "cardComponent": "estat-time-chart-single",
       "isRank": false,
       "annotation": [],
       "estatParams": {
@@ -401,7 +381,6 @@
     {
       "title": "降水日数",
       "titleId": "precipitation-days",
-      "cardComponent": "estat-time-chart-single",
       "isRank": false,
       "annotation": [],
       "estatParams": {
@@ -421,7 +400,6 @@
     {
       "title": "雪日数",
       "titleId": "snow-days",
-      "cardComponent": "estat-time-chart-single",
       "isRank": false,
       "annotation": [],
       "estatParams": {
@@ -441,7 +419,6 @@
     {
       "title": "日照時間",
       "titleId": "daylight-hours",
-      "cardComponent": "estat-time-chart-single",
       "isRank": false,
       "annotation": [],
       "estatParams": {
@@ -463,8 +440,6 @@
     {
       "title": "総面積",
       "titleId": "total-area",
-      "cardComponent": "estat-time-chart-single",
-      "isRank": true,
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000020202",
@@ -483,8 +458,6 @@
     {
       "title": "可住地面積",
       "titleId": "resident-area",
-      "cardComponent": "estat-time-chart-single-multi",
-      "isRank": true,
       "annotation": [
         "可住地面積とは、総面積から林野面積と主要湖沼面積を差し引いた、人が住み得る土地をいう"
       ],
@@ -505,8 +478,6 @@
     {
       "title": "林野面積",
       "titleId": "forest-area-one",
-      "cardComponent": "estat-time-chart-single-multi",
-      "isRank": true,
       "annotation": [
         "森林面積に森林以外の草生地（野草地）の面積を加えた面積"
       ],
@@ -527,8 +498,6 @@
     {
       "title": "森林面積",
       "titleId": "forest-area-two",
-      "cardComponent": "estat-time-chart-single-multi",
-      "isRank": true,
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000020202",

@@ -3,7 +3,6 @@
     {
       "title": "県内総生産(平成23年基準)",
       "titleId": "gross-fomestic-product-h23",
-      "cardComponent": "estat-time-chart-single-multi",
       "isRank": false,
       "annotation": [],
       "estatParams": {
@@ -41,7 +40,6 @@
     {
       "title": "1人当たり県民所得（平成23年基準）",
       "titleId": "prefectural-income-h23",
-      "cardComponent": "estat-time-chart-single",
       "isRank": false,
       "annotation": [],
       "estatParams": {
@@ -61,8 +59,6 @@
     {
       "title": "民間最終消費支出（名目）（平成23年基準）",
       "titleId": "private-final-consumption-expenditure-nominal",
-      "cardComponent": "estat-time-chart-single",
-      "isRank": true,
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000010103",
@@ -81,8 +77,6 @@
     {
       "title": "民間最終消費支出（実質）（平成23年基準）",
       "titleId": "private-final-consumption-expenditure-real",
-      "cardComponent": "estat-time-chart-single",
-      "isRank": true,
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000010103",
@@ -101,7 +95,6 @@
     {
       "title": "政府最終消費支出（名目）（平成23年基準）",
       "titleId": "government-final-consumption-expenditure-nominal",
-      "cardComponent": "estat-time-chart-single",
       "isRank": false,
       "annotation": [],
       "estatParams": {
@@ -121,7 +114,6 @@
     {
       "title": "政府最終消費支出（実質）（平成23年基準）",
       "titleId": "government-final-consumption-expenditure-real",
-      "cardComponent": "estat-time-chart-single",
       "isRank": false,
       "annotation": [],
       "estatParams": {
@@ -141,7 +133,6 @@
     {
       "title": "県内総資本形成（名目）（平成23年基準）",
       "titleId": "prefectural-total-capital-formation-nominal",
-      "cardComponent": "estat-time-chart-single-multi",
       "isRank": false,
       "annotation": [],
       "estatParams": {
@@ -173,7 +164,6 @@
     {
       "title": "県内総資本形成（実質）（平成23年基準）",
       "titleId": "prefectural-total-capital-formation-real",
-      "cardComponent": "estat-time-chart-single-multi",
       "isRank": false,
       "annotation": [],
       "estatParams": {
@@ -205,7 +195,6 @@
     {
       "title": "課税対象所得",
       "titleId": "taxable-income",
-      "cardComponent": "estat-time-chart-single",
       "isRank": false,
       "annotation": [],
       "estatParams": {
@@ -225,7 +214,6 @@
     {
       "title": "納税義務者数（所得割）",
       "titleId": "number-of-taxpayers-one",
-      "cardComponent": "estat-time-chart-single",
       "isRank": false,
       "annotation": [],
       "estatParams": {
@@ -245,7 +233,6 @@
     {
       "title": "納税義務者数（均等割）",
       "titleId": "number-of-taxpayers-two",
-      "cardComponent": "estat-time-chart-single",
       "isRank": false,
       "annotation": [],
       "estatParams": {
@@ -265,7 +252,6 @@
     {
       "title": "事業所数（事業所・企業統計調査結果）",
       "titleId": "number-of-establishments-one",
-      "cardComponent": "estat-time-chart-single-multi",
       "isRank": false,
       "annotation": [],
       "estatParams": {
@@ -303,7 +289,6 @@
     {
       "title": "事業所数（経済センサス‐基礎調査結果）",
       "titleId": "number-of-establishments-two",
-      "cardComponent": "estat-time-chart-single-multi",
       "isRank": false,
       "annotation": [],
       "estatParams": {
@@ -341,7 +326,6 @@
     {
       "title": "従業者数（事業所・企業統計調査結果）",
       "titleId": "number-of-employees-one",
-      "cardComponent": "estat-time-chart-single-multi",
       "isRank": false,
       "annotation": [],
       "estatParams": {
@@ -379,7 +363,6 @@
     {
       "title": "従業者数（経済センサス‐基礎調査結果）",
       "titleId": "number-of-employees-two",
-      "cardComponent": "estat-time-chart-single-multi",
       "isRank": false,
       "annotation": [],
       "estatParams": {
@@ -417,7 +400,6 @@
     {
       "title": "売上金額（民営）",
       "titleId": "sales-amount",
-      "cardComponent": "estat-time-chart-single-multi",
       "isRank": false,
       "annotation": [],
       "estatParams": {
@@ -539,7 +521,6 @@
     {
       "title": "付加価値額（民営）",
       "titleId": "value-added-amount",
-      "cardComponent": "estat-time-chart-single-multi",
       "isRank": false,
       "annotation": [],
       "estatParams": {
@@ -661,7 +642,6 @@
     {
       "title": "消費者物価地域差指数",
       "titleId": "consumer-price-index",
-      "cardComponent": "estat-time-chart-single",
       "isRank": false,
       "annotation": [],
       "estatParams": {
@@ -681,7 +661,6 @@
     {
       "title": "実収入（二人以上の世帯のうち勤労者世帯）",
       "titleId": "real-income",
-      "cardComponent": "estat-time-chart-single-multi",
       "isRank": false,
       "annotation": [],
       "estatParams": {
@@ -713,7 +692,6 @@
     {
       "title": "消費支出（二人以上の世帯のうち勤労者世帯）",
       "titleId": "consumption-expenditure-two",
-      "cardComponent": "estat-time-chart-single-multi",
       "isRank": false,
       "annotation": [],
       "estatParams": {
@@ -793,7 +771,6 @@
     {
       "title": "消費支出（二人以上の世帯）",
       "titleId": "consumption-expenditure-one",
-      "cardComponent": "estat-time-chart-single-multi",
       "isRank": false,
       "annotation": [],
       "estatParams": {
@@ -873,7 +850,6 @@
     {
       "title": "貯蓄現在高（二人以上の世帯）",
       "titleId": "current-savings-one",
-      "cardComponent": "estat-time-chart-single-multi",
       "isRank": false,
       "annotation": [],
       "estatParams": {
@@ -911,7 +887,6 @@
     {
       "title": "貯蓄現在高（二人以上の世帯のうち勤労者世帯）",
       "titleId": "current-savings-two",
-      "cardComponent": "estat-time-chart-single-multi",
       "isRank": false,
       "annotation": [],
       "estatParams": {
@@ -949,7 +924,6 @@
     {
       "title": "負債現在高（二人以上の世帯）",
       "titleId": "current-debt-one",
-      "cardComponent": "estat-time-chart-single",
       "isRank": false,
       "annotation": [],
       "estatParams": {
@@ -969,7 +943,6 @@
     {
       "title": "負債現在高（二人以上の世帯のうち勤労者世帯）",
       "titleId": "current-debt-two",
-      "cardComponent": "estat-time-chart-single",
       "isRank": false,
       "annotation": [],
       "estatParams": {
@@ -989,7 +962,6 @@
     {
       "title": "年間収入平均（全世帯）",
       "titleId": "average-annual-income-one",
-      "cardComponent": "estat-time-chart-single",
       "isRank": false,
       "annotation": [],
       "estatParams": {
@@ -1009,7 +981,6 @@
     {
       "title": "年間収入平均（勤労者世帯）",
       "titleId": "average-annual-income-two",
-      "cardComponent": "estat-time-chart-single",
       "isRank": false,
       "annotation": [],
       "estatParams": {
@@ -1029,7 +1000,6 @@
     {
       "title": "年間収入のジニ係数（二人以上の世帯）",
       "titleId": "gini-coefficient-of-annual-income-one",
-      "cardComponent": "estat-time-chart-single",
       "isRank": false,
       "annotation": [],
       "estatParams": {
@@ -1049,7 +1019,6 @@
     {
       "title": "年間収入のジニ係数（二人以上の世帯のうち勤労者世帯）",
       "titleId": "gini-coefficient-of-annual-income-two",
-      "cardComponent": "estat-time-chart-single",
       "isRank": false,
       "annotation": [],
       "estatParams": {
@@ -1069,7 +1038,6 @@
     {
       "title": "貯蓄現在高のジニ係数（二人以上の世帯）",
       "titleId": "gini-coefficient-of-current-savings-one",
-      "cardComponent": "estat-time-chart-single",
       "isRank": false,
       "annotation": [],
       "estatParams": {
@@ -1089,7 +1057,6 @@
     {
       "title": "貯蓄現在高のジニ係数（二人以上の世帯のうち勤労者世帯）",
       "titleId": "gini-coefficient-of-current-savings-two",
-      "cardComponent": "estat-time-chart-single",
       "isRank": false,
       "annotation": [],
       "estatParams": {
@@ -1111,8 +1078,6 @@
     {
       "title": "課税対象所得",
       "titleId": "taxable-income",
-      "cardComponent": "estat-time-chart-single",
-      "isRank": true,
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000020203",

@@ -3,8 +3,8 @@
     {
       "title": "国民医療費（総額）",
       "titleId": "national-medical-expenses",
-      "cardComponent": "estat-time-chart-single",
-      "isRank": true,
+      
+      
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000010110",
@@ -25,8 +25,8 @@
     {
       "title": "老人福祉施設数",
       "titleId": "welfare-facilities-elderly",
-      "cardComponent": "estat-time-chart-single",
-      "isRank": true,
+      
+      
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000020210",
@@ -45,8 +45,8 @@
     {
       "title": "国民健康保険被保険者数",
       "titleId": "number-of-national-health-insurance",
-      "cardComponent": "estat-time-chart-single",
-      "isRank": true,
+      
+      
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000020210",
@@ -65,8 +65,8 @@
     {
       "title": "国民健康保険給付金額",
       "titleId": "national-health-insurance-benefit-amount",
-      "cardComponent": "estat-time-chart-single",
-      "isRank": true,
+      
+      
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000020210",

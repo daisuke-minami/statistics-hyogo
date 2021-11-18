@@ -3,13 +3,12 @@
     {
       "title": "標準価格（平均価格）（住宅地）",
       "titleId": "standard-price-residential-area",
-      "cardComponent": "estat-time-chart-single-multi",
-      
-      "isRank": true,
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000010103",
-        "cdCat01": ["C3306"]
+        "cdCat01": [
+          "C3306"
+        ]
       },
       "series": {
         "id": "cat01",
@@ -24,13 +23,12 @@
     {
       "title": "標準価格（平均価格）（商業地）",
       "titleId": "standard-price-commercial-area",
-      "cardComponent": "estat-time-chart-single-multi",
-      
-      "isRank": true,
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000010103",
-        "cdCat01": ["C5403"]
+        "cdCat01": [
+          "C5403"
+        ]
       },
       "series": {
         "id": "cat01",
@@ -45,13 +43,13 @@
     {
       "title": "標準価格（平均価格）（工業地）",
       "titleId": "standard-price-industrial-area",
-     "cardComponent": "estat-time-chart-single-multi",
-      
       "isRank": false,
       "annotation": [],
-       "estatParams": {
+      "estatParams": {
         "statsDataId": "0000010103",
-        "cdCat01": ["C5405"]
+        "cdCat01": [
+          "C5405"
+        ]
       },
       "series": {
         "id": "cat01",
@@ -68,13 +66,13 @@
     {
       "title": "標準価格（平均価格）（住宅地）",
       "titleId": "standard-price-residential-area",
-      "cardComponent": "estat-time-chart-single-multi",
-      
       "isRank": false,
       "annotation": [],
-       "estatParams": {
+      "estatParams": {
         "statsDataId": "0000020203",
-        "cdCat01": ["C5401"]
+        "cdCat01": [
+          "C5401"
+        ]
       },
       "series": {
         "id": "cat01",
@@ -86,16 +84,16 @@
         ]
       }
     },
-     {
+    {
       "title": "標準価格（平均価格）（商業地）",
       "titleId": "standard-price-commercial-area",
-      "cardComponent": "estat-time-chart-single-multi",
-      
       "isRank": false,
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000020203",
-        "cdCat01": ["C5403"]
+        "cdCat01": [
+          "C5403"
+        ]
       },
       "series": {
         "id": "cat01",
@@ -107,16 +105,16 @@
         ]
       }
     },
-   {
+    {
       "title": "標準価格（平均価格）（工業地）",
       "titleId": "standard-price-industrial-area",
-     "cardComponent": "estat-time-chart-single-multi",
-      
       "isRank": false,
       "annotation": [],
-       "estatParams": {
+      "estatParams": {
         "statsDataId": "0000020203",
-        "cdCat01": ["C5405"]
+        "cdCat01": [
+          "C5405"
+        ]
       },
       "series": {
         "id": "cat01",

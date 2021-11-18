@@ -3,8 +3,6 @@
     {
       "title": "発電電力量",
       "titleId": "power-generation",
-      "cardComponent": "estat-time-chart-single",
-      "isRank": true,
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000010108",
@@ -23,8 +21,6 @@
     {
       "title": "電力需要量",
       "titleId": "electricity-demand",
-      "cardComponent": "estat-time-chart-single",
-      "isRank": true,
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000010108",
@@ -43,7 +39,6 @@
     {
       "title": "ガソリン販売量",
       "titleId": "gasoline-sales-volume",
-      "cardComponent": "estat-time-chart-single",
       "isRank": false,
       "annotation": [],
       "estatParams": {
@@ -63,7 +58,6 @@
     {
       "title": "都市ガス販売量",
       "titleId": "city-gas-sales-volume",
-      "cardComponent": "estat-time-chart-single",
       "isRank": false,
       "annotation": [],
       "estatParams": {
@@ -83,7 +77,6 @@
     {
       "title": "ごみ総排出量",
       "titleId": "garbage-discharged",
-      "cardComponent": "estat-time-chart-single",
       "isRank": false,
       "annotation": [],
       "estatParams": {
@@ -105,8 +98,6 @@
     {
       "title": "ごみ総排出量",
       "titleId": "garbage-discharged",
-      "cardComponent": "estat-time-chart-single",
-      "isRank": true,
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000020208",

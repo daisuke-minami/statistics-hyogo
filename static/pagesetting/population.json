@@ -3,7 +3,7 @@
     {
       "title": "外国人人口",
       "titleId": "foreign-population",
-      "cardComponent": "estat-time-chart-single-multi",
+      
       "isRank": false,
       "annotation": [],
       "estatParams": {
@@ -35,7 +35,7 @@
     {
       "title": "総人口",
       "titleId": "population-all",
-      "cardComponent": "estat-time-chart-single-multi",
+      
       "isRank": false,
       "annotation": [],
       "estatParams": {
@@ -67,7 +67,7 @@
     {
       "title": "日本人人口",
       "titleId": "population-japanese",
-      "cardComponent": "estat-time-chart-single-multi",
+      
       "isRank": false,
       "annotation": [],
       "estatParams": {
@@ -99,7 +99,7 @@
     {
       "title": "人口集中地区人口",
       "titleId": "densely-inhabited-district-population",
-      "cardComponent": "estat-time-chart-single-multi",
+      
       "isRank": false,
       "annotation": [],
       "estatParams": {
@@ -131,7 +131,7 @@
     {
       "title": "出生数",
       "titleId": "number-of-births",
-      "cardComponent": "estat-time-chart-single-multi",
+      
       "isRank": false,
       "annotation": [],
       "estatParams": {
@@ -163,7 +163,7 @@
     {
       "title": "合計特殊出生率",
       "titleId": "total-fertility-rate",
-      "cardComponent": "estat-time-chart-single",
+      
       "isRank": false,
       "annotation": [],
       "estatParams": {
@@ -183,7 +183,7 @@
     {
       "title": "死亡数",
       "titleId": "number-of-deaths",
-      "cardComponent": "estat-time-chart-single-multi",
+      
       "isRank": false,
       "annotation": [],
       "estatParams": {
@@ -215,7 +215,7 @@
     {
       "title": "年齢調整死亡率（女性）",
       "titleId": "age-adjusted-mortality-woman",
-      "cardComponent": "estat-time-chart-single",
+      
       "isRank": false,
       "annotation": [],
       "estatParams": {
@@ -235,7 +235,7 @@
     {
       "title": "死産数",
       "titleId": "stillbirth-one",
-      "cardComponent": "estat-time-chart-single",
+      
       "isRank": false,
       "annotation": [],
       "estatParams": {
@@ -255,7 +255,7 @@
     {
       "title": "自然死産数",
       "titleId": "natural-stillbirth",
-      "cardComponent": "estat-time-chart-single",
+      
       "isRank": false,
       "annotation": [],
       "estatParams": {
@@ -275,7 +275,7 @@
     {
       "title": "死産数（妊娠満22週以降）",
       "titleId": "stillbirth-two",
-      "cardComponent": "estat-time-chart-single",
+      
       "isRank": false,
       "annotation": [],
       "estatParams": {
@@ -295,7 +295,7 @@
     {
       "title": "早期新生児死亡数",
       "titleId": "early-neonatal-mortality",
-      "cardComponent": "estat-time-chart-single",
+      
       "isRank": false,
       "annotation": [],
       "estatParams": {
@@ -315,7 +315,7 @@
     {
       "title": "新生児死亡数",
       "titleId": "neonatal-mortality",
-      "cardComponent": "estat-time-chart-single",
+      
       "isRank": false,
       "annotation": [],
       "estatParams": {
@@ -335,7 +335,7 @@
     {
       "title": "乳児死亡数",
       "titleId": "infant-deaths",
-      "cardComponent": "estat-time-chart-single",
+      
       "isRank": false,
       "annotation": [],
       "estatParams": {
@@ -355,7 +355,7 @@
     {
       "title": "標準化死亡率",
       "titleId": "standardized-mortality-ratio",
-      "cardComponent": "estat-time-chart-single",
+      
       "isRank": false,
       "annotation": [],
       "estatParams": {
@@ -375,7 +375,7 @@
     {
       "title": "人口集中地区面積",
       "titleId": "densely-inhabited-area",
-      "cardComponent": "estat-time-chart-single",
+      
       "isRank": false,
       "annotation": [],
       "estatParams": {
@@ -395,7 +395,7 @@
     {
       "title": "昼間人口",
       "titleId": "daytime-population",
-      "cardComponent": "estat-time-chart-single",
+      
       "isRank": false,
       "annotation": [],
       "estatParams": {
@@ -415,7 +415,7 @@
     {
       "title": "昼夜間人口比率",
       "titleId": "day-night-population-ratio",
-      "cardComponent": "estat-time-chart-single",
+      
       "isRank": false,
       "annotation": [],
       "estatParams": {
@@ -435,7 +435,7 @@
     {
       "title": "流入人口（県外）",
       "titleId": "influx-population",
-      "cardComponent": "estat-time-chart-single",
+      
       "isRank": false,
       "annotation": [],
       "estatParams": {
@@ -455,7 +455,7 @@
     {
       "title": "流出人口（県外）",
       "titleId": "outflow-population",
-      "cardComponent": "estat-time-chart-single",
+      
       "isRank": false,
       "annotation": [],
       "estatParams": {
@@ -475,7 +475,7 @@
     {
       "title": "転入者数（日本人）",
       "titleId": "transferees",
-      "cardComponent": "estat-time-chart-single",
+      
       "isRank": false,
       "annotation": [],
       "estatParams": {
@@ -495,7 +495,7 @@
     {
       "title": "転出者数（日本人）",
       "titleId": "outmigrants",
-      "cardComponent": "estat-time-chart-single",
+      
       "isRank": false,
       "annotation": [],
       "estatParams": {
@@ -515,7 +515,7 @@
     {
       "title": "結婚件数",
       "titleId": "marriage",
-      "cardComponent": "estat-time-chart-single",
+      
       "isRank": false,
       "annotation": [],
       "estatParams": {
@@ -535,7 +535,7 @@
     {
       "title": "離婚件数",
       "titleId": "divorce",
-      "cardComponent": "estat-time-chart-single",
+      
       "isRank": false,
       "annotation": [],
       "estatParams": {
@@ -555,7 +555,7 @@
     {
       "title": "出生数",
       "titleId": "births",
-      "cardComponent": "estat-time-chart-single",
+      
       "isRank": false,
       "annotation": [],
       "estatParams": {
@@ -575,7 +575,7 @@
     {
       "title": "死亡数",
       "titleId": "deaths",
-      "cardComponent": "estat-time-chart-single",
+      
       "isRank": false,
       "annotation": [],
       "estatParams": {
@@ -595,7 +595,7 @@
     {
       "title": "平均婚姻年齢（初婚の夫）",
       "titleId": "average-marriage-age-man",
-      "cardComponent": "estat-time-chart-single",
+      
       "isRank": false,
       "annotation": [],
       "estatParams": {
@@ -615,7 +615,7 @@
     {
       "title": "平均婚姻年齢（初婚の妻）",
       "titleId": "average-marriage-age-woman",
-      "cardComponent": "estat-time-chart-single",
+      
       "isRank": false,
       "annotation": [],
       "estatParams": {
@@ -635,7 +635,7 @@
     {
       "title": "母子世帯数",
       "titleId": "motherchild-household",
-      "cardComponent": "estat-time-chart-single-multi",
+      
       "isRank": false,
       "annotation": [],
       "estatParams": {
@@ -673,8 +673,8 @@
     {
       "title": "年齢調整死亡率（男性）",
       "titleId": "age-adjusted-mortality-man",
-      "cardComponent": "estat-time-chart-single",
-      "isRank": true,
+      
+      
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000010101",
@@ -695,7 +695,7 @@
     {
       "title": "総人口",
       "titleId": "population-all",
-      "cardComponent": "estat-time-chart-single-multi",
+      
       "isRank": false,
       "annotation": [],
       "estatParams": {
@@ -727,7 +727,7 @@
     {
       "title": "昼間人口",
       "titleId": "daytime-population",
-      "cardComponent": "estat-time-chart-single",
+      
       "isRank": false,
       "annotation": [],
       "estatParams": {
@@ -747,7 +747,7 @@
     {
       "title": "昼夜間人口比率",
       "titleId": "day-night-population-ratio",
-      "cardComponent": "estat-time-chart-single",
+      
       "isRank": false,
       "annotation": [],
       "estatParams": {
@@ -767,7 +767,7 @@
     {
       "title": "農業産出額",
       "titleId": "agricultural-output",
-      "cardComponent": "estat-time-chart-single",
+      
       "isRank": false,
       "annotation": [],
       "estatParams": {
@@ -787,7 +787,7 @@
     {
       "title": "昼夜間人口比率",
       "titleId": "day-night-population-ratio",
-      "cardComponent": "estat-time-chart-single",
+      
       "isRank": false,
       "annotation": [],
       "estatParams": {

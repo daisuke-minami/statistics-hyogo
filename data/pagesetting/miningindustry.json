@@ -3,7 +3,6 @@
     {
       "title": "製造品出荷額",
       "titleId": "product-shipment-value",
-      "cardComponent": "estat-time-chart-single",
       "isRank": false,
       "annotation": [],
       "estatParams": {
@@ -23,8 +22,6 @@
     {
       "title": "製造業付加価値額",
       "titleId": "manufacturing-industry-value-added",
-      "cardComponent": "estat-time-chart-single",
-      "isRank": true,
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000010103",
@@ -43,7 +40,6 @@
     {
       "title": "工業用水量",
       "titleId": "industrial-water-volume",
-      "cardComponent": "estat-time-chart-single-multi",
       "isRank": false,
       "annotation": [],
       "estatParams": {
@@ -77,8 +73,6 @@
     {
       "title": "製造品出荷額",
       "titleId": "product-shipment-value",
-      "cardComponent": "estat-time-chart-single",
-      "isRank": true,
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000020203",
