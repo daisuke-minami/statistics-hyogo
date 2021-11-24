@@ -1,11 +1,13 @@
 import { cloneDeep } from 'lodash'
 
-export type City = {
-  prefCode: number
-  cityName: string
-  cityCode: string
-  bigCityFlag: string
-}
+export type City =
+  | {
+      prefCode: number
+      cityName: string
+      cityCode: string
+      bigCityFlag: string
+    }
+  | undefined
 
 type State = {
   cityList: City[]

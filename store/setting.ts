@@ -27,13 +27,20 @@ export type Series = {
   name: string
 }
 
-export type Contents = {
-  title: string
-  titleId: string
-  annotation: string[]
-  estatParams: EstatParams
-  series: Series[]
-}
+export type GovType = 'prefecture' | 'city'
+
+export type Contents =
+  | {
+      title: string
+      titleId: string
+      annotation: string[]
+      estatParams: EstatParams
+      series: Series[]
+      govType: string
+      selectedPref: Object
+      selectedCity: Object
+    }
+  | undefined
 
 const initialState = {
   statFieldList: [],

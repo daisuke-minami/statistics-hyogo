@@ -4,12 +4,16 @@
       <v-row>
         <v-col class="d-flex" cols="12" sm="12">
           <v-row align="center" justify="space-around">
-            <v-btn text> Normal </v-btn>
-            <v-btn text> Primary </v-btn>
-            <v-btn text> Error </v-btn>
-            <v-btn text> Normal </v-btn>
-            <v-btn text> Primary </v-btn>
-            <v-btn text> Error </v-btn>
+            <v-btn
+              v-for="(item, i) in titleItems"
+              :key="i"
+              :to="{ path: item.path }"
+              nuxt
+              exact
+              text
+            >
+              {{ item.label }}
+            </v-btn>
           </v-row>
         </v-col>
       </v-row>
@@ -18,13 +22,15 @@
 </template>
 
 <script>
-import Vue from 'vue'
+import { defineComponent } from '@nuxtjs/composition-api'
 
-export default Vue.extend({
-  data() {
-    return {
-      titleId: '',
-    }
+export default defineComponent({
+  props: {
+    titleItems: {
+      type: Array,
+      required: true,
+    },
   },
+  setup() {},
 })
 </script>

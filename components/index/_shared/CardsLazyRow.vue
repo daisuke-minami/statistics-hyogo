@@ -1,5 +1,5 @@
 <template>
-  <div v-if="!hideCards" class="DataBlock">
+  <div class="DataBlock">
     <v-lazy
       v-for="(row, i) in rows"
       :key="i"
@@ -11,36 +11,14 @@
       min-width="50%"
     >
       <card-row v-if="actives[i]">
-        <component :is="component" v-for="(component, j) in row" :key="j" />
+        <component
+          :is="component"
+          v-for="(component, j) in row"
+          :key="j"
+          :contents="contents"
+        />
       </card-row>
     </v-lazy>
-  </div>
-  <div v-else class="DataBlock">
-    <custom-expansion-panel id="hide-cards">
-      <template #icon>
-        <v-icon size="2.4rem">{{ mdiChevronRight }}</v-icon>
-      </template>
-      <template #title>
-        <span class="expansion-panel-text">
-          {{ $t('更新を終了したグラフ') }}
-        </span>
-      </template>
-      <template #content>
-        <v-lazy
-          v-for="(row, i) in rows"
-          :key="i"
-          v-intersect="handler"
-          :value="actives[i]"
-          :options="{ threshold: 0 }"
-          min-height="600"
-          min-width="50%"
-        >
-          <card-row v-if="actives[i]">
-            <component :is="component" v-for="(component, j) in row" :key="j" />
-          </card-row>
-        </v-lazy>
-      </template>
-    </custom-expansion-panel>
   </div>
 </template>
 
@@ -48,7 +26,6 @@
 import { mdiChevronRight } from '@mdi/js'
 import Vue from 'vue'
 
-// import CustomExpansionPanel from '@/components/_shared/CustomExpansionPanel.vue'
 import CardRow from '@/components/index/_shared/CardRow.vue'
 
 type Data = {
@@ -67,21 +44,20 @@ type Methods = {
 type Computed = {}
 type Props = {
   rows: Vue[][]
-  hideCards: boolean
+  contents: Object
 }
 export default Vue.extend<Data, Methods, Computed, Props>({
   components: {
     CardRow,
-    // CustomExpansionPanel,
   },
   props: {
     rows: {
       type: Array,
       required: true,
     },
-    hideCards: {
-      type: Boolean,
-      default: false,
+    contents: {
+      type: Object,
+      required: true,
     },
   },
   data() {

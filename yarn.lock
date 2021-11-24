@@ -2166,6 +2166,48 @@
   "resolved" "https://registry.npmjs.org/@types/throttle-debounce/-/throttle-debounce-2.1.0.tgz"
   "version" "2.1.0"
 
+"@types/topojson-client@*", "@types/topojson-client@^3.1.0":
+  "integrity" "sha512-wmjTmMkF6k6m3Tn4mIyRjw8KUQZLHB1TxNcpGYirvV/aCINkC0eMJsUO/OPMkKIB6VO5iA6Vp39bmAq6QgvSfA=="
+  "resolved" "https://registry.npmjs.org/@types/topojson-client/-/topojson-client-3.1.0.tgz"
+  "version" "3.1.0"
+  dependencies:
+    "@types/geojson" "*"
+    "@types/topojson-specification" "*"
+
+"@types/topojson-server@*":
+  "integrity" "sha512-NxoC9O8lS/+a0M/FiyjIz7Wk6M03DKF5V1xp2vB9zmbMo66ZbaULg2rrosHAqgsU4BmHe4LE7A0JinPZuxGlBw=="
+  "resolved" "https://registry.npmjs.org/@types/topojson-server/-/topojson-server-3.0.1.tgz"
+  "version" "3.0.1"
+  dependencies:
+    "@types/geojson" "*"
+    "@types/topojson-specification" "*"
+
+"@types/topojson-simplify@*":
+  "integrity" "sha512-H7SS2X11Lo3iRT3e7R6jPTAazOoSLD0LKIGq1b+4m/76Md46JfeU3zVIhxfIX9FY7oiyEbXwGumjK1GUXwIIMA=="
+  "resolved" "https://registry.npmjs.org/@types/topojson-simplify/-/topojson-simplify-3.0.1.tgz"
+  "version" "3.0.1"
+  dependencies:
+    "@types/geojson" "*"
+    "@types/topojson-specification" "*"
+
+"@types/topojson-specification@*":
+  "integrity" "sha512-SGc1NdX9g3UGDp6S+p+uyG+Z8CehS51sUJ9bejA25Xgn2kkAguILk6J9nxXK+0M/mbTBN7ypMA7+4HVLNMJ8ag=="
+  "resolved" "https://registry.npmjs.org/@types/topojson-specification/-/topojson-specification-1.0.2.tgz"
+  "version" "1.0.2"
+  dependencies:
+    "@types/geojson" "*"
+
+"@types/topojson@^3.2.3":
+  "integrity" "sha512-j6D8AFYNa8Tcn0TjnWwzKxhWLpUFM4TnQxZU3p20ehOu11xiD9xiVqB6y2148IVI7js6oU8YCKAWi2JaEMktDA=="
+  "resolved" "https://registry.npmjs.org/@types/topojson/-/topojson-3.2.3.tgz"
+  "version" "3.2.3"
+  dependencies:
+    "@types/geojson" "*"
+    "@types/topojson-client" "*"
+    "@types/topojson-server" "*"
+    "@types/topojson-simplify" "*"
+    "@types/topojson-specification" "*"
+
 "@types/uglify-js@*":
   "integrity" "sha512-O3MmRAk6ZuAKa9CHgg0Pr0+lUOqoMLpc9AS4R8ano2auvsg7IE8syF3Xh/NPr26TWklxYcqoEEFdzLLs1fV9PQ=="
   "resolved" "https://registry.npmjs.org/@types/uglify-js/-/uglify-js-3.13.1.tgz"

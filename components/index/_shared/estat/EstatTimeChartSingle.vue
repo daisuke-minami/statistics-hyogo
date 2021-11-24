@@ -82,7 +82,7 @@ type Props = {
   routingPath: string
   selectedPref: object
   selectedCity: object
-  governmentType: string
+  govType: string
   title: string
   titleId: string
   annotation: string[]
@@ -110,7 +110,7 @@ export default defineComponent({
       type: Object,
       required: true,
     },
-    governmentType: {
+    govType: {
       type: String,
       required: true,
     },
@@ -131,7 +131,7 @@ export default defineComponent({
     const canvas = ref<boolean>(true)
 
     const cdArea = computed((): string => {
-      if (props.governmentType === 'city') {
+      if (props.govType === 'city') {
         return props.selectedCity.cityCode
       } else {
         return ('0000000000' + props.selectedPref.prefCode).slice(-2) + '000'
