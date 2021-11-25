@@ -60,7 +60,7 @@
 
 <script lang="ts">
 // import { mdiChartBar, mdiDatabaseCog } from '@mdi/js'
-import axios from 'axios'
+// import axios from 'axios'
 import {
   defineComponent,
   ref,
@@ -130,8 +130,6 @@ export default defineComponent({
     })
 
     const estatResponse = ref({})
-    const cityMapDc = ref({})
-    const cityMap = ref({})
     useFetch(async () => {
       const params: EstatParams = estatParams.value
       const { data: res } = await context.root.$estat.get(
@@ -139,16 +137,6 @@ export default defineComponent({
         { params }
       )
       estatResponse.value = res
-
-      const { data: topoDc } = await axios.get(
-        'https://geoshape.ex.nii.ac.jp/city/topojson/20200101/28/28_city_dc.l.topojson'
-      )
-      cityMapDc.value = topoDc
-
-      const { data: topo } = await axios.get(
-        'https://geoshape.ex.nii.ac.jp/city/topojson/20200101/28/28_city.l.topojson'
-      )
-      cityMap.value = topo
     })
 
     // MapChartとBarChartの切替
@@ -159,13 +147,9 @@ export default defineComponent({
     })
 
     const bigcityKind = ref<string>('all')
-    const topoJson = computed(() => {
-      if (bigcityKind.value === 'all') {
-        return cityMapDc.value
-      } else {
-        return cityMap.value
-      }
-    })
+    const topoJson = computed(() =>
+      store.getters['topojson/getMapCity'](bigcityKind.value)
+    )
 
     // 出典
     const source = computed((): Source => {

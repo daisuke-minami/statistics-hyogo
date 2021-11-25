@@ -35,9 +35,9 @@ export default defineComponent({
   },
   setup(props) {
     const series = computed(() => {
-      const series: SeriesRankPref = cloneDeep(props.displayData)[0]
-      series.joinBy = ['N03_001', 'prefName']
-      series.states = { hover: { color: '#a4edba' } }
+      const series: SeriesRankPref[] = cloneDeep(props.displayData)
+      series[0].joinBy = ['N03_001', 'prefName']
+      series[0].states = { hover: { color: '#a4edba' } }
       return series
     })
     const geoJson = computed(() => {

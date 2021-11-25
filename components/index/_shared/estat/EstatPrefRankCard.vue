@@ -58,7 +58,7 @@
 </template>
 
 <script lang="ts">
-import axios from 'axios'
+// import axios from 'axios'
 import {
   defineComponent,
   ref,
@@ -95,6 +95,7 @@ export default defineComponent({
     const prefList = computed(
       (): Pref[] => store.getters['prefList/getPrefList']
     )
+    const prefMap = computed(() => store.getters['topojson/getMapPref'])
 
     // 都道府県・市区町村情報
     const selectedPref = computed((): Pref => {
@@ -130,7 +131,7 @@ export default defineComponent({
     })
 
     const estatResponse = ref({})
-    const prefMap = ref({})
+    // const prefMap = ref({})
     useFetch(async () => {
       const params: EstatParams = estatParams.value
       const { data: res } = await context.root.$estat.get(
@@ -138,11 +139,6 @@ export default defineComponent({
         { params }
       )
       estatResponse.value = res
-
-      const { data: topo } = await axios.get(
-        `https://geoshape.ex.nii.ac.jp/city/topojson/20200101/jp_pref.c.topojson`
-      )
-      prefMap.value = topo
     })
 
     // MapChartとBarChartの切替
