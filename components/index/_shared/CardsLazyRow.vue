@@ -11,15 +11,7 @@
       min-width="50%"
     >
       <card-row v-if="actives[i]">
-        <component
-          :is="component"
-          v-for="(component, j) in row"
-          :key="j"
-          :series="series"
-          :estat-params="estatParams"
-          :annotation="annotation"
-          :latest-year-int="latestYearInt"
-        />
+        <component :is="component" v-for="(component, j) in row" :key="j" />
       </card-row>
     </v-lazy>
   </div>
@@ -48,9 +40,6 @@ type Methods = {
 type Computed = {}
 type Props = {
   rows: Vue[][]
-  series: []
-  estatParams: Object
-  annotation: []
 }
 export default Vue.extend<Data, Methods, Computed, Props>({
   components: {
@@ -59,22 +48,6 @@ export default Vue.extend<Data, Methods, Computed, Props>({
   props: {
     rows: {
       type: Array,
-      required: true,
-    },
-    series: {
-      type: Array,
-      required: true,
-    },
-    estatParams: {
-      type: Object,
-      required: true,
-    },
-    annotation: {
-      type: Array,
-      required: true,
-    },
-    latestYearInt: {
-      type: Number,
       required: true,
     },
   },

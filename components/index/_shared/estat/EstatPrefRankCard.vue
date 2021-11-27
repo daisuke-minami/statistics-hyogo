@@ -66,8 +66,12 @@ import {
   useStore,
   inject,
 } from '@nuxtjs/composition-api'
-import { GovernmentStateKey } from '@/composition/government'
-import { CardStateKey } from '@/composition/card'
+import {
+  GovernmentStateType,
+  GovernmentStateKey,
+} from '@/composition/government'
+import { CardStateType, CardStateKey } from '@/composition/card'
+import { EstatStateKey } from '@/composition/estat'
 
 // MapChart
 const MapChart = () => {
@@ -79,33 +83,34 @@ const BarChart = () => {
 }
 
 export default defineComponent({
-  props: {
-    series: {
-      type: Array,
-      required: true,
-    },
-    estatParams: {
-      type: Object,
-      required: true,
-    },
-    annotation: {
-      type: Array,
-      required: true,
-    },
-    latestYearInt: {
-      type: Number,
-      required: true,
-    },
-  },
-  setup(props, context) {
+  setup(_, context) {
+    // canvas
     const canvas = ref<boolean>(true)
+
+    // inject
+    const govState: GovernmentStateType = inject(GovernmentStateKey)
+    const cardState: CardStateType = inject(CardStateKey)
+    const estatState: any = inject(EstatStateKey)
+
+    // eStat-APIからデータを取得
+    const estatResponse = ref({})
+    useFetch(async () => {
+      const params = Object.assign({}, estatState.estatParams.value)
+      params.cdArea = govState.prefList.value.map(
+        (d) => ('0000000000' + d.prefCode).slice(-2) + '000'
+      )
+      const { data: res } = await context.root.$estat.get(`getStatsData`, {
+        params,
+      })
+      estatResponse.value = res
+    })
 
     // ストアから都道府県リストを取得
     const store = useStore()
     const prefMap = computed(() => store.getters['topojson/getMapPref'])
 
     // inject(governmentState)
-    const govState: any = inject(GovernmentStateKey)
+    // const govState: any = inject(GovernmentStateKey)
     const selectedPref = govState.selectedPref
     const selectedCity = govState.selectedCity
     const govType = govState.govType
@@ -118,23 +123,10 @@ export default defineComponent({
         : selectedCity.value.cityName
 
     // inject(cardState)
-    const cardState: any = inject(CardStateKey)
+    // const cardState: any = inject(CardStateKey)
     const title = `${name}の${cardState.title.value}Rank`
     const titleId = cardState.titleId.value
     const routingPath = `${cardState.routingPath.value}/rankchart`
-
-    // eStat-APIからデータを取得
-    const estatResponse = ref({})
-    useFetch(async () => {
-      const params = Object.assign({}, props.estatParams)
-      params.cdArea = prefList.value.map(
-        (d) => ('0000000000' + d.prefCode).slice(-2) + '000'
-      )
-      const { data: res } = await context.root.$estat.get(`getStatsData`, {
-        params,
-      })
-      estatResponse.value = res
-    })
 
     // MapChartとBarChartの切替
     const mapbar = ref<string>('map')
@@ -179,7 +171,7 @@ export default defineComponent({
       'このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません'
     )
     const annotation = computed((): string[] => {
-      return props.annotation
+      return estatState.annotation.value
     })
     const additionalDescription = computed((): string[] => {
       return annotation.value.concat(estatCredit.value)

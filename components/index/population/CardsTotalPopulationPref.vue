@@ -4,7 +4,17 @@
 
 <script lang="ts">
 import CardsLazyRow from '@/components/index/_shared/CardsLazyRow.vue'
-import { computed, defineComponent, reactive } from '@nuxtjs/composition-api'
+import {
+  defineComponent,
+  reactive,
+  provide,
+  inject,
+} from '@nuxtjs/composition-api'
+import {
+  useEstatState,
+  EstatStateKey,
+  EstatStateType,
+} from '@/composition/estat'
 
 // TimeChart
 const TimeChart = () => {
@@ -21,13 +31,7 @@ export default defineComponent({
   components: {
     CardsLazyRow,
   },
-  props: {
-    contents: {
-      type: Object,
-      required: true,
-    },
-  },
-  setup(props) {
+  setup() {
     // データ定義
     const data = reactive({
       rows: [[TimeChart, RankChart]],
@@ -53,19 +57,17 @@ export default defineComponent({
         },
       ],
       latestYearInt: 2019,
+      annotation: [],
     })
 
-    const annotation = computed(() => {
-      return props.contents.annotation
-    })
+    // provide(estatState)
+    provide(EstatStateKey, useEstatState())
+    const estatState: EstatStateType = inject(EstatStateKey)
+    estatState.setEstatState(data)
 
     return {
       props: {
         rows: data.rows,
-        annotation: annotation.value,
-        series: data.series,
-        estatParams: data.estatParams,
-        latestYearInt: data.latestYearInt,
       },
     }
   },

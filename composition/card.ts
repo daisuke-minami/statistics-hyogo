@@ -1,4 +1,4 @@
-import { reactive, toRefs, InjectionKey } from '@vue/composition-api'
+import { reactive, toRefs, InjectionKey } from '@nuxtjs/composition-api'
 
 export type StateType = {
   title: string

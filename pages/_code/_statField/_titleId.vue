@@ -20,6 +20,7 @@ import {
 } from '@/composition/government'
 import { useContentsState, ContentsStateKey } from '@/composition/contents'
 import { useCardState, CardStateKey } from '@/composition/card'
+// import { useTopojsonState, TopojsonStateKey } from '@/composition/topojson'
 
 export default defineComponent({
   setup() {
@@ -47,6 +48,7 @@ export default defineComponent({
     govState.setSelectedPref(code.value)
     govState.setSelectedCity(code.value)
     govState.setCityList(code.value)
+    govState.setCode(code.value)
 
     // provide(contentsState)
     provide(ContentsStateKey, useContentsState())
@@ -68,6 +70,8 @@ export default defineComponent({
     cardState.setRoutingPath(
       `/${code.value}/${statField.value}/${titleId.value}`
     )
+
+    // provide(TopojsonStateKey, useTopojsonState())
 
     const contents = computed(() => {
       const c = contentsList.find((f) => f.titleId === titleId.value)

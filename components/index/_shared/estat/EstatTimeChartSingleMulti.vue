@@ -73,64 +73,48 @@ import {
   formatSource,
   Source,
 } from '@/utils/formatEstat'
-import { GovernmentStateKey } from '@/composition/government'
-import { CardStateKey } from '@/composition/card'
+import {
+  GovernmentStateType,
+  GovernmentStateKey,
+} from '@/composition/government'
+import { CardStateType, CardStateKey } from '@/composition/card'
+import { EstatStateKey } from '@/composition/estat'
 
 export default defineComponent({
-  props: {
-    series: {
-      type: Array,
-      required: true,
-    },
-    estatParams: {
-      type: Object,
-      required: true,
-    },
-    annotation: {
-      type: Array,
-      required: true,
-    },
-  },
-  setup(props, context) {
+  setup(_, context) {
+    // canvas
     const canvas = ref<boolean>(true)
 
-    // inject(governmentState)
-    const govState: any = inject(GovernmentStateKey)
-    const selectedPref = govState.selectedPref
-    const selectedCity = govState.selectedCity
-    const govType = govState.govType
-
-    // タイトルの設定
-    const name =
-      govType.value === 'prefecture'
-        ? selectedPref.value.prefName
-        : selectedCity.value.cityName
-
-    // inject(cardState)
-    const cardState: any = inject(CardStateKey)
-    const title = `${name}の${cardState.title.value}`
-    const titleId = cardState.titleId.value
-    const routingPath = `${cardState.routingPath.value}/timechart`
-
-    // cdAreaの設定
-    const cdArea = computed((): string => {
-      if (govType.value === 'city') {
-        return selectedCity.value.cityCode
-      } else {
-        return ('0000000000' + selectedPref.value.prefCode).slice(-2) + '000'
-      }
-    })
+    // inject
+    const govState: GovernmentStateType = inject(GovernmentStateKey)
+    const cardState: CardStateType = inject(CardStateKey)
+    const estatState: any = inject(EstatStateKey)
 
     // eStat-APIからデータを取得
     const estatResponse = ref({})
     useFetch(async () => {
-      const params = Object.assign({}, props.estatParams)
-      params.cdArea = cdArea.value
+      const params = Object.assign({}, estatState.estatParams.value)
+      params.cdArea = govState.code.value
       const { data: res } = await context.root.$estat.get('getStatsData', {
         params,
       })
       estatResponse.value = res
     })
+
+    // title
+    const title = computed((): string => {
+      const name =
+        govState.govType.value === 'prefecture'
+          ? govState.selectedPref.value.prefName
+          : govState.selectedCity.value.cityName
+      return `${name}の${cardState.title.value}`
+    })
+
+    // titleId
+    const titleId = cardState.titleId.value
+
+    // routingPath
+    const routingPath = `${cardState.routingPath.value}/timechart`
 
     // ColumnChartとLineChartの切替
     const columnline = ref<string>('column')
@@ -140,18 +124,31 @@ export default defineComponent({
       return chartComponent
     })
 
+    // 総数／内訳の切替
+    const allbreak = ref<string>('all')
+    const displayData = computed(() => {
+      if (allbreak.value === 'all') {
+        return chartData.value.slice(0, 1)
+      } else {
+        return chartData.value.slice(1)
+      }
+    })
+
     // 出典
     const source = computed((): Source => {
       return formatSource(estatResponse.value)
     })
 
+    const series = estatState.series.value
     const chartData = computed((): TimeSeries[] => {
-      return formatTimeChart(estatResponse.value, props.series).chartData
+      return formatTimeChart(estatResponse.value, series).chartData
     })
 
     // 注釈
+    const annotation = estatState.annotation.value
+    // console.log(annotation)
     const additionalDescription = computed((): string[] => {
-      return formatAdditionalDescription(props.annotation)
+      return formatAdditionalDescription(annotation)
     })
 
     const displayInfo = computed(() => {
@@ -165,21 +162,11 @@ export default defineComponent({
     })
 
     const tableHeaders = computed(() => {
-      return formatTimeChart(estatResponse.value, props.series).tableHeaders
+      return formatTimeChart(estatResponse.value, series).tableHeaders
     })
 
     const tableData = computed(() => {
-      return formatTimeChart(estatResponse.value, props.series).tableData
-    })
-
-    // 総数／内訳の切替
-    const allbreak = ref<string>('all')
-    const displayData = computed(() => {
-      if (allbreak.value === 'all') {
-        return chartData.value.slice(0, 1)
-      } else {
-        return chartData.value.slice(1)
-      }
+      return formatTimeChart(estatResponse.value, series).tableData
     })
 
     const lastUpdate = computed((): string => {

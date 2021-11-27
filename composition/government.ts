@@ -1,4 +1,4 @@
-import { reactive, toRefs, InjectionKey } from '@vue/composition-api'
+import { reactive, toRefs, InjectionKey } from '@nuxtjs/composition-api'
 
 // 都道府県リスト、市区町村リストのimport
 import prefList from '~/data/codes/preflist.json'
@@ -18,6 +18,7 @@ export type City = {
 export type GovType = 'prefecture' | 'city'
 
 export type StateType = {
+  code: string
   prefList: Pref[]
   cityList: City[]
   selectedPref: Pref
@@ -27,6 +28,7 @@ export type StateType = {
 
 export const useGovernmentState = () => {
   const governmentState = reactive<StateType>({
+    code: null,
     prefList: prefList.result,
     cityList: null,
     selectedPref: null,
@@ -36,6 +38,10 @@ export const useGovernmentState = () => {
 
   const setGovType = (code: string) => {
     governmentState.govType = code.match('000') ? 'prefecture' : 'city'
+  }
+
+  const setCode = (code: string) => {
+    governmentState.code = code
   }
 
   const setCityList = (code: string): City[] => {
@@ -61,6 +67,7 @@ export const useGovernmentState = () => {
 
   return {
     ...toRefs(governmentState),
+    setCode,
     setGovType,
     setCityList,
     setSelectedPref,
