@@ -17,12 +17,6 @@
           :key="j"
           :series="series"
           :estat-params="estatParams"
-          :routing-path="routingPath"
-          :selected-pref="selectedPref"
-          :selected-city="selectedCity"
-          :gov-type="govType"
-          :title="title"
-          :title-id="titleId"
           :annotation="annotation"
           :latest-year-int="latestYearInt"
         />
@@ -56,12 +50,6 @@ type Props = {
   rows: Vue[][]
   series: []
   estatParams: Object
-  routingPath: String
-  selectedPref: Object
-  selectedCity: Object
-  govType: String
-  title: String
-  titleId: String
   annotation: []
 }
 export default Vue.extend<Data, Methods, Computed, Props>({
@@ -79,30 +67,6 @@ export default Vue.extend<Data, Methods, Computed, Props>({
     },
     estatParams: {
       type: Object,
-      required: true,
-    },
-    routingPath: {
-      type: String,
-      required: true,
-    },
-    selectedPref: {
-      type: Object,
-      required: true,
-    },
-    selectedCity: {
-      type: Object,
-      required: true,
-    },
-    govType: {
-      type: String,
-      required: true,
-    },
-    title: {
-      type: String,
-      required: true,
-    },
-    titleId: {
-      type: String,
       required: true,
     },
     annotation: {

@@ -17,14 +17,18 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, useStore } from '@nuxtjs/composition-api'
+import { defineComponent, computed, inject } from '@nuxtjs/composition-api'
+import {
+  // useGovernmentState,
+  GovernmentStateKey,
+} from '@/composition/government'
 import { EventBus, TOGGLE_EVENT } from '@/utils/tab-event-bus'
-import { City } from '~/store/cityList'
-import { Pref } from '~/store/prefList'
+// import { City } from '~/store/cityList'
+// import { Pref } from '~/store/prefList'
 
-type Props = {
-  statField: string
-}
+// type Props = {
+//   statField: string
+// }
 
 type TabItem = {
   label: string
@@ -38,20 +42,14 @@ export default defineComponent({
       required: true,
     },
   },
-  setup(props: Props) {
-    // ストアから都道府県と市区町村リストを取得
-    const store = useStore()
-    const { value: cityList } = computed(
-      (): City[] => store.getters['cityList/getCityList']
-    )
-    const selectedPref = computed(
-      (): Pref => store.getters['prefList/getSelectedPref']
-    )
-
+  setup(props) {
     function toFiveDigit(code: number): string {
       return ('0000000000' + code).slice(-2) + '000'
     }
 
+    const state = inject(GovernmentStateKey)
+    const cityList = state.cityList
+    const selectedPref = state.selectedPref
     // タブ項目を生成
     const items = computed((): TabItem[] => {
       return [
@@ -61,7 +59,7 @@ export default defineComponent({
             props.statField
           }`,
         },
-        ...cityList.map((d: City) => {
+        ...cityList.value.map((d: City) => {
           return {
             label: d.cityName,
             path: `/${d.cityCode}/${props.statField}`,

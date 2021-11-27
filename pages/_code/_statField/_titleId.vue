@@ -11,19 +11,20 @@ import {
   defineComponent,
   computed,
   useRoute,
-  useStore,
+  provide,
+  inject,
 } from '@nuxtjs/composition-api'
-import { Contents } from '@/store/setting'
-import { Pref } from '~/store/prefList'
-import { City } from '~/store/cityList'
-
-type Government = 'prefecture' | 'city'
+import {
+  useGovernmentState,
+  GovernmentStateKey,
+} from '@/composition/government'
+import { useContentsState, ContentsStateKey } from '@/composition/contents'
+import { useCardState, CardStateKey } from '@/composition/card'
 
 export default defineComponent({
   setup() {
     // パスパラメータの取得
     const route = useRoute()
-    const store = useStore()
     const code = computed((): string => {
       return route.value.params.code
     })
@@ -35,33 +36,41 @@ export default defineComponent({
     })
 
     // 都道府県or市区町村
-    const govType = computed((): Government => {
+    const govType = computed((): string => {
       return code.value.match('000') ? 'prefecture' : 'city'
     })
-    const selectedPref = computed(
-      (): Pref => store.getters['prefList/getSelectedPref']
-    )
-    const selectedCity = computed((): City => {
-      return govType.value === 'prefecture'
-        ? {}
-        : store.getters['cityList/getCity'](code.value)
-    })
 
-    // ストアから統計項目を取得
-    const contentsList = computed((): Contents[] =>
-      store.getters['setting/getTitleList'](statField.value, govType.value)
-    )
-    // console.log(contentsList)
+    // provide(governmentState)
+    provide(GovernmentStateKey, useGovernmentState())
+    const govState: any = inject(GovernmentStateKey)
+    govState.setGovType(code.value)
+    govState.setSelectedPref(code.value)
+    govState.setCityList(code.value)
 
-    const contents: Contents = computed(() => {
-      const c: Contents = contentsList.value.find(
-        (f) => f.titleId === titleId.value
-      )
-      // console.log(c)
+    // provide(contentsState)
+    provide(ContentsStateKey, useContentsState())
+    const contentsState: any = inject(ContentsStateKey)
+    const contentsList = contentsState.getContentsList(
+      statField.value,
+      govType.value
+    )
+
+    const title: string = contentsList.find(
+      (f) => f.titleId === titleId.value
+    ).title
+
+    // provide(cardsState)
+    provide(CardStateKey, useCardState())
+    const cardState: any = inject(CardStateKey)
+    cardState.setTitle(title)
+    cardState.setTitleId(titleId.value)
+    cardState.setRoutingPath(
+      `/${code.value}/${statField.value}/${titleId.value}`
+    )
+
+    const contents = computed(() => {
+      const c = contentsList.find((f) => f.titleId === titleId.value)
       return {
-        govType: govType.value,
-        selectedPref: selectedPref.value,
-        selectedCity: selectedCity.value,
         title: c.title,
         titleId: c.titleId,
         annotation: c.annotation,
@@ -70,7 +79,7 @@ export default defineComponent({
     })
 
     // タイトル一覧を設定
-    const titleItems = contentsList.value.map((d: Contents) => {
+    const titleItems = contentsList.map((d) => {
       return {
         label: d.title,
         path: `/${code.value}/${statField.value}/${d.titleId}`,

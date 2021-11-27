@@ -12,13 +12,19 @@ import {
   computed,
   useRoute,
   useStore,
+  provide,
+  inject,
 } from '@nuxtjs/composition-api'
-import { Contents } from '@/store/setting'
-import { Pref } from '~/store/prefList'
-import { City } from '~/store/cityList'
+import {
+  useGovernmentState,
+  GovernmentStateKey,
+} from '@/composition/government'
+// import { Contents } from '@/store/setting'
+// import { Pref } from '~/store/prefList'
+// import { City } from '~/store/cityList'
 // import { EstatParams } from '~/plugins/estat'
 
-type Government = 'prefecture' | 'city'
+// type Government = 'prefecture' | 'city'
 
 export default defineComponent({
   setup() {
@@ -34,20 +40,18 @@ export default defineComponent({
       return 'total-population'
     })
 
-    // 都道府県or市区町村
+    provide(GovernmentStateKey, useGovernmentState())
+    const state = inject(GovernmentStateKey)
+    state.setGovType(code.value)
+    state.setSelectedPref(code.value)
+    state.setCityList(code.value)
+
+    // console.log(state)
+
+    // // 都道府県or市区町村
     const govType = computed((): Government => {
       return code.value.match('000') ? 'prefecture' : 'city'
     })
-    const selectedPref = computed(
-      (): Pref => store.getters['prefList/getSelectedPref']
-    )
-    const selectedCity = computed((): City => {
-      return govType.value === 'prefecture'
-        ? {}
-        : store.getters['cityList/getCity'](code.value)
-    })
-
-    // console.log(code)
 
     // ストアから統計項目を取得
     const store = useStore()
@@ -61,8 +65,8 @@ export default defineComponent({
       )
       return {
         govType: govType.value,
-        selectedPref: selectedPref.value,
-        selectedCity: selectedCity.value,
+        // selectedPref: selectedPref.value,
+        // selectedCity: selectedCity.value,
         title: c.title,
         titleId: c.titleId,
         series: c.series,

@@ -4,6 +4,7 @@
   "words": [
     "administrativefinancial",
     "adsense",
+    "allbreak",
     "asynciterable",
     "bigcity",
     "chartjs",
@@ -11,6 +12,7 @@
     "cityrank",
     "CLASSINF",
     "CLASSOBJ",
+    "columnline",
     "covid",
     "DATAINF",
     "datasets",
@@ -25,6 +27,7 @@
     "interop",
     "laborwage",
     "landweather",
+    "mapbar",
     "METAGET",
     "miningindustry",
     "mixins",
@@ -46,6 +49,7 @@
     "STATNAME",
     "TABLEINF",
     "tightenco",
+    "timechart",
     "TITLESPEC",
     "topojson",
     "vuetify"

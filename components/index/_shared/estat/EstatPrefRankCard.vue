@@ -64,12 +64,10 @@ import {
   computed,
   useFetch,
   useStore,
-  // toRefs,
+  inject,
 } from '@nuxtjs/composition-api'
-// import { EstatParams } from '@/utils/formatEstat'
-import { GovType } from '@/store/setting'
-import { City } from '~/store/cityList'
-import { Pref } from '~/store/prefList'
+import { GovernmentStateKey } from '@/composition/government'
+import { CardStateKey } from '@/composition/card'
 
 // MapChart
 const MapChart = () => {
@@ -90,30 +88,6 @@ export default defineComponent({
       type: Object,
       required: true,
     },
-    routingPath: {
-      type: String,
-      required: true,
-    },
-    selectedPref: {
-      type: Object,
-      required: true,
-    },
-    selectedCity: {
-      type: Object,
-      required: true,
-    },
-    govType: {
-      type: String,
-      required: true,
-    },
-    title: {
-      type: String,
-      required: true,
-    },
-    titleId: {
-      type: String,
-      required: true,
-    },
     annotation: {
       type: Array,
       required: true,
@@ -128,21 +102,14 @@ export default defineComponent({
 
     // ストアから都道府県リストを取得
     const store = useStore()
-    const prefList = computed(
-      (): Pref[] => store.getters['prefList/getPrefList']
-    )
     const prefMap = computed(() => store.getters['topojson/getMapPref'])
 
-    // 都道府県・市区町村情報
-    const selectedPref = computed((): Pref => {
-      return props.selectedPref
-    })
-    const selectedCity = computed((): City => {
-      return props.selectedCity
-    })
-    const govType = computed((): GovType => {
-      return props.govType
-    })
+    // inject(governmentState)
+    const state: any = inject(GovernmentStateKey)
+    const selectedPref = state.selectedPref
+    const selectedCity = state.selectedCity
+    const govType = state.govType
+    const prefList = state.prefList
 
     // タイトルの設定
     const name =
@@ -150,12 +117,11 @@ export default defineComponent({
         ? selectedPref.value.prefName
         : selectedCity.value.cityName
 
-    const title = computed((): string => {
-      return `${name}の${props.title}Rank`
-    })
-    // const titleId = computed((): string => {
-    //   return props.titleId
-    // })
+    // inject(cardState)
+    const cardState: any = inject(CardStateKey)
+    const title = `${name}の${cardState.title.value}Rank`
+    const titleId = cardState.titleId.value
+    const routingPath = `${cardState.routingPath.value}/rankchart`
 
     // eStat-APIからデータを取得
     const estatResponse = ref({})
@@ -167,10 +133,8 @@ export default defineComponent({
       const { data: res } = await context.root.$estat.get(`getStatsData`, {
         params,
       })
-      // console.log('RankChart内', res)
       estatResponse.value = res
     })
-    // console.log('RankChart外', estatResponse.value)
 
     // MapChartとBarChartの切替
     const mapbar = ref<string>('map')
@@ -220,11 +184,6 @@ export default defineComponent({
     const additionalDescription = computed((): string[] => {
       return annotation.value.concat(estatCredit.value)
     })
-
-    // 動的ルーティングのパス
-    // const routingPath = computed((): string => {
-    //   return `${props.routingPath}/Rankchart`
-    // })
 
     const chartData = computed(() => {
       const value =
@@ -314,6 +273,9 @@ export default defineComponent({
       source,
       displayData,
       chartComponent,
+      titleId,
+      title,
+      routingPath,
       topoJson: prefMap,
       targetYear,
       chartData,

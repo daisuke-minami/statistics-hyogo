@@ -64,17 +64,17 @@ import {
   ref,
   computed,
   useFetch,
+  inject,
 } from '@nuxtjs/composition-api'
 import {
-  // EstatParams,
   TimeSeries,
   formatTimeChart,
   formatAdditionalDescription,
   formatSource,
   Source,
 } from '@/utils/formatEstat'
-import { GovType } from '@/store/setting'
-// import { City, Pref } from '~/types/resas'
+import { GovernmentStateKey } from '@/composition/government'
+import { CardStateKey } from '@/composition/card'
 
 export default defineComponent({
   props: {
@@ -86,30 +86,6 @@ export default defineComponent({
       type: Object,
       required: true,
     },
-    routingPath: {
-      type: String,
-      required: true,
-    },
-    selectedPref: {
-      type: Object,
-      required: true,
-    },
-    selectedCity: {
-      type: Object,
-      required: true,
-    },
-    govType: {
-      type: String,
-      required: true,
-    },
-    title: {
-      type: String,
-      required: true,
-    },
-    titleId: {
-      type: String,
-      required: true,
-    },
     annotation: {
       type: Array,
       required: true,
@@ -118,16 +94,11 @@ export default defineComponent({
   setup(props, context) {
     const canvas = ref<boolean>(true)
 
-    // 都道府県・市区町村情報
-    const selectedPref = computed((): Pref => {
-      return props.selectedPref
-    })
-    const selectedCity = computed((): City => {
-      return props.selectedCity
-    })
-    const govType = computed((): GovType => {
-      return props.govType
-    })
+    // inject(governmentState)
+    const govState: any = inject(GovernmentStateKey)
+    const selectedPref = govState.selectedPref
+    const selectedCity = govState.selectedCity
+    const govType = govState.govType
 
     // タイトルの設定
     const name =
@@ -135,12 +106,11 @@ export default defineComponent({
         ? selectedPref.value.prefName
         : selectedCity.value.cityName
 
-    const title = computed((): string => {
-      return `${name}の${props.title}`
-    })
-    const titleId = computed((): string => {
-      return props.titleId
-    })
+    // inject(cardState)
+    const cardState: any = inject(CardStateKey)
+    const title = `${name}の${cardState.title.value}`
+    const titleId = cardState.titleId.value
+    const routingPath = `${cardState.routingPath.value}/timechart`
 
     // cdAreaの設定
     const cdArea = computed((): string => {
@@ -182,11 +152,6 @@ export default defineComponent({
     // 注釈
     const additionalDescription = computed((): string[] => {
       return formatAdditionalDescription(props.annotation)
-    })
-
-    // 動的ルーティングのパス
-    const routingPath = computed((): string => {
-      return `${props.routingPath}/Timechart`
     })
 
     const displayInfo = computed(() => {
