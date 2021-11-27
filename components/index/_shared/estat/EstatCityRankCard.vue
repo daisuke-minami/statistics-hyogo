@@ -59,19 +59,16 @@
 </template>
 
 <script lang="ts">
-// import { mdiChartBar, mdiDatabaseCog } from '@mdi/js'
-// import axios from 'axios'
 import {
   defineComponent,
   ref,
   computed,
   useFetch,
   useStore,
+  inject,
 } from '@nuxtjs/composition-api'
-// import { EstatParams } from '@/utils/formatEstat'
-import { GovType } from '@/store/setting'
-import { City } from '~/store/cityList'
-import { Pref } from '~/store/prefList'
+import { GovernmentStateKey } from '@/composition/government'
+import { CardStateKey } from '@/composition/card'
 
 // MapChart
 const MapChart = () => {
@@ -84,8 +81,20 @@ const BarChart = () => {
 
 export default defineComponent({
   props: {
-    contents: {
+    series: {
+      type: Array,
+      required: true,
+    },
+    estatParams: {
       type: Object,
+      required: true,
+    },
+    annotation: {
+      type: Array,
+      required: true,
+    },
+    latestYearInt: {
+      type: Number,
       required: true,
     },
   },
@@ -94,20 +103,12 @@ export default defineComponent({
 
     // ストアから市区町村リストを取得
     const store = useStore()
-    const cityList = computed(
-      (): City[] => store.getters['cityList/getCityList']
-    )
 
-    // 都道府県・市区町村情報
-    const selectedPref = computed((): Pref => {
-      return props.contents.selectedPref
-    })
-    const selectedCity = computed((): City => {
-      return props.contents.selectedCity
-    })
-    const govType = computed((): GovType => {
-      return props.contents.govType
-    })
+    const govState: any = inject(GovernmentStateKey)
+    const selectedPref = govState.selectedPref
+    const selectedCity = govState.selectedCity
+    const govType = govState.govType
+    const cityList = govState.cityList
 
     // タイトルの設定
     const name =
@@ -115,19 +116,11 @@ export default defineComponent({
         ? selectedPref.value.prefName
         : selectedCity.value.cityName
 
-    const title = computed((): string => {
-      return `${name}の${props.contents.title}Rank`
-    })
-    const titleId = computed((): string => {
-      return props.contents.titleId
-    })
-
-    // eStat-APIからデータを取得
-    // const estatParams = computed((): EstatParams => {
-    //   const params = props.contents.estatParams
-    //   params.cdArea = cityList.value.map((d) => d.cityCode)
-    //   return params
-    // })
+    // inject(cardState)
+    const cardState: any = inject(CardStateKey)
+    const title = `${name}の${cardState.title.value}Rank`
+    const titleId = cardState.titleId.value
+    const routingPath = `${cardState.routingPath.value}/rankchart`
 
     const estatResponse = ref({})
     useFetch(async () => {
@@ -188,15 +181,10 @@ export default defineComponent({
       'このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません'
     )
     const annotation = computed((): string[] => {
-      return props.contents.annotation
+      return props.annotation
     })
     const additionalDescription = computed((): string[] => {
       return annotation.value.concat(estatCredit.value)
-    })
-
-    // 動的ルーティングのパス
-    const routingPath = computed((): string => {
-      return `${props.contents.routingPath}/Rankchart`
     })
 
     const chartData = computed(() => {

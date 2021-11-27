@@ -45,6 +45,7 @@ export default defineComponent({
     const govState: any = inject(GovernmentStateKey)
     govState.setGovType(code.value)
     govState.setSelectedPref(code.value)
+    govState.setSelectedCity(code.value)
     govState.setCityList(code.value)
 
     // provide(contentsState)

@@ -105,11 +105,11 @@ export default defineComponent({
     const prefMap = computed(() => store.getters['topojson/getMapPref'])
 
     // inject(governmentState)
-    const state: any = inject(GovernmentStateKey)
-    const selectedPref = state.selectedPref
-    const selectedCity = state.selectedCity
-    const govType = state.govType
-    const prefList = state.prefList
+    const govState: any = inject(GovernmentStateKey)
+    const selectedPref = govState.selectedPref
+    const selectedCity = govState.selectedCity
+    const govType = govState.govType
+    const prefList = govState.prefList
 
     // タイトルの設定
     const name =

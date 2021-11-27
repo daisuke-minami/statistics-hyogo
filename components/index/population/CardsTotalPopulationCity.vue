@@ -1,15 +1,10 @@
 <template>
-  <cards-lazy-row :rows="data.rows" :contents="contents" />
+  <cards-lazy-row v-bind="props" />
 </template>
 
 <script lang="ts">
 import CardsLazyRow from '@/components/index/_shared/CardsLazyRow.vue'
-import { defineComponent, reactive } from '@nuxtjs/composition-api'
-// import { Contents, GovType } from '@/store/setting'
-
-// type Props = {
-//   contents: Contents
-// }
+import { computed, defineComponent, reactive } from '@nuxtjs/composition-api'
 
 // TimeChart
 const TimeChart = () => {
@@ -25,8 +20,6 @@ const RankChart = () => {
 export default defineComponent({
   components: {
     CardsLazyRow,
-    TimeChart,
-    RankChart,
   },
   props: {
     contents: {
@@ -34,16 +27,45 @@ export default defineComponent({
       required: true,
     },
   },
-  setup() {
-    // const govType = computed((): GovType => {
-    //   return props.contents.govType
-    // })
+  setup(props) {
+    // データ定義
     const data = reactive({
       rows: [[TimeChart, RankChart]],
+      estatParams: {
+        statsDataId: '0000020201',
+        cdCat01: ['A1101', 'A110101', 'A110102'],
+      },
+      series: [
+        {
+          id: 'cat01',
+          code: 'A1101',
+          name: '総数',
+        },
+        {
+          id: 'cat01',
+          code: 'A110101',
+          name: '男性',
+        },
+        {
+          id: 'cat01',
+          code: 'A110102',
+          name: '女性',
+        },
+      ],
+      latestYearInt: 2015,
     })
 
+    const annotation = computed(() => {
+      return props.contents.annotation
+    })
     return {
-      data,
+      props: {
+        rows: data.rows,
+        annotation: annotation.value,
+        series: data.series,
+        estatParams: data.estatParams,
+        latestYearInt: data.latestYearInt,
+      },
     }
   },
 })

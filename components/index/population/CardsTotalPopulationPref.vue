@@ -60,7 +60,6 @@ export default defineComponent({
     })
 
     return {
-      // data,
       props: {
         rows: data.rows,
         annotation: annotation.value,
