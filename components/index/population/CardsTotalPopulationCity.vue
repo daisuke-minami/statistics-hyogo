@@ -1,5 +1,5 @@
 <template>
-  <cards-lazy-row v-bind="props" />
+  <cards-lazy-row :rows="rows" />
 </template>
 
 <script lang="ts">

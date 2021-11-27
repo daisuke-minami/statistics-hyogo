@@ -11,7 +11,7 @@ import {
   defineComponent,
   computed,
   useRoute,
-  useStore,
+  // useStore,
   provide,
   inject,
 } from '@nuxtjs/composition-api'
@@ -19,12 +19,7 @@ import {
   useGovernmentState,
   GovernmentStateKey,
 } from '@/composition/government'
-// import { Contents } from '@/store/setting'
-// import { Pref } from '~/store/prefList'
-// import { City } from '~/store/cityList'
-// import { EstatParams } from '~/plugins/estat'
-
-// type Government = 'prefecture' | 'city'
+import { useContentsState, ContentsStateKey } from '@/composition/contents'
 
 export default defineComponent({
   setup() {
@@ -46,37 +41,31 @@ export default defineComponent({
     state.setSelectedPref(code.value)
     state.setCityList(code.value)
 
-    // console.log(state)
-
     // // 都道府県or市区町村
-    const govType = computed((): Government => {
+    const govType = computed(() => {
       return code.value.match('000') ? 'prefecture' : 'city'
     })
 
-    // ストアから統計項目を取得
-    const store = useStore()
-    const contentsList = computed((): Contents[] =>
-      store.getters['setting/getTitleList'](statField.value, govType.value)
+    // provide(contentsState)
+    provide(ContentsStateKey, useContentsState())
+    const contentsState: any = inject(ContentsStateKey)
+    const contentsList = contentsState.getContentsList(
+      statField.value,
+      govType.value
     )
 
-    const contents: Contents = computed(() => {
-      const c: Contents = contentsList.value.find(
-        (f: Contents) => f.titleId === titleId.value
-      )
+    const contents = computed(() => {
+      const c = contentsList.find((f) => f.titleId === titleId.value)
       return {
-        govType: govType.value,
-        // selectedPref: selectedPref.value,
-        // selectedCity: selectedCity.value,
         title: c.title,
         titleId: c.titleId,
-        series: c.series,
-        estatParams: c.estatParams,
         annotation: c.annotation,
+        routingPath: `/${code.value}/${statField.value}/${titleId.value}`,
       }
     })
 
     // タイトル一覧を設定
-    const titleItems = contentsList.value.map((d: Contents) => {
+    const titleItems = contentsList.map((d: Contents) => {
       return {
         label: d.title,
         path: `/${code.value}/${statField.value}/${d.titleId}`,

@@ -99,12 +99,7 @@
 </template>
 
 <script lang="ts">
-import {
-  defineComponent,
-  reactive,
-  useStore,
-  computed,
-} from '@nuxtjs/composition-api'
+import { defineComponent, reactive, computed } from '@nuxtjs/composition-api'
 
 import {
   mdiWeatherPartlyCloudy,
@@ -127,8 +122,6 @@ import {
   mdiMenu,
 } from '@mdi/js'
 
-import { Pref } from '~/store/prefList'
-
 type MenuItem = {
   iconPath?: string
   svg?: string
@@ -150,17 +143,10 @@ export default defineComponent({
       mdiMenu,
     })
 
-    // ストアから都道府県を取得
-    const store = useStore()
-    const selectedPref = computed(
-      (): Pref => store.getters['prefList/getSelectedPref']
-    )
-
     // 都道府県コードを5桁文字列に変換
-    function toFiveDigit(code: number): string {
-      return ('0000000000' + code).slice(-2) + '000'
-    }
-    const prefCode: string = toFiveDigit(selectedPref.value.prefCode)
+    // function toFiveDigit(code: number): string {
+    //   return ('0000000000' + code).slice(-2) + '000'
+    // }
 
     // メニュー項目
     const items = computed((): MenuItem[] => {
@@ -173,82 +159,82 @@ export default defineComponent({
         {
           iconPath: mdiWeatherPartlyCloudy,
           title: '国土・気象',
-          link: `/${prefCode}/landweather/`,
+          link: `/28000/landweather/`,
         },
         {
           iconPath: mdiAccountMultiple,
           title: '人口・世帯',
-          link: `/${prefCode}/population/`,
+          link: `/28000/population/`,
         },
         {
           iconPath: mdiCashMultiple,
           title: '労働・賃金',
-          link: `/${prefCode}/laborwage/`,
+          link: `/28000/laborwage/`,
         },
         {
           iconPath: mdiFish,
           title: '農林水産業',
-          link: `/${prefCode}/agriculture/`,
+          link: `/28000/agriculture/`,
         },
         {
           iconPath: mdiFactory,
           title: '鉱工業',
-          link: `/${prefCode}/miningindustry/`,
+          link: `/28000/miningindustry/`,
         },
         {
           iconPath: mdiStore,
           title: '商業・サービス業',
-          link: `/${prefCode}/commercial/`,
+          link: `/28000/commercial/`,
         },
         {
           iconPath: mdiOfficeBuilding,
           title: '企業・家計・経済',
-          link: `/${prefCode}/economy/`,
+          link: `/28000/economy/`,
         },
         {
           iconPath: mdiHomeAnalytics,
           title: '住宅・土地・建設',
-          link: `/${prefCode}/construction/`,
+          link: `/28000/construction/`,
         },
         {
           iconPath: mdiWater,
           title: 'エネルギー・水',
-          link: `/${prefCode}/energy/`,
+          link: `/28000/energy/`,
         },
         {
           iconPath: mdiTruck,
           title: '運輸・観光',
-          link: `/${prefCode}/tourism/`,
+          link: `/28000/tourism/`,
         },
         {
           iconPath: mdiSchool,
           title: '教育・文化・スポーツ',
-          link: `/${prefCode}/educationsports/`,
+          link: `/28000/educationsports/`,
         },
         {
           iconPath: mdiCashUsd,
           title: '行財政',
-          link: `/${prefCode}/administrativefinancial/`,
+          link: `/28000/administrativefinancial/`,
         },
         {
           iconPath: mdiSeatbelt,
           title: '司法・安全・環境',
-          link: `/${prefCode}/safetyenvironment/`,
+          link: `/28000/safetyenvironment/`,
         },
         {
           iconPath: mdiHospitalBox,
           title: '社会保障・衛生',
-          link: `/${prefCode}/socialsecurity/`,
+          link: `/28000/socialsecurity/`,
         },
         {
           iconPath: mdiEarth,
           title: '国際',
-          link: `/${prefCode}/international/`,
+          link: `/28000/international/`,
         },
         {
           iconPath: mdiChartTimelineVariant,
           title: 'その他',
-          link: `/${prefCode}/other/`,
+          link: `/28000/other/`,
           divider: true,
         },
         {
