@@ -173,6 +173,7 @@ export function formatTimeChart(
   estatResponse: EstatResponse,
   series: TimeSeries[]
 ) {
+  // console.log(estatResponse)
   const style = getGraphSeriesStyle(series.length)
   const value = estatResponse.GET_STATS_DATA.STATISTICAL_DATA.DATA_INF.VALUE
 

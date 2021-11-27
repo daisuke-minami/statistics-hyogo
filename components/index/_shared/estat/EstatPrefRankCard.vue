@@ -58,15 +58,15 @@
 </template>
 
 <script lang="ts">
-// import axios from 'axios'
 import {
   defineComponent,
   ref,
   computed,
   useFetch,
   useStore,
+  // toRefs,
 } from '@nuxtjs/composition-api'
-import { EstatParams } from '@/utils/formatEstat'
+// import { EstatParams } from '@/utils/formatEstat'
 import { GovType } from '@/store/setting'
 import { City } from '~/store/cityList'
 import { Pref } from '~/store/prefList'
@@ -82,8 +82,44 @@ const BarChart = () => {
 
 export default defineComponent({
   props: {
-    contents: {
+    series: {
+      type: Array,
+      required: true,
+    },
+    estatParams: {
       type: Object,
+      required: true,
+    },
+    routingPath: {
+      type: String,
+      required: true,
+    },
+    selectedPref: {
+      type: Object,
+      required: true,
+    },
+    selectedCity: {
+      type: Object,
+      required: true,
+    },
+    govType: {
+      type: String,
+      required: true,
+    },
+    title: {
+      type: String,
+      required: true,
+    },
+    titleId: {
+      type: String,
+      required: true,
+    },
+    annotation: {
+      type: Array,
+      required: true,
+    },
+    latestYearInt: {
+      type: Number,
       required: true,
     },
   },
@@ -99,13 +135,13 @@ export default defineComponent({
 
     // 都道府県・市区町村情報
     const selectedPref = computed((): Pref => {
-      return props.contents.selectedPref
+      return props.selectedPref
     })
     const selectedCity = computed((): City => {
-      return props.contents.selectedCity
+      return props.selectedCity
     })
     const govType = computed((): GovType => {
-      return props.contents.govType
+      return props.govType
     })
 
     // タイトルの設定
@@ -115,31 +151,26 @@ export default defineComponent({
         : selectedCity.value.cityName
 
     const title = computed((): string => {
-      return `${name}の${props.contents.title}Rank`
+      return `${name}の${props.title}Rank`
     })
-    const titleId = computed((): string => {
-      return props.contents.titleId
-    })
+    // const titleId = computed((): string => {
+    //   return props.titleId
+    // })
 
     // eStat-APIからデータを取得
-    const estatParams = computed((): EstatParams => {
-      const params = props.contents.estatParams
+    const estatResponse = ref({})
+    useFetch(async () => {
+      const params = Object.assign({}, props.estatParams)
       params.cdArea = prefList.value.map(
         (d) => ('0000000000' + d.prefCode).slice(-2) + '000'
       )
-      return params
-    })
-
-    const estatResponse = ref({})
-    // const prefMap = ref({})
-    useFetch(async () => {
-      const params: EstatParams = estatParams.value
-      const { data: res } = await context.root.$estat.get(
-        `${process.env.BASE_URL}/json/getStatsData`,
-        { params }
-      )
+      const { data: res } = await context.root.$estat.get(`getStatsData`, {
+        params,
+      })
+      // console.log('RankChart内', res)
       estatResponse.value = res
     })
+    // console.log('RankChart外', estatResponse.value)
 
     // MapChartとBarChartの切替
     const mapbar = ref<string>('map')
@@ -177,10 +208,6 @@ export default defineComponent({
       })
     })
 
-    // const latestYearInt = computed((): string => {
-    //   return times.value[0].yearInt
-    // })
-    // console.log(latestYearInt)
     const targetYear = ref<number>(2015)
 
     // 注釈
@@ -188,20 +215,21 @@ export default defineComponent({
       'このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません'
     )
     const annotation = computed((): string[] => {
-      return props.contents.annotation
+      return props.annotation
     })
     const additionalDescription = computed((): string[] => {
       return annotation.value.concat(estatCredit.value)
     })
 
     // 動的ルーティングのパス
-    const routingPath = computed((): string => {
-      return `${props.contents.routingPath}/Rankchart`
-    })
+    // const routingPath = computed((): string => {
+    //   return `${props.routingPath}/Rankchart`
+    // })
 
     const chartData = computed(() => {
       const value =
         estatResponse.value.GET_STATS_DATA.STATISTICAL_DATA.DATA_INF.VALUE
+      // console.log('value', value)
       return times.value.map((d) => {
         const v = value.filter((f) => f['@time'] === d.yearStr)
         return {
@@ -279,7 +307,6 @@ export default defineComponent({
 
     return {
       additionalDescription,
-      routingPath,
       lastUpdate,
       tableHeaders,
       tableData,
@@ -287,9 +314,7 @@ export default defineComponent({
       source,
       displayData,
       chartComponent,
-      title,
       topoJson: prefMap,
-      titleId,
       targetYear,
       chartData,
       mapbar,

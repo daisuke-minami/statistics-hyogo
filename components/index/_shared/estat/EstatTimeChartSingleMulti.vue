@@ -2,7 +2,7 @@
   <v-col cols="12" md="6" class="DataCard">
     <client-only>
       <template>
-        <v-card :loading="$fetchState.pending" class="DataView">
+        <v-card :loading="$fetchState.pending">
           <p v-if="$fetchState.pending" />
           <data-view v-else :title="title" :route="routingPath">
             <h4 :id="titleId" class="visually-hidden">
@@ -65,45 +65,68 @@ import {
   computed,
   useFetch,
 } from '@nuxtjs/composition-api'
-// import { getGraphSeriesStyle } from '@/utils/colors'
 import {
-  EstatParams,
+  // EstatParams,
   TimeSeries,
   formatTimeChart,
   formatAdditionalDescription,
   formatSource,
-  // formatTimeList,
   Source,
-  // Times,
 } from '@/utils/formatEstat'
-import { Contents, GovType } from '@/store/setting'
-// import { TimeSeries } from '@/utils/formatEstat'
-import { City } from '~/store/cityList'
-import { Pref } from '~/store/prefList'
-
-type Props = {
-  contents: Contents
-}
+import { GovType } from '@/store/setting'
+// import { City, Pref } from '~/types/resas'
 
 export default defineComponent({
   props: {
-    contents: {
+    series: {
+      type: Array,
+      required: true,
+    },
+    estatParams: {
       type: Object,
       required: true,
     },
+    routingPath: {
+      type: String,
+      required: true,
+    },
+    selectedPref: {
+      type: Object,
+      required: true,
+    },
+    selectedCity: {
+      type: Object,
+      required: true,
+    },
+    govType: {
+      type: String,
+      required: true,
+    },
+    title: {
+      type: String,
+      required: true,
+    },
+    titleId: {
+      type: String,
+      required: true,
+    },
+    annotation: {
+      type: Array,
+      required: true,
+    },
   },
-  setup(props: Props, context) {
+  setup(props, context) {
     const canvas = ref<boolean>(true)
 
     // 都道府県・市区町村情報
     const selectedPref = computed((): Pref => {
-      return props.contents.selectedPref
+      return props.selectedPref
     })
     const selectedCity = computed((): City => {
-      return props.contents.selectedCity
+      return props.selectedCity
     })
     const govType = computed((): GovType => {
-      return props.contents.govType
+      return props.govType
     })
 
     // タイトルの設定
@@ -113,10 +136,10 @@ export default defineComponent({
         : selectedCity.value.cityName
 
     const title = computed((): string => {
-      return `${name}の${props.contents.title}`
+      return `${name}の${props.title}`
     })
     const titleId = computed((): string => {
-      return props.contents.titleId
+      return props.titleId
     })
 
     // cdAreaの設定
@@ -129,18 +152,14 @@ export default defineComponent({
     })
 
     // eStat-APIからデータを取得
-    const estatParams = computed((): EstatParams => {
-      return props.contents.estatParams
-    })
     const estatResponse = ref({})
     useFetch(async () => {
-      const params: EstatParams = estatParams.value
+      const params = Object.assign({}, props.estatParams)
       params.cdArea = cdArea.value
-      const { data } = await context.root.$estat.get(
-        `${process.env.BASE_URL}/json/getStatsData`,
-        { params }
-      )
-      estatResponse.value = data
+      const { data: res } = await context.root.$estat.get('getStatsData', {
+        params,
+      })
+      estatResponse.value = res
     })
 
     // ColumnChartとLineChartの切替
@@ -156,19 +175,18 @@ export default defineComponent({
       return formatSource(estatResponse.value)
     })
 
-    const chartData = computed(
-      (): TimeSeries[] =>
-        formatTimeChart(estatResponse.value, props.contents.series).chartData
-    )
+    const chartData = computed((): TimeSeries[] => {
+      return formatTimeChart(estatResponse.value, props.series).chartData
+    })
 
     // 注釈
     const additionalDescription = computed((): string[] => {
-      return formatAdditionalDescription(props.contents.annotation)
+      return formatAdditionalDescription(props.annotation)
     })
 
     // 動的ルーティングのパス
     const routingPath = computed((): string => {
-      return `${props.contents.routingPath}/Timechart`
+      return `${props.routingPath}/Timechart`
     })
 
     const displayInfo = computed(() => {
@@ -181,18 +199,12 @@ export default defineComponent({
       }
     })
 
-    // const times = computed((): Times[] => {
-    //   return formatTimeList(estatResponse.value)
-    // })
-
     const tableHeaders = computed(() => {
-      return formatTimeChart(estatResponse.value, props.contents.series)
-        .tableHeaders
+      return formatTimeChart(estatResponse.value, props.series).tableHeaders
     })
 
     const tableData = computed(() => {
-      return formatTimeChart(estatResponse.value, props.contents.series)
-        .tableData
+      return formatTimeChart(estatResponse.value, props.series).tableData
     })
 
     // 総数／内訳の切替
@@ -228,6 +240,7 @@ export default defineComponent({
       canvas,
       columnline,
       displayInfo,
+      chartData,
       chartComponent,
     }
   },

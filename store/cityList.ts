@@ -1,13 +1,5 @@
 import { cloneDeep } from 'lodash'
-
-export type City =
-  | {
-      prefCode: number
-      cityName: string
-      cityCode: string
-      bigCityFlag: string
-    }
-  | undefined
+import { City } from '~/types/resas'
 
 type State = {
   cityList: City[]

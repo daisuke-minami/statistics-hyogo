@@ -15,7 +15,16 @@
           :is="component"
           v-for="(component, j) in row"
           :key="j"
-          :contents="contents"
+          :series="series"
+          :estat-params="estatParams"
+          :routing-path="routingPath"
+          :selected-pref="selectedPref"
+          :selected-city="selectedCity"
+          :gov-type="govType"
+          :title="title"
+          :title-id="titleId"
+          :annotation="annotation"
+          :latest-year-int="latestYearInt"
         />
       </card-row>
     </v-lazy>
@@ -27,6 +36,7 @@ import { mdiChevronRight } from '@mdi/js'
 import Vue from 'vue'
 
 import CardRow from '@/components/index/_shared/CardRow.vue'
+// import { component } from 'vue/types/umd'
 
 type Data = {
   actives: boolean[]
@@ -44,7 +54,15 @@ type Methods = {
 type Computed = {}
 type Props = {
   rows: Vue[][]
-  contents: Object
+  series: []
+  estatParams: Object
+  routingPath: String
+  selectedPref: Object
+  selectedCity: Object
+  govType: String
+  title: String
+  titleId: String
+  annotation: []
 }
 export default Vue.extend<Data, Methods, Computed, Props>({
   components: {
@@ -55,8 +73,44 @@ export default Vue.extend<Data, Methods, Computed, Props>({
       type: Array,
       required: true,
     },
-    contents: {
+    series: {
+      type: Array,
+      required: true,
+    },
+    estatParams: {
       type: Object,
+      required: true,
+    },
+    routingPath: {
+      type: String,
+      required: true,
+    },
+    selectedPref: {
+      type: Object,
+      required: true,
+    },
+    selectedCity: {
+      type: Object,
+      required: true,
+    },
+    govType: {
+      type: String,
+      required: true,
+    },
+    title: {
+      type: String,
+      required: true,
+    },
+    titleId: {
+      type: String,
+      required: true,
+    },
+    annotation: {
+      type: Array,
+      required: true,
+    },
+    latestYearInt: {
+      type: Number,
       required: true,
     },
   },

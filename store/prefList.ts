@@ -1,10 +1,5 @@
 import { cloneDeep } from 'lodash'
-// import axios from 'axios'
-
-export type Pref = {
-  prefCode: number
-  prefName: string
-}
+import { Pref } from '~/types/resas'
 
 type State = {
   prefList: Pref[]

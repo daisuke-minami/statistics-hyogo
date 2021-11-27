@@ -68,7 +68,7 @@ import {
   useFetch,
   useStore,
 } from '@nuxtjs/composition-api'
-import { EstatParams } from '@/utils/formatEstat'
+// import { EstatParams } from '@/utils/formatEstat'
 import { GovType } from '@/store/setting'
 import { City } from '~/store/cityList'
 import { Pref } from '~/store/prefList'
@@ -123,15 +123,16 @@ export default defineComponent({
     })
 
     // eStat-APIからデータを取得
-    const estatParams = computed((): EstatParams => {
-      const params = props.contents.estatParams
-      params.cdArea = cityList.value.map((d) => d.cityCode)
-      return params
-    })
+    // const estatParams = computed((): EstatParams => {
+    //   const params = props.contents.estatParams
+    //   params.cdArea = cityList.value.map((d) => d.cityCode)
+    //   return params
+    // })
 
     const estatResponse = ref({})
     useFetch(async () => {
-      const params: EstatParams = estatParams.value
+      const params = Object.assign({}, props.estatParams)
+      // const params: EstatParams = estatParams.value
       const { data: res } = await context.root.$estat.get(
         `${process.env.BASE_URL}/json/getStatsData`,
         { params }

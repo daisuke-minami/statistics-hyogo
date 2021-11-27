@@ -23,6 +23,7 @@ export default defineComponent({
   setup() {
     // パスパラメータの取得
     const route = useRoute()
+    const store = useStore()
     const code = computed((): string => {
       return route.value.params.code
     })
@@ -46,31 +47,27 @@ export default defineComponent({
         : store.getters['cityList/getCity'](code.value)
     })
 
-    // console.log(selectedPref)
-
     // ストアから統計項目を取得
-    const store = useStore()
     const contentsList = computed((): Contents[] =>
       store.getters['setting/getTitleList'](statField.value, govType.value)
     )
+    // console.log(contentsList)
 
     const contents: Contents = computed(() => {
       const c: Contents = contentsList.value.find(
         (f) => f.titleId === titleId.value
       )
+      // console.log(c)
       return {
         govType: govType.value,
         selectedPref: selectedPref.value,
         selectedCity: selectedCity.value,
         title: c.title,
         titleId: c.titleId,
-        series: c.series,
-        estatParams: c.estatParams,
         annotation: c.annotation,
         routingPath: `/${code.value}/${statField.value}/${titleId.value}`,
       }
     })
-    // console.log(contents)
 
     // タイトル一覧を設定
     const titleItems = contentsList.value.map((d: Contents) => {
@@ -81,7 +78,13 @@ export default defineComponent({
     })
 
     // カードコンポーネントの設定
-    const cardComponent = computed((): string => `lazy-cards-${titleId.value}`)
+    const cardComponent = computed((): string => {
+      if (govType.value === 'prefecture') {
+        return `lazy-cards-${titleId.value}-pref`
+      } else {
+        return `lazy-cards-${titleId.value}-city`
+      }
+    })
 
     return {
       statField,
