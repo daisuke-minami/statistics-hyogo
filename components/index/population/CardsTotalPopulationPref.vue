@@ -1,5 +1,5 @@
 <template>
-  <cards-lazy-row v-bind="props" />
+  <cards-lazy-row :rows="rows" />
 </template>
 
 <script lang="ts">
@@ -7,14 +7,11 @@ import CardsLazyRow from '@/components/index/_shared/CardsLazyRow.vue'
 import {
   defineComponent,
   reactive,
+  ref,
   provide,
   inject,
 } from '@nuxtjs/composition-api'
-import {
-  useEstatState,
-  EstatStateKey,
-  EstatStateType,
-} from '@/composition/estat'
+import { useEstatState, EstatStateKey, StateType } from '@/composition/estat'
 
 // TimeChart
 const TimeChart = () => {
@@ -32,9 +29,11 @@ export default defineComponent({
     CardsLazyRow,
   },
   setup() {
-    // データ定義
-    const data = reactive({
-      rows: [[TimeChart, RankChart]],
+    // Card
+    const rows = ref([[TimeChart, RankChart]])
+
+    // estat
+    const data = reactive<StateType>({
       estatParams: {
         statsDataId: '0000010101',
         cdCat01: ['A1101', 'A110101', 'A110102'],
@@ -62,13 +61,13 @@ export default defineComponent({
 
     // provide(estatState)
     provide(EstatStateKey, useEstatState())
-    const estatState: EstatStateType = inject(EstatStateKey)
-    estatState.setEstatState(data)
+    const estatState = inject(EstatStateKey)
+    if (estatState) {
+      estatState.setEstatState(data)
+    }
 
     return {
-      props: {
-        rows: data.rows,
-      },
+      rows,
     }
   },
 })
