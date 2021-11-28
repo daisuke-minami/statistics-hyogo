@@ -4,20 +4,34 @@
       <template>
         <v-card :loading="$fetchState.pending">
           <p v-if="$fetchState.pending" />
-          <data-view v-else :title="title" :route="routingPath">
-            <h4 :id="titleId" class="visually-hidden">
-              {{ title }}
+          <data-view v-else :title="cardTitle" :route="cardRoutingPath">
+            <h4 :id="cardTitleId" class="visually-hidden">
+              {{ cardTitle }}
             </h4>
 
             <toggle-map-bar v-model="mapbar" />
 
-            <v-select
-              v-model="targetYear"
-              :items="times"
-              item-text="yearName"
-              item-value="yearInt"
-              @change="$emit('input', $event)"
-            />
+            <v-row>
+              <v-col>
+                <v-select
+                  v-model="selectedSeries"
+                  :items="series"
+                  item-text="name"
+                  item-value="name"
+                  return-object
+                />
+              </v-col>
+              <v-col>
+                <v-select
+                  v-model="selectedTime"
+                  :items="times"
+                  item-text="yearName"
+                  item-value="yearInt"
+                  return-object
+                  @change="$emit('input', $event)"
+                />
+              </v-col>
+            </v-row>
 
             <lazy-component
               :is="chartComponent"
@@ -62,6 +76,7 @@ import {
   defineComponent,
   ref,
   computed,
+  watch,
   useFetch,
   useStore,
   inject,
@@ -71,7 +86,7 @@ import {
   GovernmentStateKey,
 } from '@/composition/government'
 import { CardStateType, CardStateKey } from '@/composition/card'
-import { EstatStateKey } from '@/composition/estat'
+import { EstatStateType, EstatStateKey, Series } from '@/composition/estat'
 
 // MapChart
 const MapChart = () => {
@@ -87,46 +102,100 @@ export default defineComponent({
     // canvas
     const canvas = ref<boolean>(true)
 
-    // inject
-    const govState: GovernmentStateType = inject(GovernmentStateKey)
+    // カードの情報
     const cardState: CardStateType = inject(CardStateKey)
-    const estatState: any = inject(EstatStateKey)
+    const title = cardState.title.value
+    const titleId = cardState.titleId.value
+    const routingPath = cardState.routingPath.value
+
+    // 都道府県・市区町村の情報
+    const govState: GovernmentStateType = inject(GovernmentStateKey)
+    const govType = govState.govType.value
+    const selectedPref = govState.selectedPref.value
+    const selectedCity = govState.selectedCity.value
+    const prefList = govState.prefList.value
+
+    // estatの情報
+    const estatState: EstatStateType = inject(EstatStateKey)
+    const estatParams = estatState.estatParams.value
+    const series = estatState.series.value
+    const annotation = estatState.annotation.value
+    const latestYear = estatState.latestYear.value
+
+    // cardTitle
+    const cardTitle = computed((): string => {
+      const name =
+        govType === 'prefecture' ? selectedPref.prefName : selectedCity.cityName
+      return `${name}の${title}Rank`
+    })
+
+    // cardTitleId
+    const cardTitleId = titleId
+
+    // cardRoutingPath
+    const cardRoutingPath = `${routingPath}/rankchart`
 
     // eStat-APIからデータを取得
     const estatResponse = ref({})
-    useFetch(async () => {
-      const params = Object.assign({}, estatState.estatParams.value)
-      params.cdArea = govState.prefList.value.map(
+    const { fetch } = useFetch(async () => {
+      const params = Object.assign({}, estatParams)
+      const series = selectedSeries.value
+      if (series.id === 'cat01') {
+        params.cdCat01 = series.code
+      }
+      params.cdArea = prefList.map(
         (d) => ('0000000000' + d.prefCode).slice(-2) + '000'
       )
       const { data: res } = await context.root.$estat.get(`getStatsData`, {
         params,
       })
+      console.log(res)
       estatResponse.value = res
     })
+
+    // 系列をセット
+    const selectedSeries = ref<Series>(series[0])
+    fetch()
+    watch(selectedSeries, () => fetch())
+    // watch(selectedTime, () => fetch())
+
+    const chartData = computed(() => {
+      const value =
+        estatResponse.value.GET_STATS_DATA.STATISTICAL_DATA.DATA_INF.VALUE
+      // console.log('value', value)
+      return times.value.map((d) => {
+        const v = value.filter((f) => f['@time'] === d.yearStr)
+        return {
+          year: d.yearInt,
+          name: title,
+          data: prefList.map((d) => {
+            const cdArea = ('0000000000' + d.prefCode).slice(-2) + '000'
+            const data = v.find((f) => f['@area'] === cdArea)
+            if (data) {
+              return {
+                prefCode: cdArea,
+                prefName: d.prefName,
+                value: parseInt(data.$),
+                unit: data['@unit'],
+              }
+            } else {
+              return {
+                prefCode: cdArea,
+                prefName: 'test',
+                value: '',
+                unit: '',
+              }
+            }
+          }),
+        }
+      })
+    })
+
+    const selectedTime = ref<Time>(latestYear)
 
     // ストアから都道府県リストを取得
     const store = useStore()
     const prefMap = computed(() => store.getters['topojson/getMapPref'])
-
-    // inject(governmentState)
-    // const govState: any = inject(GovernmentStateKey)
-    const selectedPref = govState.selectedPref
-    const selectedCity = govState.selectedCity
-    const govType = govState.govType
-    const prefList = govState.prefList
-
-    // タイトルの設定
-    const name =
-      govType.value === 'prefecture'
-        ? selectedPref.value.prefName
-        : selectedCity.value.cityName
-
-    // inject(cardState)
-    // const cardState: any = inject(CardStateKey)
-    const title = `${name}の${cardState.title.value}Rank`
-    const titleId = cardState.titleId.value
-    const routingPath = `${cardState.routingPath.value}/rankchart`
 
     // MapChartとBarChartの切替
     const mapbar = ref<string>('map')
@@ -164,53 +233,21 @@ export default defineComponent({
       })
     })
 
-    const targetYear = ref<number>(2015)
-
     // 注釈
     const estatCredit = ref<string>(
       'このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません'
     )
-    const annotation = computed((): string[] => {
-      return estatState.annotation.value
-    })
+    // const annotation = computed((): string[] => {
+    //   return estatState.annotation.value
+    // })
     const additionalDescription = computed((): string[] => {
-      return annotation.value.concat(estatCredit.value)
-    })
-
-    const chartData = computed(() => {
-      const value =
-        estatResponse.value.GET_STATS_DATA.STATISTICAL_DATA.DATA_INF.VALUE
-      // console.log('value', value)
-      return times.value.map((d) => {
-        const v = value.filter((f) => f['@time'] === d.yearStr)
-        return {
-          year: d.yearInt,
-          name: title.value,
-          data: prefList.value.map((d) => {
-            const cdArea = ('0000000000' + d.prefCode).slice(-2) + '000'
-            const data = v.find((f) => f['@area'] === cdArea)
-            if (data) {
-              return {
-                prefCode: cdArea,
-                prefName: d.prefName,
-                value: parseInt(data.$),
-                unit: data['@unit'],
-              }
-            } else {
-              return {
-                prefCode: cdArea,
-                prefName: 'test',
-                value: '',
-                unit: '',
-              }
-            }
-          }),
-        }
-      })
+      return annotation.concat(estatCredit.value)
     })
 
     const displayData = computed(() => {
-      return chartData.value.filter((f) => f.year === targetYear.value)
+      return chartData.value.filter(
+        (f) => f.year === selectedTime.value.yearInt
+      )
     })
 
     const lastUpdate = computed((): string => {
@@ -237,7 +274,7 @@ export default defineComponent({
     })
 
     const tableData = computed(() => {
-      return prefList.value.map((d) => {
+      return prefList.map((d) => {
         const cdArea = ('0000000000' + d.prefCode).slice(-2) + '000'
         return Object.assign(
           { prefName: d.prefName },
@@ -257,19 +294,22 @@ export default defineComponent({
     })
 
     return {
+      cardTitle,
+      cardTitleId,
+      cardRoutingPath,
       additionalDescription,
       lastUpdate,
       tableHeaders,
       tableData,
+      series,
       canvas,
       source,
       displayData,
       chartComponent,
-      titleId,
-      title,
-      routingPath,
+
       topoJson: prefMap,
-      targetYear,
+      selectedTime,
+      selectedSeries,
       chartData,
       mapbar,
       times,

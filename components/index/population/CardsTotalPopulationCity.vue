@@ -55,7 +55,9 @@ export default defineComponent({
           name: '女性',
         },
       ],
-      latestYearInt: 2015,
+      latestYear: {
+        yearInt: 2015,
+      },
       annotation: [],
     })
 
