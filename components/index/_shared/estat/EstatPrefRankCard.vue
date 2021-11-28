@@ -149,7 +149,7 @@ export default defineComponent({
       const { data: res } = await context.root.$estat.get(`getStatsData`, {
         params,
       })
-      console.log(res)
+      // console.log(res)
       estatResponse.value = res
     })
 
@@ -293,26 +293,25 @@ export default defineComponent({
       })
     })
 
+    // returnはアルファベット順
     return {
+      additionalDescription,
+      canvas,
       cardTitle,
       cardTitleId,
       cardRoutingPath,
-      additionalDescription,
-      lastUpdate,
-      tableHeaders,
-      tableData,
-      series,
-      canvas,
-      source,
-      displayData,
       chartComponent,
-
-      topoJson: prefMap,
-      selectedTime,
-      selectedSeries,
-      chartData,
+      displayData,
+      lastUpdate,
       mapbar,
+      selectedSeries,
+      selectedTime,
+      series,
+      source,
+      tableData,
+      tableHeaders,
       times,
+      topoJson: prefMap,
     }
   },
 })

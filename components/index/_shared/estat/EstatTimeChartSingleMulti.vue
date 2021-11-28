@@ -154,9 +154,10 @@ export default defineComponent({
     const displayInfo = computed(() => {
       const d: TimeSeries = chartData.value[0]
       const l: number = d.data.length
+      console.log(d)
       return {
         lText: d.data[l - 1].y.toLocaleString(),
-        sText: d.data[l - 1].x + '年の' + d.data.name,
+        sText: d.data[l - 1].x + '年の' + d.name,
         unit: d.data[0].unit,
       }
     })

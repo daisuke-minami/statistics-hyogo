@@ -42,7 +42,7 @@ export default defineComponent({
         {
           id: 'cat01',
           code: 'A1101',
-          name: '総数',
+          name: '総人口',
         },
         {
           id: 'cat01',
