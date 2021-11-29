@@ -150,6 +150,8 @@ export type TimeSeries = {
     unit: string
   }
   color: string
+  yAxis?: number
+  type?: string
 }
 
 export type Times = {
@@ -190,6 +192,8 @@ export function formatTimeChart(
           }
         }),
       color: style[i].color,
+      yAxis: d.yAxis,
+      type: d.type,
     }
   })
   const times = formatTimeList(estatResponse)

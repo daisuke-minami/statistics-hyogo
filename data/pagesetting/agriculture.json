@@ -51,7 +51,6 @@
     {
       "title": "農業産出額",
       "titleId": "agricultural-output",
-      
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000010103",
@@ -70,7 +69,6 @@
     {
       "title": "農家数",
       "titleId": "number-of-farmers",
-      
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000010103",
@@ -107,7 +105,6 @@
     {
       "title": "農業就業人口（販売農家）",
       "titleId": "agricultural-working-population",
-      
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000010103",
@@ -138,7 +135,6 @@
     {
       "title": "耕地面積",
       "titleId": "agricultural-land-area",
-      
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000010103",
@@ -169,7 +165,6 @@
     {
       "title": "漁業産出額",
       "titleId": "fishery-output",
-      
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000010103",
@@ -200,7 +195,6 @@
     {
       "title": "養殖収穫量",
       "titleId": "aquaculture-yield",
-      
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000010103",
@@ -231,7 +225,6 @@
     {
       "title": "農地転用面積",
       "titleId": "agricultural-land-conversion-area",
-      
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000010103",
@@ -250,7 +243,6 @@
     {
       "title": "耕地放棄面積",
       "titleId": "abandoned-cultivated-area",
-      
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000010103",
@@ -269,7 +261,6 @@
     {
       "title": "林道延長",
       "titleId": "forest-road-extension",
-      
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000010103",

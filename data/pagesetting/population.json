@@ -1,6 +1,48 @@
 {
   "prefecture": [
     {
+      "title": "総人口",
+      "titleId": "total-population"
+    },
+    {
+      "title": "昼間人口",
+      "titleId": "daytime-population"
+    },
+    {
+      "title": "出生",
+      "titleId": "birth"
+    },
+    {
+      "title": "死亡数",
+      "titleId": "number-of-deaths",
+      "annotation": [],
+      "estatParams": {
+        "statsDataId": "0000010101",
+        "cdCat01": [
+          "A4200",
+          "A420001",
+          "A420002"
+        ]
+      },
+      "series": [
+        {
+          "id": "cat01",
+          "code": "A4200",
+          "name": "総数"
+        },
+        {
+          "id": "cat01",
+          "code": "A420001",
+          "name": "男性"
+        },
+        {
+          "id": "cat01",
+          "code": "A420002",
+          "name": "女性"
+        }
+      ]
+    },
+    {
       "title": "外国人人口",
       "titleId": "foreign-population",
       "annotation": [],
@@ -31,36 +73,6 @@
       ]
     },
     {
-      "title": "総人口",
-      "titleId": "total-population",
-      "annotation": [],
-      "estatParams": {
-        "statsDataId": "0000010101",
-        "cdCat01": [
-          "A1101",
-          "A110101",
-          "A110102"
-        ]
-      },
-      "series": [
-        {
-          "id": "cat01",
-          "code": "A1101",
-          "name": "総数"
-        },
-        {
-          "id": "cat01",
-          "code": "A110101",
-          "name": "男性"
-        },
-        {
-          "id": "cat01",
-          "code": "A110102",
-          "name": "女性"
-        }
-      ]
-    },
-    {
       "title": "日本人人口",
       "titleId": "population-japanese",
       "annotation": [],
@@ -86,114 +98,6 @@
         {
           "id": "cat01",
           "code": "A110202",
-          "name": "女性"
-        }
-      ]
-    },
-    {
-      "title": "人口集中地区人口",
-      "titleId": "densely-inhabited-district-population",
-      "annotation": [],
-      "estatParams": {
-        "statsDataId": "0000010101",
-        "cdCat01": [
-          "A1801",
-          "A180101",
-          "A180102"
-        ]
-      },
-      "series": [
-        {
-          "id": "cat01",
-          "code": "A1801",
-          "name": "総数"
-        },
-        {
-          "id": "cat01",
-          "code": "A180101",
-          "name": "男性"
-        },
-        {
-          "id": "cat01",
-          "code": "A180102",
-          "name": "女性"
-        }
-      ]
-    },
-    {
-      "title": "出生数",
-      "titleId": "number-of-births",
-      "annotation": [],
-      "estatParams": {
-        "statsDataId": "0000010101",
-        "cdCat01": [
-          "A4101",
-          "A410101",
-          "A410102"
-        ]
-      },
-      "series": [
-        {
-          "id": "cat01",
-          "code": "A4101",
-          "name": "総数"
-        },
-        {
-          "id": "cat01",
-          "code": "A410101",
-          "name": "男性"
-        },
-        {
-          "id": "cat01",
-          "code": "A410102",
-          "name": "女性"
-        }
-      ]
-    },
-    {
-      "title": "合計特殊出生率",
-      "titleId": "total-fertility-rate",
-      "annotation": [],
-      "estatParams": {
-        "statsDataId": "0000010101",
-        "cdCat01": [
-          "A4103"
-        ]
-      },
-      "series": [
-        {
-          "id": "cat01",
-          "code": "A4103",
-          "name": "合計特殊出生率"
-        }
-      ]
-    },
-    {
-      "title": "死亡数",
-      "titleId": "number-of-deaths",
-      "annotation": [],
-      "estatParams": {
-        "statsDataId": "0000010101",
-        "cdCat01": [
-          "A4200",
-          "A420001",
-          "A420002"
-        ]
-      },
-      "series": [
-        {
-          "id": "cat01",
-          "code": "A4200",
-          "name": "総数"
-        },
-        {
-          "id": "cat01",
-          "code": "A420001",
-          "name": "男性"
-        },
-        {
-          "id": "cat01",
-          "code": "A420002",
           "name": "女性"
         }
       ]
@@ -343,60 +247,6 @@
       ]
     },
     {
-      "title": "人口集中地区面積",
-      "titleId": "densely-inhabited-area",
-      "annotation": [],
-      "estatParams": {
-        "statsDataId": "0000010101",
-        "cdCat01": [
-          "A1802"
-        ]
-      },
-      "series": [
-        {
-          "id": "cat01",
-          "code": "A1802",
-          "name": "人口集中地区面積"
-        }
-      ]
-    },
-    {
-      "title": "昼間人口",
-      "titleId": "daytime-population",
-      "annotation": [],
-      "estatParams": {
-        "statsDataId": "0000010101",
-        "cdCat01": [
-          "A6107"
-        ]
-      },
-      "series": [
-        {
-          "id": "cat01",
-          "code": "A6107",
-          "name": "昼間人口"
-        }
-      ]
-    },
-    {
-      "title": "昼夜間人口比率",
-      "titleId": "day-night-population-ratio",
-      "annotation": [],
-      "estatParams": {
-        "statsDataId": "0000010101",
-        "cdCat01": [
-          "A6108"
-        ]
-      },
-      "series": [
-        {
-          "id": "cat01",
-          "code": "A6108",
-          "name": "昼夜間人口比率"
-        }
-      ]
-    },
-    {
       "title": "流入人口（県外）",
       "titleId": "influx-population",
       "annotation": [],
@@ -505,42 +355,6 @@
       ]
     },
     {
-      "title": "出生数",
-      "titleId": "births",
-      "annotation": [],
-      "estatParams": {
-        "statsDataId": "0000010101",
-        "cdCat01": [
-          "A4101"
-        ]
-      },
-      "series": [
-        {
-          "id": "cat01",
-          "code": "A4101",
-          "name": "出生数"
-        }
-      ]
-    },
-    {
-      "title": "死亡数",
-      "titleId": "deaths",
-      "annotation": [],
-      "estatParams": {
-        "statsDataId": "0000010101",
-        "cdCat01": [
-          "A4200"
-        ]
-      },
-      "series": [
-        {
-          "id": "cat01",
-          "code": "A4200",
-          "name": "死亡数"
-        }
-      ]
-    },
-    {
       "title": "平均婚姻年齢（初婚の夫）",
       "titleId": "average-marriage-age-man",
       "annotation": [],
@@ -634,105 +448,11 @@
   "city": [
     {
       "title": "総人口",
-      "titleId": "total-population",
-      "annotation": [],
-      "estatParams": {
-        "statsDataId": "0000020201",
-        "cdCat01": [
-          "A1101",
-          "A110101",
-          "A110102"
-        ]
-      },
-      "series": [
-        {
-          "id": "cat01",
-          "code": "A1101",
-          "name": "総数"
-        },
-        {
-          "id": "cat01",
-          "code": "A110101",
-          "name": "男性"
-        },
-        {
-          "id": "cat01",
-          "code": "A110102",
-          "name": "女性"
-        }
-      ]
+      "titleId": "total-population"
     },
     {
       "title": "昼間人口",
-      "titleId": "daytime-population",
-      "annotation": [],
-      "estatParams": {
-        "statsDataId": "0000020201",
-        "cdCat01": [
-          "A6107"
-        ]
-      },
-      "series": [
-        {
-          "id": "cat01",
-          "code": "A6107",
-          "name": "昼間人口"
-        }
-      ]
-    },
-    {
-      "title": "昼夜間人口比率",
-      "titleId": "day-night-population-ratio",
-      "annotation": [],
-      "estatParams": {
-        "statsDataId": "0000020201",
-        "cdCat01": [
-          "A6108"
-        ]
-      },
-      "series": [
-        {
-          "id": "cat01",
-          "code": "A6108",
-          "name": "昼夜間人口比率"
-        }
-      ]
-    },
-    {
-      "title": "農業産出額",
-      "titleId": "agricultural-output",
-      "annotation": [],
-      "estatParams": {
-        "statsDataId": "0000020203",
-        "cdCat01": [
-          "C3101"
-        ]
-      },
-      "series": [
-        {
-          "id": "cat01",
-          "code": "C3101",
-          "name": "農業産出額"
-        }
-      ]
-    },
-    {
-      "title": "昼夜間人口比率",
-      "titleId": "day-night-population-ratio",
-      "annotation": [],
-      "estatParams": {
-        "statsDataId": "0000020201",
-        "cdCat01": [
-          "A6108"
-        ]
-      },
-      "series": [
-        {
-          "id": "cat01",
-          "code": "A6108",
-          "name": "昼夜間人口比率"
-        }
-      ]
+      "titleId": "daytime-population"
     }
   ]
 }

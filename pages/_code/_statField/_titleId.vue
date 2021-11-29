@@ -33,7 +33,7 @@ export default defineComponent({
       return route.value.params.statField
     })
     const titleId = computed((): string => {
-      return 'total-population'
+      return route.value.params.titleId
     })
 
     // 都道府県or市区町村
@@ -78,7 +78,7 @@ export default defineComponent({
       return {
         title: c.title,
         titleId: c.titleId,
-        annotation: c.annotation,
+        // annotation: c.annotation,
         routingPath: `/${code.value}/${statField.value}/${titleId.value}`,
       }
     })

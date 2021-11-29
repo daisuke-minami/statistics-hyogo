@@ -13,6 +13,8 @@ export type Series = {
   id?: string
   code?: string
   name: string
+  type?: string
+  yAxis?: number
 }
 
 export type Times = {
