@@ -5,23 +5,25 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from '@nuxtjs/composition-api'
+import { defineComponent, computed, PropType } from '@nuxtjs/composition-api'
 import { cloneDeep } from 'lodash'
 
 type Series = {
   name: string
-  data: {
+  data?: {
     x: number
     y: number
     unit: string
   }
-  color: string
+  color?: string
+  type?: string
+  yAxis?: number
 }
 
 export default defineComponent({
   props: {
     displayData: {
-      type: Array,
+      type: Array as PropType<Series[]>,
       required: true,
     },
   },
@@ -49,6 +51,7 @@ export default defineComponent({
         },
         yAxis: {
           opposite: true,
+          // format: '{value}',
           title: {
             text: '',
           },

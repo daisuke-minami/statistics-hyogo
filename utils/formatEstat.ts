@@ -280,12 +280,11 @@ function _formatSource(TABLE_INF): EstatSource {
  * @param annotation - 注釈
  */
 export function formatAdditionalDescription(annotation: string[]) {
-  const estatCredit: string =
-    'このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません'
-
-  const timeChart: string[] = annotation.concat(estatCredit)
+  const estatCredit: string[] = [
+    'このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません',
+  ]
 
   return {
-    timeChart,
+    timeChart: annotation.concat(estatCredit),
   }
 }

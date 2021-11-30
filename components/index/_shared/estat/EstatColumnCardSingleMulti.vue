@@ -103,7 +103,7 @@ export default defineComponent({
       required: true,
     },
     estatAnnotation: {
-      type: [],
+      type: Array as PropType<string[]>,
       required: true,
     },
   },
@@ -127,7 +127,6 @@ export default defineComponent({
       return formatTimeChart(estatResponse.value, series)
     })
 
-    console.log(formatData)
     // chartの種類を設定
     const chartComponent = ref<string>('column-chart')
 
@@ -175,9 +174,8 @@ export default defineComponent({
     })
 
     // 注釈
-    const annotation = props.estatAnnotation
     const additionalDescription = computed((): string[] => {
-      return formatAdditionalDescription(annotation)
+      return formatAdditionalDescription(props.estatAnnotation).timeChart
     })
 
     return {
@@ -192,9 +190,7 @@ export default defineComponent({
       tableHeader,
       tableData,
       canvas,
-      // columnline,
       displayInfo,
-      // chartData,
       chartComponent,
     }
   },
