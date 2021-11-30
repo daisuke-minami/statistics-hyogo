@@ -14,15 +14,15 @@ import {
 import { useEstatState, EstatStateKey, StateType } from '@/composition/estat'
 
 // TimeChart
-const TimeChart = () => {
+const TotalPopulation = () => {
   return import(
-    '@/components/index/_shared/estat/EstatTimeChartSingleMulti.vue'
+    '@/components/index/population/cards/totalPopulationCardPref.vue'
   )
 }
 // RankChart
-const RankChart = () => {
-  return import('@/components/index/_shared/estat/EstatPrefRankCard.vue')
-}
+// const RankChart = () => {
+//   return import('@/components/index/_shared/estat/EstatPrefRankCard.vue')
+// }
 
 export default defineComponent({
   components: {
@@ -30,7 +30,7 @@ export default defineComponent({
   },
   setup() {
     // Card
-    const rows = ref([[TimeChart, RankChart]])
+    const rows = ref([[TotalPopulation]])
 
     // estat
     const data = reactive<StateType>({

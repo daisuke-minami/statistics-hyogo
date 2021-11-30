@@ -1,28 +1,71 @@
 import { getGraphSeriesStyle } from '@/utils/colors'
 
-interface EstatResponse {
-  GET_STATS_DATA: GETSTATSDATA
+export type EstatParams = {
+  statsDataId: string
+  cdArea?: string | string[]
+  cdCat01?: string | string[]
+  cdCat02?: string | string[]
+  cdTab?: string | string[]
+  cdTime?: string | string[]
 }
 
-interface GETSTATSDATA {
+export type EstatSeries = {
+  id?: string
+  code?: string
+  name: string
+  type?: string
+  yAxis?: number
+  color?: string
+  data: []
+}
+
+export type EstatTimes = {
+  yearInt?: number
+  yearStr?: string
+  yearName?: string
+}
+
+export type EstatSource = {
+  estatName: string
+  estatUrl: string
+}
+
+export type EstatResponse = {
+  GET_STATS_DATA?: GETSTATSDATA
+}
+
+export type EstatTableHeader = {
+  text: string
+  value: string
+  width: string
+}
+
+export type EstatTableData = {
+  text: string
+  value: string
+  align: string
+  width: string
+}
+
+type GETSTATSDATA = {
   RESULT: RESULT
   PARAMETER: PARAMETER
   STATISTICAL_DATA: STATISTICALDATA
 }
 
-interface STATISTICALDATA {
+type STATISTICALDATA = {
   RESULT_INF: RESULTINF
   TABLE_INF: TABLEINF
   CLASS_INF: CLASSINF
   DATA_INF: DATAINF
 }
 
-interface DATAINF {
+type DATAINF = {
   NOTE: NOTE[]
   VALUE: VALUE[]
 }
 
-interface VALUE {
+export type VALUE = {
   '@tab': string
   '@cat01': string
   '@area': string
@@ -31,35 +74,35 @@ interface VALUE {
   $: string
 }
 
-interface NOTE {
+type NOTE = {
   '@char': string
   $: string
 }
 
-interface CLASSINF {
+type CLASSINF = {
   CLASS_OBJ: CLASSOBJ[]
 }
 
-interface CLASSOBJ {
+type CLASSOBJ = {
   '@id': string
   '@name': string
   CLASS: CLASS[] | CLASS | CLASS3
 }
 
-interface CLASS3 {
+type CLASS3 = {
   '@code': string
   '@name': string
   '@level': string
   '@unit': string
 }
 
-interface CLASS {
+type CLASS = {
   '@code': string
   '@name': string
   '@level': string
 }
 
-interface TABLEINF {
+type TABLEINF = {
   '@id': string
   STAT_NAME: STATNAME
   GOV_ORG: STATNAME
@@ -79,36 +122,36 @@ interface TABLEINF {
   TITLE_SPEC: TITLESPEC
 }
 
-interface TITLESPEC {
+type TITLESPEC = {
   TABLE_NAME: string
 }
 
-interface DESCRIPTION {
+type DESCRIPTION = {
   TABULATION_CATEGORY_EXPLANATION: string
 }
 
-interface STATISTICSNAMESPEC {
+type STATISTICSNAMESPEC = {
   TABULATION_CATEGORY: string
   TABULATION_SUB_CATEGORY1: string
 }
 
-interface TITLE {
+type TITLE = {
   '@no': string
   $: string
 }
 
-interface STATNAME {
+type STATNAME = {
   '@code': string
   $: string
 }
 
-interface RESULTINF {
+type RESULTINF = {
   TOTAL_NUMBER: number
   FROM_NUMBER: number
   TO_NUMBER: number
 }
 
-interface PARAMETER {
+type PARAMETER = {
   LANG: string
   STATS_DATA_ID: string
   NARROWING_COND: NARROWINGCOND
@@ -122,48 +165,15 @@ interface PARAMETER {
   SECTION_HEADER_FLG: number
 }
 
-interface NARROWINGCOND {
+type NARROWINGCOND = {
   CODE_CAT01_SELECT: string
   CODE_AREA_SELECT: number
 }
 
-interface RESULT {
+type RESULT = {
   STATUS: number
   ERROR_MSG: string
   DATE: string
-}
-
-export type EstatParams = {
-  statsDataId: string
-  cdArea: string | string[] | null | undefined
-  cdCat01: string[] | null | undefined
-  cdCat02: string[] | null | undefined
-  cdTab: string[] | null | undefined
-}
-
-// TimeChartの系列
-export type TimeSeries = {
-  name: string
-  data: {
-    x: number
-    y: number
-    unit: string
-  }
-  color: string
-  yAxis?: number
-  type?: string
-}
-
-export type Times = {
-  yearInt: number
-  yearStr: string
-  yearName: string
-}
-
-// 出典
-export type Source = {
-  name: string
-  url: string
 }
 
 /**
@@ -173,18 +183,21 @@ export type Source = {
  */
 export function formatTimeChart(
   estatResponse: EstatResponse,
-  series: TimeSeries[]
+  series: EstatSeries[]
 ) {
-  // console.log(estatResponse)
+  // 色の設定
   const style = getGraphSeriesStyle(series.length)
-  const value = estatResponse.GET_STATS_DATA.STATISTICAL_DATA.DATA_INF.VALUE
 
-  const chartData = series.map((d: TimeSeries, i) => {
+  const value: VALUE[] =
+    estatResponse.GET_STATS_DATA.STATISTICAL_DATA.DATA_INF.VALUE
+
+  // chartData
+  const chartData: EstatSeries[] = series.map((d: EstatSeries, i) => {
     return {
       name: d.name,
       data: value
-        .filter((f) => f[`@${d.id}`] === d.code)
-        .map((d) => {
+        .filter((f: VALUE) => f[`@${d.id}`] === d.code)
+        .map((d: VALUE) => {
           return {
             x: parseInt(d['@time'].substr(0, 4)),
             y: parseFloat(d.$),
@@ -196,11 +209,13 @@ export function formatTimeChart(
       type: d.type,
     }
   })
-  const times = formatTimeList(estatResponse)
 
-  const tableHeaders = [
+  // TimeList
+  const times: EstatTimes[] = _formatTimeList(value)
+
+  const tableHeader: EstatTableHeader[] = [
     { text: '年', value: 'year', width: '80px' },
-    ...chartData.map((d) => {
+    ...chartData.map((d: EstatSeries) => {
       return {
         text: d.name,
         value: d.name,
@@ -210,7 +225,7 @@ export function formatTimeChart(
     }),
   ]
 
-  const tableData = times.map((d) => {
+  const tableData: EstatTableData[] = times.map((d: EstatTimes) => {
     return Object.assign(
       { year: `${d.yearInt}年` },
       ...chartData.map((item) => {
@@ -226,19 +241,18 @@ export function formatTimeChart(
     )
   })
 
+  const TABLE_INF = estatResponse.GET_STATS_DATA.STATISTICAL_DATA.TABLE_INF
+  const source = _formatSource(TABLE_INF)
+
   return {
     chartData,
-    tableHeaders,
+    tableHeader,
     tableData,
+    source,
   }
 }
 
-/**
- * timeList
- * @param estatResponse - estat-APIのレスポンス
- */
-export function formatTimeList(estatResponse: EstatResponse): Times[] {
-  const value = estatResponse.GET_STATS_DATA.STATISTICAL_DATA.DATA_INF.VALUE
+function _formatTimeList(value: VALUE[]) {
   const times = Array.from(new Set(value.map((d) => d['@time']))).map((d) => {
     return {
       yearInt: parseInt(d.substr(0, 4)),
@@ -254,6 +268,13 @@ export function formatTimeList(estatResponse: EstatResponse): Times[] {
   })
 }
 
+function _formatSource(TABLE_INF): EstatSource {
+  return {
+    estatName: `政府統計の総合窓口 e-Stat「${TABLE_INF.STAT_NAME.$}」`,
+    estatUrl: `https://www.e-stat.go.jp/dbview?sid=${TABLE_INF['@id']}`,
+  }
+}
+
 /**
  * additionalDescription
  * @param annotation - 注釈
@@ -266,17 +287,5 @@ export function formatAdditionalDescription(annotation: string[]) {
 
   return {
     timeChart,
-  }
-}
-
-/**
- * source:出典
- * @param estatResponse - estat-APIのレスポンス
- */
-export function formatSource(estatResponse: EstatResponse): Source {
-  const TABLE_INF = estatResponse.GET_STATS_DATA.STATISTICAL_DATA.TABLE_INF
-  return {
-    name: `政府統計の総合窓口 e-Stat「${TABLE_INF.STAT_NAME.$}」`,
-    url: `https://www.e-stat.go.jp/dbview?sid=${TABLE_INF['@id']}`,
   }
 }
