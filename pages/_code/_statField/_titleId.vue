@@ -15,12 +15,15 @@ import {
   inject,
 } from '@nuxtjs/composition-api'
 import {
+  usePageState,
+  PageStateKey,
+  PageStateType,
+} from '@/composition/pageState'
+import {
   useGovernmentState,
   GovernmentStateKey,
 } from '@/composition/government'
 import { useContentsState, ContentsStateKey } from '@/composition/contents'
-import { useCardState, CardStateKey } from '@/composition/card'
-// import { useTopojsonState, TopojsonStateKey } from '@/composition/topojson'
 
 export default defineComponent({
   setup() {
@@ -41,6 +44,11 @@ export default defineComponent({
       return code.value.match('000') ? 'prefecture' : 'city'
     })
 
+    // provide
+    provide(PageStateKey, usePageState())
+    const pageState: PageStateType = inject(PageStateKey)
+    pageState.setState(code.value, route.value.params)
+
     // provide(governmentState)
     provide(GovernmentStateKey, useGovernmentState())
     const govState: any = inject(GovernmentStateKey)
@@ -57,21 +65,6 @@ export default defineComponent({
       statField.value,
       govType.value
     )
-
-    const title: string = contentsList.find(
-      (f) => f.titleId === titleId.value
-    ).title
-
-    // provide(cardsState)
-    provide(CardStateKey, useCardState())
-    const cardState: any = inject(CardStateKey)
-    cardState.setTitle(title)
-    cardState.setTitleId(titleId.value)
-    cardState.setRoutingPath(
-      `/${code.value}/${statField.value}/${titleId.value}`
-    )
-
-    // provide(TopojsonStateKey, useTopojsonState())
 
     const contents = computed(() => {
       const c = contentsList.find((f) => f.titleId === titleId.value)
