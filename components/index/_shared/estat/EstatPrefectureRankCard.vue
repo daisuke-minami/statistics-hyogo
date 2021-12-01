@@ -9,7 +9,6 @@
               {{ title }}
             </h4>
 
-            <toggle-big-city v-model="bigcityKind" />
             <toggle-map-bar v-model="mapbar" />
 
             <v-row>
@@ -92,14 +91,14 @@ import {
   CardTitle,
   EstatResponse,
   EstatSource,
-  formatCityRankChart,
+  formatPrefectureRankChart,
   formatAdditionalDescription,
 } from '@/utils/formatEstat'
 import { PageStateType, PageStateKey } from '@/composition/pageState'
 
 // MapChart
 const MapChart = () => {
-  return import('@/components/index/_shared/highcharts/MapChartCity.vue')
+  return import('@/components/index/_shared/highcharts/MapChartPref.vue')
 }
 // BarChart
 const BarChart = () => {
@@ -139,7 +138,7 @@ export default defineComponent({
     const govType = pageState.govType.value
     const selectedPref = pageState.selectedPref.value
     const selectedCity = pageState.selectedCity.value
-    const cityList = pageState.cityList.value
+    const prefList = pageState.prefList.value
 
     // card情報の設定
     const title = computed((): string => {
@@ -154,16 +153,6 @@ export default defineComponent({
       return `/${titleId.value}-rank/${code}`
     })
 
-    // 政令市統合/分割
-    const bigcityKind = ref<string>('all')
-    const innerCityList = computed((): City[] => {
-      if (bigcityKind.value === 'all') {
-        return cityList.filter((f) => f.bigCityFlag !== '1')
-      } else {
-        return cityList.filter((f) => f.bigCityFlag !== '2')
-      }
-    })
-
     // eStat-APIからデータを取得
     const estatResponse = ref<EstatResponse>({})
     const { fetch } = useFetch(async () => {
@@ -172,30 +161,27 @@ export default defineComponent({
       if (series.id === 'cat01') {
         params.cdCat01 = series.code
       }
-      params.cdArea = innerCityList.value.map((d: City) => d.cityCode)
-      const { data: res } = await context.root.$estat.get(
-        `${process.env.BASE_URL}/json/getStatsData`,
-        { params }
+      params.cdArea = prefList.map(
+        (d) => ('0000000000' + d.prefCode).slice(-2) + '000'
       )
-
+      const { data: res } = await context.root.$estat.get(`getStatsData`, {
+        params,
+      })
       estatResponse.value = res
     })
 
     // 系列セレクト
     const series = props.estatSeries
     const selectedSeries = ref<EstatSeries>(series[0])
-
-    // fetch
     fetch()
     watch(selectedSeries, () => fetch())
-    watch(bigcityKind, () => fetch())
 
     // データの整形
     const formatData = computed(() => {
-      return formatCityRankChart(
+      return formatPrefectureRankChart(
         estatResponse.value,
         selectedSeries.value,
-        innerCityList.value
+        prefList
       )
     })
 
@@ -213,14 +199,11 @@ export default defineComponent({
 
     // ストアからtopojsonを取得
     const store = useStore()
-    const topoJson = computed(() =>
-      store.getters['topojson/getMapCity'](bigcityKind.value)
-    )
-    // watch(bigcityKind, () => fetch())
+    const topoJson = computed(() => store.getters['topojson/getMapPref'])
 
     // MapChartとBarChartの切替
     const mapbar = ref<string>('map')
-    const chartComponent = computed((): string => {
+    const chartComponent = computed((): Promise<Vue> => {
       const chartComponent = mapbar.value === 'map' ? MapChart : BarChart
       return chartComponent
     })
@@ -255,7 +238,6 @@ export default defineComponent({
     // returnはアルファベット順
     return {
       additionalDescription,
-      bigcityKind,
       canvas,
       title,
       titleId,

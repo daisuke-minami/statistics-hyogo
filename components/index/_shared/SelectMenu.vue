@@ -5,7 +5,7 @@
         <v-col class="d-flex" cols="12" sm="12">
           <v-row align="center" justify="space-around">
             <v-btn
-              v-for="(item, i) in titleItems"
+              v-for="(item, i) in menuItems"
               :key="i"
               :to="{ path: item.path }"
               nuxt
@@ -26,7 +26,7 @@ import { defineComponent } from '@nuxtjs/composition-api'
 
 export default defineComponent({
   props: {
-    titleItems: {
+    menuItems: {
       type: Array,
       required: true,
     },

@@ -1,7 +1,7 @@
 <template>
   <div>
     <select-city :stat-field="statField" />
-    <select-title :title-items="titleItems" />
+    <select-menu :menu-items="menuItems" />
     <component :is="cardComponent" :contents="contents" />
   </div>
 </template>
@@ -16,10 +16,16 @@ import {
   inject,
 } from '@nuxtjs/composition-api'
 import {
+  usePageState,
+  PageStateKey,
+  PageStateType,
+} from '@/composition/pageState'
+import {
   useGovernmentState,
   GovernmentStateKey,
 } from '@/composition/government'
 import { useContentsState, ContentsStateKey } from '@/composition/contents'
+import menuList from '~/data/contents/menulist.json'
 
 export default defineComponent({
   setup() {
@@ -34,6 +40,11 @@ export default defineComponent({
     const titleId = computed((): string => {
       return 'total-population'
     })
+
+    // provide
+    provide(PageStateKey, usePageState())
+    const pageState: PageStateType = inject(PageStateKey)
+    pageState.setState(route.value.params)
 
     provide(GovernmentStateKey, useGovernmentState())
     const state = inject(GovernmentStateKey)
@@ -65,11 +76,20 @@ export default defineComponent({
     })
 
     // タイトル一覧を設定
-    const titleItems = contentsList.map((d: Contents) => {
-      return {
-        label: d.title,
-        path: `/${code.value}/${statField.value}/${d.titleId}`,
-      }
+    // const titleItems = contentsList.map((d: Contents) => {
+    //   return {
+    //     label: d.title,
+    //     path: `/${code.value}/${statField.value}/${d.titleId}`,
+    //   }
+    // })
+
+    const menuItems = computed(() => {
+      return menuList[statField.value][govType.value].map((d) => {
+        return {
+          label: d.menuTitle,
+          path: `/${code.value}/${statField.value}/${d.menuTitleId}`,
+        }
+      })
     })
 
     // カードコンポーネントの設定
@@ -78,7 +98,7 @@ export default defineComponent({
     return {
       statField,
       code,
-      titleItems,
+      menuItems,
       cardComponent,
       contents,
     }

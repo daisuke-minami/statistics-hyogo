@@ -18,37 +18,42 @@ export type City = {
 export type GovType = 'prefecture' | 'city'
 
 export type StateType = {
-  code?: string
-  statField?: string
-  titleId?: string
-  prefList?: Pref[]
-  cityList?: City[]
-  selectedPref?: Pref
-  selectedCity?: City
-  govType?: GovType
+  code: string
+  statField: string
+  routingPath: string
+  prefList: Pref[]
+  cityList: City[]
+  selectedPref: Pref
+  selectedCity: City
+  govType: GovType
 }
 
 type RouteParams = {
   code: string
   statField: string
-  titleId: string
+  menuTitleId: string
 }
 
 export const usePageState = () => {
   const pageState = reactive<StateType>({
     code: '',
     statField: '',
-    titleId: '',
+    routingPath: '',
     prefList: prefList.result,
-    cityList: null,
+    cityList: [],
     selectedPref: null,
     selectedCity: null,
-    govType: null,
+    govType: 'prefecture',
   })
 
-  const setState = (code: string, routeParams: RouteParams): void => {
-    console.log(routeParams)
+  const setState = (routeParams: RouteParams): void => {
+    const code: string = routeParams.code
+    const statField: string = routeParams.statField
+    const menuTitleId: string = routeParams.menuTitleId
+
     pageState.code = code
+    pageState.statField = statField
+    pageState.routingPath = `/${code}/${statField}/${menuTitleId}`
     pageState.govType = code.match('000') ? 'prefecture' : 'city'
     pageState.cityList = _cityList(code)
     pageState.selectedPref = prefList.result.find(

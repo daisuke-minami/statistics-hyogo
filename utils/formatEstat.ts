@@ -1,4 +1,10 @@
 import { getGraphSeriesStyle } from '@/utils/colors'
+import { City } from '../composition/pageState'
+
+export type CardTitle = {
+  title: string
+  titleId: string
+}
 
 export type EstatParams = {
   statsDataId: string
@@ -16,7 +22,8 @@ export type EstatSeries = {
   type?: string
   yAxis?: number
   color?: string
-  data: []
+  data?: []
+  year?: number
 }
 
 export type EstatTimes = {
@@ -178,8 +185,6 @@ type RESULT = {
 
 /**
  * Format for TimeChart
- *
- * @param data - Raw data
  */
 export function formatTimeChart(
   estatResponse: EstatResponse,
@@ -252,6 +257,179 @@ export function formatTimeChart(
   }
 }
 
+/**
+ * Format for PrefectureRankChart
+ */
+export function formatPrefectureRankChart(
+  estatResponse: EstatResponse,
+  series: EstatSeries,
+  prefList: Pref[]
+) {
+  // 色の設定
+  // const style = getGraphSeriesStyle(series.length)
+
+  const value: VALUE[] =
+    estatResponse.GET_STATS_DATA.STATISTICAL_DATA.DATA_INF.VALUE
+
+  // TimeList
+  const times: EstatTimes[] = _formatTimeList(value)
+
+  // chartData
+  const chartData: EstatSeries[] = times.map((d: EstatTimes) => {
+    const v = value.filter((f) => f['@time'] === d.yearStr)
+    return {
+      year: d.yearInt,
+      name: series.name,
+      data: prefList.map((d) => {
+        const cdArea = ('0000000000' + d.prefCode).slice(-2) + '000'
+        const data = v.find((f) => f['@area'] === cdArea)
+        if (data) {
+          return {
+            prefCode: cdArea,
+            prefName: d.prefName,
+            value: parseInt(data.$),
+            unit: data['@unit'],
+          }
+        } else {
+          return {
+            prefCode: cdArea,
+            prefName: 'test',
+            value: '',
+            unit: '',
+          }
+        }
+      }),
+    }
+  })
+
+  const tableHeader: EstatTableHeader[] = [
+    { text: '都道府県名', value: 'prefName', width: '80px' },
+    ...times.map((d) => {
+      return {
+        text: `${d.yearInt}年`,
+        value: `${d.yearInt}年`,
+        align: 'center',
+        width: '100px',
+      }
+    }),
+  ]
+
+  const tableData: EstatTableData[] = prefList.map((d) => {
+    const cdArea = ('0000000000' + d.prefCode).slice(-2) + '000'
+    return Object.assign(
+      { prefName: d.prefName },
+      ...chartData.map((d) => {
+        const data = d.data.find((f) => f.prefCode === cdArea)
+        const year = `${d.year}年`
+        if (data) {
+          return {
+            [year]: data.value.toLocaleString() + data.unit,
+          }
+        } else {
+          return ''
+        }
+      })
+    )
+  })
+
+  const TABLE_INF = estatResponse.GET_STATS_DATA.STATISTICAL_DATA.TABLE_INF
+  const source = _formatSource(TABLE_INF)
+
+  return {
+    chartData,
+    tableHeader,
+    tableData,
+    source,
+    times,
+  }
+}
+
+/**
+ * Format for CityRankChart
+ */
+export function formatCityRankChart(
+  estatResponse: EstatResponse,
+  series: EstatSeries,
+  cityList: City[]
+) {
+  // 色の設定
+  // const style = getGraphSeriesStyle(series.length)
+
+  const value: VALUE[] =
+    estatResponse.GET_STATS_DATA.STATISTICAL_DATA.DATA_INF.VALUE
+
+  // TimeList
+  const times: EstatTimes[] = _formatTimeList(value)
+
+  // chartData
+  const chartData: EstatSeries[] = times.map((d: EstatTimes) => {
+    const v = value.filter((f) => f['@time'] === d.yearStr)
+    return {
+      year: d.yearInt,
+      name: series.name,
+      data: cityList.map((d) => {
+        const data = v.find((f) => f['@area'] === d.cityCode)
+        if (data) {
+          return {
+            cityCode: d.cityCode,
+            cityName: d.cityName,
+            value: parseInt(data.$),
+            unit: data['@unit'],
+          }
+        } else {
+          return {
+            cityCode: d.cityCode,
+            cityName: d.cityName,
+            value: '',
+            unit: '',
+          }
+        }
+      }),
+    }
+  })
+
+  const tableHeader: EstatTableHeader[] = [
+    { text: '市区町村名', value: 'cityName', width: '80px' },
+    ...times.map((d) => {
+      return {
+        text: `${d.yearInt}年`,
+        value: `${d.yearInt}年`,
+        align: 'center',
+        width: '100px',
+      }
+    }),
+  ]
+
+  const tableData: EstatTableData[] = cityList.map((d: City) => {
+    const cityCode = d.cityCode
+    return Object.assign(
+      { cityName: d.cityName },
+      ...chartData.map((d) => {
+        const data = d.data.find((f) => f.cityCode === cityCode)
+        const year = `${d.year}年`
+        if (data) {
+          return {
+            [year]: data.value.toLocaleString() + data.unit,
+          }
+        } else {
+          return ''
+        }
+      })
+    )
+  })
+
+  const TABLE_INF = estatResponse.GET_STATS_DATA.STATISTICAL_DATA.TABLE_INF
+  const source = _formatSource(TABLE_INF)
+
+  return {
+    chartData,
+    tableHeader,
+    tableData,
+    source,
+    times,
+  }
+}
+
 function _formatTimeList(value: VALUE[]) {
   const times = Array.from(new Set(value.map((d) => d['@time']))).map((d) => {
     return {
@@ -283,8 +461,10 @@ export function formatAdditionalDescription(annotation: string[]) {
   const estatCredit: string[] = [
     'このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません',
   ]
+  const codhCredit: string[] = ['歴史的行政区域データセットβ版（CODH作成）']
 
   return {
     timeChart: annotation.concat(estatCredit),
+    rankChart: annotation.concat(estatCredit, codhCredit),
   }
 }

@@ -18,17 +18,8 @@
 
 <script lang="ts">
 import { defineComponent, computed, inject } from '@nuxtjs/composition-api'
-import {
-  // useGovernmentState,
-  GovernmentStateKey,
-} from '@/composition/government'
+import { PageStateKey, PageStateType } from '@/composition/pageState'
 import { EventBus, TOGGLE_EVENT } from '@/utils/tab-event-bus'
-// import { City } from '~/store/cityList'
-// import { Pref } from '~/store/prefList'
-
-// type Props = {
-//   statField: string
-// }
 
 type TabItem = {
   label: string
@@ -47,19 +38,17 @@ export default defineComponent({
       return ('0000000000' + code).slice(-2) + '000'
     }
 
-    const state = inject(GovernmentStateKey)
-    const cityList = state.cityList
-    const selectedPref = state.selectedPref
+    const pageState: PageStateType = inject(PageStateKey)
+    const cityList = pageState.cityList.value
+    const selectedPref = pageState.selectedPref.value
     // タブ項目を生成
     const items = computed((): TabItem[] => {
       return [
         {
-          label: selectedPref.value.prefName,
-          path: `/${toFiveDigit(selectedPref.value.prefCode)}/${
-            props.statField
-          }`,
+          label: selectedPref.prefName,
+          path: `/${toFiveDigit(selectedPref.prefCode)}/${props.statField}`,
         },
-        ...cityList.value.map((d: City) => {
+        ...cityList.map((d: City) => {
           return {
             label: d.cityName,
             path: `/${d.cityCode}/${props.statField}`,

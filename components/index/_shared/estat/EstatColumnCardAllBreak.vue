@@ -65,6 +65,7 @@ import {
   computed,
   useFetch,
   PropType,
+  inject,
 } from '@nuxtjs/composition-api'
 import {
   EstatParams,
@@ -73,21 +74,15 @@ import {
   EstatResponse,
   EstatSource,
   formatTimeChart,
+  CardTitle,
   formatAdditionalDescription,
 } from '@/utils/formatEstat'
+import { PageStateType, PageStateKey } from '@/composition/pageState'
 
 export default defineComponent({
   props: {
     cardTitle: {
-      type: String,
-      required: true,
-    },
-    cardTitleId: {
-      type: String,
-      required: true,
-    },
-    cardRoutingPath: {
-      type: String,
+      type: Object as PropType<CardTitle>,
       required: true,
     },
     estatParams: {
@@ -111,10 +106,31 @@ export default defineComponent({
     // canvas
     const canvas = ref<boolean>(true)
 
+    // inject
+    const pageState: PageStateType = inject(PageStateKey)
+    const code = pageState.code.value
+    const govType = pageState.govType.value
+    const selectedPref = pageState.selectedPref.value
+    const selectedCity = pageState.selectedCity.value
+
+    // card情報の設定
+    const title = computed((): string => {
+      const name: string =
+        govType === 'prefecture' ? selectedPref.prefName : selectedCity.cityName
+      return `${name}の${props.cardTitle.title}`
+    })
+    const titleId = computed((): string => {
+      return `${props.cardTitle.titleId}-${govType}`
+    })
+    const routingPath = computed((): string => {
+      return `/${titleId.value}/${code}`
+    })
+
     // eStat-APIからデータを取得
     const estatResponse = ref<EstatResponse>({})
     useFetch(async () => {
       const params = Object.assign({}, props.estatParams)
+      params.cdArea = code
       const { data: res } = await context.root.$estat.get('getStatsData', {
         params,
       })
@@ -179,9 +195,9 @@ export default defineComponent({
     })
 
     return {
-      title: props.cardTitle,
-      titleId: props.cardTitleId,
-      routingPath: props.cardRoutingPath,
+      title,
+      titleId,
+      routingPath,
       lastUpdate,
       allbreak,
       displayData,

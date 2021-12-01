@@ -1,0 +1,20 @@
+{
+  "population": {
+    "prefecture": [
+      {
+        "menuTitle": "総人口",
+        "menuTitleId": "population"
+      },
+      {
+        "menuTitle": "昼間人口",
+        "menuTitleId": "daytime-population"
+      }
+    ],
+    "city": [
+      {
+        "menuTitle": "総人口",
+        "menuTitleId": "population"
+      }
+    ]
+  }
+}

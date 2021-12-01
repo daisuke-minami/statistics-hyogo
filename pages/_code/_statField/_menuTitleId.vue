@@ -1,8 +1,8 @@
 <template>
   <div>
     <select-city :stat-field="statField" />
-    <select-title :title-items="titleItems" />
-    <component :is="cardComponent" :contents="contents" />
+    <select-menu :menu-items="menuItems" />
+    <component :is="cardComponent" />
   </div>
 </template>
 
@@ -25,6 +25,8 @@ import {
 } from '@/composition/government'
 import { useContentsState, ContentsStateKey } from '@/composition/contents'
 
+import menuList from '~/data/contents/menulist.json'
+
 export default defineComponent({
   setup() {
     // パスパラメータの取得
@@ -35,8 +37,8 @@ export default defineComponent({
     const statField = computed((): string => {
       return route.value.params.statField
     })
-    const titleId = computed((): string => {
-      return route.value.params.titleId
+    const menuTitleId = computed((): string => {
+      return route.value.params.menuTitleId
     })
 
     // 都道府県or市区町村
@@ -47,7 +49,7 @@ export default defineComponent({
     // provide
     provide(PageStateKey, usePageState())
     const pageState: PageStateType = inject(PageStateKey)
-    pageState.setState(code.value, route.value.params)
+    pageState.setState(route.value.params)
 
     // provide(governmentState)
     provide(GovernmentStateKey, useGovernmentState())
@@ -60,45 +62,37 @@ export default defineComponent({
 
     // provide(contentsState)
     provide(ContentsStateKey, useContentsState())
-    const contentsState: any = inject(ContentsStateKey)
-    const contentsList = contentsState.getContentsList(
-      statField.value,
-      govType.value
-    )
+    // const contentsState: any = inject(ContentsStateKey)
+    // const contentsList = contentsState.getContentsList(
+    //   statField.value,
+    //   govType.value
+    // )
 
-    const contents = computed(() => {
-      const c = contentsList.find((f) => f.titleId === titleId.value)
-      return {
-        title: c.title,
-        titleId: c.titleId,
-        // annotation: c.annotation,
-        routingPath: `/${code.value}/${statField.value}/${titleId.value}`,
-      }
-    })
-
-    // タイトル一覧を設定
-    const titleItems = contentsList.map((d) => {
-      return {
-        label: d.title,
-        path: `/${code.value}/${statField.value}/${d.titleId}`,
-      }
+    const menuItems = computed(() => {
+      return menuList[statField.value][govType.value].map((d) => {
+        return {
+          label: d.menuTitle,
+          path: `/${code.value}/${statField.value}/${d.menuTitleId}`,
+        }
+      })
     })
 
     // カードコンポーネントの設定
     const cardComponent = computed((): string => {
       if (govType.value === 'prefecture') {
-        return `lazy-cards-${titleId.value}-pref`
+        return `lazy-cards-${menuTitleId.value}-pref`
       } else {
-        return `lazy-cards-${titleId.value}-city`
+        return `lazy-cards-${menuTitleId.value}-city`
       }
     })
 
     return {
       statField,
-      code,
-      titleItems,
+      // cityList,
+      // code,
+      menuItems,
       cardComponent,
-      contents,
+      // contents,
     }
   },
 })

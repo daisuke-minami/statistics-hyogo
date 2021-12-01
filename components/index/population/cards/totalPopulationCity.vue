@@ -3,38 +3,29 @@
 </template>
 
 <script lang="ts">
-import {
-  computed,
-  defineComponent,
-  reactive,
-  ref,
-} from '@nuxtjs/composition-api'
+import { defineComponent, reactive, ref } from '@nuxtjs/composition-api'
 import {
   EstatParams,
+  CardTitle,
   EstatSeries,
   EstatTimes,
-} from '~/components/index/_shared/estat/type'
+} from '~/utils/formatEstat'
 
 export default defineComponent({
   setup() {
     // Chartコンポーネントの設定
-    const chartComponent = ref<string>('estat-column-card-single-multi')
+    const chartComponent = ref<string>('estat-column-card-all-break')
 
-    const cardTitle = computed((): string => {
-      return `兵庫県の総人口`
-    })
-    const cardTitleId = computed((): string => {
-      return `total-population`
-    })
-    const cardRoutingPath = computed((): string => {
-      return `routingPath`
+    // cardタイトル
+    const cardTitle = reactive<CardTitle>({
+      title: '総人口',
+      titleId: 'total-population',
     })
 
-    // computedでcdAreaをセットすべき
+    // estatParams cdAreaはestatコンポーネントで設定
     const estatParams = reactive<EstatParams>({
-      statsDataId: '0000010101',
+      statsDataId: '0000020201',
       cdCat01: ['A1101', 'A110101', 'A110102'],
-      cdArea: '28000',
     })
     const estatSeries = reactive<EstatSeries[]>([
       {
@@ -63,9 +54,7 @@ export default defineComponent({
     return {
       chartComponent,
       props: {
-        cardTitle: cardTitle.value,
-        cardTitleId: cardTitleId.value,
-        cardRoutingPath: cardRoutingPath.value,
+        cardTitle,
         estatParams,
         estatSeries,
         estatLatestYear,

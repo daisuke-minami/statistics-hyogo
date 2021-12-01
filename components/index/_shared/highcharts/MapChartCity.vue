@@ -9,10 +9,23 @@ import { defineComponent, computed } from '@nuxtjs/composition-api'
 import { cloneDeep } from 'lodash'
 import * as topojson from 'topojson-client'
 
+type SeriesRankCity = {
+  name: string
+  year: number
+  data: {
+    cityCode: string
+    cityName: string
+    value: number
+    unit: string
+  }
+  joinBy: string[]
+  states: object
+}
+
 export default defineComponent({
   props: {
     displayData: {
-      type: Array,
+      type: Array as () => SeriesRankCity[],
       required: true,
     },
     topoJson: {
@@ -22,7 +35,7 @@ export default defineComponent({
   },
   setup(props) {
     const series = computed(() => {
-      const series = cloneDeep(props.displayData)
+      const series: SeriesRankCity[] = cloneDeep(props.displayData)
       series[0].joinBy = ['N03_007', 'cityCode']
       series[0].states = { hover: { color: '#a4edba' } }
       return series
