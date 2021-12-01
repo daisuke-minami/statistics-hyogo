@@ -59,29 +59,6 @@ export default defineComponent({
 
     // provide(contentsState)
     provide(ContentsStateKey, useContentsState())
-    const contentsState: any = inject(ContentsStateKey)
-    const contentsList = contentsState.getContentsList(
-      statField.value,
-      govType.value
-    )
-
-    const contents = computed(() => {
-      const c = contentsList.find((f) => f.titleId === titleId.value)
-      return {
-        title: c.title,
-        titleId: c.titleId,
-        annotation: c.annotation,
-        routingPath: `/${code.value}/${statField.value}/${titleId.value}`,
-      }
-    })
-
-    // タイトル一覧を設定
-    // const titleItems = contentsList.map((d: Contents) => {
-    //   return {
-    //     label: d.title,
-    //     path: `/${code.value}/${statField.value}/${d.titleId}`,
-    //   }
-    // })
 
     const menuItems = computed(() => {
       return menuList[statField.value][govType.value].map((d) => {
@@ -97,10 +74,8 @@ export default defineComponent({
 
     return {
       statField,
-      code,
       menuItems,
       cardComponent,
-      contents,
     }
   },
 })

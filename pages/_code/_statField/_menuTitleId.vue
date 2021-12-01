@@ -62,11 +62,6 @@ export default defineComponent({
 
     // provide(contentsState)
     provide(ContentsStateKey, useContentsState())
-    // const contentsState: any = inject(ContentsStateKey)
-    // const contentsList = contentsState.getContentsList(
-    //   statField.value,
-    //   govType.value
-    // )
 
     const menuItems = computed(() => {
       return menuList[statField.value][govType.value].map((d) => {
@@ -80,7 +75,7 @@ export default defineComponent({
     // カードコンポーネントの設定
     const cardComponent = computed((): string => {
       if (govType.value === 'prefecture') {
-        return `lazy-cards-${menuTitleId.value}-pref`
+        return `lazy-cards-${menuTitleId.value}-prefecture`
       } else {
         return `lazy-cards-${menuTitleId.value}-city`
       }
@@ -88,11 +83,8 @@ export default defineComponent({
 
     return {
       statField,
-      // cityList,
-      // code,
       menuItems,
       cardComponent,
-      // contents,
     }
   },
 })

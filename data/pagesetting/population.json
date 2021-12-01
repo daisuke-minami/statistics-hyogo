@@ -1,16 +1,8 @@
 {
   "prefecture": [
     {
-      "title": "総人口",
-      "titleId": "total-population"
-    },
-    {
       "title": "昼間人口",
       "titleId": "daytime-population"
-    },
-    {
-      "title": "出生",
-      "titleId": "birth"
     },
     {
       "title": "死亡数",

@@ -6,6 +6,10 @@
         "menuTitleId": "population"
       },
       {
+        "menuTitle": "出生",
+        "menuTitleId": "birth"
+      },
+      {
         "menuTitle": "昼間人口",
         "menuTitleId": "daytime-population"
       }
