@@ -197,7 +197,7 @@ export function formatTimeChart(
     estatResponse.GET_STATS_DATA.STATISTICAL_DATA.DATA_INF.VALUE
 
   // chartData
-  const chartData: EstatSeries[] = series.map((d: EstatSeries, i) => {
+  const chartData: EstatSeries[] = series.map((d, i) => {
     return {
       name: d.name,
       data: value

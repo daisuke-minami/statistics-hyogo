@@ -8,7 +8,9 @@ import { defineComponent, ref } from '@nuxtjs/composition-api'
 
 // 総人口（男女別）
 const TotalPopulation = () => {
-  return import('~/components/index/population/cards/totalPopulationCity.vue')
+  return import(
+    '~/components/index/population/cards/population/totalPopulationCity.vue'
+  )
 }
 // RankChart
 const PopulationCityRank = () => {

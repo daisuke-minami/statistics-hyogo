@@ -2,16 +2,20 @@
   "population": {
     "prefecture": [
       {
-        "menuTitle": "総人口",
+        "menuTitle": "人口",
         "menuTitleId": "population"
+      },
+      {
+        "menuTitle": "世帯",
+        "menuTitleId": "household"
       },
       {
         "menuTitle": "出生",
         "menuTitleId": "birth"
       },
       {
-        "menuTitle": "昼間人口",
-        "menuTitleId": "daytime-population"
+        "menuTitle": "婚姻",
+        "menuTitleId": "marriage"
       }
     ],
     "city": [
