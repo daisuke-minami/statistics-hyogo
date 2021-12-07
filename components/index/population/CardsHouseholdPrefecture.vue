@@ -6,10 +6,17 @@
 import CardsLazyRow from '@/components/index/_shared/CardsLazyRow.vue'
 import { defineComponent, ref } from '@nuxtjs/composition-api'
 
-// 結婚件数
+// 一般世帯数
 const Household = () => {
   return import(
     '~/components/index/population/cards/household/householdPrefecture.vue'
+  )
+}
+
+// 母子世帯数
+const SingleMotherHousehold = () => {
+  return import(
+    '~/components/index/population/cards/household/singleMotherHouseholdPrefecture.vue'
   )
 }
 
@@ -40,7 +47,7 @@ export default defineComponent({
   },
   setup() {
     // Card
-    const rows = ref([[Household]])
+    const rows = ref([[Household, SingleMotherHousehold]])
 
     return {
       rows,

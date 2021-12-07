@@ -14,24 +14,29 @@ import {
 export default defineComponent({
   setup() {
     // Chartコンポーネントの設定
-    const chartComponent = ref<string>('estat-column-card')
+    const chartComponent = ref<string>('estat-line-card')
 
     // cardタイトル
     const cardTitle = reactive<CardTitle>({
-      title: '一般世帯数',
-      titleId: 'household',
+      title: '年齢調整死亡率',
+      titleId: 'age-adjusted-mortality',
     })
 
     // estatParams cdAreaはestatコンポーネントで設定
     const estatParams = reactive<EstatParams>({
       statsDataId: '0000010101',
-      cdCat01: ['A710101'],
+      cdCat01: ['A424001', 'A424002'],
     })
     const estatSeries = reactive<EstatSeries[]>([
       {
         id: 'cat01',
-        code: 'A710101',
-        name: '一般世帯数',
+        code: 'A424001',
+        name: '年齢調整死亡率（男性）',
+      },
+      {
+        id: 'cat01',
+        code: 'A424002',
+        name: '年齢調整死亡率（女性）',
       },
     ])
     const estatLatestYear = reactive<EstatTimes>({

@@ -27,6 +27,13 @@ const FirstMarriageAge = () => {
   )
 }
 
+// 未婚人口
+const Unmarried = () => {
+  return import(
+    '~/components/index/population/cards/marriage/unmarriedPrefecture.vue'
+  )
+}
+
 // RankChart
 // const PopulationPrefectureRank = () => {
 //   return import(
@@ -40,7 +47,10 @@ export default defineComponent({
   },
   setup() {
     // Card
-    const rows = ref([[Marriage, Divorce], [FirstMarriageAge]])
+    const rows = ref([
+      [Marriage, Divorce],
+      [FirstMarriageAge, Unmarried],
+    ])
 
     return {
       rows,

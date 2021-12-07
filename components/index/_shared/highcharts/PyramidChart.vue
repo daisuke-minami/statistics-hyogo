@@ -26,7 +26,7 @@ export default {
   },
   computed: {
     categories() {
-      return this.displayData.map((d) => d.category)
+      return this.displayData[0].data.map((d) => d.category)
     },
     unit() {
       return this.displayData[0].unit
@@ -35,13 +35,13 @@ export default {
       return [
         {
           name: '男性',
-          data: this.displayData.map((d) => -1 * d.man),
+          data: this.displayData[0].data.map((d) => -1 * d.man),
           color: '#4169e1',
           // unit: this.displayData[0].unit,
         },
         {
           name: '女性',
-          data: this.displayData.map((d) => d.woman),
+          data: this.displayData[0].data.map((d) => d.woman),
           color: '#ff69b4',
           // unit: this.displayData[0].unit,
         },

@@ -14,30 +14,45 @@ import {
 export default defineComponent({
   setup() {
     // Chartコンポーネントの設定
-    const chartComponent = ref<string>('estat-column-card')
+    const chartComponent = ref<string>('estat-column-card-all-break')
 
     // cardタイトル
     const cardTitle = reactive<CardTitle>({
-      title: '一般世帯数',
-      titleId: 'household',
+      title: '母子世帯数',
+      titleId: 'single-mother-household',
     })
 
     // estatParams cdAreaはestatコンポーネントで設定
     const estatParams = reactive<EstatParams>({
       statsDataId: '0000010101',
-      cdCat01: ['A710101'],
+      cdCat01: ['A8401', 'A840101', 'A840102', 'A840103'],
     })
     const estatSeries = reactive<EstatSeries[]>([
       {
         id: 'cat01',
-        code: 'A710101',
-        name: '一般世帯数',
+        code: 'A8401',
+        name: '総数',
+      },
+      {
+        id: 'cat01',
+        code: 'A840101',
+        name: '子供が1人',
+      },
+      {
+        id: 'cat01',
+        code: 'A840102',
+        name: '子供が2人',
+      },
+      {
+        id: 'cat01',
+        code: 'A840103',
+        name: '子供が3人以上',
       },
     ])
     const estatLatestYear = reactive<EstatTimes>({
-      yearInt: 2019,
-      yearStr: '2019100000',
-      yearName: '2019年',
+      yearInt: 2015,
+      yearStr: '2015100000',
+      yearName: '2015年',
     })
     const estatAnnotation = reactive<string[]>([])
 

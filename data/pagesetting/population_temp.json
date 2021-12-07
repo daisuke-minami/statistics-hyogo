@@ -4,7 +4,6 @@
       "title": "有配偶人口",
       "titleId": "married-population",
       "cardComponent": "estat-pyramid-chart-card",
-      
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000010101",
@@ -119,7 +118,6 @@
       "title": "死別人口",
       "titleId": "bereavement-population",
       "cardComponent": "estat-pyramid-chart-card",
-      
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000010101",
@@ -232,7 +230,6 @@
       "title": "離別人口",
       "titleId": "separated-population",
       "cardComponent": "estat-pyramid-chart-card",
-      
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000010101",
@@ -344,9 +341,6 @@
     {
       "title": "父子世帯数",
       "titleId": "parentchild-household",
-      
-      
-      
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000010101",
@@ -382,9 +376,6 @@
     {
       "title": "共働き世帯数",
       "titleId": "double-income-household",
-      
-      
-      
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000010106",
@@ -422,9 +413,6 @@
     {
       "title": "流入人口（県外）",
       "titleId": "influx-population",
-      
-      
-      
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000020201",
@@ -445,9 +433,6 @@
     {
       "title": "流入人口（県内他市区町村）",
       "titleId": "influx-population-hyogo",
-      
-      
-      
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000020201",
@@ -468,9 +453,6 @@
     {
       "title": "流出人口（県外）",
       "titleId": "outflow-population",
-      
-      
-      
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000020201",
@@ -491,9 +473,6 @@
     {
       "title": "流出人口（県内他市区町村）",
       "titleId": "outflow-population-hyogo",
-      
-      
-      
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000020201",
@@ -514,9 +493,6 @@
     {
       "title": "転入者数（日本人）",
       "titleId": "transferees",
-      
-      
-      
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000020201",
@@ -537,9 +513,6 @@
     {
       "title": "転出者数（日本人）",
       "titleId": "outmigrants",
-      
-      
-      
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000020201",
@@ -560,9 +533,6 @@
     {
       "title": "結婚件数",
       "titleId": "marriage",
-      
-      
-      
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000020201",
@@ -583,9 +553,6 @@
     {
       "title": "離婚件数",
       "titleId": "divorce",
-      
-      
-      
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000020201",
@@ -606,9 +573,6 @@
     {
       "title": "出生数",
       "titleId": "births",
-      
-      
-      
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000020201",
@@ -629,9 +593,6 @@
     {
       "title": "死亡数",
       "titleId": "deaths",
-      
-      
-      
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000020201",
@@ -652,9 +613,6 @@
     {
       "title": "母子世帯数",
       "titleId": "motherchild-household",
-      
-      
-      
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000020201",
@@ -690,9 +648,6 @@
     {
       "title": "父子世帯数",
       "titleId": "parentchild-household",
-      
-      
-      
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000020201",
