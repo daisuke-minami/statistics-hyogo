@@ -7,18 +7,18 @@ import CardsLazyRow from '@/components/index/_shared/CardsLazyRow.vue'
 import { defineComponent, ref } from '@nuxtjs/composition-api'
 
 // 快晴日数
-const NaturePark = () => {
+const SunnyDays = () => {
   return import(
     '~/components/index/landweather/cards/climate/sunnyDaysPrefecture.vue'
   )
 }
 
-// 自然環境保全地域面積
-// const NaturalEnvironmentConservationArea = () => {
-//   return import(
-//     '~/components/index/landweather/cards/park/naturalEnvironmentConservationAreaPrefecture.vue'
-//   )
-// }
+// 曇天日数
+const CloudyDays = () => {
+  return import(
+    '~/components/index/landweather/cards/climate/cloudyDaysPrefecture.vue'
+  )
+}
 
 export default defineComponent({
   components: {
@@ -26,7 +26,7 @@ export default defineComponent({
   },
   setup() {
     // Card
-    const rows = ref([[NaturePark]])
+    const rows = ref([[SunnyDays, CloudyDays]])
 
     return {
       rows,

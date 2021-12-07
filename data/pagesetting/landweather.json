@@ -73,24 +73,6 @@
       ]
     },
     {
-      "title": "曇天日数",
-      "titleId": "cloudy-days",
-      "annotation": [],
-      "estatParams": {
-        "statsDataId": "0000010102",
-        "cdCat01": [
-          "B4105"
-        ]
-      },
-      "series": [
-        {
-          "id": "cat01",
-          "code": "B4105",
-          "name": "曇天日数"
-        }
-      ]
-    },
-    {
       "title": "降水日数",
       "titleId": "precipitation-days",
       "annotation": [],
