@@ -1,4 +1,21 @@
 {
+  "landweather": {
+    "prefecture": [
+      {
+        "menuTitle": "面積",
+        "menuTitleId": "area"
+      },
+      {
+        "menuTitle": "自然・公園",
+        "menuTitleId": "park"
+      },
+      {
+        "menuTitle": "気候",
+        "menuTitleId": "climate"
+      }
+    ],
+    "city": []
+  },
   "population": {
     "prefecture": [
       {
