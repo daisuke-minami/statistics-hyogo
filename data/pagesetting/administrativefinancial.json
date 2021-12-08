@@ -1,23 +1,6 @@
 {
   "prefecture": [
-    {
-      "title": "一般行政部門職員数",
-      "titleId": "administrative-staff",
-      "annotation": [],
-      "estatParams": {
-        "statsDataId": "0000010104",
-        "cdCat01": [
-          "D1201"
-        ]
-      },
-      "series": [
-        {
-          "id": "cat01",
-          "code": "D1201",
-          "name": "一般行政部門職員数"
-        }
-      ]
-    },
+    
     {
       "title": "消防部門職員数",
       "titleId": "fire-department-staff",
