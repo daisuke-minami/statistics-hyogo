@@ -45,5 +45,14 @@
         "menuTitleId": "population"
       }
     ]
+  },
+  "international": {
+    "prefecture": [
+      {
+        "menuTitle": "外国人",
+        "menuTitleId": "foreigner"
+      }
+    ],
+    "city": []
   }
 }
