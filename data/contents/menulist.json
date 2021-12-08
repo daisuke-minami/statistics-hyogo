@@ -46,6 +46,15 @@
       }
     ]
   },
+  "economy": {
+    "prefecture": [
+      {
+        "menuTitle": "県内総生産",
+        "menuTitleId": "gross-domestic-product"
+      }
+    ],
+    "city": []
+  },
   "international": {
     "prefecture": [
       {
