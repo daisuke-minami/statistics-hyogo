@@ -42,12 +42,14 @@
 
             <template v-slot:dataTable>
               <client-only>
-                <data-view-table :headers="tableHeaders" :items="tableData" />
+                <data-view-table :headers="tableHeader" :items="tableData" />
               </client-only>
             </template>
 
             <template v-slot:footer>
-              <app-link :to="source.url"> {{ source.name }} </app-link>
+              <app-link :to="source.estatUrl">
+                {{ source.estatName }}
+              </app-link>
             </template>
           </data-view>
         </v-card>
@@ -62,60 +64,87 @@ import {
   ref,
   computed,
   useFetch,
+  PropType,
   inject,
 } from '@nuxtjs/composition-api'
 import {
-  TimeSeries,
+  EstatParams,
+  EstatSeries,
+  EstatTimes,
+  EstatResponse,
+  EstatSource,
   formatTimeChart,
+  CardTitle,
   formatAdditionalDescription,
-  formatSource,
-  Source,
 } from '@/utils/formatEstat'
-import {
-  GovernmentStateType,
-  GovernmentStateKey,
-} from '@/composition/government'
-import { CardStateType, CardStateKey } from '@/composition/card'
-import { EstatStateKey } from '@/composition/estat'
-// import { PlotLineOrBand } from 'highcharts'
+
+import { PageStateType, PageStateKey } from '@/composition/pageState'
 
 export default defineComponent({
-  setup(_, context) {
+  props: {
+    cardTitle: {
+      type: Object as PropType<CardTitle>,
+      required: true,
+    },
+    estatParams: {
+      type: Object as PropType<EstatParams>,
+      required: true,
+    },
+    estatSeries: {
+      type: Array as PropType<EstatSeries[]>,
+      required: true,
+    },
+    estatLatestYear: {
+      type: Object as PropType<EstatTimes>,
+      required: true,
+    },
+    estatAnnotation: {
+      type: Array as PropType<string[]>,
+      required: true,
+    },
+  },
+  setup(props, context) {
     // canvas
     const canvas = ref<boolean>(true)
 
     // inject
-    const govState: GovernmentStateType = inject(GovernmentStateKey)
-    const cardState: CardStateType = inject(CardStateKey)
-    const estatState: any = inject(EstatStateKey)
+    const pageState: PageStateType = inject(PageStateKey)
+    const code = pageState.code.value
+    const govType = pageState.govType.value
+    const selectedPref = pageState.selectedPref.value
+    const selectedCity = pageState.selectedCity.value
+
+    // card情報の設定
+    const title = computed((): string => {
+      const name: string =
+        govType === 'prefecture' ? selectedPref.prefName : selectedCity.cityName
+      return `${name}の${props.cardTitle.title}`
+    })
+    const titleId = computed((): string => {
+      return `${props.cardTitle.titleId}-${govType}`
+    })
+    const routingPath = computed((): string => {
+      return `/${titleId.value}/${code}`
+    })
 
     // eStat-APIからデータを取得
-    const estatResponse = ref({})
+    const estatResponse = ref<EstatResponse>({})
     useFetch(async () => {
-      const params = Object.assign({}, estatState.estatParams.value)
-      params.cdArea = govState.code.value
+      const params = Object.assign({}, props.estatParams)
+      params.cdArea = code
       const { data: res } = await context.root.$estat.get('getStatsData', {
         params,
       })
       estatResponse.value = res
     })
 
-    // title
-    const title = computed((): string => {
-      const name =
-        govState.govType.value === 'prefecture'
-          ? govState.selectedPref.value.prefName
-          : govState.selectedCity.value.cityName
-      return `${name}の${cardState.title.value}`
+    // データの整形
+    const series: EstatSeries[] = props.estatSeries
+    const formatData = computed(() => {
+      return formatTimeChart(estatResponse.value, series)
     })
 
-    // titleId
-    const titleId = cardState.titleId.value
-
-    // routingPath
-    const routingPath = `${cardState.routingPath.value}/timechart`
-
-    // ColumnChartとLineChartの切替
+    // chartの種類を設定
     const chartComponent = computed((): string => {
       return 'column-line-chart'
     })
@@ -123,11 +152,9 @@ export default defineComponent({
     // 総数／内訳の切替
     const allbreak = ref<string>('all')
     const displayData = computed(() => {
-      const data = JSON.parse(JSON.stringify(chartData.value))
-      const column: TimeSeries[] = data.filter((f) => f.type === 'column')
-      const line: TimeSeries[] = data.filter((f) => f.type === 'line')
-      // console.log(column)
-      // console.log(line)
+      const data = JSON.parse(JSON.stringify(formatData.value.chartData))
+      const column = data.filter((f) => f.type === 'column')
+      const line = data.filter((f) => f.type === 'line')
       if (allbreak.value === 'all') {
         return column.slice(0, 1).concat(line)
       } else {
@@ -135,40 +162,27 @@ export default defineComponent({
       }
     })
 
-    // 出典
-    const source = computed((): Source => {
-      return formatSource(estatResponse.value)
-    })
-
-    const series = estatState.series.value
-    const chartData = computed((): TimeSeries[] => {
-      return formatTimeChart(estatResponse.value, series).chartData
-    })
-
-    // 注釈
-    const annotation = estatState.annotation.value
-    // console.log(annotation)
-    const additionalDescription = computed((): string[] => {
-      return formatAdditionalDescription(annotation)
-    })
-
     const displayInfo = computed(() => {
-      const d: TimeSeries = chartData.value[0]
+      const d: EstatSeries = formatData.value.chartData[0]
       const l: number = d.data.length
-      // console.log(d)
       return {
         lText: d.data[l - 1].y.toLocaleString(),
         sText: d.data[l - 1].x + '年の' + d.name,
-        unit: d.data[0].unit,
+        unit: d.data[l - 1].unit,
       }
     })
 
-    const tableHeaders = computed(() => {
-      return formatTimeChart(estatResponse.value, series).tableHeaders
+    // テーブルの設定
+    const tableHeader = computed(() => {
+      return formatData.value.tableHeader
+    })
+    const tableData = computed(() => {
+      return formatData.value.tableData
     })
 
-    const tableData = computed(() => {
-      return formatTimeChart(estatResponse.value, series).tableData
+    // 出典
+    const source = computed((): EstatSource => {
+      return formatData.value.source
     })
 
     const lastUpdate = computed((): string => {
@@ -180,6 +194,11 @@ export default defineComponent({
       }
     })
 
+    // 注釈
+    const additionalDescription = computed((): string[] => {
+      return formatAdditionalDescription(props.estatAnnotation).timeChart
+    })
+
     return {
       title,
       titleId,
@@ -189,12 +208,10 @@ export default defineComponent({
       displayData,
       additionalDescription,
       source,
-      tableHeaders,
+      tableHeader,
       tableData,
       canvas,
-      // columnline,
       displayInfo,
-      chartData,
       chartComponent,
     }
   },
