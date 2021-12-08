@@ -20,10 +20,6 @@ import {
   PageStateKey,
   PageStateType,
 } from '@/composition/pageState'
-import {
-  useGovernmentState,
-  GovernmentStateKey,
-} from '@/composition/government'
 import { useContentsState, ContentsStateKey } from '@/composition/contents'
 import menuList from '~/data/contents/menulist.json'
 
@@ -45,12 +41,6 @@ export default defineComponent({
     provide(PageStateKey, usePageState())
     const pageState: PageStateType = inject(PageStateKey)
     pageState.setState(route.value.params)
-
-    provide(GovernmentStateKey, useGovernmentState())
-    const state = inject(GovernmentStateKey)
-    state.setGovType(code.value)
-    state.setSelectedPref(code.value)
-    state.setCityList(code.value)
 
     // // 都道府県or市区町村
     const govType = computed(() => {

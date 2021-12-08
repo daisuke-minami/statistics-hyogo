@@ -19,10 +19,7 @@ import {
   PageStateKey,
   PageStateType,
 } from '@/composition/pageState'
-import {
-  useGovernmentState,
-  GovernmentStateKey,
-} from '@/composition/government'
+
 import { useContentsState, ContentsStateKey } from '@/composition/contents'
 
 import menuList from '~/data/contents/menulist.json'
@@ -50,15 +47,6 @@ export default defineComponent({
     provide(PageStateKey, usePageState())
     const pageState: PageStateType = inject(PageStateKey)
     pageState.setState(route.value.params)
-
-    // provide(governmentState)
-    provide(GovernmentStateKey, useGovernmentState())
-    const govState: any = inject(GovernmentStateKey)
-    govState.setGovType(code.value)
-    govState.setSelectedPref(code.value)
-    govState.setSelectedCity(code.value)
-    govState.setCityList(code.value)
-    govState.setCode(code.value)
 
     // provide(contentsState)
     provide(ContentsStateKey, useContentsState())
