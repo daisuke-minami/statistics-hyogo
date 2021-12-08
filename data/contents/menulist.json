@@ -82,6 +82,15 @@
     ],
     "city": []
   },
+  "construction": {
+    "prefecture": [
+      {
+        "menuTitle": "建設",
+        "menuTitleId": "construction"
+      }
+    ],
+    "city": []
+  },
   "international": {
     "prefecture": [
       {
