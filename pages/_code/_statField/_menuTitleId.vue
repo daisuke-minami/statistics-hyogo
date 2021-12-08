@@ -19,9 +19,6 @@ import {
   PageStateKey,
   PageStateType,
 } from '@/composition/pageState'
-
-import { useContentsState, ContentsStateKey } from '@/composition/contents'
-
 import menuList from '~/data/contents/menulist.json'
 
 export default defineComponent({
@@ -47,9 +44,6 @@ export default defineComponent({
     provide(PageStateKey, usePageState())
     const pageState: PageStateType = inject(PageStateKey)
     pageState.setState(route.value.params)
-
-    // provide(contentsState)
-    provide(ContentsStateKey, useContentsState())
 
     const menuItems = computed(() => {
       return menuList[statField.value][govType.value].map((d) => {

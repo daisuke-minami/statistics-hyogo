@@ -20,7 +20,6 @@ import {
   PageStateKey,
   PageStateType,
 } from '@/composition/pageState'
-import { useContentsState, ContentsStateKey } from '@/composition/contents'
 import menuList from '~/data/contents/menulist.json'
 
 export default defineComponent({
@@ -46,9 +45,6 @@ export default defineComponent({
     const govType = computed(() => {
       return code.value.match('000') ? 'prefecture' : 'city'
     })
-
-    // provide(contentsState)
-    provide(ContentsStateKey, useContentsState())
 
     const menuItems = computed(() => {
       return menuList[statField.value][govType.value].map((d) => {
