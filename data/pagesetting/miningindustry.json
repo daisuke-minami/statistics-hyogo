@@ -1,25 +1,6 @@
 {
   "prefecture": [
     {
-      "title": "製造品出荷額",
-      "titleId": "product-shipment-value",
-      
-      "annotation": [],
-      "estatParams": {
-        "statsDataId": "0000010103",
-        "cdCat01": [
-          "C3401"
-        ]
-      },
-      "series": [
-        {
-          "id": "cat01",
-          "code": "C3401",
-          "name": "製造品出荷額"
-        }
-      ]
-    },
-    {
       "title": "製造業付加価値額",
       "titleId": "manufacturing-industry-value-added",
       "annotation": [],
@@ -40,7 +21,6 @@
     {
       "title": "工業用水量",
       "titleId": "industrial-water-volume",
-      
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000010103",

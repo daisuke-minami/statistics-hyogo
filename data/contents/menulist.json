@@ -46,6 +46,33 @@
       }
     ]
   },
+  "agriculture": {
+    "prefecture": [
+      {
+        "menuTitle": "農業",
+        "menuTitleId": "agriculture"
+      }
+    ],
+    "city": []
+  },
+  "miningindustry": {
+    "prefecture": [
+      {
+        "menuTitle": "製造業",
+        "menuTitleId": "manufacturing-industry"
+      }
+    ],
+    "city": []
+  },
+  "commercial": {
+    "prefecture": [
+      {
+        "menuTitle": "商業",
+        "menuTitleId": "commercial"
+      }
+    ],
+    "city": []
+  },
   "economy": {
     "prefecture": [
       {
