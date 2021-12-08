@@ -25,31 +25,24 @@ export default defineComponent({
   setup() {
     // パスパラメータの取得
     const route = useRoute()
-    const code = computed((): string => {
-      return route.value.params.code
-    })
-    const statField = computed((): string => {
-      return route.value.params.statField
-    })
-    const menuTitleId = computed((): string => {
-      return route.value.params.menuTitleId
-    })
+    const params = route.value.params
+    const { code, statField, menuTitleId } = params
 
     // 都道府県or市区町村
     const govType = computed((): string => {
-      return code.value.match('000') ? 'prefecture' : 'city'
+      return code.match('000') ? 'prefecture' : 'city'
     })
 
     // provide
     provide(PageStateKey, usePageState())
     const pageState: PageStateType = inject(PageStateKey)
-    pageState.setState(route.value.params)
+    pageState.setState(code, statField, menuTitleId)
 
     const menuItems = computed(() => {
-      return menuList[statField.value][govType.value].map((d) => {
+      return menuList[statField][govType.value].map((d) => {
         return {
           label: d.menuTitle,
-          path: `/${code.value}/${statField.value}/${d.menuTitleId}`,
+          path: `/${code}/${statField}/${d.menuTitleId}`,
         }
       })
     })
@@ -57,9 +50,9 @@ export default defineComponent({
     // カードコンポーネントの設定
     const cardComponent = computed((): string => {
       if (govType.value === 'prefecture') {
-        return `lazy-cards-${menuTitleId.value}-prefecture`
+        return `lazy-cards-${menuTitleId}-prefecture`
       } else {
-        return `lazy-cards-${menuTitleId.value}-city`
+        return `lazy-cards-${menuTitleId}-city`
       }
     })
 

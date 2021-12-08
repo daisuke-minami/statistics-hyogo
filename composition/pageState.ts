@@ -28,7 +28,7 @@ export type StateType = {
   govType: GovType
 }
 
-type RouteParams = {
+export type RouteParams = {
   code: string
   statField: string
   menuTitleId: string
@@ -46,10 +46,14 @@ export const usePageState = () => {
     govType: 'prefecture',
   })
 
-  const setState = (routeParams: RouteParams): void => {
-    const code: string = routeParams.code
-    const statField: string = routeParams.statField
-    const menuTitleId: string = routeParams.menuTitleId
+  const setState = (
+    code: string,
+    statField: string,
+    menuTitleId: string
+  ): void => {
+    // const code: = code
+    // const statField: string = statField
+    // const menuTitleId: string = menuTitleId
 
     pageState.code = code
     pageState.statField = statField
