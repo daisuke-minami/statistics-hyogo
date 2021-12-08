@@ -91,6 +91,15 @@
     ],
     "city": []
   },
+  "tourism": {
+    "prefecture": [
+      {
+        "menuTitle": "宿泊施設",
+        "menuTitleId": "hotel"
+      }
+    ],
+    "city": []
+  },
   "international": {
     "prefecture": [
       {
