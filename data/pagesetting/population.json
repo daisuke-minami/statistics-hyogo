@@ -5,42 +5,6 @@
       "titleId": "daytime-population"
     },
     {
-      "title": "死産数",
-      "titleId": "stillbirth-one",
-      "annotation": [],
-      "estatParams": {
-        "statsDataId": "0000010101",
-        "cdCat01": [
-          "A4270"
-        ]
-      },
-      "series": [
-        {
-          "id": "cat01",
-          "code": "A4270",
-          "name": "死産数"
-        }
-      ]
-    },
-    {
-      "title": "自然死産数",
-      "titleId": "natural-stillbirth",
-      "annotation": [],
-      "estatParams": {
-        "statsDataId": "0000010101",
-        "cdCat01": [
-          "A427001"
-        ]
-      },
-      "series": [
-        {
-          "id": "cat01",
-          "code": "A427001",
-          "name": "自然死産数"
-        }
-      ]
-    },
-    {
       "title": "死産数（妊娠満22週以降）",
       "titleId": "stillbirth-two",
       "annotation": [],
@@ -111,43 +75,7 @@
           "name": "乳児死亡数"
         }
       ]
-    },
-    {
-      "title": "転入者数（日本人）",
-      "titleId": "transferees",
-      "annotation": [],
-      "estatParams": {
-        "statsDataId": "0000010101",
-        "cdCat01": [
-          "A5101"
-        ]
-      },
-      "series": [
-        {
-          "id": "cat01",
-          "code": "A5101",
-          "name": "転入者数（日本人）"
-        }
-      ]
-    },
-    {
-      "title": "転出者数（日本人）",
-      "titleId": "outmigrants",
-      "annotation": [],
-      "estatParams": {
-        "statsDataId": "0000010101",
-        "cdCat01": [
-          "A5102"
-        ]
-      },
-      "series": [
-        {
-          "id": "cat01",
-          "code": "A5102",
-          "name": "転出者数（日本人）"
-        }
-      ]
-    },
+    }
   ],
   "city": [
     {

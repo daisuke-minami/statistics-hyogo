@@ -27,6 +27,13 @@ const StandardizedMortality = () => {
   )
 }
 
+// 死産数
+const StillBirth = () => {
+  return import(
+    '~/components/index/population/cards/death/stillbirthPrefecture.vue'
+  )
+}
+
 export default defineComponent({
   components: {
     CardsLazyRow,
@@ -35,7 +42,7 @@ export default defineComponent({
     // Card
     const rows = ref([
       [DeathSex, AgeAdjustedMortality],
-      [StandardizedMortality],
+      [StandardizedMortality, StillBirth],
     ])
 
     return {
