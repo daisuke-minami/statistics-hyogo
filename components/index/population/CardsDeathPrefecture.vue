@@ -20,13 +20,23 @@ const AgeAdjustedMortality = () => {
   )
 }
 
+// 標準化死亡率
+const StandardizedMortality = () => {
+  return import(
+    '~/components/index/population/cards/death/standardizedMortalityPrefecture.vue'
+  )
+}
+
 export default defineComponent({
   components: {
     CardsLazyRow,
   },
   setup() {
     // Card
-    const rows = ref([[DeathSex, AgeAdjustedMortality]])
+    const rows = ref([
+      [DeathSex, AgeAdjustedMortality],
+      [StandardizedMortality],
+    ])
 
     return {
       rows,

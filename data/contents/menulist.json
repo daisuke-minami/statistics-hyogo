@@ -23,6 +23,14 @@
         "menuTitleId": "population"
       },
       {
+        "menuTitle": "流入・流出",
+        "menuTitleId": "inflowoutflow"
+      },
+      {
+        "menuTitle": "転入・転出",
+        "menuTitleId": "moveinmoveout"
+      },
+      {
         "menuTitle": "世帯",
         "menuTitleId": "household"
       },
