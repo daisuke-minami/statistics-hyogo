@@ -27,13 +27,31 @@ const AgriculturalLand = () => {
   )
 }
 
+// 耕地面積
+const AgriculturalLandConversion = () => {
+  return import(
+    '~/components/index/agriculture/cards/agriculture/agriculturalLandConversionPrefecture.vue'
+  )
+}
+
+// 農業産出額
+const AgriculturalOutput = () => {
+  return import(
+    '~/components/index/agriculture/cards/agriculture/agriculturalOutputPrefecture.vue'
+  )
+}
+
 export default defineComponent({
   components: {
     CardsLazyRow,
   },
   setup() {
     // Card
-    const rows = ref([[Farmers, AgriculturalWorking], [AgriculturalLand]])
+    const rows = ref([
+      [Farmers, AgriculturalWorking],
+      [AgriculturalLand, AgriculturalOutput],
+      [AgriculturalLandConversion],
+    ])
 
     return {
       rows,

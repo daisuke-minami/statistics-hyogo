@@ -59,6 +59,14 @@
       {
         "menuTitle": "農業",
         "menuTitleId": "agriculture"
+      },
+      {
+        "menuTitle": "漁業",
+        "menuTitleId": "fishing"
+      },
+      {
+        "menuTitle": "林業",
+        "menuTitleId": "forestry"
       }
     ],
     "city": []
