@@ -14,24 +14,34 @@ import {
 export default defineComponent({
   setup() {
     // Chartコンポーネントの設定
-    const chartComponent = ref<string>('estat-column-card')
+    const chartComponent = ref<string>('estat-column-card-all-break')
 
     // cardタイトル
     const cardTitle = reactive<CardTitle>({
-      title: '耕地放棄面積',
-      titleId: 'abandoned-cultivated',
+      title: '農林漁業雇用者',
+      titleId: 'agriculture-forestry-and-fisheries-employers',
     })
 
     // estatParams cdAreaはestatコンポーネントで設定
     const estatParams = reactive<EstatParams>({
-      statsDataId: '0000010103',
-      cdCat01: ['C3109'],
+      statsDataId: '0000010106',
+      cdCat01: ['F1302', 'F130201', 'F130202'],
     })
     const estatSeries = reactive<EstatSeries[]>([
       {
         id: 'cat01',
-        code: 'C3109',
-        name: '耕地放棄面積',
+        code: 'F1302',
+        name: '総数',
+      },
+      {
+        id: 'cat01',
+        code: 'F130201',
+        name: '男性',
+      },
+      {
+        id: 'cat01',
+        code: 'F130202',
+        name: '女性',
       },
     ])
     const estatLatestYear = reactive<EstatTimes>({

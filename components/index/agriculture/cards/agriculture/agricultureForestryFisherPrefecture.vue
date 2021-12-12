@@ -18,20 +18,20 @@ export default defineComponent({
 
     // cardタイトル
     const cardTitle = reactive<CardTitle>({
-      title: '耕地放棄面積',
-      titleId: 'abandoned-cultivated',
+      title: '農林漁業者',
+      titleId: 'agriculture-forestry-fisher',
     })
 
     // estatParams cdAreaはestatコンポーネントで設定
     const estatParams = reactive<EstatParams>({
-      statsDataId: '0000010103',
-      cdCat01: ['C3109'],
+      statsDataId: '0000010106',
+      cdCat01: ['F1301'],
     })
     const estatSeries = reactive<EstatSeries[]>([
       {
         id: 'cat01',
-        code: 'C3109',
-        name: '耕地放棄面積',
+        code: 'F1301',
+        name: '農林漁業者',
       },
     ])
     const estatLatestYear = reactive<EstatTimes>({

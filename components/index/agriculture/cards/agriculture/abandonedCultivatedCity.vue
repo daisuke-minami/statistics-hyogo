@@ -24,7 +24,7 @@ export default defineComponent({
 
     // estatParams cdAreaはestatコンポーネントで設定
     const estatParams = reactive<EstatParams>({
-      statsDataId: '0000010103',
+      statsDataId: '0000020203',
       cdCat01: ['C3109'],
     })
     const estatSeries = reactive<EstatSeries[]>([

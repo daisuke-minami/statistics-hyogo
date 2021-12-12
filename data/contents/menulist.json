@@ -69,7 +69,12 @@
         "menuTitleId": "forestry"
       }
     ],
-    "city": []
+    "city": [
+      {
+        "menuTitle": "農業",
+        "menuTitleId": "agriculture"
+      }
+    ]
   },
   "miningindustry": {
     "prefecture": [

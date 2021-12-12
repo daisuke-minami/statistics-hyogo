@@ -41,6 +41,27 @@ const AgriculturalOutput = () => {
   )
 }
 
+// 耕作放棄地面積
+const AbandonedCultivated = () => {
+  return import(
+    '~/components/index/agriculture/cards/agriculture/abandonedCultivatedPrefecture.vue'
+  )
+}
+
+// 農林漁業者
+const AgricultureForestryFisher = () => {
+  return import(
+    '~/components/index/agriculture/cards/agriculture/agricultureForestryFisherPrefecture.vue'
+  )
+}
+
+// 農林漁業雇用者
+const AgricultureForestryFisherEmployers = () => {
+  return import(
+    '~/components/index/agriculture/cards/agriculture/agricultureForestryFisherEmployersPrefecture.vue'
+  )
+}
+
 export default defineComponent({
   components: {
     CardsLazyRow,
@@ -50,7 +71,8 @@ export default defineComponent({
     const rows = ref([
       [Farmers, AgriculturalWorking],
       [AgriculturalLand, AgriculturalOutput],
-      [AgriculturalLandConversion],
+      [AgriculturalLandConversion, AbandonedCultivated],
+      [AgricultureForestryFisher, AgricultureForestryFisherEmployers],
     ])
 
     return {
