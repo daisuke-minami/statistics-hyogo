@@ -12,12 +12,20 @@ const Farmers = () => {
     '~/components/index/agriculture/cards/agriculture/farmersPrefecture.vue'
   )
 }
-// RankChart
-// const PopulationPrefectureRank = () => {
-//   return import(
-//     '@/components/index/population/cards/populationPrefectureRank.vue'
-//   )
-// }
+
+// 農業就業人口（販売農家）
+const AgriculturalWorking = () => {
+  return import(
+    '~/components/index/agriculture/cards/agriculture/agriculturalWorkingPrefecture.vue'
+  )
+}
+
+// 耕地面積
+const AgriculturalLand = () => {
+  return import(
+    '~/components/index/agriculture/cards/agriculture/agriculturalLandPrefecture.vue'
+  )
+}
 
 export default defineComponent({
   components: {
@@ -25,7 +33,7 @@ export default defineComponent({
   },
   setup() {
     // Card
-    const rows = ref([[Farmers]])
+    const rows = ref([[Farmers, AgriculturalWorking], [AgriculturalLand]])
 
     return {
       rows,
