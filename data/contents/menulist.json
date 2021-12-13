@@ -160,6 +160,10 @@
       {
         "menuTitle": "犯罪",
         "menuTitleId": "crime"
+      },
+      {
+        "menuTitle": "環境",
+        "menuTitleId": "environment"
       }
     ],
     "city": []

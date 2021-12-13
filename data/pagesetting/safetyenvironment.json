@@ -19,42 +19,6 @@
       ]
     },
     {
-      "title": "温室効果ガス算定排出量（実数）",
-      "titleId": "calculated-greenhouse-gas-emissions-one",
-      "annotation": [],
-      "estatParams": {
-        "statsDataId": "0000010111",
-        "cdCat01": [
-          "K6107"
-        ]
-      },
-      "series": [
-        {
-          "id": "cat01",
-          "code": "K6107",
-          "name": "温室効果ガス算定排出量（実数）"
-        }
-      ]
-    },
-    {
-      "title": "温室効果ガス算定排出量（率）",
-      "titleId": "calculated-greenhouse-gas-emissions-two",
-      "annotation": [],
-      "estatParams": {
-        "statsDataId": "0000010111",
-        "cdCat01": [
-          "K6108"
-        ]
-      },
-      "series": [
-        {
-          "id": "cat01",
-          "code": "K6108",
-          "name": "温室効果ガス算定排出量（率）"
-        }
-      ]
-    },
-    {
       "title": "水質汚濁防止法上の特定事業所数",
       "titleId": "water-pollution-control-law",
       "annotation": [],
