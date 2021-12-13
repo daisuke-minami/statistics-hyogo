@@ -152,6 +152,14 @@
       {
         "menuTitle": "火災",
         "menuTitleId": "fires"
+      },
+      {
+        "menuTitle": "任意自動車保険",
+        "menuTitleId": "voluntary-car-insurance"
+      },
+      {
+        "menuTitle": "犯罪",
+        "menuTitleId": "crime"
       }
     ],
     "city": []
