@@ -139,6 +139,23 @@
     ],
     "city": []
   },
+  "safetyenvironment": {
+    "prefecture": [
+      {
+        "menuTitle": "交通事故",
+        "menuTitleId": "traffic-accident"
+      },
+      {
+        "menuTitle": "消防",
+        "menuTitleId": "fire-department"
+      },
+      {
+        "menuTitle": "火災",
+        "menuTitleId": "fires"
+      }
+    ],
+    "city": []
+  },
   "international": {
     "prefecture": [
       {
