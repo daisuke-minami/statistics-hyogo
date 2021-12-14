@@ -168,6 +168,10 @@
       {
         "menuTitle": "公害",
         "menuTitleId": "pollution"
+      },
+      {
+        "menuTitle": "災害",
+        "menuTitleId": "disaster"
       }
     ],
     "city": []

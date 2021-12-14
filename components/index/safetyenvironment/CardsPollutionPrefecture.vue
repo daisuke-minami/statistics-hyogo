@@ -13,12 +13,12 @@ const PollutionComplaints = () => {
   )
 }
 
-// 公害苦情受付件数
-const PollutionComplaintsReceivedPrefecture = () => {
-  return import(
-    '~/components/index/safetyenvironment/cards/pollution/pollutionComplaintsReceivedPrefecture.vue'
-  )
-}
+// 公害苦情受付件数 エラー
+// const PollutionComplaintsReceivedPrefecture = () => {
+//   return import(
+//     '~/components/index/safetyenvironment/cards/pollution/pollutionComplaintsReceivedPrefecture.vue'
+//   )
+// }
 
 export default defineComponent({
   components: {
@@ -26,9 +26,7 @@ export default defineComponent({
   },
   setup() {
     // Card
-    const rows = ref([
-      [PollutionComplaints, PollutionComplaintsReceivedPrefecture],
-    ])
+    const rows = ref([[PollutionComplaints]])
 
     return {
       rows,
