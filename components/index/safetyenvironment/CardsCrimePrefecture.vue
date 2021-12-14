@@ -20,13 +20,45 @@ const AcceptingAllegedForeigners = () => {
   )
 }
 
+// 民事事件
+const CivilCases = () => {
+  return import(
+    '~/components/index/safetyenvironment/cards/crime/civilCasesPrefecture.vue'
+  )
+}
+
+// 行政事件
+const AdministrativeCases = () => {
+  return import(
+    '~/components/index/safetyenvironment/cards/crime/administrativeCasesPrefecture.vue'
+  )
+}
+
+// 家事事件
+const DomesticAffairs = () => {
+  return import(
+    '~/components/index/safetyenvironment/cards/crime/domesticAffairsPrefecture.vue'
+  )
+}
+
+// 特別法犯
+const SpecialLaw = () => {
+  return import(
+    '~/components/index/safetyenvironment/cards/crime/specialLawPrefecture.vue'
+  )
+}
+
 export default defineComponent({
   components: {
     CardsLazyRow,
   },
   setup() {
     // Card
-    const rows = ref([[CrimePreventionVolunteer, AcceptingAllegedForeigners]])
+    const rows = ref([
+      [CrimePreventionVolunteer, AcceptingAllegedForeigners],
+      [CivilCases, AdministrativeCases],
+      [DomesticAffairs, SpecialLaw],
+    ])
 
     return {
       rows,

@@ -199,60 +199,6 @@
       ]
     },
     {
-      "title": "民事事件件数",
-      "titleId": "number-of-civil-cases",
-      "annotation": [],
-      "estatParams": {
-        "statsDataId": "0000010111",
-        "cdCat01": [
-          "K4701"
-        ]
-      },
-      "series": [
-        {
-          "id": "cat01",
-          "code": "K4701",
-          "name": "民事事件件数"
-        }
-      ]
-    },
-    {
-      "title": "行政事件件数",
-      "titleId": "number-of-administrative-cases",
-      "annotation": [],
-      "estatParams": {
-        "statsDataId": "0000010111",
-        "cdCat01": [
-          "K4702"
-        ]
-      },
-      "series": [
-        {
-          "id": "cat01",
-          "code": "K4702",
-          "name": "行政事件件数"
-        }
-      ]
-    },
-    {
-      "title": "家事事件件数",
-      "titleId": "number-of-domestic-affairs",
-      "annotation": [],
-      "estatParams": {
-        "statsDataId": "0000010111",
-        "cdCat01": [
-          "K4703"
-        ]
-      },
-      "series": [
-        {
-          "id": "cat01",
-          "code": "K4703",
-          "name": "家事事件件数"
-        }
-      ]
-    },
-    {
       "title": "警察官数",
       "titleId": "number-of-police-officers",
       "annotation": [],
@@ -267,78 +213,6 @@
           "id": "cat01",
           "code": "K4102",
           "name": "警察官数"
-        }
-      ]
-    },
-    {
-      "title": "特別法犯検挙件数",
-      "titleId": "number-of-arrests-for-special-law-offenses",
-      "annotation": [],
-      "estatParams": {
-        "statsDataId": "0000010111",
-        "cdCat01": [
-          "K4301"
-        ]
-      },
-      "series": [
-        {
-          "id": "cat01",
-          "code": "K4301",
-          "name": "特別法犯検挙件数"
-        }
-      ]
-    },
-    {
-      "title": "特別法犯検挙人員",
-      "titleId": "special-law-offenders-arrested",
-      "annotation": [],
-      "estatParams": {
-        "statsDataId": "0000010111",
-        "cdCat01": [
-          "K4302"
-        ]
-      },
-      "series": [
-        {
-          "id": "cat01",
-          "code": "K4302",
-          "name": "特別法犯検挙人員"
-        }
-      ]
-    },
-    {
-      "title": "覚せい剤取締検挙件数",
-      "titleId": "number-of-stimulant-drug-control-law-arrests",
-      "annotation": [],
-      "estatParams": {
-        "statsDataId": "0000010111",
-        "cdCat01": [
-          "K4303"
-        ]
-      },
-      "series": [
-        {
-          "id": "cat01",
-          "code": "K4303",
-          "name": "覚せい剤取締検挙件数"
-        }
-      ]
-    },
-    {
-      "title": "覚せい剤取締検挙人員",
-      "titleId": "stimulant-drug-control-arrest-personnel",
-      "annotation": [],
-      "estatParams": {
-        "statsDataId": "0000010111",
-        "cdCat01": [
-          "K4304"
-        ]
-      },
-      "series": [
-        {
-          "id": "cat01",
-          "code": "K4304",
-          "name": "覚せい剤取締検挙人員"
         }
       ]
     },
