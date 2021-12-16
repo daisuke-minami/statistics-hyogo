@@ -12,12 +12,27 @@ const AdministrativeStaff = () => {
     '~/components/index/administrativefinancial/cards/staff/administrativeStaffPrefecture.vue'
   )
 }
-// RankChart
-// const PopulationPrefectureRank = () => {
-//   return import(
-//     '@/components/index/population/cards/populationPrefectureRank.vue'
-//   )
-// }
+
+// 消防部門職員数
+const FireDepartmentStaff = () => {
+  return import(
+    '~/components/index/administrativefinancial/cards/staff/fireDepartmentStaffPrefecture.vue'
+  )
+}
+
+// 教育部門職員数
+const EducationDepartmentStaff = () => {
+  return import(
+    '~/components/index/administrativefinancial/cards/staff/educationDepartmentStaffPrefecture.vue'
+  )
+}
+
+// 警察部門職員数
+const PoliceDepartmentStaff = () => {
+  return import(
+    '~/components/index/administrativefinancial/cards/staff/policeDepartmentStaffPrefecture.vue'
+  )
+}
 
 export default defineComponent({
   components: {
@@ -25,7 +40,10 @@ export default defineComponent({
   },
   setup() {
     // Card
-    const rows = ref([[AdministrativeStaff]])
+    const rows = ref([
+      [AdministrativeStaff, FireDepartmentStaff],
+      [EducationDepartmentStaff, PoliceDepartmentStaff],
+    ])
 
     return {
       rows,

@@ -135,6 +135,10 @@
       {
         "menuTitle": "職員",
         "menuTitleId": "staff"
+      },
+      {
+        "menuTitle": "議会",
+        "menuTitleId": "parliament"
       }
     ],
     "city": []
