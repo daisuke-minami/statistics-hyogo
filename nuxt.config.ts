@@ -9,8 +9,8 @@ const environment = process.env.NODE_ENV || 'development'
 const fs = require('fs')
 const routes = JSON.parse(fs.readFileSync('static/routes/routes.json'))
 const setting = JSON.parse(fs.readFileSync('static/setting.json'))
-const cityList = JSON.parse(fs.readFileSync('static/codes/citylist.json'))
-const prefList = JSON.parse(fs.readFileSync('static/codes/preflist.json'))
+// const cityList = JSON.parse(fs.readFileSync('static/codes/citylist.json'))
+// const prefList = JSON.parse(fs.readFileSync('data/codes/preflist.json'))
 const { PREF_CODE, API_KEY, ESTAT_APPID, GOOGLE_ANALYTICS_ID, BASE_URL } =
   process.env
 require('dotenv').config()
@@ -91,6 +91,7 @@ const config: NuxtConfig = {
    ** Plugins to load before mounting the App
    */
   plugins: [
+    { src: '@/plugins/composition-api', ssr: true },
     {
       src: '@/plugins/axios',
       ssr: true,
@@ -115,7 +116,7 @@ const config: NuxtConfig = {
       src: '@/plugins/resas',
       ssr: true,
     },
-    { src: '@/plugins/localStorage', ssr: false },
+    // { src: '@/plugins/localStorage', ssr: false },
     { src: '@/plugins/leaflet.js', ssr: false },
     {
       src: '@/plugins/vue-highlightjs',
@@ -126,6 +127,7 @@ const config: NuxtConfig = {
    ** Nuxt.js dev-modules
    */
   buildModules: [
+    '@nuxtjs/composition-api/module',
     '@nuxtjs/stylelint-module',
     '@nuxtjs/pwa',
     '@nuxtjs/vuetify',
@@ -268,14 +270,12 @@ const config: NuxtConfig = {
   },
   env: {
     routes,
-    cityList: cityList.result,
-    prefList: prefList.result,
     PREF_CODE,
     API_KEY,
     ESTAT_APPID,
     GOOGLE_ANALYTICS_ID,
     BASE_URL,
-    statisticsClassList: setting.statisticsClass,
+    statFieldList: setting.statField,
   },
   router: {
     middleware: 'vuex',

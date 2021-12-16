@@ -8,12 +8,12 @@ import pathlib
 # ルートディレクトリの設定
 root_dir = pathlib.Path(__file__).parent.parent.parent
 
-# statisticsClassを取得
+# statFieldを取得
 c = os.path.join(root_dir, 'static/setting.json')
 
 with open(c) as j:
     setting = json.load(j)
-    statisticsClass = [d.get('id') for d in setting['statisticsClass']]
+    statField = [d.get('id') for d in setting['statField']]
 
 # chartClassの定義
 chartClass = ['prefecture', 'city']
@@ -35,7 +35,7 @@ def saveEstatResponse(contents):
 
 
 # contentsの生成
-for item in statisticsClass:
+for item in statField:
 
     # ディレクトリを作成
     directory = os.path.join(root_dir, 'static/pagecontents/'+item)
@@ -49,7 +49,7 @@ for item in statisticsClass:
     #     pathlib.Path(down).mkdir(exist_ok=True)
 
     #     #contentsの取得（都道府県）
-    #     path = os.path.join(root_dir, 'static/pagesetting')
+    #     path = os.path.join(root_dir, 'data/pagesetting')
     #     j = open(path + '/' + item+'.json','r')
     #     contentsList = json.load(j)[type]
 
@@ -63,7 +63,7 @@ for item in statisticsClass:
     down = os.path.join(directory, 'prefecture')
     pathlib.Path(down).mkdir(exist_ok=True)
 
-    path = os.path.join(root_dir, 'static/pagesetting')
+    path = os.path.join(root_dir, 'data/pagesetting')
     j = open(path + '/' + item+'.json', 'r')
     contentsList = json.load(j)['prefecture']
 

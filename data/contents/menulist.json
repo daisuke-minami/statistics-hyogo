@@ -1,0 +1,197 @@
+{
+  "landweather": {
+    "prefecture": [
+      {
+        "menuTitle": "面積",
+        "menuTitleId": "area"
+      },
+      {
+        "menuTitle": "自然・公園",
+        "menuTitleId": "park"
+      },
+      {
+        "menuTitle": "気候",
+        "menuTitleId": "climate"
+      }
+    ],
+    "city": []
+  },
+  "population": {
+    "prefecture": [
+      {
+        "menuTitle": "人口",
+        "menuTitleId": "population"
+      },
+      {
+        "menuTitle": "流入・流出",
+        "menuTitleId": "inflowoutflow"
+      },
+      {
+        "menuTitle": "転入・転出",
+        "menuTitleId": "moveinmoveout"
+      },
+      {
+        "menuTitle": "世帯",
+        "menuTitleId": "household"
+      },
+      {
+        "menuTitle": "出生",
+        "menuTitleId": "birth"
+      },
+      {
+        "menuTitle": "死亡",
+        "menuTitleId": "death"
+      },
+      {
+        "menuTitle": "婚姻",
+        "menuTitleId": "marriage"
+      }
+    ],
+    "city": [
+      {
+        "menuTitle": "総人口",
+        "menuTitleId": "population"
+      }
+    ]
+  },
+  "agriculture": {
+    "prefecture": [
+      {
+        "menuTitle": "農業",
+        "menuTitleId": "agriculture"
+      },
+      {
+        "menuTitle": "漁業",
+        "menuTitleId": "fishing"
+      },
+      {
+        "menuTitle": "林業",
+        "menuTitleId": "forestry"
+      }
+    ],
+    "city": [
+      {
+        "menuTitle": "農業",
+        "menuTitleId": "agriculture"
+      }
+    ]
+  },
+  "miningindustry": {
+    "prefecture": [
+      {
+        "menuTitle": "製造業",
+        "menuTitleId": "manufacturing-industry"
+      }
+    ],
+    "city": []
+  },
+  "commercial": {
+    "prefecture": [
+      {
+        "menuTitle": "商業",
+        "menuTitleId": "commercial"
+      }
+    ],
+    "city": []
+  },
+  "economy": {
+    "prefecture": [
+      {
+        "menuTitle": "県内総生産",
+        "menuTitleId": "gross-domestic-product"
+      }
+    ],
+    "city": []
+  },
+  "construction": {
+    "prefecture": [
+      {
+        "menuTitle": "建設",
+        "menuTitleId": "construction"
+      }
+    ],
+    "city": []
+  },
+  "tourism": {
+    "prefecture": [
+      {
+        "menuTitle": "宿泊施設",
+        "menuTitleId": "hotel"
+      }
+    ],
+    "city": []
+  },
+  "educationsports": {
+    "prefecture": [
+      {
+        "menuTitle": "幼稚園",
+        "menuTitleId": "kindergarten"
+      }
+    ],
+    "city": []
+  },
+  "administrativefinancial": {
+    "prefecture": [
+      {
+        "menuTitle": "職員",
+        "menuTitleId": "staff"
+      },
+      {
+        "menuTitle": "議会",
+        "menuTitleId": "parliament"
+      }
+    ],
+    "city": []
+  },
+  "safetyenvironment": {
+    "prefecture": [
+      {
+        "menuTitle": "交通事故",
+        "menuTitleId": "traffic-accident"
+      },
+      {
+        "menuTitle": "消防",
+        "menuTitleId": "fire-department"
+      },
+      {
+        "menuTitle": "火災",
+        "menuTitleId": "fires"
+      },
+      {
+        "menuTitle": "任意自動車保険",
+        "menuTitleId": "voluntary-car-insurance"
+      },
+      {
+        "menuTitle": "犯罪",
+        "menuTitleId": "crime"
+      },
+      {
+        "menuTitle": "環境",
+        "menuTitleId": "environment"
+      },
+      {
+        "menuTitle": "公害",
+        "menuTitleId": "pollution"
+      },
+      {
+        "menuTitle": "災害",
+        "menuTitleId": "disaster"
+      }
+    ],
+    "city": [
+      {
+        "menuTitle": "交通事故",
+        "menuTitleId": "traffic-accident"
+      }
+    ]
+  },
+  "international": {
+    "prefecture": [
+      {
+        "menuTitle": "外国人",
+        "menuTitleId": "foreigner"
+      }
+    ],
+    "city": []
+  }
+}

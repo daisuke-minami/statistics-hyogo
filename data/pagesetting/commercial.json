@@ -1,0 +1,35 @@
+{
+  "prefecture": [],
+  "city": [
+    {
+      "title": "商業事業所数",
+      "titleId": "number-of-commercial-establishments",
+      "annotation": [],
+      "estatParams": {
+        "statsDataId": "0000020203",
+        "cdCat01": [
+          "C3502",
+          "C350201",
+          "C350202"
+        ]
+      },
+      "series": [
+        {
+          "id": "cat01",
+          "code": "C3502",
+          "name": "総数"
+        },
+        {
+          "id": "cat01",
+          "code": "C350201",
+          "name": "卸売業"
+        },
+        {
+          "id": "cat01",
+          "code": "C350202",
+          "name": "小売業"
+        }
+      ]
+    }
+  ]
+}

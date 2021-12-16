@@ -3,9 +3,9 @@ import axios from 'axios'
 import * as topojson from 'topojson-client'
 
 const initialState = {
-  prefMapDc: null,
+  cityMapDc: null,
+  cityMap: null,
   prefMap: null,
-  japanMap: null,
 }
 
 // ShallowCopyを避けるため、lodashのcloneDeepを用いる。
@@ -17,20 +17,31 @@ export const getters = {
       return topojson.feature(topo, topo.objects[obj])
     }
     return {
-      prefMapDc: _convTopoJsonToGeoJson(state.prefMapDc, 'city'),
-      prefMap: _convTopoJsonToGeoJson(state.prefMap, 'city'),
-      japanMap: _convTopoJsonToGeoJson(state.japanMap, 'pref'),
+      cityMapDc: _convTopoJsonToGeoJson(state.cityMapDc, 'city'),
+      cityMap: _convTopoJsonToGeoJson(state.cityMap, 'city'),
+      prefMap: _convTopoJsonToGeoJson(state.prefMap, 'pref'),
+    }
+  },
+  getMapPref: (state) => {
+    return state.prefMap
+  },
+  getMapCity: (state) => (bigCity) => {
+    if (bigCity === 'all') {
+      return state.cityMapDc
+    } else {
+      return state.cityMap
     }
   },
 }
+
 export const mutations = {
   initMapsSet(state, payload) {
     if (payload === null) {
       state = cloneDeep(initialState)
     } else {
-      state.japanMap = payload.a
-      state.prefMapDc = payload.b
-      state.prefMap = payload.c
+      state.prefMap = payload.a
+      state.cityMapDc = payload.b
+      state.cityMap = payload.c
     }
   },
 }

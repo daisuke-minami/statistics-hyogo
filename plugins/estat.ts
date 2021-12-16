@@ -1,5 +1,7 @@
 import qs from 'qs'
 
+import { EstatParams } from '~/utils/formatEstat'
+
 export default function ({ $axios }, inject) {
   const api = $axios.create({
     headers: {
@@ -11,7 +13,7 @@ export default function ({ $axios }, inject) {
     params: {
       appId: process.env.ESTAT_APPID,
     },
-    paramsSerializer: (params) => {
+    paramsSerializer: (params: EstatParams) => {
       return qs.stringify(params, { arrayFormat: 'comma' })
     },
     mode: 'cors',
@@ -19,10 +21,10 @@ export default function ({ $axios }, inject) {
     data: {},
   })
 
-  api.setBaseURL(`${process.env.BASE_URL}/json/getStatsData`)
-
+  api.setBaseURL(`${process.env.BASE_URL}/json/`)
   // api.onRequest((config) => {
-  //   // console.log('URL ' + config.url)
+  //   console.log('Making request to ' + config.url)
+  //   console.log(config.baseURL)
   // })
 
   inject('estat', api)

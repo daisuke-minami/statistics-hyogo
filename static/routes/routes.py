@@ -22,11 +22,11 @@ with open(c) as j:
     cityList = json.load(j)
     cityCodes = [d.get('cityCode') for d in cityList['result']]
 
-# statisticsClassを取得
+# statFieldを取得
 c = os.path.join(root_dir, 'setting.json')
 with open(c) as j:
     setting = json.load(j)
-    statisticsClass = [d.get('id') for d in setting['statisticsClass']]
+    statField = [d.get('id') for d in setting['statField']]
 
 #routesを格納するリストの定義
 routes = []
@@ -35,7 +35,7 @@ routes = []
 chartClass =['prefecture','city','prefectureRank','cityRank']
 
 # routes設定
-for item in statisticsClass:
+for item in statField:
 
     # contentsAllの取得
     path = os.path.join(root_dir, 'pagesetting')
