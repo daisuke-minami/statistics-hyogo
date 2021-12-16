@@ -6,16 +6,10 @@
 import CardsLazyRow from '@/components/index/_shared/CardsLazyRow.vue'
 import { defineComponent, ref } from '@nuxtjs/composition-api'
 
-// 外国人人口（男女別）
-const ForeignPopulation = () => {
+// 交通事故
+const TrafficAccident = () => {
   return import(
-    '~/components/index/international/cards/foreigner/foreignPopulationPrefecture.vue'
-  )
-}
-
-const ImmigrationControl = () => {
-  return import(
-    '~/components/index/international/cards/foreigner/immigrationControlPrefecture.vue'
+    '~/components/index/safetyenvironment/cards/trafficAccident/trafficAccidentCity.vue'
   )
 }
 
@@ -25,7 +19,7 @@ export default defineComponent({
   },
   setup() {
     // Card
-    const rows = ref([[ForeignPopulation, ImmigrationControl]])
+    const rows = ref([[TrafficAccident]])
 
     return {
       rows,

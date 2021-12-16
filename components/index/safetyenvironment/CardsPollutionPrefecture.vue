@@ -20,13 +20,20 @@ const PollutionComplaints = () => {
 //   )
 // }
 
+// 水質汚濁防止法上の特定事業所数
+const WaterPollution = () => {
+  return import(
+    '~/components/index/safetyenvironment/cards/pollution/waterPollutionPrefecture.vue'
+  )
+}
+
 export default defineComponent({
   components: {
     CardsLazyRow,
   },
   setup() {
     // Card
-    const rows = ref([[PollutionComplaints]])
+    const rows = ref([[PollutionComplaints, WaterPollution]])
 
     return {
       rows,

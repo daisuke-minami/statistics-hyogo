@@ -174,7 +174,12 @@
         "menuTitleId": "disaster"
       }
     ],
-    "city": []
+    "city": [
+      {
+        "menuTitle": "交通事故",
+        "menuTitleId": "traffic-accident"
+      }
+    ]
   },
   "international": {
     "prefecture": [

@@ -48,6 +48,12 @@ const SpecialLaw = () => {
   )
 }
 
+// 売春事犯
+const Prostitution = () => {
+  return import(
+    '~/components/index/safetyenvironment/cards/crime/prostitutionPrefecture.vue'
+  )
+}
 export default defineComponent({
   components: {
     CardsLazyRow,
@@ -58,6 +64,7 @@ export default defineComponent({
       [CrimePreventionVolunteer, AcceptingAllegedForeigners],
       [CivilCases, AdministrativeCases],
       [DomesticAffairs, SpecialLaw],
+      [Prostitution],
     ])
 
     return {
