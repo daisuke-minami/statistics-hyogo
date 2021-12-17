@@ -92,7 +92,12 @@
         "menuTitleId": "commercial"
       }
     ],
-    "city": []
+    "city": [
+      {
+        "menuTitle": "商業",
+        "menuTitleId": "commercial"
+      }
+    ]
   },
   "economy": {
     "prefecture": [

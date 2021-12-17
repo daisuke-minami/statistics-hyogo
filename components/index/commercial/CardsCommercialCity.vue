@@ -9,7 +9,7 @@ import { defineComponent, ref } from '@nuxtjs/composition-api'
 // 商業事業所数
 const CommercialEstablishments = () => {
   return import(
-    '~/components/index/commercial/cards/commercial/commercialEstablishmentsPrefecture.vue'
+    '~/components/index/commercial/cards/commercial/commercialEstablishmentsCity.vue'
   )
 }
 
