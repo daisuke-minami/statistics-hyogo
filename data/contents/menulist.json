@@ -145,7 +145,16 @@
         "menuTitleId": "finance"
       }
     ],
-    "city": []
+    "city": [
+      {
+        "menuTitle": "職員",
+        "menuTitleId": "staff"
+      },
+      {
+        "menuTitle": "財政",
+        "menuTitleId": "finance"
+      }
+    ]
   },
   "safetyenvironment": {
     "prefecture": [
