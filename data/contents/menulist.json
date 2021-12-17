@@ -139,6 +139,10 @@
       {
         "menuTitle": "議会",
         "menuTitleId": "parliament"
+      },
+      {
+        "menuTitle": "財政",
+        "menuTitleId": "finance"
       }
     ],
     "city": []
