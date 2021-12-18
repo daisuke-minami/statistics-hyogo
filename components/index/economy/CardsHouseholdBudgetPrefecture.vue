@@ -20,13 +20,23 @@ const ConsumptionExpenditureOne = () => {
   )
 }
 
+// 消費支出
+const ConsumptionExpenditureTwo = () => {
+  return import(
+    '~/components/index/economy/cards/household-budget/consumptionExpenditureTwoPrefecture.vue'
+  )
+}
+
 export default defineComponent({
   components: {
     CardsLazyRow,
   },
   setup() {
     // Card
-    const rows = ref([[RealIncome, ConsumptionExpenditureOne]])
+    const rows = ref([
+      [RealIncome, ConsumptionExpenditureOne],
+      [ConsumptionExpenditureTwo],
+    ])
 
     return {
       rows,
