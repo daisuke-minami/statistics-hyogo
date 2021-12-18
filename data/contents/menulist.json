@@ -95,9 +95,18 @@
       {
         "menuTitle": "製造業",
         "menuTitleId": "manufacturing-industry"
+      },
+      {
+        "menuTitle": "工業用水",
+        "menuTitleId": "industrial-water"
       }
     ],
-    "city": []
+    "city": [
+      {
+        "menuTitle": "製造業",
+        "menuTitleId": "manufacturing-industry"
+      }
+    ]
   },
   "commercial": {
     "prefecture": [

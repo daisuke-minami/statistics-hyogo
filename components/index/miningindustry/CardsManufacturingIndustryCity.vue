@@ -9,14 +9,7 @@ import { defineComponent, ref } from '@nuxtjs/composition-api'
 // 製造品出荷額等
 const ProductShipmentValue = () => {
   return import(
-    '~/components/index/miningindustry/cards/manufacturing-industry/productShipmentValuePrefecture.vue'
-  )
-}
-
-// 製造業付加価値額
-const ValueAdded = () => {
-  return import(
-    '~/components/index/miningindustry/cards/manufacturing-industry/valueAddedPrefecture.vue'
+    '~/components/index/miningindustry/cards/manufacturing-industry/productShipmentValueCity.vue'
   )
 }
 
@@ -26,7 +19,7 @@ export default defineComponent({
   },
   setup() {
     // Card
-    const rows = ref([[ProductShipmentValue, ValueAdded]])
+    const rows = ref([[ProductShipmentValue]])
 
     return {
       rows,
