@@ -6,10 +6,17 @@
 import CardsLazyRow from '@/components/index/_shared/CardsLazyRow.vue'
 import { defineComponent, ref } from '@nuxtjs/composition-api'
 
-// 商業事業所数
-const CommercialEstablishments = () => {
+// 事業所数
+const Establishments = () => {
   return import(
-    '~/components/index/commercial/cards/commercial/commercialEstablishmentsPrefecture.vue'
+    '~/components/index/economy/cards/establishments/establishmentsPrefecture.vue'
+  )
+}
+
+// 従業者数
+const Employees = () => {
+  return import(
+    '~/components/index/economy/cards/establishments/employeesPrefecture.vue'
   )
 }
 
@@ -19,7 +26,7 @@ export default defineComponent({
   },
   setup() {
     // Card
-    const rows = ref([[CommercialEstablishments]])
+    const rows = ref([[Establishments, Employees]])
 
     return {
       rows,

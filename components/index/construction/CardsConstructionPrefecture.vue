@@ -12,12 +12,6 @@ const Builders = () => {
     '~/components/index/construction/cards/construction/buildersPrefecture.vue'
   )
 }
-// RankChart
-// const PopulationPrefectureRank = () => {
-//   return import(
-//     '@/components/index/population/cards/populationPrefectureRank.vue'
-//   )
-// }
 
 export default defineComponent({
   components: {

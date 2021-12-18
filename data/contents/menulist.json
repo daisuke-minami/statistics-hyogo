@@ -92,13 +92,34 @@
         "menuTitleId": "commercial"
       }
     ],
-    "city": []
+    "city": [
+      {
+        "menuTitle": "商業",
+        "menuTitleId": "commercial"
+      }
+    ]
   },
   "economy": {
     "prefecture": [
       {
         "menuTitle": "県内総生産",
         "menuTitleId": "gross-domestic-product"
+      },
+      {
+        "menuTitle": "事業所等",
+        "menuTitleId": "establishments"
+      },
+      {
+        "menuTitle": "売上",
+        "menuTitleId": "sales"
+      },
+      {
+        "menuTitle": "物価",
+        "menuTitleId": "price"
+      },
+      {
+        "menuTitle": "家計",
+        "menuTitleId": "household-budget"
       }
     ],
     "city": []
@@ -110,7 +131,12 @@
         "menuTitleId": "construction"
       }
     ],
-    "city": []
+    "city": [
+      {
+        "menuTitle": "土地",
+        "menuTitleId": "land"
+      }
+    ]
   },
   "tourism": {
     "prefecture": [
@@ -139,9 +165,22 @@
       {
         "menuTitle": "議会",
         "menuTitleId": "parliament"
+      },
+      {
+        "menuTitle": "財政",
+        "menuTitleId": "finance"
       }
     ],
-    "city": []
+    "city": [
+      {
+        "menuTitle": "職員",
+        "menuTitleId": "staff"
+      },
+      {
+        "menuTitle": "財政",
+        "menuTitleId": "finance"
+      }
+    ]
   },
   "safetyenvironment": {
     "prefecture": [

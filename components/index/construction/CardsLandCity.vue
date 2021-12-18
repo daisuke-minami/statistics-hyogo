@@ -6,10 +6,10 @@
 import CardsLazyRow from '@/components/index/_shared/CardsLazyRow.vue'
 import { defineComponent, ref } from '@nuxtjs/composition-api'
 
-// 商業事業所数
-const CommercialEstablishments = () => {
+// 標準価格（平均価格）（住宅地）
+const StandardPrice = () => {
   return import(
-    '~/components/index/commercial/cards/commercial/commercialEstablishmentsPrefecture.vue'
+    '~/components/index/construction/cards/land/standardPriceCity.vue'
   )
 }
 
@@ -19,7 +19,7 @@ export default defineComponent({
   },
   setup() {
     // Card
-    const rows = ref([[CommercialEstablishments]])
+    const rows = ref([[StandardPrice]])
 
     return {
       rows,
