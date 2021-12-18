@@ -27,6 +27,48 @@ const ConsumptionExpenditureTwo = () => {
   )
 }
 
+// 貯蓄現在高
+const CurrentSavingsOne = () => {
+  return import(
+    '~/components/index/economy/cards/household-budget/currentSavingsOnePrefecture.vue'
+  )
+}
+
+// 貯蓄現在高
+const CurrentSavingsTwo = () => {
+  return import(
+    '~/components/index/economy/cards/household-budget/currentSavingsTwoPrefecture.vue'
+  )
+}
+
+// 負債現在高
+const CurrentDebtOne = () => {
+  return import(
+    '~/components/index/economy/cards/household-budget/currentDebtOnePrefecture.vue'
+  )
+}
+
+// 負債現在高
+const CurrentDebtTwo = () => {
+  return import(
+    '~/components/index/economy/cards/household-budget/currentDebtTwoPrefecture.vue'
+  )
+}
+
+// 年間収入平均
+const AverageAnnualIncomeOne = () => {
+  return import(
+    '~/components/index/economy/cards/household-budget/averageAnnualIncomeOnePrefecture.vue'
+  )
+}
+
+// 年間収入平均
+const AverageAnnualIncomeTwo = () => {
+  return import(
+    '~/components/index/economy/cards/household-budget/averageAnnualIncomeTwoPrefecture.vue'
+  )
+}
+
 export default defineComponent({
   components: {
     CardsLazyRow,
@@ -35,7 +77,10 @@ export default defineComponent({
     // Card
     const rows = ref([
       [RealIncome, ConsumptionExpenditureOne],
-      [ConsumptionExpenditureTwo],
+      [ConsumptionExpenditureTwo, CurrentSavingsOne],
+      [CurrentSavingsTwo, CurrentDebtOne],
+      [CurrentDebtTwo, AverageAnnualIncomeOne],
+      [AverageAnnualIncomeTwo],
     ])
 
     return {
