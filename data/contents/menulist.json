@@ -141,7 +141,7 @@
   "construction": {
     "prefecture": [
       {
-        "menuTitle": "建設",
+        "menuTitle": "電力",
         "menuTitleId": "construction"
       }
     ],
@@ -151,6 +151,15 @@
         "menuTitleId": "land"
       }
     ]
+  },
+  "energy": {
+    "prefecture": [
+      {
+        "menuTitle": "エネルギー",
+        "menuTitleId": "energy"
+      }
+    ],
+    "city": []
   },
   "tourism": {
     "prefecture": [

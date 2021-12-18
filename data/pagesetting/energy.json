@@ -1,83 +1,8 @@
 {
   "prefecture": [
     {
-      "title": "発電電力量",
-      "titleId": "power-generation",
-      "annotation": [],
-      "estatParams": {
-        "statsDataId": "0000010108",
-        "cdCat01": [
-          "H5104"
-        ]
-      },
-      "series": [
-        {
-          "id": "cat01",
-          "code": "H5104",
-          "name": "発電電力量"
-        }
-      ]
-    },
-    {
-      "title": "電力需要量",
-      "titleId": "electricity-demand",
-      "annotation": [],
-      "estatParams": {
-        "statsDataId": "0000010108",
-        "cdCat01": [
-          "H5105"
-        ]
-      },
-      "series": [
-        {
-          "id": "cat01",
-          "code": "H5105",
-          "name": "電力需要量"
-        }
-      ]
-    },
-    {
-      "title": "ガソリン販売量",
-      "titleId": "gasoline-sales-volume",
-      
-      "annotation": [],
-      "estatParams": {
-        "statsDataId": "0000010108",
-        "cdCat01": [
-          "H5205"
-        ]
-      },
-      "series": [
-        {
-          "id": "cat01",
-          "code": "H5205",
-          "name": "ガソリン販売量"
-        }
-      ]
-    },
-    {
-      "title": "都市ガス販売量",
-      "titleId": "city-gas-sales-volume",
-      
-      "annotation": [],
-      "estatParams": {
-        "statsDataId": "0000010108",
-        "cdCat01": [
-          "H5206"
-        ]
-      },
-      "series": [
-        {
-          "id": "cat01",
-          "code": "H5206",
-          "name": "都市ガス販売量"
-        }
-      ]
-    },
-    {
       "title": "ごみ総排出量",
       "titleId": "garbage-discharged",
-      
       "annotation": [],
       "estatParams": {
         "statsDataId": "0000010108",
