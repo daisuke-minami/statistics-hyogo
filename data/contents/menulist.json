@@ -157,9 +157,18 @@
       {
         "menuTitle": "エネルギー",
         "menuTitleId": "energy"
+      },
+      {
+        "menuTitle": "ごみ",
+        "menuTitleId": "garbage"
       }
     ],
-    "city": []
+    "city": [
+      {
+        "menuTitle": "ごみ",
+        "menuTitleId": "garbage"
+      }
+    ]
   },
   "tourism": {
     "prefecture": [
