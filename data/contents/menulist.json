@@ -54,6 +54,20 @@
       }
     ]
   },
+  "laborwage": {
+    "prefecture": [
+      {
+        "menuTitle": "労働力人口",
+        "menuTitleId": "labor-force"
+      }
+    ],
+    "city": [
+      {
+        "menuTitle": "労働力人口",
+        "menuTitleId": "labor-force"
+      }
+    ]
+  },
   "agriculture": {
     "prefecture": [
       {
