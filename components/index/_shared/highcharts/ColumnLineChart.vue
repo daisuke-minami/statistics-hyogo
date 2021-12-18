@@ -27,7 +27,6 @@ export default defineComponent({
   },
   setup(props) {
     const series = computed((): Series[] => {
-      // console.log(props.displayData)
       return cloneDeep(props.displayData)
     })
     const chartOptions = computed(() => {
