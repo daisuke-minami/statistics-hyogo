@@ -166,6 +166,10 @@
       {
         "menuTitle": "幼稚園",
         "menuTitleId": "kindergarten"
+      },
+      {
+        "menuTitle": "小学校",
+        "menuTitleId": "primary-schools"
       }
     ],
     "city": []
