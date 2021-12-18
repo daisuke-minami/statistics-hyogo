@@ -108,6 +108,18 @@
       {
         "menuTitle": "事業所等",
         "menuTitleId": "establishments"
+      },
+      {
+        "menuTitle": "売上",
+        "menuTitleId": "sales"
+      },
+      {
+        "menuTitle": "物価",
+        "menuTitleId": "price"
+      },
+      {
+        "menuTitle": "家計",
+        "menuTitleId": "household-budget"
       }
     ],
     "city": []
