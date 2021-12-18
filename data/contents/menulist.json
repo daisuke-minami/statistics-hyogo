@@ -104,6 +104,10 @@
       {
         "menuTitle": "県内総生産",
         "menuTitleId": "gross-domestic-product"
+      },
+      {
+        "menuTitle": "事業所等",
+        "menuTitleId": "establishments"
       }
     ],
     "city": []
