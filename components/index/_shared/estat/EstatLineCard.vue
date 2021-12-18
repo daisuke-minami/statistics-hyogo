@@ -134,6 +134,7 @@ export default defineComponent({
     // データの整形
     const series: EstatSeries[] = props.estatSeries
     const formatData = computed(() => {
+      // console.log(estatResponse.value)
       return formatTimeChart(estatResponse.value, series)
     })
 
