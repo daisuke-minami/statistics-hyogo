@@ -12,12 +12,20 @@ const Kindergartens = () => {
     '~/components/index/educationsports/cards/kindergarten/kindergartensPrefecture.vue'
   )
 }
-// RankChart
-// const PopulationPrefectureRank = () => {
-//   return import(
-//     '@/components/index/population/cards/populationPrefectureRank.vue'
-//   )
-// }
+
+// 幼稚園教員数
+const KindergartenTeachers = () => {
+  return import(
+    '~/components/index/educationsports/cards/kindergarten/kindergartenTeachersPrefecture.vue'
+  )
+}
+
+// 幼稚園児童数
+const KindergartenChildren = () => {
+  return import(
+    '~/components/index/educationsports/cards/kindergarten/kindergartenChildrenPrefecture.vue'
+  )
+}
 
 export default defineComponent({
   components: {
@@ -25,7 +33,10 @@ export default defineComponent({
   },
   setup() {
     // Card
-    const rows = ref([[Kindergartens]])
+    const rows = ref([
+      [Kindergartens, KindergartenTeachers],
+      [KindergartenChildren],
+    ])
 
     return {
       rows,
