@@ -13,13 +13,30 @@ const WelfareFacilitiesElderly = () => {
   )
 }
 
+// 国民健康保険被保険者数
+const NationalHealthInsurance = () => {
+  return import(
+    '~/components/index/socialsecurity/cards/medical/nationalHealthInsuranceCity.vue'
+  )
+}
+
+// 国民健康保険給付金額
+const NationalHealthInsuranceBenefitAmount = () => {
+  return import(
+    '~/components/index/socialsecurity/cards/medical/nationalHealthInsuranceBenefitAmountCity.vue'
+  )
+}
+
 export default defineComponent({
   components: {
     CardsLazyRow,
   },
   setup() {
     // Card
-    const rows = ref([[WelfareFacilitiesElderly]])
+    const rows = ref([
+      [WelfareFacilitiesElderly, NationalHealthInsurance],
+      [NationalHealthInsuranceBenefitAmount],
+    ])
 
     return {
       rows,

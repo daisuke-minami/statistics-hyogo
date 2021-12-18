@@ -285,7 +285,12 @@
         "menuTitleId": "medical"
       }
     ],
-    "city": []
+    "city": [
+      {
+        "menuTitle": "医療",
+        "menuTitleId": "medical"
+      }
+    ]
   },
   "international": {
     "prefecture": [
