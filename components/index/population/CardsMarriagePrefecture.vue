@@ -41,12 +41,12 @@ const Spouse = () => {
   )
 }
 
-// RankChart
-// const PopulationPrefectureRank = () => {
-//   return import(
-//     '@/components/index/population/cards/populationPrefectureRank.vue'
-//   )
-// }
+// 離別人口
+const Separated = () => {
+  return import(
+    '~/components/index/population/cards/marriage/separatedPrefecture.vue'
+  )
+}
 
 export default defineComponent({
   components: {
@@ -57,7 +57,7 @@ export default defineComponent({
     const rows = ref([
       [Marriage, Divorce],
       [FirstMarriageAge, Unmarried],
-      [Spouse],
+      [Spouse, Separated],
     ])
 
     return {

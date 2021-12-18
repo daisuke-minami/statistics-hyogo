@@ -278,6 +278,15 @@
       }
     ]
   },
+  "socialsecurity": {
+    "prefecture": [
+      {
+        "menuTitle": "医療",
+        "menuTitleId": "medical"
+      }
+    ],
+    "city": []
+  },
   "international": {
     "prefecture": [
       {

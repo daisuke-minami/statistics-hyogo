@@ -20,24 +20,10 @@ const SingleMotherHousehold = () => {
   )
 }
 
-// // 離婚件数
-// const Divorce = () => {
+// 父子世帯数
+// const SingleFatherHousehold = () => {
 //   return import(
-//     '~/components/index/population/cards/marriage/divorcePrefecture.vue'
-//   )
-// }
-
-// // 平均初婚年齢
-// const FirstMarriageAge = () => {
-//   return import(
-//     '~/components/index/population/cards/marriage/firstMarriageAgePrefecture.vue'
-//   )
-// }
-
-// RankChart
-// const PopulationPrefectureRank = () => {
-//   return import(
-//     '@/components/index/population/cards/populationPrefectureRank.vue'
+//     '~/components/index/population/cards/household/singleFatherHouseholdPrefecture.vue'
 //   )
 // }
 
