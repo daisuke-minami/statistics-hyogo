@@ -184,9 +184,18 @@
       {
         "menuTitle": "宿泊施設",
         "menuTitleId": "hotel"
+      },
+      {
+        "menuTitle": "自動車",
+        "menuTitleId": "car"
       }
     ],
-    "city": []
+    "city": [
+      {
+        "menuTitle": "自動車",
+        "menuTitleId": "car"
+      }
+    ]
   },
   "educationsports": {
     "prefecture": [
