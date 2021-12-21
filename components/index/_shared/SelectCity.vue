@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-tabs center-active show-arrows>
+    <v-tabs v-model="tab" center-active show-arrows>
       <v-tab
         v-for="(item, i) in items"
         :key="i"
@@ -16,11 +16,18 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, inject } from '@nuxtjs/composition-api'
+import {
+  defineComponent,
+  computed,
+  ref,
+  onMounted,
+  inject,
+} from '@nuxtjs/composition-api'
 import { PageStateKey, PageStateType } from '@/composition/pageState'
 import { EventBus, TOGGLE_EVENT } from '@/utils/tab-event-bus'
 
 type TabItem = {
+  code: string
   label: string
   path: string
 }
@@ -38,17 +45,21 @@ export default defineComponent({
     }
 
     const pageState: PageStateType = inject(PageStateKey)
-    const cityList = pageState.cityList.value
+    const cityList = pageState.cityList.value.filter(
+      (d) => d.bigCityFlag !== '1'
+    )
     const selectedPref = pageState.selectedPref.value
     // タブ項目を生成
     const items = computed((): TabItem[] => {
       return [
         {
+          code: toFiveDigit(selectedPref.prefCode),
           label: selectedPref.prefName,
           path: `/${toFiveDigit(selectedPref.prefCode)}/${props.statField}`,
         },
-        ...cityList.map((d: City) => {
+        ...cityList.map((d) => {
           return {
+            code: d.cityCode,
             label: d.cityName,
             path: `/${d.cityCode}/${props.statField}`,
           }
@@ -60,6 +71,11 @@ export default defineComponent({
       EventBus.$emit(TOGGLE_EVENT)
     }
 
+    const tab = ref<string>('')
+    onMounted(() => {
+      tab.value = '28201'
+    })
+    // colsole.log(tab.value)
     return {
       items,
       change,
