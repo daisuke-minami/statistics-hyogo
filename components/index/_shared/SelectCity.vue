@@ -2,12 +2,11 @@
   <div>
     <v-tabs v-model="tab" center-active show-arrows>
       <v-tab
-        v-for="(item, i) in items"
-        :key="i"
+        v-for="item in items"
+        :key="item.code"
         :to="{ path: item.path }"
         nuxt
         exact
-        @click="change"
       >
         {{ item.label }}
       </v-tab>
@@ -20,7 +19,7 @@ import {
   defineComponent,
   computed,
   ref,
-  onMounted,
+  // onMounted,
   inject,
 } from '@nuxtjs/composition-api'
 import { PageStateKey, PageStateType } from '@/composition/pageState'
@@ -49,6 +48,16 @@ export default defineComponent({
       (d) => d.bigCityFlag !== '1'
     )
     const selectedPref = pageState.selectedPref.value
+    // const selectedCity = pageState.selectedCity.value
+    // console.log(selectedCity)
+
+    const tab = ref<string>('28201')
+
+    // onMounted(() => {
+    //   tab.value = '28201'
+    // })
+    // console.log(tab.value)
+
     // タブ項目を生成
     const items = computed((): TabItem[] => {
       return [
@@ -71,12 +80,8 @@ export default defineComponent({
       EventBus.$emit(TOGGLE_EVENT)
     }
 
-    const tab = ref<string>('')
-    onMounted(() => {
-      tab.value = '28201'
-    })
-    // colsole.log(tab.value)
     return {
+      tab,
       items,
       change,
     }

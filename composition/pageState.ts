@@ -36,13 +36,21 @@ export type RouteParams = {
 
 export const usePageState = () => {
   const pageState = reactive<StateType>({
-    code: '',
+    code: '28000',
     statField: '',
     routingPath: '',
     prefList: prefList.result,
     cityList: [],
-    selectedPref: null,
-    selectedCity: null,
+    selectedPref: {
+      prefCode: 28,
+      prefName: '兵庫県',
+    },
+    selectedCity: {
+      prefCode: 28,
+      cityCode: '28100',
+      cityName: '神戸市',
+      bigCityFlag: '2',
+    },
     govType: 'prefecture',
   })
 

@@ -115,6 +115,7 @@ export default defineComponent({
     const govType = pageState.govType.value
     const selectedPref = pageState.selectedPref.value
     const selectedCity = pageState.selectedCity.value
+    // const routingPath = pageState.routingPath.value
 
     // card情報の設定
     const title = computed((): string => {
@@ -126,7 +127,7 @@ export default defineComponent({
       return `${props.cardTitle.titleId}-${govType}`
     })
     const routingPath = computed((): string => {
-      return `/${titleId.value}/${code}`
+      return `/${pageState.routingPath.value}/${titleId.value}/`
     })
 
     // eStat-APIからデータを取得
