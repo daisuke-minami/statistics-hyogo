@@ -855,19 +855,103 @@
           },
           {
             "menuTitle": "消防",
-            "menuId": "fire-department"
+            "menuId": "fire-department",
+            "card": [
+              {
+                "cardTitle": "消防本部・署数",
+                "cardId": "fire-department"
+              },
+              {
+                "cardTitle": "消防団員数",
+                "cardId": "fire-brigade"
+              },
+              {
+                "cardTitle": "消防機関出動回数",
+                "cardId": "fire-department-dispatch"
+              },
+              {
+                "cardTitle": "救急出動回数",
+                "cardId": "emergency-dispatch"
+              }
+            ]
           },
           {
             "menuTitle": "火災",
-            "menuId": "fires"
+            "menuId": "fires",
+            "card": [
+              {
+                "cardTitle": "火災件数",
+                "cardId": "fires"
+              },
+              {
+                "cardTitle": "火災損害額",
+                "cardId": "fire-damage-amount"
+              },
+              {
+                "cardTitle": "火災死傷者数",
+                "cardId": "new-fire-insurance"
+              },
+              {
+                "cardTitle": "火災保険新規契約件数",
+                "cardId": "new-fire-insurance"
+              },
+              {
+                "cardTitle": "火災保険保険金支払件数",
+                "cardId": "fire-insurance-claims-paid"
+              }
+            ]
           },
           {
             "menuTitle": "任意自動車保険",
-            "menuId": "voluntary-car-insurance"
+            "menuId": "voluntary-car-insurance",
+            "card": [
+              {
+                "cardTitle": "任意自動車保険契約台数",
+                "cardId": "voluntary-car-insurance"
+              },
+              {
+                "cardTitle": "任意自動車保険保険金支払件数",
+                "cardId": "voluntary-car-insurance-claims-paid"
+              },
+              {
+                "cardTitle": "任意自動車保険普及率",
+                "cardId": "voluntary-car-insurance-penetration-rate"
+              }
+            ]
           },
           {
             "menuTitle": "犯罪",
-            "menuId": "crime"
+            "menuId": "crime",
+            "card": [
+              {
+                "cardTitle": "防犯ボランティア",
+                "cardId": "crime-prevention-volunteer"
+              },
+              {
+                "cardTitle": "外国人被疑事件受理人員",
+                "cardId": "accepting-alleged-foreigners"
+              },
+              {
+                "cardTitle": "民事事件",
+                "cardId": "civil-cases"
+              },
+              {
+                "cardTitle": "行政事件",
+                "cardId": "administrative-cases"
+              },
+              {
+                "cardTitle": "家事事件",
+                "cardId": "domestic-affairs"
+              },
+              {
+                "cardTitle": "特別法犯",
+                "cardId": "special-law"
+              },
+              {
+                "cardTitle": "売春事犯",
+                "cardId": "prostitution"
+              }
+            ]
           },
           {
             "menuTitle": "環境",

@@ -13,7 +13,7 @@ const VoluntaryCarInsurance = () => {
   )
 }
 
-// 任意自動車保険契約台数
+// 任意自動車保険保険金支払件数
 const VoluntaryCarInsuranceClaimsPaid = () => {
   return import(
     '~/components/index/safetyenvironment/cards/voluntaryCarInsurance/voluntaryCarInsuranceClaimsPaidPrefecture.vue'
