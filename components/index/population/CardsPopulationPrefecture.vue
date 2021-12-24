@@ -12,7 +12,7 @@ const TotalPopulation = () => {
     '~/components/index/population/cards/population/totalPopulationPrefecture.vue'
   )
 }
-// RankChart
+// 総人口ランキング
 const PopulationPrefectureRank = () => {
   return import(
     '@/components/index/population/cards/populationPrefectureRank.vue'

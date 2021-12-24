@@ -6,14 +6,14 @@
 import CardsLazyRow from '@/components/index/_shared/CardsLazyRow.vue'
 import { defineComponent, ref } from '@nuxtjs/composition-api'
 
-// 転出者数（日本人）
+// 転入者数
 const MoveIn = () => {
   return import(
     '~/components/index/population/cards/moveinmoveout/moveinPrefecture.vue'
   )
 }
 
-// 転出者数（日本人）
+// 転出者数
 const MoveOut = () => {
   return import(
     '~/components/index/population/cards/moveinmoveout/moveoutPrefecture.vue'

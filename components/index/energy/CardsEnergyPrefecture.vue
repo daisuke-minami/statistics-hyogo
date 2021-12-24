@@ -13,7 +13,7 @@ const PowerGeneration = () => {
   )
 }
 
-// 発電電力量
+// 電力需要量
 const PowerDemand = () => {
   return import(
     '~/components/index/energy/cards/energy/powerDemandPrefecture.vue'

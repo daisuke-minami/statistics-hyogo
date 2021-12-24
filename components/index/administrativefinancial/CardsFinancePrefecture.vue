@@ -48,7 +48,7 @@ const FutureBurdenRatio = () => {
   )
 }
 
-// 将来負担比率
+// 経常収支比率
 const CurrentAccountRatio = () => {
   return import(
     '~/components/index/administrativefinancial/cards/finance/currentAccountRatioPrefecture.vue'

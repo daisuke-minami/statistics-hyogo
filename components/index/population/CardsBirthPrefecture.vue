@@ -27,13 +27,6 @@ const TotalFertilityRate = () => {
   )
 }
 
-// RankChart
-// const PopulationPrefectureRank = () => {
-//   return import(
-//     '@/components/index/population/cards/populationPrefectureRank.vue'
-//   )
-// }
-
 export default defineComponent({
   components: {
     CardsLazyRow,

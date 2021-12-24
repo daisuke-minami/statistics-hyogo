@@ -10,12 +10,6 @@ import { defineComponent, ref } from '@nuxtjs/composition-api'
 const Ryokan = () => {
   return import('~/components/index/tourism/cards/hotel/ryokanPrefecture.vue')
 }
-// RankChart
-// const PopulationPrefectureRank = () => {
-//   return import(
-//     '@/components/index/population/cards/populationPrefectureRank.vue'
-//   )
-// }
 
 export default defineComponent({
   components: {

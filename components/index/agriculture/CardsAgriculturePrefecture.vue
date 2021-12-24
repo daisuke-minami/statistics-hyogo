@@ -27,7 +27,7 @@ const AgriculturalLand = () => {
   )
 }
 
-// 耕地面積
+// 農地転用面積
 const AgriculturalLandConversion = () => {
   return import(
     '~/components/index/agriculture/cards/agriculture/agriculturalLandConversionPrefecture.vue'

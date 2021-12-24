@@ -6,25 +6,28 @@
 import CardsLazyRow from '@/components/index/_shared/CardsLazyRow.vue'
 import { defineComponent, ref } from '@nuxtjs/composition-api'
 
-// 流出人口（県内）（男女別）
+// 流出人口（県内）
 const OutflowInside = () => {
   return import(
     '~/components/index/population/cards/inflowoutflow/outflowInsidePrefecture.vue'
   )
 }
 
+// 流出人口（県外）
 const OutflowOutside = () => {
   return import(
     '~/components/index/population/cards/inflowoutflow/outflowOutsidePrefecture.vue'
   )
 }
 
+// 流入人口（県内）
 const InflowInside = () => {
   return import(
     '~/components/index/population/cards/inflowoutflow/inflowInsidePrefecture.vue'
   )
 }
 
+// 流入人口（県外）
 const InflowOutside = () => {
   return import(
     '~/components/index/population/cards/inflowoutflow/inflowOutsidePrefecture.vue'

@@ -7,15 +7,49 @@
         "prefecture": [
           {
             "menuTitle": "面積",
-            "menuTitleId": "area"
+            "menuId": "area",
+            "card": [
+              {
+                "cardTitle": "総面積",
+                "cardId": "total-area"
+              },
+              {
+                "cardTitle": "可住地面積",
+                "cardId": "habitable-area"
+              },
+              {
+                "cardTitle": "評価総地積",
+                "cardId": "evaluation-total-cadastral"
+              }
+            ]
           },
           {
             "menuTitle": "自然・公園",
-            "menuTitleId": "park"
+            "menuId": "park",
+            "card": [
+              {
+                "cardTitle": "自然公園面積",
+                "cardId": "nature-park"
+              },
+              {
+                "cardTitle": "自然環境保全地域面積",
+                "cardId": "natural-environment-conservation-area"
+              }
+            ]
           },
           {
             "menuTitle": "気候",
-            "menuTitleId": "climate"
+            "menuId": "climate",
+            "card": [
+              {
+                "cardTitle": "快晴日数",
+                "cardId": "sunny-days"
+              },
+              {
+                "cardTitle": "曇天日数",
+                "cardId": "cloudy-days"
+              }
+            ]
           }
         ],
         "city": []
@@ -28,37 +62,153 @@
         "prefecture": [
           {
             "menuTitle": "人口",
-            "menuTitleId": "population"
+            "menuId": "population",
+            "card": [
+              {
+                "cardTitle": "総人口（男女別）",
+                "cardId": "total-population"
+              },
+              {
+                "cardTitle": "総人口ランキング",
+                "cardId": "population-prefecture-rank"
+              }
+            ]
           },
           {
             "menuTitle": "流入・流出",
-            "menuTitleId": "inflowoutflow"
+            "menuId": "inflowoutflow",
+            "card": [
+              {
+                "cardTitle": "流出人口（県内）",
+                "cardId": "outflow-inside"
+              },
+              {
+                "cardTitle": "流出人口（県外）",
+                "cardId": "outflow-outside"
+              },
+              {
+                "cardTitle": "流入人口（県内）",
+                "cardId": "inflow-inside"
+              },
+              {
+                "cardTitle": "流入人口（県外）",
+                "cardId": "inflow-outside"
+              }
+            ]
           },
           {
             "menuTitle": "転入・転出",
-            "menuTitleId": "moveinmoveout"
+            "menuId": "moveinmoveout",
+            "card": [
+              {
+                "cardTitle": "転入者数",
+                "cardId": "move-in"
+              },
+              {
+                "cardTitle": "転出者数",
+                "cardId": "move-out"
+              }
+            ]
           },
           {
             "menuTitle": "世帯",
-            "menuTitleId": "household"
+            "menuId": "household",
+            "card": [
+              {
+                "cardTitle": "一般世帯数",
+                "cardId": "household"
+              },
+              {
+                "cardTitle": "母子世帯数",
+                "cardId": "single-mother-household"
+              }
+            ]
           },
           {
             "menuTitle": "出生",
-            "menuTitleId": "birth"
+            "menuId": "birth",
+            "card": [
+              {
+                "cardTitle": "出生数（男女別）",
+                "cardId": "birth-sex"
+              },
+              {
+                "cardTitle": "出生数（母親の年齢別）",
+                "cardId": "birth-mother-age"
+              },
+              {
+                "cardTitle": "合計特殊出生率",
+                "cardId": "total-fertility-rate"
+              }
+            ]
           },
           {
             "menuTitle": "死亡",
-            "menuTitleId": "death"
+            "menuId": "death",
+            "card": [
+              {
+                "cardTitle": "出生数（男女別）",
+                "cardId": "death-sex"
+              },
+              {
+                "cardTitle": "年齢調整死亡率",
+                "cardId": "age-adjusted-mortality"
+              },
+              {
+                "cardTitle": "標準化死亡率",
+                "cardId": "standardized-mortality"
+              },
+              {
+                "cardTitle": "死産数",
+                "cardId": "still-birth"
+              }
+            ]
           },
           {
             "menuTitle": "婚姻",
-            "menuTitleId": "marriage"
+            "menuId": "marriage",
+            "card": [
+              {
+                "cardTitle": "結婚件数",
+                "cardId": "marriage"
+              },
+              {
+                "cardTitle": "離婚件数",
+                "cardId": "divorce"
+              },
+              {
+                "cardTitle": "平均初婚年齢",
+                "cardId": "first-marriage-age"
+              },
+              {
+                "cardTitle": "未婚人口",
+                "cardId": "unmarried"
+              },
+              {
+                "cardTitle": "有配偶人口",
+                "cardId": "spouse"
+              },
+              {
+                "cardTitle": "離別人口",
+                "cardId": "separated"
+              }
+            ]
           }
         ],
         "city": [
           {
             "menuTitle": "総人口",
-            "menuTitleId": "population"
+            "menuId": "population",
+            "card": [
+              {
+                "cardTitle": "総人口（男女別）",
+                "cardId": "total-population"
+              },
+              {
+                "cardTitle": "総人口ランキング",
+                "cardId": "population-prefecture-rank"
+              }
+            ]
           }
         ]
       }
@@ -70,13 +220,37 @@
         "prefecture": [
           {
             "menuTitle": "労働力人口",
-            "menuTitleId": "labor-force"
+            "menuId": "labor-force",
+            "card": [
+              {
+                "cardTitle": "労働力人口",
+                "cardId": "labor-force-population"
+              }
+            ]
           }
         ],
         "city": [
           {
             "menuTitle": "労働力人口",
-            "menuTitleId": "labor-force"
+            "menuId": "labor-force",
+            "card": [
+              {
+                "cardTitle": "労働力人口",
+                "cardId": "labor-force-population"
+              },
+              {
+                "cardTitle": "就業者数",
+                "cardId": "employees"
+              },
+              {
+                "cardTitle": "非労働力人口",
+                "cardId": "non-labor-population"
+              },
+              {
+                "cardTitle": "完全失業者数",
+                "cardId": "unemployed"
+              }
+            ]
           }
         ]
       }
@@ -88,21 +262,81 @@
         "prefecture": [
           {
             "menuTitle": "農業",
-            "menuTitleId": "agriculture"
+            "menuId": "agriculture",
+            "card": [
+              {
+                "cardTitle": "農家数",
+                "cardId": "farmers"
+              },
+              {
+                "cardTitle": "農業就業人口（販売農家）",
+                "cardId": "agricultural-working"
+              },
+              {
+                "cardTitle": "耕地面積",
+                "cardId": "agricultural-land"
+              },
+              {
+                "cardTitle": "農地転用面積",
+                "cardId": "agricultural-land-conversion"
+              },
+              {
+                "cardTitle": "農業産出額",
+                "cardId": "agricultural-output"
+              },
+              {
+                "cardTitle": "耕作放棄地面積",
+                "cardId": "abandoned-cultivated"
+              },
+              {
+                "cardTitle": "農林漁業者",
+                "cardId": "agriculture-forestry-fisher"
+              },
+              {
+                "cardTitle": "農林漁業雇用者",
+                "cardId": "agriculture-forestry-fisher-employers"
+              }
+            ]
           },
           {
             "menuTitle": "漁業",
-            "menuTitleId": "fishing"
+            "menuId": "fishing",
+            "card": [
+              {
+                "cardTitle": "漁業産出額",
+                "cardId": "fishery-output"
+              },
+              {
+                "cardTitle": "養殖収穫量",
+                "cardId": "aquaculture-yield"
+              }
+            ]
           },
           {
             "menuTitle": "林業",
-            "menuTitleId": "forestry"
+            "menuId": "forestry",
+            "card": [
+              {
+                "cardTitle": "林道延長",
+                "cardId": "forest-road-extension"
+              }
+            ]
           }
         ],
         "city": [
           {
             "menuTitle": "農業",
-            "menuTitleId": "agriculture"
+            "menuId": "agriculture",
+            "card": [
+              {
+                "cardTitle": "農業産出額",
+                "cardId": "agricultural-output"
+              },
+              {
+                "cardTitle": "耕作放棄地面積",
+                "cardId": "abandoned-cultivated"
+              }
+            ]
           }
         ]
       }
@@ -114,17 +348,35 @@
         "prefecture": [
           {
             "menuTitle": "製造業",
-            "menuTitleId": "manufacturing-industry"
+            "menuId": "manufacturing-industry",
+            "card": [
+              {
+                "cardTitle": "製造品出荷額等",
+                "cardId": "product-shipment-value"
+              }
+            ]
           },
           {
             "menuTitle": "工業用水",
-            "menuTitleId": "industrial-water"
+            "menuId": "industrial-water",
+            "card": [
+              {
+                "cardTitle": "工業用水量",
+                "cardId": "industrial-water-volume"
+              }
+            ]
           }
         ],
         "city": [
           {
             "menuTitle": "製造業",
-            "menuTitleId": "manufacturing-industry"
+            "menuId": "manufacturing-industry",
+            "card": [
+              {
+                "cardTitle": "製造品出荷額等",
+                "cardId": "product-shipment-value"
+              }
+            ]
           }
         ]
       }
@@ -136,13 +388,25 @@
         "prefecture": [
           {
             "menuTitle": "商業",
-            "menuTitleId": "commercial"
+            "menuId": "commercial",
+            "card": [
+              {
+                "cardTitle": "商業事業所数",
+                "cardId": "commercial-establishments"
+              }
+            ]
           }
         ],
         "city": [
           {
             "menuTitle": "商業",
-            "menuTitleId": "commercial"
+            "menuId": "commercial",
+            "card": [
+              {
+                "cardTitle": "商業事業所数",
+                "cardId": "commercial-establishments"
+              }
+            ]
           }
         ]
       }
@@ -154,23 +418,113 @@
         "prefecture": [
           {
             "menuTitle": "県内総生産",
-            "menuTitleId": "gross-domestic-product"
+            "menuId": "gross-domestic-product",
+            "card": [
+              {
+                "cardTitle": "県内総生産（産業区分別）",
+                "cardId": "industry-class"
+              },
+              {
+                "cardTitle": "1人当たり県民所得",
+                "cardId": "prefectural-income"
+              },
+              {
+                "cardTitle": "民間最終消費支出",
+                "cardId": "private-final-consumption-expenditure"
+              },
+              {
+                "cardTitle": "政府最終消費支出",
+                "cardId": "government-final-consumption-expenditure"
+              },
+              {
+                "cardTitle": "県内総資本形成（実質）",
+                "cardId": "total-capital-formation-nominal"
+              },
+              {
+                "cardTitle": "課税対象所得",
+                "cardId": "taxable-income"
+              },
+              {
+                "cardTitle": "納税義務者数",
+                "cardId": "taxpayers"
+              }
+            ]
           },
           {
             "menuTitle": "事業所等",
-            "menuTitleId": "establishments"
+            "menuId": "establishments",
+            "card": [
+              {
+                "cardTitle": "事業所数",
+                "cardId": "establishments"
+              },
+              {
+                "cardTitle": "従業者数",
+                "cardId": "employees"
+              }
+            ]
           },
           {
             "menuTitle": "売上",
-            "menuTitleId": "sales"
+            "menuId": "sales",
+            "card": [
+              {
+                "cardTitle": "付加価値額",
+                "cardId": "value-added-amount"
+              }
+            ]
           },
           {
             "menuTitle": "物価",
-            "menuTitleId": "price"
+            "menuId": "price",
+            "card": [
+              {
+                "cardTitle": "消費者物価地域差指数",
+                "cardId": "consumer-price-index"
+              }
+            ]
           },
           {
             "menuTitle": "家計",
-            "menuTitleId": "household-budget"
+            "menuId": "household-budget",
+            "card": [
+              {
+                "cardTitle": "実収入",
+                "cardId": "real-income"
+              },
+              {
+                "cardTitle": "消費支出",
+                "cardId": "consumption-expenditure-one"
+              },
+              {
+                "cardTitle": "消費支出",
+                "cardId": "consumption-expenditure-two"
+              },
+              {
+                "cardTitle": "貯蓄現在高",
+                "cardId": "current-savings-one"
+              },
+              {
+                "cardTitle": "貯蓄現在高",
+                "cardId": "current-savings-two"
+              },
+              {
+                "cardTitle": "負債現在高",
+                "cardId": "current-debt-one"
+              },
+              {
+                "cardTitle": "負債現在高",
+                "cardId": "current-debt-two"
+              },
+              {
+                "cardTitle": "年間収入平均",
+                "cardId": "average-annual-income-one"
+              },
+              {
+                "cardTitle": "年間収入平均",
+                "cardId": "average-annual-income-two"
+              }
+            ]
           }
         ],
         "city": []
@@ -182,14 +536,26 @@
       "menu": {
         "prefecture": [
           {
-            "menuTitle": "電力",
-            "menuTitleId": "construction"
+            "menuTitle": "建設",
+            "menuId": "construction",
+            "card": [
+              {
+                "cardTitle": "建設業者数",
+                "cardId": "builders"
+              }
+            ]
           }
         ],
         "city": [
           {
             "menuTitle": "土地",
-            "menuTitleId": "land"
+            "menuId": "land",
+            "card": [
+              {
+                "cardTitle": "標準価格",
+                "cardId": "standard-price"
+              }
+            ]
           }
         ]
       }
@@ -201,17 +567,47 @@
         "prefecture": [
           {
             "menuTitle": "エネルギー",
-            "menuTitleId": "energy"
+            "menuId": "energy",
+            "card": [
+              {
+                "cardTitle": "発電電力量",
+                "cardId": "power-generation"
+              },
+              {
+                "cardTitle": "電力需要量",
+                "cardId": "power-demand"
+              },
+              {
+                "cardTitle": "ガソリン販売量",
+                "cardId": "gasoline-sales-volume"
+              },
+              {
+                "cardTitle": "都市ガス販売量",
+                "cardId": "city-gas-sales-volume"
+              }
+            ]
           },
           {
             "menuTitle": "ごみ",
-            "menuTitleId": "garbage"
+            "menuId": "garbage",
+            "card": [
+              {
+                "cardTitle": "ごみ総排出量",
+                "cardId": "garbage-discharged"
+              }
+            ]
           }
         ],
         "city": [
           {
             "menuTitle": "ごみ",
-            "menuTitleId": "garbage"
+            "menuId": "garbage",
+            "card": [
+              {
+                "cardTitle": "ごみ総排出量",
+                "cardId": "garbage-discharged"
+              }
+            ]
           }
         ]
       }
@@ -223,17 +619,43 @@
         "prefecture": [
           {
             "menuTitle": "宿泊施設",
-            "menuTitleId": "hotel"
+            "menuId": "hotel",
+            "card": [
+              {
+                "cardTitle": "旅館営業施設数",
+                "cardId": "ryokan"
+              }
+            ]
           },
           {
             "menuTitle": "自動車",
-            "menuTitleId": "car"
+            "menuId": "car",
+            "card": [
+              {
+                "cardTitle": "原動機付き自転車台数",
+                "cardId": "motorized-bicycle"
+              },
+              {
+                "cardTitle": "運転免許保有者数",
+                "cardId": "drivers-license"
+              },
+              {
+                "cardTitle": "高齢者講習受講者数",
+                "cardId": "senior-citizens"
+              }
+            ]
           }
         ],
         "city": [
           {
             "menuTitle": "自動車",
-            "menuTitleId": "car"
+            "menuId": "car",
+            "card": [
+              {
+                "cardTitle": "原動機付き自転車台数",
+                "cardId": "motorized-bicycle"
+              }
+            ]
           }
         ]
       }
@@ -245,21 +667,61 @@
         "prefecture": [
           {
             "menuTitle": "幼稚園",
-            "menuTitleId": "kindergarten"
+            "menuId": "kindergarten",
+            "card": [
+              {
+                "cardTitle": "幼稚園数",
+                "cardId": "kindergartens"
+              },
+              {
+                "cardTitle": "幼稚園教員数",
+                "cardId": "kindergarten-teachers"
+              },
+              {
+                "cardTitle": "幼稚園児童数",
+                "cardId": "kindergarten-children"
+              }
+            ]
           },
           {
             "menuTitle": "小学校",
-            "menuTitleId": "primary-schools"
+            "menuId": "primary-schools",
+            "card": [
+              {
+                "cardTitle": "小学校数",
+                "cardId": "primary-schools"
+              },
+              {
+                "cardTitle": "小学校教員数",
+                "cardId": "primary-schools-teachers"
+              },
+              {
+                "cardTitle": "小学校児童数",
+                "cardId": "primary-schools-students"
+              }
+            ]
           }
         ],
         "city": [
           {
             "menuTitle": "幼稚園",
-            "menuTitleId": "kindergarten"
+            "menuId": "kindergarten",
+            "card": [
+              {
+                "cardTitle": "幼稚園数",
+                "cardId": "kindergartens"
+              }
+            ]
           },
           {
             "menuTitle": "小学校",
-            "menuTitleId": "primary-schools"
+            "menuId": "primary-schools",
+            "card": [
+              {
+                "cardTitle": "小学校数",
+                "cardId": "primary-schools"
+              }
+            ]
           }
         ]
       }
@@ -271,25 +733,99 @@
         "prefecture": [
           {
             "menuTitle": "職員",
-            "menuTitleId": "staff"
+            "menuId": "staff",
+            "card": [
+              {
+                "cardTitle": "一般行政部門職員数",
+                "cardId": "administrative-staff"
+              },
+              {
+                "cardTitle": "消防部門職員数",
+                "cardId": "fire-department-staff"
+              },
+              {
+                "cardTitle": "教育部門職員数",
+                "cardId": "education-department-staff"
+              },
+              {
+                "cardTitle": "警察部門職員数",
+                "cardId": "police-department-staff"
+              }
+            ]
           },
           {
             "menuTitle": "議会",
-            "menuTitleId": "parliament"
+            "menuId": "parliament",
+            "card": [
+              {
+                "cardTitle": "県議会議員数",
+                "cardId": "members"
+              }
+            ]
           },
           {
             "menuTitle": "財政",
-            "menuTitleId": "finance"
+            "menuId": "finance",
+            "card": [
+              {
+                "cardTitle": "財政力指数",
+                "cardId": "financial-strength-index"
+              },
+              {
+                "cardTitle": "実質収支比率",
+                "cardId": "real-balance-ratio"
+              },
+              {
+                "cardTitle": "基準財政収入額",
+                "cardId": "standard-financial-income"
+              },
+              {
+                "cardTitle": "基準財政需要額",
+                "cardId": "standard-financial-demand"
+              },
+              {
+                "cardTitle": "実質公債費比率",
+                "cardId": "real-debt-service-ratio"
+              },
+              {
+                "cardTitle": "将来負担比率",
+                "cardId": "future-burden-ratio"
+              },
+              {
+                "cardTitle": "経常収支比率",
+                "cardId": "current-account-ratio"
+              }
+            ]
           }
         ],
         "city": [
           {
             "menuTitle": "職員",
-            "menuTitleId": "staff"
+            "menuId": "staff",
+            "card": [
+              {
+                "cardTitle": "一般行政部門職員数",
+                "cardId": "administrative-staff"
+              }
+            ]
           },
           {
             "menuTitle": "財政",
-            "menuTitleId": "finance"
+            "menuId": "finance",
+            "card": [
+              {
+                "cardTitle": "財政力指数",
+                "cardId": "financial-strength-index"
+              },
+              {
+                "cardTitle": "実質収支比率",
+                "cardId": "real-balance-ratio"
+              },
+              {
+                "cardTitle": "将来負担比率",
+                "cardId": "current-account-ratio"
+              }
+            ]
           }
         ]
       }
@@ -301,41 +837,55 @@
         "prefecture": [
           {
             "menuTitle": "交通事故",
-            "menuTitleId": "traffic-accident"
+            "menuId": "traffic-accident",
+            "card": [
+              {
+                "cardTitle": "交通事故",
+                "cardId": "traffic-accident"
+              },
+              {
+                "cardTitle": "交通事故事件",
+                "cardId": "incident"
+              },
+              {
+                "cardTitle": "道路交通法違反検挙総件数（告知・送致）",
+                "cardId": "road-traffic-law"
+              }
+            ]
           },
           {
             "menuTitle": "消防",
-            "menuTitleId": "fire-department"
+            "menuId": "fire-department"
           },
           {
             "menuTitle": "火災",
-            "menuTitleId": "fires"
+            "menuId": "fires"
           },
           {
             "menuTitle": "任意自動車保険",
-            "menuTitleId": "voluntary-car-insurance"
+            "menuId": "voluntary-car-insurance"
           },
           {
             "menuTitle": "犯罪",
-            "menuTitleId": "crime"
+            "menuId": "crime"
           },
           {
             "menuTitle": "環境",
-            "menuTitleId": "environment"
+            "menuId": "environment"
           },
           {
             "menuTitle": "公害",
-            "menuTitleId": "pollution"
+            "menuId": "pollution"
           },
           {
             "menuTitle": "災害",
-            "menuTitleId": "disaster"
+            "menuId": "disaster"
           }
         ],
         "city": [
           {
             "menuTitle": "交通事故",
-            "menuTitleId": "traffic-accident"
+            "menuId": "traffic-accident"
           }
         ]
       }
@@ -347,13 +897,13 @@
         "prefecture": [
           {
             "menuTitle": "医療",
-            "menuTitleId": "medical"
+            "menuId": "medical"
           }
         ],
         "city": [
           {
             "menuTitle": "医療",
-            "menuTitleId": "medical"
+            "menuId": "medical"
           }
         ]
       }
@@ -365,7 +915,7 @@
         "prefecture": [
           {
             "menuTitle": "外国人",
-            "menuTitleId": "foreigner"
+            "menuId": "foreigner"
           }
         ],
         "city": []

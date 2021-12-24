@@ -12,7 +12,7 @@ const TotalPopulation = () => {
     '~/components/index/population/cards/population/totalPopulationCity.vue'
   )
 }
-// RankChart
+// 総人口ランキング
 const PopulationCityRank = () => {
   return import('@/components/index/population/cards/populationCityRank.vue')
 }
