@@ -1,0 +1,375 @@
+{
+  "list": [
+    {
+      "fieldTitle": "国土・気象",
+      "fieldId": "landweather",
+      "menu": {
+        "prefecture": [
+          {
+            "menuTitle": "面積",
+            "menuTitleId": "area"
+          },
+          {
+            "menuTitle": "自然・公園",
+            "menuTitleId": "park"
+          },
+          {
+            "menuTitle": "気候",
+            "menuTitleId": "climate"
+          }
+        ],
+        "city": []
+      }
+    },
+    {
+      "fieldTitle": "人口・世帯",
+      "fieldId": "population",
+      "menu": {
+        "prefecture": [
+          {
+            "menuTitle": "人口",
+            "menuTitleId": "population"
+          },
+          {
+            "menuTitle": "流入・流出",
+            "menuTitleId": "inflowoutflow"
+          },
+          {
+            "menuTitle": "転入・転出",
+            "menuTitleId": "moveinmoveout"
+          },
+          {
+            "menuTitle": "世帯",
+            "menuTitleId": "household"
+          },
+          {
+            "menuTitle": "出生",
+            "menuTitleId": "birth"
+          },
+          {
+            "menuTitle": "死亡",
+            "menuTitleId": "death"
+          },
+          {
+            "menuTitle": "婚姻",
+            "menuTitleId": "marriage"
+          }
+        ],
+        "city": [
+          {
+            "menuTitle": "総人口",
+            "menuTitleId": "population"
+          }
+        ]
+      }
+    },
+    {
+      "fieldTitle": "労働・賃金",
+      "fieldId": "laborwage",
+      "menu": {
+        "prefecture": [
+          {
+            "menuTitle": "労働力人口",
+            "menuTitleId": "labor-force"
+          }
+        ],
+        "city": [
+          {
+            "menuTitle": "労働力人口",
+            "menuTitleId": "labor-force"
+          }
+        ]
+      }
+    },
+    {
+      "fieldTitle": "農林水産業",
+      "fieldId": "agriculture",
+      "menu": {
+        "prefecture": [
+          {
+            "menuTitle": "農業",
+            "menuTitleId": "agriculture"
+          },
+          {
+            "menuTitle": "漁業",
+            "menuTitleId": "fishing"
+          },
+          {
+            "menuTitle": "林業",
+            "menuTitleId": "forestry"
+          }
+        ],
+        "city": [
+          {
+            "menuTitle": "農業",
+            "menuTitleId": "agriculture"
+          }
+        ]
+      }
+    },
+    {
+      "fieldTitle": "鉱工業",
+      "fieldId": "miningindustry",
+      "menu": {
+        "prefecture": [
+          {
+            "menuTitle": "製造業",
+            "menuTitleId": "manufacturing-industry"
+          },
+          {
+            "menuTitle": "工業用水",
+            "menuTitleId": "industrial-water"
+          }
+        ],
+        "city": [
+          {
+            "menuTitle": "製造業",
+            "menuTitleId": "manufacturing-industry"
+          }
+        ]
+      }
+    },
+    {
+      "fieldTitle": "商業・サービス業",
+      "fieldId": "commercial",
+      "menu": {
+        "prefecture": [
+          {
+            "menuTitle": "商業",
+            "menuTitleId": "commercial"
+          }
+        ],
+        "city": [
+          {
+            "menuTitle": "商業",
+            "menuTitleId": "commercial"
+          }
+        ]
+      }
+    },
+    {
+      "fieldTitle": "企業・家計・経済",
+      "fieldId": "economy",
+      "menu": {
+        "prefecture": [
+          {
+            "menuTitle": "県内総生産",
+            "menuTitleId": "gross-domestic-product"
+          },
+          {
+            "menuTitle": "事業所等",
+            "menuTitleId": "establishments"
+          },
+          {
+            "menuTitle": "売上",
+            "menuTitleId": "sales"
+          },
+          {
+            "menuTitle": "物価",
+            "menuTitleId": "price"
+          },
+          {
+            "menuTitle": "家計",
+            "menuTitleId": "household-budget"
+          }
+        ],
+        "city": []
+      }
+    },
+    {
+      "fieldTitle": "住宅・土地・建設",
+      "fieldId": "construction",
+      "menu": {
+        "prefecture": [
+          {
+            "menuTitle": "電力",
+            "menuTitleId": "construction"
+          }
+        ],
+        "city": [
+          {
+            "menuTitle": "土地",
+            "menuTitleId": "land"
+          }
+        ]
+      }
+    },
+    {
+      "fieldTitle": "エネルギー・水",
+      "fieldId": "energy",
+      "menu": {
+        "prefecture": [
+          {
+            "menuTitle": "エネルギー",
+            "menuTitleId": "energy"
+          },
+          {
+            "menuTitle": "ごみ",
+            "menuTitleId": "garbage"
+          }
+        ],
+        "city": [
+          {
+            "menuTitle": "ごみ",
+            "menuTitleId": "garbage"
+          }
+        ]
+      }
+    },
+    {
+      "fieldTitle": "運輸・観光",
+      "fieldId": "tourism",
+      "menu": {
+        "prefecture": [
+          {
+            "menuTitle": "宿泊施設",
+            "menuTitleId": "hotel"
+          },
+          {
+            "menuTitle": "自動車",
+            "menuTitleId": "car"
+          }
+        ],
+        "city": [
+          {
+            "menuTitle": "自動車",
+            "menuTitleId": "car"
+          }
+        ]
+      }
+    },
+    {
+      "fieldTitle": "教育・文化・スポーツ",
+      "fieldId": "educationsports",
+      "menu": {
+        "prefecture": [
+          {
+            "menuTitle": "幼稚園",
+            "menuTitleId": "kindergarten"
+          },
+          {
+            "menuTitle": "小学校",
+            "menuTitleId": "primary-schools"
+          }
+        ],
+        "city": [
+          {
+            "menuTitle": "幼稚園",
+            "menuTitleId": "kindergarten"
+          },
+          {
+            "menuTitle": "小学校",
+            "menuTitleId": "primary-schools"
+          }
+        ]
+      }
+    },
+    {
+      "fieldTitle": "行財政",
+      "fieldId": "administrativefinancial",
+      "menu": {
+        "prefecture": [
+          {
+            "menuTitle": "職員",
+            "menuTitleId": "staff"
+          },
+          {
+            "menuTitle": "議会",
+            "menuTitleId": "parliament"
+          },
+          {
+            "menuTitle": "財政",
+            "menuTitleId": "finance"
+          }
+        ],
+        "city": [
+          {
+            "menuTitle": "職員",
+            "menuTitleId": "staff"
+          },
+          {
+            "menuTitle": "財政",
+            "menuTitleId": "finance"
+          }
+        ]
+      }
+    },
+    {
+      "fieldTitle": "司法・安全・環境",
+      "fieldId": "safetyenvironment",
+      "menu": {
+        "prefecture": [
+          {
+            "menuTitle": "交通事故",
+            "menuTitleId": "traffic-accident"
+          },
+          {
+            "menuTitle": "消防",
+            "menuTitleId": "fire-department"
+          },
+          {
+            "menuTitle": "火災",
+            "menuTitleId": "fires"
+          },
+          {
+            "menuTitle": "任意自動車保険",
+            "menuTitleId": "voluntary-car-insurance"
+          },
+          {
+            "menuTitle": "犯罪",
+            "menuTitleId": "crime"
+          },
+          {
+            "menuTitle": "環境",
+            "menuTitleId": "environment"
+          },
+          {
+            "menuTitle": "公害",
+            "menuTitleId": "pollution"
+          },
+          {
+            "menuTitle": "災害",
+            "menuTitleId": "disaster"
+          }
+        ],
+        "city": [
+          {
+            "menuTitle": "交通事故",
+            "menuTitleId": "traffic-accident"
+          }
+        ]
+      }
+    },
+    {
+      "fieldTitle": "社会保障・衛生",
+      "fieldId": "socialsecurity",
+      "menu": {
+        "prefecture": [
+          {
+            "menuTitle": "医療",
+            "menuTitleId": "medical"
+          }
+        ],
+        "city": [
+          {
+            "menuTitle": "医療",
+            "menuTitleId": "medical"
+          }
+        ]
+      }
+    },
+    {
+      "fieldTitle": "国際",
+      "fieldId": "international",
+      "menu": {
+        "prefecture": [
+          {
+            "menuTitle": "外国人",
+            "menuTitleId": "foreigner"
+          }
+        ],
+        "city": []
+      }
+    }
+  ]
+}

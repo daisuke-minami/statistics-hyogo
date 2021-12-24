@@ -6,15 +6,6 @@ import { NuxtConfig } from '@nuxt/types'
  */
 const environment = process.env.NODE_ENV || 'development'
 
-const fs = require('fs')
-const routes = JSON.parse(fs.readFileSync('static/routes/routes.json'))
-const setting = JSON.parse(fs.readFileSync('static/setting.json'))
-// const cityList = JSON.parse(fs.readFileSync('static/codes/citylist.json'))
-// const prefList = JSON.parse(fs.readFileSync('data/codes/preflist.json'))
-const { PREF_CODE, API_KEY, ESTAT_APPID, GOOGLE_ANALYTICS_ID, BASE_URL } =
-  process.env
-require('dotenv').config()
-
 const config: NuxtConfig = {
   target: 'static',
   /*
@@ -168,9 +159,9 @@ const config: NuxtConfig = {
     cacheTime: 1000 * 60 * 30,
     // gzip: true,
     generate: false,
-    routes() {
-      return routes
-    },
+    // routes() {
+    //   return routes
+    // },
   },
   highcharts: {},
   axios: {
@@ -256,9 +247,9 @@ const config: NuxtConfig = {
     interval: 100,
     crawler: false,
     concurrency: 1,
-    routes() {
-      return routes
-    },
+    // routes() {
+    //   return routes
+    // },
   },
   // /*
   // ** hot read configuration for docker
@@ -268,15 +259,7 @@ const config: NuxtConfig = {
       poll: true,
     },
   },
-  env: {
-    routes,
-    PREF_CODE,
-    API_KEY,
-    ESTAT_APPID,
-    GOOGLE_ANALYTICS_ID,
-    BASE_URL,
-    statFieldList: setting.statField,
-  },
+  env: {},
   router: {
     middleware: 'vuex',
   },

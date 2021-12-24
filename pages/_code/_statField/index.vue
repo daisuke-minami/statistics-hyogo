@@ -20,7 +20,8 @@ import {
   PageStateKey,
   PageStateType,
 } from '@/composition/pageState'
-import menuList from '~/data/contents/menulist.json'
+import contents from '~/data/contents/contents.json'
+// import menuList from '~/data/contents/menulist.json'
 // import { mdiMenuDown } from '@mdi/js'
 
 interface Menu {
@@ -77,14 +78,14 @@ export default defineComponent({
       return code.match('000') ? 'prefecture' : 'city'
     })
 
-    const menuItems = computed(() => {
-      return menuList[statField][govType.value].map((d) => {
+    const menuItems = contents.list
+      .find((f) => f.fieldId === statField)
+      ?.menu[govType.value].map((d) => {
         return {
           label: d.menuTitle,
           path: `/${code}/${statField}/${d.menuTitleId}`,
         }
       })
-    })
 
     // カードコンポーネントの設定
     const cardComponent = computed((): string => `lazy-cards-${titleId.value}`)

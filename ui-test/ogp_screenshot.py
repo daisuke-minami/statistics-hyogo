@@ -9,7 +9,7 @@ from selenium import webdriver
 root_dir = pathlib.Path(__file__).parent.parent
 
 #routesを取得
-path = os.path.join(root_dir, 'static/routes/routes.json')
+# path = os.path.join(root_dir, 'static/routes/routes.json')
 j = open(path, 'r')
 routes = json.load(j)
 # print(routes)
