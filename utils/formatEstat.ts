@@ -276,18 +276,6 @@ export function formatPyramidChart(
   // TimeList
   const times = _formatTimeList(value)
 
-  // const setPyramidData = (arr) => {
-  //   console.log(arr)
-  //   series.map((d) => {
-  //     return {
-  //       category: d.name,
-  //       man: parseInt(arr.find((f) => f[`@${d.id}`] === d.man).$),
-  //       woman: parseInt(arr.find((f) => f[`@${d.id}`] === d.woman).$),
-  //       unit: arr[0]['@unit'],
-  //     }
-  //   })
-  // }
-
   const chartData = times.map((d) => {
     const dataByTime = value.filter((f) => f['@time'] === d.yearStr)
     return {
@@ -295,7 +283,7 @@ export function formatPyramidChart(
       data: series.map((d) => {
         const man = dataByTime.find((f) => f[`@${d.id}`] === d.man)
         const woman = dataByTime.find((f) => f[`@${d.id}`] === d.woman)
-        // console.log(man)
+
         return {
           category: d.name,
           man: parseInt(man?.$) || 0,
@@ -305,57 +293,6 @@ export function formatPyramidChart(
       }),
     }
   })
-  // console.log(chartData)
-
-  // chartData
-  // const chartData: EstatSeries[] = series.map((d, i) => {
-  //   return {
-  //     name: d.name,
-  //     data: value
-  //       .filter((f: VALUE) => f[`@${d.id}`] === d.code)
-  //       .map((d: VALUE) => {
-  //         return {
-  //           x: parseInt(d['@time'].substr(0, 4)),
-  //           y: parseFloat(d.$),
-  //           unit: d['@unit'],
-  //         }
-  //       }),
-  //     color: style[i].color,
-  //     yAxis: d.yAxis,
-  //     type: d.type,
-  //   }
-  // })
-
-  // const tableHeader: EstatTableHeader[] = [
-  //   { text: '年', value: 'year', width: '80px' },
-  //   ...chartData.map((d: EstatSeries) => {
-  //     return {
-  //       text: d.name,
-  //       value: d.name,
-  //       align: 'center',
-  //       width: '100px',
-  //     }
-  //   }),
-  // ]
-
-  // const tableData: EstatTableData[] = times.map((d: EstatTimes) => {
-  //   return Object.assign(
-  //     { year: `${d.yearInt}年` },
-  //     ...chartData.map((item) => {
-  //       const value = item.data.find((f) => f.x === d.yearInt)
-  //       if (value) {
-  //         return {
-  //           [item.name]: value.y.toLocaleString() + item.data[0].unit,
-  //         }
-  //       } else {
-  //         return ''
-  //       }
-  //     })
-  //   )
-  // })
-
-  // const TABLE_INF = estatResponse.GET_STATS_DATA.STATISTICAL_DATA.TABLE_INF
-  // const source = _formatSource(TABLE_INF)
 
   return {
     times,

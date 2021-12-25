@@ -43,7 +43,7 @@ with open(c) as j:
         # 都道府県
         for menu in menuList[0]['prefecture']:
             cardList = [d.get('cardId') for d in menu['card']]
-            routes.append('/prefecture/' + prefCode + '/' +
+            routes.append('/' + prefCode + '/' +
                         field + '/' + menu['menuId'] + '/')
             for cardId in cardList:
                 routes.append('/prefecture/' + prefCode + '/' +
@@ -55,7 +55,7 @@ with open(c) as j:
             cardList = [d.get('cardId') for d in menu['card']]
 
             for cityCode in cityCodes:
-                routes.append('/city/' + cityCode + '/' +
+                routes.append('/' + cityCode + '/' +
                         field + '/' + menu['menuId'] + '/')
                 for cardId in cardList:
                     routes.append('/city/' + cityCode + '/' +

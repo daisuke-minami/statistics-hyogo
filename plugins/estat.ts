@@ -22,10 +22,10 @@ export default function ({ $axios }, inject) {
   })
 
   api.setBaseURL(`${process.env.BASE_URL}/json/`)
-  api.onRequest((config) => {
-    console.log('Making request to ' + config.url)
-    console.log(config.baseURL)
-  })
+  // api.onRequest((config) => {
+  //   console.log('Making request to ' + config.url)
+  //   console.log(config.baseURL)
+  // })
 
   inject('estat', api)
 }
