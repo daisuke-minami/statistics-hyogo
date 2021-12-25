@@ -46,7 +46,7 @@ with open(c) as j:
             routes.append('/' + prefCode + '/' +
                         field + '/' + menu['menuId'] + '/')
             for cardId in cardList:
-                routes.append('/prefecture/' + prefCode + '/' +
+                routes.append('/' + prefCode + '/' +
                             field + '/' + menu['menuId'] + '/' + cardId + '/')
 
 
@@ -58,7 +58,7 @@ with open(c) as j:
                 routes.append('/' + cityCode + '/' +
                         field + '/' + menu['menuId'] + '/')
                 for cardId in cardList:
-                    routes.append('/city/' + cityCode + '/' +
+                    routes.append('/' + cityCode + '/' +
                             field + '/' + menu['menuId'] + '/' + cardId + '/')
 
 
