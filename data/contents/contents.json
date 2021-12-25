@@ -955,21 +955,57 @@
           },
           {
             "menuTitle": "環境",
-            "menuId": "environment"
+            "menuId": "environment",
+            "card": [
+              {
+                "cardTitle": "温室効果ガス算定排出量",
+                "cardId": "calculated-greenhouse-gas-emissions"
+              }
+            ]
           },
           {
             "menuTitle": "公害",
-            "menuId": "pollution"
+            "menuId": "pollution",
+            "card": [
+              {
+                "cardTitle": "公害苦情件数（典型7公害）",
+                "cardId": "pollution-complaints"
+              },
+              {
+                "cardTitle": "水質汚濁防止法上の特定事業所数",
+                "cardId": "water-pollution"
+              }
+            ]
           },
           {
             "menuTitle": "災害",
-            "menuId": "disaster"
+            "menuId": "disaster",
+            "card": [
+              {
+                "cardTitle": "災害被害額",
+                "cardId": "disaster-damage-amount"
+              },
+              {
+                "cardTitle": "浸水被害",
+                "cardId": "flood-damage"
+              },
+              {
+                "cardTitle": "自然災害による罹災",
+                "cardId": "natural-disasters"
+              }
+            ]
           }
         ],
         "city": [
           {
             "menuTitle": "交通事故",
-            "menuId": "traffic-accident"
+            "menuId": "traffic-accident",
+            "card": [
+              {
+                "cardTitle": "交通事故",
+                "cardId": "traffic-accident"
+              }
+            ]
           }
         ]
       }
@@ -981,13 +1017,45 @@
         "prefecture": [
           {
             "menuTitle": "医療",
-            "menuId": "medical"
+            "menuId": "medical",
+            "card": [
+              {
+                "cardTitle": "国民医療費",
+                "cardId": "national-medical-expenses"
+              },
+              {
+                "cardTitle": "老人福祉施設数",
+                "cardId": "welfare-facilities-elderly"
+              },
+              {
+                "cardTitle": "国民健康保険被保険者数",
+                "cardId": "national-health-insurance"
+              },
+              {
+                "cardTitle": "国民健康保険給付金額",
+                "cardId": "national-health-insurance-benefit-amount"
+              }
+            ]
           }
         ],
         "city": [
           {
             "menuTitle": "医療",
-            "menuId": "medical"
+            "menuId": "medical",
+            "card": [
+              {
+                "cardTitle": "老人福祉施設数",
+                "cardId": "welfare-facilities-elderly"
+              },
+              {
+                "cardTitle": "国民健康保険被保険者数",
+                "cardId": "national-health-insurance"
+              },
+              {
+                "cardTitle": "国民健康保険給付金額",
+                "cardId": "national-health-insurance-benefit-amount"
+              }
+            ]
           }
         ]
       }
@@ -999,7 +1067,13 @@
         "prefecture": [
           {
             "menuTitle": "外国人",
-            "menuId": "foreigner"
+            "menuId": "foreigner",
+            "card": [
+              {
+                "cardTitle": "外国人人口（男女別）",
+                "cardId": "foreign-population"
+              }
+            ]
           }
         ],
         "city": []
