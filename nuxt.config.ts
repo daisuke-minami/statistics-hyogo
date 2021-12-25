@@ -6,6 +6,9 @@ import { NuxtConfig } from '@nuxt/types'
  */
 const environment = process.env.NODE_ENV || 'development'
 
+const fs = require('fs')
+const routes = JSON.parse(fs.readFileSync('data/routes/routes.json'))
+
 const config: NuxtConfig = {
   target: 'static',
   /*
@@ -159,9 +162,9 @@ const config: NuxtConfig = {
     cacheTime: 1000 * 60 * 30,
     // gzip: true,
     generate: false,
-    // routes() {
-    //   return routes
-    // },
+    routes() {
+      return routes
+    },
   },
   highcharts: {},
   axios: {
@@ -247,9 +250,9 @@ const config: NuxtConfig = {
     interval: 100,
     crawler: false,
     concurrency: 1,
-    // routes() {
-    //   return routes
-    // },
+    routes() {
+      return routes
+    },
   },
   // /*
   // ** hot read configuration for docker

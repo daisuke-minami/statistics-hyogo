@@ -121,10 +121,10 @@ export default defineComponent({
       return `${name}の${props.cardTitle.title}`
     })
     const titleId = computed((): string => {
-      return `${props.cardTitle.titleId}-${govType}`
+      return `${props.cardTitle.titleId}`
     })
     const routingPath = computed((): string => {
-      return `/${pageState.routingPath.value}/${titleId.value}/`
+      return `/${code}/${pageState.routingPath.value}/${titleId.value}/`
     })
 
     // eStat-APIからデータを取得

@@ -65,7 +65,7 @@ export const usePageState = () => {
 
     pageState.code = code
     pageState.statField = statField
-    pageState.routingPath = `/${code}/${statField}/${menuTitleId}`
+    pageState.routingPath = `${code}/${statField}/${menuTitleId}`
     pageState.govType = code.match('000') ? 'prefecture' : 'city'
     pageState.cityList = _cityList(code)
     pageState.selectedPref = prefList.result.find(

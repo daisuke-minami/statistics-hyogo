@@ -134,7 +134,7 @@ export default defineComponent({
 
     // inject
     const pageState: PageStateType = inject(PageStateKey)
-    const code = pageState.code.value
+    // const code = pageState.code.value
     const govType = pageState.govType.value
     const selectedPref = pageState.selectedPref.value
     const selectedCity = pageState.selectedCity.value
@@ -147,10 +147,10 @@ export default defineComponent({
       return `${name}の${props.cardTitle.title}Rank`
     })
     const titleId = computed((): string => {
-      return `${props.cardTitle.titleId}-${govType}-rank`
+      return `${props.cardTitle.titleId}`
     })
     const routingPath = computed((): string => {
-      return `/${titleId.value}-rank/${code}`
+      return `/${pageState.routingPath.value}/${titleId.value}/`
     })
 
     // eStat-APIからデータを取得
