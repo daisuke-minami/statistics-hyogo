@@ -44,10 +44,10 @@ with open(c) as j:
         for menu in menuList[0]['prefecture']:
             cardList = [d.get('cardId') for d in menu['card']]
             routes.append('/' + prefCode + '/' +
-                        field + '/' + menu['menuId'] + '/')
+                        field + '/' + menu['menuId'] )
             for cardId in cardList:
                 routes.append('/' + prefCode + '/' +
-                            field + '/' + menu['menuId'] + '/' + cardId + '/')
+                            field + '/' + menu['menuId'] + '/' + cardId )
 
 
         # 市区町村
@@ -56,10 +56,10 @@ with open(c) as j:
 
             for cityCode in cityCodes:
                 routes.append('/' + cityCode + '/' +
-                        field + '/' + menu['menuId'] + '/')
+                        field + '/' + menu['menuId'] )
                 for cardId in cardList:
                     routes.append('/' + cityCode + '/' +
-                            field + '/' + menu['menuId'] + '/' + cardId + '/')
+                            field + '/' + menu['menuId'] + '/' + cardId )
 
 
 output = os.path.join(root_dir, 'routes/routes.json')
