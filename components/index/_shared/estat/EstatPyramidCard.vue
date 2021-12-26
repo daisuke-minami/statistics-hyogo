@@ -112,7 +112,9 @@ export default defineComponent({
     const govType = pageState.govType.value
     const selectedPref = pageState.selectedPref.value
     const selectedCity = pageState.selectedCity.value
-    // const routingPath = pageState.routingPath.value
+
+    /* eslint-disable no-console */
+    console.log({ code, govType, selectedPref, selectedCity })
 
     // card情報の設定
     const title = computed((): string => {
@@ -160,6 +162,9 @@ export default defineComponent({
       // console.log(c)
       return c.filter((f) => f.year === selectedTime.value.yearInt)
     })
+
+    /* eslint-disable no-console */
+    console.log({ estatResponse, series, formatData, displayData })
 
     return {
       title,

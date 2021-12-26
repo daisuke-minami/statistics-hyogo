@@ -166,7 +166,7 @@ export default defineComponent({
 
     // eStat-APIからデータを取得
     const estatResponse = ref<EstatResponse>({})
-    console.log(estatResponse.value)
+    // console.log(estatResponse.value)
     const { fetch } = useFetch(async () => {
       const params = Object.assign({}, props.estatParams)
       const series = selectedSeries.value

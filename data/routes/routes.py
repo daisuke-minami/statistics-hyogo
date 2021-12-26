@@ -22,7 +22,7 @@ c = os.path.join(root_dir, 'codes/citylist.json')
 with open(c) as j:
     cityList = json.load(j)
     cityCodes = [d.get('cityCode')
-        for d in cityList['result'] if d['prefCode'] == int(PREF_CODE)]
+                 for d in cityList['result'] if d['prefCode'] == int(PREF_CODE)]
     # print(cityCodes)
 
 # print(cityCodes)
@@ -44,11 +44,10 @@ with open(c) as j:
         for menu in menuList[0]['prefecture']:
             cardList = [d.get('cardId') for d in menu['card']]
             routes.append('/' + prefCode + '/' +
-                        field + '/' + menu['menuId'] )
+                        field + '/' + menu['menuId'] + '/')
             for cardId in cardList:
                 routes.append('/' + prefCode + '/' +
-                            field + '/' + menu['menuId'] + '/' + cardId )
-
+                            field + '/' + menu['menuId'] + '/' + cardId + '/')
 
         # 市区町村
         for menu in menuList[0]['city']:
@@ -56,10 +55,10 @@ with open(c) as j:
 
             for cityCode in cityCodes:
                 routes.append('/' + cityCode + '/' +
-                        field + '/' + menu['menuId'] )
+                            field + '/' + menu['menuId'] + '/')
                 for cardId in cardList:
                     routes.append('/' + cityCode + '/' +
-                            field + '/' + menu['menuId'] + '/' + cardId )
+                                field + '/' + menu['menuId'] + '/' + cardId + '/')
 
 
 output = os.path.join(root_dir, 'routes/routes.json')

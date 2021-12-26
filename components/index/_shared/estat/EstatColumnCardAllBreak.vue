@@ -114,6 +114,9 @@ export default defineComponent({
     const selectedCity = pageState.selectedCity.value
     // const routingPath = pageState.routingPath.value
 
+    /* eslint-disable no-console */
+    console.log({ code, govType, selectedPref, selectedCity })
+
     // card情報の設定
     const title = computed((): string => {
       const name: string =
@@ -157,6 +160,9 @@ export default defineComponent({
         return c.slice(1)
       }
     })
+
+    /* eslint-disable no-console */
+    console.log({ estatResponse, series, formatData, displayData })
 
     const displayInfo = computed(() => {
       const d: EstatSeries = formatData.value.chartData[0]
