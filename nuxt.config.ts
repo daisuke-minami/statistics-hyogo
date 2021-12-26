@@ -86,10 +86,7 @@ const config: NuxtConfig = {
    */
   plugins: [
     { src: '@/plugins/composition-api', ssr: true },
-    // {
-    //   src: '@/plugins/axios',
-    //   ssr: true,
-    // },
+
     {
       src: '@/plugins/topojson-client',
       ssr: true,
@@ -106,12 +103,7 @@ const config: NuxtConfig = {
       src: '@/plugins/resas',
       ssr: true,
     },
-    // { src: '@/plugins/localStorage', ssr: false },
     { src: '@/plugins/leaflet.js', ssr: false },
-    {
-      src: '@/plugins/vue-highlightjs',
-      ssr: true,
-    },
   ],
   /*
    ** Nuxt.js dev-modules
