@@ -103,7 +103,7 @@ const config: NuxtConfig = {
       src: '@/plugins/resas',
       ssr: true,
     },
-    { src: '@/plugins/leaflet.js', ssr: false },
+    { src: '@/plugins/leaflet', ssr: false },
   ],
   /*
    ** Nuxt.js dev-modules
