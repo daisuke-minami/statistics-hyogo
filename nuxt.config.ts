@@ -86,10 +86,10 @@ const config: NuxtConfig = {
    */
   plugins: [
     { src: '@/plugins/composition-api', ssr: true },
-    {
-      src: '@/plugins/axios',
-      ssr: true,
-    },
+    // {
+    //   src: '@/plugins/axios',
+    //   ssr: true,
+    // },
     {
       src: '@/plugins/topojson-client',
       ssr: true,
