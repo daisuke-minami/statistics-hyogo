@@ -113,9 +113,6 @@ export default defineComponent({
     const selectedPref = pageState.selectedPref.value
     const selectedCity = pageState.selectedCity.value
 
-    /* eslint-disable no-console */
-    console.log({ code, govType, selectedPref, selectedCity })
-
     // card情報の設定
     const title = computed((): string => {
       const name: string =
@@ -137,8 +134,12 @@ export default defineComponent({
       const { data: res } = await context.root.$estat.get('getStatsData', {
         params,
       })
+      /* eslint-disable no-console */
+      console.log({ params, res })
       estatResponse.value = res
     })
+    /* eslint-disable no-console */
+    console.log({ estatResponse })
 
     // データの整形
     const series: EstatSeries[] = props.estatSeries
@@ -159,9 +160,6 @@ export default defineComponent({
         return c.slice(1)
       }
     })
-
-    /* eslint-disable no-console */
-    console.log({ estatResponse, series, formatData, displayData })
 
     const displayInfo = computed(() => {
       const d: EstatSeries = formatData.value.chartData[0]

@@ -132,8 +132,12 @@ export default defineComponent({
       const { data: res } = await context.root.$estat.get('getStatsData', {
         params,
       })
+      /* eslint-disable no-console */
+      console.log({ params, res })
       estatResponse.value = res
     })
+    /* eslint-disable no-console */
+    console.log({ estatResponse })
 
     // データの整形
     const series: EstatSeries[] = props.estatSeries

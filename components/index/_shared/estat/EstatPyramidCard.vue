@@ -159,7 +159,6 @@ export default defineComponent({
     // 年次で表示データを切替
     const displayData = computed(() => {
       const c = formatData.value.chartData
-      // console.log(c)
       return c.filter((f) => f.year === selectedTime.value.yearInt)
     })
 

@@ -19,7 +19,6 @@ import {
   PageStateKey,
   PageStateType,
 } from '@/composition/pageState'
-// import menuList from '~/data/contents/menulist.json'
 import contents from '~/data/contents/contents.json'
 
 export default defineComponent({
