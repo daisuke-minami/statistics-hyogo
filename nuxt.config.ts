@@ -127,8 +127,6 @@ const config: NuxtConfig = {
    ** Nuxt.js modules
    */
   modules: [
-    // '@nuxtjs/markdownit',
-    'nuxt-highlightjs',
     '@nuxtjs/pwa',
     ['@nuxtjs/dotenv', { filename: `.env.${environment}` }],
     'nuxt-svg-loader',
@@ -141,15 +139,12 @@ const config: NuxtConfig = {
     // ['@nuxtjs/google-adsense', { id: 'ca-pub-4511811306180988' }],
     ['@nuxtjs/google-gtag'],
   ],
-  markdownit: {
-    injected: true,
-  },
   sitemap: {
     path: '/sitemap.xml',
     hostname: 'https://statistics-hyogo.com',
     cacheTime: 1000 * 60 * 30,
     // gzip: true,
-    generate: false,
+    // generate: false,
     routes() {
       return routes
     },
@@ -234,14 +229,14 @@ const config: NuxtConfig = {
     start_url: '/',
     splash_pages: null,
   },
-  // generate: {
-  //   interval: 100,
-  //   crawler: false,
-  //   concurrency: 10,
-  //   routes() {
-  //     return routes
-  //   },
-  // },
+  generate: {
+    interval: 100,
+    crawler: false,
+    concurrency: 1,
+    routes() {
+      return routes
+    },
+  },
   // /*
   // ** hot read configuration for docker
   // */

@@ -49,6 +49,7 @@
     "RESULTINF",
     "ryokan",
     "safetyenvironment",
+    "scrollto",
     "socialsecurity",
     "STATISTICSNAMESPEC",
     "STATNAME",
@@ -57,6 +58,8 @@
     "timechart",
     "TITLESPEC",
     "topojson",
-    "vuetify"
+    "vuetify",
+    "vuex",
+    "webfontloader"
   ]
 }
