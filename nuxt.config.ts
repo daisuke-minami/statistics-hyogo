@@ -6,8 +6,8 @@ import { NuxtConfig } from '@nuxt/types'
  */
 const environment = process.env.NODE_ENV || 'development'
 
-const fs = require('fs')
-const routes = JSON.parse(fs.readFileSync('data/routes/routes.json'))
+// const fs = require('fs')
+// const routes = JSON.parse(fs.readFileSync('data/routes/routes.json'))
 
 const config: NuxtConfig = {
   target: 'static',
@@ -139,16 +139,16 @@ const config: NuxtConfig = {
     // ['@nuxtjs/google-adsense', { id: 'ca-pub-4511811306180988' }],
     ['@nuxtjs/google-gtag'],
   ],
-  sitemap: {
-    path: '/sitemap.xml',
-    hostname: 'https://statistics-hyogo.com',
-    cacheTime: 1000 * 60 * 30,
-    // gzip: true,
-    // generate: false,
-    routes() {
-      return routes
-    },
-  },
+  // sitemap: {
+  //   path: '/sitemap.xml',
+  //   hostname: 'https://statistics-hyogo.com',
+  //   cacheTime: 1000 * 60 * 30,
+  //   // gzip: true,
+  //   // generate: false,
+  //   routes() {
+  //     return routes
+  //   },
+  // },
   highcharts: {},
   axios: {
     retry: { retries: 3 },
@@ -229,14 +229,14 @@ const config: NuxtConfig = {
     start_url: '/',
     splash_pages: null,
   },
-  generate: {
-    interval: 100,
-    crawler: false,
-    concurrency: 1,
-    routes() {
-      return routes
-    },
-  },
+  // generate: {
+  //   interval: 100,
+  //   crawler: false,
+  //   concurrency: 1,
+  //   routes() {
+  //     return routes
+  //   },
+  // },
   // /*
   // ** hot read configuration for docker
   // */
