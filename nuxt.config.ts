@@ -91,10 +91,6 @@ const config: NuxtConfig = {
       ssr: true,
     },
     {
-      src: '@/plugins/common',
-      ssr: true,
-    },
-    {
       src: '@/plugins/topojson-client',
       ssr: true,
     },
