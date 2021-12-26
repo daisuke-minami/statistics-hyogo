@@ -112,7 +112,6 @@ export default defineComponent({
     const govType = pageState.govType.value
     const selectedPref = pageState.selectedPref.value
     const selectedCity = pageState.selectedCity.value
-    // const routingPath = pageState.routingPath.value
 
     /* eslint-disable no-console */
     console.log({ code, govType, selectedPref, selectedCity })

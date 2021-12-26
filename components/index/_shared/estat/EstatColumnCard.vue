@@ -20,7 +20,7 @@
             />
 
             <template v-slot:description>
-              <p>最終更新日：{{ lastUpdate }}</p>
+              <p>最終更新日:{{ lastUpdate }}</p>
               <slot name="description" />
             </template>
 
@@ -67,8 +67,10 @@ import {
   EstatTimes,
   EstatResponse,
   EstatSource,
-  formatTimeChart,
   CardTitle,
+} from '@/types/estat'
+import {
+  formatTimeChart,
   formatAdditionalDescription,
 } from '@/utils/formatEstat'
 import { PageStateType, PageStateKey } from '@/composition/pageState'
@@ -106,10 +108,6 @@ export default defineComponent({
     const govType = pageState.govType.value
     const selectedPref = pageState.selectedPref.value
     const selectedCity = pageState.selectedCity.value
-    // const routingPath = pageState.routingPath.value
-
-    /* eslint-disable no-console */
-    console.log({ code, govType, selectedPref, selectedCity })
 
     // card情報の設定
     const title = computed((): string => {
@@ -132,8 +130,12 @@ export default defineComponent({
       const { data: res } = await context.root.$estat.get('getStatsData', {
         params,
       })
+      /* eslint-disable no-console */
+      console.log({ params, res })
       estatResponse.value = res
     })
+    /* eslint-disable no-console */
+    console.log({ estatResponse })
 
     // データの整形
     const series: EstatSeries[] = props.estatSeries
@@ -147,9 +149,6 @@ export default defineComponent({
     const displayData = computed(() => {
       return formatData.value.chartData
     })
-
-    /* eslint-disable no-console */
-    console.log({ estatResponse, series, formatData, displayData })
 
     const displayInfo = computed(() => {
       const d: EstatSeries = formatData.value.chartData[0]
@@ -193,7 +192,6 @@ export default defineComponent({
       titleId,
       routingPath,
       lastUpdate,
-      // allbreak,
       displayData,
       additionalDescription,
       source,

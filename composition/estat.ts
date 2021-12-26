@@ -1,35 +1,5 @@
 import { reactive, toRefs, InjectionKey } from '@nuxtjs/composition-api'
 
-export type EstatParams = {
-  statsDataId: string
-  cdArea?: string | string[]
-  cdCat01?: string | string[]
-  cdCat02?: string | string[]
-  cdTab?: string | string[]
-  cdTime?: string | string[]
-}
-
-export type Series = {
-  id?: string
-  code?: string
-  name: string
-  type?: string
-  yAxis?: number
-}
-
-export type Times = {
-  yearInt?: number
-  yearStr?: string
-  yearName?: string
-}
-
-export type StateType = {
-  estatParams: EstatParams
-  series: Series[]
-  latestYear: Times
-  annotation: never[]
-}
-
 const _formatTime = (yearInt: number) => {
   return {
     yearInt,
