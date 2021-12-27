@@ -28,6 +28,7 @@ export default defineComponent({
     const params = route.value.params
     const { code, statField, menuTitleId } = params
 
+    // console.log({ code, statField, menuTitleId })
     // 都道府県or市区町村
     const govType = computed((): string => {
       return code.match('000') ? 'prefecture' : 'city'

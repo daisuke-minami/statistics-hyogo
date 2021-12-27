@@ -123,6 +123,13 @@ const config: NuxtConfig = {
     '@nuxtjs/gtm',
     'nuxt-purgecss',
   ],
+  typescript: {
+    typeCheck: {
+      typescript: {
+        memoryLimit: 8192,
+      },
+    },
+  },
   /*
    ** Nuxt.js modules
    */
