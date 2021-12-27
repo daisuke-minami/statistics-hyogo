@@ -1,11 +1,9 @@
-export type City =
-  | {
-      prefCode: number
-      cityName: string
-      cityCode: string
-      bigCityFlag: string
-    }
-  | undefined
+export type City = {
+  prefCode: number
+  cityName: string
+  cityCode: string
+  bigCityFlag: string
+}
 
 export type Pref = {
   prefCode: number
