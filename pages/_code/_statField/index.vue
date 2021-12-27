@@ -83,7 +83,7 @@ export default defineComponent({
       ?.menu[govType.value].map((d) => {
         return {
           label: d.menuTitle,
-          path: `/${code}/${statField}/${d.menuId}`,
+          path: `/${code}/${statField}/${d.menuId}/`,
         }
       })
 
