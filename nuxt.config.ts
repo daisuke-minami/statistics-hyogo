@@ -5,7 +5,8 @@ import { NuxtConfig } from '@nuxt/types'
  **NuxtConfigのenv: {}に定義すること
  */
 const environment = process.env.NODE_ENV || 'development'
-
+const { BASE_URL } = process.env
+require('dotenv').config()
 // const fs = require('fs')
 // const routes = JSON.parse(fs.readFileSync('data/routes/routes.json'))
 
@@ -252,7 +253,7 @@ const config: NuxtConfig = {
       poll: true,
     },
   },
-  env: {},
+  env: { BASE_URL },
   router: {
     middleware: 'vuex',
   },
