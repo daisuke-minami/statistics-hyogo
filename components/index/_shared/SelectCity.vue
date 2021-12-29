@@ -48,15 +48,8 @@ export default defineComponent({
       (d) => d.bigCityFlag !== '1'
     )
     const selectedPref = pageState.selectedPref.value
-    // const selectedCity = pageState.selectedCity.value
-    // console.log(selectedCity)
 
     const tab = ref<string>('28201')
-
-    // onMounted(() => {
-    //   tab.value = '28201'
-    // })
-    // console.log(tab.value)
 
     // タブ項目を生成
     const items = computed((): TabItem[] => {

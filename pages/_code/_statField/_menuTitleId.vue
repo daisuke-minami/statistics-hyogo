@@ -1,7 +1,7 @@
 <template>
   <div>
     <select-city :stat-field="statField" />
-    <select-menu :menu-items="menuItems" />
+    <select-menu />
     <component :is="cardComponent" />
   </div>
 </template>
@@ -14,12 +14,7 @@ import {
   provide,
   inject,
 } from '@nuxtjs/composition-api'
-import {
-  usePageState,
-  PageStateKey,
-  PageStateType,
-} from '@/composition/pageState'
-import contents from '~/data/contents/contents.json'
+import { usePageState, PageStateKey } from '@/composition/pageState'
 
 export default defineComponent({
   setup() {
@@ -28,25 +23,11 @@ export default defineComponent({
     const params = route.value.params
     const { code, statField, menuTitleId } = params
 
-    // console.log({ code, statField, menuTitleId })
-    // 都道府県or市区町村
-    const govType = computed((): string => {
-      return code.match('000') ? 'prefecture' : 'city'
-    })
-
     // provide
     provide(PageStateKey, usePageState())
-    const pageState: PageStateType = inject(PageStateKey)
+    const pageState = inject(PageStateKey)
     pageState.setState(code, statField, menuTitleId)
-
-    const menuItems = contents.list
-      .find((f) => f.fieldId === statField)
-      ?.menu[govType.value].map((d) => {
-        return {
-          label: d.menuTitle,
-          path: `/${code}/${statField}/${d.menuId}/`,
-        }
-      })
+    const { govType } = pageState
 
     // カードコンポーネントの設定
     const cardComponent = computed((): string => {
@@ -59,7 +40,6 @@ export default defineComponent({
 
     return {
       statField,
-      menuItems,
       cardComponent,
     }
   },

@@ -124,7 +124,7 @@ export default defineComponent({
 
     // eStat-APIからデータを取得
     const estatResponse = ref<EstatResponse>({})
-    useFetch(async () => {
+    const { fetch } = useFetch(async () => {
       const params = Object.assign({}, props.estatParams)
       params.cdArea = code
       const { data: res } = await context.root.$estat.get('getStatsData', {
@@ -137,6 +137,7 @@ export default defineComponent({
     /* eslint-disable no-console */
     console.log({ estatResponse })
 
+    fetch()
     // データの整形
     const series: EstatSeries[] = props.estatSeries
     const formatData = computed(() => {

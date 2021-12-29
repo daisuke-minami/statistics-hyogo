@@ -1,8 +1,7 @@
 <template>
   <div>
     <select-city :stat-field="statField" />
-    <select-menu :menu-items="menuItems" />
-    <component :is="cardComponent" :contents="contents" />
+    <select-menu />
   </div>
 </template>
 
@@ -10,43 +9,11 @@
 import {
   defineComponent,
   computed,
-  // useFetch,
   useRoute,
   provide,
   inject,
 } from '@nuxtjs/composition-api'
-import {
-  usePageState,
-  PageStateKey,
-  PageStateType,
-} from '@/composition/pageState'
-import contents from '~/data/contents/contents.json'
-// import menuList from '~/data/contents/menulist.json'
-// import { mdiMenuDown } from '@mdi/js'
-
-interface Menu {
-  landweather: StatField
-  population: StatField
-  agriculture: StatField
-  miningindustry: StatField
-  commercial: StatField
-  economy: StatField
-  construction: StatField
-  tourism: StatField
-  educationsports: StatField
-  administrativefinancial: StatField
-  international: StatField
-}
-
-interface StatField {
-  prefecture?: MenuItems[]
-  city?: MenuItems[]
-}
-
-interface MenuItems {
-  menuTitle: string
-  menuTitleId: string
-}
+import { usePageState, PageStateKey } from '@/composition/pageState'
 
 export default defineComponent({
   setup() {
@@ -58,42 +25,13 @@ export default defineComponent({
       return 'total-population'
     })
 
-    // useFetch(async () => {
-    //   const res = await $axios.$get('/data/contents/menulist.json')
-    //   console.log(res)
-    //   // const menuList = () => {
-    //   //   return import('~/data/contents/menulist.json')
-    //   // }
-    // })
-
-    // // console.log(menuList())
-
     // provide
     provide(PageStateKey, usePageState())
-    const pageState: PageStateType = inject(PageStateKey)
+    const pageState = inject(PageStateKey)
     pageState.setState(code, statField, titleId)
-
-    // // 都道府県or市区町村
-    const govType = computed(() => {
-      return code.match('000') ? 'prefecture' : 'city'
-    })
-
-    const menuItems = contents.list
-      .find((f) => f.fieldId === statField)
-      ?.menu[govType.value].map((d) => {
-        return {
-          label: d.menuTitle,
-          path: `/${code}/${statField}/${d.menuId}/`,
-        }
-      })
-
-    // カードコンポーネントの設定
-    const cardComponent = computed((): string => `lazy-cards-${titleId.value}`)
 
     return {
       statField,
-      menuItems,
-      cardComponent,
     }
   },
 })
