@@ -8,8 +8,8 @@ const environment = process.env.NODE_ENV || 'development'
 const { PREF_CODE, API_KEY, ESTAT_APPID, GOOGLE_ANALYTICS_ID, BASE_URL } =
   process.env
 require('dotenv').config()
-// const fs = require('fs')
-// const routes = JSON.parse(fs.readFileSync('data/routes/routes.json'))
+const fs = require('fs')
+const routes = JSON.parse(fs.readFileSync('data/routes/routes.json'))
 
 const config: NuxtConfig = {
   target: 'static',
@@ -240,11 +240,11 @@ const config: NuxtConfig = {
   },
   generate: {
     interval: 100,
-    // crawler: false,
+    crawler: false,
     concurrency: 1,
-    // routes() {
-    //   return routes
-    // },
+    routes() {
+      return routes
+    },
   },
   // /*
   // ** hot read configuration for docker
