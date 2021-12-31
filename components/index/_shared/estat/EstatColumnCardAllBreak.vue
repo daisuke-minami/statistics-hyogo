@@ -68,15 +68,16 @@ import {
   inject,
 } from '@nuxtjs/composition-api'
 import {
+  formatTimeChart,
+  formatAdditionalDescription,
+} from '@/utils/formatEstat'
+import {
+  CardTitle,
   EstatParams,
   EstatSeries,
   EstatTimes,
   EstatResponse,
-  EstatSource,
-  formatTimeChart,
-  CardTitle,
-  formatAdditionalDescription,
-} from '@/utils/formatEstat'
+} from '@/types/estat'
 import { PageStateType, PageStateKey } from '@/composition/pageState'
 
 export default defineComponent({

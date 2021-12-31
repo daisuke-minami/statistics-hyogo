@@ -145,9 +145,6 @@ export default defineComponent({
       return formatData.value.chartData
     })
 
-    /* eslint-disable no-console */
-    console.log({ estatResponse, series, formatData, displayData })
-
     // テーブルの設定
     const tableHeader = computed(() => {
       return formatData.value.tableHeader

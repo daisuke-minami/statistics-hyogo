@@ -37,7 +37,7 @@
               :is="chartComponent"
               v-show="canvas"
               :display-data="displayData"
-              :topo-json="topoJson"
+              :geo-json="geoJson"
             />
 
             <template v-slot:description>
@@ -80,21 +80,17 @@ import {
   computed,
   watch,
   useFetch,
-  useStore,
+  // useStore,
   PropType,
   inject,
 } from '@nuxtjs/composition-api'
 import {
-  EstatParams,
-  EstatSeries,
-  EstatTimes,
-  CardTitle,
-  EstatResponse,
-  EstatSource,
   formatPrefectureRankChart,
   formatAdditionalDescription,
 } from '@/utils/formatEstat'
-import { PageStateType, PageStateKey } from '@/composition/pageState'
+import { PageStateKey } from '@/composition/pageState'
+import axios from 'axios'
+import * as topojson from 'topojson-client'
 
 // MapChart
 const MapChart = () => {
@@ -133,7 +129,7 @@ export default defineComponent({
     const canvas = ref<boolean>(true)
 
     // inject
-    const pageState: PageStateType = inject(PageStateKey)
+    const pageState = inject(PageStateKey)
     // const code = pageState.code.value
     const govType = pageState.govType.value
     const selectedPref = pageState.selectedPref.value
@@ -155,6 +151,7 @@ export default defineComponent({
 
     // eStat-APIからデータを取得
     const estatResponse = ref<EstatResponse>({})
+    const geoJson = ref<object>({})
     const { fetch } = useFetch(async () => {
       const params = Object.assign({}, props.estatParams)
       const series = selectedSeries.value
@@ -168,6 +165,11 @@ export default defineComponent({
         params,
       })
       estatResponse.value = res
+      const { data: topo } = await axios.get(
+        'https://geoshape.ex.nii.ac.jp/city/topojson/20200101/jp_pref.c.topojson'
+      )
+      geoJson.value = topojson.feature(topo, topo.objects.pref)
+      // console.log(prefMap.value)
     })
 
     // 系列セレクト
@@ -196,10 +198,6 @@ export default defineComponent({
       const c: EstatSeries[] = formatData.value.chartData
       return c.filter((f) => f.year === selectedTime.value.yearInt)
     })
-
-    // ストアからtopojsonを取得
-    const store = useStore()
-    const topoJson = computed(() => store.getters['topojson/getMapPref'])
 
     // MapChartとBarChartの切替
     const mapbar = ref<string>('map')
@@ -253,7 +251,8 @@ export default defineComponent({
       tableData,
       tableHeader,
       times,
-      topoJson,
+      // topoJson,
+      geoJson,
     }
   },
 })

@@ -152,11 +152,11 @@ const config: NuxtConfig = {
     path: '/sitemap.xml',
     hostname: 'https://statistics-hyogo.com',
     cacheTime: 1000 * 60 * 30,
-    // gzip: true,
+    gzip: true,
     generate: false,
-    // routes() {
-    //   return routes
-    // },
+    routes() {
+      return routes
+    },
   },
   highcharts: {},
   axios: {
