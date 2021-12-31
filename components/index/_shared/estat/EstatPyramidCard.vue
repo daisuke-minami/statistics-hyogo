@@ -137,9 +137,9 @@ export default defineComponent({
       const { data: res } = await context.root.$estat.get('getStatsData', {
         params,
       })
-      // console.log(res)
       estatResponse.value = res
     })
+    fetch()
 
     // データの整形
     const series = props.estatSeries
