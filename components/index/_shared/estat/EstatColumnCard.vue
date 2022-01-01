@@ -4,7 +4,7 @@
       <template>
         <v-card :loading="$fetchState.pending">
           <p v-if="$fetchState.pending" />
-          <data-view v-else :title="title" :route="routingPath">
+          <data-view v-else :title="title" :route="route">
             <h4 :id="titleId" class="visually-hidden">
               {{ title }}
             </h4>
@@ -73,7 +73,7 @@ import {
   formatTimeChart,
   formatAdditionalDescription,
 } from '@/utils/formatEstat'
-import { PageStateType, PageStateKey } from '@/composition/pageState'
+import { PageStateKey } from '@/composition/pageState'
 
 export default defineComponent({
   props: {
@@ -103,30 +103,34 @@ export default defineComponent({
     const canvas = ref<boolean>(true)
 
     // inject
-    const pageState: PageStateType = inject(PageStateKey)
-    const code = pageState.code.value
-    const govType = pageState.govType.value
-    const selectedPref = pageState.selectedPref.value
-    const selectedCity = pageState.selectedCity.value
+    const pageState = inject(PageStateKey)
+    // const code = pageState.code.value
+    // const govType = pageState.govType.value
+    // const selectedPref = pageState.selectedPref.value
+    // const selectedCity = pageState.selectedCity.value
+
+    const { code, govType, selectedPref, selectedCity, routingPath } = pageState
 
     // card情報の設定
     const title = computed((): string => {
       const name: string =
-        govType === 'prefecture' ? selectedPref.prefName : selectedCity.cityName
+        govType.value === 'prefecture'
+          ? selectedPref.value.prefName
+          : selectedCity.value.cityName
       return `${name}の${props.cardTitle.title}`
     })
     const titleId = computed((): string => {
       return `${props.cardTitle.titleId}`
     })
-    const routingPath = computed((): string => {
-      return `/${pageState.routingPath.value}/${titleId.value}/`
+    const route = computed((): string => {
+      return `/${routingPath.value}/${titleId.value}/`
     })
 
     // eStat-APIからデータを取得
     const estatResponse = ref<EstatResponse>({})
     const { fetch } = useFetch(async () => {
       const params = Object.assign({}, props.estatParams)
-      params.cdArea = code
+      params.cdArea = code.value
       const { data: res } = await context.root.$estat.get('getStatsData', {
         params,
       })
@@ -187,7 +191,7 @@ export default defineComponent({
     return {
       title,
       titleId,
-      routingPath,
+      route,
       lastUpdate,
       displayData,
       additionalDescription,

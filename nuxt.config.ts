@@ -1,3 +1,4 @@
+import fs from 'fs'
 import { NuxtConfig } from '@nuxt/types'
 
 /*
@@ -8,7 +9,6 @@ const environment = process.env.NODE_ENV || 'development'
 const { PREF_CODE, API_KEY, ESTAT_APPID, GOOGLE_ANALYTICS_ID, BASE_URL } =
   process.env
 require('dotenv').config()
-const fs = require('fs')
 const routes = JSON.parse(fs.readFileSync('data/routes/routes.json'))
 
 const config: NuxtConfig = {
@@ -43,17 +43,17 @@ const config: NuxtConfig = {
       {
         hid: 'twitter:site',
         name: 'twitter:site',
-        content: '@tokyo_bousai',
+        content: '@DAISUKEMINAMI5',
       },
       {
         hid: 'twitter:creator',
         name: 'twitter:creator',
-        content: '@tokyo_bousai',
+        content: '@DAISUKEMINAMI5',
       },
       {
         hid: 'fb:app_id',
         property: 'fb:app_id',
-        content: '2879625188795443',
+        content: '713094453013947',
       },
       {
         hid: 'note:card',
@@ -147,6 +147,7 @@ const config: NuxtConfig = {
     '@nuxtjs/sitemap',
     // ['@nuxtjs/google-adsense', { id: 'ca-pub-4511811306180988' }],
     ['@nuxtjs/google-gtag'],
+    ['nuxt-canonical', { baseUrl: 'https://statistics-hyogo.com' }],
   ],
   sitemap: {
     path: '/sitemap.xml',
