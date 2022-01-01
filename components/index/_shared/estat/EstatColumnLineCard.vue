@@ -13,14 +13,6 @@
               <data-view-data-set-panel :display-info="displayInfo" />
             </template>
 
-            <!-- <toggle-break
-              v-model="allbreak"
-              :target-id="titleId"
-              :style="{ display: canvas ? 'inline-block' : 'none' }"
-            />
-
-            <toggle-column-line v-model="columnline" /> -->
-
             <lazy-component
               :is="chartComponent"
               v-show="canvas"

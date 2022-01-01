@@ -104,11 +104,6 @@ export default defineComponent({
 
     // inject
     const pageState = inject(PageStateKey)
-    // const code = pageState.code.value
-    // const govType = pageState.govType.value
-    // const selectedPref = pageState.selectedPref.value
-    // const selectedCity = pageState.selectedCity.value
-
     const { code, govType, selectedPref, selectedCity, routingPath } = pageState
 
     // card情報の設定
