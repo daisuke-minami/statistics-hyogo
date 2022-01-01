@@ -3,8 +3,8 @@
 </template>
 
 <script lang="ts">
-import CardsLazyRow from '@/components/index/_shared/CardsLazyRow.vue'
 import { defineComponent, ref } from '@nuxtjs/composition-api'
+import CardsLazyRow from '~/components/index/_shared/CardRow/CardsLazyRow.vue'
 
 // 公害苦情件数（典型7公害）
 const PollutionComplaints = () => {
