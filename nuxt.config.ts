@@ -147,6 +147,7 @@ const config: NuxtConfig = {
     '@nuxtjs/sitemap',
     // ['@nuxtjs/google-adsense', { id: 'ca-pub-4511811306180988' }],
     ['@nuxtjs/google-gtag'],
+    ['nuxt-canonical', { baseUrl: 'https://statistics-hyogo.com' }],
   ],
   sitemap: {
     path: '/sitemap.xml',

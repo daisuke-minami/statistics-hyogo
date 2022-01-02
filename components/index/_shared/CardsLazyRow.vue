@@ -21,7 +21,7 @@
 import { mdiChevronRight } from '@mdi/js'
 import Vue from 'vue'
 
-import CardRow from '~/components/index/_shared/CardRow/CardRow.vue'
+import CardRow from '@/components/index/_shared/CardRow.vue'
 // import { component } from 'vue/types/umd'
 
 type Data = {

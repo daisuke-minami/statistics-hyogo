@@ -19,8 +19,6 @@ export function formatTimeChart(
   // 色の設定
   const style = getGraphSeriesStyle(series.length)
 
-  console.log({ estatResponse, series })
-
   const value: VALUE[] =
     estatResponse.GET_STATS_DATA.STATISTICAL_DATA.DATA_INF.VALUE
 
