@@ -3,7 +3,7 @@ name: OGP Builder
 on:
   push:
     branches:
-      - develop
+      - master
 
 jobs:
   build:
@@ -21,7 +21,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v1
         with:
-          node-version: '14.x'
+          node-version: '16.13.0'
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn cache dir)"
@@ -33,13 +33,13 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-yarn-
 
-      - run: yarn install
+      - run: yarn install --frozen-lockfile
       - run: yarn run test
       - run: yarn run generate:deploy
       - run: pip3 install selenium
       - run: (python3 -m http.server --directory ./dist 8000 &)  ; python3 ./ui-test/ogp_screenshot.py
       - name: Upload screenshot
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v1
         with:
           name: ogp
           path: ogp
@@ -56,14 +56,14 @@ jobs:
         with:
           ref: ${{ steps.extract_branch.outputs.branch }}
       - name: Download ogp images
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v1
         with:
           name: ogp
       - name: Commit files
         run: |
           cp -rp ogp static/
-          git config --local user.email "daisuke.minami.1979@gmail.com"
-          git config --local user.name "daisuke-minami"
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
           git add static
           git commit -m "Add changes"
       - name: Push changes
