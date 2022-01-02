@@ -21,8 +21,8 @@ export type EstatSeries = {
   color?: string
   data?: []
   year?: number
-  man?: string
-  woman?: string
+  man: string
+  woman: string
 }
 
 export type EstatTimes = {
@@ -37,7 +37,7 @@ export type EstatSource = {
 }
 
 export type EstatResponse = {
-  GET_STATS_DATA?: GETSTATSDATA
+  GET_STATS_DATA: GETSTATSDATA
 }
 
 export type EstatTableHeader = {
@@ -72,6 +72,7 @@ type DATAINF = {
 }
 
 export type VALUE = {
+  [key: string]: string
   '@tab': string
   '@cat01': string
   '@area': string

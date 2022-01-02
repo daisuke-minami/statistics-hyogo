@@ -1,5 +1,4 @@
 import { getGraphSeriesStyle } from '@/utils/colors'
-import { City } from '../composition/pageState'
 import {
   EstatResponse,
   EstatSeries,
@@ -8,6 +7,20 @@ import {
   EstatTableHeader,
   EstatTableData,
 } from '../types/estat'
+
+type TimeChartData = {
+  x: number
+  y: number
+  unit: string
+}
+
+type TimeChart = {
+  name: string
+  data: TimeChartData[]
+  color: string
+  yAxis?: number
+  type?: string
+}
 
 /**
  * Format for TimeChart
@@ -23,12 +36,13 @@ export function formatTimeChart(
     estatResponse.GET_STATS_DATA.STATISTICAL_DATA.DATA_INF.VALUE
 
   // chartData
-  const chartData: EstatSeries[] = series.map((d, i) => {
+  const chartData: TimeChart[] = series.map((d, i) => {
+    const key: keyof VALUE = `@${d.id}`
     return {
       name: d.name,
       data: value
-        .filter((f: VALUE) => f[`@${d.id}`] === d.code)
-        .map((d: VALUE) => {
+        .filter((f) => f[key] === d.code)
+        .map((d) => {
           return {
             x: parseInt(d['@time'].substr(0, 4)),
             y: parseFloat(d.$),
@@ -46,7 +60,7 @@ export function formatTimeChart(
 
   const tableHeader: EstatTableHeader[] = [
     { text: '年', value: 'year', width: '80px' },
-    ...chartData.map((d: EstatSeries) => {
+    ...chartData.map((d) => {
       return {
         text: d.name,
         value: d.name,
@@ -104,9 +118,11 @@ export function formatPyramidChart(
     return {
       year: d.yearInt,
       data: series.map((d) => {
-        const man = dataByTime.find((f) => f[`@${d.id}`] === d.man)
-        const woman = dataByTime.find((f) => f[`@${d.id}`] === d.woman)
+        const key: keyof VALUE = `@${d.id}`
+        const man = dataByTime.find((f) => f[key] === d.man)
+        const woman = dataByTime.find((f) => f[key] === d.woman)
 
+        console.log({ man, woman })
         return {
           category: d.name,
           man: parseInt(man?.$) || 0,
