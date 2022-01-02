@@ -20,6 +20,7 @@ export default defineComponent({
     const route = useRoute()
     const params = route.value.params
     const { code, statField, menuTitleId, cardId } = params
+    console.log({ params })
 
     // provide
     provide(PageStateKey, usePageState())

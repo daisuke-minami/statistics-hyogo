@@ -132,6 +132,7 @@ export default defineComponent({
     const { fetch } = useFetch(async () => {
       const params = Object.assign({}, props.estatParams)
       params.cdArea = code
+      console.log({ code })
       const { data: res } = await context.root.$estat.get('getStatsData', {
         params,
       })
