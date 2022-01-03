@@ -15,6 +15,7 @@ options.add_argument("--headless")
 options.add_argument("--hide-scrollbars")
 
 driver = webdriver.Chrome(options=options)
+driver.set_page_load_timeout(10)
 
 for value in card_data:
     driver.set_window_size(*(value['ogpWidth'], value['ogpHeight']))
