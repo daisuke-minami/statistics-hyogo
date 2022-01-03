@@ -9,7 +9,7 @@ jobs:
   build:
     runs-on: macos-latest
     env:
-      BASE_URL:  ${{ secrets.OGP_URL }}
+      BASE_URL:  'http://localhost:8000'
       ESTAT_APPID:  ${{ secrets.ESTAT_APPID }}
     steps:
       - name: Extract branch name
@@ -36,7 +36,7 @@ jobs:
 
       - run: yarn install --frozen-lockfile
       - run: yarn run test
-      - run: yarn run generate
+      - run: yarn run generate:deploy
       - run: pip3 install selenium
       - run: (python3 -m http.server --directory ./dist 8000 &)  ; python3 ./ui-test/ogp_screenshot.py
       - name: Upload screenshot
