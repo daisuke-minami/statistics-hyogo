@@ -9,7 +9,7 @@ jobs:
   build:
     runs-on: macos-latest
     env:
-      BASE_URL:  ${{ secrets.OGP_URL }}
+      BASE_URL:  ${{ secrets.BASE_URL }}
       ESTAT_APPID:  ${{ secrets.ESTAT_APPID }}
     steps:
       - name: Extract branch name
