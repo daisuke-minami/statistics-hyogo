@@ -30,7 +30,7 @@ for value in card_data:
 
     path = path.replace("/", "_")
     # if ('heatmap' in path):
-    time.sleep(50)
+    time.sleep(20)
     driver.save_screenshot(
         "ogp/{}.png".format(path)
     )
