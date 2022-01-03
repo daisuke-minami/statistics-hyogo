@@ -23,12 +23,12 @@ driver = webdriver.Chrome(options=options)
 for value in card_data:
     driver.set_window_size(*(value['ogpWidth'], value['ogpHeight']))
     path = value['path']
-    # driver.get(
-    #     "http://localhost:8000{}?ogp=true".format(path)
-    # )
     driver.get(
-        "https://statistics-hyogo.com{}?ogp=true".format(path)
+        "http://localhost:8000{}?ogp=true".format(path)
     )
+    # driver.get(
+    #     "https://statistics-hyogo.com{}?ogp=true".format(path)
+    # )
     # elem = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME, "DataView-Header"))
 
     path = path.replace("/", "_")
