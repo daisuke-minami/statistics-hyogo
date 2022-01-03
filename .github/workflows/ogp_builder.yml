@@ -8,16 +8,17 @@ on:
 jobs:
   build:
     runs-on: macos-latest
+    env:
+      BASE_URL:  ${{ secrets.BASE_URL }}
+      ESTAT_APPID:  ${{ secrets.ESTAT_APPID }}
     steps:
       - name: Extract branch name
         shell: bash
         run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
         id: extract_branch
-      # チェックアウト
       - uses: actions/checkout@v2
         with:
           ref: ${{ steps.extract_branch.outputs.branch }}
-      # Node.jsのセットアップ
       - name: Setup Node
         uses: actions/setup-node@v1
         with:

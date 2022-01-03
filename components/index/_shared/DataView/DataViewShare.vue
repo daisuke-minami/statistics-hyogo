@@ -169,7 +169,7 @@ export default Vue.extend({
       e.stopPropagation()
     },
     permalink(host: boolean = false, embed: boolean = false) {
-      let permalink = `/${this.route}`
+      let permalink = `${this.route}`
       if (embed) {
         permalink = `${permalink}?embed=true`
       }
