@@ -15,16 +15,12 @@ options.add_argument("--headless")
 options.add_argument("--hide-scrollbars")
 
 driver = webdriver.Chrome(options=options)
-# driver.implicitly_wait(10)
-# driver.set_page_load_timeout(30)
+# driver.set_page_load_timeout(10)
 
 for value in card_data:
     driver.set_window_size(*(value['ogpWidth'], value['ogpHeight']))
     path = value['path']
-    print(path)
-    driver.get(
-        "http://localhost:8000{}?ogp=true".format(path)
-    )
+    driver.get("http://localhost:8000{}?ogp=true".format(path))
     elem = WebDriverWait(driver, 16).until(EC.presence_of_element_located((By.ID, "DataView-Header"))
 
     path = path.replace("/", "_")
