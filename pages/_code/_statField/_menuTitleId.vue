@@ -1,6 +1,6 @@
 <template>
   <div>
-    <select-city :stat-field="statField" />
+    <select-code :stat-field="statField" />
     <select-menu />
     <component :is="cardComponent" />
   </div>
