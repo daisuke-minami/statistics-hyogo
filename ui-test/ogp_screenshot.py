@@ -23,6 +23,8 @@ for value in card_data:
     driver.get(
         "http://localhost:8000{}?ogp=true".format(path)
     )
+    elem = driver.find_element_by_css_selector("DataView-Header")
+
     path = path.replace("/", "_")
     if ('heatmap' in path):
         time.sleep(20)
