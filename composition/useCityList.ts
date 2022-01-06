@@ -6,6 +6,7 @@ import {
   useRouter,
 } from '@nuxtjs/composition-api'
 import { PageStateKey } from '@/composition/pageState'
+import { City } from '@/types/resas'
 import cityListAll from '~/data/codes/citylist.json'
 
 export const useCityList = (isBigCity: boolean = true) => {
@@ -33,7 +34,7 @@ export const useCityList = (isBigCity: boolean = true) => {
   // 市区町村ルーティング
   const router = useRouter()
   const changeRouter = computed(() => {
-    return function (selectedCity) {
+    return function (selectedCity: City) {
       const code = selectedCity.cityCode
       router.push(`/${code}/${statField}/${menuTitleId}`)
     }
