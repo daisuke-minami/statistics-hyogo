@@ -99,8 +99,13 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, computed } from '@nuxtjs/composition-api'
-
+import {
+  defineComponent,
+  reactive,
+  computed,
+  inject,
+} from '@nuxtjs/composition-api'
+import { PageStateKey, PageStateType } from '@/composition/pageState'
 import {
   mdiWeatherPartlyCloudy,
   mdiAccountMultiple,
@@ -143,6 +148,9 @@ export default defineComponent({
       mdiMenu,
     })
 
+    const pageState: PageStateType = inject(PageStateKey)
+    const { govType, code } = pageState
+
     const items = computed((): MenuItem[] => {
       return [
         {
@@ -153,82 +161,82 @@ export default defineComponent({
         {
           iconPath: mdiWeatherPartlyCloudy,
           title: '国土・気象',
-          link: `/prefecture/28000/landweather/`,
+          link: `/${govType.value}/${code.value}/landweather/`,
         },
         {
           iconPath: mdiAccountMultiple,
           title: '人口・世帯',
-          link: `/prefecture/28000/population/`,
+          link: `/${govType.value}/${code.value}/population/`,
         },
         {
           iconPath: mdiCashMultiple,
           title: '労働・賃金',
-          link: `/prefecture/28000/laborwage/`,
+          link: `/${govType.value}/${code.value}/laborwage/`,
         },
         {
           iconPath: mdiFish,
           title: '農林水産業',
-          link: `/prefecture/28000/agriculture/`,
+          link: `/${govType.value}/${code.value}/agriculture/`,
         },
         {
           iconPath: mdiFactory,
           title: '鉱工業',
-          link: `/prefecture/28000/miningindustry/`,
+          link: `/${govType.value}/${code.value}/miningindustry/`,
         },
         {
           iconPath: mdiStore,
           title: '商業・サービス業',
-          link: `/prefecture/28000/commercial/`,
+          link: `/${govType.value}/${code.value}/commercial/`,
         },
         {
           iconPath: mdiOfficeBuilding,
           title: '企業・家計・経済',
-          link: `/prefecture/28000/economy/`,
+          link: `/${govType.value}/${code.value}/economy/`,
         },
         {
           iconPath: mdiHomeAnalytics,
           title: '住宅・土地・建設',
-          link: `/prefecture/28000/construction/`,
+          link: `/${govType.value}/${code.value}/construction/`,
         },
         {
           iconPath: mdiWater,
           title: 'エネルギー・水',
-          link: `/prefecture/28000/energy/`,
+          link: `/${govType.value}/${code.value}/energy/`,
         },
         {
           iconPath: mdiTruck,
           title: '運輸・観光',
-          link: `/prefecture/28000/tourism/`,
+          link: `/${govType.value}/${code.value}/tourism/`,
         },
         {
           iconPath: mdiSchool,
           title: '教育・文化・スポーツ',
-          link: `/prefecture/28000/educationsports/`,
+          link: `/${govType.value}/${code.value}/educationsports/`,
         },
         {
           iconPath: mdiCashUsd,
           title: '行財政',
-          link: `/prefecture/28000/administrativefinancial/`,
+          link: `/${govType.value}/${code.value}/administrativefinancial/`,
         },
         {
           iconPath: mdiSeatbelt,
           title: '司法・安全・環境',
-          link: `/prefecture/28000/safetyenvironment/`,
+          link: `/${govType.value}/${code.value}/safetyenvironment/`,
         },
         {
           iconPath: mdiHospitalBox,
           title: '社会保障・衛生',
-          link: `/prefecture/28000/socialsecurity/`,
+          link: `/${govType.value}/${code.value}/socialsecurity/`,
         },
         {
           iconPath: mdiEarth,
           title: '国際',
-          link: `/prefecture/28000/international/`,
+          link: `/${govType.value}/${code.value}/international/`,
         },
         {
           iconPath: mdiChartTimelineVariant,
           title: 'その他',
-          link: `/prefecture/28000/other/`,
+          link: `/${govType.value}/${code.value}/other/`,
           divider: true,
         },
         {

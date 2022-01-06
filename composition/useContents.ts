@@ -6,9 +6,15 @@ export const useContents = () => {
   const pageState = inject(PageStateKey)
   const { code, govType, statField } = pageState
   // console.log({ code, govType, statField })
+
   // 統計分野リスト
-  const test = computed(() => {
-    return contents
+  const getFieldList = computed(() => {
+    return contents.list.map((d) => {
+      return {
+        fieldTitle: d.fieldTitle,
+        fieldId: d.fieldId,
+      }
+    })
   })
 
   const menuList = computed(() => {
@@ -23,7 +29,7 @@ export const useContents = () => {
   })
 
   return {
-    test,
+    getFieldList,
     menuList,
   }
 }

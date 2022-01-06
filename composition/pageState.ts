@@ -8,7 +8,7 @@ import cityListAll from '~/data/codes/citylist.json'
 export const usePageState = () => {
   const pageState = reactive<StateType>({
     code: '28000',
-    statField: '',
+    statField: 'landweather',
     routingPath: '',
     prefList: prefList.result,
     cityList: [],
