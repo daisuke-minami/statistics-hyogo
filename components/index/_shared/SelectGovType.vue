@@ -1,9 +1,9 @@
 <template>
   <div>
-    <v-tabs v-model="tab" center-active show-arrows>
+    <v-tabs v-model="tab">
       <v-tab
-        v-for="item in items"
-        :key="item.code"
+        v-for="(item, i) in items"
+        :key="i"
         :to="{ path: item.path }"
         nuxt
         exact
@@ -17,16 +17,15 @@
 <script lang="ts">
 import {
   defineComponent,
+  useRoute,
   computed,
   ref,
-  // onMounted,
   inject,
 } from '@nuxtjs/composition-api'
-import { PageStateKey, PageStateType } from '@/composition/pageState'
+import { PageStateKey } from '@/composition/pageState'
 import { EventBus, TOGGLE_EVENT } from '@/utils/tab-event-bus'
 
-type TabItem = {
-  code: string
+interface TabItem {
   label: string
   path: string
 }
@@ -38,34 +37,26 @@ export default defineComponent({
       required: true,
     },
   },
-  setup(props) {
-    function toFiveDigit(code: number): string {
-      return ('0000000000' + code).slice(-2) + '000'
-    }
+  setup() {
+    // パスパラメータの取得
+    const route = useRoute()
+    const { code, statField } = route.value.params
 
-    const pageState: PageStateType = inject(PageStateKey)
-    const cityList = pageState.cityList.value.filter(
-      (d) => d.bigCityFlag !== '1'
-    )
+    const pageState = inject(PageStateKey)
     const selectedPref = pageState.selectedPref.value
 
-    const tab = ref<string>('28201')
+    const tab = ref<string>('28000')
 
-    // タブ項目を生成
     const items = computed((): TabItem[] => {
       return [
         {
-          code: toFiveDigit(selectedPref.prefCode),
-          label: selectedPref.prefName,
-          path: `/${toFiveDigit(selectedPref.prefCode)}/${props.statField}`,
+          label: `${selectedPref.prefName}の統計`,
+          path: `/prefecture/${code}/${statField}`,
         },
-        ...cityList.map((d) => {
-          return {
-            code: d.cityCode,
-            label: d.cityName,
-            path: `/${d.cityCode}/${props.statField}`,
-          }
-        }),
+        {
+          label: `市区町村の統計`,
+          path: `/city/28209/${statField}`,
+        },
       ]
     })
 

@@ -1,4 +1,4 @@
-interface RootObject {
+interface contents {
   list: List[]
 }
 

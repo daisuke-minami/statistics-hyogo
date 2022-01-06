@@ -1,5 +1,4 @@
 import { reactive, toRefs, InjectionKey } from '@nuxtjs/composition-api'
-// import { Pref, City } from '@/types/resas'
 import { StateType } from '@/types/state'
 
 // 都道府県リスト、市区町村リストのimport
@@ -41,6 +40,10 @@ export const usePageState = () => {
     )
     pageState.selectedCity = _cityList(code).find((f) => f.cityCode === code)
   }
+
+  // function toFiveDigit(code: number): string {
+  //   return ('0000000000' + code).slice(-2) + '000'
+  // }
 
   const _cityList = (code: string) => {
     return cityListAll.result.filter(

@@ -1,5 +1,6 @@
 <template>
   <div>
+    <select-gov-type />
     <select-city />
     <select-menu />
     <component :is="cardComponent" />
@@ -15,8 +16,10 @@ import {
   inject,
 } from '@nuxtjs/composition-api'
 import { usePageState, PageStateKey } from '@/composition/pageState'
+import SelectGovType from '~/components/index/_shared/SelectGovType.vue'
 
 export default defineComponent({
+  components: { SelectGovType },
   setup() {
     // パスパラメータの取得
     const route = useRoute()

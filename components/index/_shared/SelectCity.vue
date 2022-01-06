@@ -2,7 +2,7 @@
   <div>
     <static-card>
       <v-select
-        v-model="selectedCity"
+        v-model="innerSelectedCity"
         :items="cityList"
         item-text="cityName"
         item-value="cityCode"
@@ -19,9 +19,10 @@ import {
   useRouter,
   ref,
   watch,
-  inject,
 } from '@nuxtjs/composition-api'
-import { PageStateKey } from '@/composition/pageState'
+
+import { useCityList } from '@/composition/useCityList'
+import { City } from '@/types/resas'
 
 export default defineComponent({
   setup() {
@@ -29,22 +30,25 @@ export default defineComponent({
     const route = useRoute()
     const { statField, menuTitleId } = route.value.params
 
-    // 市区町村リストの取得
-    const pageState = inject(PageStateKey)
-    const cityList = pageState.cityList.value.filter(
-      (d) => d.bigCityFlag !== '1'
-    )
+    // 市区町村一覧の取得
+    const cityList = useCityList().getCityList.value
 
+    // 選択した市区町村へ移動
     const router = useRouter()
-    const selectedCity = ref<object>({})
-    watch(selectedCity, () => {
-      const code = selectedCity.value.cityCode
+    const innerSelectedCity = ref<City>({
+      prefCode: 28,
+      cityCode: '28100',
+      cityName: '神戸市',
+      bigCityFlag: '2',
+    })
+    watch(innerSelectedCity, () => {
+      const code = innerSelectedCity.value.cityCode
       router.push(`/${code}/${statField}/${menuTitleId}`)
     })
 
     return {
       cityList,
-      selectedCity,
+      innerSelectedCity,
     }
   },
 })

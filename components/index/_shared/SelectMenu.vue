@@ -16,23 +16,12 @@
 </template>
 
 <script>
-import { defineComponent, inject } from '@nuxtjs/composition-api'
-import { PageStateKey } from '@/composition/pageState'
-import contents from '~/data/contents/contents.json'
+import { defineComponent } from '@nuxtjs/composition-api'
+import { useContents } from '@/composition/useContents'
 
 export default defineComponent({
   setup() {
-    const pageState = inject(PageStateKey)
-    const { code, govType, statField } = pageState
-
-    const menuItems = contents.list
-      .find((f) => f.fieldId === statField.value)
-      ?.menu[govType.value].map((d) => {
-        return {
-          label: d.menuTitle,
-          path: `/${code.value}/${statField.value}/${d.menuId}/`,
-        }
-      })
+    const menuItems = useContents().menuList.value
     return { menuItems }
   },
 })
