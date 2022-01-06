@@ -15,13 +15,13 @@
 
 <script lang="ts">
 import { defineComponent } from '@nuxtjs/composition-api'
-import { useCityList } from '@/composition/useCityList'
+import { useCity } from '~/composition/useCity'
 
 export default defineComponent({
   setup() {
-    const cityList = useCityList().getCityList.value
-    const selectedCity = useCityList().selectedCity.value
-    const changeRoute = useCityList().changeRouter.value
+    const cityList = useCity().getCityList.value
+    const selectedCity = useCity().selectedCity.value
+    const changeRoute = useCity().changeRouter.value
 
     return {
       cityList,

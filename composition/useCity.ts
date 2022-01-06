@@ -9,7 +9,7 @@ import { PageStateKey } from '@/composition/pageState'
 import { City } from '@/types/resas'
 import cityListAll from '~/data/codes/citylist.json'
 
-export const useCityList = (isBigCity: boolean = true) => {
+export const useCity = (isBigCity: boolean = true) => {
   const pageState = inject(PageStateKey)
   const { selectedPref } = pageState
 

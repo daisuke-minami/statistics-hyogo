@@ -143,12 +143,6 @@ export default defineComponent({
       mdiMenu,
     })
 
-    // 都道府県コードを5桁文字列に変換
-    // function toFiveDigit(code: number): string {
-    //   return ('0000000000' + code).slice(-2) + '000'
-    // }
-
-    // メニュー項目
     const items = computed((): MenuItem[] => {
       return [
         {
