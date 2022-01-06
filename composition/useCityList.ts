@@ -1,10 +1,20 @@
-import { computed, inject } from '@nuxtjs/composition-api'
+import {
+  computed,
+  inject,
+  ref,
+  useRoute,
+  useRouter,
+} from '@nuxtjs/composition-api'
 import { PageStateKey } from '@/composition/pageState'
 import cityListAll from '~/data/codes/citylist.json'
 
 export const useCityList = (isBigCity: boolean = true) => {
   const pageState = inject(PageStateKey)
   const { selectedPref } = pageState
+
+  const selectedCity = ref<object>(pageState?.selectedCity?.value)
+  const route = useRoute()
+  const { statField, menuTitleId } = route.value.params
 
   // 市区町村一覧の取得
   const getCityList = computed(() => {
@@ -20,7 +30,18 @@ export const useCityList = (isBigCity: boolean = true) => {
     }
   })
 
+  // 市区町村ルーティング
+  const router = useRouter()
+  const changeRouter = computed(() => {
+    return function (selectedCity) {
+      const code = selectedCity.cityCode
+      router.push(`/${code}/${statField}/${menuTitleId}`)
+    }
+  })
+
   return {
     getCityList,
+    changeRouter,
+    selectedCity,
   }
 }
