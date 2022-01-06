@@ -31,7 +31,13 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import {
+  defineComponent,
+  onBeforeUnmount,
+  onMounted,
+  reactive,
+  toRef,
+} from '@nuxtjs/composition-api'
 import ScaleLoader from 'vue-spinner/src/ScaleLoader.vue'
 
 type LocalData = {
@@ -39,47 +45,52 @@ type LocalData = {
   isOpenNavigation: boolean
   loading: boolean
 }
-export default Vue.extend({
+
+export default defineComponent({
   components: {
     ScaleLoader,
   },
-  data(): LocalData {
-    let hasNavigation = true
-    let loading = true
-    if (this.$route.query.embed === 'true') {
-      hasNavigation = false
-      loading = false
-    } else if (this.$route.query.ogp === 'true') {
-      hasNavigation = false
-      loading = false
-    }
-    return {
-      hasNavigation,
-      loading,
+  setup() {
+    const data = reactive<LocalData>({
+      hasNavigation: true,
       isOpenNavigation: false,
+      loading: true,
+    })
+
+    onMounted(() => {
+      data.loading = false
+      getMatchMedia().addListener(closeNavigation)
+    })
+
+    onBeforeUnmount(() => {
+      getMatchMedia().removeListener(closeNavigation)
+    })
+
+    const openNavigation = () => {
+      data.isOpenNavigation = true
     }
-  },
-  mounted() {
-    this.loading = false
-    this.getMatchMedia().addListener(this.closeNavigation)
-  },
-  beforeDestroy() {
-    this.getMatchMedia().removeListener(this.closeNavigation)
-  },
-  methods: {
-    openNavigation(): void {
-      this.isOpenNavigation = true
-    },
-    closeNavigation(): void {
-      this.isOpenNavigation = false
-    },
-    getMatchMedia(): MediaQueryList {
+
+    const closeNavigation = () => {
+      data.isOpenNavigation = false
+    }
+
+    const getMatchMedia = () => {
       return window.matchMedia('(min-width: 601px)')
-    },
+    }
+
+    return {
+      hasNavigation: toRef(data, 'hasNavigation'),
+      isOpenNavigation: toRef(data, 'isOpenNavigation'),
+      loading: toRef(data, 'loading'),
+      openNavigation,
+      closeNavigation,
+      getMatchMedia,
+    }
   },
 })
 </script>
-<style lang="scss">
+
+<style lang="scss" scoped>
 .app {
   max-width: 1440px;
   margin: 0 auto;
