@@ -2,7 +2,7 @@
   <div>
     <static-card>
       <v-btn
-        v-for="(item, i) in menuItems"
+        v-for="(item, i) in items"
         :key="i"
         :to="{ path: item.path }"
         nuxt
@@ -21,8 +21,8 @@ import { useContents } from '@/composition/useContents'
 
 export default defineComponent({
   setup() {
-    const menuItems = useContents().menuList.value
-    return { menuItems }
+    const items = useContents().menuList.value
+    return { items }
   },
 })
 </script>

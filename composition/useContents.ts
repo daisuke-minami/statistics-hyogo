@@ -17,7 +17,7 @@ export const useContents = () => {
       ?.menu[govType.value].map((d) => {
         return {
           label: d.menuTitle,
-          path: `/${code.value}/${statField.value}/${d.menuId}/`,
+          path: `/${govType.value}/${code.value}/${statField.value}/${d.menuId}/`,
         }
       })
   })

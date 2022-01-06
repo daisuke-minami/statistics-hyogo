@@ -1,6 +1,7 @@
 <template>
   <div>
-    <select-code :stat-field="statField" />
+    <select-gov-type />
+    <select-city />
     <select-menu />
   </div>
 </template>
