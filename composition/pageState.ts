@@ -1,14 +1,28 @@
 import { reactive, toRefs, InjectionKey } from '@nuxtjs/composition-api'
-import { StateType } from '@/types/state'
+import { Pref, City } from '~/types/resas'
 
 // 都道府県リスト、市区町村リストのimport
 import prefList from '~/data/codes/preflist.json'
 import cityListAll from '~/data/codes/citylist.json'
 
+interface StateType {
+  govType: string
+  code: string
+  statField: string
+  menuTitleId: string
+  routingPath: string
+  prefList: Pref[]
+  cityList: City[]
+  selectedPref?: Pref
+  selectedCity?: City
+}
+
 export const usePageState = () => {
   const pageState = reactive<StateType>({
+    govType: 'prefecture',
     code: '28000',
     statField: 'landweather',
+    menuTitleId: 'area',
     routingPath: '',
     prefList: prefList.result,
     cityList: [],
@@ -22,23 +36,23 @@ export const usePageState = () => {
       cityName: '神戸市',
       bigCityFlag: '2',
     },
-    govType: 'prefecture',
   })
 
   const setState = (
-    code: string,
-    statField: string,
-    menuTitleId: string
+    code: string = '28000',
+    statField: string = 'landweather',
+    menuTitleId: string = 'area'
   ): void => {
     pageState.code = code
     pageState.statField = statField
     pageState.routingPath = `${code}/${statField}/${menuTitleId}`
     pageState.govType = code.match('000') ? 'prefecture' : 'city'
+    // pageState.govType = govType
     pageState.cityList = _cityList(code)
     pageState.selectedPref = prefList.result.find(
       (f) => f.prefCode === Number(code.slice(0, 2))
     )
-    pageState.selectedCity = _cityList(code).find((f) => f.cityCode === code)
+    // pageState.selectedCity = _cityList(code).find((f) => f.cityCode === code)
   }
 
   // function toFiveDigit(code: number): string {

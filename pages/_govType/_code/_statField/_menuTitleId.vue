@@ -8,33 +8,18 @@
 </template>
 
 <script lang="ts">
-import {
-  defineComponent,
-  computed,
-  useRoute,
-  provide,
-  inject,
-} from '@nuxtjs/composition-api'
-import { usePageState, PageStateKey } from '@/composition/pageState'
-import SelectGovType from '~/components/index/_shared/SelectGovType.vue'
+import { defineComponent, computed, useRoute } from '@nuxtjs/composition-api'
 
 export default defineComponent({
-  components: { SelectGovType },
   setup() {
     // パスパラメータの取得
     const route = useRoute()
     const params = route.value.params
-    const { code, statField, menuTitleId } = params
-
-    // provide
-    provide(PageStateKey, usePageState())
-    const pageState = inject(PageStateKey)
-    pageState.setState(code, statField, menuTitleId)
-    const { govType } = pageState
+    const { govType, statField, menuTitleId } = params
 
     // カードコンポーネントの設定
     const cardComponent = computed((): string => {
-      if (govType.value === 'prefecture') {
+      if (govType === 'prefecture') {
         return `lazy-cards-${menuTitleId}-prefecture`
       } else {
         return `lazy-cards-${menuTitleId}-city`

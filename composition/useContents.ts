@@ -17,6 +17,16 @@ export const useContents = () => {
     })
   })
 
+  const getInitMenuTitles = computed(() => {
+    return contents.list.map((d) => {
+      return {
+        statField: d.fieldId,
+        prefecture: d.menu.prefecture[0].menuId,
+        city: d.menu.city[0],
+      }
+    })
+  })
+
   const menuList = computed(() => {
     return contents.list
       .find((f) => f.fieldId === statField.value)
@@ -30,6 +40,7 @@ export const useContents = () => {
 
   return {
     getFieldList,
+    getInitMenuTitles,
     menuList,
   }
 }

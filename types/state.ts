@@ -1,7 +1,5 @@
 import { Pref, City } from '@/types/resas'
 
-export type GovType = 'prefecture' | 'city'
-
 export type StateType = {
   code: string
   statField: string
@@ -10,7 +8,7 @@ export type StateType = {
   cityList: City[]
   selectedPref?: Pref
   selectedCity?: City
-  govType: GovType
+  govType: string
 }
 
 export type RouteParams = {
