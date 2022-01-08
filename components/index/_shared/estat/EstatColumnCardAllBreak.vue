@@ -71,14 +71,14 @@ import {
   formatTimeChart,
   formatAdditionalDescription,
 } from '@/utils/formatEstat'
+import { StateType, StateKey } from '@/composition/useState'
 import {
   CardTitle,
   EstatParams,
   EstatSeries,
   EstatTimes,
   EstatResponse,
-} from '@/types/estat'
-import { StateType, StateKey } from '@/composition/useState'
+} from '~/types/estat'
 
 export default defineComponent({
   props: {

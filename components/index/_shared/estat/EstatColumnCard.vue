@@ -62,18 +62,18 @@ import {
   inject,
 } from '@nuxtjs/composition-api'
 import {
+  formatTimeChart,
+  formatAdditionalDescription,
+} from '@/utils/formatEstat'
+import { StateKey } from '@/composition/useState'
+import {
   EstatParams,
   EstatSeries,
   EstatTimes,
   EstatResponse,
   EstatSource,
   CardTitle,
-} from '@/types/estat'
-import {
-  formatTimeChart,
-  formatAdditionalDescription,
-} from '@/utils/formatEstat'
-import { StateKey } from '@/composition/useState'
+} from '~/types/estat'
 
 export default defineComponent({
   props: {

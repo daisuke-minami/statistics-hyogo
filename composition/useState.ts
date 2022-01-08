@@ -5,7 +5,7 @@ import { Pref, City } from '~/types/resas'
 import prefList from '~/data/codes/preflist.json'
 import cityListAll from '~/data/codes/citylist.json'
 
-interface StateType {
+interface State {
   govType: string
   code: string
   statField: string
@@ -18,7 +18,7 @@ interface StateType {
 }
 
 export const useState = () => {
-  const State = reactive<StateType>({
+  const State = reactive<State>({
     govType: 'prefecture',
     code: '28000',
     statField: 'landweather',
