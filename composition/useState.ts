@@ -9,7 +9,7 @@ interface State {
   govType: string
   code: string
   statField: string
-  menuTitleId: string
+  menuId: string
   routingPath: string
   prefList: Pref[]
   cityList: City[]
@@ -22,7 +22,7 @@ export const useState = () => {
     govType: 'prefecture',
     code: '28000',
     statField: 'landweather',
-    menuTitleId: 'area',
+    menuId: 'area',
     routingPath: '',
     prefList: prefList.result,
     cityList: [],
@@ -42,13 +42,13 @@ export const useState = () => {
     govType: string = 'prefecture',
     code: string = '28000',
     statField: string = 'landweather',
-    menuTitleId: string = 'area'
+    menuId: string = 'area'
   ): void => {
     State.govType = govType
     State.code = code
     State.statField = statField
-    State.menuTitleId = menuTitleId
-    State.routingPath = `${code}/${statField}/${menuTitleId}`
+    State.menuId = menuId
+    State.routingPath = `${code}/${statField}/${menuId}`
     State.cityList = _cityList(code)
     State.selectedPref = prefList.result.find(
       (f) => f.prefCode === Number(code.slice(0, 2))

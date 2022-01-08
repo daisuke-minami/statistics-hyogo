@@ -14,5 +14,5 @@ export type StateType = {
 export type RouteParams = {
   code: string
   statField: string
-  menuTitleId: string
+  menuId: string
 }

@@ -19,12 +19,12 @@ export default defineComponent({
     // パスパラメータの取得
     const route = useRoute()
     const params = route.value.params
-    const { code, statField, menuTitleId, cardId } = params
+    const { code, statField, menuId, cardId } = params
 
     // provide
     provide(StateKey, useState())
     const State = inject(StateKey)
-    State.setState(code, statField, menuTitleId)
+    State.setState(code, statField, menuId)
     const { govType } = State
 
     // カードコンポーネントの設定

@@ -45,5 +45,5 @@ interface StatField {
 
 interface MenuItems {
   menuTitle: string
-  menuTitleId: string
+  menuId: string
 }

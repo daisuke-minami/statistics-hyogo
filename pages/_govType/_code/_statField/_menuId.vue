@@ -21,18 +21,18 @@ export default defineComponent({
     // パスパラメータの取得
     const route = useRoute()
     const params = route.value.params
-    const { govType, code, statField, menuTitleId } = params
+    const { govType, code, statField, menuId } = params
 
     // Stateをセット
     const State = inject(StateKey)
-    State.setState(govType, code, statField, menuTitleId)
+    State.setState(govType, code, statField, menuId)
 
     // カードコンポーネントの設定
     const cardComponent = computed((): string => {
       if (govType === 'prefecture') {
-        return `lazy-cards-${menuTitleId}-prefecture`
+        return `lazy-cards-${menuId}-prefecture`
       } else {
-        return `lazy-cards-${menuTitleId}-city`
+        return `lazy-cards-${menuId}-city`
       }
     })
 

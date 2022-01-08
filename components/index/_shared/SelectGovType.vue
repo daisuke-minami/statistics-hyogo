@@ -33,7 +33,7 @@ export default defineComponent({
     // パスパラメータの取得
     const route = useRoute()
     const params = route.value.params
-    const { govType, code, statField, menuTitleId } = params
+    const { govType, code, statField, menuId } = params
 
     const tab = ref<string>('28000')
 
@@ -41,11 +41,11 @@ export default defineComponent({
       return [
         {
           label: `都道府県の統計`,
-          path: `/${govType}/28000/${statField}/${menuTitleId}`,
+          path: `/${govType}/28000/${statField}/${menuId}`,
         },
         {
           label: `市区町村の統計`,
-          path: `/city/${code}/${statField}/${menuTitleId}`,
+          path: `/city/${code}/${statField}/${menuId}`,
         },
       ]
     })

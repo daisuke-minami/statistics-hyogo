@@ -15,7 +15,7 @@ export const useCity = (isBigCity: boolean = true) => {
 
   const selectedCity = ref<object>(State?.selectedCity?.value)
   const route = useRoute()
-  const { statField, menuTitleId } = route.value.params
+  const { statField, menuId } = route.value.params
 
   // 市区町村一覧の取得
   const getCityList = computed(() => {
@@ -36,7 +36,7 @@ export const useCity = (isBigCity: boolean = true) => {
   const changeRouter = computed(() => {
     return function (selectedCity: City) {
       const code = selectedCity.cityCode
-      router.push(`/${code}/${statField}/${menuTitleId}`)
+      router.push(`/${code}/${statField}/${menuId}`)
     }
   })
 
