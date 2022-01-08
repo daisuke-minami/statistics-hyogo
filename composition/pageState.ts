@@ -39,25 +39,21 @@ export const usePageState = () => {
   })
 
   const setState = (
+    govType: string = 'prefecture',
     code: string = '28000',
     statField: string = 'landweather',
     menuTitleId: string = 'area'
   ): void => {
+    pageState.govType = govType
     pageState.code = code
     pageState.statField = statField
+    pageState.menuTitleId = menuTitleId
     pageState.routingPath = `${code}/${statField}/${menuTitleId}`
-    pageState.govType = code.match('000') ? 'prefecture' : 'city'
-    // pageState.govType = govType
     pageState.cityList = _cityList(code)
     pageState.selectedPref = prefList.result.find(
       (f) => f.prefCode === Number(code.slice(0, 2))
     )
-    // pageState.selectedCity = _cityList(code).find((f) => f.cityCode === code)
   }
-
-  // function toFiveDigit(code: number): string {
-  //   return ('0000000000' + code).slice(-2) + '000'
-  // }
 
   const _cityList = (code: string) => {
     return cityListAll.result.filter(

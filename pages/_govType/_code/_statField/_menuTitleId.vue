@@ -8,14 +8,24 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, useRoute } from '@nuxtjs/composition-api'
+import {
+  defineComponent,
+  inject,
+  computed,
+  useRoute,
+} from '@nuxtjs/composition-api'
+import { PageStateKey } from '@/composition/pageState'
 
 export default defineComponent({
   setup() {
     // パスパラメータの取得
     const route = useRoute()
     const params = route.value.params
-    const { govType, statField, menuTitleId } = params
+    const { govType, code, statField, menuTitleId } = params
+
+    // Stateをセット
+    const pageState = inject(PageStateKey)
+    pageState.setState(govType, code, statField, menuTitleId)
 
     // カードコンポーネントの設定
     const cardComponent = computed((): string => {

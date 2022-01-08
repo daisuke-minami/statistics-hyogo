@@ -45,7 +45,7 @@ export default defineComponent({
         },
         {
           label: `市区町村の統計`,
-          path: `/${govType}/${code}/${statField}/${menuTitleId}`,
+          path: `/city/${code}/${statField}/${menuTitleId}`,
         },
       ]
     })
