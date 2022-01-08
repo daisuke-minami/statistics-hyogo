@@ -131,6 +131,7 @@ export default defineComponent({
     const estatResponse = ref<EstatResponse>({})
     const { fetch } = useFetch(async () => {
       const params = Object.assign({}, props.estatParams)
+      // console.log(code)
       params.cdArea = code
       const { data: res } = await context.root.$estat.get('getStatsData', {
         params,

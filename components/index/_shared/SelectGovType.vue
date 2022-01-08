@@ -15,40 +15,14 @@
 </template>
 
 <script lang="ts">
-import {
-  defineComponent,
-  computed,
-  ref,
-  useRoute,
-} from '@nuxtjs/composition-api'
+import { defineComponent, ref } from '@nuxtjs/composition-api'
 import { EventBus, TOGGLE_EVENT } from '@/utils/tab-event-bus'
-
-interface TabItem {
-  label: string
-  path: string
-}
+import { useGovType } from '@/composition/useGovType'
 
 export default defineComponent({
   setup() {
-    // パスパラメータの取得
-    const route = useRoute()
-    const params = route.value.params
-    const { govType, code, statField, menuId } = params
-
     const tab = ref<string>('28000')
-
-    const items = computed((): TabItem[] => {
-      return [
-        {
-          label: `都道府県の統計`,
-          path: `/${govType}/28000/${statField}/${menuId}`,
-        },
-        {
-          label: `市区町村の統計`,
-          path: `/city/${code}/${statField}/${menuId}`,
-        },
-      ]
-    })
+    const items = useGovType().getGovTabItems.value
 
     const change = (): void => {
       EventBus.$emit(TOGGLE_EVENT)

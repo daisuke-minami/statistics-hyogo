@@ -31,14 +31,8 @@ type MenuItem = {
 }
 
 export const useSideNavi = () => {
-  // const data = reactive({
-  //   mdiClose,
-  //   mdiMenu,
-  // })
-
   const State: StateType = inject(StateKey)
   const { govType, code } = State
-  // console.log({ govType, code })
 
   const initMenuList = useContents().getInitMenuTitles.value
 
@@ -50,7 +44,7 @@ export const useSideNavi = () => {
       return `/${govType.value}/${code.value}/${statField}/${menuId?.city}`
     }
   }
-  console.log(setLink('landweather'))
+
   const naviItems = computed((): MenuItem[] => {
     return [
       {
