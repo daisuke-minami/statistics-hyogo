@@ -36,7 +36,7 @@ export const useCity = (isBigCity: boolean = true) => {
   const changeRouter = computed(() => {
     return function (selectedCity: City) {
       const code = selectedCity.cityCode
-      router.push(`/${code}/${statField}/${menuId}`)
+      router.push(`/city/${code}/${statField}/${menuId}`)
     }
   })
 
