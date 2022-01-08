@@ -15,8 +15,12 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, ref, inject } from '@nuxtjs/composition-api'
-import { PageStateKey } from '@/composition/pageState'
+import {
+  defineComponent,
+  computed,
+  ref,
+  useRoute,
+} from '@nuxtjs/composition-api'
 import { EventBus, TOGGLE_EVENT } from '@/utils/tab-event-bus'
 
 interface TabItem {
@@ -26,8 +30,10 @@ interface TabItem {
 
 export default defineComponent({
   setup() {
-    const pageState: PageStateType = inject(PageStateKey)
-    const { selectedCity, statField } = pageState
+    // パスパラメータの取得
+    const route = useRoute()
+    const params = route.value.params
+    const { govType, code, statField, menuTitleId } = params
 
     const tab = ref<string>('28000')
 
@@ -35,11 +41,11 @@ export default defineComponent({
       return [
         {
           label: `都道府県の統計`,
-          path: `/prefecture/28000/${statField.value}`,
+          path: `/${govType}/28000/${statField}/${menuTitleId}`,
         },
         {
           label: `市区町村の統計`,
-          path: `/city/${selectedCity.value.cityCode}/${statField.value}`,
+          path: `/${govType}/${code}/${statField}/${menuTitleId}`,
         },
       ]
     })
