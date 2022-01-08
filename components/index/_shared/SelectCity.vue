@@ -6,6 +6,7 @@
         :items="cityList"
         item-text="cityName"
         item-value="cityCode"
+        dense
         return-object
         @change="(value) => changeRoute(value, items)"
       />

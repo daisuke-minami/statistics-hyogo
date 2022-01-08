@@ -1,8 +1,14 @@
 <template>
   <div>
     <select-gov-type />
-    <select-city />
-    <select-menu />
+    <v-row>
+      <v-col cols="12" md="6">
+        <select-menu />
+      </v-col>
+      <v-col v-if="isCity" cols="12" md="6">
+        <select-city />
+      </v-col>
+    </v-row>
     <component :is="cardComponent" />
   </div>
 </template>
@@ -27,6 +33,15 @@ export default defineComponent({
     const State = inject(StateKey)
     State.setState(govType, code, statField, menuId)
 
+    // 市区町村判定フラグ
+    const isCity = computed(() => {
+      if (govType === 'city') {
+        return true
+      } else {
+        return false
+      }
+    })
+
     // カードコンポーネントの設定
     const cardComponent = computed((): string => {
       if (govType === 'prefecture') {
@@ -37,7 +52,7 @@ export default defineComponent({
     })
 
     return {
-      statField,
+      isCity,
       cardComponent,
     }
   },
