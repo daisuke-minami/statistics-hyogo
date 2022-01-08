@@ -22,7 +22,7 @@ export const useContents = () => {
       return {
         statField: d.fieldId,
         prefecture: d.menu.prefecture[0].menuId,
-        city: d.menu.city[0],
+        city: d.menu.city[0].menuId,
       }
     })
   })

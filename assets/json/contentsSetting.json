@@ -52,7 +52,18 @@
             ]
           }
         ],
-        "city": []
+        "city": [
+          {
+            "menuTitle": "面積",
+            "menuId": "area",
+            "card": [
+              {
+                "cardTitle": "総面積",
+                "cardId": "total-area"
+              }
+            ]
+          }
+        ]
       }
     },
     {
@@ -527,7 +538,13 @@
             ]
           }
         ],
-        "city": []
+        "city": [
+          {
+            "menuTitle": "県内総生産",
+            "menuId": "gross-domestic-product",
+            "card": []
+          }
+        ]
       }
     },
     {
@@ -1076,7 +1093,13 @@
             ]
           }
         ],
-        "city": []
+        "city": [
+          {
+            "menuTitle": "外国人",
+            "menuId": "foreigner",
+            "card": []
+          }
+        ]
       }
     }
   ]
