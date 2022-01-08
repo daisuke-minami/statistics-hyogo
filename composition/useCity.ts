@@ -5,15 +5,15 @@ import {
   useRoute,
   useRouter,
 } from '@nuxtjs/composition-api'
-import { PageStateKey } from '@/composition/pageState'
+import { StateKey } from '@/composition/useState'
 import { City } from '@/types/resas'
 import cityListAll from '~/data/codes/citylist.json'
 
 export const useCity = (isBigCity: boolean = true) => {
-  const pageState = inject(PageStateKey)
-  const { selectedPref } = pageState
+  const State = inject(StateKey)
+  const { selectedPref } = State
 
-  const selectedCity = ref<object>(pageState?.selectedCity?.value)
+  const selectedCity = ref<object>(State?.selectedCity?.value)
   const route = useRoute()
   const { statField, menuTitleId } = route.value.params
 

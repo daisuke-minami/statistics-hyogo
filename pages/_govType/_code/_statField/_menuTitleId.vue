@@ -14,7 +14,7 @@ import {
   computed,
   useRoute,
 } from '@nuxtjs/composition-api'
-import { PageStateKey } from '@/composition/pageState'
+import { StateKey } from '@/composition/useState'
 
 export default defineComponent({
   setup() {
@@ -24,8 +24,8 @@ export default defineComponent({
     const { govType, code, statField, menuTitleId } = params
 
     // Stateをセット
-    const pageState = inject(PageStateKey)
-    pageState.setState(govType, code, statField, menuTitleId)
+    const State = inject(StateKey)
+    State.setState(govType, code, statField, menuTitleId)
 
     // カードコンポーネントの設定
     const cardComponent = computed((): string => {

@@ -78,7 +78,7 @@ import {
   EstatTimes,
   EstatResponse,
 } from '@/types/estat'
-import { PageStateType, PageStateKey } from '@/composition/pageState'
+import { StateType, StateKey } from '@/composition/useState'
 
 export default defineComponent({
   props: {
@@ -108,11 +108,11 @@ export default defineComponent({
     const canvas = ref<boolean>(true)
 
     // inject
-    const pageState: PageStateType = inject(PageStateKey)
-    const code = pageState.code.value
-    const govType = pageState.govType.value
-    const selectedPref = pageState.selectedPref.value
-    const selectedCity = pageState.selectedCity.value
+    const State: StateType = inject(StateKey)
+    const code = State.code.value
+    const govType = State.govType.value
+    const selectedPref = State.selectedPref.value
+    const selectedCity = State.selectedCity.value
 
     // card情報の設定
     const title = computed((): string => {
@@ -124,7 +124,7 @@ export default defineComponent({
       return `${props.cardTitle.titleId}`
     })
     const routingPath = computed((): string => {
-      return `/${pageState.routingPath.value}/${titleId.value}/`
+      return `/${State.routingPath.value}/${titleId.value}/`
     })
 
     // eStat-APIからデータを取得

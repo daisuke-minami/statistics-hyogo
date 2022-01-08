@@ -17,8 +17,8 @@ interface StateType {
   selectedCity?: City
 }
 
-export const usePageState = () => {
-  const pageState = reactive<StateType>({
+export const useState = () => {
+  const State = reactive<StateType>({
     govType: 'prefecture',
     code: '28000',
     statField: 'landweather',
@@ -44,13 +44,13 @@ export const usePageState = () => {
     statField: string = 'landweather',
     menuTitleId: string = 'area'
   ): void => {
-    pageState.govType = govType
-    pageState.code = code
-    pageState.statField = statField
-    pageState.menuTitleId = menuTitleId
-    pageState.routingPath = `${code}/${statField}/${menuTitleId}`
-    pageState.cityList = _cityList(code)
-    pageState.selectedPref = prefList.result.find(
+    State.govType = govType
+    State.code = code
+    State.statField = statField
+    State.menuTitleId = menuTitleId
+    State.routingPath = `${code}/${statField}/${menuTitleId}`
+    State.cityList = _cityList(code)
+    State.selectedPref = prefList.result.find(
       (f) => f.prefCode === Number(code.slice(0, 2))
     )
   }
@@ -62,10 +62,10 @@ export const usePageState = () => {
   }
 
   return {
-    ...toRefs(pageState),
+    ...toRefs(State),
     setState,
   }
 }
 
-export type PageStateType = ReturnType<typeof usePageState>
-export const PageStateKey: InjectionKey<PageStateType> = Symbol('PageState')
+export type StateType = ReturnType<typeof useState>
+export const StateKey: InjectionKey<StateType> = Symbol('State')

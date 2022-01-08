@@ -1,5 +1,5 @@
 import { computed, inject } from '@nuxtjs/composition-api'
-import { PageStateKey, PageStateType } from '@/composition/pageState'
+import { StateKey, StateType } from '@/composition/useState'
 import { useContents } from '@/composition/useContents'
 import {
   mdiWeatherPartlyCloudy,
@@ -36,8 +36,8 @@ export const useSideNavi = () => {
   //   mdiMenu,
   // })
 
-  const pageState: PageStateType = inject(PageStateKey)
-  const { govType, code } = pageState
+  const State: StateType = inject(StateKey)
+  const { govType, code } = State
   // console.log({ govType, code })
 
   const initMenuList = useContents().getInitMenuTitles.value

@@ -12,7 +12,7 @@ import {
   provide,
   inject,
 } from '@nuxtjs/composition-api'
-import { usePageState, PageStateKey } from '@/composition/pageState'
+import { useState, StateKey } from '@/composition/useState'
 
 export default defineComponent({
   setup() {
@@ -22,10 +22,10 @@ export default defineComponent({
     const { code, statField, menuTitleId, cardId } = params
 
     // provide
-    provide(PageStateKey, usePageState())
-    const pageState = inject(PageStateKey)
-    pageState.setState(code, statField, menuTitleId)
-    const { govType } = pageState
+    provide(StateKey, useState())
+    const State = inject(StateKey)
+    State.setState(code, statField, menuTitleId)
+    const { govType } = State
 
     // カードコンポーネントの設定
     const cardComponent = computed((): string => {

@@ -41,7 +41,7 @@ import {
   provide,
 } from '@nuxtjs/composition-api'
 import ScaleLoader from 'vue-spinner/src/ScaleLoader.vue'
-import { usePageState, PageStateKey } from '@/composition/pageState'
+import { useState, StateKey } from '@/composition/useState'
 
 type LocalData = {
   hasNavigation: boolean
@@ -55,9 +55,9 @@ export default defineComponent({
   },
   setup() {
     // provide
-    provide(PageStateKey, usePageState())
-    const pageState = inject(PageStateKey)
-    pageState.setState()
+    provide(StateKey, useState())
+    const State = inject(StateKey)
+    State.setState()
 
     const data = reactive<LocalData>({
       hasNavigation: true,

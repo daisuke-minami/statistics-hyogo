@@ -95,7 +95,7 @@ import {
   formatCityRankChart,
   formatAdditionalDescription,
 } from '@/utils/formatEstat'
-import { PageStateType, PageStateKey } from '@/composition/pageState'
+import { StateType, StateKey } from '@/composition/useState'
 
 // MapChart
 const MapChart = () => {
@@ -134,12 +134,12 @@ export default defineComponent({
     const canvas = ref<boolean>(true)
 
     // inject
-    const pageState: PageStateType = inject(PageStateKey)
-    // const code = pageState.code.value
-    const govType = pageState.govType.value
-    const selectedPref = pageState.selectedPref.value
-    const selectedCity = pageState.selectedCity.value
-    const cityList = pageState.cityList.value
+    const State: StateType = inject(StateKey)
+    // const code = State.code.value
+    const govType = State.govType.value
+    const selectedPref = State.selectedPref.value
+    const selectedCity = State.selectedCity.value
+    const cityList = State.cityList.value
 
     // card情報の設定
     const title = computed((): string => {
@@ -151,7 +151,7 @@ export default defineComponent({
       return `${props.cardTitle.titleId}`
     })
     const routingPath = computed((): string => {
-      return `/${pageState.routingPath.value}/${titleId.value}/`
+      return `/${State.routingPath.value}/${titleId.value}/`
     })
 
     // 政令市統合/分割

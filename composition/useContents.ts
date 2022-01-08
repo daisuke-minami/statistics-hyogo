@@ -1,10 +1,10 @@
 import { computed, inject } from '@nuxtjs/composition-api'
-import { PageStateKey } from '@/composition/pageState'
+import { StateKey } from '@/composition/useState'
 import contents from '~/assets/json/contentsSetting.json'
 
 export const useContents = () => {
-  const pageState = inject(PageStateKey)
-  const { code, govType, statField } = pageState
+  const State = inject(StateKey)
+  const { code, govType, statField } = State
   // console.log({ code, govType, statField })
 
   // 統計分野リスト

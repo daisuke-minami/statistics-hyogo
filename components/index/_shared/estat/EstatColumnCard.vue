@@ -73,7 +73,7 @@ import {
   formatTimeChart,
   formatAdditionalDescription,
 } from '@/utils/formatEstat'
-import { PageStateKey } from '@/composition/pageState'
+import { StateKey } from '@/composition/useState'
 
 export default defineComponent({
   props: {
@@ -103,8 +103,8 @@ export default defineComponent({
     const canvas = ref<boolean>(true)
 
     // inject
-    const pageState = inject(PageStateKey)
-    const { code, govType, selectedPref, selectedCity, routingPath } = pageState
+    const State = inject(StateKey)
+    const { code, govType, selectedPref, selectedCity, routingPath } = State
 
     // card情報の設定
     const title = computed((): string => {
