@@ -48,7 +48,7 @@ export const useState = () => {
     State.code = code
     State.statField = statField
     State.menuId = menuId
-    State.routingPath = `${code}/${statField}/${menuId}`
+    State.routingPath = `/${govType}${code}/${statField}/${menuId}`
     State.cityList = _cityList(code)
     State.selectedPref = prefList.result.find(
       (f) => f.prefCode === Number(code.slice(0, 2))
