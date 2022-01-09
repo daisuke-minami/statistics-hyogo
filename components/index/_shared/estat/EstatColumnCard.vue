@@ -58,6 +58,7 @@ import {
   ref,
   computed,
   useFetch,
+  useContext,
   PropType,
   inject,
 } from '@nuxtjs/composition-api'
@@ -66,6 +67,7 @@ import {
   formatAdditionalDescription,
 } from '@/utils/formatEstat'
 import { StateKey } from '@/composition/useState'
+import { useEstatApi } from '@/composition/useEstatApi'
 import {
   EstatParams,
   EstatSeries,
@@ -98,7 +100,7 @@ export default defineComponent({
       required: true,
     },
   },
-  setup(props, context) {
+  setup(props) {
     // canvas
     const canvas = ref<boolean>(true)
 
@@ -120,15 +122,26 @@ export default defineComponent({
     const route = computed((): string => {
       return `/${routingPath.value}/${titleId.value}/`
     })
+    const lastUpdate = computed((): string => {
+      if (process.browser) {
+        const day = new Date(document.lastModified)
+        return `${day.getFullYear()}年${day.getMonth() + 1}月${day.getDate()}日`
+      } else {
+        return ''
+      }
+    })
+
+    const { $axios } = useContext()
 
     // eStat-APIからデータを取得
     const estatResponse = ref<EstatResponse>({})
     const { fetch } = useFetch(async () => {
       const params = Object.assign({}, props.estatParams)
       params.cdArea = code.value
-      const { data: res } = await context.root.$estat.get('getStatsData', {
-        params,
-      })
+      // const { data: res } = await context.root.$estat.get('getStatsData', {
+      //   params,
+      // })
+      const res = await useEstatApi($axios, params).getData()
       estatResponse.value = res
     })
     fetch()
@@ -167,15 +180,6 @@ export default defineComponent({
     // 出典
     const source = computed((): EstatSource => {
       return formatData.value.source
-    })
-
-    const lastUpdate = computed((): string => {
-      if (process.browser) {
-        const day = new Date(document.lastModified)
-        return `${day.getFullYear()}年${day.getMonth() + 1}月${day.getDate()}日`
-      } else {
-        return ''
-      }
     })
 
     // 注釈

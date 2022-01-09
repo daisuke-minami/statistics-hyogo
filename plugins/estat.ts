@@ -16,7 +16,7 @@ export default function ({ $axios }, inject) {
     paramsSerializer: (params: EstatParams) => {
       return qs.stringify(params, { arrayFormat: 'comma' })
     },
-    mode: 'cors',
+    // mode: 'cors',
     withCredentials: true,
     data: {},
   })

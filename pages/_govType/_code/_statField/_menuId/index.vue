@@ -28,7 +28,6 @@ export default defineComponent({
     const route = useRoute()
     const params = route.value.params
     const { govType, code, statField, menuId } = params
-
     // Stateをセット
     const State = inject(StateKey)
     State.setState(govType, code, statField, menuId)

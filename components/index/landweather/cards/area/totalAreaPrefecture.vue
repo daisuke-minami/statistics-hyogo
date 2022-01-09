@@ -3,30 +3,38 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, ref } from '@nuxtjs/composition-api'
-import {
-  CardTitle,
-  EstatParams,
-  EstatSeries,
-  EstatTimes,
-} from '~/utils/formatEstat'
+import { defineComponent, reactive } from '@nuxtjs/composition-api'
 
 export default defineComponent({
   setup() {
-    // Chartコンポーネントの設定
-    const chartComponent = ref<string>('estat-column-card')
-
     // cardタイトル
-    const cardTitle = reactive<CardTitle>({
+    const cardTitle = {
       title: '総面積',
       titleId: 'total-area',
-    })
+    }
+
+    // Chartコンポーネントの設定
+    const chartComponent = 'estat-column-card'
+
+    // const estatConfig = {
+    //   params: {
+    //     statsDataId: '0000010102',
+    //     cdCat01: ['B1101'],
+    //   },
+    //   series: [
+    //     {
+    //       name: '総面積',
+    //       id: 'cat01',
+    //       code: 'B1101',
+    //     },
+    //   ],
+    // }
 
     // estatParams cdAreaはestatコンポーネントで設定
-    const estatParams = reactive<EstatParams>({
+    const estatParams = {
       statsDataId: '0000010102',
       cdCat01: ['B1101'],
-    })
+    }
     const estatSeries = reactive<EstatSeries[]>([
       {
         id: 'cat01',
