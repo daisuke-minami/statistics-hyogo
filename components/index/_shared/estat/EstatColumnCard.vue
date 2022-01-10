@@ -55,27 +55,12 @@
 <script lang="ts">
 import {
   defineComponent,
-  ref,
+  // reactive,
   computed,
-  useFetch,
-  useContext,
   PropType,
-  inject,
 } from '@nuxtjs/composition-api'
-import {
-  formatTimeChart,
-  formatAdditionalDescription,
-} from '@/utils/formatEstat'
-import { StateKey } from '@/composition/useState'
-import { useEstatApi } from '@/composition/useEstatApi'
-import {
-  EstatParams,
-  EstatSeries,
-  EstatTimes,
-  EstatResponse,
-  EstatSource,
-  CardTitle,
-} from '~/types/estat'
+import { useEstatTimeChart } from '@/composition/useEstatTimeChart'
+import { EstatParams, EstatSeries, EstatTimes, CardTitle } from '~/types/estat'
 
 export default defineComponent({
   props: {
@@ -101,90 +86,26 @@ export default defineComponent({
     },
   },
   setup(props) {
-    // canvas
-    const canvas = ref<boolean>(true)
-
-    // inject
-    const State = inject(StateKey)
-    const { code, govType, selectedPref, selectedCity, routingPath } = State
-
-    // card情報の設定
-    const title = computed((): string => {
-      const name: string =
-        govType.value === 'prefecture'
-          ? selectedPref.value.prefName
-          : selectedCity.value.cityName
-      return `${name}の${props.cardTitle.title}`
-    })
-    const titleId = computed((): string => {
-      return `${props.cardTitle.titleId}`
-    })
-    const route = computed((): string => {
-      return `/${routingPath.value}/${titleId.value}/`
-    })
-    const lastUpdate = computed((): string => {
-      if (process.browser) {
-        const day = new Date(document.lastModified)
-        return `${day.getFullYear()}年${day.getMonth() + 1}月${day.getDate()}日`
-      } else {
-        return ''
-      }
-    })
-
-    const { $axios } = useContext()
-
-    // eStat-APIからデータを取得
-    const estatResponse = ref<EstatResponse>({})
-    const { fetch } = useFetch(async () => {
-      const params = Object.assign({}, props.estatParams)
-      params.cdArea = code.value
-      // const { data: res } = await context.root.$estat.get('getStatsData', {
-      //   params,
-      // })
-      const res = await useEstatApi($axios, params).getData()
-      estatResponse.value = res
-    })
-    fetch()
-
-    // データの整形
-    const series: EstatSeries[] = props.estatSeries
-    const formatData = computed(() => {
-      return formatTimeChart(estatResponse.value, series)
-    })
+    const {
+      canvas,
+      title,
+      titleId,
+      route,
+      lastUpdate,
+      loading,
+      chartData,
+      tableHeader,
+      tableData,
+      source,
+      additionalDescription,
+      displayInfo,
+    } = useEstatTimeChart(props)
 
     // chartの種類を設定
-    const chartComponent = ref<string>('column-chart')
+    const chartComponent = 'column-chart'
 
     const displayData = computed(() => {
-      return formatData.value.chartData
-    })
-
-    const displayInfo = computed(() => {
-      const d: EstatSeries = formatData.value.chartData[0]
-      const l: number = d.data.length
-      return {
-        lText: d.data[l - 1].y.toLocaleString(),
-        sText: d.data[l - 1].x + '年の' + d.name,
-        unit: d.data[l - 1].unit,
-      }
-    })
-
-    // テーブルの設定
-    const tableHeader = computed(() => {
-      return formatData.value.tableHeader
-    })
-    const tableData = computed(() => {
-      return formatData.value.tableData
-    })
-
-    // 出典
-    const source = computed((): EstatSource => {
-      return formatData.value.source
-    })
-
-    // 注釈
-    const additionalDescription = computed((): string[] => {
-      return formatAdditionalDescription(props.estatAnnotation).timeChart
+      return chartData.value
     })
 
     return {
@@ -192,13 +113,14 @@ export default defineComponent({
       titleId,
       route,
       lastUpdate,
-      displayData,
       additionalDescription,
       source,
       tableHeader,
       tableData,
       canvas,
+      loading,
       displayInfo,
+      displayData,
       chartComponent,
     }
   },

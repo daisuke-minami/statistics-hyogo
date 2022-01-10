@@ -35,6 +35,7 @@ export default defineComponent({
         return `lazy-${cardId}-city`
       }
     })
+    // console.log(cardComponent)
 
     return {
       statField,
