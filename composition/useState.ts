@@ -53,6 +53,11 @@ export const useState = () => {
     State.selectedPref = prefList.result.find(
       (f) => f.prefCode === Number(code.slice(0, 2))
     )
+    // State.selectedCity = _cityList(code).find((f) => f.cityCode === code)
+  }
+
+  const setSelectedCity = (code: string): void => {
+    State.selectedCity = _cityList(code).find((f) => f.cityCode === code)
   }
 
   const _cityList = (code: string) => {
@@ -64,6 +69,7 @@ export const useState = () => {
   return {
     ...toRefs(State),
     setState,
+    setSelectedCity,
   }
 }
 

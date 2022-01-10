@@ -36,6 +36,7 @@ export const useCity = (isBigCity: boolean = true) => {
   const changeRouter = computed(() => {
     return function (selectedCity: City) {
       const code = selectedCity.cityCode
+      State?.setSelectedCity(code)
       router.push(`/city/${code}/${statField}/${menuId}`)
     }
   })
