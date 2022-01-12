@@ -4,7 +4,7 @@
       <template>
         <v-card :loading="$fetchState.pending">
           <p v-if="$fetchState.pending" />
-          <data-view v-else :title="title" :route="route">
+          <data-view v-else :title="title" :route="path">
             <h4 :id="titleId" class="visually-hidden">
               {{ title }}
             </h4>
@@ -55,13 +55,16 @@
 <script lang="ts">
 import {
   defineComponent,
-  // reactive,
+  useFetch,
+  useContext,
+  useRoute,
+  ref,
   computed,
   PropType,
 } from '@nuxtjs/composition-api'
+import { useEstatApi } from '@/composition/useEstatApi'
 import { useEstatTimeChart } from '@/composition/useEstatTimeChart'
 import { EstatParams, EstatSeries, EstatTimes, CardTitle } from '~/types/estat'
-
 export default defineComponent({
   props: {
     cardTitle: {
@@ -86,20 +89,35 @@ export default defineComponent({
     },
   },
   setup(props) {
+    // パスパラメータの取得
+    const route = useRoute()
+    const params = route.value.params
+    const { code } = params
+
+    // eStat-APIからデータを取得
+    const { $axios } = useContext()
+    const estatResponse = ref<EstatResponse>({})
+    const { fetch } = useFetch(async () => {
+      const params = Object.assign({}, props.estatParams)
+      params.cdArea = code
+      const res = await useEstatApi($axios, params).getData()
+      estatResponse.value = res
+    })
+    fetch()
+
     const {
       canvas,
       title,
       titleId,
-      route,
+      path,
       lastUpdate,
-      loading,
       chartData,
       tableHeader,
       tableData,
       source,
       additionalDescription,
       displayInfo,
-    } = useEstatTimeChart(props)
+    } = useEstatTimeChart(props, () => estatResponse.value)
 
     // chartの種類を設定
     const chartComponent = 'column-chart'
@@ -111,14 +129,13 @@ export default defineComponent({
     return {
       title,
       titleId,
-      route,
+      path,
       lastUpdate,
       additionalDescription,
       source,
       tableHeader,
       tableData,
       canvas,
-      loading,
       displayInfo,
       displayData,
       chartComponent,
