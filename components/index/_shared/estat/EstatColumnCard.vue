@@ -67,14 +67,24 @@ export default defineComponent({
       tableData,
       source,
       additionalDescription,
-      displayInfo,
+      // displayInfo,
     } = useEstatTimeChart(props.estatState)
 
     // chartの種類を設定
     const chartComponent = 'column-chart'
 
+    // 表示データの設定
     const displayData = computed(() => {
       return chartData.value
+    })
+    const displayInfo = computed(() => {
+      const d: EstatSeries = chartData.value[0]
+      const l: number = d.data.length
+      return {
+        lText: d.data[l - 1].y.toLocaleString(),
+        sText: d.data[l - 1].x + '年の' + d.name,
+        unit: d.data[l - 1].unit,
+      }
     })
 
     return {

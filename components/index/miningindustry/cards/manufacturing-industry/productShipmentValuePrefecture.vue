@@ -20,6 +20,7 @@ import {
   useRoute,
 } from '@nuxtjs/composition-api'
 import { useEstatApi } from '@/composition/useEstatApi'
+import { EstatState } from '@/types/estat'
 
 export default defineComponent({
   setup() {
@@ -27,7 +28,7 @@ export default defineComponent({
     const cardComponent = 'estat-column-card'
 
     // State
-    const estatState = reactive<any>({
+    const estatState = reactive<EstatState>({
       title: '製造品出荷額',
       titleId: 'product-shipment-value',
       params: {

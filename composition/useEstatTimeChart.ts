@@ -1,81 +1,65 @@
-import { computed, inject, reactive, toRefs } from '@nuxtjs/composition-api'
+import { inject, reactive, toRefs } from '@nuxtjs/composition-api'
 import { StateKey } from '@/composition/useState'
 import { getGraphSeriesStyle } from '@/utils/colors'
+import { EstatTimeChart, EstatTableHeader } from '@/types/estat'
+
+interface CardState {
+  title: string
+  titleId: string
+  path: string
+  chartData: EstatTimeChart[]
+  tableHeader: EstatTableHeader[]
+}
 
 export const useEstatTimeChart = (estatState) => {
   // inject
   const State = inject(StateKey)
   const { govType, routingPath, selectedPref, selectedCity } = State
 
-  const state = reactive<CardState>({
-    canvas: true,
-    path: `${routingPath.value}/${estatState.titleId}/`,
-  })
-
-  // console.log(props)
-  const title = computed(() => {
+  const _setTitle = () => {
     const name: string =
       govType.value === 'prefecture'
         ? selectedPref.value.prefName
         : selectedCity.value.cityName
     return `${name}の${estatState.title}`
-  })
+  }
 
-  const titleId = estatState.titleId
-
-  const lastUpdate = _setLastUpdate()
-
-  const formatData = computed(() => {
-    return formatTimeChart(estatState.series, estatState.response)
-  })
-  const chartData = computed(() => {
-    return formatData.value.chartData
-  })
-  const displayInfo = computed(() => {
-    const d: EstatSeries = formatData.value.chartData[0]
-    const l: number = d.data.length
+  // 出典
+  const TABLE_INF =
+    estatState.response.GET_STATS_DATA.STATISTICAL_DATA.TABLE_INF
+  const _source = () => {
     return {
-      lText: d.data[l - 1].y.toLocaleString(),
-      sText: d.data[l - 1].x + '年の' + d.name,
-      unit: d.data[l - 1].unit,
+      estatName: `政府統計の総合窓口 e-Stat「${TABLE_INF.STAT_NAME.$}」`,
+      estatUrl: `https://www.e-stat.go.jp/dbview?sid=${TABLE_INF['@id']}`,
     }
+  }
+
+  const cardState = reactive<CardState>({
+    title: _setTitle(estatState.title),
+    titleId: estatState.titleId,
+    path: `${routingPath.value}/${estatState.titleId}/`,
+    chartData: _chartData(estatState.series, estatState.response),
+    tableHeader: _tableHeader(
+      _chartData(estatState.series, estatState.response)
+    ),
+    tableData: _tableData(_chartData(estatState.series, estatState.response)),
+    lastUpdate: _setLastUpdate(),
+    additionalDescription: _additionalDescription(estatState.annotation),
+    source: _source(),
   })
-  const tableHeader = computed(() => {
-    return formatData.value.tableHeader
-  })
-  const tableData = computed(() => {
-    return formatData.value.tableData
-  })
-  const source = computed((): EstatSource => {
-    return formatData.value.source
-  })
-  const additionalDescription = computed((): string[] => {
-    return formatAdditionalDescription(estatState.annotation).timeChart
-  })
+
+  // const set = (estatState): void => {}
 
   return {
-    ...toRefs(state),
-    title,
-    titleId,
-    lastUpdate,
-    chartData,
-    tableHeader,
-    tableData,
-    source,
-    additionalDescription,
-    displayInfo,
+    ...toRefs(cardState),
+    // set,
   }
 }
 
-function formatTimeChart(series, estatResponse) {
-  // 色の設定
+const _chartData = (series, response) => {
   const style = getGraphSeriesStyle(series.length)
-
-  const value: VALUE[] =
-    estatResponse.GET_STATS_DATA.STATISTICAL_DATA.DATA_INF.VALUE
-
-  // chartData
-  const chartData: TimeChart[] = series.map((d, i) => {
+  const value: VALUE[] = response.GET_STATS_DATA.STATISTICAL_DATA.DATA_INF.VALUE
+  return series.map((d, i) => {
     const key: keyof VALUE = `@${d.id}`
     return {
       name: d.name,
@@ -93,11 +77,11 @@ function formatTimeChart(series, estatResponse) {
       type: d.type,
     }
   })
+}
 
-  // TimeList
-  const times: EstatTimes[] = _formatTimeList(value)
-
-  const tableHeader: EstatTableHeader[] = [
+const _tableHeader = (chartData) => {
+  // console.log(chartData)
+  return [
     { text: '年', value: 'year', width: '80px' },
     ...chartData.map((d) => {
       return {
@@ -108,32 +92,20 @@ function formatTimeChart(series, estatResponse) {
       }
     }),
   ]
+}
 
-  const tableData: EstatTableData[] = times.map((d: EstatTimes) => {
-    return Object.assign(
-      { year: `${d.yearInt}年` },
-      ...chartData.map((item) => {
-        const value = item.data.find((f) => f.x === d.yearInt)
-        if (value) {
-          return {
-            [item.name]: value.y.toLocaleString() + item.data[0].unit,
-          }
-        } else {
-          return ''
-        }
-      })
-    )
-  })
-
-  const TABLE_INF = estatResponse.GET_STATS_DATA.STATISTICAL_DATA.TABLE_INF
-  const source = _formatSource(TABLE_INF)
-
-  return {
-    chartData,
-    tableHeader,
-    tableData,
-    source,
-  }
+const _tableData = (chartData) => {
+  return [
+    { text: '年', value: 'year', width: '80px' },
+    ...chartData.map((d) => {
+      return {
+        text: d.name,
+        value: d.name,
+        align: 'center',
+        width: '100px',
+      }
+    }),
+  ]
 }
 
 const _setLastUpdate = () => {
@@ -145,41 +117,11 @@ const _setLastUpdate = () => {
   }
 }
 
-function _formatTimeList(value: VALUE[]) {
-  const times = Array.from(new Set(value.map((d) => d['@time']))).map((d) => {
-    return {
-      yearInt: parseInt(d.substr(0, 4)),
-      yearStr: d,
-      yearName: `${d.substr(0, 4)}年`,
-    }
-  })
-
-  return times.sort((a, b) => {
-    if (a.yearStr > b.yearStr) return -1
-    if (a.yearStr < b.yearStr) return 1
-    return 0
-  })
-}
-
-function _formatSource(TABLE_INF): EstatSource {
-  return {
-    estatName: `政府統計の総合窓口 e-Stat「${TABLE_INF.STAT_NAME.$}」`,
-    estatUrl: `https://www.e-stat.go.jp/dbview?sid=${TABLE_INF['@id']}`,
-  }
-}
-
-/**
- * additionalDescription
- * @param annotation - 注釈
- */
-function formatAdditionalDescription(annotation: string[]) {
+const _additionalDescription = (annotation: string[]) => {
   const estatCredit: string[] = [
     'このサービスは、政府統計総合窓口(e-Stat)のAPI機能を使用していますが、サービスの内容は国によって保証されたものではありません',
   ]
-  const codhCredit: string[] = ['歴史的行政区域データセットβ版（CODH作成）']
+  // const codhCredit: string[] = ['歴史的行政区域データセットβ版（CODH作成）']
 
-  return {
-    timeChart: annotation.concat(estatCredit),
-    rankChart: annotation.concat(estatCredit, codhCredit),
-  }
+  return annotation.concat(estatCredit)
 }

@@ -1,8 +1,3 @@
-export type CardTitle = {
-  title: string
-  titleId: string
-}
-
 export type EstatParams = {
   statsDataId: string
   cdArea?: string | string[]
@@ -12,23 +7,50 @@ export type EstatParams = {
   cdTime?: string | string[]
 }
 
+export type EstatState = {
+  title: string
+  titleId: string
+  params: EstatParams
+  series: EstatSeries[]
+  annotation: string[]
+  response?: EstatResponse
+}
+
 export type EstatSeries = {
-  id?: string
-  code?: string
+  id: string
+  code: string
   name: string
   type?: string
   yAxis?: number
   color?: string
   data?: []
   year?: number
-  man: string
-  woman: string
+  man?: string
+  woman?: string
 }
 
 export type EstatTimes = {
   yearInt?: number
   yearStr?: string
   yearName?: string
+}
+
+// export interface TimeChartData {
+//   x: number
+//   y: number
+//   unit: string
+// }
+
+export type EstatTimeChart = {
+  name: string
+  data: {
+    x: number
+    y: number
+    unit: string
+  }
+  color: string
+  yAxis?: number
+  type?: string
 }
 
 export type EstatSource = {
