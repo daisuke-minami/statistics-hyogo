@@ -9,27 +9,24 @@ import {
   defineComponent,
   computed,
   useRoute,
-  provide,
   inject,
 } from '@nuxtjs/composition-api'
-import { useState, StateKey } from '@/composition/useState'
+import { StateKey } from '@/composition/useState'
 
 export default defineComponent({
   setup() {
     // パスパラメータの取得
     const route = useRoute()
     const params = route.value.params
-    const { code, statField, menuId, cardId } = params
+    const { govType, code, statField, menuId, cardId } = params
 
-    // provide
-    provide(StateKey, useState())
+    // Stateをセット
     const State = inject(StateKey)
-    State.setState(code, statField, menuId)
-    const { govType } = State
+    State.setState(govType, code, statField, menuId)
 
     // カードコンポーネントの設定
     const cardComponent = computed((): string => {
-      if (govType.value === 'prefecture') {
+      if (govType === 'prefecture') {
         return `lazy-${cardId}-prefecture`
       } else {
         return `lazy-${cardId}-city`

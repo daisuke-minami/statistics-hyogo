@@ -118,7 +118,7 @@ export default defineComponent({
       additionalDescription,
       displayInfo,
     } = useEstatTimeChart(props, () => estatResponse.value)
-
+    // console.log(path)
     // chartの種類を設定
     const chartComponent = 'column-chart'
 

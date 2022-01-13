@@ -13,7 +13,8 @@ interface CardState {
 export const useEstatTimeChart = (props, getRes: () => object) => {
   // inject
   const State = inject(StateKey)
-  const { govType, selectedPref, selectedCity } = State
+  const { govType, routingPath, selectedPref, selectedCity } = State
+  // console.log(routingPath)
 
   const _setTitle = (title: string) => {
     const name: string =
@@ -31,6 +32,14 @@ export const useEstatTimeChart = (props, getRes: () => object) => {
       return ''
     }
   }
+  const state = reactive<CardState>({
+    canvas: true,
+    title: _setTitle(props.cardTitle.title),
+    titleId: props.cardTitle.titleId,
+    path: `${routingPath.value}/${props.cardTitle.titleId}/`,
+    lastUpdate: _setLastUpdate(),
+    // chartData: formatData.value.chartData,
+  })
 
   const formatData = computed(() => {
     return formatTimeChart(props.estatSeries, getRes())
@@ -58,15 +67,6 @@ export const useEstatTimeChart = (props, getRes: () => object) => {
   })
   const additionalDescription = computed((): string[] => {
     return formatAdditionalDescription(props.estatAnnotation).timeChart
-  })
-
-  const state = reactive<CardState>({
-    canvas: true,
-    title: _setTitle(props.cardTitle.title),
-    titleId: props.cardTitle.title,
-    path: '/test',
-    lastUpdate: _setLastUpdate(),
-    // chartData: formatData.value.chartData,
   })
 
   return {

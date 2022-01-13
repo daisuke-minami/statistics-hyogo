@@ -126,7 +126,7 @@ export default defineComponent({
       return `${props.cardTitle.titleId}`
     })
     const routingPath = computed((): string => {
-      return `/${code}/${State.routingPath.value}/${titleId.value}/`
+      return `${code}/${State.routingPath.value}/${titleId.value}/`
     })
 
     // eStat-APIからデータを取得
