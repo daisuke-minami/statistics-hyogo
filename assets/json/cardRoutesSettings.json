@@ -5,5 +5,761 @@
     "category": "国土・気象",
     "ogpWidth": 959,
     "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/landweather/area/total-area/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/landweather/area/habitable-area/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/landweather/area/evaluation-total-cadastral/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/landweather/park/nature-park/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/landweather/park/natural-environment-conservation-area/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/landweather/climate/sunny-days/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/landweather/climate/cloudy-days/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/population/population/total-population/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/population/population/population-prefecture-rank/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/population/inflowoutflow/outflow-inside/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/population/inflowoutflow/outflow-outside/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/population/inflowoutflow/inflow-inside/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/population/inflowoutflow/inflow-outside/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/population/moveinmoveout/move-in/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/population/moveinmoveout/move-out/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/population/household/household/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/population/household/single-mother-household/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/population/birth/birth-sex/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/population/birth/birth-mother-age/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/population/birth/total-fertility-rate/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/population/death/death-sex/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/population/death/age-adjusted-mortality/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/population/death/standardized-mortality/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/population/death/still-birth/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/population/marriage/marriage/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/population/marriage/divorce/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/population/marriage/first-marriage-age/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/population/marriage/unmarried/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/population/marriage/spouse/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/population/marriage/separated/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/laborwage/labor-force/labor-force-population/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/agriculture/agriculture/farmers/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/agriculture/agriculture/agricultural-working/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/agriculture/agriculture/agricultural-land/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/agriculture/agriculture/agricultural-land-conversion/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/agriculture/agriculture/agricultural-output/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/agriculture/agriculture/abandoned-cultivated/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/agriculture/agriculture/agriculture-forestry-fisher/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/agriculture/agriculture/agriculture-forestry-fisher-employers/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/agriculture/fishing/fishery-output/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/agriculture/fishing/aquaculture-yield/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/agriculture/forestry/forest-road-extension/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/miningindustry/manufacturing-industry/product-shipment-value/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/miningindustry/industrial-water/industrial-water-volume/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/commercial/commercial/commercial-establishments/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/economy/gross-domestic-product/industry-class/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/economy/gross-domestic-product/prefectural-income/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/economy/gross-domestic-product/private-final-consumption-expenditure/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/economy/gross-domestic-product/government-final-consumption-expenditure/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/economy/gross-domestic-product/total-capital-formation-nominal/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/economy/gross-domestic-product/taxable-income/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/economy/gross-domestic-product/taxpayers/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/economy/establishments/establishments/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/economy/establishments/employees/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/economy/sales/value-added-amount/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/economy/price/consumer-price-index/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/economy/household-budget/real-income/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/economy/household-budget/consumption-expenditure-one/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/economy/household-budget/consumption-expenditure-two/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/economy/household-budget/current-savings-one/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/economy/household-budget/current-savings-two/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/economy/household-budget/current-debt-one/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/economy/household-budget/current-debt-two/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/economy/household-budget/average-annual-income-one/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/economy/household-budget/average-annual-income-two/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/construction/construction/builders/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/energy/energy/power-generation/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/energy/energy/power-demand/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/energy/energy/gasoline-sales-volume/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/energy/energy/city-gas-sales-volume/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/energy/garbage/garbage-discharged/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/tourism/hotel/ryokan/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/tourism/car/motorized-bicycle/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/tourism/car/drivers-license/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/tourism/car/senior-citizens/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/educationsports/kindergarten/kindergartens/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/educationsports/kindergarten/kindergarten-teachers/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/educationsports/kindergarten/kindergarten-children/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/educationsports/primary-schools/primary-schools/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/educationsports/primary-schools/primary-schools-teachers/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/educationsports/primary-schools/primary-schools-students/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/administrativefinancial/staff/administrative-staff/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/administrativefinancial/staff/fire-department-staff/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/administrativefinancial/staff/education-department-staff/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/administrativefinancial/staff/police-department-staff/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/administrativefinancial/parliament/members/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/administrativefinancial/finance/financial-strength-index/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/administrativefinancial/finance/real-balance-ratio/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/administrativefinancial/finance/standard-financial-income/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/administrativefinancial/finance/standard-financial-demand/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/administrativefinancial/finance/real-debt-service-ratio/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/administrativefinancial/finance/future-burden-ratio/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/administrativefinancial/finance/current-account-ratio/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/safetyenvironment/traffic-accident/traffic-accident/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/safetyenvironment/traffic-accident/incident/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/safetyenvironment/traffic-accident/road-traffic-law/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/safetyenvironment/fire-department/fire-department/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/safetyenvironment/fire-department/fire-brigade/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/safetyenvironment/fire-department/fire-department-dispatch/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/safetyenvironment/fire-department/emergency-dispatch/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/safetyenvironment/fires/fires/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/safetyenvironment/fires/fire-damage-amount/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/safetyenvironment/fires/new-fire-insurance/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/safetyenvironment/fires/new-fire-insurance/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/safetyenvironment/fires/fire-insurance-claims-paid/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/safetyenvironment/voluntary-car-insurance/voluntary-car-insurance/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/safetyenvironment/voluntary-car-insurance/voluntary-car-insurance-claims-paid/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/safetyenvironment/voluntary-car-insurance/voluntary-car-insurance-penetration-rate/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/safetyenvironment/crime/crime-prevention-volunteer/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/safetyenvironment/crime/accepting-alleged-foreigners/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/safetyenvironment/crime/civil-cases/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/safetyenvironment/crime/administrative-cases/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/safetyenvironment/crime/domestic-affairs/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/safetyenvironment/crime/special-law/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/safetyenvironment/crime/prostitution/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/safetyenvironment/environment/calculated-greenhouse-gas-emissions/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/safetyenvironment/pollution/pollution-complaints/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/safetyenvironment/pollution/water-pollution/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/safetyenvironment/disaster/disaster-damage-amount/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/safetyenvironment/disaster/flood-damage/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/safetyenvironment/disaster/natural-disasters/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/socialsecurity/medical/national-medical-expenses/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/socialsecurity/medical/welfare-facilities-elderly/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/socialsecurity/medical/national-health-insurance/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/socialsecurity/medical/national-health-insurance-benefit-amount/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
+  },
+  {
+    "path": "/prefecture/28000/international/foreigner/foreign-population/",
+    "title": "\u30c6\u30b9\u30c8",
+    "ogpWidth": 959,
+    "ogpHeight": 500
   }
 ]
