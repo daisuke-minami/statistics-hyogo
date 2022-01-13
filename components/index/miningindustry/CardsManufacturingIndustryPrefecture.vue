@@ -14,11 +14,11 @@ const ProductShipmentValue = () => {
 }
 
 // 製造業付加価値額
-const ValueAdded = () => {
-  return import(
-    '~/components/index/miningindustry/cards/manufacturing-industry/valueAddedPrefecture.vue'
-  )
-}
+// const ValueAdded = () => {
+//   return import(
+//     '~/components/index/miningindustry/cards/manufacturing-industry/valueAddedPrefecture.vue'
+//   )
+// }
 
 export default defineComponent({
   components: {
@@ -26,7 +26,7 @@ export default defineComponent({
   },
   setup() {
     // Card
-    const rows = ref([[ProductShipmentValue, ValueAdded]])
+    const rows = ref([[ProductShipmentValue]])
 
     return {
       rows,

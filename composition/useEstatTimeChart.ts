@@ -2,47 +2,31 @@ import { computed, inject, reactive, toRefs } from '@nuxtjs/composition-api'
 import { StateKey } from '@/composition/useState'
 import { getGraphSeriesStyle } from '@/utils/colors'
 
-interface CardState {
-  canvas: boolean
-  title: string
-  titleId: string
-  path: string
-  lastUpdate: string
-}
-
-export const useEstatTimeChart = (props, getRes: () => object) => {
+export const useEstatTimeChart = (estatState) => {
   // inject
   const State = inject(StateKey)
   const { govType, routingPath, selectedPref, selectedCity } = State
-  // console.log(routingPath)
 
-  const _setTitle = (title: string) => {
+  const state = reactive<CardState>({
+    canvas: true,
+    path: `${routingPath.value}/${estatState.titleId}/`,
+  })
+
+  // console.log(props)
+  const title = computed(() => {
     const name: string =
       govType.value === 'prefecture'
         ? selectedPref.value.prefName
         : selectedCity.value.cityName
-    return `${name}の${title}`
-  }
-
-  const _setLastUpdate = () => {
-    if (process.browser) {
-      const day = new Date(document.lastModified)
-      return `${day.getFullYear()}年${day.getMonth() + 1}月${day.getDate()}日`
-    } else {
-      return ''
-    }
-  }
-  const state = reactive<CardState>({
-    canvas: true,
-    title: _setTitle(props.cardTitle.title),
-    titleId: props.cardTitle.titleId,
-    path: `${routingPath.value}/${props.cardTitle.titleId}/`,
-    lastUpdate: _setLastUpdate(),
-    // chartData: formatData.value.chartData,
+    return `${name}の${estatState.title}`
   })
 
+  const titleId = estatState.titleId
+
+  const lastUpdate = _setLastUpdate()
+
   const formatData = computed(() => {
-    return formatTimeChart(props.estatSeries, getRes())
+    return formatTimeChart(estatState.series, estatState.response)
   })
   const chartData = computed(() => {
     return formatData.value.chartData
@@ -66,11 +50,14 @@ export const useEstatTimeChart = (props, getRes: () => object) => {
     return formatData.value.source
   })
   const additionalDescription = computed((): string[] => {
-    return formatAdditionalDescription(props.estatAnnotation).timeChart
+    return formatAdditionalDescription(estatState.annotation).timeChart
   })
 
   return {
     ...toRefs(state),
+    title,
+    titleId,
+    lastUpdate,
     chartData,
     tableHeader,
     tableData,
@@ -146,6 +133,15 @@ function formatTimeChart(series, estatResponse) {
     tableHeader,
     tableData,
     source,
+  }
+}
+
+const _setLastUpdate = () => {
+  if (process.browser) {
+    const day = new Date(document.lastModified)
+    return `${day.getFullYear()}年${day.getMonth() + 1}月${day.getDate()}日`
+  } else {
+    return ''
   }
 }
 
