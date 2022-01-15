@@ -1,62 +1,67 @@
 <template>
-  <lazy-component :is="chartComponent" v-bind="props" />
+  <v-col cols="12" md="6" class="DataCard">
+    <client-only>
+      <template>
+        <v-card :loading="$fetchState.pending">
+          <p v-if="$fetchState.pending" />
+          <lazy-component :is="cardComponent" v-else v-bind="props" />
+        </v-card>
+      </template>
+    </client-only>
+  </v-col>
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive } from '@nuxtjs/composition-api'
+import {
+  defineComponent,
+  reactive,
+  useFetch,
+  useContext,
+  useRoute,
+} from '@nuxtjs/composition-api'
+import { useEstatApi } from '@/composition/useEstatApi'
+import { EstatState } from '@/types/estat'
 
 export default defineComponent({
   setup() {
-    // cardタイトル
-    const cardTitle = {
+    // cardコンポーネントの設定
+    const cardComponent = 'estat-column-card'
+
+    // State
+    const estatState = reactive<EstatState>({
       title: '総面積',
       titleId: 'total-area',
-    }
-
-    // Chartコンポーネントの設定
-    const chartComponent = 'estat-column-card'
-
-    // const estatConfig = {
-    //   params: {
-    //     statsDataId: '0000010102',
-    //     cdCat01: ['B1101'],
-    //   },
-    //   series: [
-    //     {
-    //       name: '総面積',
-    //       id: 'cat01',
-    //       code: 'B1101',
-    //     },
-    //   ],
-    // }
-
-    // estatParams cdAreaはestatコンポーネントで設定
-    const estatParams = {
-      statsDataId: '0000010102',
-      cdCat01: ['B1101'],
-    }
-    const estatSeries = reactive<EstatSeries[]>([
-      {
-        id: 'cat01',
-        code: 'B1101',
-        name: '総面積',
+      params: {
+        statsDataId: '0000010102',
+        cdCat01: ['B1101'],
       },
-    ])
-    const estatLatestYear = reactive<EstatTimes>({
-      yearInt: 2019,
-      yearStr: '2019100000',
-      yearName: '2019年',
+      series: [
+        {
+          id: 'cat01',
+          code: 'B1101',
+          name: '総面積',
+        },
+      ],
+      annotation: [],
+      response: {},
     })
-    const estatAnnotation = reactive<string[]>([])
+
+    // routeパラメータの取得
+    const { code } = useRoute().value.params
+
+    // eStat-APIからデータを取得
+    const { $axios } = useContext()
+    const { fetch } = useFetch(async () => {
+      const params = Object.assign({}, estatState.params)
+      params.cdArea = code
+      estatState.response = await useEstatApi($axios, params).getData()
+    })
+    fetch()
 
     return {
-      chartComponent,
+      cardComponent,
       props: {
-        cardTitle,
-        estatParams,
-        estatSeries,
-        estatLatestYear,
-        estatAnnotation,
+        estatState,
       },
     }
   },

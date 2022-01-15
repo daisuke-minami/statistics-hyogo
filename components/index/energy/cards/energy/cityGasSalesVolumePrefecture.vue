@@ -3,52 +3,56 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, ref } from '@nuxtjs/composition-api'
 import {
-  CardTitle,
-  EstatParams,
-  EstatSeries,
-  EstatTimes,
-} from '~/utils/formatEstat'
+  defineComponent,
+  reactive,
+  useFetch,
+  useContext,
+  useRoute,
+} from '@nuxtjs/composition-api'
+import { useEstatApi } from '@/composition/useEstatApi'
+import { EstatState } from '@/types/estat'
 
 export default defineComponent({
   setup() {
-    // Chartコンポーネントの設定
-    const chartComponent = ref<string>('estat-column-card')
+    // cardコンポーネントの設定
+    const cardComponent = 'estat-column-card'
 
-    // cardタイトル
-    const cardTitle = reactive<CardTitle>({
+    // State
+    const estatState = reactive<EstatState>({
       title: '都市ガス販売量',
       titleId: 'city-gas-sales-volume',
+      params: {
+        statsDataId: '0000010108',
+        cdCat01: ['H5206'],
+      },
+      series: [
+        {
+          id: 'cat01',
+          code: 'H5206',
+          name: '都市ガス販売量',
+        },
+      ],
+      annotation: [],
+      response: {},
     })
 
-    // estatParams cdAreaはestatコンポーネントで設定
-    const estatParams = reactive<EstatParams>({
-      statsDataId: '0000010108',
-      cdCat01: ['H5206'],
+    // routeパラメータの取得
+    const { code } = useRoute().value.params
+
+    // eStat-APIからデータを取得
+    const { $axios } = useContext()
+    const { fetch } = useFetch(async () => {
+      const params = Object.assign({}, estatState.params)
+      params.cdArea = code
+      estatState.response = await useEstatApi($axios, params).getData()
     })
-    const estatSeries = reactive<EstatSeries[]>([
-      {
-        id: 'cat01',
-        code: 'H5206',
-        name: '都市ガス販売量',
-      },
-    ])
-    const estatLatestYear = reactive<EstatTimes>({
-      yearInt: 2019,
-      yearStr: '2019100000',
-      yearName: '2019年',
-    })
-    const estatAnnotation = reactive<string[]>([])
+    fetch()
 
     return {
-      chartComponent,
+      cardComponent,
       props: {
-        cardTitle,
-        estatParams,
-        estatSeries,
-        estatLatestYear,
-        estatAnnotation,
+        estatState,
       },
     }
   },
