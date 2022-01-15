@@ -38,6 +38,8 @@ import {
   reactive,
   toRef,
   inject,
+  useRoute,
+  computed,
   provide,
 } from '@nuxtjs/composition-api'
 import ScaleLoader from 'vue-spinner/src/ScaleLoader.vue'
@@ -65,9 +67,20 @@ export default defineComponent({
       loading: true,
     })
 
+    // URLパラメータの取得
+    const route = useRoute()
+    const query = computed(() => route.value.query)
+
     onMounted(() => {
       data.loading = false
       getMatchMedia().addListener(closeNavigation)
+      if (query.value.embed === 'true') {
+        data.hasNavigation = false
+        // data.loading = false
+      } else if (query.value.ogp === 'true') {
+        data.hasNavigation = false
+        // data.loading = false
+      }
     })
 
     onBeforeUnmount(() => {
