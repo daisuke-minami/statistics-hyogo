@@ -9,6 +9,7 @@ interface CardState {
   path: string
   chartData: EstatTimeChart[]
   tableHeader: EstatTableHeader[]
+  tableData: []
 }
 
 export const useEstatTimeChart = (estatState) => {
@@ -34,15 +35,15 @@ export const useEstatTimeChart = (estatState) => {
     }
   }
 
+  const { title, titleId, series, response } = estatState
+
   const cardState = reactive<CardState>({
-    title: _setTitle(estatState.title),
-    titleId: estatState.titleId,
-    path: `${routingPath.value}/${estatState.titleId}/`,
-    chartData: _chartData(estatState.series, estatState.response),
-    tableHeader: _tableHeader(
-      _chartData(estatState.series, estatState.response)
-    ),
-    tableData: _tableData(_chartData(estatState.series, estatState.response)),
+    title: _setTitle(title),
+    titleId,
+    path: `${routingPath.value}/${titleId}/`,
+    chartData: _chartData(series, response),
+    tableHeader: _tableHeader(_chartData(series, response)),
+    tableData: _tableData(_chartData(series, response)),
     lastUpdate: _setLastUpdate(),
     additionalDescription: _additionalDescription(estatState.annotation),
     source: _source(),
