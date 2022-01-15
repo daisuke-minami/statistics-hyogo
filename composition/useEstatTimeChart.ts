@@ -2,6 +2,7 @@ import { inject, reactive, toRefs } from '@nuxtjs/composition-api'
 import { StateKey } from '@/composition/useState'
 import { getGraphSeriesStyle } from '@/utils/colors'
 import { EstatTimeChart, EstatTableHeader } from '@/types/estat'
+import { useCity } from '@/composition/useCity'
 
 interface CardState {
   title: string
@@ -15,8 +16,9 @@ interface CardState {
 export const useEstatTimeChart = (estatState) => {
   // inject
   const State = inject(StateKey)
-  const { govType, routingPath, selectedPref, selectedCity } = State
+  const { govType, routingPath, selectedPref } = State
 
+  const { selectedCity } = useCity()
   const _setTitle = () => {
     const name: string =
       govType.value === 'prefecture'

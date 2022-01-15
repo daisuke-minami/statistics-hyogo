@@ -11,9 +11,7 @@ import {
   useRoute,
   ref,
   useMeta,
-  // toRefs,
   inject,
-  // reactive,
 } from '@nuxtjs/composition-api'
 import { StateKey } from '@/composition/useState'
 import { useContents } from '~/composition/useContents'
