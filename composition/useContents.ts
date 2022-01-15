@@ -1,12 +1,7 @@
 import { computed, useRoute } from '@nuxtjs/composition-api'
-// import { StateKey } from '@/composition/useState'
 import contents from '~/assets/json/contentsSetting.json'
 
 export const useContents = () => {
-  // const State = inject(StateKey)
-  // const { code, govType, statField } = State
-  // // console.log({ code, govType, statField })
-
   // パスパラメータの取得
   const route = useRoute()
   const params = route.value.params
