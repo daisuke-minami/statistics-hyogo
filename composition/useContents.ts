@@ -1,11 +1,16 @@
-import { computed, inject } from '@nuxtjs/composition-api'
-import { StateKey } from '@/composition/useState'
+import { computed, useRoute } from '@nuxtjs/composition-api'
+// import { StateKey } from '@/composition/useState'
 import contents from '~/assets/json/contentsSetting.json'
 
 export const useContents = () => {
-  const State = inject(StateKey)
-  const { code, govType, statField } = State
-  // console.log({ code, govType, statField })
+  // const State = inject(StateKey)
+  // const { code, govType, statField } = State
+  // // console.log({ code, govType, statField })
+
+  // パスパラメータの取得
+  const route = useRoute()
+  const params = route.value.params
+  const { govType, code, statField, menuId, cardId } = params
 
   // 統計分野リスト
   const getFieldList = computed(() => {
@@ -29,18 +34,28 @@ export const useContents = () => {
 
   const menuList = computed(() => {
     return contents.list
-      .find((f) => f.fieldId === statField.value)
-      ?.menu[govType.value].map((d) => {
+      .find((f) => f.fieldId === statField)
+      ?.menu[govType].map((d) => {
         return {
           label: d.menuTitle,
-          path: `/${govType.value}/${code.value}/${statField.value}/${d.menuId}/`,
+          id: d.menuId,
+          path: `/${govType}/${code}/${statField}/${d.menuId}/`,
+          card: d.card,
         }
       })
+  })
+
+  const cardItem = computed(() => {
+    // console.log(menuId)
+    return menuList.value
+      .find((f) => f.id === menuId)
+      .card.find((f) => f.cardId === cardId)
   })
 
   return {
     getFieldList,
     getInitMenuTitles,
+    cardItem,
     menuList,
   }
 }
