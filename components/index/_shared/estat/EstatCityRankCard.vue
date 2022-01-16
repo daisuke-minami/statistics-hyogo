@@ -81,7 +81,7 @@ import {
   computed,
   watch,
   useFetch,
-  useStore,
+  // useStore,
   PropType,
   inject,
 } from '@nuxtjs/composition-api'
@@ -96,6 +96,7 @@ import {
   formatAdditionalDescription,
 } from '@/utils/formatEstat'
 import { StateType, StateKey } from '@/composition/useState'
+import axios from 'axios'
 
 // MapChart
 const MapChart = () => {
@@ -166,7 +167,7 @@ export default defineComponent({
 
     // eStat-APIからデータを取得
     const estatResponse = ref<EstatResponse>({})
-    // console.log(estatResponse.value)
+    const geoJson = ref<object>({})
     const { fetch } = useFetch(async () => {
       const params = Object.assign({}, props.estatParams)
       const series = selectedSeries.value
@@ -179,7 +180,15 @@ export default defineComponent({
         { params }
       )
 
+      const { data: topoAll } = await axios.get(
+        'https://geoshape.ex.nii.ac.jp/city/topojson/20200101/28/28_city_dc.l.topojson'
+      )
+      // const { data: topoBreak } = await axios.get(
+      //   'https://geoshape.ex.nii.ac.jp/city/topojson/20200101/28/28_city.l.topojson'
+      // )
+
       estatResponse.value = res
+      geoJson.value = topoAll
     })
 
     // 系列セレクト
@@ -213,9 +222,12 @@ export default defineComponent({
     })
 
     // ストアからtopojsonを取得
-    const store = useStore()
-    const topoJson = computed(() =>
-      store.getters['topojson/getMapCity'](bigcityKind.value)
+    // const store = useStore()
+    const topoJson = computed(
+      () => {
+        return geoJson.value
+      }
+      // store.getters['topojson/getMapCity'](bigcityKind.value)
     )
     // watch(bigcityKind, () => fetch())
 

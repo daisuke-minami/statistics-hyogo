@@ -21,7 +21,7 @@ import { useContents } from '@/composition/useContents'
 
 export default defineComponent({
   setup() {
-    const items = useContents().menuList.value
+    const items = useContents().menuLinks.value
     return { items }
   },
 })

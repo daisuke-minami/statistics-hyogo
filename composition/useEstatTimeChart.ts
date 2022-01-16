@@ -1,7 +1,14 @@
 import { inject, reactive, toRefs } from '@nuxtjs/composition-api'
 import { StateKey } from '@/composition/useState'
 import { getGraphSeriesStyle } from '@/utils/colors'
-import { EstatTimeChart, EstatTableHeader } from '@/types/estat'
+import {
+  EstatTimeChart,
+  EstatTableHeader,
+  EstatSource,
+  EstatState,
+} from '@/types/estat'
+import { useCity } from '@/composition/useCity'
+import { usePrefecture } from '@/composition/usePrefecture'
 
 interface CardState {
   title: string
@@ -10,19 +17,26 @@ interface CardState {
   chartData: EstatTimeChart[]
   tableHeader: EstatTableHeader[]
   tableData: []
+  lastUpdate: string
+  additionalDescription: string[]
+  source: EstatSource
 }
 
-export const useEstatTimeChart = (estatState) => {
+export const useEstatTimeChart = (estatState: EstatState) => {
   // inject
   const State = inject(StateKey)
-  const { govType, routingPath, selectedPref, selectedCity } = State
+  const { govType, routingPath } = State
 
-  const _setTitle = () => {
+  // 都道府県・市区町村
+  const { selectedPref } = usePrefecture()
+  const { selectedCity } = useCity()
+
+  const _setTitle = (title: string) => {
     const name: string =
       govType.value === 'prefecture'
         ? selectedPref.value.prefName
         : selectedCity.value.cityName
-    return `${name}の${estatState.title}`
+    return `${name}の${title}`
   }
 
   // 出典
@@ -43,17 +57,14 @@ export const useEstatTimeChart = (estatState) => {
     path: `${routingPath.value}/${titleId}/`,
     chartData: _chartData(series, response),
     tableHeader: _tableHeader(_chartData(series, response)),
-    tableData: _tableData(_chartData(series, response)),
+    tableData: _tableData(_chartData(series, response), _timeList(response)),
     lastUpdate: _setLastUpdate(),
     additionalDescription: _additionalDescription(estatState.annotation),
     source: _source(),
   })
 
-  // const set = (estatState): void => {}
-
   return {
     ...toRefs(cardState),
-    // set,
   }
 }
 
@@ -80,6 +91,23 @@ const _chartData = (series, response) => {
   })
 }
 
+const _timeList = (response) => {
+  const value: VALUE[] = response.GET_STATS_DATA.STATISTICAL_DATA.DATA_INF.VALUE
+  const times = Array.from(new Set(value.map((d) => d['@time']))).map((d) => {
+    return {
+      yearInt: parseInt(d.substr(0, 4)),
+      yearStr: d,
+      yearName: `${d.substr(0, 4)}年`,
+    }
+  })
+
+  return times.sort((a, b) => {
+    if (a.yearStr > b.yearStr) return -1
+    if (a.yearStr < b.yearStr) return 1
+    return 0
+  })
+}
+
 const _tableHeader = (chartData) => {
   // console.log(chartData)
   return [
@@ -95,18 +123,22 @@ const _tableHeader = (chartData) => {
   ]
 }
 
-const _tableData = (chartData) => {
-  return [
-    { text: '年', value: 'year', width: '80px' },
-    ...chartData.map((d) => {
-      return {
-        text: d.name,
-        value: d.name,
-        align: 'center',
-        width: '100px',
-      }
-    }),
-  ]
+const _tableData = (chartData, timeList) => {
+  return timeList.map((d) => {
+    return Object.assign(
+      { year: `${d.yearInt}年` },
+      ...chartData.map((item) => {
+        const value = item.data.find((f) => f.x === d.yearInt)
+        if (value) {
+          return {
+            [item.name]: value.y.toLocaleString() + item.data[0].unit,
+          }
+        } else {
+          return ''
+        }
+      })
+    )
+  })
 }
 
 const _setLastUpdate = () => {

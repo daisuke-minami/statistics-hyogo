@@ -257,7 +257,7 @@ const config: NuxtConfig = {
   },
   env: { PREF_CODE, API_KEY, ESTAT_APPID, GOOGLE_ANALYTICS_ID, BASE_URL },
   router: {
-    middleware: 'vuex',
+    // middleware: 'vuex',
   },
   components: [
     {

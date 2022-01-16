@@ -67,7 +67,6 @@ export default defineComponent({
       tableData,
       source,
       additionalDescription,
-      // displayInfo,
     } = useEstatTimeChart(props.estatState)
 
     // chartの種類を設定
