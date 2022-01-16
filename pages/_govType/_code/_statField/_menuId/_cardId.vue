@@ -9,9 +9,11 @@ import {
   defineComponent,
   computed,
   useRoute,
-  ref,
+  // toRefs,
+  // ref,
   useMeta,
   inject,
+  reactive,
 } from '@nuxtjs/composition-api'
 import { StateKey } from '@/composition/useState'
 import { useContents } from '~/composition/useContents'
@@ -24,9 +26,6 @@ export default defineComponent({
     const params = route.value.params
     const { govType, code, statField, menuId, cardId } = params
     // console.log({ govType, code, statField, menuId, cardId })
-
-    // タイトルの取得
-    const cardTitle = useContents().cardItem
 
     // Stateをセット
     const State = inject(StateKey)
@@ -42,15 +41,21 @@ export default defineComponent({
     })
 
     // メタ
-    const url = ref<string>('https://statistics-hyogo.com')
+    const url = 'https://statistics-hyogo.com'
     // const timestamp = ref<any>(new Date().getTime())
-    const defaultTitle = ref<string>('統計で見る兵庫県のすがた')
+    // const defaultTitle = ref<string>('統計で見る兵庫県のすがた')
     const ogpImage = computed(() => {
       return `_${govType}_${code}_${statField}_${menuId}_${cardId}.png`
     })
-    // console.log(defaultTitle.value)
 
-    const mInfo = [
+    // タイトルの取得
+    const { getCardTitle } = useContents()
+    const ogpTitle = computed(() => {
+      return `${getCardTitle.value(cardId)} | 統計で見る兵庫県のすがた`
+    })
+    // console.log(ogpTitle)
+
+    const mInfo = reactive<any>([
       {
         hid: 'og:url',
         property: 'og:url',
@@ -59,7 +64,7 @@ export default defineComponent({
       {
         hid: 'og:title',
         property: 'og:title',
-        content: `${cardTitle.value} | ${defaultTitle.value}`,
+        content: ogpTitle.value,
       },
       {
         hid: 'description',
@@ -74,19 +79,20 @@ export default defineComponent({
       {
         hid: 'og:image',
         property: 'og:image',
-        content: `${ogpImage.value}`,
+        content: ogpImage.value,
       },
       {
         hid: 'twitter:image',
         name: 'twitter:image',
-        content: `${ogpImage.value}`,
+        content: ogpImage.value,
       },
-    ]
+    ])
 
     const { title, meta } = useMeta()
-    title.value = `${cardTitle} | ${defaultTitle.value}`
+    title.value = ogpTitle.value
     meta.value = mInfo
 
+    // console.log({ title, meta })
     return {
       statField,
       cardComponent,
