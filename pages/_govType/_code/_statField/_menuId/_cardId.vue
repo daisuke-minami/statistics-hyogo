@@ -25,7 +25,6 @@ export default defineComponent({
     const route = useRoute()
     const params = route.value.params
     const { govType, code, statField, menuId, cardId } = params
-    // console.log({ govType, code, statField, menuId, cardId })
 
     // Stateをセット
     const State = inject(StateKey)
@@ -42,18 +41,14 @@ export default defineComponent({
 
     // メタ
     const url = 'https://statistics-hyogo.com'
-    // const timestamp = ref<any>(new Date().getTime())
-    // const defaultTitle = ref<string>('統計で見る兵庫県のすがた')
     const ogpImage = computed(() => {
-      return `_${govType}_${code}_${statField}_${menuId}_${cardId}.png`
+      return `_${govType}_${code}_${statField}_${menuId}_${cardId}_.png`
     })
-
-    // タイトルの取得
     const { getCardTitle } = useContents()
     const ogpTitle = computed(() => {
       return `${getCardTitle.value(cardId)} | 統計で見る兵庫県のすがた`
     })
-    // console.log(ogpTitle)
+    console.log(ogpImage.value)
 
     const mInfo = reactive<any>([
       {
@@ -69,12 +64,12 @@ export default defineComponent({
       {
         hid: 'description',
         name: 'description',
-        content: `兵庫県に関する統計を集約して、視覚的に表現したサイトです`,
+        content: `当サイトは、兵庫県に関する統計をわかりやすく伝えることを目的として、いち兵庫県民が開設したサイトです。`,
       },
       {
         hid: 'og:description',
         property: 'og:description',
-        content: `兵庫県に関する統計を集約して、視覚的に表現したサイトです`,
+        content: `当サイトは、兵庫県に関する統計をわかりやすく伝えることを目的として、いち兵庫県民が開設したサイトです。`,
       },
       {
         hid: 'og:image',

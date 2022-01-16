@@ -1,54 +1,67 @@
 <template>
-  <lazy-component :is="chartComponent" v-bind="props" />
+  <v-col cols="12" md="6" class="DataCard">
+    <client-only>
+      <template>
+        <v-card :loading="$fetchState.pending">
+          <p v-if="$fetchState.pending" />
+          <lazy-component :is="cardComponent" v-else v-bind="props" />
+        </v-card>
+      </template>
+    </client-only>
+  </v-col>
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, ref } from '@nuxtjs/composition-api'
 import {
-  CardTitle,
-  EstatParams,
-  EstatSeries,
-  EstatTimes,
-} from '~/utils/formatEstat'
+  defineComponent,
+  reactive,
+  useFetch,
+  useContext,
+  useRoute,
+} from '@nuxtjs/composition-api'
+import { useEstatApi } from '@/composition/useEstatApi'
+import { EstatState } from '@/types/estat'
 
 export default defineComponent({
   setup() {
-    // Chartコンポーネントの設定
-    const chartComponent = ref<string>('estat-column-card-all-break')
+    // cardコンポーネントの設定
+    const cardComponent = 'estat-column-card'
 
-    // cardタイトル
-    const cardTitle = reactive<CardTitle>({
+    // State
+    const estatState = reactive<EstatState>({
       title: '水質汚濁防止法上の特定事業所数',
       titleId: 'water-pollution',
+      params: {
+        statsDataId: '0000010111',
+        cdCat01: ['K6106'],
+      },
+      series: [
+        {
+          id: 'cat01',
+          code: 'K6106',
+          name: '水質汚濁防止法上の特定事業所数',
+        },
+      ],
+      annotation: [],
+      response: {},
     })
 
-    // estatParams cdAreaはestatコンポーネントで設定
-    const estatParams = reactive<EstatParams>({
-      statsDataId: '0000010111',
-      cdCat01: ['K6106'],
+    // routeパラメータの取得
+    const { code } = useRoute().value.params
+
+    // eStat-APIからデータを取得
+    const { $axios } = useContext()
+    const { fetch } = useFetch(async () => {
+      const params = Object.assign({}, estatState.params)
+      params.cdArea = code
+      estatState.response = await useEstatApi($axios, params).getData()
     })
-    const estatSeries = reactive<EstatSeries[]>([
-      {
-        id: 'cat01',
-        code: 'K6106',
-        name: '水質汚濁防止法上の特定事業所数',
-      },
-    ])
-    const estatLatestYear = reactive<EstatTimes>({
-      yearInt: 2019,
-      yearStr: '2019100000',
-      yearName: '2019年',
-    })
-    const estatAnnotation = reactive<string[]>([])
+    fetch()
 
     return {
-      chartComponent,
+      cardComponent,
       props: {
-        cardTitle,
-        estatParams,
-        estatSeries,
-        estatLatestYear,
-        estatAnnotation,
+        estatState,
       },
     }
   },

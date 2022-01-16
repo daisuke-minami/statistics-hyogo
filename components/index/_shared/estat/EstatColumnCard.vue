@@ -46,6 +46,7 @@
 <script lang="ts">
 import { defineComponent, computed } from '@nuxtjs/composition-api'
 import { useEstatTimeChart } from '@/composition/useEstatTimeChart'
+
 export default defineComponent({
   props: {
     estatState: {

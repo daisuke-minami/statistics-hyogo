@@ -1,158 +1,171 @@
 <template>
-  <lazy-component :is="chartComponent" v-bind="props" />
+  <v-col cols="12" md="6" class="DataCard">
+    <client-only>
+      <template>
+        <v-card :loading="$fetchState.pending">
+          <p v-if="$fetchState.pending" />
+          <lazy-component :is="cardComponent" v-else v-bind="props" />
+        </v-card>
+      </template>
+    </client-only>
+  </v-col>
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, ref } from '@nuxtjs/composition-api'
 import {
-  CardTitle,
-  EstatParams,
-  EstatSeries,
-  EstatTimes,
-} from '~/utils/formatEstat'
+  defineComponent,
+  reactive,
+  useFetch,
+  useContext,
+  useRoute,
+} from '@nuxtjs/composition-api'
+import { useEstatApi } from '@/composition/useEstatApi'
+import { EstatState } from '@/types/estat'
 
 export default defineComponent({
   setup() {
-    // Chartコンポーネントの設定
-    const chartComponent = ref<string>('estat-column-card-all-break')
+    // cardコンポーネントの設定
+    const cardComponent = 'estat-column-card-all-break'
 
-    // cardタイトル
-    const cardTitle = reactive<CardTitle>({
+    // State
+    const estatState = reactive<EstatState>({
       title: '売上金額（民営）',
       titleId: 'sales-amount',
+      params: {
+        statsDataId: '0000010103',
+        cdCat01: [
+          'C6101',
+          'C610101',
+          'C610105',
+          'C610106',
+          'C610107',
+          'C610108',
+          'C610109',
+          'C610110',
+          'C610111',
+          'C610114',
+          'C610115',
+          'C610116',
+          'C610117',
+          'C610118',
+          'C610119',
+          'C610120',
+          'C610121',
+          'C610122',
+        ],
+      },
+      series: [
+        {
+          id: 'cat01',
+          code: 'C6101',
+          name: '総数',
+        },
+        {
+          id: 'cat01',
+          code: 'C610101',
+          name: '農林漁業',
+        },
+        {
+          id: 'cat01',
+          code: 'C610105',
+          name: '鉱業，採石業，砂利採取業',
+        },
+        {
+          id: 'cat01',
+          code: 'C610106',
+          name: '建設業',
+        },
+        {
+          id: 'cat01',
+          code: 'C610107',
+          name: '製造業',
+        },
+        {
+          id: 'cat01',
+          code: 'C610108',
+          name: '電気・ガス・熱供給・水道業',
+        },
+        {
+          id: 'cat01',
+          code: 'C610109',
+          name: '情報通信業',
+        },
+        {
+          id: 'cat01',
+          code: 'C610110',
+          name: '運輸業，郵便業',
+        },
+        {
+          id: 'cat01',
+          code: 'C610111',
+          name: '卸売業，小売業',
+        },
+        {
+          id: 'cat01',
+          code: 'C610114',
+          name: '金融業，保険業',
+        },
+        {
+          id: 'cat01',
+          code: 'C610115',
+          name: '不動産業，物品賃貸業',
+        },
+        {
+          id: 'cat01',
+          code: 'C610116',
+          name: '学術研究，専門・技術サービス業',
+        },
+        {
+          id: 'cat01',
+          code: 'C610117',
+          name: '宿泊業，飲食サービス業',
+        },
+        {
+          id: 'cat01',
+          code: 'C610118',
+          name: '生活関連サービス業，娯楽業',
+        },
+        {
+          id: 'cat01',
+          code: 'C610119',
+          name: '教育，学習支援業',
+        },
+        {
+          id: 'cat01',
+          code: 'C610120',
+          name: '医療，福祉',
+        },
+        {
+          id: 'cat01',
+          code: 'C610121',
+          name: '複合サービス事業',
+        },
+        {
+          id: 'cat01',
+          code: 'C610122',
+          name: 'サービス業（他に分類されないもの）',
+        },
+      ],
+      annotation: [],
+      response: {},
     })
 
-    // estatParams cdAreaはestatコンポーネントで設定
-    const estatParams = reactive<EstatParams>({
-      statsDataId: '0000010103',
-      cdCat01: [
-        'C6101',
-        'C610101',
-        'C610105',
-        'C610106',
-        'C610107',
-        'C610108',
-        'C610109',
-        'C610110',
-        'C610111',
-        'C610114',
-        'C610115',
-        'C610116',
-        'C610117',
-        'C610118',
-        'C610119',
-        'C610120',
-        'C610121',
-        'C610122',
-      ],
+    // routeパラメータの取得
+    const { code } = useRoute().value.params
+
+    // eStat-APIからデータを取得
+    const { $axios } = useContext()
+    const { fetch } = useFetch(async () => {
+      const params = Object.assign({}, estatState.params)
+      params.cdArea = code
+      estatState.response = await useEstatApi($axios, params).getData()
     })
-    const estatSeries = reactive<EstatSeries[]>([
-      {
-        id: 'cat01',
-        code: 'C6101',
-        name: '総数',
-      },
-      {
-        id: 'cat01',
-        code: 'C610101',
-        name: '農林漁業',
-      },
-      {
-        id: 'cat01',
-        code: 'C610105',
-        name: '鉱業，採石業，砂利採取業',
-      },
-      {
-        id: 'cat01',
-        code: 'C610106',
-        name: '建設業',
-      },
-      {
-        id: 'cat01',
-        code: 'C610107',
-        name: '製造業',
-      },
-      {
-        id: 'cat01',
-        code: 'C610108',
-        name: '電気・ガス・熱供給・水道業',
-      },
-      {
-        id: 'cat01',
-        code: 'C610109',
-        name: '情報通信業',
-      },
-      {
-        id: 'cat01',
-        code: 'C610110',
-        name: '運輸業，郵便業',
-      },
-      {
-        id: 'cat01',
-        code: 'C610111',
-        name: '卸売業，小売業',
-      },
-      {
-        id: 'cat01',
-        code: 'C610114',
-        name: '金融業，保険業',
-      },
-      {
-        id: 'cat01',
-        code: 'C610115',
-        name: '不動産業，物品賃貸業',
-      },
-      {
-        id: 'cat01',
-        code: 'C610116',
-        name: '学術研究，専門・技術サービス業',
-      },
-      {
-        id: 'cat01',
-        code: 'C610117',
-        name: '宿泊業，飲食サービス業',
-      },
-      {
-        id: 'cat01',
-        code: 'C610118',
-        name: '生活関連サービス業，娯楽業',
-      },
-      {
-        id: 'cat01',
-        code: 'C610119',
-        name: '教育，学習支援業',
-      },
-      {
-        id: 'cat01',
-        code: 'C610120',
-        name: '医療，福祉',
-      },
-      {
-        id: 'cat01',
-        code: 'C610121',
-        name: '複合サービス事業',
-      },
-      {
-        id: 'cat01',
-        code: 'C610122',
-        name: 'サービス業（他に分類されないもの）',
-      },
-    ])
-    const estatLatestYear = reactive<EstatTimes>({
-      yearInt: 2019,
-      yearStr: '2019100000',
-      yearName: '2019年',
-    })
-    const estatAnnotation = reactive<string[]>([])
+    fetch()
 
     return {
-      chartComponent,
+      cardComponent,
       props: {
-        cardTitle,
-        estatParams,
-        estatSeries,
-        estatLatestYear,
-        estatAnnotation,
+        estatState,
       },
     }
   },
