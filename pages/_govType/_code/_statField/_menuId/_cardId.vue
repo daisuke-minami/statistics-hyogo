@@ -23,6 +23,7 @@ export default defineComponent({
     const route = useRoute()
     const params = route.value.params
     const { govType, code, statField, menuId, cardId } = params
+    // console.log({ govType, code, statField, menuId, cardId })
 
     // タイトルの取得
     const cardTitle = useContents().cardItem
@@ -47,6 +48,7 @@ export default defineComponent({
     const ogpImage = computed(() => {
       return `_${govType}_${code}_${statField}_${menuId}_${cardId}.png`
     })
+    // console.log(defaultTitle.value)
 
     const mInfo = [
       {
@@ -57,7 +59,7 @@ export default defineComponent({
       {
         hid: 'og:title',
         property: 'og:title',
-        content: `${cardTitle} | ${defaultTitle}`,
+        content: `${cardTitle.value} | ${defaultTitle.value}`,
       },
       {
         hid: 'description',
@@ -82,7 +84,7 @@ export default defineComponent({
     ]
 
     const { title, meta } = useMeta()
-    title.value = `${cardTitle} | ${defaultTitle}`
+    title.value = `${cardTitle} | ${defaultTitle.value}`
     meta.value = mInfo
 
     return {
