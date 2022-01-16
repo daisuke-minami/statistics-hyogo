@@ -42,7 +42,7 @@ export default defineComponent({
     // メタ
     const url = 'https://statistics-hyogo.com'
     const ogpImage = computed(() => {
-      return `_${govType}_${code}_${statField}_${menuId}_${cardId}_.png`
+      return `${url}/ogp/_${govType}_${code}_${statField}_${menuId}_${cardId}_.png`
     })
     const { getCardTitle } = useContents()
     const ogpTitle = computed(() => {
