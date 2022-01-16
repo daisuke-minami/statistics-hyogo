@@ -1,116 +1,129 @@
 <template>
-  <lazy-component :is="chartComponent" v-bind="props" />
+  <v-col cols="12" md="6" class="DataCard">
+    <client-only>
+      <template>
+        <v-card :loading="$fetchState.pending">
+          <p v-if="$fetchState.pending" />
+          <lazy-component :is="cardComponent" v-else v-bind="props" />
+        </v-card>
+      </template>
+    </client-only>
+  </v-col>
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, ref } from '@nuxtjs/composition-api'
 import {
-  CardTitle,
-  EstatParams,
-  EstatSeries,
-  EstatTimes,
-} from '~/utils/formatEstat'
+  defineComponent,
+  reactive,
+  useFetch,
+  useContext,
+  useRoute,
+} from '@nuxtjs/composition-api'
+import { useEstatApi } from '@/composition/useEstatApi'
+import { EstatState } from '@/types/estat'
 
 export default defineComponent({
   setup() {
-    // Chartコンポーネントの設定
-    const chartComponent = ref<string>('estat-column-card-all-break')
+    // cardコンポーネントの設定
+    const cardComponent = 'estat-column-card-all-break'
 
-    // cardタイトル
-    const cardTitle = reactive<CardTitle>({
+    // State
+    const estatState = reactive<EstatState>({
       title: '消費支出（二人以上の世帯のうち勤労者世帯）',
       titleId: 'consumption-expenditure-two',
+      params: {
+        statsDataId: '0000010112',
+        cdCat01: [
+          'L3211',
+          'L321101',
+          'L321102',
+          'L321103',
+          'L321104',
+          'L321105',
+          'L321106',
+          'L321107',
+          'L321108',
+          'L321109',
+          'L321110',
+        ],
+      },
+      series: [
+        {
+          id: 'cat01',
+          code: 'L3211',
+          name: '総数',
+        },
+        {
+          id: 'cat01',
+          code: 'L321101',
+          name: '食糧費',
+        },
+        {
+          id: 'cat01',
+          code: 'L321102',
+          name: '住居費',
+        },
+        {
+          id: 'cat01',
+          code: 'L321103',
+          name: '光熱・水道費',
+        },
+        {
+          id: 'cat01',
+          code: 'L321104',
+          name: '家具・家事用品費',
+        },
+        {
+          id: 'cat01',
+          code: 'L321105',
+          name: '被服及び履物費',
+        },
+        {
+          id: 'cat01',
+          code: 'L321106',
+          name: '保険医療費',
+        },
+        {
+          id: 'cat01',
+          code: 'L321107',
+          name: '交通・通信費',
+        },
+        {
+          id: 'cat01',
+          code: 'L321108',
+          name: '教育費',
+        },
+        {
+          id: 'cat01',
+          code: 'L321109',
+          name: '教養娯楽費',
+        },
+        {
+          id: 'cat01',
+          code: 'L321110',
+          name: 'その他',
+        },
+      ],
+      annotation: [],
+      response: {},
     })
 
-    // estatParams cdAreaはestatコンポーネントで設定
-    const estatParams = reactive<EstatParams>({
-      statsDataId: '0000010112',
-      cdCat01: [
-        'L3211',
-        'L321101',
-        'L321102',
-        'L321103',
-        'L321104',
-        'L321105',
-        'L321106',
-        'L321107',
-        'L321108',
-        'L321109',
-        'L321110',
-      ],
+    // routeパラメータの取得
+    const { code } = useRoute().value.params
+
+    // eStat-APIからデータを取得
+    const { $axios } = useContext()
+    const { fetch } = useFetch(async () => {
+      const params = Object.assign({}, estatState.params)
+      params.cdArea = code
+      estatState.response = await useEstatApi($axios, params).getData()
     })
-    const estatSeries = reactive<EstatSeries[]>([
-      {
-        id: 'cat01',
-        code: 'L3211',
-        name: '総数',
-      },
-      {
-        id: 'cat01',
-        code: 'L321101',
-        name: '食糧費',
-      },
-      {
-        id: 'cat01',
-        code: 'L321102',
-        name: '住居費',
-      },
-      {
-        id: 'cat01',
-        code: 'L321103',
-        name: '光熱・水道費',
-      },
-      {
-        id: 'cat01',
-        code: 'L321104',
-        name: '家具・家事用品費',
-      },
-      {
-        id: 'cat01',
-        code: 'L321105',
-        name: '被服及び履物費',
-      },
-      {
-        id: 'cat01',
-        code: 'L321106',
-        name: '保険医療費',
-      },
-      {
-        id: 'cat01',
-        code: 'L321107',
-        name: '交通・通信費',
-      },
-      {
-        id: 'cat01',
-        code: 'L321108',
-        name: '教育費',
-      },
-      {
-        id: 'cat01',
-        code: 'L321109',
-        name: '教養娯楽費',
-      },
-      {
-        id: 'cat01',
-        code: 'L321110',
-        name: 'その他',
-      },
-    ])
-    const estatLatestYear = reactive<EstatTimes>({
-      yearInt: 2019,
-      yearStr: '2019100000',
-      yearName: '2019年',
-    })
-    const estatAnnotation = reactive<string[]>([])
+    fetch()
 
     return {
-      chartComponent,
+      cardComponent,
       props: {
-        cardTitle,
-        estatParams,
-        estatSeries,
-        estatLatestYear,
-        estatAnnotation,
+        estatState,
       },
     }
   },
