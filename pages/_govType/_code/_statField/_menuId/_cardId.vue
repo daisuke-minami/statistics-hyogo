@@ -74,12 +74,12 @@ export default defineComponent({
       {
         hid: 'og:image',
         property: 'og:image',
-        content: `${ogpImage}`,
+        content: `${ogpImage.value}`,
       },
       {
         hid: 'twitter:image',
         name: 'twitter:image',
-        content: `${ogpImage}`,
+        content: `${ogpImage.value}`,
       },
     ]
 
