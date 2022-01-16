@@ -1,8 +1,15 @@
 import { inject, reactive, toRefs } from '@nuxtjs/composition-api'
 import { StateKey } from '@/composition/useState'
 import { getGraphSeriesStyle } from '@/utils/colors'
-import { EstatTimeChart, EstatTableHeader } from '@/types/estat'
+import {
+  EstatTimeChart,
+  EstatTableHeader,
+  EstatSource,
+  EstatState,
+} from '@/types/estat'
 import { useCity } from '@/composition/useCity'
+import { usePrefecture } from '@/composition/usePrefecture'
+// import { useContents } from '@/composition/useContents'
 
 interface CardState {
   title: string
@@ -11,20 +18,26 @@ interface CardState {
   chartData: EstatTimeChart[]
   tableHeader: EstatTableHeader[]
   tableData: []
+  lastUpdate: string
+  additionalDescription: string[]
+  source: EstatSource
 }
 
-export const useEstatTimeChart = (estatState) => {
+export const useEstatTimeChart = (estatState: EstatState) => {
   // inject
   const State = inject(StateKey)
-  const { govType, routingPath, selectedPref } = State
+  const { govType, routingPath } = State
 
+  // 都道府県・市区町村
+  const { selectedPref } = usePrefecture()
   const { selectedCity } = useCity()
-  const _setTitle = () => {
+
+  const _setTitle = (title: string) => {
     const name: string =
       govType.value === 'prefecture'
         ? selectedPref.value.prefName
         : selectedCity.value.cityName
-    return `${name}の${estatState.title}`
+    return `${name}の${title}`
   }
 
   // 出典
@@ -51,11 +64,8 @@ export const useEstatTimeChart = (estatState) => {
     source: _source(),
   })
 
-  // const set = (estatState): void => {}
-
   return {
     ...toRefs(cardState),
-    // set,
   }
 }
 

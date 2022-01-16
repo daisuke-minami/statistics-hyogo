@@ -1,14 +1,31 @@
 import { computed, useRoute } from '@nuxtjs/composition-api'
+import { useCity } from '@/composition/useCity'
+import { usePrefecture } from '@/composition/usePrefecture'
 import contents from '~/assets/json/contentsSetting.json'
+
+interface Field {
+  fieldTitle: string
+  fieldId: string
+}
+
+interface Menu {
+  menuTitle: string
+  menuId: string
+}
+
+interface State {
+  fieldList: Field[]
+  menuList: Menu[]
+}
 
 export const useContents = () => {
   // パスパラメータの取得
   const route = useRoute()
   const params = route.value.params
-  const { govType, code, statField, menuId, cardId } = params
+  const { govType, code, statField, menuId } = params
 
   // 統計分野リスト
-  const getFieldList = computed(() => {
+  const fieldList = computed(() => {
     return contents.list.map((d) => {
       return {
         fieldTitle: d.fieldTitle,
@@ -17,6 +34,27 @@ export const useContents = () => {
     })
   })
 
+  // 統計項目リスト
+  const menuList = computed(() => {
+    const menu = contents.list.filter((f) => f.fieldId === statField)[0].menu
+    if (govType === 'prefecture') {
+      return menu.prefecture
+    } else {
+      return menu.city
+    }
+  })
+
+  // 統計項目リンク SelectMenuで使用
+  const menuLinks = computed(() => {
+    return menuList.value.map((d) => {
+      return {
+        label: d.menuTitle,
+        path: `/${govType}/${code}/${statField}/${d.menuId}/`,
+      }
+    })
+  })
+
+  // 統計項目の初期値 useSideNaviで使用
   const getInitMenuTitles = computed(() => {
     return contents.list.map((d) => {
       return {
@@ -27,30 +65,31 @@ export const useContents = () => {
     })
   })
 
-  const menuList = computed(() => {
-    return contents.list
-      .find((f) => f.fieldId === statField)
-      ?.menu[govType].map((d) => {
-        return {
-          label: d.menuTitle,
-          id: d.menuId,
-          path: `/${govType}/${code}/${statField}/${d.menuId}/`,
-          card: d.card,
-        }
-      })
+  // カードリスト
+  const cardList = computed(() => {
+    return menuList.value.filter((f) => f.menuId === menuId)[0].card
   })
 
-  const cardItem = computed(() => {
-    // console.log(menuId)
-    return menuList.value
-      .find((f) => f.id === menuId)
-      .card.find((f) => f.cardId === cardId)
+  // 都道府県・市区町村
+  const { selectedPref } = usePrefecture()
+  const { selectedCity } = useCity()
+  const getCardTitle = computed(() => {
+    return function (cardId: string) {
+      const title = cardList.value.filter((f) => f.cardId === cardId)[0]
+        .cardTitle
+      return govType === 'prefecture'
+        ? `${selectedPref.value.prefName}の${title}`
+        : `${selectedCity.value.cityName}の${title}`
+    }
   })
 
   return {
-    getFieldList,
-    getInitMenuTitles,
-    cardItem,
+    // ...toRefs(state),
+    fieldList,
     menuList,
+    getInitMenuTitles,
+    cardList,
+    getCardTitle,
+    menuLinks,
   }
 }

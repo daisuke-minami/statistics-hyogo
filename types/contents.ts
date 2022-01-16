@@ -1,8 +1,8 @@
 interface contents {
-  list: List[]
+  list: FieldList[]
 }
 
-interface List {
+interface FieldList {
   fieldTitle: string
   fieldId: string
   menu: Menu

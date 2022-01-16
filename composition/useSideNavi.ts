@@ -34,14 +34,15 @@ export const useSideNavi = () => {
   const State: StateType = inject(StateKey)
   const { govType, code } = State
 
-  const initMenuList = useContents().getInitMenuTitles.value
-
+  const { getInitMenuTitles } = useContents()
   const setLink = (statField: string) => {
-    const menuId = initMenuList.find((f) => f.statField === statField)
+    const menuId = getInitMenuTitles.value.filter(
+      (f) => f.statField === statField
+    )[0]
     if (govType.value === 'prefecture') {
-      return `/${govType.value}/${code.value}/${statField}/${menuId?.prefecture}`
+      return `/${govType.value}/${code.value}/${statField}/${menuId.prefecture}`
     } else {
-      return `/${govType.value}/${code.value}/${statField}/${menuId?.city}`
+      return `/${govType.value}/${code.value}/${statField}/${menuId.city}`
     }
   }
 
