@@ -9,7 +9,6 @@ import {
 } from '@/types/estat'
 import { useCity } from '@/composition/useCity'
 import { usePrefecture } from '@/composition/usePrefecture'
-// import { useContents } from '@/composition/useContents'
 
 interface CardState {
   title: string
@@ -58,7 +57,7 @@ export const useEstatTimeChart = (estatState: EstatState) => {
     path: `${routingPath.value}/${titleId}/`,
     chartData: _chartData(series, response),
     tableHeader: _tableHeader(_chartData(series, response)),
-    tableData: _tableData(_chartData(series, response)),
+    tableData: _tableData(_chartData(series, response), _timeList(response)),
     lastUpdate: _setLastUpdate(),
     additionalDescription: _additionalDescription(estatState.annotation),
     source: _source(),
@@ -92,6 +91,23 @@ const _chartData = (series, response) => {
   })
 }
 
+const _timeList = (response) => {
+  const value: VALUE[] = response.GET_STATS_DATA.STATISTICAL_DATA.DATA_INF.VALUE
+  const times = Array.from(new Set(value.map((d) => d['@time']))).map((d) => {
+    return {
+      yearInt: parseInt(d.substr(0, 4)),
+      yearStr: d,
+      yearName: `${d.substr(0, 4)}年`,
+    }
+  })
+
+  return times.sort((a, b) => {
+    if (a.yearStr > b.yearStr) return -1
+    if (a.yearStr < b.yearStr) return 1
+    return 0
+  })
+}
+
 const _tableHeader = (chartData) => {
   // console.log(chartData)
   return [
@@ -107,18 +123,22 @@ const _tableHeader = (chartData) => {
   ]
 }
 
-const _tableData = (chartData) => {
-  return [
-    { text: '年', value: 'year', width: '80px' },
-    ...chartData.map((d) => {
-      return {
-        text: d.name,
-        value: d.name,
-        align: 'center',
-        width: '100px',
-      }
-    }),
-  ]
+const _tableData = (chartData, timeList) => {
+  return timeList.map((d) => {
+    return Object.assign(
+      { year: `${d.yearInt}年` },
+      ...chartData.map((item) => {
+        const value = item.data.find((f) => f.x === d.yearInt)
+        if (value) {
+          return {
+            [item.name]: value.y.toLocaleString() + item.data[0].unit,
+          }
+        } else {
+          return ''
+        }
+      })
+    )
+  })
 }
 
 const _setLastUpdate = () => {
