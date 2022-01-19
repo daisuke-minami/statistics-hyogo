@@ -9,7 +9,7 @@ const environment = process.env.NODE_ENV || 'development'
 const { PREF_CODE, API_KEY, ESTAT_APPID, GOOGLE_ANALYTICS_ID, BASE_URL } =
   process.env
 require('dotenv').config()
-const routes = JSON.parse(fs.readFileSync('data/routes/routes.json'))
+const routes = JSON.parse(fs.readFileSync('assets/json/routes.json'))
 
 const config: NuxtConfig = {
   target: 'static',

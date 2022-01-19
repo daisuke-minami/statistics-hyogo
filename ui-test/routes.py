@@ -10,7 +10,7 @@ import ssl
 ssl._create_default_https_context = ssl._create_unverified_context
 
 # ルートディレクトリの設定(dataディレクトリ )
-root_dir = pathlib.Path(__file__).parent.parent.parent
+root_dir = pathlib.Path(__file__).parent.parent
 
 # 環境変数から都道府県コードを取得
 load_dotenv()
@@ -43,7 +43,7 @@ with open(c) as j:
         # 都道府県
         for menu in menuList[0]['prefecture']:
             cardList = [d.get('cardId') for d in menu['card']]
-            routes.append('/' + prefCode + '/' +
+            routes.append('/prefecture/' + prefCode + '/' +
                           field + '/' + menu['menuId'] + '/')
             for cardId in cardList:
                 routes.append('/prefecture/' + prefCode + '/' +
@@ -61,38 +61,6 @@ with open(c) as j:
                                   field + '/' + menu['menuId'] + '/' + cardId + '/')
 
 
-output = os.path.join(root_dir, 'data/routes/routes.json')
+output = os.path.join(root_dir, 'assets/json/routes.json')
 with open(output, 'w') as f:
     json.dump(routes, f)
-
-
-# routes設定
-# for item in fieldList:
-
-#     # contentsAllの取得
-#     path = os.path.join(root_dir, 'pagesetting')
-#     j = open(path + '/' + item + '.json','r')
-#     contentsAll = json.load(j)
-
-#     # prefecture
-#     routes.append('/prefecture/' + PREF_CODE + '/' + item + '/')
-#     for d in contentsAll['prefecture']:
-#         routes.append('/prefecture/' + PREF_CODE + '/' + item + '/' + d['titleId'] +'/')
-
-#     # prefectureRank
-#     routes.append('/prefectureRank/' + PREF_CODE + '/' + item + '/')
-#     for d in contentsAll['prefecture']:
-#         if d['isRank']==True:
-#             routes.append('/prefectureRank/' + PREF_CODE + '/' + item + '/' + d['titleId'] +'/')
-
-#     # city
-#     for c in cityCodes:
-#         routes.append('/city/' + PREF_CODE + '/' + c + '/' + item + '/')
-#         for d in contentsAll['city']:
-#             routes.append('/city/' + PREF_CODE + '/' + c + '/' + item + '/' + d['titleId'] +'/')
-
-#     # cityRank
-#     routes.append('/cityRank/' + PREF_CODE + '/' + item + '/')
-#     for d in contentsAll['city']:
-#         if d['isRank']==True:
-#             routes.append('/cityRank/' + PREF_CODE + '/' + item + '/' + d['titleId'] +'/')

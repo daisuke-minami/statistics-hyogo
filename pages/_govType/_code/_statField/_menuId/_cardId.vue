@@ -9,8 +9,6 @@ import {
   defineComponent,
   computed,
   useRoute,
-  // toRefs,
-  // ref,
   useMeta,
   inject,
   reactive,
@@ -48,7 +46,6 @@ export default defineComponent({
     const ogpTitle = computed(() => {
       return `${getCardTitle.value(cardId)} | 統計で見る兵庫県のすがた`
     })
-    console.log(ogpImage.value)
 
     const mInfo = reactive<any>([
       {
