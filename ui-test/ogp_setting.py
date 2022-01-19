@@ -10,7 +10,7 @@ import ssl
 ssl._create_default_https_context = ssl._create_unverified_context
 
 # ルートディレクトリの設定(dataディレクトリ )
-root_dir = pathlib.Path(__file__).parent.parent.parent
+root_dir = pathlib.Path(__file__).parent.parent
 
 # 環境変数から都道府県コードを取得
 load_dotenv()
@@ -44,8 +44,6 @@ with open(c) as j:
         # 都道府県
         for menu in menuList[0]['prefecture']:
             cardList = [d.get('cardId') for d in menu['card']]
-            # routes.append('/' + prefCode + '/' +
-            #               field + '/' + menu['menuId'] + '/')
             for cardId in cardList:
                 j = {
                     "path": '/prefecture/' + prefCode + '/' + field + '/' + menu['menuId'] + '/' + cardId + '/',
@@ -54,22 +52,22 @@ with open(c) as j:
                     "ogpHeight": 500
                 }
                 routes.append(j)
-                print(routes)
+                # print(routes)
 
         # 市区町村
-        # for menu in menuList[0]['city']:
-        #     cardList = [d.get('cardId') for d in menu['card']]
+        for menu in menuList[0]['city']:
+            cardList = [d.get('cardId') for d in menu['card']]
+            for cityCode in cityCodes:
+                for cardId in cardList:
+                    j = {
+                        "path": '/city/' + cityCode + '/' + field + '/' + menu['menuId'] + '/' + cardId + '/',
+                        "title": 'テスト',
+                        "ogpWidth": 959,
+                        "ogpHeight": 500
+                    }
+                    routes.append(j)
 
-        #     for cityCode in cityCodes:
-        #         routes.append('/city/' + cityCode + '/' +
-        #                       field + '/' + menu['menuId'] + '/')
-        #         for cardId in cardList:
-        #             routes.append('/city/' + cityCode + '/' +
-        #                           field + '/' + menu['menuId'] + '/' + cardId + '/')
 
-
-output = os.path.join(root_dir, 'data/routes/routesSetting.json')
+output = os.path.join(root_dir, 'assets/json/ogpSettings.json')
 with open(output, 'w') as f:
     json.dump(routes, f)
-
-

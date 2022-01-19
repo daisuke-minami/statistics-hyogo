@@ -1,16 +1,12 @@
 import os
 import time
 import json
-
 from selenium import webdriver
-# from selenium.webdriver.common.by import By
-# from selenium.webdriver.support.ui import WebDriverWait
-# from selenium.webdriver.support import expected_conditions as EC
 
 if not os.path.exists("ogp"):
     os.mkdir("ogp")
 
-f = open('assets/json/cardRoutesSettings.json', 'r')
+f = open('assets/json/ogpSettings.json', 'r')
 card_data = json.load(f)
 
 options = webdriver.ChromeOptions()

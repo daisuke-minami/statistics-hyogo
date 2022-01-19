@@ -38,12 +38,14 @@ import {
   reactive,
   toRef,
   inject,
+  useMeta,
   useRoute,
   computed,
   provide,
 } from '@nuxtjs/composition-api'
 import ScaleLoader from 'vue-spinner/src/ScaleLoader.vue'
 import { useState, StateKey } from '@/composition/useState'
+// import { MetaInfo } from 'vue-meta'
 
 type LocalData = {
   hasNavigation: boolean
@@ -55,6 +57,7 @@ export default defineComponent({
   components: {
     ScaleLoader,
   },
+  head: {},
   setup() {
     // provide
     provide(StateKey, useState())
@@ -70,6 +73,7 @@ export default defineComponent({
     // URLパラメータの取得
     const route = useRoute()
     const query = computed(() => route.value.query)
+    const path = computed(() => route.value.path)
 
     onMounted(() => {
       data.loading = false
@@ -98,6 +102,70 @@ export default defineComponent({
     const getMatchMedia = () => {
       return window.matchMedia('(min-width: 601px)')
     }
+
+    const mInfo = reactive<any>({
+      title: '統計で見る兵庫県のすがた',
+      titleTemplate: `%s | 統計で見る兵庫県のすがた`,
+      link: [
+        {
+          rel: 'canonical',
+          href: `https://statistice-hyogo.com${path.value}`,
+        },
+      ],
+      meta: [
+        {
+          hid: 'author',
+          name: 'author',
+          content: 'DAISUME MINAMI',
+        },
+        {
+          hid: 'description',
+          name: 'description',
+          content: `当サイトは、兵庫県に関する統計をわかりやすく伝えることを目的として、いち兵庫県民が開設したサイトです。`,
+        },
+        {
+          hid: 'og:site_name',
+          property: 'og:site_name',
+          content: `統計で見る兵庫県のすがた`,
+        },
+        {
+          hid: 'og:url',
+          property: 'og:url',
+          content: `https://statistice-hyogo.com${path.value}`,
+        },
+        {
+          hid: 'og:title',
+          property: 'og:title',
+          content: `統計で見る兵庫県のすがた`,
+        },
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          content: `当サイトは、兵庫県に関する統計をわかりやすく伝えることを目的として、いち兵庫県民が開設したサイトです。`,
+        },
+        {
+          hid: 'og:image',
+          property: 'og:image',
+          content: `https://statistice-hyogo.com/ogp.png`,
+        },
+        {
+          hid: 'apple-mobile-web-app-title',
+          name: 'apple-mobile-web-app-title',
+          content: `統計で見る兵庫県のすがた`,
+        },
+        {
+          hid: 'twitter:image',
+          name: 'twitter:image',
+          content: `https://statistice-hyogo.com/ogp.png`,
+        },
+      ],
+    })
+
+    const { title, titleTemplate, meta, link } = useMeta()
+    title.value = mInfo.title
+    titleTemplate.value = mInfo.titleTemplate
+    meta.value = mInfo.meta
+    link.value = mInfo.link
 
     return {
       hasNavigation: toRef(data, 'hasNavigation'),

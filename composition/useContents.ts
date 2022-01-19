@@ -73,6 +73,19 @@ export const useContents = () => {
   // 都道府県・市区町村
   const { selectedPref } = usePrefecture()
   const { selectedCity } = useCity()
+
+  // MenuTitleの取得
+  const getMenuTitle = computed(() => {
+    return function (menuId: string) {
+      const title = menuList.value.filter((f) => f.menuId === menuId)[0]
+        .menuTitle
+      return govType === 'prefecture'
+        ? `${selectedPref.value.prefName}の${title}`
+        : `${selectedCity.value.cityName}の${title}`
+    }
+  })
+
+  // CardTitleの取得
   const getCardTitle = computed(() => {
     return function (cardId: string) {
       const title = cardList.value.filter((f) => f.cardId === cardId)[0]
@@ -90,6 +103,7 @@ export const useContents = () => {
     getInitMenuTitles,
     cardList,
     getCardTitle,
+    getMenuTitle,
     menuLinks,
   }
 }
