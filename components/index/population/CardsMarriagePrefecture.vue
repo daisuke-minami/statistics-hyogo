@@ -42,11 +42,11 @@ const Spouse = () => {
 }
 
 // 離別人口
-const Separated = () => {
-  return import(
-    '~/components/index/population/cards/marriage/separatedPrefecture.vue'
-  )
-}
+// const Separated = () => {
+//   return import(
+//     '~/components/index/population/cards/marriage/separatedPrefecture.vue'
+//   )
+// }
 
 export default defineComponent({
   components: {
@@ -57,7 +57,7 @@ export default defineComponent({
     const rows = ref([
       [Marriage, Divorce],
       [FirstMarriageAge, Unmarried],
-      [Spouse, Separated],
+      [Spouse],
     ])
 
     return {
