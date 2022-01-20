@@ -1,4 +1,4 @@
-import { getGraphSeriesStyle } from '@/utils/colors'
+// import { getGraphSeriesStyle } from '@/utils/colors'
 import {
   EstatResponse,
   EstatSeries,
@@ -8,94 +8,94 @@ import {
   EstatTableData,
 } from '../types/estat'
 
-type TimeChartData = {
-  x: number
-  y: number
-  unit: string
-}
+// type TimeChartData = {
+//   x: number
+//   y: number
+//   unit: string
+// }
 
-type TimeChart = {
-  name: string
-  data: TimeChartData[]
-  color: string
-  yAxis?: number
-  type?: string
-}
+// type TimeChart = {
+//   name: string
+//   data: TimeChartData[]
+//   color: string
+//   yAxis?: number
+//   type?: string
+// }
 
-/**
- * Format for TimeChart
- */
-export function formatTimeChart(
-  estatResponse: EstatResponse,
-  series: EstatSeries[]
-) {
-  // 色の設定
-  const style = getGraphSeriesStyle(series.length)
+// /**
+//  * Format for TimeChart
+//  */
+// export function formatTimeChart(
+//   estatResponse: EstatResponse,
+//   series: EstatSeries[]
+// ) {
+//   // 色の設定
+//   const style = getGraphSeriesStyle(series.length)
 
-  const value: VALUE[] =
-    estatResponse.GET_STATS_DATA.STATISTICAL_DATA.DATA_INF.VALUE
+//   const value: VALUE[] =
+//     estatResponse.GET_STATS_DATA.STATISTICAL_DATA.DATA_INF.VALUE
 
-  // chartData
-  const chartData: TimeChart[] = series.map((d, i) => {
-    const key: keyof VALUE = `@${d.id}`
-    return {
-      name: d.name,
-      data: value
-        .filter((f) => f[key] === d.code)
-        .map((d) => {
-          return {
-            x: parseInt(d['@time'].substr(0, 4)),
-            y: parseFloat(d.$),
-            unit: d['@unit'],
-          }
-        }),
-      color: style[i].color,
-      yAxis: d.yAxis,
-      type: d.type,
-    }
-  })
+//   // chartData
+//   const chartData: TimeChart[] = series.map((d, i) => {
+//     const key: keyof VALUE = `@${d.id}`
+//     return {
+//       name: d.name,
+//       data: value
+//         .filter((f) => f[key] === d.code)
+//         .map((d) => {
+//           return {
+//             x: parseInt(d['@time'].substr(0, 4)),
+//             y: parseFloat(d.$),
+//             unit: d['@unit'],
+//           }
+//         }),
+//       color: style[i].color,
+//       yAxis: d.yAxis,
+//       type: d.type,
+//     }
+//   })
 
-  // TimeList
-  const times: EstatTimes[] = _formatTimeList(value)
+//   // TimeList
+//   const times: EstatTimes[] = _formatTimeList(value)
 
-  const tableHeader: EstatTableHeader[] = [
-    { text: '年', value: 'year', width: '80px' },
-    ...chartData.map((d) => {
-      return {
-        text: d.name,
-        value: d.name,
-        align: 'center',
-        width: '100px',
-      }
-    }),
-  ]
+//   const tableHeader: EstatTableHeader[] = [
+//     { text: '年', value: 'year', width: '80px' },
+//     ...chartData.map((d) => {
+//       return {
+//         text: d.name,
+//         value: d.name,
+//         align: 'center',
+//         width: '100px',
+//       }
+//     }),
+//   ]
 
-  const tableData: EstatTableData[] = times.map((d: EstatTimes) => {
-    return Object.assign(
-      { year: `${d.yearInt}年` },
-      ...chartData.map((item) => {
-        const value = item.data.find((f) => f.x === d.yearInt)
-        if (value) {
-          return {
-            [item.name]: value.y.toLocaleString() + item.data[0].unit,
-          }
-        } else {
-          return ''
-        }
-      })
-    )
-  })
+//   const tableData: EstatTableData[] = times.map((d: EstatTimes) => {
+//     return Object.assign(
+//       { year: `${d.yearInt}年` },
+//       ...chartData.map((item) => {
+//         const value = item.data.find((f) => f.x === d.yearInt)
+//         if (value) {
+//           return {
+//             [item.name]: value.y.toLocaleString() + item.data[0].unit,
+//           }
+//         } else {
+//           return ''
+//         }
+//       })
+//     )
+//   })
 
-  const TABLE_INF = estatResponse.GET_STATS_DATA.STATISTICAL_DATA.TABLE_INF
-  const source = _formatSource(TABLE_INF)
+//   const TABLE_INF = estatResponse.GET_STATS_DATA.STATISTICAL_DATA.TABLE_INF
+//   const source = _formatSource(TABLE_INF)
 
-  return {
-    chartData,
-    tableHeader,
-    tableData,
-    source,
-  }
-}
+//   return {
+//     chartData,
+//     tableHeader,
+//     tableData,
+//     source,
+//   }
+// }
 
 /**
  * Format for PyramidChart
@@ -122,7 +122,7 @@ export function formatPyramidChart(
         const man = dataByTime.find((f) => f[key] === d.man)
         const woman = dataByTime.find((f) => f[key] === d.woman)
 
-        console.log({ man, woman })
+        // console.log({ man, woman })
         return {
           category: d.name,
           man: parseInt(man?.$) || 0,
