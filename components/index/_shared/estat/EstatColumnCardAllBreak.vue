@@ -82,7 +82,6 @@ export default defineComponent({
     // 総数／内訳ボタンで表示チャートを切替
     const allbreak = ref<string>('all')
     const displayData = computed(() => {
-      // const c = formatData.value.chartData
       if (allbreak.value === 'all') {
         return chartData.value.slice(0, 1)
       } else {
