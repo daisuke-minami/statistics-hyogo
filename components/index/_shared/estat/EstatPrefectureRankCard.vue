@@ -83,14 +83,16 @@ import {
   // useStore,
   PropType,
   inject,
+  useContext,
 } from '@nuxtjs/composition-api'
 import {
   formatPrefectureRankChart,
   formatAdditionalDescription,
 } from '@/utils/formatEstat'
 import { StateKey } from '@/composition/useState'
-import axios from 'axios'
-import * as topojson from 'topojson-client'
+import { useGeojson } from '@/composition/useGeojson'
+// import axios from 'axios'
+// import * as topojson from 'topojson-client'
 
 // MapChart
 const MapChart = () => {
@@ -150,6 +152,7 @@ export default defineComponent({
     })
 
     // eStat-APIからデータを取得
+    const { $axios } = useContext()
     const estatResponse = ref<EstatResponse>({})
     const geoJson = ref<object>({})
     const { fetch } = useFetch(async () => {
@@ -165,11 +168,8 @@ export default defineComponent({
         params,
       })
       estatResponse.value = res
-      const { data: topo } = await axios.get(
-        'https://geoshape.ex.nii.ac.jp/city/topojson/20200101/jp_pref.c.topojson'
-      )
-      geoJson.value = topojson.feature(topo, topo.objects.pref)
-      // console.log(prefMap.value)
+      // await useGeojson($axios).getData()
+      geoJson.value = await useGeojson($axios).getData()
     })
 
     // 系列セレクト

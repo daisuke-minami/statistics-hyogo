@@ -34,14 +34,6 @@ export const useEstatApi = (axios, params) => {
 
     const res = await api.$get(url, { params })
     return res
-    // try {
-    //   const res = await api.$get(url, { params })
-    //   state.response = res
-    // } catch (error) {
-    //   state.otherError = error
-    // } finally {
-    //   state.isLoading = false
-    // }
   }
 
   return {
