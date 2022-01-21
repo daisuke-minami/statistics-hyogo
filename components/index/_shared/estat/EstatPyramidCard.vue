@@ -21,7 +21,7 @@
     <pyramid-chart v-show="canvas" :display-data="displayData" />
 
     <template v-slot:description>
-      <p>最終更新日：{{ lastUpdate }}</p>
+      <p>最終更新日:{{ lastUpdate }}</p>
       <slot name="description" />
     </template>
 
