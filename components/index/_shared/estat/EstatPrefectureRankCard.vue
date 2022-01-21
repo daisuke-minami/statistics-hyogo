@@ -1,5 +1,5 @@
 <template>
-  <data-view :title="title" :route="routingPath">
+  <data-view :title="title" :route="path">
     <h4 :id="titleId" class="visually-hidden">
       {{ title }}
     </h4>
@@ -19,7 +19,7 @@
       <v-col>
         <v-select
           v-model="selectedTime"
-          :items="times"
+          :items="timeList"
           item-text="yearName"
           item-value="yearInt"
           return-object
@@ -69,21 +69,10 @@ import {
   defineComponent,
   ref,
   computed,
-  // watch,
-  // useFetch,
-  // useStore,
   PropType,
-  inject,
-  // useContext,
 } from '@nuxtjs/composition-api'
-import {
-  formatPrefectureRankChart,
-  formatAdditionalDescription,
-} from '@/utils/formatEstat'
-import { StateKey } from '@/composition/useState'
-// import { useGeojson } from '@/composition/useGeojson'
-// import axios from 'axios'
-// import * as topojson from 'topojson-client'
+import { useEstatRankChart } from '@/composition/useEstatRankChart'
+import { EstatSeries, EstatState, EstatTimes } from '~/types/estat'
 
 // MapChart
 const MapChart = () => {
@@ -96,28 +85,8 @@ const BarChart = () => {
 
 export default defineComponent({
   props: {
-    cardTitle: {
-      type: Object as PropType<CardTitle>,
-      required: true,
-    },
-    estatParams: {
-      type: Object as PropType<EstatParams>,
-      required: true,
-    },
-    estatSeries: {
-      type: Array as PropType<EstatSeries[]>,
-      required: true,
-    },
-    estatLatestYear: {
-      type: Object as PropType<EstatTimes>,
-      required: true,
-    },
-    estatAnnotation: {
-      type: Array as PropType<string[]>,
-      required: true,
-    },
     estatState: {
-      type: Object,
+      type: Object as PropType<EstatState>,
       required: true,
     },
     prefMap: {
@@ -129,96 +98,50 @@ export default defineComponent({
     // canvas
     const canvas = true
 
-    // inject
-    const State = inject(StateKey)
-    // const code = State.code.value
-    const govType = State.govType.value
-    const selectedPref = State.selectedPref.value
-    const selectedCity = State.selectedCity.value
-    const prefList = State.prefList.value
-
-    // card情報の設定
-    const title = computed((): string => {
-      const name: string =
-        govType === 'prefecture' ? selectedPref.prefName : selectedCity.cityName
-      return `${name}の${props.cardTitle.title}Rank`
-    })
-    const titleId = computed((): string => {
-      return `${props.cardTitle.titleId}`
-    })
-    const routingPath = computed((): string => {
-      return `/${State.routingPath.value}/${titleId.value}/`
-    })
+    const {
+      title,
+      titleId,
+      path,
+      timeList,
+      chartData,
+      tableHeader,
+      tableData,
+      source,
+      lastUpdate,
+      additionalDescription,
+    } = useEstatRankChart(props.estatState)
 
     // 系列セレクト
     const series = props.estatState.series
     const selectedSeries = ref<EstatSeries>(series[0])
-    // fetch()
-    // watch(selectedSeries, () => fetch())
-
-    // データの整形
-    const formatData = computed(() => {
-      return formatPrefectureRankChart(
-        props.estatState.response,
-        selectedSeries.value,
-        prefList
-      )
-    })
 
     // 年次セレクト
-    const times = computed((): EstatTimes[] => {
-      return formatData.value.times
-    })
-    const selectedTime = ref<EstatTimes>(props.estatLatestYear)
+    const selectedTime = ref<EstatTimes>(props.estatState.latestYear)
 
     // 年次で表示データを切替
     const displayData = computed((): EstatSeries[] => {
-      const c: EstatSeries[] = formatData.value.chartData
-      return c.filter((f) => f.year === selectedTime.value.yearInt)
+      const c = chartData.value
+      return c
+        .filter((f) => f.year === selectedTime.value.yearInt)
+        .filter((f) => f.name === selectedSeries.value.name)
     })
 
     // MapChartとBarChartの切替
     const mapbar = ref<string>('map')
-    const chartComponent = computed((): Promise<Vue> => {
-      const chartComponent = mapbar.value === 'map' ? MapChart : BarChart
-      return chartComponent
-    })
-
-    // テーブルの設定
-    const tableHeader = computed(() => {
-      return formatData.value.tableHeader
-    })
-    const tableData = computed(() => {
-      return formatData.value.tableData
-    })
-
-    // 出典
-    const source = computed((): EstatSource => {
-      return formatData.value.source
-    })
-
-    const lastUpdate = computed((): string => {
-      if (process.browser) {
-        const day = new Date(document.lastModified)
-        return `${day.getFullYear()}年${day.getMonth() + 1}月${day.getDate()}日`
-      } else {
-        return ''
-      }
-    })
-
-    // 注釈
-    const additionalDescription = computed((): string[] => {
-      return formatAdditionalDescription(props.estatAnnotation).rankChart
+    const chartComponent = computed(() => {
+      return mapbar.value === 'map' ? MapChart : BarChart
     })
 
     const geoJson = props.prefMap
+
     // returnはアルファベット順
     return {
       additionalDescription,
       canvas,
       title,
       titleId,
-      routingPath,
+      path,
+      timeList,
       chartComponent,
       displayData,
       lastUpdate,
@@ -229,8 +152,6 @@ export default defineComponent({
       source,
       tableData,
       tableHeader,
-      times,
-      // topoJson,
       geoJson,
     }
   },

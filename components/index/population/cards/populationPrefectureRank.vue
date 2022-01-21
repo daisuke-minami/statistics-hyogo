@@ -22,12 +22,7 @@ import {
 import { useEstatApi } from '@/composition/useEstatApi'
 import { useGeojson } from '@/composition/useGeojson'
 import { usePrefecture } from '@/composition/usePrefecture'
-import {
-  CardTitle,
-  EstatParams,
-  EstatSeries,
-  EstatTimes,
-} from '~/utils/formatEstat'
+import { EstatState } from '~/types/estat'
 
 export default defineComponent({
   setup() {
@@ -68,43 +63,7 @@ export default defineComponent({
       response: {},
     })
 
-    // cardタイトル
-    const cardTitle = reactive<CardTitle>({
-      title: '総人口',
-      titleId: 'population',
-    })
-
-    // estatParams cdAreaはestatコンポーネントで設定
-    const estatParams = reactive<EstatParams>({
-      statsDataId: '0000010101',
-      cdCat01: ['A1101', 'A110101', 'A110102'],
-    })
-    const estatSeries = reactive<EstatSeries[]>([
-      {
-        id: 'cat01',
-        code: 'A1101',
-        name: '総人口',
-      },
-      {
-        id: 'cat01',
-        code: 'A110101',
-        name: '男性',
-      },
-      {
-        id: 'cat01',
-        code: 'A110102',
-        name: '女性',
-      },
-    ])
-    const estatLatestYear = reactive<EstatTimes>({
-      yearInt: 2019,
-      yearStr: '2019100000',
-      yearName: '2019年',
-    })
-    const estatAnnotation = reactive<string[]>([])
-
     const prefMap = ref<any>({})
-    // eStat-APIからデータを取得
     const { $axios } = useContext()
     const { fetch } = useFetch(async () => {
       const params = Object.assign({}, estatState.params)
@@ -114,19 +73,12 @@ export default defineComponent({
       )
       estatState.response = await useEstatApi($axios, params).getData()
       prefMap.value = await useGeojson($axios).getData()
-      // console.log(estatState.response)
-      // console.log(geoJson)
     })
     fetch()
 
     return {
       cardComponent,
       props: {
-        cardTitle,
-        estatParams,
-        estatSeries,
-        estatLatestYear,
-        estatAnnotation,
         estatState,
         prefMap,
       },

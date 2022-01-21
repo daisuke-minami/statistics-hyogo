@@ -35,12 +35,6 @@ export type EstatTimes = {
   yearName?: string
 }
 
-// export interface TimeChartData {
-//   x: number
-//   y: number
-//   unit: string
-// }
-
 export type EstatTimeChart = {
   name: string
   data: {

@@ -5,7 +5,7 @@ export interface City {
   bigCityFlag: string
 }
 
-export interface Pref {
+export type Pref = {
   prefCode: number
   prefName: string
 }
