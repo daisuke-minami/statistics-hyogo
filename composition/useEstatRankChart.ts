@@ -76,21 +76,6 @@ const _chartData = (series: EstatSeries[], response: EstatResponse) => {
   const timeList = _timeList(response)
   const value: VALUE[] = response.GET_STATS_DATA.STATISTICAL_DATA.DATA_INF.VALUE
 
-  // const test = series.reduce((pre, cur) => {
-  //   const key: keyof VALUE = `@${cur.id}`
-  //   const v = value.filter((f) => f[key] === cur.code)
-
-  //   const arr = _getTimeListValues(timeList, v).map((d) => {
-  //     return {
-  //       name: cur.name,
-  //       year: d.year,
-  //       data: d.data,
-  //     }
-  //   })
-  //   pre.push(...arr)
-  //   return pre
-  // }, [])
-
   return series.reduce((pre, cur) => {
     const key: keyof VALUE = `@${cur.id}`
     const v = value.filter((f) => f[key] === cur.code)

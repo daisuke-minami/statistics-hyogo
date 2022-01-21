@@ -111,6 +111,8 @@ export default defineComponent({
       additionalDescription,
     } = useEstatRankChart(props.estatState)
 
+    // console.log(tableData)
+
     // 系列セレクト
     const series = props.estatState.series
     const selectedSeries = ref<EstatSeries>(series[0])
