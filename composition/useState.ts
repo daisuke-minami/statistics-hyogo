@@ -8,8 +8,8 @@ import cityListAll from '~/data/codes/citylist.json'
 interface State {
   govType: string
   code: string
-  statField: string
-  menuId: string
+  // statField: string
+  // menuId: string
   // routingPath: string
   prefList: Pref[]
   cityList: City[]
@@ -21,8 +21,8 @@ export const useState = () => {
   const State = reactive<State>({
     govType: 'prefecture',
     code: '28000',
-    statField: 'landweather',
-    menuId: 'area',
+    // statField: 'landweather',
+    // menuId: 'area',
     // routingPath: '',
     prefList: prefList.result,
     cityList: [],
@@ -40,14 +40,14 @@ export const useState = () => {
 
   const setState = (
     govType: string = 'prefecture',
-    code: string = '28000',
-    statField: string = 'landweather',
-    menuId: string = 'area'
+    code: string = '28000'
+    // statField: string = 'landweather',
+    // menuId: string = 'area'
   ): void => {
     State.govType = govType
     State.code = code
-    State.statField = statField
-    State.menuId = menuId
+    // State.statField = statField
+    // State.menuId = menuId
     // State.routingPath = `/${govType}/${code}/${statField}/${menuId}`
     State.cityList = _cityList(code)
     State.selectedPref = prefList.result.find(

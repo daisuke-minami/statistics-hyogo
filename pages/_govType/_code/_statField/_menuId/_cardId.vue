@@ -26,7 +26,7 @@ export default defineComponent({
 
     // Stateをセット
     const State = inject(StateKey)
-    State.setState(govType, code, statField, menuId)
+    State.setState(govType, code)
 
     // カードコンポーネントの設定
     const cardComponent = computed((): string => {

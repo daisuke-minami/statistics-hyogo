@@ -35,7 +35,7 @@ export default defineComponent({
 
     // Stateをセット
     const State = inject(StateKey)
-    State.setState(govType, code, statField, menuId)
+    State.setState(govType, code)
 
     // 市区町村判定フラグ
     const isCity = computed(() => {

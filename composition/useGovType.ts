@@ -1,4 +1,4 @@
-import { computed, inject } from '@nuxtjs/composition-api'
+import { computed, inject, useRoute } from '@nuxtjs/composition-api'
 import { StateKey } from '@/composition/useState'
 
 interface TabItem {
@@ -14,7 +14,12 @@ function toFiveDigit(code: number): string {
 export const useGovType = () => {
   // inject
   const State = inject(StateKey)
-  const { selectedPref, selectedCity, statField, menuId } = State
+  const { selectedPref, selectedCity } = State
+
+  // パスパラメータの取得
+  const route = useRoute()
+  const params = route.value.params
+  const { statField, menuId } = params
 
   const prefCode = toFiveDigit(selectedPref.value.prefCode)
   const cityCode = selectedCity.value.cityCode
@@ -23,11 +28,11 @@ export const useGovType = () => {
     return [
       {
         label: `都道府県の統計`,
-        path: `/prefecture/${prefCode}/${statField.value}/${menuId.value}`,
+        path: `/prefecture/${prefCode}/${statField}/${menuId}`,
       },
       {
         label: `市区町村の統計`,
-        path: `/city/${cityCode}/${statField.value}/${menuId.value}`,
+        path: `/city/${cityCode}/${statField}/${menuId}`,
       },
     ]
   })
