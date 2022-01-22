@@ -30,8 +30,8 @@ export default defineComponent({
 
     // State
     const estatState = reactive<EstatState>({
-      title: '総人口',
-      titleId: 'total-population',
+      title: '総人口ランキング',
+      titleId: 'total-population-rank',
       params: {
         statsDataId: '0000020201',
         cdCat01: ['A1101', 'A110101', 'A110102'],

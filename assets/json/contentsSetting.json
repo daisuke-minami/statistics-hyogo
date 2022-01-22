@@ -81,7 +81,7 @@
               },
               {
                 "cardTitle": "総人口ランキング",
-                "cardId": "population-prefecture-rank"
+                "cardId": "total-population-rank"
               }
             ]
           },
@@ -217,7 +217,7 @@
               },
               {
                 "cardTitle": "総人口ランキング",
-                "cardId": "population-prefecture-rank"
+                "cardId": "total-population-rank"
               }
             ]
           }

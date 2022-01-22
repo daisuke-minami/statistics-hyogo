@@ -37,6 +37,8 @@ export default defineComponent({
       }
     })
 
+    console.log({ cardId, cardComponent })
+
     // メタ
     const url = 'https://statistics-hyogo.com'
     const ogpImage = computed(() => {

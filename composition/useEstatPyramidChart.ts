@@ -1,6 +1,4 @@
-import { inject, reactive, toRefs } from '@nuxtjs/composition-api'
-import { StateKey } from '@/composition/useState'
-// import { getGraphSeriesStyle } from '@/utils/colors'
+import { reactive, toRefs, useRoute } from '@nuxtjs/composition-api'
 import {
   EstatTimeChart,
   EstatTableHeader,
@@ -23,9 +21,10 @@ interface CardState {
 }
 
 export const useEstatPyramidChart = (estatState: EstatState) => {
-  // inject
-  const State = inject(StateKey)
-  const { govType, routingPath } = State
+  // パスパラメータの取得
+  const route = useRoute()
+  const params = route.value.params
+  const { govType, code, statField, menuId } = params
 
   // 都道府県・市区町村
   const { selectedPref } = usePrefecture()
@@ -33,7 +32,7 @@ export const useEstatPyramidChart = (estatState: EstatState) => {
 
   const _setTitle = (title: string) => {
     const name: string =
-      govType.value === 'prefecture'
+      govType === 'prefecture'
         ? selectedPref.value.prefName
         : selectedCity.value.cityName
     return `${name}の${title}`
@@ -54,7 +53,7 @@ export const useEstatPyramidChart = (estatState: EstatState) => {
   const cardState = reactive<CardState>({
     title: _setTitle(title),
     titleId,
-    path: `${routingPath.value}/${titleId}/`,
+    path: `/${govType}/${code}/${statField}/${menuId}/${titleId}/`,
     chartData: _chartData(series, response),
     tableHeader: _tableHeader(_chartData(series, response)),
     tableData: _tableData(_chartData(series, response), _timeList(response)),
