@@ -54,6 +54,97 @@ export const useEstatRankChart = (estatState: EstatState) => {
 
   const { title, titleId, series, response } = estatState
 
+  const _chartData = (series: EstatSeries[], response: EstatResponse) => {
+    const timeList = _timeList(response)
+    const value: VALUE[] =
+      response.GET_STATS_DATA.STATISTICAL_DATA.DATA_INF.VALUE
+
+    return series.reduce((pre, cur) => {
+      const key: keyof VALUE = `@${cur.id}`
+      const v = value.filter((f) => f[key] === cur.code)
+
+      const arr = _getTimeListValues(timeList, v).map((d) => {
+        return {
+          name: cur.name,
+          year: d.year,
+          data: d.data,
+        }
+      })
+      pre.push(...arr)
+      return pre
+    }, [])
+  }
+
+  const _getTimeListValues = (timeList: EstatTimes[], value: VALUE[]) => {
+    return timeList.map((d) => {
+      const timeValue = value.filter((f) => f['@time'] === d.yearStr)
+      if (govType.value === 'prefecture') {
+        return {
+          year: d.yearInt,
+          data: _getPrefListValues(timeValue),
+        }
+      } else {
+        return {
+          year: d.yearInt,
+          data: _getCityListValues(timeValue),
+        }
+      }
+    })
+  }
+
+  /**
+   * estat-APIの結果を都道府県別にまとめて返却
+   * @param value - estat-APIのレスポンス GET_STATS_DATA.STATISTICAL_DATA.DATA_INF.VALUE
+   */
+  const _getPrefListValues = (value: VALUE[]) => {
+    const { prefList } = usePrefecture()
+    return prefList.value.map((d) => {
+      const cdArea = ('0000000000' + d.prefCode).slice(-2) + '000'
+      const data = value.find((f) => f['@area'] === cdArea)
+      if (data) {
+        return {
+          prefCode: cdArea,
+          prefName: d.prefName,
+          value: parseInt(data.$),
+          unit: data['@unit'],
+        }
+      } else {
+        return {
+          prefCode: cdArea,
+          prefName: 'test',
+          value: '',
+          unit: '',
+        }
+      }
+    })
+  }
+
+  /**
+   * estat-APIの結果を都道府県別にまとめて返却
+   * @param value - estat-APIのレスポンス GET_STATS_DATA.STATISTICAL_DATA.DATA_INF.VALUE
+   */
+  const _getCityListValues = (value: VALUE[]) => {
+    const { cityList } = useCity()
+    return cityList.value.map((d) => {
+      const data = value.find((f) => f['@area'] === d.cityCode)
+      if (data) {
+        return {
+          cityCode: d.cityCode,
+          cityName: d.cityName,
+          value: parseInt(data.$),
+          unit: data['@unit'],
+        }
+      } else {
+        return {
+          cityCode: d.cityCode,
+          cityName: d.cityName,
+          value: '',
+          unit: '',
+        }
+      }
+    })
+  }
+
   const cardState = reactive<CardState>({
     title: _setTitle(title),
     titleId,
@@ -70,63 +161,6 @@ export const useEstatRankChart = (estatState: EstatState) => {
   return {
     ...toRefs(cardState),
   }
-}
-
-const _chartData = (series: EstatSeries[], response: EstatResponse) => {
-  const timeList = _timeList(response)
-  const value: VALUE[] = response.GET_STATS_DATA.STATISTICAL_DATA.DATA_INF.VALUE
-
-  return series.reduce((pre, cur) => {
-    const key: keyof VALUE = `@${cur.id}`
-    const v = value.filter((f) => f[key] === cur.code)
-
-    const arr = _getTimeListValues(timeList, v).map((d) => {
-      return {
-        name: cur.name,
-        year: d.year,
-        data: d.data,
-      }
-    })
-    pre.push(...arr)
-    return pre
-  }, [])
-}
-
-const _getTimeListValues = (timeList: EstatTimes[], value: VALUE[]) => {
-  return timeList.map((d) => {
-    const timeValue = value.filter((f) => f['@time'] === d.yearStr)
-    return {
-      year: d.yearInt,
-      data: _getPrefListValues(timeValue),
-    }
-  })
-}
-
-/**
- * estat-APIの結果を都道府県別にまとめて返却
- * @param value - estat-APIのレスポンス GET_STATS_DATA.STATISTICAL_DATA.DATA_INF.VALUE
- */
-const _getPrefListValues = (value: VALUE[]) => {
-  const { prefList } = usePrefecture()
-  return prefList.value.map((d) => {
-    const cdArea = ('0000000000' + d.prefCode).slice(-2) + '000'
-    const data = value.find((f) => f['@area'] === cdArea)
-    if (data) {
-      return {
-        prefCode: cdArea,
-        prefName: d.prefName,
-        value: parseInt(data.$),
-        unit: data['@unit'],
-      }
-    } else {
-      return {
-        prefCode: cdArea,
-        prefName: 'test',
-        value: '',
-        unit: '',
-      }
-    }
-  })
 }
 
 const _timeList = (response) => {

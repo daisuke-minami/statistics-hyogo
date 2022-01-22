@@ -7,7 +7,7 @@
 <script lang="ts">
 import { defineComponent, computed } from '@nuxtjs/composition-api'
 import { cloneDeep } from 'lodash'
-import * as topojson from 'topojson-client'
+// import * as topojson from 'topojson-client'
 
 type SeriesRankCity = {
   name: string
@@ -28,7 +28,7 @@ export default defineComponent({
       type: Array as () => SeriesRankCity[],
       required: true,
     },
-    topoJson: {
+    geoJson: {
       type: Object,
       required: true,
     },
@@ -40,13 +40,13 @@ export default defineComponent({
       series[0].states = { hover: { color: '#a4edba' } }
       return series
     })
-    const geoJson = computed(() => {
-      return topojson.feature(props.topoJson, props.topoJson.objects.city)
-    })
+    // const geoJson = computed(() => {
+    //   return topojson.feature(props.topoJson, props.topoJson.objects.city)
+    // })
     const chartOptions = computed(() => {
       return {
         chart: {
-          map: geoJson.value,
+          map: props.geoJson,
         },
         title: {
           text: null,

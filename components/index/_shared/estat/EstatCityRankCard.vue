@@ -1,77 +1,68 @@
 <template>
-  <v-col cols="12" md="6" class="DataCard">
-    <client-only>
-      <template>
-        <v-card :loading="$fetchState.pending">
-          <p v-if="$fetchState.pending" />
-          <data-view v-else :title="title" :route="routingPath">
-            <h4 :id="titleId" class="visually-hidden">
-              {{ title }}
-            </h4>
+  <data-view :title="title" :route="path">
+    <h4 :id="titleId" class="visually-hidden">
+      {{ title }}
+    </h4>
 
-            <toggle-big-city v-model="bigcityKind" />
-            <toggle-map-bar v-model="mapbar" />
+    <toggle-big-city v-model="bigcityKind" />
+    <toggle-map-bar v-model="mapbar" />
 
-            <v-row>
-              <v-col>
-                <v-select
-                  v-model="selectedSeries"
-                  :items="series"
-                  item-text="name"
-                  item-value="name"
-                  return-object
-                />
-              </v-col>
-              <v-col>
-                <v-select
-                  v-model="selectedTime"
-                  :items="times"
-                  item-text="yearName"
-                  item-value="yearInt"
-                  return-object
-                  @change="$emit('input', $event)"
-                />
-              </v-col>
-            </v-row>
+    <v-row>
+      <v-col>
+        <v-select
+          v-model="selectedSeries"
+          :items="series"
+          item-text="name"
+          item-value="name"
+          return-object
+        />
+      </v-col>
+      <v-col>
+        <v-select
+          v-model="selectedTime"
+          :items="timeList"
+          item-text="yearName"
+          item-value="yearInt"
+          return-object
+          @change="$emit('input', $event)"
+        />
+      </v-col>
+    </v-row>
 
-            <lazy-component
-              :is="chartComponent"
-              v-show="canvas"
-              :display-data="displayData"
-              :topo-json="topoJson"
-            />
+    <lazy-component
+      :is="chartComponent"
+      v-show="canvas"
+      :display-data="displayData"
+      :geo-json="geoJson"
+    />
 
-            <template v-slot:description>
-              <p>最終更新日:{{ lastUpdate }}</p>
-              <slot name="description" />
-            </template>
+    <template v-slot:description>
+      <p>最終更新日:{{ lastUpdate }}</p>
+      <slot name="description" />
+    </template>
 
-            <template v-slot:additionalDescription>
-              <span>（注）</span>
-              <ul>
-                <li v-for="item in additionalDescription" :key="item">
-                  {{ item }}
-                </li>
-              </ul>
-              <slot name="additionalDescription" />
-            </template>
+    <template v-slot:additionalDescription>
+      <span>（注）</span>
+      <ul>
+        <li v-for="item in additionalDescription" :key="item">
+          {{ item }}
+        </li>
+      </ul>
+      <slot name="additionalDescription" />
+    </template>
 
-            <template v-slot:dataTable>
-              <client-only>
-                <data-view-table :headers="tableHeader" :items="tableData" />
-              </client-only>
-            </template>
+    <template v-slot:dataTable>
+      <client-only>
+        <data-view-table :headers="tableHeader" :items="tableData" />
+      </client-only>
+    </template>
 
-            <template v-slot:footer>
-              <app-link :to="source.estatUrl">
-                {{ source.estatName }}
-              </app-link>
-            </template>
-          </data-view>
-        </v-card>
-      </template>
-    </client-only>
-  </v-col>
+    <template v-slot:footer>
+      <app-link :to="source.estatUrl">
+        {{ source.estatName }}
+      </app-link>
+    </template>
+  </data-view>
 </template>
 
 <script lang="ts">
@@ -79,24 +70,11 @@ import {
   defineComponent,
   ref,
   computed,
-  watch,
-  useFetch,
-  // useStore,
   PropType,
-  inject,
 } from '@nuxtjs/composition-api'
-import {
-  EstatParams,
-  EstatSeries,
-  EstatTimes,
-  CardTitle,
-  EstatResponse,
-  EstatSource,
-  formatCityRankChart,
-  formatAdditionalDescription,
-} from '@/utils/formatEstat'
-import { StateType, StateKey } from '@/composition/useState'
-import axios from 'axios'
+
+import { useEstatRankChart } from '@/composition/useEstatRankChart'
+import { EstatState } from '~/types/estat'
 
 // MapChart
 const MapChart = () => {
@@ -109,160 +87,63 @@ const BarChart = () => {
 
 export default defineComponent({
   props: {
-    cardTitle: {
-      type: Object as PropType<CardTitle>,
+    estatState: {
+      type: Object as PropType<EstatState>,
       required: true,
     },
-    estatParams: {
-      type: Object as PropType<EstatParams>,
-      required: true,
-    },
-    estatSeries: {
-      type: Array as PropType<EstatSeries[]>,
-      required: true,
-    },
-    estatLatestYear: {
-      type: Object as PropType<EstatTimes>,
-      required: true,
-    },
-    estatAnnotation: {
-      type: Array as PropType<string[]>,
+    cityMap: {
+      type: Object,
       required: true,
     },
   },
-  setup(props, context) {
+  setup(props) {
     // canvas
-    const canvas = ref<boolean>(true)
+    const canvas = true
 
-    // inject
-    const State: StateType = inject(StateKey)
-    // const code = State.code.value
-    const govType = State.govType.value
-    const selectedPref = State.selectedPref.value
-    const selectedCity = State.selectedCity.value
-    const cityList = State.cityList.value
-
-    // card情報の設定
-    const title = computed((): string => {
-      const name: string =
-        govType === 'prefecture' ? selectedPref.prefName : selectedCity.cityName
-      return `${name}の${props.cardTitle.title}Rank`
-    })
-    const titleId = computed((): string => {
-      return `${props.cardTitle.titleId}`
-    })
-    const routingPath = computed((): string => {
-      return `/${State.routingPath.value}/${titleId.value}/`
-    })
+    const {
+      title,
+      titleId,
+      path,
+      timeList,
+      chartData,
+      tableHeader,
+      tableData,
+      source,
+      lastUpdate,
+      additionalDescription,
+    } = useEstatRankChart(props.estatState)
 
     // 政令市統合/分割
     const bigcityKind = ref<string>('all')
-    const innerCityList = computed((): City[] => {
-      if (bigcityKind.value === 'all') {
-        return cityList.filter((f) => f.bigCityFlag !== '1')
-      } else {
-        return cityList.filter((f) => f.bigCityFlag !== '2')
-      }
-    })
+    // const innerCityList = computed((): City[] => {
+    //   if (bigcityKind.value === 'all') {
+    //     return cityList.filter((f) => f.bigCityFlag !== '1')
+    //   } else {
+    //     return cityList.filter((f) => f.bigCityFlag !== '2')
+    //   }
+    // })
 
-    // eStat-APIからデータを取得
-    const estatResponse = ref<EstatResponse>({})
-    const geoJson = ref<object>({})
-    const { fetch } = useFetch(async () => {
-      const params = Object.assign({}, props.estatParams)
-      const series = selectedSeries.value
-      if (series.id === 'cat01') {
-        params.cdCat01 = series.code
-      }
-      params.cdArea = innerCityList.value.map((d: City) => d.cityCode)
-      const { data: res } = await context.root.$estat.get(
-        `${process.env.BASE_URL}/json/getStatsData`,
-        { params }
-      )
-
-      const { data: topoAll } = await axios.get(
-        'https://geoshape.ex.nii.ac.jp/city/topojson/20200101/28/28_city_dc.l.topojson'
-      )
-      // const { data: topoBreak } = await axios.get(
-      //   'https://geoshape.ex.nii.ac.jp/city/topojson/20200101/28/28_city.l.topojson'
-      // )
-
-      estatResponse.value = res
-      geoJson.value = topoAll
-    })
+    const geoJson = ref<object>(props.cityMap.all)
 
     // 系列セレクト
-    const series = props.estatSeries
+    const series = props.estatState.series
     const selectedSeries = ref<EstatSeries>(series[0])
 
-    // fetch
-    fetch()
-    watch(selectedSeries, () => fetch())
-    watch(bigcityKind, () => fetch())
-
-    // データの整形
-    const formatData = computed(() => {
-      return formatCityRankChart(
-        estatResponse.value,
-        selectedSeries.value,
-        innerCityList.value
-      )
-    })
-
     // 年次セレクト
-    const times = computed((): EstatTimes[] => {
-      return formatData.value.times
-    })
-    const selectedTime = ref<EstatTimes>(props.estatLatestYear)
+    const selectedTime = ref<EstatTimes>(props.estatState.latestYear)
 
     // 年次で表示データを切替
     const displayData = computed((): EstatSeries[] => {
-      const c: EstatSeries[] = formatData.value.chartData
-      return c.filter((f) => f.year === selectedTime.value.yearInt)
+      const c = chartData.value
+      return c
+        .filter((f) => f.year === selectedTime.value.yearInt)
+        .filter((f) => f.name === selectedSeries.value.name)
     })
-
-    // ストアからtopojsonを取得
-    // const store = useStore()
-    const topoJson = computed(
-      () => {
-        return geoJson.value
-      }
-      // store.getters['topojson/getMapCity'](bigcityKind.value)
-    )
-    // watch(bigcityKind, () => fetch())
 
     // MapChartとBarChartの切替
     const mapbar = ref<string>('map')
     const chartComponent = computed((): string => {
-      const chartComponent = mapbar.value === 'map' ? MapChart : BarChart
-      return chartComponent
-    })
-
-    // テーブルの設定
-    const tableHeader = computed(() => {
-      return formatData.value.tableHeader
-    })
-    const tableData = computed(() => {
-      return formatData.value.tableData
-    })
-
-    // 出典
-    const source = computed((): EstatSource => {
-      return formatData.value.source
-    })
-
-    const lastUpdate = computed((): string => {
-      if (process.browser) {
-        const day = new Date(document.lastModified)
-        return `${day.getFullYear()}年${day.getMonth() + 1}月${day.getDate()}日`
-      } else {
-        return ''
-      }
-    })
-
-    // 注釈
-    const additionalDescription = computed((): string[] => {
-      return formatAdditionalDescription(props.estatAnnotation).rankChart
+      return mapbar.value === 'map' ? MapChart : BarChart
     })
 
     // returnはアルファベット順
@@ -272,7 +153,7 @@ export default defineComponent({
       canvas,
       title,
       titleId,
-      routingPath,
+      path,
       chartComponent,
       displayData,
       lastUpdate,
@@ -283,8 +164,8 @@ export default defineComponent({
       source,
       tableData,
       tableHeader,
-      times,
-      topoJson,
+      timeList,
+      geoJson,
     }
   },
 })
