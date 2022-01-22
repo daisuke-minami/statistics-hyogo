@@ -51,7 +51,6 @@
 
 <script lang="ts">
 import { defineComponent, ref, computed } from '@nuxtjs/composition-api'
-// import { StateType, StateKey } from '@/composition/useState'
 import { useEstatPyramidChart } from '@/composition/useEstatPyramidChart'
 import { EstatTimes } from '~/types/estat'
 

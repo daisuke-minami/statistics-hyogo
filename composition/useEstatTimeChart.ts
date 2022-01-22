@@ -1,5 +1,4 @@
 import { reactive, toRefs, useRoute } from '@nuxtjs/composition-api'
-// import { StateKey } from '@/composition/useState'
 import { getGraphSeriesStyle } from '@/utils/colors'
 import {
   EstatTimeChart,
