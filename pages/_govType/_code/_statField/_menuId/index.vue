@@ -30,20 +30,18 @@ export default defineComponent({
   setup() {
     // パスパラメータの取得
     const route = useRoute()
-    const params = route.value.params
-    const { govType, code, statField, menuId } = params
+    const { govType, code, statField, menuId } = route.value.params
 
     // Stateをセット
     const State = inject(StateKey)
-    State.setState(govType, code)
+    if (State) {
+      State.setGovType(govType)
+      State.setCode(code)
+    }
 
     // 市区町村判定フラグ
     const isCity = computed(() => {
-      if (govType === 'city') {
-        return true
-      } else {
-        return false
-      }
+      return govType === 'city'
     })
 
     // カードコンポーネントの設定

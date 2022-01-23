@@ -37,7 +37,7 @@ import {
   onMounted,
   reactive,
   toRef,
-  inject,
+  // inject,
   useMeta,
   useRoute,
   computed,
@@ -60,8 +60,8 @@ export default defineComponent({
   setup() {
     // provide
     provide(StateKey, useGlobalState())
-    const State = inject(StateKey)
-    State.setState()
+    // const State = inject(StateKey)
+    // State.setState()
 
     const data = reactive<LocalData>({
       hasNavigation: true,

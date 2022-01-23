@@ -4,8 +4,8 @@ import { Pref, City } from '~/types/resas'
 interface State {
   govType: string
   code: string
-  selectedPref?: Pref
-  selectedCity?: City
+  selectedPref: Pref
+  selectedCity: City
 }
 
 export const useGlobalState = () => {
@@ -24,17 +24,18 @@ export const useGlobalState = () => {
     },
   })
 
-  const setState = (
-    govType: string = 'prefecture',
-    code: string = '28000'
-  ): void => {
+  const setGovType = (govType: string): void => {
     State.govType = govType
+  }
+
+  const setCode = (code: string): void => {
     State.code = code
   }
 
   return {
     ...toRefs(State),
-    setState,
+    setGovType,
+    setCode,
   }
 }
 
