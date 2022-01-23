@@ -45,7 +45,6 @@ import {
 } from '@nuxtjs/composition-api'
 import ScaleLoader from 'vue-spinner/src/ScaleLoader.vue'
 import { useState, StateKey } from '@/composition/useState'
-// import { MetaInfo } from 'vue-meta'
 
 type LocalData = {
   hasNavigation: boolean

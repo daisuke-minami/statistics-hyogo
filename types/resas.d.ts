@@ -1,4 +1,4 @@
-export interface City {
+export type City = {
   prefCode: number
   cityName: string
   cityCode: string
