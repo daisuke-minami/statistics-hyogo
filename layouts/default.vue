@@ -44,7 +44,7 @@ import {
   provide,
 } from '@nuxtjs/composition-api'
 import ScaleLoader from 'vue-spinner/src/ScaleLoader.vue'
-import { useState, StateKey } from '@/composition/useState'
+import { useGlobalState, StateKey } from '@/composition/useGlobalState'
 
 type LocalData = {
   hasNavigation: boolean
@@ -59,7 +59,7 @@ export default defineComponent({
   head: {},
   setup() {
     // provide
-    provide(StateKey, useState())
+    provide(StateKey, useGlobalState())
     const State = inject(StateKey)
     State.setState()
 

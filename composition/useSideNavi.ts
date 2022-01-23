@@ -1,5 +1,5 @@
 import { computed, inject } from '@nuxtjs/composition-api'
-import { StateKey, StateType } from '@/composition/useState'
+import { StateKey, StateType } from '@/composition/useGlobalState'
 import { useContents } from '@/composition/useContents'
 import {
   mdiWeatherPartlyCloudy,

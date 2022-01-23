@@ -1,5 +1,5 @@
 import { computed, inject, useRoute } from '@nuxtjs/composition-api'
-import { StateKey } from '@/composition/useState'
+import { StateKey } from '@/composition/useGlobalState'
 
 interface TabItem {
   label: string

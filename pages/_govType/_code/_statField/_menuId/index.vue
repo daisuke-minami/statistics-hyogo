@@ -22,7 +22,7 @@ import {
   useMeta,
   reactive,
 } from '@nuxtjs/composition-api'
-import { StateKey } from '@/composition/useState'
+import { StateKey } from '@/composition/useGlobalState'
 import { useContents } from '~/composition/useContents'
 
 export default defineComponent({
