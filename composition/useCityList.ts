@@ -23,7 +23,7 @@ const _city = (cityCode: string) => {
   return arr.find((f) => f.cityCode === cityCode) ?? arr[arr.length - 1]
 }
 
-export const useCity = () => {
+export const useCityList = () => {
   // パスパラメータの取得
   const route = useRoute()
   const params = route.value.params

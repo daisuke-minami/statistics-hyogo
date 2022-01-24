@@ -9,7 +9,7 @@ import {
   EstatResponse,
   EstatTimeChart,
 } from '@/types/estat'
-import { useCity } from '@/composition/useCity'
+import { useCityList } from '@/composition/useCityList'
 import { usePrefecture } from '@/composition/usePrefecture'
 
 interface CardState {
@@ -32,7 +32,7 @@ export const useEstatRankChart = (estatState: EstatState) => {
 
   // 都道府県・市区町村
   const { selectedPref } = usePrefecture()
-  const { selectedCity } = useCity()
+  const { selectedCity } = useCityList()
 
   const _setTitle = (title: string) => {
     const name: string =
@@ -124,7 +124,7 @@ export const useEstatRankChart = (estatState: EstatState) => {
    * @param value - estat-APIのレスポンス GET_STATS_DATA.STATISTICAL_DATA.DATA_INF.VALUE
    */
   const _getCityListValues = (value: VALUE[]) => {
-    const { cityList } = useCity()
+    const { cityList } = useCityList()
     return cityList.value.map((d) => {
       const data = value.find((f) => f['@area'] === d.cityCode)
       if (data) {
