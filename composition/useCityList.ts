@@ -1,10 +1,4 @@
-import {
-  computed,
-  reactive,
-  toRefs,
-  useRoute,
-  // useRouter,
-} from '@nuxtjs/composition-api'
+import { computed, reactive, toRefs } from '@nuxtjs/composition-api'
 import { City } from '@/types/resas'
 import { usePrefecture } from '@/composition/usePrefecture'
 import cityListAll from '~/data/codes/citylist.json'
@@ -13,7 +7,7 @@ interface State {
   cityList: City[]
   cityListBigCityJoin: City[]
   // cityListBigCitySplit: City[]
-  selectedCity: City
+  // selectedCity: City
 }
 
 const _cityList = (prefCode: number) => {
@@ -28,17 +22,7 @@ const _cityListBigCityJoin = (prefCode: number) => {
     .filter((f) => f.bigCityFlag !== '1')
 }
 
-const _city = (cityCode: string) => {
-  const arr = cityListAll.result
-  return arr.find((f) => f.cityCode === cityCode) ?? arr[arr.length - 1]
-}
-
 export const useCityList = () => {
-  // パスパラメータの取得
-  const route = useRoute()
-  const params = route.value.params
-  const { code } = params
-
   // 都道府県
   const { selectedPref } = usePrefecture()
 
@@ -58,28 +42,10 @@ export const useCityList = () => {
     cityList: _cityList(selectedPref.value.prefCode),
     cityListBigCityJoin: _cityListBigCityJoin(selectedPref.value.prefCode),
     // cityListBigCitySplit: getCityList.value(false),
-    selectedCity: _city(code),
   })
-
-  const setSelectedCity = computed(() => {
-    return function (selectedCity: City) {
-      state.selectedCity = selectedCity
-    }
-  })
-
-  // 市区町村ルーティング
-  // const router = useRouter()
-  // const changeRouter = computed(() => {
-  //   return function (selectedCity: City) {
-  //     const code = selectedCity.cityCode
-  //     router.push(`/city/${code}/${statField}/${menuId}`)
-  //   }
-  // })
 
   return {
     ...toRefs(state),
     getCityList,
-    setSelectedCity,
-    // changeRouter,
   }
 }
