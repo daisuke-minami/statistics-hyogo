@@ -11,6 +11,8 @@ import cityListAll from '~/data/codes/citylist.json'
 
 interface State {
   cityList: City[]
+  cityListBigCityJoin: City[]
+  // cityListBigCitySplit: City[]
   selectedCity: City
 }
 
@@ -18,12 +20,20 @@ const _cityList = (prefCode: number) => {
   const arr = cityListAll.result
   return arr.filter((f) => f.prefCode === prefCode)
 }
+
+const _cityListBigCityJoin = (prefCode: number) => {
+  const arr = cityListAll.result
+  return arr
+    .filter((f) => f.prefCode === prefCode)
+    .filter((f) => f.bigCityFlag !== '1')
+}
+
 const _city = (cityCode: string) => {
   const arr = cityListAll.result
   return arr.find((f) => f.cityCode === cityCode) ?? arr[arr.length - 1]
 }
 
-export const useCity = () => {
+export const useCityList = () => {
   // パスパラメータの取得
   const route = useRoute()
   const params = route.value.params
@@ -31,12 +41,6 @@ export const useCity = () => {
 
   // 都道府県
   const { selectedPref } = usePrefecture()
-
-  // State
-  const state = reactive<State>({
-    cityList: _cityList(selectedPref.value.prefCode),
-    selectedCity: _city(code),
-  })
 
   // 市区町村リストの取得
   const getCityList = computed((isBigCity: boolean = true) => {
@@ -47,6 +51,14 @@ export const useCity = () => {
       // 政令指定都市分割
       return state.cityList.filter((f) => f.bigCityFlag !== '2')
     }
+  })
+
+  // State
+  const state = reactive<State>({
+    cityList: _cityList(selectedPref.value.prefCode),
+    cityListBigCityJoin: _cityListBigCityJoin(selectedPref.value.prefCode),
+    // cityListBigCitySplit: getCityList.value(false),
+    selectedCity: _city(code),
   })
 
   const setSelectedCity = computed(() => {

@@ -1,5 +1,5 @@
 import { computed, useRoute } from '@nuxtjs/composition-api'
-import { useCity } from '@/composition/useCity'
+import { useCityList } from '@/composition/useCityList'
 import { usePrefecture } from '@/composition/usePrefecture'
 import contents from '~/assets/json/contentsSetting.json'
 
@@ -72,7 +72,7 @@ export const useContents = () => {
 
   // 都道府県・市区町村
   const { selectedPref } = usePrefecture()
-  const { selectedCity } = useCity()
+  const { selectedCity } = useCityList()
 
   // MenuTitleの取得
   const getMenuTitle = computed(() => {

@@ -9,7 +9,7 @@ interface State {
 }
 
 export const useStore = () => {
-  const State = reactive<State>({
+  const state = reactive<State>({
     govType: 'prefecture',
     code: '28000',
     currentPref: {
@@ -25,22 +25,17 @@ export const useStore = () => {
   })
 
   const setGovType = (govType: string): void => {
-    // console.log({ govType })
-    State.govType = govType
+    state.govType = govType
   }
-
   const setCode = (code: string): void => {
-    // console.log({ code })
-    State.code = code
+    state.code = code
   }
-
   const setCurrentCity = (newCity: City): void => {
-    // console.log({ newCity })
-    State.currentCity = newCity
+    state.currentCity = newCity
   }
 
   return {
-    ...toRefs(State),
+    ...toRefs(state),
     setGovType,
     setCode,
     setCurrentCity,

@@ -21,7 +21,7 @@ import {
 } from '@nuxtjs/composition-api'
 import { useEstatApi } from '@/composition/useEstatApi'
 import { useGeojson } from '@/composition/useGeojson'
-import { useCity } from '@/composition/useCity'
+import { useCityList } from '@/composition/useCityList'
 
 export default defineComponent({
   setup() {
@@ -69,7 +69,7 @@ export default defineComponent({
     const { fetch } = useFetch(async () => {
       // estat-APIの取得
       const params = Object.assign({}, estatState.params)
-      const { cityList } = useCity()
+      const { cityList } = useCityList()
       params.cdArea = cityList.value.map((d) => d.cityCode)
       estatState.response = await useEstatApi($axios, params).getData()
 
