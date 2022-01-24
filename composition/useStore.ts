@@ -8,7 +8,7 @@ interface State {
   currentCity: City
 }
 
-export const useGlobalState = () => {
+export const useStore = () => {
   const State = reactive<State>({
     govType: 'prefecture',
     code: '28000',
@@ -47,5 +47,5 @@ export const useGlobalState = () => {
   }
 }
 
-export type StateType = ReturnType<typeof useGlobalState>
+export type StateType = ReturnType<typeof useStore>
 export const StateKey: InjectionKey<StateType> = Symbol('State')

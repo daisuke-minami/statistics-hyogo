@@ -30,7 +30,7 @@ import {
   useRoute,
   useRouter,
 } from '@nuxtjs/composition-api'
-import { StateKey } from '@/composition/useGlobalState'
+import { StateKey } from '@/composition/useStore'
 import { useCity } from '~/composition/useCity'
 import { City } from '~/types/resas'
 

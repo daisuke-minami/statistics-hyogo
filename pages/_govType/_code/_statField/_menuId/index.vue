@@ -24,7 +24,7 @@ import {
   // watch,
   onMounted,
 } from '@nuxtjs/composition-api'
-import { StateKey } from '@/composition/useGlobalState'
+import { StateKey } from '@/composition/useStore'
 import { useContents } from '~/composition/useContents'
 
 export default defineComponent({
