@@ -1,4 +1,4 @@
-import { computed, inject } from '@nuxtjs/composition-api'
+import { computed, inject, onMounted, reactive } from '@nuxtjs/composition-api'
 import { StateKey, StateType } from '@/composition/useGlobalState'
 import { useContents } from '@/composition/useContents'
 import {
@@ -31,20 +31,47 @@ type MenuItem = {
 }
 
 export const useSideNavi = () => {
-  const State: StateType = inject(StateKey)
-  const { govType, code } = State
+  const globalState: StateType = inject(StateKey)
+  const { govType, code } = globalState
 
-  const { getInitMenuTitles } = useContents()
-  const setLink = (statField: string) => {
-    const menuId = getInitMenuTitles.value.filter(
-      (f) => f.statField === statField
-    )[0]
-    if (govType.value === 'prefecture') {
-      return `/${govType.value}/${code.value}/${statField}/${menuId.prefecture}`
-    } else {
-      return `/${govType.value}/${code.value}/${statField}/${menuId.city}`
+  const state = reactive<any>({
+    govType,
+    code,
+  })
+
+  onMounted(() => {
+    // const globalState: StateType = inject(StateKey)
+    // const { govType, code } = globalState
+    // console.log({ govType, code } )
+  })
+
+  const setLink = computed(() => {
+    return function (statField: string) {
+      const { getInitMenuTitles } = useContents()
+      const menuId = () => {
+        return getInitMenuTitles.value.filter(
+          (f) => f.statField === statField
+        )[0]
+      }
+      return `/${state.govType}/${state.code}/${statField}/${
+        menuId().prefecture
+      }`
     }
-  }
+  })
+
+  // console.log(test.value('landweather'))
+
+  // const { getInitMenuTitles } = useContents()
+  // const setLink.value = (statField: string) => {
+  //   const menuId = getInitMenuTitles.value.filter(
+  //     (f) => f.statField === statField
+  //   )[0]
+  //   if (state.govType === 'prefecture') {
+  //     return `/${state.govType}/${state.code}/${statField}/${menuId.prefecture}`
+  //   } else {
+  //     return `/${state.govType}/${state.code}/${statField}/${menuId.city}`
+  //   }
+  // }
 
   const naviItems = computed((): MenuItem[] => {
     return [
@@ -56,77 +83,77 @@ export const useSideNavi = () => {
       {
         iconPath: mdiWeatherPartlyCloudy,
         title: '国土・気象',
-        link: setLink('landweather'),
+        link: setLink.value('landweather'),
       },
       {
         iconPath: mdiAccountMultiple,
         title: '人口・世帯',
-        link: setLink('population'),
+        link: setLink.value('population'),
       },
       {
         iconPath: mdiCashMultiple,
         title: '労働・賃金',
-        link: setLink('laborwage'),
+        link: setLink.value('laborwage'),
       },
       {
         iconPath: mdiFish,
         title: '農林水産業',
-        link: setLink('agriculture'),
+        link: setLink.value('agriculture'),
       },
       {
         iconPath: mdiFactory,
         title: '鉱工業',
-        link: setLink('miningindustry'),
+        link: setLink.value('miningindustry'),
       },
       {
         iconPath: mdiStore,
         title: '商業・サービス業',
-        link: setLink('commercial'),
+        link: setLink.value('commercial'),
       },
       {
         iconPath: mdiOfficeBuilding,
         title: '企業・家計・経済',
-        link: setLink('economy'),
+        link: setLink.value('economy'),
       },
       {
         iconPath: mdiHomeAnalytics,
         title: '住宅・土地・建設',
-        link: setLink('construction'),
+        link: setLink.value('construction'),
       },
       {
         iconPath: mdiWater,
         title: 'エネルギー・水',
-        link: setLink('energy'),
+        link: setLink.value('energy'),
       },
       {
         iconPath: mdiTruck,
         title: '運輸・観光',
-        link: setLink('tourism'),
+        link: setLink.value('tourism'),
       },
       {
         iconPath: mdiSchool,
         title: '教育・文化・スポーツ',
-        link: setLink('educationsports'),
+        link: setLink.value('educationsports'),
       },
       {
         iconPath: mdiCashUsd,
         title: '行財政',
-        link: setLink('administrativefinancial'),
+        link: setLink.value('administrativefinancial'),
       },
       {
         iconPath: mdiSeatbelt,
         title: '司法・安全・環境',
-        link: setLink('safetyenvironment'),
+        link: setLink.value('safetyenvironment'),
       },
       {
         iconPath: mdiHospitalBox,
         title: '社会保障・衛生',
-        link: setLink('socialsecurity'),
+        link: setLink.value('socialsecurity'),
       },
       {
         iconPath: mdiEarth,
         title: '国際',
-        link: setLink('international'),
+        link: setLink.value('international'),
       },
       // {
       //   iconPath: mdiChartTimelineVariant,

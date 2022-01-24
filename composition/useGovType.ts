@@ -14,25 +14,30 @@ function toFiveDigit(code: number): string {
 export const useGovType = () => {
   // inject
   const State = inject(StateKey)
-  const { selectedPref, selectedCity } = State
+  const { currentPref, currentCity } = State
 
   // パスパラメータの取得
   const route = useRoute()
   const params = route.value.params
   const { statField, menuId } = params
 
-  const prefCode = toFiveDigit(selectedPref.value.prefCode)
-  const cityCode = selectedCity.value.cityCode
+  const prefCode = computed(() => {
+    return toFiveDigit(currentPref.value.prefCode)
+  })
+
+  const cityCode = computed(() => {
+    return currentCity.value.cityCode
+  })
 
   const getGovTabItems = computed((): TabItem[] => {
     return [
       {
         label: `都道府県の統計`,
-        path: `/prefecture/${prefCode}/${statField}/${menuId}`,
+        path: `/prefecture/${prefCode.value}/${statField}/${menuId}`,
       },
       {
         label: `市区町村の統計`,
-        path: `/city/${cityCode}/${statField}/${menuId}`,
+        path: `/city/${cityCode.value}/${statField}/${menuId}`,
       },
     ]
   })

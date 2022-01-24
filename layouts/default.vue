@@ -58,10 +58,7 @@ export default defineComponent({
   },
   head: {},
   setup() {
-    // provide
     provide(StateKey, useGlobalState())
-    // const State = inject(StateKey)
-    // State.setState()
 
     const data = reactive<LocalData>({
       hasNavigation: true,

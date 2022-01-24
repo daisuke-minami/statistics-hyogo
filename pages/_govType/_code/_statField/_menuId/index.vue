@@ -21,6 +21,8 @@ import {
   useRoute,
   useMeta,
   reactive,
+  // watch,
+  onMounted,
 } from '@nuxtjs/composition-api'
 import { StateKey } from '@/composition/useGlobalState'
 import { useContents } from '~/composition/useContents'
@@ -32,12 +34,26 @@ export default defineComponent({
     const route = useRoute()
     const { govType, code, statField, menuId } = route.value.params
 
+    onMounted(() => {
+      const State = inject(StateKey)
+      if (State) {
+        State.setGovType(govType)
+        State.setCode(code)
+      }
+    })
+
     // Stateをセット
-    const State = inject(StateKey)
-    if (State) {
-      State.setGovType(govType)
-      State.setCode(code)
-    }
+    // watch(
+    //   () => route,
+    //   () => setState()
+    // )
+    // const setState = (): void => {
+    //   const State = inject(StateKey)
+    //   if (State) {
+    //     State.setGovType(govType)
+    //     State.setCode(code)
+    //   }
+    // }
 
     // 市区町村判定フラグ
     const isCity = computed(() => {

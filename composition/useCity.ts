@@ -3,7 +3,7 @@ import {
   reactive,
   toRefs,
   useRoute,
-  useRouter,
+  // useRouter,
 } from '@nuxtjs/composition-api'
 import { City } from '@/types/resas'
 import { usePrefecture } from '@/composition/usePrefecture'
@@ -27,7 +27,7 @@ export const useCity = () => {
   // パスパラメータの取得
   const route = useRoute()
   const params = route.value.params
-  const { code, statField, menuId } = params
+  const { code } = params
 
   // 都道府県
   const { selectedPref } = usePrefecture()
@@ -49,18 +49,25 @@ export const useCity = () => {
     }
   })
 
-  // 市区町村ルーティング
-  const router = useRouter()
-  const changeRouter = computed(() => {
+  const setSelectedCity = computed(() => {
     return function (selectedCity: City) {
-      const code = selectedCity.cityCode
-      router.push(`/city/${code}/${statField}/${menuId}`)
+      state.selectedCity = selectedCity
     }
   })
+
+  // 市区町村ルーティング
+  // const router = useRouter()
+  // const changeRouter = computed(() => {
+  //   return function (selectedCity: City) {
+  //     const code = selectedCity.cityCode
+  //     router.push(`/city/${code}/${statField}/${menuId}`)
+  //   }
+  // })
 
   return {
     ...toRefs(state),
     getCityList,
-    changeRouter,
+    setSelectedCity,
+    // changeRouter,
   }
 }
