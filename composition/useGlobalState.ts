@@ -2,16 +2,16 @@ import { reactive, toRefs, InjectionKey } from '@nuxtjs/composition-api'
 import { Pref, City } from '~/types/resas'
 
 interface State {
-  govType: string
-  code: string
+  currentGovType: string
+  currentCode: string
   currentPref: Pref
   currentCity: City
 }
 
 export const useGlobalState = () => {
   const State = reactive<State>({
-    govType: 'prefecture',
-    code: '28000',
+    currentGovType: 'prefecture',
+    currentCode: '28000',
     currentPref: {
       prefCode: 28,
       prefName: '兵庫県',
@@ -24,12 +24,12 @@ export const useGlobalState = () => {
     },
   })
 
-  const setGovType = (govType: string): void => {
-    State.govType = govType
+  const setGovType = (currentGovType: string): void => {
+    State.currentGovType = currentGovType
   }
 
-  const setCode = (code: string): void => {
-    State.code = code
+  const setCode = (currentCode: string): void => {
+    State.currentCode = currentCode
   }
 
   return {

@@ -32,17 +32,17 @@ type MenuItem = {
 
 export const useSideNavi = () => {
   const State: StateType = inject(StateKey)
-  const { govType, code } = State
+  const { currentGovType, currentCode } = State
 
   const { getInitMenuTitles } = useContents()
   const setLink = (statField: string) => {
     const menuId = getInitMenuTitles.value.filter(
       (f) => f.statField === statField
     )[0]
-    if (govType.value === 'prefecture') {
-      return `/${govType.value}/${code.value}/${statField}/${menuId.prefecture}`
+    if (currentGovType.value === 'prefecture') {
+      return `/${currentGovType.value}/${currentCode.value}/${statField}/${menuId.prefecture}`
     } else {
-      return `/${govType.value}/${code.value}/${statField}/${menuId.city}`
+      return `/${currentGovType.value}/${currentCode.value}/${statField}/${menuId.city}`
     }
   }
 
@@ -131,7 +131,7 @@ export const useSideNavi = () => {
       // {
       //   iconPath: mdiChartTimelineVariant,
       //   title: 'その他',
-      //   link: `/${govType.value}/${code.value}/other/`,
+      //   link: `/${currentGovType.value}/${currentCode.value}/other/`,
       //   divider: true,
       // },
       {
