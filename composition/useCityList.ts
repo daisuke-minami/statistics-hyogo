@@ -31,6 +31,19 @@ export const useCityList = () => {
 
   // 都道府県
   const { selectedPref } = usePrefecture()
+  const prefCode = computed(() => selectedPref.value.prefCode)
+
+  const cityListAll = computed(() => {
+    return masterCityList.result.filter((f) => f.prefCode === prefCode.value)
+  })
+
+  const cityListBigCityJoin = computed(() => {
+    return cityListAll.value.filter((f) => f.bigCityFlag !== '1')
+  })
+
+  const cityListBigCitySplit = computed(() => {
+    return cityListAll.value.filter((f) => f.bigCityFlag !== '2')
+  })
 
   // State
   const state = reactive<State>({
@@ -60,6 +73,9 @@ export const useCityList = () => {
 
   return {
     ...toRefs(state),
+    cityListAll,
+    cityListBigCityJoin,
+    cityListBigCitySplit,
     getCityList,
     changeRouter,
   }
