@@ -7,7 +7,7 @@ import {
 } from '@nuxtjs/composition-api'
 import { City } from '@/types/resas'
 import { usePrefecture } from '@/composition/usePrefecture'
-import cityListAll from '~/data/codes/citylist.json'
+import masterCityList from '~/data/codes/citylist.json'
 
 interface State {
   cityList: City[]
@@ -15,11 +15,11 @@ interface State {
 }
 
 const _cityList = (prefCode: number) => {
-  const arr = cityListAll.result
+  const arr = masterCityList.result
   return arr.filter((f) => f.prefCode === prefCode)
 }
 const _city = (cityCode: string) => {
-  const arr = cityListAll.result
+  const arr = masterCityList.result
   return arr.find((f) => f.cityCode === cityCode) ?? arr[arr.length - 1]
 }
 
