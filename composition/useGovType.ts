@@ -14,15 +14,15 @@ function toFiveDigit(code: number): string {
 export const useGovType = () => {
   // inject
   const State = inject(StateKey)
-  const { selectedPref, selectedCity } = State
+  const { currentPref, currentCity } = State
 
   // パスパラメータの取得
   const route = useRoute()
   const params = route.value.params
   const { statField, menuId } = params
 
-  const prefCode = toFiveDigit(selectedPref.value.prefCode)
-  const cityCode = selectedCity.value.cityCode
+  const prefCode = toFiveDigit(currentPref.value.prefCode)
+  const cityCode = currentCity.value.cityCode
 
   const getGovTabItems = computed((): TabItem[] => {
     return [
