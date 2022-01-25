@@ -1,5 +1,5 @@
 import { computed, inject } from '@nuxtjs/composition-api'
-import { StateKey, StateType } from '@/composition/useGlobalState'
+import { StateKey } from '@/composition/useGlobalState'
 import { useContents } from '@/composition/useContents'
 import {
   mdiWeatherPartlyCloudy,
@@ -31,14 +31,13 @@ type MenuItem = {
 }
 
 export const useSideNavi = () => {
-  const State: StateType = inject(StateKey)
-  const { currentGovType, currentCode } = State
+  // inject
+  const { currentGovType, currentCode } = inject(StateKey)
 
-  const { getInitMenuTitles } = useContents()
+  const { getInitMenuId } = useContents()
+
   const setLink = (statField: string) => {
-    const menuId = getInitMenuTitles.value.filter(
-      (f) => f.statField === statField
-    )[0]
+    const menuId = getInitMenuId.value(statField)
     if (currentGovType.value === 'prefecture') {
       return `/${currentGovType.value}/${currentCode.value}/${statField}/${menuId.prefecture}`
     } else {
@@ -128,12 +127,6 @@ export const useSideNavi = () => {
         title: '国際',
         link: setLink('international'),
       },
-      // {
-      //   iconPath: mdiChartTimelineVariant,
-      //   title: 'その他',
-      //   link: `/${currentGovType.value}/${currentCode.value}/other/`,
-      //   divider: true,
-      // },
       {
         title: 'RESAS-APIの使い方',
         link: '/resas/',
@@ -147,8 +140,6 @@ export const useSideNavi = () => {
   })
 
   return {
-    // mdiClose: data.mdiClose,
-    // mdiMenu: data.mdiMenu,
     naviItems,
   }
 }

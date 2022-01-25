@@ -17,6 +17,17 @@ interface State {
   menuList: Menu[]
 }
 
+// Menuの初期値リスト
+const initMenuList = () => {
+  return contents.list.map((d) => {
+    return {
+      statField: d.fieldId,
+      prefecture: d.menu.prefecture[0].menuId,
+      city: d.menu.city[0].menuId,
+    }
+  })
+}
+
 export const useContents = () => {
   // パスパラメータの取得
   const route = useRoute()
@@ -53,15 +64,10 @@ export const useContents = () => {
     })
   })
 
-  // 統計項目の初期値 useSideNaviで使用
-  const getInitMenuTitles = computed(() => {
-    return contents.list.map((d) => {
-      return {
-        statField: d.fieldId,
-        prefecture: d.menu.prefecture[0].menuId,
-        city: d.menu.city[0].menuId,
-      }
-    })
+  const getInitMenuId = computed(() => {
+    return function (statField: string) {
+      return initMenuList().find((f) => f.statField === statField)
+    }
   })
 
   // カードリスト
@@ -99,10 +105,11 @@ export const useContents = () => {
     // ...toRefs(state),
     fieldList,
     menuList,
-    getInitMenuTitles,
+    // getInitMenuTitles,
     cardList,
     getCardTitle,
     getMenuTitle,
+    getInitMenuId,
     menuLinks,
   }
 }

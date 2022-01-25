@@ -16,7 +16,6 @@ export const useGovType = () => {
   // inject
   const State = inject(StateKey)
   const { currentPref, currentCity } = State
-  console.log({ currentPref, currentCity })
   // パスパラメータの取得
   const route = useRoute()
   const params = route.value.params
