@@ -1,12 +1,13 @@
-import { reactive, toRefs, useRoute } from '@nuxtjs/composition-api'
+import { inject, reactive, toRefs, useRoute } from '@nuxtjs/composition-api'
 import {
   EstatTimeChart,
   EstatTableHeader,
   EstatSource,
   EstatState,
 } from '@/types/estat'
-import { useCityList } from '@/composition/useCityList'
-import { usePrefecture } from '@/composition/usePrefecture'
+// import { useCityList } from '@/composition/useCityList'
+// import { usePrefecture } from '@/composition/usePrefecture'
+import { StateKey } from './useGlobalState'
 
 interface CardState {
   title: string
@@ -27,14 +28,13 @@ export const useEstatPyramidChart = (estatState: EstatState) => {
   const { govType, code, statField, menuId } = params
 
   // 都道府県・市区町村
-  const { selectedPref } = usePrefecture()
-  const { selectedCity } = useCityList()
+  const { currentPref, currentCity } = inject(StateKey)
 
   const _setTitle = (title: string) => {
     const name: string =
       govType === 'prefecture'
-        ? selectedPref.value.prefName
-        : selectedCity.value.cityName
+        ? currentPref.value.prefName
+        : currentCity.value.cityName
     return `${name}の${title}`
   }
 

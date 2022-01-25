@@ -14,18 +14,20 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, watch } from '@nuxtjs/composition-api'
+import { defineComponent, inject, ref, watch } from '@nuxtjs/composition-api'
 import { useChangeRouter } from '@/composition/useChangeRouter'
 import { useCityList } from '~/composition/useCityList'
 import { City } from '~/types/resas'
+import { StateKey } from '~/composition/useGlobalState'
 
 export default defineComponent({
   setup() {
     const { cityListBigCityJoin } = useCityList()
 
-    // const selectedCity = useCityList().selectedCity.value
-    const selectedCity = ref<City>({})
-    // const changeRoute = useCityList().changeRouter.value
+    const State = inject(StateKey)
+    const { currentCity } = State
+
+    const selectedCity = ref<City>(currentCity)
 
     // 市区町村を変更した場合の処理
     watch(selectedCity, () => changeCity())
@@ -36,7 +38,6 @@ export default defineComponent({
     return {
       cityList: cityListBigCityJoin,
       selectedCity,
-      // changeRoute,
     }
   },
 })

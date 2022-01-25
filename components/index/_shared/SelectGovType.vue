@@ -21,7 +21,9 @@ import { useGovType } from '@/composition/useGovType'
 
 export default defineComponent({
   setup() {
-    const tab = ref<string>('28000')
+    const tab = ref<any>()
+    // console.log(tab)
+
     const items = useGovType().getGovTabItems.value
 
     const change = (): void => {

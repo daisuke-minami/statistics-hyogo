@@ -3,6 +3,7 @@ import { StateKey } from '@/composition/useGlobalState'
 
 interface TabItem {
   label: string
+  govType: string
   path: string
 }
 
@@ -15,7 +16,7 @@ export const useGovType = () => {
   // inject
   const State = inject(StateKey)
   const { currentPref, currentCity } = State
-
+  console.log({ currentPref, currentCity })
   // パスパラメータの取得
   const route = useRoute()
   const params = route.value.params
@@ -28,10 +29,12 @@ export const useGovType = () => {
     return [
       {
         label: `都道府県の統計`,
+        govType: 'prefecture',
         path: `/prefecture/${prefCode}/${statField}/${menuId}`,
       },
       {
         label: `市区町村の統計`,
+        govType: 'city',
         path: `/city/${cityCode}/${statField}/${menuId}`,
       },
     ]

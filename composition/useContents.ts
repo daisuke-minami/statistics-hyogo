@@ -1,6 +1,5 @@
-import { computed, useRoute } from '@nuxtjs/composition-api'
-import { useCityList } from '@/composition/useCityList'
-import { usePrefecture } from '@/composition/usePrefecture'
+import { computed, inject, useRoute } from '@nuxtjs/composition-api'
+import { StateKey } from './useGlobalState'
 import contents from '~/assets/json/contentsSetting.json'
 
 interface Field {
@@ -71,8 +70,8 @@ export const useContents = () => {
   })
 
   // 都道府県・市区町村
-  const { selectedPref } = usePrefecture()
-  const { selectedCity } = useCityList()
+  const State = inject(StateKey)
+  const { currentPref, currentCity } = State
 
   // MenuTitleの取得
   const getMenuTitle = computed(() => {
@@ -80,8 +79,8 @@ export const useContents = () => {
       const title = menuList.value.filter((f) => f.menuId === menuId)[0]
         .menuTitle
       return govType === 'prefecture'
-        ? `${selectedPref.value.prefName}の${title}`
-        : `${selectedCity.value.cityName}の${title}`
+        ? `${currentPref.value.prefName}の${title}`
+        : `${currentCity.cityName}の${title}`
     }
   })
 
@@ -91,8 +90,8 @@ export const useContents = () => {
       const title = cardList.value.filter((f) => f.cardId === cardId)[0]
         .cardTitle
       return govType === 'prefecture'
-        ? `${selectedPref.value.prefName}の${title}`
-        : `${selectedCity.value.cityName}の${title}`
+        ? `${currentPref.value.prefName}の${title}`
+        : `${currentCity.cityName}の${title}`
     }
   })
 

@@ -1,4 +1,4 @@
-import { reactive, toRefs, InjectionKey } from '@nuxtjs/composition-api'
+import { reactive, toRefs, InjectionKey, Ref } from '@nuxtjs/composition-api'
 import { Pref, City } from '~/types/resas'
 
 interface State {
@@ -24,18 +24,21 @@ export const useGlobalState = () => {
     },
   })
 
-  const setGovType = (currentGovType: string): void => {
-    State.currentGovType = currentGovType
+  const setGovType = (newGovType: string): void => {
+    State.currentGovType = newGovType
   }
-
-  const setCode = (currentCode: string): void => {
-    State.currentCode = currentCode
+  const setCode = (newCode: string): void => {
+    State.currentCode = newCode
+  }
+  const setCurrentCity = (newCity: Ref<City>): void => {
+    State.currentCity = newCity.value
   }
 
   return {
     ...toRefs(State),
     setGovType,
     setCode,
+    setCurrentCity,
   }
 }
 

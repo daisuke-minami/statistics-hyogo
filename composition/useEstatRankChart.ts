@@ -1,4 +1,4 @@
-import { reactive, toRefs, useRoute } from '@nuxtjs/composition-api'
+import { inject, reactive, toRefs, useRoute } from '@nuxtjs/composition-api'
 import {
   EstatTableHeader,
   EstatSource,
@@ -11,6 +11,7 @@ import {
 } from '@/types/estat'
 import { useCityList } from '@/composition/useCityList'
 import { usePrefecture } from '@/composition/usePrefecture'
+import { StateKey } from './useGlobalState'
 
 interface CardState {
   title: string
@@ -31,14 +32,13 @@ export const useEstatRankChart = (estatState: EstatState) => {
   const { govType, code, statField, menuId } = params
 
   // 都道府県・市区町村
-  const { selectedPref } = usePrefecture()
-  const { selectedCity } = useCityList()
+  const { currentPref, currentCity } = inject(StateKey)
 
   const _setTitle = (title: string) => {
     const name: string =
       govType === 'prefecture'
-        ? selectedPref.value.prefName
-        : selectedCity.value.cityName
+        ? currentPref.value.prefName
+        : currentCity.value.cityName
     return `${name}の${title}`
   }
 
@@ -124,8 +124,8 @@ export const useEstatRankChart = (estatState: EstatState) => {
    * @param value - estat-APIのレスポンス GET_STATS_DATA.STATISTICAL_DATA.DATA_INF.VALUE
    */
   const _getCityListValues = (value: VALUE[]) => {
-    const { cityList } = useCityList()
-    return cityList.value.map((d) => {
+    const { cityListAll } = useCityList()
+    return cityListAll.value.map((d) => {
       const data = value.find((f) => f['@area'] === d.cityCode)
       if (data) {
         return {
