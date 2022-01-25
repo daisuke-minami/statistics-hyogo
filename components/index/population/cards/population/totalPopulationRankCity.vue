@@ -22,6 +22,7 @@ import {
 import { useEstatApi } from '@/composition/useEstatApi'
 import { useGeojson } from '@/composition/useGeojson'
 import { useCityList } from '@/composition/useCityList'
+import { EstatState } from '~/types/estat'
 
 export default defineComponent({
   setup() {
@@ -69,8 +70,8 @@ export default defineComponent({
     const { fetch } = useFetch(async () => {
       // estat-APIの取得
       const params = Object.assign({}, estatState.params)
-      const { cityList } = useCityList()
-      params.cdArea = cityList.value.map((d) => d.cityCode)
+      const { cityListAll } = useCityList()
+      params.cdArea = cityListAll.value.map((d) => d.cityCode)
       estatState.response = await useEstatApi($axios, params).getData()
 
       // geojsonの取得

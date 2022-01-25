@@ -18,19 +18,17 @@
 import { defineComponent } from '@nuxtjs/composition-api'
 import { useCityList } from '~/composition/useCityList'
 // import { City } from '~/types/resas'
+// import { City } from '~/types/resas'
 
 export default defineComponent({
   setup() {
-    const { cityList } = useCityList()
-    // const test = ref<City>(useCityList().cityListBigCityJoin)
-    // console.log(test)
+    const { cityListBigCityJoin } = useCityList()
 
-    // const cityList = useCityList().getCityList.value
     const selectedCity = useCityList().selectedCity.value
     const changeRoute = useCityList().changeRouter.value
 
     return {
-      cityList,
+      cityList: cityListBigCityJoin,
       selectedCity,
       changeRoute,
     }
