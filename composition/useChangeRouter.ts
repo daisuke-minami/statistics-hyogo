@@ -17,7 +17,8 @@ export const useChangeRouter = () => {
   const { govType, statField, menuId } = params
 
   // inject
-  const { currentGovType, currentCode } = inject(StateKey)
+  const { currentGovType, currentCode, currentPref, currentCity } =
+    inject(StateKey)
 
   const router = useRouter()
 
@@ -40,8 +41,26 @@ export const useChangeRouter = () => {
     }
   })
 
+  const prefCode = toFiveDigit(currentPref.value.prefCode)
+  const cityCode = currentCity.value.cityCode
+
+  // 都道府県・市区町村タブのpath設定
+  const getGovTabLink = computed(() => {
+    return function (govType: string) {
+      return govType === 'prefecture'
+        ? `/prefecture/${prefCode}/${statField}/${menuId}`
+        : `/city/${cityCode}/${statField}/${menuId}`
+    }
+  })
+
   return {
     changeRouterCity,
     getSideNaviLink,
+    getGovTabLink,
   }
+}
+
+// prefCodeを5桁文字列に変換
+function toFiveDigit(code: number): string {
+  return ('0000000000' + code).slice(-2) + '000'
 }
