@@ -24,10 +24,11 @@ export const useGlobalState = () => {
     },
   })
 
-  const setGovType = (newGovType: string): void => {
+  const setCurrentGovType = (newGovType: string): void => {
+    // console.log({newGovType})
     State.currentGovType = newGovType
   }
-  const setCode = (newCode: string): void => {
+  const setCurrentCode = (newCode: string): void => {
     State.currentCode = newCode
   }
   const setCurrentCity = (newCity: Ref<City>): void => {
@@ -36,8 +37,8 @@ export const useGlobalState = () => {
 
   return {
     ...toRefs(State),
-    setGovType,
-    setCode,
+    setCurrentGovType,
+    setCurrentCode,
     setCurrentCity,
   }
 }

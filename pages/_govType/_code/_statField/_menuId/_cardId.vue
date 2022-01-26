@@ -26,8 +26,8 @@ export default defineComponent({
     // Stateをセット
     const State = inject(StateKey)
     if (State) {
-      State.setGovType(govType)
-      State.setCode(code)
+      State.setCurrentGovType(govType)
+      State.setCurrentCode(code)
     }
 
     // カードコンポーネントの設定

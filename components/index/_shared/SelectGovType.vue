@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-tabs v-model="tab">
+    <v-tabs>
       <v-tab
         v-for="(item, i) in items"
         :key="i"
@@ -15,15 +15,12 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref } from '@nuxtjs/composition-api'
+import { computed, defineComponent } from '@nuxtjs/composition-api'
 import { EventBus, TOGGLE_EVENT } from '@/utils/tab-event-bus'
-// import { useGovType } from '@/composition/useGovType'
 import { useChangeRouter } from '~/composition/useChangeRouter'
 
 export default defineComponent({
   setup() {
-    const tab = ref<any>()
-
     const { getGovTabLink } = useChangeRouter()
     const items = computed(() => {
       return [
@@ -45,7 +42,6 @@ export default defineComponent({
     }
 
     return {
-      tab,
       items,
       change,
     }

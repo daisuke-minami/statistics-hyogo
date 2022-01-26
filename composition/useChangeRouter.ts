@@ -4,6 +4,7 @@ import {
   Ref,
   useRoute,
   useRouter,
+  watch,
 } from '@nuxtjs/composition-api'
 import { useContents } from '@/composition/useContents'
 import { StateKey } from './useGlobalState'
@@ -19,6 +20,10 @@ export const useChangeRouter = () => {
   // inject
   const { currentGovType, currentCode, currentPref, currentCity } =
     inject(StateKey)
+
+  watch(currentGovType, () => {
+    // console.log({ currentGovType })
+  })
 
   const router = useRouter()
 
