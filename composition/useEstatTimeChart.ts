@@ -5,9 +5,10 @@ import {
   EstatTableHeader,
   EstatSource,
   EstatState,
+  EstatSeries,
+  EstatResponse,
+  VALUE,
 } from '@/types/estat'
-// import { useCityList } from '@/composition/useCityList'
-// import { usePrefecture } from '@/composition/usePrefecture'
 import { StateKey } from './useGlobalState'
 
 interface CardState {
@@ -20,6 +21,10 @@ interface CardState {
   lastUpdate: string
   additionalDescription: string[]
   source: EstatSource
+}
+
+type Length = {
+  length: number
 }
 
 export const useEstatTimeChart = (estatState: EstatState) => {
@@ -55,9 +60,12 @@ export const useEstatTimeChart = (estatState: EstatState) => {
     title: _setTitle(title),
     titleId,
     path: `/${govType}/${code}/${statField}/${menuId}/${titleId}/`,
-    chartData: _chartData(series, response),
-    tableHeader: _tableHeader(_chartData(series, response)),
-    tableData: _tableData(_chartData(series, response), _timeList(response)),
+    chartData: _formatEstatTimeChartData(series, response),
+    tableHeader: _tableHeader(_formatEstatTimeChartData(series, response)),
+    tableData: _tableData(
+      _formatEstatTimeChartData(series, response),
+      _timeList(response)
+    ),
     lastUpdate: _setLastUpdate(),
     additionalDescription: _additionalDescription(estatState.annotation),
     source: _source(),
@@ -68,7 +76,15 @@ export const useEstatTimeChart = (estatState: EstatState) => {
   }
 }
 
-const _chartData = (series, response) => {
+/**
+ * estat-APIの結果をTimeChartの形式に変換
+ * @param series - 系列情報
+ * @param response - estat-APIのレスポンス
+ */
+const _formatEstatTimeChartData = (
+  series: EstatSeries,
+  response: EstatResponse
+) => {
   const style = getGraphSeriesStyle(series.length)
   const value: VALUE[] = response.GET_STATS_DATA.STATISTICAL_DATA.DATA_INF.VALUE
   return series.map((d, i) => {
