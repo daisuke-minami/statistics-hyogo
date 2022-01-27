@@ -98,6 +98,7 @@ export default defineComponent({
     // canvas
     const canvas = true
 
+    // console.log({ props })
     const {
       title,
       titleId,
@@ -127,6 +128,8 @@ export default defineComponent({
         .filter((f) => f.year === selectedTime.value.yearInt)
         .filter((f) => f.name === selectedSeries.value.name)
     })
+
+    // console.log({ chartData, displayData })
 
     // MapChartとBarChartの切替
     const mapbar = ref<string>('map')

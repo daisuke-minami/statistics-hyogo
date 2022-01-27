@@ -78,7 +78,7 @@ export const useEstatRankChart = (estatState: EstatState) => {
   const _getTimeListValues = (timeList: EstatTimes[], value: VALUE[]) => {
     return timeList.map((d) => {
       const timeValue = value.filter((f) => f['@time'] === d.yearStr)
-      if (govType.value === 'prefecture') {
+      if (govType === 'prefecture') {
         return {
           year: d.yearInt,
           data: _getPrefListValues(timeValue),
