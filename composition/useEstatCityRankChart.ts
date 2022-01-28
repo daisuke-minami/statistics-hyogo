@@ -35,12 +35,6 @@ export const useEstatCityRankChart = (estatState: EstatState) => {
   // 都道府県・市区町村
   const { currentPref, currentCity } = inject(StateKey)
 
-  // const { bigCityKind } = useBigCity()
-  // const selectedBigCityKind = ref<BigCityKind>(bigCityKind)
-  // watch(selectedBigCityKind, () => {
-  //   console.log(selectedBigCityKind)
-  // })
-
   const _setTitle = (title: string) => {
     const name: string =
       govType === 'prefecture'
@@ -85,50 +79,12 @@ export const useEstatCityRankChart = (estatState: EstatState) => {
   const _getTimeListValues = (timeList: EstatTimes[], value: VALUE[]) => {
     return timeList.map((d) => {
       const timeValue = value.filter((f) => f['@time'] === d.yearStr)
-      if (govType === 'prefecture') {
-        return {
-          year: d.yearInt,
-          data: _getPrefListValues(timeValue),
-        }
-      } else {
-        return {
-          year: d.yearInt,
-          data: _getCityListValues(timeValue),
-        }
+      return {
+        year: d.yearInt,
+        data: _getCityListValues(timeValue),
       }
     })
   }
-
-  /**
-   * estat-APIの結果を都道府県別にまとめて返却
-   * @param value - estat-APIのレスポンス GET_STATS_DATA.STATISTICAL_DATA.DATA_INF.VALUE
-   */
-  const _getPrefListValues = (value: VALUE[]) => {
-    const { prefList } = usePrefecture()
-    return prefList.value.map((d) => {
-      const cdArea = ('0000000000' + d.prefCode).slice(-2) + '000'
-      const data = value.find((f) => f['@area'] === cdArea)
-      if (data) {
-        return {
-          prefCode: cdArea,
-          prefName: d.prefName,
-          value: parseInt(data.$),
-          unit: data['@unit'],
-        }
-      } else {
-        return {
-          prefCode: cdArea,
-          prefName: 'test',
-          value: '',
-          unit: '',
-        }
-      }
-    })
-  }
-
-  // const _filterByArea = (cdArea, value: VALUE) => {
-  //   return value.find((f) => f['@area'] === cdArea)
-  // }
 
   /**
    * estat-APIの結果を都道府県別にまとめて返却
@@ -174,16 +130,22 @@ export const useEstatCityRankChart = (estatState: EstatState) => {
   }
 }
 
-const _timeList = (response) => {
+/**
+ * estat-APIの結果からTime（年次）一覧を返却
+ * @param response - estat-APIのレスポンス
+ * @returns yearInt:2020,yearStr:20200000,yearName:2020年
+ */
+const _timeList = (response: EstatResponse) => {
   const value: VALUE[] = response.GET_STATS_DATA.STATISTICAL_DATA.DATA_INF.VALUE
   const times = Array.from(new Set(value.map((d) => d['@time']))).map((d) => {
     return {
-      yearInt: parseInt(d.substr(0, 4)),
+      yearInt: parseInt(d.substring(0, 4)),
       yearStr: d,
-      yearName: `${d.substr(0, 4)}年`,
+      yearName: `${d.substring(0, 4)}年`,
     }
   })
 
+  // 降順にソート
   return times.sort((a, b) => {
     if (a.yearStr > b.yearStr) return -1
     if (a.yearStr < b.yearStr) return 1

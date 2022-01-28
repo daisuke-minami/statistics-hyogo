@@ -9,13 +9,7 @@
 
     <v-row>
       <v-col>
-        <v-select
-          v-model="selectedSeries"
-          :items="series"
-          item-text="name"
-          item-value="name"
-          return-object
-        />
+        <select-series :series="series" />
       </v-col>
       <v-col>
         <v-select

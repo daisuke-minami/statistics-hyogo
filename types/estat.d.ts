@@ -20,13 +20,6 @@ export type EstatSeries = {
   id: string
   code: string
   name: string
-  type?: string
-  yAxis?: number
-  color?: string
-  data?: []
-  year?: number
-  man?: string
-  woman?: string
 }
 
 export type EstatTimes = {

@@ -7,12 +7,12 @@ export const useBigCity = () => {
   watch(bigCityKind, () => {
     // console.log(bigCityKind)
   })
-  const setBigCityKind = (newKind: BigCityKind): void => {
-    bigCityKind.value = newKind
-  }
+  // const setBigCityKind = (newKind: BigCityKind): void => {
+  //   bigCityKind.value = newKind
+  // }
 
   return {
     bigCityKind,
-    setBigCityKind,
+    // setBigCityKind,
   }
 }
