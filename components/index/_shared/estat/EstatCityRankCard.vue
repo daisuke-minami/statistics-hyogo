@@ -4,7 +4,7 @@
       {{ title }}
     </h4>
 
-    <toggle-big-city v-model="bigcityKind" />
+    <toggle-big-city />
     <toggle-map-bar v-model="mapbar" />
 
     <v-row>
@@ -73,7 +73,7 @@ import {
   PropType,
 } from '@nuxtjs/composition-api'
 
-import { useEstatRankChart } from '@/composition/useEstatRankChart'
+import { useEstatCityRankChart } from '@/composition/useEstatCityRankChart'
 import { EstatState } from '~/types/estat'
 
 // MapChart
@@ -111,7 +111,7 @@ export default defineComponent({
       source,
       lastUpdate,
       additionalDescription,
-    } = useEstatRankChart(props.estatState)
+    } = useEstatCityRankChart(props.estatState)
 
     // 政令市統合/分割
     const bigcityKind = ref<string>('all')

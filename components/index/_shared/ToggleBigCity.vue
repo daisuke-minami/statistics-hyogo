@@ -1,22 +1,17 @@
 <template>
-  <v-btn-toggle
-    :value="value"
-    class="DataSelector"
-    mandatory
-    @change="$emit('input', $event)"
-  >
+  <v-btn-toggle v-model="value" class="DataSelector" mandatory>
     <v-btn
       v-ripple="false"
-      :aria-pressed="value === 'all' ? 'true' : 'false'"
-      value="all"
+      :aria-pressed="value === 'join' ? 'true' : 'false'"
+      value="join"
       class="DataSelector-Button"
     >
       政令市統合
     </v-btn>
     <v-btn
       v-ripple="false"
-      :aria-pressed="value === 'breakdown' ? 'true' : 'false'"
-      value="breakdown"
+      :aria-pressed="value === 'split' ? 'true' : 'false'"
+      value="split"
       class="DataSelector-Button"
     >
       政令市分割
@@ -24,20 +19,15 @@
   </v-btn-toggle>
 </template>
 
-<script>
-import Vue from 'vue'
+<script lang="ts">
+import { defineComponent, Ref, ref } from '@nuxtjs/composition-api'
+import { BigCityKind, useBigCity } from '@/composition/useBigCity'
 
-export default Vue.extend({
-  props: {
-    value: {
-      type: String,
-      default: 'all',
-    },
-  },
-  data() {
-    return {
-      canvas: true,
-    }
+export default defineComponent({
+  setup() {
+    const { bigCityKind } = useBigCity()
+    const value = ref<Ref<BigCityKind>>(bigCityKind)
+    return { value }
   },
 })
 </script>
