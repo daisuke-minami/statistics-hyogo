@@ -119,6 +119,10 @@ export const useEstatRankChart = (estatState: EstatState) => {
     })
   }
 
+  // const _filterByArea = (cdArea, value: VALUE) => {
+  //   return value.find((f) => f['@area'] === cdArea)
+  // }
+
   /**
    * estat-APIの結果を都道府県別にまとめて返却
    * @param value - estat-APIのレスポンス GET_STATS_DATA.STATISTICAL_DATA.DATA_INF.VALUE

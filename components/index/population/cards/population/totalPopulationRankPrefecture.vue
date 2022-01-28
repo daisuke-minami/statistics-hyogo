@@ -22,7 +22,7 @@ import {
 import { useEstatApi } from '@/composition/useEstatApi'
 import { useGeojson } from '@/composition/useGeojson'
 import { usePrefecture } from '@/composition/usePrefecture'
-import { useTotalPopulation } from '@/composition/useTotalPopulation'
+// import { useTotalPopulation } from '@/composition/useTotalPopulation'
 import { EstatState } from '~/types/estat'
 
 export default defineComponent({
@@ -75,8 +75,8 @@ export default defineComponent({
       )
       estatState.response = await useEstatApi($axios, params).getData()
       prefMap.value = await useGeojson($axios).getData()
-      const test = await useTotalPopulation($axios).getPrefecture()
-      console.log(test)
+      // const test = await useTotalPopulation($axios).getPrefecture()
+      // console.log(test)
     })
     fetch()
 

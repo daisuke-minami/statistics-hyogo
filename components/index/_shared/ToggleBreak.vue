@@ -45,7 +45,7 @@ export default Vue.extend({
 })
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .DataSelector {
   margin-top: 20px;
   border: 1px solid $gray-4;

@@ -115,13 +115,6 @@ export default defineComponent({
 
     // 政令市統合/分割
     const bigcityKind = ref<string>('all')
-    // const innerCityList = computed((): City[] => {
-    //   if (bigcityKind.value === 'all') {
-    //     return cityList.filter((f) => f.bigCityFlag !== '1')
-    //   } else {
-    //     return cityList.filter((f) => f.bigCityFlag !== '2')
-    //   }
-    // })
 
     const geoJson = ref<object>(props.cityMap.all)
 
@@ -135,6 +128,7 @@ export default defineComponent({
     // 年次で表示データを切替
     const displayData = computed((): EstatSeries[] => {
       const c = chartData.value
+
       return c
         .filter((f) => f.year === selectedTime.value.yearInt)
         .filter((f) => f.name === selectedSeries.value.name)
