@@ -8,6 +8,7 @@ export const useEstatCityRankChart = (
   currentSeries: Ref<EstatSeries>,
   currentTime: Ref<EstatTimes>,
   currentBigCityKind: Ref<string>
+  // currentValueType: Ref<string>
 ) => {
   // e-statのレスポンスをSeries,Timeでフィルタリング
   const currentValue = computed(() => {

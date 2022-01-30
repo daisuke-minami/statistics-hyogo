@@ -5,6 +5,7 @@
     </h4>
 
     <toggle-big-city v-model="selectedBigCityKind" />
+    <toggle-rank-value v-model="selectedValueType" />
     <toggle-map-bar v-model="mapbar" />
 
     <v-row>
@@ -107,6 +108,9 @@ export default defineComponent({
     // 年次セレクト
     const selectedTime = ref<EstatTimes>(props.estatState.latestYear)
 
+    // 総数or単位人口or単位面積
+    const selectedValueType = ref<string>('all')
+
     const {
       title,
       titleId,
@@ -123,6 +127,7 @@ export default defineComponent({
       selectedSeries,
       selectedTime,
       selectedBigCityKind
+      // selectedValueType,
     )
 
     // GeoJsonの設定
@@ -143,7 +148,6 @@ export default defineComponent({
       series,
       additionalDescription,
       selectedBigCityKind,
-      // canvas,
       title,
       titleId,
       path,
@@ -153,6 +157,7 @@ export default defineComponent({
       mapbar,
       selectedSeries,
       selectedTime,
+      selectedValueType,
       source,
       tableData,
       tableHeader,
