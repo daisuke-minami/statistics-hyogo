@@ -35,11 +35,18 @@ export const useGlobalState = () => {
     State.currentCity = newCity.value
   }
 
+  const getTitle = (title: string): string => {
+    return State.currentGovType === 'prefecture'
+      ? `${State.currentPref.prefName}の${title}`
+      : `${State.currentCity.cityName}の${title}`
+  }
+
   return {
     ...toRefs(State),
     setCurrentGovType,
     setCurrentCode,
     setCurrentCity,
+    getTitle,
   }
 }
 

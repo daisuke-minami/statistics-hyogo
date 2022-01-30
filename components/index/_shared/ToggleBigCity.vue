@@ -7,16 +7,16 @@
   >
     <v-btn
       v-ripple="false"
-      :aria-pressed="value === 'all' ? 'true' : 'false'"
-      value="all"
+      :aria-pressed="value === 'join' ? 'true' : 'false'"
+      value="join"
       class="DataSelector-Button"
     >
       政令市統合
     </v-btn>
     <v-btn
       v-ripple="false"
-      :aria-pressed="value === 'breakdown' ? 'true' : 'false'"
-      value="breakdown"
+      :aria-pressed="value === 'split' ? 'true' : 'false'"
+      value="split"
       class="DataSelector-Button"
     >
       政令市分割
@@ -31,7 +31,7 @@ export default Vue.extend({
   props: {
     value: {
       type: String,
-      default: 'all',
+      default: 'join',
     },
   },
   data() {

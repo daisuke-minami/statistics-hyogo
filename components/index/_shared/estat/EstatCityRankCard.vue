@@ -4,7 +4,7 @@
       {{ title }}
     </h4>
 
-    <toggle-big-city v-model="bigcityKind" />
+    <toggle-big-city v-model="selectedBigCityKind" />
     <toggle-map-bar v-model="mapbar" />
 
     <v-row>
@@ -20,7 +20,7 @@
       <v-col>
         <v-select
           v-model="selectedTime"
-          :items="timeList"
+          :items="times"
           item-text="yearName"
           item-value="yearInt"
           return-object
@@ -31,7 +31,7 @@
 
     <lazy-component
       :is="chartComponent"
-      v-show="canvas"
+      v-show="true"
       :display-data="displayData"
       :geo-json="geoJson"
     />
@@ -73,8 +73,8 @@ import {
   PropType,
 } from '@nuxtjs/composition-api'
 
-import { useEstatRankChart } from '@/composition/useEstatRankChart'
-import { EstatState } from '~/types/estat'
+import { useEstatCityRankChart } from '@/composition/useEstatCityRankChart'
+import { EstatSeries, EstatState, EstatTimes } from '~/types/estat'
 
 // MapChart
 const MapChart = () => {
@@ -97,33 +97,8 @@ export default defineComponent({
     },
   },
   setup(props) {
-    // canvas
-    const canvas = true
-
-    const {
-      title,
-      titleId,
-      path,
-      timeList,
-      chartData,
-      tableHeader,
-      tableData,
-      source,
-      lastUpdate,
-      additionalDescription,
-    } = useEstatRankChart(props.estatState)
-
     // 政令市統合/分割
-    const bigcityKind = ref<string>('all')
-    // const innerCityList = computed((): City[] => {
-    //   if (bigcityKind.value === 'all') {
-    //     return cityList.filter((f) => f.bigCityFlag !== '1')
-    //   } else {
-    //     return cityList.filter((f) => f.bigCityFlag !== '2')
-    //   }
-    // })
-
-    const geoJson = ref<object>(props.cityMap.all)
+    const selectedBigCityKind = ref<string>('join')
 
     // 系列セレクト
     const series = props.estatState.series
@@ -132,12 +107,29 @@ export default defineComponent({
     // 年次セレクト
     const selectedTime = ref<EstatTimes>(props.estatState.latestYear)
 
-    // 年次で表示データを切替
-    const displayData = computed((): EstatSeries[] => {
-      const c = chartData.value
-      return c
-        .filter((f) => f.year === selectedTime.value.yearInt)
-        .filter((f) => f.name === selectedSeries.value.name)
+    const {
+      title,
+      titleId,
+      path,
+      times,
+      tableHeader,
+      tableData,
+      source,
+      lastUpdate,
+      additionalDescription,
+      displayData,
+    } = useEstatCityRankChart(
+      props.estatState,
+      selectedSeries,
+      selectedTime,
+      selectedBigCityKind
+    )
+
+    // GeoJsonの設定
+    const geoJson = computed(() => {
+      return selectedBigCityKind.value === 'join'
+        ? props.cityMap.all
+        : props.cityMap.break
     })
 
     // MapChartとBarChartの切替
@@ -148,9 +140,10 @@ export default defineComponent({
 
     // returnはアルファベット順
     return {
+      series,
       additionalDescription,
-      bigcityKind,
-      canvas,
+      selectedBigCityKind,
+      // canvas,
       title,
       titleId,
       path,
@@ -160,11 +153,10 @@ export default defineComponent({
       mapbar,
       selectedSeries,
       selectedTime,
-      series,
       source,
       tableData,
       tableHeader,
-      timeList,
+      times,
       geoJson,
     }
   },

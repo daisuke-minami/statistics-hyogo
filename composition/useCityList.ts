@@ -19,9 +19,16 @@ export const useCityList = () => {
     return cityListAll.value.filter((f) => f.bigCityFlag !== '2')
   })
 
+  const getCityList = (bigCityKind: string) => {
+    return bigCityKind === 'join'
+      ? cityListBigCityJoin.value
+      : cityListBigCitySplit.value
+  }
+
   return {
     cityListAll,
     cityListBigCityJoin,
     cityListBigCitySplit,
+    getCityList,
   }
 }
