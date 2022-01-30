@@ -96,6 +96,10 @@ export default defineComponent({
       type: Object,
       required: true,
     },
+    totalPopulation: {
+      type: Object,
+      required: true,
+    },
   },
   setup(props) {
     // 政令市統合/分割
@@ -129,6 +133,8 @@ export default defineComponent({
       selectedBigCityKind
       // selectedValueType,
     )
+
+    console.log(props.totalPopulation)
 
     // GeoJsonの設定
     const geoJson = computed(() => {

@@ -22,6 +22,7 @@ import {
 import { useEstatApi } from '@/composition/useEstatApi'
 import { useGeojson } from '@/composition/useGeojson'
 import { useCityList } from '@/composition/useCityList'
+import { useTotalPopulation } from '@/composition/useTotalPopulation'
 import { EstatState } from '~/types/estat'
 
 export default defineComponent({
@@ -66,6 +67,9 @@ export default defineComponent({
     // geoJson
     const cityMap = reactive<any>({})
 
+    // 総人口
+    const totalPopulation = ref<any>([])
+
     const { $axios } = useContext()
     const { fetch } = useFetch(async () => {
       // estat-APIの取得
@@ -77,6 +81,10 @@ export default defineComponent({
       // geojsonの取得
       cityMap.all = await useGeojson($axios).cityMapAll.value
       cityMap.break = await useGeojson($axios).cityMapBreak.value
+
+      // totalPopulation
+      const { getCity } = useTotalPopulation($axios)
+      totalPopulation.value = await getCity(cityListAll.value)
     })
     fetch()
 
@@ -85,6 +93,7 @@ export default defineComponent({
       props: {
         estatState,
         cityMap,
+        totalPopulation,
       },
     }
   },
