@@ -1,69 +1,78 @@
 <template>
-  <data-view :title="title" :route="path">
-    <h4 :id="titleId" class="visually-hidden">
-      {{ title }}
-    </h4>
+  <v-col cols="12" md="6" class="DataCard">
+    <client-only>
+      <template>
+        <v-card :loading="$fetchState.pending">
+          <p v-if="$fetchState.pending" />
+          <data-view v-else :title="title" :route="path">
+            <h4 :id="titleId" class="visually-hidden">
+              {{ title }}
+            </h4>
 
-    <toggle-big-city v-model="selectedBigCityKind" />
-    <toggle-rank-value v-model="selectedValueType" />
-    <toggle-map-bar v-model="mapbar" />
+            <toggle-big-city v-model="selectedBigCityKind" />
+            <toggle-rank-value v-model="selectedValueType" />
+            <toggle-map-bar v-model="mapbar" />
 
-    <v-row>
-      <v-col>
-        <v-select
-          v-model="selectedSeries"
-          :items="series"
-          item-text="name"
-          item-value="name"
-          return-object
-        />
-      </v-col>
-      <v-col>
-        <v-select
-          v-model="selectedTime"
-          :items="times"
-          item-text="yearName"
-          item-value="yearInt"
-          return-object
-          @change="$emit('input', $event)"
-        />
-      </v-col>
-    </v-row>
+            <v-row>
+              <v-col>
+                <v-select
+                  v-model="selectedSeries"
+                  :items="series"
+                  item-text="name"
+                  item-value="name"
+                  return-object
+                />
+              </v-col>
+              <v-col>
+                <v-select
+                  v-model="selectedTime"
+                  :items="times"
+                  item-text="yearName"
+                  item-value="yearInt"
+                  return-object
+                  @change="$emit('input', $event)"
+                />
+              </v-col>
+            </v-row>
 
-    <lazy-component
-      :is="chartComponent"
-      v-show="true"
-      :display-data="displayData"
-      :geo-json="geoJson"
-    />
+            <lazy-component
+              :is="chartComponent"
+              v-show="true"
+              :display-data="displayData"
+              :geo-json="geoJson"
+            />
 
-    <template v-slot:description>
-      <p>最終更新日:{{ lastUpdate }}</p>
-      <slot name="description" />
-    </template>
+            <template v-slot:description>
+              <p>最終更新日:{{ lastUpdate }}</p>
+              <slot name="description" />
+            </template>
 
-    <template v-slot:additionalDescription>
-      <span>（注）</span>
-      <ul>
-        <li v-for="item in additionalDescription" :key="item">
-          {{ item }}
-        </li>
-      </ul>
-      <slot name="additionalDescription" />
-    </template>
+            <template v-slot:additionalDescription>
+              <span>（注）</span>
+              <ul>
+                <li v-for="item in additionalDescription" :key="item">
+                  {{ item }}
+                </li>
+              </ul>
+              <slot name="additionalDescription" />
+            </template>
 
-    <template v-slot:dataTable>
-      <client-only>
-        <data-view-table :headers="tableHeader" :items="tableData" />
-      </client-only>
-    </template>
+            <template v-slot:dataTable>
+              <client-only>
+                <data-view-table :headers="tableHeader" :items="tableData" />
+              </client-only>
+            </template>
 
-    <template v-slot:footer>
-      <app-link :to="source.estatUrl">
-        {{ source.estatName }}
-      </app-link>
-    </template>
-  </data-view>
+            <template v-slot:footer>
+              <app-link :to="source.estatUrl">
+                {{ source.estatName }}
+              </app-link>
+            </template>
+          </data-view>
+        </v-card>
+      </template>
+    </client-only>
+  </v-col>
 </template>
 
 <script lang="ts">
@@ -72,10 +81,21 @@ import {
   ref,
   computed,
   PropType,
+  reactive,
+  useContext,
+  useFetch,
 } from '@nuxtjs/composition-api'
-
 import { useEstatCityRankChart } from '@/composition/useEstatCityRankChart'
-import { EstatSeries, EstatState, EstatTimes } from '~/types/estat'
+import { useEstatApi } from '@/composition/useEstatApi'
+import { useGeojson } from '@/composition/useGeojson'
+import { useCityList } from '@/composition/useCityList'
+import { useTotalPopulation } from '@/composition/useTotalPopulation'
+import {
+  EstatResponse,
+  EstatSeries,
+  EstatState,
+  EstatTimes,
+} from '~/types/estat'
 
 // MapChart
 const MapChart = () => {
@@ -92,16 +112,41 @@ export default defineComponent({
       type: Object as PropType<EstatState>,
       required: true,
     },
-    cityMap: {
-      type: Object,
-      required: true,
-    },
-    totalPopulation: {
-      type: Object,
-      required: true,
-    },
+    // cityMap: {
+    //   type: Object,
+    //   required: true,
+    // },
+    // totalPopulation: {
+    //   type: Object,
+    //   required: true,
+    // },
   },
   setup(props) {
+    // geoJson
+    const cityMap = reactive<any>({ all: null, break: null })
+
+    // 総人口
+    const totalPopulation = ref<any>()
+    const estatResponse = ref<EstatResponse>()
+
+    const { $axios } = useContext()
+    const { fetch } = useFetch(async () => {
+      // estat-APIの取得
+      const params = Object.assign({}, props.estatState.params)
+      const { cityListAll } = useCityList()
+      params.cdArea = cityListAll.value.map((d) => d.cityCode)
+      estatResponse.value = await useEstatApi($axios, params).getData()
+
+      // geojsonの取得
+      cityMap.all = await useGeojson($axios).cityMapAll.value
+      cityMap.break = await useGeojson($axios).cityMapBreak.value
+
+      // totalPopulation
+      const { getCity } = useTotalPopulation($axios)
+      totalPopulation.value = await getCity(cityListAll.value)
+    })
+    fetch()
+
     // 政令市統合/分割
     const selectedBigCityKind = ref<string>('join')
 
@@ -128,19 +173,18 @@ export default defineComponent({
       displayData,
     } = useEstatCityRankChart(
       props.estatState,
+      estatResponse,
       selectedSeries,
       selectedTime,
       selectedBigCityKind
       // selectedValueType,
     )
 
-    console.log(props.totalPopulation)
+    // console.log(props.totalPopulation)
 
     // GeoJsonの設定
     const geoJson = computed(() => {
-      return selectedBigCityKind.value === 'join'
-        ? props.cityMap.all
-        : props.cityMap.break
+      return selectedBigCityKind.value === 'join' ? cityMap.all : cityMap.break
     })
 
     // MapChartとBarChartの切替

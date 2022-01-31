@@ -1,10 +1,17 @@
 import { computed, inject, Ref, useRoute } from '@nuxtjs/composition-api'
-import { EstatState, VALUE, EstatTimes, EstatSeries } from '@/types/estat'
+import {
+  EstatState,
+  VALUE,
+  EstatTimes,
+  EstatSeries,
+  EstatResponse,
+} from '@/types/estat'
 import { useCityList } from '@/composition/useCityList'
 import { StateKey } from './useGlobalState'
 
 export const useEstatCityRankChart = (
   estatState: EstatState,
+  estatResponse: Ref<EstatResponse>,
   currentSeries: Ref<EstatSeries>,
   currentTime: Ref<EstatTimes>,
   currentBigCityKind: Ref<string>
@@ -13,7 +20,7 @@ export const useEstatCityRankChart = (
   // e-statのレスポンスをSeries,Timeでフィルタリング
   const currentValue = computed(() => {
     const value: VALUE[] =
-      estatState.response.GET_STATS_DATA.STATISTICAL_DATA.DATA_INF.VALUE
+      estatResponse.value.GET_STATS_DATA.STATISTICAL_DATA.DATA_INF.VALUE
     const key: keyof VALUE = `@${currentSeries.value.id}`
     return value
       .filter((f) => f['@time'] === currentTime.value.yearStr)
@@ -44,7 +51,7 @@ export const useEstatCityRankChart = (
   // times
   const times = computed(() => {
     const value =
-      estatState.response.GET_STATS_DATA.STATISTICAL_DATA.DATA_INF.VALUE
+      estatResponse.value.GET_STATS_DATA.STATISTICAL_DATA.DATA_INF.VALUE
     return Array.from(new Set(value.map((d) => d['@time'])))
       .map((d) => {
         return {
@@ -112,7 +119,7 @@ export const useEstatCityRankChart = (
   // 出典
   const source = computed(() => {
     const TABLE_INF =
-      estatState.response.GET_STATS_DATA.STATISTICAL_DATA.TABLE_INF
+      estatResponse.value.GET_STATS_DATA.STATISTICAL_DATA.TABLE_INF
     return {
       estatName: `政府統計の総合窓口 e-Stat「${TABLE_INF.STAT_NAME.$}」`,
       estatUrl: `https://www.e-stat.go.jp/dbview?sid=${TABLE_INF['@id']}`,
