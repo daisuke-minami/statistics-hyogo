@@ -40,9 +40,6 @@ export default defineComponent({
       series[0].states = { hover: { color: '#a4edba' } }
       return series
     })
-    // const geoJson = computed(() => {
-    //   return topojson.feature(props.topoJson, props.topoJson.objects.city)
-    // })
     const chartOptions = computed(() => {
       return {
         chart: {
@@ -69,7 +66,7 @@ export default defineComponent({
         },
         tooltip: {
           pointFormat:
-            '<span style="color:{series.color}">{point.prefName}</span>: <b>{point.value}{point.unit}</b><br/>',
+            '<span>{point.cityName}</span>: <b>{point.value}{point.unit}</b><br/>',
         },
         credits: {
           enabled: false,

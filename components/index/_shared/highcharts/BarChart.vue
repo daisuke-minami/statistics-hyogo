@@ -94,8 +94,8 @@ export default {
           formatter() {
             return `${this.point.name}</b>:<br>${Highcharts.numberFormat(
               this.point.y,
-              0,
-              '',
+              2,
+              '.',
               ','
             )} ${this.point.unit}`
           },
