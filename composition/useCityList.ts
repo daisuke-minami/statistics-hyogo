@@ -1,51 +1,35 @@
-import { reactive, Ref } from '@nuxtjs/composition-api'
+import { computed, inject } from '@nuxtjs/composition-api'
+import { StateKey } from './useGlobalState'
 import masterCityList from '~/data/codes/citylist.json'
-import { City, Pref } from '~/types/resas'
-
-interface CityList {
-  cityListAll: City[]
-  cityListBigCityJoin: City[]
-  cityListBigCitySplit: City[]
-}
-
-type Kind = 'all' | 'join' | 'split'
 
 export const useCityList = () => {
-  // state
-  const state = reactive<CityList>({
-    cityListAll: [],
-    cityListBigCityJoin: [],
-    cityListBigCitySplit: [],
+  const { currentPref } = inject(StateKey)
+  const prefCode = computed(() => currentPref.value.prefCode)
+
+  const cityListAll = computed(() => {
+    return masterCityList.result.filter((f) => f.prefCode === prefCode.value)
   })
 
-  // setter
-  const setCityList = (currentPref: Ref<Pref>) => {
-    const prefCode = currentPref.value.prefCode
-    const cityListAll = masterCityList.result.filter(
-      (f) => f.prefCode === prefCode
-    )
+  const cityListBigCityJoin = computed(() => {
+    return cityListAll.value.filter((f) => f.bigCityFlag !== '1')
+  })
 
-    state.cityListAll = cityListAll
-    state.cityListBigCityJoin = cityListAll.filter((f) => f.bigCityFlag !== '1')
-    state.cityListBigCitySplit = cityListAll.filter(
-      (f) => f.bigCityFlag !== '2'
-    )
-  }
+  const cityListBigCitySplit = computed(() => {
+    return cityListAll.value.filter((f) => f.bigCityFlag !== '2')
+  })
 
   // getter
-  const getCityList = (kind: Kind) => {
+  const getCityList = (kind) => {
     if (kind === 'all') {
-      return state.cityListAll
+      return cityListAll
     } else if (kind === 'join') {
-      return state.cityListBigCityJoin
+      return cityListBigCityJoin
     } else {
-      return state.cityListBigCitySplit
+      return cityListBigCitySplit
     }
   }
 
   return {
-    // ...toRefs(state),
-    setCityList,
     getCityList,
   }
 }

@@ -31,7 +31,7 @@ export const useEstatCityRankChart = (
   // 市区町村リストを取得
   const { getCityList } = useCityList()
   const cityList = computed(() => {
-    return getCityList(currentBigCityKind.value)
+    return getCityList(currentBigCityKind.value).value
   })
 
   // title

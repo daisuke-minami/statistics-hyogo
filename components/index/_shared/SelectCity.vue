@@ -24,11 +24,11 @@ export default defineComponent({
   setup() {
     // globalState
     const State = inject(StateKey)
-    const { currentPref, currentCity } = State
+    const { currentCity } = State
 
     // 市区町村リストの設定
-    const { getCityList, setCityList } = useCityList()
-    setCityList(currentPref)
+    const { getCityList } = useCityList()
+
     const cityList = getCityList('join')
 
     const selectedCity = ref<City>(currentCity)

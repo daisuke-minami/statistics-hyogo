@@ -115,7 +115,8 @@ export default defineComponent({
   },
   setup(props) {
     // 市区町村リスト
-    const { cityListAll } = useCityList()
+    const { getCityList } = useCityList()
+    const cityList = getCityList('all')
 
     // geoJson
     const cityMap = reactive<any>({ all: null, break: null })
@@ -129,7 +130,7 @@ export default defineComponent({
       // estat-APIの取得
       const params = Object.assign({}, props.estatState.params)
 
-      params.cdArea = cityListAll.value.map((d) => d.cityCode)
+      params.cdArea = cityList.value.map((d) => d.cityCode)
       estatResponse.value = await useEstatApi($axios, params).getData()
 
       // geojsonの取得
@@ -137,7 +138,7 @@ export default defineComponent({
       cityMap.break = await useGeojson($axios).cityMapBreak.value
 
       totalPopulationData.value = await useTotalPopulation($axios).getCity(
-        cityListAll.value
+        cityList
       )
     })
     fetch()
