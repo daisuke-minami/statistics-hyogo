@@ -22,10 +22,14 @@ import { StateKey } from '~/composition/useGlobalState'
 
 export default defineComponent({
   setup() {
-    const { cityListBigCityJoin } = useCityList()
-
+    // globalState
     const State = inject(StateKey)
-    const { currentCity } = State
+    const { currentPref, currentCity } = State
+
+    // 市区町村リストの設定
+    const { getCityList, setCityList } = useCityList()
+    setCityList(currentPref)
+    const cityList = getCityList('join')
 
     const selectedCity = ref<City>(currentCity)
 
@@ -36,7 +40,7 @@ export default defineComponent({
       changeRouterCity.value(selectedCity)
     }
     return {
-      cityList: cityListBigCityJoin,
+      cityList,
       selectedCity,
     }
   },

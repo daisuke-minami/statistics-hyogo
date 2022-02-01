@@ -1,6 +1,7 @@
-import { reactive } from '@nuxtjs/composition-api'
-import { useEstatApi } from '@/composition/useEstatApi'
-import { EstatParams, EstatResponse, VALUE } from '~/types/estat'
+import { Ref } from '@nuxtjs/composition-api'
+// import { useResasApi } from '@/composition/useResasApi'
+import { useEstatApi } from '@/composition//useEstatApi'
+import { EstatParams } from '~/types/estat'
 import { City } from '~/types/resas'
 
 interface PopulationData {
@@ -12,28 +13,30 @@ interface PopulationData {
 
 export const useTotalPopulation = (axios: any) => {
   // 都道府県の人口
-  const params = reactive<EstatParams>({
-    statsDataId: '0000010101',
-    cdCat01: ['A1101'],
-  })
-  const getPrefecture = async () => {
+  // const params = reactive<EstatParams>({
+  //   statsDataId: '0000010101',
+  //   cdCat01: ['A1101'],
+  // })
+  // const getPrefecture = async () => {
+  //   const res = await useResasApi(axios, params).getData()
+  //   return _formatPopulationData(res)
+  // }
+
+  /**
+   * 市区町村の総人口
+   */
+  const getCity = async (cityList: Ref<City[]>) => {
+    const params: EstatParams = {
+      statsDataId: '0000020201',
+      cdCat01: ['A1101'],
+      cdArea: cityList.value.map((d) => d.cityCode),
+    }
     const res = await useEstatApi(axios, params).getData()
     return _formatPopulationData(res)
   }
 
-  // 市区町村の総人口
-  const paramsCity = reactive<EstatParams>({
-    statsDataId: '0000020201',
-    cdCat01: ['A1101'],
-  })
-  const getCity = async (cityList: City[]) => {
-    paramsCity.cdArea = cityList.map((d) => d.cityCode)
-    const res = await useEstatApi(axios, paramsCity).getData()
-    return _formatPopulationData(res)
-  }
-
   return {
-    getPrefecture,
+    // getPrefecture,
     getCity,
   }
 }
