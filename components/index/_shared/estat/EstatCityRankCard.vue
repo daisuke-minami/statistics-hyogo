@@ -172,7 +172,7 @@ export default defineComponent({
       // selectedValueType,
     )
 
-    // console.log(totalPopulation)
+    console.log(totalPopulation)
 
     // GeoJsonの設定
     const geoJson = computed(() => {
