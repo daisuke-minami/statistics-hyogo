@@ -122,18 +122,21 @@ export default defineComponent({
     // },
   },
   setup(props) {
+    // 市区町村リスト
+    const { cityListAll } = useCityList()
+
     // geoJson
     const cityMap = reactive<any>({ all: null, break: null })
 
     // 総人口
-    const totalPopulation = ref<any>()
+    const totalPopulationData = ref<any>()
     const estatResponse = ref<EstatResponse>()
 
     const { $axios } = useContext()
     const { fetch } = useFetch(async () => {
       // estat-APIの取得
       const params = Object.assign({}, props.estatState.params)
-      const { cityListAll } = useCityList()
+
       params.cdArea = cityListAll.value.map((d) => d.cityCode)
       estatResponse.value = await useEstatApi($axios, params).getData()
 
@@ -143,7 +146,7 @@ export default defineComponent({
 
       // totalPopulation
       const { getCity } = useTotalPopulation($axios)
-      totalPopulation.value = await getCity(cityListAll.value)
+      totalPopulationData.value = await getCity(cityListAll.value)
     })
     fetch()
 
@@ -176,11 +179,10 @@ export default defineComponent({
       estatResponse,
       selectedSeries,
       selectedTime,
-      selectedBigCityKind
-      // selectedValueType,
+      selectedBigCityKind,
+      selectedValueType,
+      totalPopulationData
     )
-
-    // console.log(props.totalPopulation)
 
     // GeoJsonの設定
     const geoJson = computed(() => {

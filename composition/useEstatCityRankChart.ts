@@ -14,8 +14,9 @@ export const useEstatCityRankChart = (
   estatResponse: Ref<EstatResponse>,
   currentSeries: Ref<EstatSeries>,
   currentTime: Ref<EstatTimes>,
-  currentBigCityKind: Ref<string>
-  // currentValueType: Ref<string>
+  currentBigCityKind: Ref<string>,
+  selectedValueType: Ref<string>,
+  totalPopulationData: Ref<[]>
 ) => {
   // e-statのレスポンスをSeries,Timeでフィルタリング
   const currentValue = computed(() => {
@@ -67,6 +68,25 @@ export const useEstatCityRankChart = (
       })
   })
 
+  const convertData = (data) => {
+    const type = selectedValueType.value
+    const population = totalPopulationData.value
+      .filter((f) => f.code === data['@area'])
+      .filter((f) => f.yearStr === data['@time'])
+
+    if (type === 'population') {
+      return {
+        value: data ? parseInt(data.$) / population[0].value : '',
+        unit: data ? data['@unit'] : '',
+      }
+    } else {
+      return {
+        value: data ? parseInt(data.$) : '',
+        unit: data ? data['@unit'] : '',
+      }
+    }
+  }
+
   // displayData
   const displayData = computed(() => {
     return [
@@ -74,12 +94,11 @@ export const useEstatCityRankChart = (
         name: currentSeries.value.name,
         data: cityList.value.map((d) => {
           const data = currentValue.value.find((f) => f['@area'] === d.cityCode)
-          return {
-            cityCode: d.cityCode,
-            cityName: d.cityName,
-            value: data ? parseInt(data.$) : '',
-            unit: data ? data['@unit'] : '',
-          }
+
+          return Object.assign(
+            { cityCode: d.cityCode, cityName: d.cityName },
+            convertData(data)
+          )
         }),
       },
     ]

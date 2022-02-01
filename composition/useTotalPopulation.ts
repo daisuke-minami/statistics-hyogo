@@ -2,11 +2,10 @@ import { reactive } from '@nuxtjs/composition-api'
 import { useEstatApi } from '@/composition/useEstatApi'
 import { EstatParams, EstatResponse, VALUE } from '~/types/estat'
 import { City } from '~/types/resas'
-// import { useCityList } from '@/composition/useCityList'
 
 interface PopulationData {
   code: string
-  yearNum: number
+  yearInt: number
   value: number
   unit: string
 }
@@ -48,7 +47,8 @@ const _formatPopulationData = (response: EstatResponse): PopulationData[] => {
   return value.map((d) => {
     return {
       code: d['@area'],
-      yearNum: parseInt(d['@time'].substring(0, 4)),
+      yearInt: parseInt(d['@time'].substring(0, 4)),
+      yearStr: d['@time'],
       value: parseInt(d.$),
       unit: d['@unit'],
     }
