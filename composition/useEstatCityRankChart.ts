@@ -16,7 +16,8 @@ export const useEstatCityRankChart = (
   currentTime: Ref<EstatTimes>,
   currentBigCityKind: Ref<string>,
   selectedValueType: Ref<string>,
-  totalPopulationData: Ref<[]>
+  totalPopulationData: Ref<[]>,
+  totalAreaData: Ref<[]>
 ) => {
   // e-statのレスポンスをSeries,Timeでフィルタリング
   const currentValue = computed(() => {
@@ -74,10 +75,23 @@ export const useEstatCityRankChart = (
       .filter((f) => f.code === data['@area'])
       .filter((f) => f.yearStr === data['@time'])
 
+    const area = totalAreaData.value
+      .filter((f) => f.code === data['@area'])
+      .filter((f) => f.yearStr === data['@time'])
+
     if (type === 'population') {
       return {
-        value: data ? parseInt(data.$) / population[0].value : '',
-        unit: data ? data['@unit'] : '',
+        value: data
+          ? Math.round((parseInt(data.$) / population[0].value) * 100) / 100
+          : '',
+        unit: data ? `${data['@unit']}/人` : '',
+      }
+    } else if (type === 'area') {
+      return {
+        value: data
+          ? Math.round((parseInt(data.$) / area[0].value) * 100) / 100
+          : '',
+        unit: data ? `${data['@unit']}/ha` : '',
       }
     } else {
       return {

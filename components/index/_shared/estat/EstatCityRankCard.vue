@@ -90,6 +90,7 @@ import { useEstatApi } from '@/composition/useEstatApi'
 import { useGeojson } from '@/composition/useGeojson'
 import { useCityList } from '@/composition/useCityList'
 import { useTotalPopulation } from '@/composition/useTotalPopulation'
+import { useTotalArea } from '@/composition/useTotalArea'
 import {
   EstatResponse,
   EstatSeries,
@@ -123,6 +124,8 @@ export default defineComponent({
 
     // 総人口
     const totalPopulationData = ref<any>()
+    const totalAreaData = ref<any>()
+
     const estatResponse = ref<EstatResponse>()
 
     const { $axios } = useContext()
@@ -140,6 +143,7 @@ export default defineComponent({
       totalPopulationData.value = await useTotalPopulation($axios).getCity(
         cityList
       )
+      totalAreaData.value = await useTotalArea($axios).getCity(cityList)
     })
     fetch()
 
@@ -174,7 +178,8 @@ export default defineComponent({
       selectedTime,
       selectedBigCityKind,
       selectedValueType,
-      totalPopulationData
+      totalPopulationData,
+      totalAreaData
     )
 
     // GeoJsonの設定
@@ -212,3 +217,6 @@ export default defineComponent({
   },
 })
 </script>
+
+function useTotalArea($axios: NuxtAxiosInstance) { throw new Error('Function not
+implemented.') }
