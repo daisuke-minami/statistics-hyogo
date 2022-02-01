@@ -26,6 +26,10 @@ export default defineComponent({
     const State = inject(StateKey)
     const { currentCity } = State
 
+    // console.log(currentCity)
+    // const { code } = useRoute().value.params
+    // console.log(code)
+
     // 市区町村リストの設定
     const { getCityList } = useCityList()
 

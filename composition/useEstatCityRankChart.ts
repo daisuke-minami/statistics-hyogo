@@ -19,6 +19,9 @@ export const useEstatCityRankChart = (
   totalPopulationData: Ref<[]>,
   totalAreaData: Ref<[]>
 ) => {
+  // const { code } = useRoute().value.params
+  // console.log(code)
+
   // e-statのレスポンスをSeries,Timeでフィルタリング
   const currentValue = computed(() => {
     const value: VALUE[] =

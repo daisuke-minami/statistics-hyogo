@@ -1,13 +1,14 @@
-import { computed, inject } from '@nuxtjs/composition-api'
-import { StateKey } from './useGlobalState'
+import { computed, useRoute } from '@nuxtjs/composition-api'
 import masterCityList from '~/data/codes/citylist.json'
 
 export const useCityList = () => {
-  const { currentPref } = inject(StateKey)
-  const prefCode = computed(() => currentPref.value.prefCode)
+  // paramsからprefCode,cityCodeを取得
+  const { code } = useRoute().value.params
+  const cityCode = code
+  const prefCode = parseInt(code.slice(0, 2))
 
   const cityListAll = computed(() => {
-    return masterCityList.result.filter((f) => f.prefCode === prefCode.value)
+    return masterCityList.result.filter((f) => f.prefCode === prefCode)
   })
 
   const cityListBigCityJoin = computed(() => {
@@ -17,6 +18,12 @@ export const useCityList = () => {
   const cityListBigCitySplit = computed(() => {
     return cityListAll.value.filter((f) => f.bigCityFlag !== '2')
   })
+
+  const selectedCity = computed(() => {
+    return masterCityList.result.find((d) => d.cityCode === cityCode)
+  })
+
+  // console.log(selectedCity)
 
   // getter
   const getCityList = (kind) => {
@@ -31,5 +38,6 @@ export const useCityList = () => {
 
   return {
     getCityList,
+    selectedCity,
   }
 }

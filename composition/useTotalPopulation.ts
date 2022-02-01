@@ -22,6 +22,9 @@ export const useTotalPopulation = (axios: any) => {
   //   return _formatPopulationData(res)
   // }
 
+  // const { code } = useRoute().value.params
+  // console.log(code)
+
   /**
    * 市区町村の総人口
    */
