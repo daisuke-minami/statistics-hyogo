@@ -112,14 +112,6 @@ export default defineComponent({
       type: Object as PropType<EstatState>,
       required: true,
     },
-    // cityMap: {
-    //   type: Object,
-    //   required: true,
-    // },
-    // totalPopulation: {
-    //   type: Object,
-    //   required: true,
-    // },
   },
   setup(props) {
     // geoJson
@@ -141,9 +133,9 @@ export default defineComponent({
       cityMap.all = await useGeojson($axios).cityMapAll.value
       cityMap.break = await useGeojson($axios).cityMapBreak.value
 
-      // totalPopulation
-      const { getCity } = useTotalPopulation($axios)
-      totalPopulation.value = await getCity(cityListAll.value)
+      totalPopulation.value = await useTotalPopulation($axios).getCity(
+        cityListAll
+      )
     })
     fetch()
 
@@ -180,7 +172,7 @@ export default defineComponent({
       // selectedValueType,
     )
 
-    // console.log(props.totalPopulation)
+    // console.log(totalPopulation)
 
     // GeoJsonの設定
     const geoJson = computed(() => {
