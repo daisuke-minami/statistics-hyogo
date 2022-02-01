@@ -1,34 +1,51 @@
-import { computed, inject } from '@nuxtjs/composition-api'
-import { StateKey } from './useGlobalState'
+import { reactive, Ref } from '@nuxtjs/composition-api'
 import masterCityList from '~/data/codes/citylist.json'
+import { City, Pref } from '~/types/resas'
+
+interface CityList {
+  cityListAll: City[]
+  cityListBigCityJoin: City[]
+  cityListBigCitySplit: City[]
+}
+
+type Kind = 'all' | 'join' | 'split'
 
 export const useCityList = () => {
-  // 都道府県
-  const { currentPref } = inject(StateKey)
-  const prefCode = computed(() => currentPref.value.prefCode)
-
-  const cityListAll = computed(() => {
-    return masterCityList.result.filter((f) => f.prefCode === prefCode.value)
+  // state
+  const state = reactive<CityList>({
+    cityListAll: [],
+    cityListBigCityJoin: [],
+    cityListBigCitySplit: [],
   })
 
-  const cityListBigCityJoin = computed(() => {
-    return cityListAll.value.filter((f) => f.bigCityFlag !== '1')
-  })
+  // setter
+  const setCityList = (currentPref: Ref<Pref>) => {
+    const prefCode = currentPref.value.prefCode
+    const cityListAll = masterCityList.result.filter(
+      (f) => f.prefCode === prefCode
+    )
 
-  const cityListBigCitySplit = computed(() => {
-    return cityListAll.value.filter((f) => f.bigCityFlag !== '2')
-  })
+    state.cityListAll = cityListAll
+    state.cityListBigCityJoin = cityListAll.filter((f) => f.bigCityFlag !== '1')
+    state.cityListBigCitySplit = cityListAll.filter(
+      (f) => f.bigCityFlag !== '2'
+    )
+  }
 
-  const getCityList = (bigCityKind: string) => {
-    return bigCityKind === 'join'
-      ? cityListBigCityJoin.value
-      : cityListBigCitySplit.value
+  // getter
+  const getCityList = (kind: Kind) => {
+    if (kind === 'all') {
+      return state.cityListAll
+    } else if (kind === 'join') {
+      return state.cityListBigCityJoin
+    } else {
+      return state.cityListBigCitySplit
+    }
   }
 
   return {
-    cityListAll,
-    cityListBigCityJoin,
-    cityListBigCitySplit,
+    // ...toRefs(state),
+    setCityList,
     getCityList,
   }
 }
