@@ -35,6 +35,10 @@
               </v-col>
             </v-row>
 
+            <template v-slot:infoPanel>
+              <data-view-data-set-panel :display-info="displayInfo" />
+            </template>
+
             <lazy-component
               :is="chartComponent"
               v-show="true"
@@ -115,24 +119,21 @@ export default defineComponent({
     },
   },
   setup(props) {
-    // 市区町村リスト
+    // 市区町村リストの取得
     const { getCityList } = useCityList()
     const cityList = getCityList('all')
 
-    // geoJson
+    // reactive値
+    const estatResponse = ref<EstatResponse>()
     const cityMap = reactive<any>({ all: null, break: null })
-
-    // 総人口
     const totalPopulationData = ref<any>()
     const totalAreaData = ref<any>()
 
-    const estatResponse = ref<EstatResponse>()
-
+    // APIからデータを取得してreactiveに格納
     const { $axios } = useContext()
     const { fetch } = useFetch(async () => {
       // estat-APIの取得
       const params = Object.assign({}, props.estatState.params)
-
       params.cdArea = cityList.value.map((d) => d.cityCode)
       estatResponse.value = await useEstatApi($axios, params).getData()
 
@@ -171,6 +172,7 @@ export default defineComponent({
       lastUpdate,
       additionalDescription,
       displayData,
+      displayInfo,
     } = useEstatCityRankChart(
       props.estatState,
       estatResponse,
@@ -203,6 +205,7 @@ export default defineComponent({
       path,
       chartComponent,
       displayData,
+      displayInfo,
       lastUpdate,
       mapbar,
       selectedSeries,

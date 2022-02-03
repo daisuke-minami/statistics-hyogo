@@ -23,8 +23,6 @@ export const useCityList = () => {
     return masterCityList.result.find((d) => d.cityCode === cityCode)
   })
 
-  // console.log(selectedCity)
-
   // getter
   const getCityList = (kind) => {
     if (kind === 'all') {
@@ -36,8 +34,13 @@ export const useCityList = () => {
     }
   }
 
+  const getCity = (code: string) => {
+    return cityListAll.value.find((f) => f.cityCode === code)
+  }
+
   return {
     getCityList,
+    getCity,
     selectedCity,
   }
 }

@@ -19,19 +19,6 @@ export const useEstatCityRankChart = (
   totalPopulationData: Ref<[]>,
   totalAreaData: Ref<[]>
 ) => {
-  // const { code } = useRoute().value.params
-  // console.log(code)
-
-  // e-statのレスポンスをSeries,Timeでフィルタリング
-  const currentValue = computed(() => {
-    const value: VALUE[] =
-      estatResponse.value.GET_STATS_DATA.STATISTICAL_DATA.DATA_INF.VALUE
-    const key: keyof VALUE = `@${currentSeries.value.id}`
-    return value
-      .filter((f) => f['@time'] === currentTime.value.yearStr)
-      .filter((f) => f[key] === currentSeries.value.code)
-  })
-
   // 市区町村リストを取得
   const { getCityList } = useCityList()
   const cityList = computed(() => {
@@ -72,37 +59,78 @@ export const useEstatCityRankChart = (
       })
   })
 
-  const convertData = (data) => {
-    const type = selectedValueType.value
-    const population = totalPopulationData.value
-      .filter((f) => f.code === data['@area'])
-      .filter((f) => f.yearStr === data['@time'])
-
-    const area = totalAreaData.value
-      .filter((f) => f.code === data['@area'])
-      .filter((f) => f.yearStr === data['@time'])
-
-    if (type === 'population') {
-      return {
-        value: data
-          ? Math.round((parseInt(data.$) / population[0].value) * 100) / 100
-          : '',
-        unit: data ? `${data['@unit']}/人` : '',
-      }
-    } else if (type === 'area') {
-      return {
-        value: data
-          ? Math.round((parseInt(data.$) / area[0].value) * 100) / 100
-          : '',
-        unit: data ? `${data['@unit']}/ha` : '',
-      }
-    } else {
-      return {
-        value: data ? parseInt(data.$) : '',
-        unit: data ? data['@unit'] : '',
-      }
-    }
+  const getValuePerPopulation = (d: VALUE) => {
+    const totalPopulation = totalPopulationData.value
+      .filter((f) => f.code === d['@area'])
+      .filter((f) => f.yearStr === d['@time'])
+    return Math.round((parseInt(d.$) / totalPopulation[0].value) * 100) / 100
   }
+
+  const getValuePerArea = (d: VALUE) => {
+    const totalArea = totalAreaData.value
+      .filter((f) => f.code === d['@area'])
+      .filter((f) => f.yearStr === d['@time'])
+    return Math.round((parseInt(d.$) / totalArea[0].value) * 100) / 100
+  }
+
+  // e-statのレスポンスをSeries,Timeでフィルタリング
+  const currentValue = computed(() => {
+    const value: VALUE[] =
+      estatResponse.value.GET_STATS_DATA.STATISTICAL_DATA.DATA_INF.VALUE
+    const key: keyof VALUE = `@${currentSeries.value.id}`
+    return value
+      .filter((f) => f['@time'] === currentTime.value.yearStr)
+      .filter((f) => f[key] === currentSeries.value.code)
+  })
+
+  // 合計値、単位人口当たり、単位面積当たりの値に変換
+  const convertedCurrentValue = computed(() => {
+    const type = selectedValueType.value
+    if (type === 'population') {
+      return currentValue.value.map((d) => {
+        return {
+          code: d['@area'],
+          value: getValuePerPopulation(d),
+          unit: d ? `${d['@unit']}/人` : '',
+        }
+      })
+    } else if (type === 'area') {
+      return currentValue.value.map((d) => {
+        return {
+          code: d['@area'],
+          value: getValuePerArea(d),
+          unit: d ? `${d['@unit']}/ha` : '',
+        }
+      })
+    } else {
+      return currentValue.value.map((d) => {
+        return {
+          code: d['@area'],
+          value: parseInt(d.$),
+          unit: d ? d['@unit'] : '',
+        }
+      })
+    }
+  })
+
+  // 順位を付与
+  const withRankingData = computed(() => {
+    let rank = 1
+    return convertedCurrentValue.value
+      .sort((a, b) => {
+        if (a.value > b.value) return -1
+        if (a.value < b.value) return 1
+        return 0
+      })
+      .reduce((pre, cur, i, arr) => {
+        if (i !== 0 && cur.value !== arr[i - 1].value) {
+          rank = rank + 1
+        }
+
+        pre.push(Object.assign(cur, { rank }))
+        return pre
+      }, [])
+  })
 
   // displayData
   const displayData = computed(() => {
@@ -110,16 +138,31 @@ export const useEstatCityRankChart = (
       {
         name: currentSeries.value.name,
         data: cityList.value.map((d) => {
-          const data = currentValue.value.find((f) => f['@area'] === d.cityCode)
+          const data = withRankingData.value.find((f) => f.code === d.cityCode)
 
           return Object.assign(
             { cityCode: d.cityCode, cityName: d.cityName },
-            convertData(data)
+            data
           )
         }),
       },
     ]
   })
+
+  const { selectedCity } = useCityList()
+  const displayInfo = computed(() => {
+    const data = withRankingData.value.find(
+      (f) => f.code === selectedCity.value.cityCode
+    )
+
+    return {
+      title: '県内 第',
+      lText: data.rank,
+      sText: '',
+      unit: '位',
+    }
+  })
+  // console.log(selectedCity)
 
   // tableHeader
   const tableHeader = computed(() => [
@@ -178,6 +221,7 @@ export const useEstatCityRankChart = (
     path,
     times,
     displayData,
+    displayInfo,
     tableHeader,
     tableData,
     additionalDescription,

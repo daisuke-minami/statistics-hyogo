@@ -66,7 +66,7 @@ export default defineComponent({
         },
         tooltip: {
           pointFormat:
-            '<span>{point.cityName}</span>: <b>{point.value}{point.unit}</b><br/>',
+            '<span>{point.cityName}</span>: <b>{point.value}{point.unit}</b><br/> （県内第{point.rank}位）',
         },
         credits: {
           enabled: false,

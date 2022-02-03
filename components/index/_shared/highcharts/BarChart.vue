@@ -6,7 +6,6 @@
 
 <script>
 import Highcharts from 'highcharts'
-// import { cloneDeep } from 'lodash'
 
 export default {
   props: {

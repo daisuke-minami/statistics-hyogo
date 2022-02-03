@@ -25,35 +25,10 @@
 </template>
 
 <script lang="ts">
-// import { info } from 'node-sass'
 import Vue from 'vue'
 
 export default Vue.extend({
   props: {
-    // title: {
-    //   type: String,
-    //   required: false,
-    //   default: '',
-    // },
-    // lText: {
-    //   type: String,
-    //   required: false,
-    //   default: '',
-    // },
-    // sText: {
-    //   type: String,
-    //   required: true,
-    // },
-    // sTextUnder: {
-    //   type: String,
-    //   required: false,
-    //   default: '',
-    // },
-    // unit: {
-    //   type: String,
-    //   required: false,
-    //   default: '',
-    // },
     displayInfo: {
       type: Object,
       required: true,

@@ -1,12 +1,12 @@
 import { Ref } from '@nuxtjs/composition-api'
-// import { useResasApi } from '@/composition/useResasApi'
 import { useEstatApi } from '@/composition//useEstatApi'
 import { EstatParams } from '~/types/estat'
 import { City } from '~/types/resas'
 
-interface PopulationData {
+export type TotalPopulationData = {
   code: string
   yearInt: number
+  yearStr: string
   value: number
   unit: string
 }

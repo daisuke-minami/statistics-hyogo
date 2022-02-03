@@ -25,14 +25,13 @@ export const useGlobalState = () => {
   })
 
   const setCurrentGovType = (newGovType: string): void => {
-    // console.log({newGovType})
     State.currentGovType = newGovType
   }
   const setCurrentCode = (newCode: string): void => {
     State.currentCode = newCode
   }
   const setCurrentCity = (newCity: Ref<City>): void => {
-    State.currentCity = newCity.value
+    State.currentCity = newCity
   }
 
   const getTitle = (title: string): string => {
