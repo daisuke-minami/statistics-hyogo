@@ -40,17 +40,6 @@ export default defineComponent({
       State.setCurrentCode(code)
     }
 
-    // onMounted(() => {
-    //   const route = useRoute()
-    //   const { govType, code, statField, menuId } = route.value.params
-    //   console.log({ govType, code, statField, menuId })
-    //   const State = inject(StateKey)
-    //   if (State) {
-    //     State.setCurrentGovType(govType)
-    //     State.setCurrentCode(code)
-    //   }
-    // })
-
     // 市区町村判定フラグ
     const isCity = computed(() => {
       return govType === 'city'

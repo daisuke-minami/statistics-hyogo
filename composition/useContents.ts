@@ -1,4 +1,5 @@
 import { computed, inject, useRoute } from '@nuxtjs/composition-api'
+import { useCityList } from '@/composition/useCityList'
 import { StateKey } from './useGlobalState'
 import contents from '~/assets/json/contentsSetting.json'
 
@@ -79,6 +80,8 @@ export const useContents = () => {
   const State = inject(StateKey)
   const { currentPref, currentCity } = State
 
+  const { selectedCity } = useCityList()
+
   // MenuTitleの取得
   const getMenuTitle = computed(() => {
     return function (menuId: string) {
@@ -86,7 +89,7 @@ export const useContents = () => {
         .menuTitle
       return govType === 'prefecture'
         ? `${currentPref.value.prefName}の${title}`
-        : `${currentCity.cityName}の${title}`
+        : `${selectedCity.value.cityName}の${title}`
     }
   })
 
