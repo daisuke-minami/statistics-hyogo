@@ -34,6 +34,10 @@
               </v-col>
             </v-row>
 
+            <template v-slot:infoPanel>
+              <data-view-data-set-panel :display-info="displayInfo" />
+            </template>
+
             <lazy-component
               :is="chartComponent"
               v-show="true"
