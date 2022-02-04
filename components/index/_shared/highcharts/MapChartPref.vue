@@ -41,9 +41,6 @@ export default defineComponent({
       return series
     })
 
-    // const geoJson = computed(() => {
-    //   return topojson.feature(props.topoJson, props.topoJson.objects.pref)
-    // })
     const chartOptions = computed(() => {
       return {
         chart: {

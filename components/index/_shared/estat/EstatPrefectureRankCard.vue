@@ -1,67 +1,77 @@
 <template>
-  <data-view :title="title" :route="path">
-    <h4 :id="titleId" class="visually-hidden">
-      {{ title }}
-    </h4>
+  <v-col cols="12" md="6" class="DataCard">
+    <client-only>
+      <template>
+        <v-card :loading="$fetchState.pending">
+          <p v-if="$fetchState.pending" />
+          <data-view v-else :title="title" :route="path">
+            <h4 :id="titleId" class="visually-hidden">
+              {{ title }}
+            </h4>
 
-    <toggle-map-bar v-model="mapbar" />
+            <toggle-rank-value v-model="selectedValueType" />
+            <toggle-map-bar v-model="mapbar" />
 
-    <v-row>
-      <v-col>
-        <v-select
-          v-model="selectedSeries"
-          :items="series"
-          item-text="name"
-          item-value="name"
-          return-object
-        />
-      </v-col>
-      <v-col>
-        <v-select
-          v-model="selectedTime"
-          :items="timeList"
-          item-text="yearName"
-          item-value="yearInt"
-          return-object
-          @change="$emit('input', $event)"
-        />
-      </v-col>
-    </v-row>
+            <v-row>
+              <v-col>
+                <v-select
+                  v-model="selectedSeries"
+                  :items="series"
+                  item-text="name"
+                  item-value="name"
+                  return-object
+                />
+              </v-col>
+              <v-col>
+                <v-select
+                  v-model="selectedTime"
+                  :items="times"
+                  item-text="yearName"
+                  item-value="yearInt"
+                  return-object
+                  @change="$emit('input', $event)"
+                />
+              </v-col>
+            </v-row>
 
-    <lazy-component
-      :is="chartComponent"
-      v-show="canvas"
-      :display-data="displayData"
-      :geo-json="geoJson"
-    />
+            <lazy-component
+              :is="chartComponent"
+              v-show="true"
+              :display-data="displayData"
+              :geo-json="geoJson"
+            />
 
-    <template v-slot:description>
-      <p>最終更新日:{{ lastUpdate }}</p>
-      <slot name="description" />
-    </template>
+            <template v-slot:description>
+              <p>最終更新日:{{ lastUpdate }}</p>
+              <slot name="description" />
+            </template>
 
-    <template v-slot:additionalDescription>
-      <span>（注）</span>
-      <ul>
-        <li v-for="item in additionalDescription" :key="item">
-          {{ item }}
-        </li>
-      </ul>
-      <slot name="additionalDescription" />
-    </template>
+            <template v-slot:additionalDescription>
+              <span>（注）</span>
+              <ul>
+                <li v-for="item in additionalDescription" :key="item">
+                  {{ item }}
+                </li>
+              </ul>
+              <slot name="additionalDescription" />
+            </template>
 
-    <template v-slot:dataTable>
-      <client-only>
-        <data-view-table :headers="tableHeader" :items="tableData" />
-      </client-only>
-    </template>
+            <template v-slot:dataTable>
+              <client-only>
+                <data-view-table :headers="tableHeader" :items="tableData" />
+              </client-only>
+            </template>
 
-    <template v-slot:footer>
-      <app-link :to="source.estatUrl">
-        {{ source.estatName }}
-      </app-link>
-    </template>
-  </data-view>
+            <template v-slot:footer>
+              <app-link :to="source.estatUrl">
+                {{ source.estatName }}
+              </app-link>
+            </template>
+          </data-view>
+        </v-card>
+      </template>
+    </client-only>
+  </v-col>
 </template>
 
 <script lang="ts">
@@ -70,9 +80,16 @@ import {
   ref,
   computed,
   PropType,
+  useContext,
+  useFetch,
 } from '@nuxtjs/composition-api'
-import { useEstatRankChart } from '@/composition/useEstatRankChart'
+import { useEstatPrefRankChart } from '@/composition/useEstatPrefRankChart'
+import { useEstatApi } from '@/composition/useEstatApi'
+import { useGeojson } from '@/composition/useGeojson'
 import { EstatSeries, EstatState, EstatTimes } from '~/types/estat'
+import { usePrefecture } from '~/composition/usePrefecture'
+import { useTotalPopulation } from '~/composition/useTotalPopulation'
+import { useTotalArea } from '~/composition/useTotalArea'
 
 // MapChart
 const MapChart = () => {
@@ -89,29 +106,36 @@ export default defineComponent({
       type: Object as PropType<EstatState>,
       required: true,
     },
-    prefMap: {
-      type: Object,
-      required: true,
-    },
   },
   setup(props) {
-    // canvas
-    const canvas = true
+    // 都道府県リストの取得
+    const { prefList } = usePrefecture()
 
-    const {
-      title,
-      titleId,
-      path,
-      timeList,
-      chartData,
-      tableHeader,
-      tableData,
-      source,
-      lastUpdate,
-      additionalDescription,
-    } = useEstatRankChart(props.estatState)
+    // reactive値
+    const estatResponse = ref<EstatResponse>()
+    const prefMap = ref<any>()
+    const totalPopulationData = ref<any>()
+    const totalAreaData = ref<any>()
 
-    // console.log(tableData)
+    // APIからデータを取得してreactiveに格納
+    const { $axios } = useContext()
+    const { fetch } = useFetch(async () => {
+      // estat-APIの取得
+      const params = Object.assign({}, props.estatState.params)
+      params.cdArea = prefList.value.map(
+        (d) => ('0000000000' + d.prefCode).slice(-2) + '000'
+      )
+      estatResponse.value = await useEstatApi($axios, params).getData()
+
+      // geojsonの取得
+      prefMap.value = await useGeojson($axios).prefMap.value
+
+      totalPopulationData.value = await useTotalPopulation(
+        $axios
+      ).getPrefecture(prefList)
+      totalAreaData.value = await useTotalArea($axios).getPrefecture(prefList)
+    })
+    fetch()
 
     // 系列セレクト
     const series = props.estatState.series
@@ -120,12 +144,34 @@ export default defineComponent({
     // 年次セレクト
     const selectedTime = ref<EstatTimes>(props.estatState.latestYear)
 
-    // 年次で表示データを切替
-    const displayData = computed((): EstatSeries[] => {
-      const c = chartData.value
-      return c
-        .filter((f) => f.year === selectedTime.value.yearInt)
-        .filter((f) => f.name === selectedSeries.value.name)
+    // 総数or単位人口or単位面積
+    const selectedValueType = ref<string>('all')
+
+    const {
+      title,
+      titleId,
+      path,
+      times,
+      tableHeader,
+      tableData,
+      source,
+      lastUpdate,
+      additionalDescription,
+      displayData,
+      displayInfo,
+    } = useEstatPrefRankChart(
+      props.estatState,
+      estatResponse,
+      selectedSeries,
+      selectedTime,
+      selectedValueType,
+      totalPopulationData,
+      totalAreaData
+    )
+
+    // GeoJsonの設定
+    const geoJson = computed(() => {
+      return prefMap.value
     })
 
     // MapChartとBarChartの切替
@@ -134,22 +180,21 @@ export default defineComponent({
       return mapbar.value === 'map' ? MapChart : BarChart
     })
 
-    const geoJson = props.prefMap
-
     // returnはアルファベット順
     return {
       additionalDescription,
-      canvas,
       title,
       titleId,
       path,
-      timeList,
+      times,
       chartComponent,
       displayData,
+      displayInfo,
       lastUpdate,
       mapbar,
       selectedSeries,
       selectedTime,
+      selectedValueType,
       series,
       source,
       tableData,

@@ -1,27 +1,9 @@
 <template>
-  <v-col cols="12" md="6" class="DataCard">
-    <client-only>
-      <template>
-        <v-card :loading="$fetchState.pending">
-          <p v-if="$fetchState.pending" />
-          <lazy-component :is="cardComponent" v-else v-bind="props" />
-        </v-card>
-      </template>
-    </client-only>
-  </v-col>
+  <lazy-component :is="cardComponent" v-bind="props" />
 </template>
 
 <script lang="ts">
-import {
-  defineComponent,
-  reactive,
-  ref,
-  useContext,
-  useFetch,
-} from '@nuxtjs/composition-api'
-import { useEstatApi } from '@/composition/useEstatApi'
-import { useGeojson } from '@/composition/useGeojson'
-import { usePrefecture } from '@/composition/usePrefecture'
+import { defineComponent } from '@nuxtjs/composition-api'
 import { EstatState } from '~/types/estat'
 
 export default defineComponent({
@@ -30,7 +12,7 @@ export default defineComponent({
     const cardComponent = 'estat-prefecture-rank-card'
 
     // State
-    const estatState = reactive<EstatState>({
+    const estatState: EstatState = {
       title: '総人口ランキング',
       titleId: 'total-population-rank',
       params: {
@@ -60,27 +42,12 @@ export default defineComponent({
         yearStr: '2019100000',
         yearName: '2019年',
       },
-      response: {},
-    })
-
-    const prefMap = ref<any>({})
-    const { $axios } = useContext()
-    const { fetch } = useFetch(async () => {
-      const params = Object.assign({}, estatState.params)
-      const { prefList } = usePrefecture()
-      params.cdArea = prefList.value.map(
-        (d) => ('0000000000' + d.prefCode).slice(-2) + '000'
-      )
-      estatState.response = await useEstatApi($axios, params).getData()
-      prefMap.value = await useGeojson($axios).getData()
-    })
-    fetch()
+    }
 
     return {
       cardComponent,
       props: {
         estatState,
-        prefMap,
       },
     }
   },

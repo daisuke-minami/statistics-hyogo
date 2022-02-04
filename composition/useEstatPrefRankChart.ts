@@ -1,4 +1,4 @@
-import { computed, inject, Ref, useRoute } from '@nuxtjs/composition-api'
+import { computed, Ref, useRoute } from '@nuxtjs/composition-api'
 import {
   EstatState,
   VALUE,
@@ -6,30 +6,26 @@ import {
   EstatSeries,
   EstatResponse,
 } from '@/types/estat'
-import { useCityList } from '@/composition/useCityList'
-import { StateKey } from './useGlobalState'
+// import { useCityList } from '@/composition/useCityList'
+import { usePrefecture } from '@/composition/usePrefecture'
+// import { StateKey } from './useGlobalState'
+import { convertPrefCodeToString } from '@/composition/utils/formatEstat'
 
-export const useEstatCityRankChart = (
+export const useEstatPrefRankChart = (
   estatState: EstatState,
   estatResponse: Ref<EstatResponse>,
   currentSeries: Ref<EstatSeries>,
   currentTime: Ref<EstatTimes>,
-  currentBigCityKind: Ref<string>,
   selectedValueType: Ref<string>,
   totalPopulationData: Ref<[]>,
   totalAreaData: Ref<[]>
 ) => {
-  // 市区町村リストを取得
-  const { getCityList } = useCityList()
-  const { selectedCity } = useCityList()
-  const cityList = computed(() => {
-    return getCityList(currentBigCityKind.value).value
-  })
+  // 都道府県リストを取得
+  const { prefList, selectedPref } = usePrefecture()
 
   // title
-  const { getTitle } = inject(StateKey)
   const title = computed(() => {
-    return getTitle(estatState.title)
+    return `${selectedPref.value.prefName}の${estatState.title}`
   })
 
   // titleId
@@ -138,11 +134,13 @@ export const useEstatCityRankChart = (
     return [
       {
         name: currentSeries.value.name,
-        data: cityList.value.map((d) => {
-          const data = withRankingData.value.find((f) => f.code === d.cityCode)
+        data: prefList.value.map((d) => {
+          const data = withRankingData.value.find(
+            (f) => f.code === convertPrefCodeToString(d.prefCode)
+          )
 
           return Object.assign(
-            { cityCode: d.cityCode, cityName: d.cityName },
+            { prefCode: d.prefCode, prefName: d.prefName },
             data
           )
         }),
@@ -152,11 +150,11 @@ export const useEstatCityRankChart = (
 
   const displayInfo = computed(() => {
     const data = withRankingData.value.find(
-      (f) => f.code === selectedCity.value.cityCode
+      (f) => f.code === convertPrefCodeToString(selectedPref.value.prefCode)
     )
 
     return {
-      title: '県内 第',
+      title: '国内 第',
       lText: data.rank,
       sText: '',
       unit: '位',
@@ -165,7 +163,7 @@ export const useEstatCityRankChart = (
 
   // tableHeader
   const tableHeader = computed(() => [
-    { text: '市区町村名', value: 'cityName', width: '40px' },
+    { text: '都道府県名', value: 'prefName', width: '40px' },
     {
       text: `${currentSeries.value.name} [${currentTime.value.yearName}]`,
       value: 'value',
@@ -175,10 +173,12 @@ export const useEstatCityRankChart = (
 
   // tableData
   const tableData = computed(() => {
-    return cityList.value.map((d) => {
-      const data = currentValue.value.find((f) => f['@area'] === d.cityCode)
+    return prefList.value.map((d) => {
+      const data = currentValue.value.find(
+        (f) => f['@area'] === convertPrefCodeToString(d.prefCode)
+      )
       return {
-        cityName: d.cityName,
+        prefName: d.prefName,
         value: `${parseInt(data.$).toLocaleString()}${data['@unit']}`,
       }
     })

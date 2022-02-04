@@ -17,13 +17,7 @@ export const useGeojson = (axios) => {
     return topojson.feature(topo, topo.objects.city)
   }
 
-  const state = reactive<any>({
-    prefMap: {},
-    cityMapAll: cityMapAll(),
-    cityMapBreak: cityMapBreak(),
-  })
-
-  const getData = async () => {
+  const prefMap = async () => {
     const { data: topo } = await axios.get(
       'https://geoshape.ex.nii.ac.jp/city/topojson/20200101/jp_pref.c.topojson'
     )
@@ -31,8 +25,14 @@ export const useGeojson = (axios) => {
     return topojson.feature(topo, topo.objects.pref)
   }
 
+  const state = reactive<any>({
+    prefMap: prefMap(),
+    cityMapAll: cityMapAll(),
+    cityMapBreak: cityMapBreak(),
+  })
+
   return {
     ...toRefs(state),
-    getData,
+    // getData,
   }
 }

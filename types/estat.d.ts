@@ -13,7 +13,7 @@ export type EstatState = {
   params: EstatParams
   series: EstatSeries[]
   annotation: string[]
-  response?: EstatResponse
+  latestYear: EstatTimes
 }
 
 export type EstatSeries = {

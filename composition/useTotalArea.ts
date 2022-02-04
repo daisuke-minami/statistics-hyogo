@@ -1,19 +1,22 @@
 import { Ref } from '@nuxtjs/composition-api'
-// import { useResasApi } from '@/composition/useResasApi'
 import { useEstatApi } from '@/composition//useEstatApi'
-import { EstatParams } from '~/types/estat'
-import { City } from '~/types/resas'
+import { convertPrefCodeToString } from '@/composition/utils/formatEstat'
+import { EstatParams, EstatResponse, VALUE } from '~/types/estat'
+import { City, Pref } from '~/types/resas'
 
 export const useTotalArea = (axios: any) => {
-  // 都道府県の人口
-  // const params = reactive<EstatParams>({
-  //   statsDataId: '0000010101',
-  //   cdCat01: ['A1101'],
-  // })
-  // const getPrefecture = async () => {
-  //   const res = await useResasApi(axios, params).getData()
-  //   return _formatPopulationData(res)
-  // }
+  /**
+   * 都道府県の総人口
+   */
+  const getPrefecture = async (prefList: Ref<Pref[]>) => {
+    const params: EstatParams = {
+      statsDataId: '0000010102',
+      cdCat01: ['B1101'],
+      cdArea: prefList.value.map((d) => convertPrefCodeToString(d.prefCode)),
+    }
+    const res = await useEstatApi(axios, params).getData()
+    return _formatAreaData(res)
+  }
 
   /**
    * 市区町村の総人口
@@ -29,7 +32,7 @@ export const useTotalArea = (axios: any) => {
   }
 
   return {
-    // getPrefecture,
+    getPrefecture,
     getCity,
   }
 }

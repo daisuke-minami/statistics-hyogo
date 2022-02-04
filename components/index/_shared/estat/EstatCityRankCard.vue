@@ -191,7 +191,7 @@ export default defineComponent({
 
     // MapChartとBarChartの切替
     const mapbar = ref<string>('map')
-    const chartComponent = computed((): string => {
+    const chartComponent = computed(() => {
       return mapbar.value === 'map' ? MapChart : BarChart
     })
 
