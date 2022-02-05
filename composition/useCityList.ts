@@ -5,7 +5,7 @@ export const useCityList = () => {
   // paramsからprefCode,cityCodeを取得
   const { code } = useRoute().value.params
   const cityCode = code
-  const prefCode = parseInt(code.slice(0, 2))
+  const prefCode = code ? parseInt(code.slice(0, 2)) : 28
 
   const cityListAll = computed(() => {
     return masterCityList.result.filter((f) => f.prefCode === prefCode)

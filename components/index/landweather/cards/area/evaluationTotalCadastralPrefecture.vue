@@ -1,25 +1,9 @@
 <template>
-  <v-col cols="12" md="6" class="DataCard">
-    <client-only>
-      <template>
-        <v-card :loading="$fetchState.pending">
-          <p v-if="$fetchState.pending" />
-          <lazy-component :is="cardComponent" v-else v-bind="props" />
-        </v-card>
-      </template>
-    </client-only>
-  </v-col>
+  <lazy-component :is="cardComponent" v-bind="props" />
 </template>
 
 <script lang="ts">
-import {
-  defineComponent,
-  reactive,
-  useFetch,
-  useContext,
-  useRoute,
-} from '@nuxtjs/composition-api'
-import { useEstatApi } from '@/composition/useEstatApi'
+import { defineComponent } from '@nuxtjs/composition-api'
 import { EstatState } from '@/types/estat'
 
 export default defineComponent({
@@ -28,7 +12,7 @@ export default defineComponent({
     const cardComponent = 'estat-column-card-all-break'
 
     // State
-    const estatState = reactive<EstatState>({
+    const estatState: EstatState = {
       title: '評価総地積',
       titleId: 'evaluation-total-cadastral',
       params: {
@@ -89,20 +73,7 @@ export default defineComponent({
       annotation: [
         '地方税法第342条に基づき，固定資産税の課税客体とされた土地の面積の合計として，都道府県知事から総務大臣に対し，固定資産（土地）の価格等の概要調書によって報告された数値',
       ],
-      response: {},
-    })
-
-    // routeパラメータの取得
-    const { code } = useRoute().value.params
-
-    // eStat-APIからデータを取得
-    const { $axios } = useContext()
-    const { fetch } = useFetch(async () => {
-      const params = Object.assign({}, estatState.params)
-      params.cdArea = code
-      estatState.response = await useEstatApi($axios, params).getData()
-    })
-    fetch()
+    }
 
     return {
       cardComponent,

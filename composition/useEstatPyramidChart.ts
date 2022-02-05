@@ -1,9 +1,16 @@
-import { inject, reactive, toRefs, useRoute } from '@nuxtjs/composition-api'
+import {
+  inject,
+  reactive,
+  Ref,
+  toRefs,
+  useRoute,
+} from '@nuxtjs/composition-api'
 import {
   EstatTimeChart,
   EstatTableHeader,
   EstatSource,
   EstatState,
+  EstatResponse,
 } from '@/types/estat'
 // import { useCityList } from '@/composition/useCityList'
 // import { usePrefecture } from '@/composition/usePrefecture'
@@ -21,7 +28,10 @@ interface CardState {
   source: EstatSource
 }
 
-export const useEstatPyramidChart = (estatState: EstatState) => {
+export const useEstatPyramidChart = (
+  estatState: EstatState,
+  estatResponse: Ref<EstatResponse>
+) => {
   // パスパラメータの取得
   const route = useRoute()
   const params = route.value.params
@@ -40,7 +50,7 @@ export const useEstatPyramidChart = (estatState: EstatState) => {
 
   // 出典
   const TABLE_INF =
-    estatState.response.GET_STATS_DATA.STATISTICAL_DATA.TABLE_INF
+    estatResponse.value.GET_STATS_DATA.STATISTICAL_DATA.TABLE_INF
   const _source = () => {
     return {
       estatName: `政府統計の総合窓口 e-Stat「${TABLE_INF.STAT_NAME.$}」`,
@@ -48,19 +58,22 @@ export const useEstatPyramidChart = (estatState: EstatState) => {
     }
   }
 
-  const { title, titleId, series, response } = estatState
+  const { title, titleId, series } = estatState
 
   const cardState = reactive<CardState>({
     title: _setTitle(title),
     titleId,
     path: `/${govType}/${code}/${statField}/${menuId}/${titleId}/`,
-    chartData: _chartData(series, response),
-    tableHeader: _tableHeader(_chartData(series, response)),
-    tableData: _tableData(_chartData(series, response), _timeList(response)),
+    chartData: _chartData(series, estatResponse.value),
+    tableHeader: _tableHeader(_chartData(series, estatResponse.value)),
+    tableData: _tableData(
+      _chartData(series, estatResponse.value),
+      _timeList(estatResponse.value)
+    ),
     lastUpdate: _setLastUpdate(),
     additionalDescription: _additionalDescription(estatState.annotation),
     source: _source(),
-    timeList: _timeList(response),
+    timeList: _timeList(estatResponse.value),
   })
 
   return {

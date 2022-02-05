@@ -1,25 +1,9 @@
 <template>
-  <v-col cols="12" md="6" class="DataCard">
-    <client-only>
-      <template>
-        <v-card :loading="$fetchState.pending">
-          <p v-if="$fetchState.pending" />
-          <lazy-component :is="cardComponent" v-else v-bind="props" />
-        </v-card>
-      </template>
-    </client-only>
-  </v-col>
+  <lazy-component :is="cardComponent" v-bind="props" />
 </template>
 
 <script lang="ts">
-import {
-  defineComponent,
-  reactive,
-  useFetch,
-  useContext,
-  useRoute,
-} from '@nuxtjs/composition-api'
-import { useEstatApi } from '@/composition/useEstatApi'
+import { defineComponent } from '@nuxtjs/composition-api'
 import { EstatState } from '@/types/estat'
 
 export default defineComponent({
@@ -28,7 +12,7 @@ export default defineComponent({
     const cardComponent = 'estat-column-card-all-break'
 
     // State
-    const estatState = reactive<EstatState>({
+    const estatState: EstatState = {
       title: '自然公園面積',
       titleId: 'nature-park-area',
       params: {
@@ -63,20 +47,7 @@ export default defineComponent({
         '国定公園:国立公園に準ずる優れた自然の風景地であり、都道府県の申し出を受けて環境大臣が指定する',
         '都道府県立自然公園:都道府県の風景を代表する傑出した自然の風景地であり、都道府県知事が指定する',
       ],
-      response: {},
-    })
-
-    // routeパラメータの取得
-    const { code } = useRoute().value.params
-
-    // eStat-APIからデータを取得
-    const { $axios } = useContext()
-    const { fetch } = useFetch(async () => {
-      const params = Object.assign({}, estatState.params)
-      params.cdArea = code
-      estatState.response = await useEstatApi($axios, params).getData()
-    })
-    fetch()
+    }
 
     return {
       cardComponent,
