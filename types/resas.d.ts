@@ -1,11 +1,15 @@
-export interface City {
+export type City = {
   prefCode: number
   cityName: string
   cityCode: string
   bigCityFlag: string
 }
 
-export interface Pref {
+export type Pref = {
   prefCode: number
   prefName: string
+}
+
+export type ResasParams = {
+  prefCode: number
 }

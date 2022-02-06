@@ -1,6 +1,6 @@
-import { computed, useRoute } from '@nuxtjs/composition-api'
-import { useCity } from '@/composition/useCity'
-import { usePrefecture } from '@/composition/usePrefecture'
+import { computed, inject, useRoute } from '@nuxtjs/composition-api'
+import { useCityList } from '@/composition/useCityList'
+import { StateKey } from './useGlobalState'
 import contents from '~/assets/json/contentsSetting.json'
 
 interface Field {
@@ -16,6 +16,17 @@ interface Menu {
 interface State {
   fieldList: Field[]
   menuList: Menu[]
+}
+
+// Menuの初期値リスト
+const initMenuList = () => {
+  return contents.list.map((d) => {
+    return {
+      statField: d.fieldId,
+      prefecture: d.menu.prefecture[0].menuId,
+      city: d.menu.city[0].menuId,
+    }
+  })
 }
 
 export const useContents = () => {
@@ -54,15 +65,10 @@ export const useContents = () => {
     })
   })
 
-  // 統計項目の初期値 useSideNaviで使用
-  const getInitMenuTitles = computed(() => {
-    return contents.list.map((d) => {
-      return {
-        statField: d.fieldId,
-        prefecture: d.menu.prefecture[0].menuId,
-        city: d.menu.city[0].menuId,
-      }
-    })
+  const getInitMenuId = computed(() => {
+    return function (statField: string) {
+      return initMenuList().find((f) => f.statField === statField)
+    }
   })
 
   // カードリスト
@@ -71,8 +77,10 @@ export const useContents = () => {
   })
 
   // 都道府県・市区町村
-  const { selectedPref } = usePrefecture()
-  const { selectedCity } = useCity()
+  const State = inject(StateKey)
+  const { currentPref, currentCity } = State
+
+  const { selectedCity } = useCityList()
 
   // MenuTitleの取得
   const getMenuTitle = computed(() => {
@@ -80,7 +88,7 @@ export const useContents = () => {
       const title = menuList.value.filter((f) => f.menuId === menuId)[0]
         .menuTitle
       return govType === 'prefecture'
-        ? `${selectedPref.value.prefName}の${title}`
+        ? `${currentPref.value.prefName}の${title}`
         : `${selectedCity.value.cityName}の${title}`
     }
   })
@@ -91,8 +99,8 @@ export const useContents = () => {
       const title = cardList.value.filter((f) => f.cardId === cardId)[0]
         .cardTitle
       return govType === 'prefecture'
-        ? `${selectedPref.value.prefName}の${title}`
-        : `${selectedCity.value.cityName}の${title}`
+        ? `${currentPref.value.prefName}の${title}`
+        : `${currentCity.cityName}の${title}`
     }
   })
 
@@ -100,10 +108,11 @@ export const useContents = () => {
     // ...toRefs(state),
     fieldList,
     menuList,
-    getInitMenuTitles,
+    // getInitMenuTitles,
     cardList,
     getCardTitle,
     getMenuTitle,
+    getInitMenuId,
     menuLinks,
   }
 }

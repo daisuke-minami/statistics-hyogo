@@ -4,12 +4,13 @@
       <template>
         <v-card :loading="$fetchState.pending">
           <p v-if="$fetchState.pending" />
-          <data-view v-else :title="title" :route="routingPath">
+          <data-view v-else :title="title" :route="path">
             <h4 :id="titleId" class="visually-hidden">
               {{ title }}
             </h4>
 
-            <toggle-big-city v-model="bigcityKind" />
+            <toggle-big-city v-model="selectedBigCityKind" />
+            <toggle-rank-value v-model="selectedValueType" />
             <toggle-map-bar v-model="mapbar" />
 
             <v-row>
@@ -34,15 +35,19 @@
               </v-col>
             </v-row>
 
+            <template v-slot:infoPanel>
+              <data-view-data-set-panel :display-info="displayInfo" />
+            </template>
+
             <lazy-component
               :is="chartComponent"
-              v-show="canvas"
+              v-show="true"
               :display-data="displayData"
-              :topo-json="topoJson"
+              :geo-json="geoJson"
             />
 
             <template v-slot:description>
-              <p>最終更新日：{{ lastUpdate }}</p>
+              <p>最終更新日:{{ lastUpdate }}</p>
               <slot name="description" />
             </template>
 
@@ -79,24 +84,23 @@ import {
   defineComponent,
   ref,
   computed,
-  watch,
-  useFetch,
-  // useStore,
   PropType,
-  inject,
+  reactive,
+  useContext,
+  useFetch,
 } from '@nuxtjs/composition-api'
+import { useEstatCityRankChart } from '@/composition/useEstatCityRankChart'
+import { useEstatApi } from '@/composition/useEstatApi'
+import { useGeojson } from '@/composition/useGeojson'
+import { useCityList } from '@/composition/useCityList'
+import { useTotalPopulation } from '@/composition/useTotalPopulation'
+import { useTotalArea } from '@/composition/useTotalArea'
 import {
-  EstatParams,
-  EstatSeries,
-  EstatTimes,
-  CardTitle,
   EstatResponse,
-  EstatSource,
-  formatCityRankChart,
-  formatAdditionalDescription,
-} from '@/utils/formatEstat'
-import { StateType, StateKey } from '@/composition/useState'
-import axios from 'axios'
+  EstatSeries,
+  EstatState,
+  EstatTimes,
+} from '~/types/estat'
 
 // MapChart
 const MapChart = () => {
@@ -109,183 +113,113 @@ const BarChart = () => {
 
 export default defineComponent({
   props: {
-    cardTitle: {
-      type: Object as PropType<CardTitle>,
-      required: true,
-    },
-    estatParams: {
-      type: Object as PropType<EstatParams>,
-      required: true,
-    },
-    estatSeries: {
-      type: Array as PropType<EstatSeries[]>,
-      required: true,
-    },
-    estatLatestYear: {
-      type: Object as PropType<EstatTimes>,
-      required: true,
-    },
-    estatAnnotation: {
-      type: Array as PropType<string[]>,
+    estatState: {
+      type: Object as PropType<EstatState>,
       required: true,
     },
   },
-  setup(props, context) {
-    // canvas
-    const canvas = ref<boolean>(true)
+  setup(props) {
+    // 市区町村リストの取得
+    const { getCityList } = useCityList()
+    const cityList = getCityList('all')
 
-    // inject
-    const State: StateType = inject(StateKey)
-    // const code = State.code.value
-    const govType = State.govType.value
-    const selectedPref = State.selectedPref.value
-    const selectedCity = State.selectedCity.value
-    const cityList = State.cityList.value
+    // reactive値
+    const estatResponse = ref<EstatResponse>()
+    const cityMap = reactive<any>({ all: null, break: null })
+    const totalPopulationData = ref<any>()
+    const totalAreaData = ref<any>()
 
-    // card情報の設定
-    const title = computed((): string => {
-      const name: string =
-        govType === 'prefecture' ? selectedPref.prefName : selectedCity.cityName
-      return `${name}の${props.cardTitle.title}Rank`
+    // APIからデータを取得してreactiveに格納
+    const { $axios } = useContext()
+    const { fetch } = useFetch(async () => {
+      // estat-APIの取得
+      const params = Object.assign({}, props.estatState.params)
+      params.cdArea = cityList.value.map((d) => d.cityCode)
+      estatResponse.value = await useEstatApi($axios, params).getData()
+
+      // geojsonの取得
+      cityMap.all = await useGeojson($axios).cityMapAll.value
+      cityMap.break = await useGeojson($axios).cityMapBreak.value
+
+      totalPopulationData.value = await useTotalPopulation($axios).getCity(
+        cityList
+      )
+      totalAreaData.value = await useTotalArea($axios).getCity(cityList)
     })
-    const titleId = computed((): string => {
-      return `${props.cardTitle.titleId}`
-    })
-    const routingPath = computed((): string => {
-      return `/${State.routingPath.value}/${titleId.value}/`
-    })
+    fetch()
 
     // 政令市統合/分割
-    const bigcityKind = ref<string>('all')
-    const innerCityList = computed((): City[] => {
-      if (bigcityKind.value === 'all') {
-        return cityList.filter((f) => f.bigCityFlag !== '1')
-      } else {
-        return cityList.filter((f) => f.bigCityFlag !== '2')
-      }
-    })
-
-    // eStat-APIからデータを取得
-    const estatResponse = ref<EstatResponse>({})
-    const geoJson = ref<object>({})
-    const { fetch } = useFetch(async () => {
-      const params = Object.assign({}, props.estatParams)
-      const series = selectedSeries.value
-      if (series.id === 'cat01') {
-        params.cdCat01 = series.code
-      }
-      params.cdArea = innerCityList.value.map((d: City) => d.cityCode)
-      const { data: res } = await context.root.$estat.get(
-        `${process.env.BASE_URL}/json/getStatsData`,
-        { params }
-      )
-
-      const { data: topoAll } = await axios.get(
-        'https://geoshape.ex.nii.ac.jp/city/topojson/20200101/28/28_city_dc.l.topojson'
-      )
-      // const { data: topoBreak } = await axios.get(
-      //   'https://geoshape.ex.nii.ac.jp/city/topojson/20200101/28/28_city.l.topojson'
-      // )
-
-      estatResponse.value = res
-      geoJson.value = topoAll
-    })
+    const selectedBigCityKind = ref<string>('join')
 
     // 系列セレクト
-    const series = props.estatSeries
+    const series = props.estatState.series
     const selectedSeries = ref<EstatSeries>(series[0])
 
-    // fetch
-    fetch()
-    watch(selectedSeries, () => fetch())
-    watch(bigcityKind, () => fetch())
-
-    // データの整形
-    const formatData = computed(() => {
-      return formatCityRankChart(
-        estatResponse.value,
-        selectedSeries.value,
-        innerCityList.value
-      )
-    })
-
     // 年次セレクト
-    const times = computed((): EstatTimes[] => {
-      return formatData.value.times
-    })
-    const selectedTime = ref<EstatTimes>(props.estatLatestYear)
+    const selectedTime = ref<EstatTimes>(props.estatState.latestYear)
 
-    // 年次で表示データを切替
-    const displayData = computed((): EstatSeries[] => {
-      const c: EstatSeries[] = formatData.value.chartData
-      return c.filter((f) => f.year === selectedTime.value.yearInt)
-    })
+    // 総数or単位人口or単位面積
+    const selectedValueType = ref<string>('all')
 
-    // ストアからtopojsonを取得
-    // const store = useStore()
-    const topoJson = computed(
-      () => {
-        return geoJson.value
-      }
-      // store.getters['topojson/getMapCity'](bigcityKind.value)
+    const {
+      title,
+      titleId,
+      path,
+      times,
+      tableHeader,
+      tableData,
+      source,
+      lastUpdate,
+      additionalDescription,
+      displayData,
+      displayInfo,
+    } = useEstatCityRankChart(
+      props.estatState,
+      estatResponse,
+      selectedSeries,
+      selectedTime,
+      selectedBigCityKind,
+      selectedValueType,
+      totalPopulationData,
+      totalAreaData
     )
-    // watch(bigcityKind, () => fetch())
+
+    // GeoJsonの設定
+    const geoJson = computed(() => {
+      return selectedBigCityKind.value === 'join' ? cityMap.all : cityMap.break
+    })
 
     // MapChartとBarChartの切替
     const mapbar = ref<string>('map')
-    const chartComponent = computed((): string => {
-      const chartComponent = mapbar.value === 'map' ? MapChart : BarChart
-      return chartComponent
-    })
-
-    // テーブルの設定
-    const tableHeader = computed(() => {
-      return formatData.value.tableHeader
-    })
-    const tableData = computed(() => {
-      return formatData.value.tableData
-    })
-
-    // 出典
-    const source = computed((): EstatSource => {
-      return formatData.value.source
-    })
-
-    const lastUpdate = computed((): string => {
-      if (process.browser) {
-        const day = new Date(document.lastModified)
-        return `${day.getFullYear()}年${day.getMonth() + 1}月${day.getDate()}日`
-      } else {
-        return ''
-      }
-    })
-
-    // 注釈
-    const additionalDescription = computed((): string[] => {
-      return formatAdditionalDescription(props.estatAnnotation).rankChart
+    const chartComponent = computed(() => {
+      return mapbar.value === 'map' ? MapChart : BarChart
     })
 
     // returnはアルファベット順
     return {
+      series,
       additionalDescription,
-      bigcityKind,
-      canvas,
+      selectedBigCityKind,
       title,
       titleId,
-      routingPath,
+      path,
       chartComponent,
       displayData,
+      displayInfo,
       lastUpdate,
       mapbar,
       selectedSeries,
       selectedTime,
-      series,
+      selectedValueType,
       source,
       tableData,
       tableHeader,
       times,
-      topoJson,
+      geoJson,
     }
   },
 })
 </script>
+
+function useTotalArea($axios: NuxtAxiosInstance) { throw new Error('Function not
+implemented.') }

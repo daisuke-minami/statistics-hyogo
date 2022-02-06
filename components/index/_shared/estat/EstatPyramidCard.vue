@@ -2,9 +2,9 @@
   <v-col cols="12" md="6" class="DataCard">
     <client-only>
       <template>
-        <v-card :loading="$fetchState.pending" class="DataView">
+        <v-card :loading="$fetchState.pending">
           <p v-if="$fetchState.pending" />
-          <data-view v-else :title="title" :route="routingPath">
+          <data-view v-else :title="title" :route="path">
             <h4 :id="titleId" class="visually-hidden">
               {{ title }}
             </h4>
@@ -25,12 +25,12 @@
 
             <pyramid-chart v-show="canvas" :display-data="displayData" />
 
-            <!-- <template v-slot:description>
-              <p>最終更新日：{{ lastUpdate }}</p>
+            <template v-slot:description>
+              <p>最終更新日:{{ lastUpdate }}</p>
               <slot name="description" />
-            </template> -->
+            </template>
 
-            <!-- <template v-slot:additionalDescription>
+            <template v-slot:additionalDescription>
               <span>（注）</span>
               <ul>
                 <li v-for="item in additionalDescription" :key="item">
@@ -38,7 +38,7 @@
                 </li>
               </ul>
               <slot name="additionalDescription" />
-            </template> -->
+            </template>
 
             <!-- <template v-slot:dataTable>
               <client-only>
@@ -46,11 +46,11 @@
               </client-only>
             </template> -->
 
-            <!-- <template v-slot:footer>
+            <template v-slot:footer>
               <app-link :to="source.estatUrl">
                 {{ source.estatName }}
               </app-link>
-            </template> -->
+            </template>
           </data-view>
         </v-card>
       </template>
@@ -63,116 +63,76 @@ import {
   defineComponent,
   ref,
   computed,
+  useRoute,
+  useContext,
   useFetch,
-  PropType,
-  inject,
 } from '@nuxtjs/composition-api'
-import {
-  EstatParams,
-  EstatSeries,
-  EstatTimes,
-  EstatResponse,
-  // EstatSource,
-  formatPyramidChart,
-  CardTitle,
-  // formatAdditionalDescription,
-} from '@/utils/formatEstat'
-import { StateType, StateKey } from '@/composition/useState'
+import { useEstatPyramidChart } from '@/composition/useEstatPyramidChart'
+import { EstatResponse, EstatTimes } from '~/types/estat'
+import { useEstatApi } from '~/composition/useEstatApi'
 
 export default defineComponent({
   props: {
-    cardTitle: {
-      type: Object as PropType<CardTitle>,
-      required: true,
-    },
-    estatParams: {
-      type: Object as PropType<EstatParams>,
-      required: true,
-    },
-    estatSeries: {
-      type: Array as PropType<EstatSeries[]>,
-      required: true,
-    },
-    estatLatestYear: {
-      type: Object as PropType<EstatTimes>,
-      required: true,
-    },
-    estatAnnotation: {
-      type: Array as PropType<string[]>,
+    estatState: {
+      type: Object,
       required: true,
     },
   },
-  setup(props, context) {
+  setup(props) {
     // canvas
-    const canvas = ref<boolean>(true)
+    const canvas = true
 
-    // inject
-    const State: StateType = inject(StateKey)
-    const code = State.code.value
-    const govType = State.govType.value
-    const selectedPref = State.selectedPref.value
-    const selectedCity = State.selectedCity.value
+    // routeパラメータの取得
+    const { code } = useRoute().value.params
 
-    /* eslint-disable no-console */
-    console.log({ code, govType, selectedPref, selectedCity })
-
-    // card情報の設定
-    const title = computed((): string => {
-      const name: string =
-        govType === 'prefecture' ? selectedPref.prefName : selectedCity.cityName
-      return `${name}の${props.cardTitle.title}`
-    })
-    const titleId = computed((): string => {
-      return `${props.cardTitle.titleId}`
-    })
-    const routingPath = computed((): string => {
-      return `${code}/${State.routingPath.value}/${titleId.value}/`
-    })
+    // reactive値
+    const estatResponse = ref<EstatResponse>()
 
     // eStat-APIからデータを取得
-    const estatResponse = ref<EstatResponse>({})
-    useFetch(async () => {
-      const params = Object.assign({}, props.estatParams)
+    const { $axios } = useContext()
+    const { fetch } = useFetch(async () => {
+      const params = Object.assign({}, props.estatState.params)
       params.cdArea = code
-      const { data: res } = await context.root.$estat.get('getStatsData', {
-        params,
-      })
-      estatResponse.value = res
+      estatResponse.value = await useEstatApi($axios, params).getData()
     })
     fetch()
 
-    // データの整形
-    const series = props.estatSeries
-    const formatData = computed(() => {
-      return formatPyramidChart(estatResponse.value, series)
-    })
+    const {
+      title,
+      titleId,
+      path,
+      lastUpdate,
+      chartData,
+      // tableHeader,
+      // tableData,
+      source,
+      additionalDescription,
+      timeList,
+    } = useEstatPyramidChart(props.estatState, estatResponse)
 
     // 年次セレクト
     const times = computed(() => {
-      return formatData.value.times
+      return timeList.value
     })
-    const selectedTime = ref<EstatTimes>(props.estatLatestYear)
+    const selectedTime = ref<EstatTimes>(props.estatState.latestYear)
 
     // chartの種類を設定
-    const chartComponent = ref<string>('pyramid-chart')
+    const chartComponent = 'pyramid-chart'
 
     // 年次で表示データを切替
     const displayData = computed(() => {
-      const c = formatData.value.chartData
+      const c = chartData.value
       return c.filter((f) => f.year === selectedTime.value.yearInt)
     })
-
-    /* eslint-disable no-console */
-    console.log({ estatResponse, series, formatData, displayData })
 
     return {
       title,
       titleId,
-      routingPath,
-      // lastUpdate,
+      path,
+      lastUpdate,
       displayData,
-      // additionalDescription,
-      // source,
+      additionalDescription,
+      source,
       // tableHeader,
       // tableData,
       canvas,

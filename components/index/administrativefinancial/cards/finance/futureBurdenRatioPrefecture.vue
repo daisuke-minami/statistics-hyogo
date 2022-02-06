@@ -1,54 +1,38 @@
 <template>
-  <lazy-component :is="chartComponent" v-bind="props" />
+  <lazy-component :is="cardComponent" v-bind="props" />
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, ref } from '@nuxtjs/composition-api'
-import {
-  CardTitle,
-  EstatParams,
-  EstatSeries,
-  EstatTimes,
-} from '~/utils/formatEstat'
+import { defineComponent } from '@nuxtjs/composition-api'
+import { EstatState } from '@/types/estat'
 
 export default defineComponent({
   setup() {
-    // Chartコンポーネントの設定
-    const chartComponent = ref<string>('estat-line-card')
+    // cardコンポーネントの設定
+    const cardComponent = 'estat-line-card'
 
-    // cardタイトル
-    const cardTitle = reactive<CardTitle>({
+    // State
+    const estatState: EstatState = {
       title: '将来負担比率',
       titleId: 'future-burden-ratio',
-    })
-
-    // estatParams cdAreaはestatコンポーネントで設定
-    const estatParams = reactive<EstatParams>({
-      statsDataId: '0000010104',
-      cdCat01: ['D2112'],
-    })
-    const estatSeries = reactive<EstatSeries[]>([
-      {
-        id: 'cat01',
-        code: 'D2112',
-        name: '将来負担比率',
+      params: {
+        statsDataId: '0000010104',
+        cdCat01: ['D2112'],
       },
-    ])
-    const estatLatestYear = reactive<EstatTimes>({
-      yearInt: 2019,
-      yearStr: '2019100000',
-      yearName: '2019年',
-    })
-    const estatAnnotation = reactive<string[]>([])
+      series: [
+        {
+          id: 'cat01',
+          code: 'D2112',
+          name: '将来負担比率',
+        },
+      ],
+      annotation: [],
+    }
 
     return {
-      chartComponent,
+      cardComponent,
       props: {
-        cardTitle,
-        estatParams,
-        estatSeries,
-        estatLatestYear,
-        estatAnnotation,
+        estatState,
       },
     }
   },

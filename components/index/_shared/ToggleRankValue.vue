@@ -19,7 +19,7 @@
       value="population"
       class="DataSelector-Button"
     >
-      単位人口
+      ／人口
     </v-btn>
     <v-btn
       v-ripple="false"
@@ -27,7 +27,7 @@
       value="area"
       class="DataSelector-Button"
     >
-      単位面積
+      ／面積
     </v-btn>
   </v-btn-toggle>
 </template>

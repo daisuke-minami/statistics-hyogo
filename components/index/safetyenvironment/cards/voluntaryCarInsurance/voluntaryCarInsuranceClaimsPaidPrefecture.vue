@@ -1,63 +1,47 @@
 <template>
-  <lazy-component :is="chartComponent" v-bind="props" />
+  <lazy-component :is="cardComponent" v-bind="props" />
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, ref } from '@nuxtjs/composition-api'
-import {
-  CardTitle,
-  EstatParams,
-  EstatSeries,
-  EstatTimes,
-} from '~/utils/formatEstat'
+import { defineComponent } from '@nuxtjs/composition-api'
+import { EstatState } from '@/types/estat'
 
 export default defineComponent({
   setup() {
-    // Chartコンポーネントの設定
-    const chartComponent = ref<string>('estat-column-line-card')
+    // cardコンポーネントの設定
+    const cardComponent = 'estat-column-line-card'
 
-    // cardタイトル
-    const cardTitle = reactive<CardTitle>({
+    // State
+    const estatState: EstatState = {
       title: '任意自動車保険保険金支払件数',
       titleId: 'voluntary-car-insurance-claims-paid',
-    })
-
-    // estatParams cdAreaはestatコンポーネントで設定
-    const estatParams = reactive<EstatParams>({
-      statsDataId: '0000010111',
-      cdCat01: ['K3303', 'K3304'],
-    })
-    const estatSeries = reactive<EstatSeries[]>([
-      {
-        id: 'cat01',
-        code: 'K3303',
-        name: '任意自動車保険保険金支払件数',
-        type: 'column',
-        yAxis: 1,
+      params: {
+        statsDataId: '0000010111',
+        cdCat01: ['K3303', 'K3304'],
       },
-      {
-        id: 'cat01',
-        code: 'K3304',
-        name: '任意自動車保険保険金支払金額',
-        type: 'line',
-        yAxis: 0,
-      },
-    ])
-    const estatLatestYear = reactive<EstatTimes>({
-      yearInt: 2019,
-      yearStr: '2019100000',
-      yearName: '2019年',
-    })
-    const estatAnnotation = reactive<string[]>([])
+      series: [
+        {
+          id: 'cat01',
+          code: 'K3303',
+          name: '任意自動車保険保険金支払件数',
+          type: 'column',
+          yAxis: 1,
+        },
+        {
+          id: 'cat01',
+          code: 'K3304',
+          name: '任意自動車保険保険金支払金額',
+          type: 'line',
+          yAxis: 0,
+        },
+      ],
+      annotation: [],
+    }
 
     return {
-      chartComponent,
+      cardComponent,
       props: {
-        cardTitle,
-        estatParams,
-        estatSeries,
-        estatLatestYear,
-        estatAnnotation,
+        estatState,
       },
     }
   },

@@ -37,15 +37,14 @@ import {
   onMounted,
   reactive,
   toRef,
-  inject,
+  // inject,
   useMeta,
   useRoute,
   computed,
   provide,
 } from '@nuxtjs/composition-api'
 import ScaleLoader from 'vue-spinner/src/ScaleLoader.vue'
-import { useState, StateKey } from '@/composition/useState'
-// import { MetaInfo } from 'vue-meta'
+import { useGlobalState, StateKey } from '@/composition/useGlobalState'
 
 type LocalData = {
   hasNavigation: boolean
@@ -60,9 +59,9 @@ export default defineComponent({
   head: {},
   setup() {
     // provide
-    provide(StateKey, useState())
-    const State = inject(StateKey)
-    State.setState()
+    provide(StateKey, useGlobalState())
+    // const State = inject(StateKey)
+    // State.setState()
 
     const data = reactive<LocalData>({
       hasNavigation: true,

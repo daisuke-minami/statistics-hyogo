@@ -13,7 +13,7 @@ import {
   inject,
   reactive,
 } from '@nuxtjs/composition-api'
-import { StateKey } from '@/composition/useState'
+import { StateKey } from '@/composition/useGlobalState'
 import { useContents } from '~/composition/useContents'
 
 export default defineComponent({
@@ -21,12 +21,14 @@ export default defineComponent({
   setup() {
     // パスパラメータの取得
     const route = useRoute()
-    const params = route.value.params
-    const { govType, code, statField, menuId, cardId } = params
+    const { govType, code, statField, menuId, cardId } = route.value.params
 
     // Stateをセット
     const State = inject(StateKey)
-    State.setState(govType, code, statField, menuId)
+    if (State) {
+      State.setCurrentGovType(govType)
+      State.setCurrentCode(code)
+    }
 
     // カードコンポーネントの設定
     const cardComponent = computed((): string => {

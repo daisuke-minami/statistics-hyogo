@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-tabs v-model="tab">
+    <v-tabs>
       <v-tab
         v-for="(item, i) in items"
         :key="i"
@@ -15,21 +15,33 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from '@nuxtjs/composition-api'
+import { computed, defineComponent } from '@nuxtjs/composition-api'
 import { EventBus, TOGGLE_EVENT } from '@/utils/tab-event-bus'
-import { useGovType } from '@/composition/useGovType'
+import { useChangeRouter } from '~/composition/useChangeRouter'
 
 export default defineComponent({
   setup() {
-    const tab = ref<string>('28000')
-    const items = useGovType().getGovTabItems.value
+    const { getGovTabLink } = useChangeRouter()
+    const items = computed(() => {
+      return [
+        {
+          label: `都道府県の統計`,
+          govType: 'prefecture',
+          path: getGovTabLink.value('prefecture'),
+        },
+        {
+          label: `市区町村の統計`,
+          govType: 'city',
+          path: getGovTabLink.value('city'),
+        },
+      ]
+    })
 
     const change = (): void => {
       EventBus.$emit(TOGGLE_EVENT)
     }
 
     return {
-      tab,
       items,
       change,
     }

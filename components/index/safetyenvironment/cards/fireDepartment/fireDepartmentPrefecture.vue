@@ -1,54 +1,38 @@
 <template>
-  <lazy-component :is="chartComponent" v-bind="props" />
+  <lazy-component :is="cardComponent" v-bind="props" />
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, ref } from '@nuxtjs/composition-api'
-import {
-  CardTitle,
-  EstatParams,
-  EstatSeries,
-  EstatTimes,
-} from '~/utils/formatEstat'
+import { defineComponent } from '@nuxtjs/composition-api'
+import { EstatState } from '@/types/estat'
 
 export default defineComponent({
   setup() {
-    // Chartコンポーネントの設定
-    const chartComponent = ref<string>('estat-column-card-multi')
+    // cardコンポーネントの設定
+    const cardComponent = 'estat-column-card'
 
-    // cardタイトル
-    const cardTitle = reactive<CardTitle>({
+    // State
+    const estatState: EstatState = {
       title: '消防本部・署数',
       titleId: 'fire-department',
-    })
-
-    // estatParams cdAreaはestatコンポーネントで設定
-    const estatParams = reactive<EstatParams>({
-      statsDataId: '0000010111',
-      cdCat01: ['K1105', 'K3102'],
-    })
-    const estatSeries = reactive<EstatSeries[]>([
-      {
-        id: 'cat01',
-        code: 'K1105',
-        name: '消防本部・署数',
+      params: {
+        statsDataId: '0000010111',
+        cdCat01: ['K1101'],
       },
-    ])
-    const estatLatestYear = reactive<EstatTimes>({
-      yearInt: 2019,
-      yearStr: '2019100000',
-      yearName: '2019年',
-    })
-    const estatAnnotation = reactive<string[]>([])
+      series: [
+        {
+          id: 'cat01',
+          code: 'K1101',
+          name: '消防本部・署数',
+        },
+      ],
+      annotation: [],
+    }
 
     return {
-      chartComponent,
+      cardComponent,
       props: {
-        cardTitle,
-        estatParams,
-        estatSeries,
-        estatLatestYear,
-        estatAnnotation,
+        estatState,
       },
     }
   },

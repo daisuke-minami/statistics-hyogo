@@ -4,11 +4,12 @@
       <template>
         <v-card :loading="$fetchState.pending">
           <p v-if="$fetchState.pending" />
-          <data-view v-else :title="title" :route="routingPath">
+          <data-view v-else :title="title" :route="path">
             <h4 :id="titleId" class="visually-hidden">
               {{ title }}
             </h4>
 
+            <toggle-rank-value v-model="selectedValueType" />
             <toggle-map-bar v-model="mapbar" />
 
             <v-row>
@@ -33,15 +34,19 @@
               </v-col>
             </v-row>
 
+            <template v-slot:infoPanel>
+              <data-view-data-set-panel :display-info="displayInfo" />
+            </template>
+
             <lazy-component
               :is="chartComponent"
-              v-show="canvas"
+              v-show="true"
               :display-data="displayData"
               :geo-json="geoJson"
             />
 
             <template v-slot:description>
-              <p>最終更新日：{{ lastUpdate }}</p>
+              <p>最終更新日:{{ lastUpdate }}</p>
               <slot name="description" />
             </template>
 
@@ -78,19 +83,17 @@ import {
   defineComponent,
   ref,
   computed,
-  watch,
-  useFetch,
-  // useStore,
   PropType,
-  inject,
+  useContext,
+  useFetch,
 } from '@nuxtjs/composition-api'
-import {
-  formatPrefectureRankChart,
-  formatAdditionalDescription,
-} from '@/utils/formatEstat'
-import { StateKey } from '@/composition/useState'
-import axios from 'axios'
-import * as topojson from 'topojson-client'
+import { useEstatPrefRankChart } from '@/composition/useEstatPrefRankChart'
+import { useEstatApi } from '@/composition/useEstatApi'
+import { useGeojson } from '@/composition/useGeojson'
+import { EstatSeries, EstatState, EstatTimes } from '~/types/estat'
+import { usePrefecture } from '~/composition/usePrefecture'
+import { useTotalPopulation } from '~/composition/useTotalPopulation'
+import { useTotalArea } from '~/composition/useTotalArea'
 
 // MapChart
 const MapChart = () => {
@@ -103,155 +106,103 @@ const BarChart = () => {
 
 export default defineComponent({
   props: {
-    cardTitle: {
-      type: Object as PropType<CardTitle>,
-      required: true,
-    },
-    estatParams: {
-      type: Object as PropType<EstatParams>,
-      required: true,
-    },
-    estatSeries: {
-      type: Array as PropType<EstatSeries[]>,
-      required: true,
-    },
-    estatLatestYear: {
-      type: Object as PropType<EstatTimes>,
-      required: true,
-    },
-    estatAnnotation: {
-      type: Array as PropType<string[]>,
+    estatState: {
+      type: Object as PropType<EstatState>,
       required: true,
     },
   },
-  setup(props, context) {
-    // canvas
-    const canvas = ref<boolean>(true)
+  setup(props) {
+    // 都道府県リストの取得
+    const { prefList } = usePrefecture()
 
-    // inject
-    const State = inject(StateKey)
-    // const code = State.code.value
-    const govType = State.govType.value
-    const selectedPref = State.selectedPref.value
-    const selectedCity = State.selectedCity.value
-    const prefList = State.prefList.value
+    // reactive値
+    const estatResponse = ref<EstatResponse>()
+    const prefMap = ref<any>()
+    const totalPopulationData = ref<any>()
+    const totalAreaData = ref<any>()
 
-    // card情報の設定
-    const title = computed((): string => {
-      const name: string =
-        govType === 'prefecture' ? selectedPref.prefName : selectedCity.cityName
-      return `${name}の${props.cardTitle.title}Rank`
-    })
-    const titleId = computed((): string => {
-      return `${props.cardTitle.titleId}`
-    })
-    const routingPath = computed((): string => {
-      return `/${State.routingPath.value}/${titleId.value}/`
-    })
-
-    // eStat-APIからデータを取得
-    const estatResponse = ref<EstatResponse>({})
-    const geoJson = ref<object>({})
+    // APIからデータを取得してreactiveに格納
+    const { $axios } = useContext()
     const { fetch } = useFetch(async () => {
-      const params = Object.assign({}, props.estatParams)
-      const series = selectedSeries.value
-      if (series.id === 'cat01') {
-        params.cdCat01 = series.code
-      }
-      params.cdArea = prefList.map(
+      // estat-APIの取得
+      const params = Object.assign({}, props.estatState.params)
+      params.cdArea = prefList.value.map(
         (d) => ('0000000000' + d.prefCode).slice(-2) + '000'
       )
-      const { data: res } = await context.root.$estat.get(`getStatsData`, {
-        params,
-      })
-      estatResponse.value = res
-      const { data: topo } = await axios.get(
-        'https://geoshape.ex.nii.ac.jp/city/topojson/20200101/jp_pref.c.topojson'
-      )
-      geoJson.value = topojson.feature(topo, topo.objects.pref)
-      // console.log(prefMap.value)
+      estatResponse.value = await useEstatApi($axios, params).getData()
+
+      // geojsonの取得
+      prefMap.value = await useGeojson($axios).prefMap.value
+
+      totalPopulationData.value = await useTotalPopulation(
+        $axios
+      ).getPrefecture(prefList)
+      totalAreaData.value = await useTotalArea($axios).getPrefecture(prefList)
     })
+    fetch()
 
     // 系列セレクト
-    const series = props.estatSeries
+    const series = props.estatState.series
     const selectedSeries = ref<EstatSeries>(series[0])
-    fetch()
-    watch(selectedSeries, () => fetch())
-
-    // データの整形
-    const formatData = computed(() => {
-      return formatPrefectureRankChart(
-        estatResponse.value,
-        selectedSeries.value,
-        prefList
-      )
-    })
 
     // 年次セレクト
-    const times = computed((): EstatTimes[] => {
-      return formatData.value.times
-    })
-    const selectedTime = ref<EstatTimes>(props.estatLatestYear)
+    const selectedTime = ref<EstatTimes>(props.estatState.latestYear)
 
-    // 年次で表示データを切替
-    const displayData = computed((): EstatSeries[] => {
-      const c: EstatSeries[] = formatData.value.chartData
-      return c.filter((f) => f.year === selectedTime.value.yearInt)
+    // 総数or単位人口or単位面積
+    const selectedValueType = ref<string>('all')
+
+    const {
+      title,
+      titleId,
+      path,
+      times,
+      tableHeader,
+      tableData,
+      source,
+      lastUpdate,
+      additionalDescription,
+      displayData,
+      displayInfo,
+    } = useEstatPrefRankChart(
+      props.estatState,
+      estatResponse,
+      selectedSeries,
+      selectedTime,
+      selectedValueType,
+      totalPopulationData,
+      totalAreaData
+    )
+
+    // GeoJsonの設定
+    const geoJson = computed(() => {
+      return prefMap.value
     })
 
     // MapChartとBarChartの切替
     const mapbar = ref<string>('map')
-    const chartComponent = computed((): Promise<Vue> => {
-      const chartComponent = mapbar.value === 'map' ? MapChart : BarChart
-      return chartComponent
-    })
-
-    // テーブルの設定
-    const tableHeader = computed(() => {
-      return formatData.value.tableHeader
-    })
-    const tableData = computed(() => {
-      return formatData.value.tableData
-    })
-
-    // 出典
-    const source = computed((): EstatSource => {
-      return formatData.value.source
-    })
-
-    const lastUpdate = computed((): string => {
-      if (process.browser) {
-        const day = new Date(document.lastModified)
-        return `${day.getFullYear()}年${day.getMonth() + 1}月${day.getDate()}日`
-      } else {
-        return ''
-      }
-    })
-
-    // 注釈
-    const additionalDescription = computed((): string[] => {
-      return formatAdditionalDescription(props.estatAnnotation).rankChart
+    const chartComponent = computed(() => {
+      return mapbar.value === 'map' ? MapChart : BarChart
     })
 
     // returnはアルファベット順
     return {
       additionalDescription,
-      canvas,
       title,
       titleId,
-      routingPath,
+      path,
+      times,
       chartComponent,
       displayData,
+      displayInfo,
       lastUpdate,
       mapbar,
       selectedSeries,
       selectedTime,
+      selectedValueType,
       series,
       source,
       tableData,
       tableHeader,
-      times,
-      // topoJson,
       geoJson,
     }
   },

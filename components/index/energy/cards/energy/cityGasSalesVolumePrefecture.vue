@@ -3,14 +3,7 @@
 </template>
 
 <script lang="ts">
-import {
-  defineComponent,
-  reactive,
-  useFetch,
-  useContext,
-  useRoute,
-} from '@nuxtjs/composition-api'
-import { useEstatApi } from '@/composition/useEstatApi'
+import { defineComponent } from '@nuxtjs/composition-api'
 import { EstatState } from '@/types/estat'
 
 export default defineComponent({
@@ -19,7 +12,7 @@ export default defineComponent({
     const cardComponent = 'estat-column-card'
 
     // State
-    const estatState = reactive<EstatState>({
+    const estatState: EstatState = {
       title: '都市ガス販売量',
       titleId: 'city-gas-sales-volume',
       params: {
@@ -34,20 +27,7 @@ export default defineComponent({
         },
       ],
       annotation: [],
-      response: {},
-    })
-
-    // routeパラメータの取得
-    const { code } = useRoute().value.params
-
-    // eStat-APIからデータを取得
-    const { $axios } = useContext()
-    const { fetch } = useFetch(async () => {
-      const params = Object.assign({}, estatState.params)
-      params.cdArea = code
-      estatState.response = await useEstatApi($axios, params).getData()
-    })
-    fetch()
+    }
 
     return {
       cardComponent,

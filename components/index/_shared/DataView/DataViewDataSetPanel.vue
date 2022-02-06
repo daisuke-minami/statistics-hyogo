@@ -1,10 +1,10 @@
 <template>
   <div class="DataView-DataSet">
-    <span v-if="displayInfo.title" class="DataView-DataSet-title">{{
-      displayInfo.title
-    }}</span>
     <div class="DataView-DataSet-info">
       <template v-if="displayInfo.lText">
+        <small class="DataView-DataSet-summary-unit">{{
+          displayInfo.title
+        }}</small>
         <span class="DataView-DataSet-summary">
           {{ displayInfo.lText }}
           <small class="DataView-DataSet-summary-unit">{{
@@ -25,35 +25,10 @@
 </template>
 
 <script lang="ts">
-// import { info } from 'node-sass'
 import Vue from 'vue'
 
 export default Vue.extend({
   props: {
-    // title: {
-    //   type: String,
-    //   required: false,
-    //   default: '',
-    // },
-    // lText: {
-    //   type: String,
-    //   required: false,
-    //   default: '',
-    // },
-    // sText: {
-    //   type: String,
-    //   required: true,
-    // },
-    // sTextUnder: {
-    //   type: String,
-    //   required: false,
-    //   default: '',
-    // },
-    // unit: {
-    //   type: String,
-    //   required: false,
-    //   default: '',
-    // },
     displayInfo: {
       type: Object,
       required: true,
@@ -63,7 +38,7 @@ export default Vue.extend({
 })
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .DataView {
   &-DataSet {
     display: flex;
@@ -76,9 +51,10 @@ export default Vue.extend({
     }
 
     &-title {
+      float: right;
       font-size: 2rem;
       flex: 1 1 50%;
-      margin-bottom: 10px;
+      // margin-bottom: 10px;
     }
 
     &-info {

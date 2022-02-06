@@ -171,10 +171,10 @@ const config: NuxtConfig = {
         '^/json/': '/',
       },
     },
-    '/topojson/': {
-      target: 'https://geoshape.ex.nii.ac.jp/city/topojson',
+    '/api/': {
+      target: 'https://opendata.resas-portal.go.jp/api',
       pathRewrite: {
-        '^/topojson/': '/',
+        '^/api/': '/',
       },
     },
   },

@@ -1,59 +1,43 @@
 <template>
-  <lazy-component :is="chartComponent" v-bind="props" />
+  <lazy-component :is="cardComponent" v-bind="props" />
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, ref } from '@nuxtjs/composition-api'
-import {
-  CardTitle,
-  EstatParams,
-  EstatSeries,
-  EstatTimes,
-} from '~/utils/formatEstat'
+import { defineComponent } from '@nuxtjs/composition-api'
+import { EstatState } from '@/types/estat'
 
 export default defineComponent({
   setup() {
-    // Chartコンポーネントの設定
-    const chartComponent = ref<string>('estat-line-card')
+    // cardコンポーネントの設定
+    const cardComponent = 'estat-line-card'
 
-    // cardタイトル
-    const cardTitle = reactive<CardTitle>({
+    // State
+    const estatState: EstatState = {
       title: '納税義務者数',
       titleId: 'taxpayers',
-    })
-
-    // estatParams cdAreaはestatコンポーネントで設定
-    const estatParams = reactive<EstatParams>({
-      statsDataId: '0000010103',
-      cdCat01: ['C120120', 'C120130'],
-    })
-    const estatSeries = reactive<EstatSeries[]>([
-      {
-        id: 'cat01',
-        code: 'C120120',
-        name: '納税義務者数（所得割）',
+      params: {
+        statsDataId: '0000010103',
+        cdCat01: ['C120120', 'C120130'],
       },
-      {
-        id: 'cat01',
-        code: 'C120130',
-        name: '納税義務者数（均等割）',
-      },
-    ])
-    const estatLatestYear = reactive<EstatTimes>({
-      yearInt: 2019,
-      yearStr: '2019100000',
-      yearName: '2019年',
-    })
-    const estatAnnotation = reactive<string[]>([])
+      series: [
+        {
+          id: 'cat01',
+          code: 'C120120',
+          name: '納税義務者数（所得割）',
+        },
+        {
+          id: 'cat01',
+          code: 'C120130',
+          name: '納税義務者数（均等割）',
+        },
+      ],
+      annotation: [],
+    }
 
     return {
-      chartComponent,
+      cardComponent,
       props: {
-        cardTitle,
-        estatParams,
-        estatSeries,
-        estatLatestYear,
-        estatAnnotation,
+        estatState,
       },
     }
   },
