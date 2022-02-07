@@ -13,11 +13,11 @@ const TotalPopulation = () => {
   )
 }
 // 総人口ランキング
-const PopulationCityRank = () => {
-  return import(
-    '~/components/index/population/cards/population/totalPopulationRankCity.vue'
-  )
-}
+// const PopulationCityRank = () => {
+//   return import(
+//     '~/components/index/population/cards/population/totalPopulationRankCity.vue'
+//   )
+// }
 
 export default defineComponent({
   components: {
@@ -25,7 +25,7 @@ export default defineComponent({
   },
   setup() {
     // Card
-    const rows = ref([[TotalPopulation, PopulationCityRank]])
+    const rows = ref([[TotalPopulation]])
 
     return {
       rows,
