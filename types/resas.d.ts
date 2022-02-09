@@ -10,6 +10,8 @@ export type Pref = {
   prefName: string
 }
 
+export type GovType = 'prefecture' | 'city'
+
 export type ResasParams = {
   prefCode: number
 }

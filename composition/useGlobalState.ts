@@ -6,11 +6,14 @@ import {
   ref,
   isRef,
 } from '@nuxtjs/composition-api'
-import { Pref, City } from '~/types/resas'
-import prefListMaster from '~/data/codes/preflist.json'
-import cityListMaster from '~/data/codes/citylist.json'
-
-type GovType = 'prefecture' | 'city'
+import {
+  convertCodeToGovType,
+  convertCodeToPrefCode,
+  getCity,
+  getCityList,
+  getPref,
+} from '@/composition/utils/formatResas'
+import { Pref, City, GovType } from '~/types/resas'
 
 interface State {
   currentGovType: GovType
@@ -35,7 +38,7 @@ export const useGlobalState = () => {
       cityName: '神戸市',
       bigCityFlag: '2',
     },
-    prefList: prefListMaster.result,
+    prefList: [],
     cityList: [],
   })
 
@@ -92,39 +95,3 @@ export const useGlobalState = () => {
 export const StateKey: InjectionKey<GlobalState> = Symbol('State')
 export type GlobalState = ReturnType<typeof useGlobalState>
 export default useGlobalState
-
-const convertCodeToGovType = (code: string): GovType => {
-  return code.slice(-3) === '000' ? 'prefecture' : 'city'
-}
-
-const convertCodeToPrefCode = (code: string): number => {
-  return +code.slice(0, 2)
-}
-
-const getPref = (prefCode: number): Pref => {
-  return (
-    prefListMaster.result.find((f) => f.prefCode === prefCode) ??
-    prefListMaster.result[0]
-  )
-}
-
-const getCity = (cityCode: string): City => {
-  return (
-    cityListMaster.result.find((f) => f.cityCode === cityCode) ??
-    cityListMaster.result[0]
-  )
-}
-
-const getCityList = (prefCode: number, bigCityKind: string = 'all'): City[] => {
-  const cityListAll = cityListMaster.result.filter(
-    (f) => f.prefCode === prefCode
-  )
-
-  if (bigCityKind === 'all') {
-    return cityListAll
-  } else if (bigCityKind === 'join') {
-    return cityListAll.filter((f) => f.bigCityFlag !== '1')
-  } else {
-    return cityListAll.filter((f) => f.bigCityFlag !== '2')
-  }
-}
