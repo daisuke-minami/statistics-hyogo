@@ -16,15 +16,16 @@
 <script lang="ts">
 import {
   defineComponent,
-  inject,
+  // inject,
   computed,
   useRoute,
   useMeta,
   reactive,
+  inject,
   // onMounted,
 } from '@nuxtjs/composition-api'
-import { StateKey } from '@/composition/useGlobalState'
 import { useContents } from '~/composition/useContents'
+import { GlobalState, StateKey } from '~/composition/useGlobalState'
 
 export default defineComponent({
   head: {},
@@ -33,12 +34,9 @@ export default defineComponent({
     const route = useRoute()
     const { govType, code, statField, menuId } = route.value.params
 
-    // Stateをセット
-    const State = inject(StateKey)
-    if (State) {
-      State.setCurrentGovType(govType)
-      State.setCurrentCode(code)
-    }
+    // globalState
+    const { setState } = inject(StateKey) as GlobalState
+    setState(code)
 
     // 市区町村判定フラグ
     const isCity = computed(() => {

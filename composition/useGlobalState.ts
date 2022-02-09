@@ -1,10 +1,23 @@
-import { reactive, toRefs, InjectionKey, Ref } from '@nuxtjs/composition-api'
-import { Pref, City } from '~/types/resas'
-import prefListMaster from '~/data/codes/preflist.json'
-import cityListMaster from '~/data/codes/citylist.json'
+import {
+  reactive,
+  toRefs,
+  InjectionKey,
+  Ref,
+  ref,
+  isRef,
+} from '@nuxtjs/composition-api'
+import {
+  convertCodeToGovType,
+  convertCodeToPrefCode,
+  getCity,
+  getCityList,
+  getPref,
+  getPrefList,
+} from '@/composition/utils/formatResas'
+import { Pref, City, GovType } from '~/types/resas'
 
 interface State {
-  currentGovType: string
+  currentGovType: GovType
   currentCode: string
   currentPref: Pref
   currentCity: City
@@ -13,7 +26,7 @@ interface State {
 }
 
 export const useGlobalState = () => {
-  const State = reactive<State>({
+  const state = reactive<State>({
     currentGovType: 'prefecture',
     currentCode: '28000',
     currentPref: {
@@ -26,56 +39,61 @@ export const useGlobalState = () => {
       cityName: '神戸市',
       bigCityFlag: '2',
     },
-    prefList: prefListMaster.result,
-    cityList: cityListMaster.result,
+    prefList: [],
+    cityList: [],
   })
 
-  const setCurrentGovType = (newGovType: string): void => {
-    State.currentGovType = newGovType
+  const setCurrentCode = (code: string): void => {
+    state.currentCode = code
   }
-  const setCurrentCode = (newCode: string): void => {
-    State.currentCode = newCode
+  const setCurrentCity = (newCity: Ref<City> | City): void => {
+    state.currentCity = isRef(newCity) ? newCity : ref(newCity)
   }
-  const setCurrentCity = (newCity: Ref<City>): void => {
-    State.currentCity = newCity
+
+  // stateの一括設定
+  const setState = (code: string): void => {
+    const prefCode = convertCodeToPrefCode(code)
+    const govType = convertCodeToGovType(code)
+    state.currentGovType = govType
+    state.currentCode = code
+    state.currentPref = getPref(prefCode)
+    state.currentCity = getCity(code)
+    state.cityList = getCityList(prefCode)
+    state.prefList = getPrefList()
+  }
+
+  // stateの初期設定
+  const initCode = '28100'
+  const setInitState = (): void => {
+    setState(initCode)
   }
 
   const getTitle = (title: string): string => {
-    return State.currentGovType === 'prefecture'
-      ? `${State.currentPref.prefName}の${title}`
-      : `${State.currentCity.cityName}の${title}`
+    return state.currentGovType === 'prefecture'
+      ? `${state.currentPref.prefName}の${title}`
+      : `${state.currentCity.cityName}の${title}`
+  }
+
+  const getCurrentCityList = (kind: string): City[] => {
+    return getCityList(state.currentPref.prefCode, kind)
+  }
+
+  const getCurrentPrefList = (): Pref[] => {
+    return state.prefList
   }
 
   return {
-    ...toRefs(State),
-    setCurrentGovType,
+    ...toRefs(state),
+    setInitState,
     setCurrentCode,
     setCurrentCity,
     getTitle,
+    setState,
+    getCurrentCityList,
+    getCurrentPrefList,
   }
 }
 
-// const convertCodeToPrefCode = (code: string): number => {
-//   return Number(code.slice(0, 2))
-// }
-
-// const setCurrentPref = (code: string): void => {
-//   const prefCode = convertCodeToPrefCode(code)
-//   State.currentPref = prefListMaster.result.find((f) => f.prefCode === prefCode)
-// }
-
-// const setCurrentCity = (code: string): void => {
-//   State.currentCity = cityListMaster.result.find((f) => f.cityCode === code)
-// }
-
-// const setCityList = (code: string): void => {
-//   const prefCode = convertCodeToPrefCode(code)
-//   State.cityList = cityListMaster.result.filter((f) => f.prefCode === prefCode)
-// }
-
-// const getCity = (code: string) = void =>{
-//   retunr null
-// }
-
-export type StateType = ReturnType<typeof useGlobalState>
-export const StateKey: InjectionKey<StateType> = Symbol('State')
+export const StateKey: InjectionKey<GlobalState> = Symbol('State')
+export type GlobalState = ReturnType<typeof useGlobalState>
+export default useGlobalState

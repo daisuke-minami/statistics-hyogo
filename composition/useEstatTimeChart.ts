@@ -1,23 +1,20 @@
 import { computed, inject, Ref, useRoute } from '@nuxtjs/composition-api'
 import { getGraphSeriesStyle } from '@/utils/colors'
 import { EstatState, EstatResponse, VALUE } from '@/types/estat'
-// import { useCityList } from './useCityList'
 import {
   formatEstatTimeList,
   formatEstatSource,
 } from '@/composition/utils/formatEstat'
-import { StateKey } from './useGlobalState'
+import { GlobalState, StateKey } from './useGlobalState'
 
 export const useEstatTimeChart = (
   estatState: EstatState,
   estatResponse: Ref<EstatResponse>
 ) => {
   // パスパラメータの取得
-  // const params = route.value.params
-  // const { govType, code, statField, menuId } = params
 
   // title
-  const { getTitle } = inject(StateKey)
+  const { getTitle } = inject(StateKey) as GlobalState
   const title = computed(() => {
     return getTitle(estatState.title)
   })

@@ -6,8 +6,7 @@ import {
   EstatSeries,
   EstatResponse,
 } from '@/types/estat'
-import { useCityList } from '@/composition/useCityList'
-import { StateKey } from './useGlobalState'
+import { GlobalState, StateKey } from './useGlobalState'
 
 export const useEstatCityRankChart = (
   estatState: EstatState,
@@ -19,15 +18,14 @@ export const useEstatCityRankChart = (
   totalPopulationData: Ref<[]>,
   totalAreaData: Ref<[]>
 ) => {
-  // 市区町村リストを取得
-  const { getCityList } = useCityList()
-  const { selectedCity } = useCityList()
+  // 市区町村の設定
+  const { currentCity, getCurrentCityList } = inject(StateKey) as GlobalState
   const cityList = computed(() => {
-    return getCityList(currentBigCityKind.value).value
+    return getCurrentCityList(currentBigCityKind.value)
   })
 
   // title
-  const { getTitle } = inject(StateKey)
+  const { getTitle } = inject(StateKey) as GlobalState
   const title = computed(() => {
     return getTitle(estatState.title)
   })
@@ -152,7 +150,7 @@ export const useEstatCityRankChart = (
 
   const displayInfo = computed(() => {
     const data = withRankingData.value.find(
-      (f) => f.code === selectedCity.value.cityCode
+      (f) => f.code === currentCity.value.cityCode
     )
 
     return {

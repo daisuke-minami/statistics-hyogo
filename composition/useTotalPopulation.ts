@@ -1,4 +1,3 @@
-import { Ref } from '@nuxtjs/composition-api'
 import { useEstatApi } from '@/composition//useEstatApi'
 import { convertPrefCodeToString } from '@/composition/utils/formatEstat'
 import { EstatParams, EstatResponse, VALUE } from '~/types/estat'
@@ -16,28 +15,24 @@ export const useTotalPopulation = (axios: any) => {
   /**
    * 都道府県の総人口
    */
-  const getPrefecture = async (prefList: Ref<Pref[]>) => {
+  const getPrefecture = async (prefList: Pref[]) => {
     const params: EstatParams = {
       statsDataId: '0000010101',
       cdCat01: ['A1101'],
-      cdArea: prefList.value.map((d) => convertPrefCodeToString(d.prefCode)),
+      cdArea: prefList.map((d) => convertPrefCodeToString(d.prefCode)),
     }
     const res = await useEstatApi(axios, params).getData()
     return _formatPopulationData(res)
   }
 
-  // const convertPrefCodeToString = (prefCode: number): string => {
-  //   return ('0000000000' + prefCode).slice(-2) + '000'
-  // }
-
   /**
    * 市区町村の総人口
    */
-  const getCity = async (cityList: Ref<City[]>) => {
+  const getCity = async (cityList: City[]) => {
     const params: EstatParams = {
       statsDataId: '0000020201',
       cdCat01: ['A1101'],
-      cdArea: cityList.value.map((d) => d.cityCode),
+      cdArea: cityList.map((d) => d.cityCode),
     }
     const res = await useEstatApi(axios, params).getData()
     return _formatPopulationData(res)

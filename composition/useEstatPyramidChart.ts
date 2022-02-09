@@ -12,9 +12,7 @@ import {
   EstatState,
   EstatResponse,
 } from '@/types/estat'
-// import { useCityList } from '@/composition/useCityList'
-// import { usePrefecture } from '@/composition/usePrefecture'
-import { StateKey } from './useGlobalState'
+import { GlobalState, StateKey } from './useGlobalState'
 
 interface CardState {
   title: string
@@ -38,7 +36,7 @@ export const useEstatPyramidChart = (
   const { govType, code, statField, menuId } = params
 
   // 都道府県・市区町村
-  const { currentPref, currentCity } = inject(StateKey)
+  const { currentPref, currentCity } = inject(StateKey) as GlobalState
 
   const _setTitle = (title: string) => {
     const name: string =
