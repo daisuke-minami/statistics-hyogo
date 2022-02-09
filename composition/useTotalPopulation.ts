@@ -26,18 +26,14 @@ export const useTotalPopulation = (axios: any) => {
     return _formatPopulationData(res)
   }
 
-  // const convertPrefCodeToString = (prefCode: number): string => {
-  //   return ('0000000000' + prefCode).slice(-2) + '000'
-  // }
-
   /**
    * 市区町村の総人口
    */
-  const getCity = async (cityList: Ref<City[]>) => {
+  const getCity = async (cityList: City[]) => {
     const params: EstatParams = {
       statsDataId: '0000020201',
       cdCat01: ['A1101'],
-      cdArea: cityList.value.map((d) => d.cityCode),
+      cdArea: cityList.map((d) => d.cityCode),
     }
     const res = await useEstatApi(axios, params).getData()
     return _formatPopulationData(res)

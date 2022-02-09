@@ -21,11 +21,11 @@ export const useTotalArea = (axios: any) => {
   /**
    * 市区町村の総人口
    */
-  const getCity = async (cityList: Ref<City[]>) => {
+  const getCity = async (cityList: City[]) => {
     const params: EstatParams = {
       statsDataId: '0000020202',
       cdCat01: ['B1101'],
-      cdArea: cityList.value.map((d) => d.cityCode),
+      cdArea: cityList.map((d) => d.cityCode),
     }
     const res = await useEstatApi(axios, params).getData()
     return _formatAreaData(res)
