@@ -88,11 +88,11 @@ import {
   reactive,
   useContext,
   useFetch,
+  inject,
 } from '@nuxtjs/composition-api'
 import { useEstatCityRankChart } from '@/composition/useEstatCityRankChart'
 import { useEstatApi } from '@/composition/useEstatApi'
 import { useGeojson } from '@/composition/useGeojson'
-import { useCityList } from '@/composition/useCityList'
 import { useTotalPopulation } from '@/composition/useTotalPopulation'
 import { useTotalArea } from '@/composition/useTotalArea'
 import {
@@ -101,6 +101,7 @@ import {
   EstatState,
   EstatTimes,
 } from '~/types/estat'
+import { GlobalState, StateKey } from '~/composition/useGlobalState'
 
 // MapChart
 const MapChart = () => {
@@ -120,8 +121,8 @@ export default defineComponent({
   },
   setup(props) {
     // 市区町村リストの取得
-    const { getCityList } = useCityList()
-    const cityList = getCityList('all')
+    const { getCurrentCityList } = inject(StateKey) as GlobalState
+    const cityList = getCurrentCityList('all')
 
     // reactive値
     const estatResponse = ref<EstatResponse>()
@@ -134,7 +135,7 @@ export default defineComponent({
     const { fetch } = useFetch(async () => {
       // estat-APIの取得
       const params = Object.assign({}, props.estatState.params)
-      params.cdArea = cityList.value.map((d) => d.cityCode)
+      params.cdArea = cityList.map((d) => d.cityCode)
       estatResponse.value = await useEstatApi($axios, params).getData()
 
       // geojsonの取得

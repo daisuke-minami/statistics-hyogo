@@ -6,9 +6,7 @@ import {
   EstatSeries,
   EstatResponse,
 } from '@/types/estat'
-// import { useCityList } from '@/composition/useCityList'
 import { usePrefecture } from '@/composition/usePrefecture'
-// import { StateKey } from './useGlobalState'
 import { convertPrefCodeToString } from '@/composition/utils/formatEstat'
 
 export const useEstatPrefRankChart = (

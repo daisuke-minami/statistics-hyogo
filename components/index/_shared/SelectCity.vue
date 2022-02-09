@@ -14,31 +14,18 @@
 </template>
 
 <script lang="ts">
-import {
-  defineComponent,
-  inject,
-  ref,
-  useRoute,
-  watch,
-} from '@nuxtjs/composition-api'
+import { defineComponent, inject, ref, watch } from '@nuxtjs/composition-api'
 import { useChangeRouter } from '@/composition/useChangeRouter'
-import { useCityList } from '~/composition/useCityList'
 import { City } from '~/types/resas'
-import { StateKey } from '~/composition/useGlobalState'
+import { StateKey, GlobalState } from '~/composition/useGlobalState'
 
 export default defineComponent({
   setup() {
     // globalState
-    const State = inject(StateKey)
-    const { currentCity, setCurrentCity } = State
-
-    const { code } = useRoute().value.params
-    const { getCity } = useCityList()
-    setCurrentCity(getCity(code))
+    const { currentCity, getCurrentCityList } = inject(StateKey) as GlobalState
 
     // 市区町村リストの設定
-    const { getCityList } = useCityList()
-    const cityList = getCityList('join')
+    const cityList = getCurrentCityList('join')
 
     const selectedCity = ref<City>(currentCity)
 
