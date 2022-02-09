@@ -13,6 +13,13 @@ const LaborForcePopulation = () => {
   )
 }
 
+// 労働力人口ランキング
+const LaborForcePopulationRank = () => {
+  return import(
+    '~/components/index/laborwage/cards/labor-force/laborForcePopulationRankCity.vue'
+  )
+}
+
 // 就業者数
 const Employees = () => {
   return import(
@@ -41,8 +48,9 @@ export default defineComponent({
   setup() {
     // Card
     const rows = ref([
-      [LaborForcePopulation, Employees],
-      [NonLaborPopulation, Unemployed],
+      [LaborForcePopulation, LaborForcePopulationRank],
+      [Employees, NonLaborPopulation],
+      [Unemployed],
     ])
 
     return {

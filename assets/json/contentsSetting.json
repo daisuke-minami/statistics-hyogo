@@ -236,6 +236,10 @@
               {
                 "cardTitle": "労働力人口",
                 "cardId": "labor-force-population"
+              },
+              {
+                "cardTitle": "労働力人口ランキング",
+                "cardId": "labor-force-population-rank"
               }
             ]
           }

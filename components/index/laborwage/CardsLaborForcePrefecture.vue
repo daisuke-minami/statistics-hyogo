@@ -13,13 +13,20 @@ const LaborForcePopulation = () => {
   )
 }
 
+// 労働力人口
+const LaborForcePopulationRank = () => {
+  return import(
+    '~/components/index/laborwage/cards/labor-force/laborForcePopulationRankPrefecture.vue'
+  )
+}
+
 export default defineComponent({
   components: {
     CardsLazyRow,
   },
   setup() {
     // Card
-    const rows = ref([[LaborForcePopulation]])
+    const rows = ref([[LaborForcePopulation, LaborForcePopulationRank]])
 
     return {
       rows,

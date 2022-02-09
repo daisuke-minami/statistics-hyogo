@@ -52,6 +52,7 @@ with open(c) as j:
         # 市区町村
         for menu in menuList[0]['city']:
             cardList = [d.get('cardId') for d in menu['card']]
+            print(cardList)
 
             for cityCode in cityCodes:
                 routes.append('/city/' + cityCode + '/' +
