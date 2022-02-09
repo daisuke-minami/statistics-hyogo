@@ -11,7 +11,7 @@ export const useEstatTimeChart = (
   estatState: EstatState,
   estatResponse: Ref<EstatResponse>
 ) => {
-  // パスパラメータの取得
+  // console.log(estatResponse.value)
 
   // title
   const { getTitle } = inject(StateKey) as GlobalState

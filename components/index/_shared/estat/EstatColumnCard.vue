@@ -91,8 +91,6 @@ export default defineComponent({
     })
     fetch()
 
-    // console.log(estatResponse)
-
     const {
       title,
       titleId,

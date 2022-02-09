@@ -35,11 +35,11 @@ const Unmarried = () => {
 }
 
 // 有配偶人口
-const Spouse = () => {
-  return import(
-    '~/components/index/population/cards/marriage/spousePrefecture.vue'
-  )
-}
+// const Spouse = () => {
+//   return import(
+//     '~/components/index/population/cards/marriage/spousePrefecture.vue'
+//   )
+// }
 
 // 離別人口
 // const Separated = () => {
@@ -57,7 +57,7 @@ export default defineComponent({
     const rows = ref([
       [Marriage, Divorce],
       [FirstMarriageAge, Unmarried],
-      [Spouse],
+      // [Spouse],
     ])
 
     return {

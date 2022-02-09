@@ -107,13 +107,10 @@ export default defineComponent({
       // tableData,
       source,
       additionalDescription,
-      timeList,
+      times,
     } = useEstatPyramidChart(props.estatState, estatResponse)
 
     // 年次セレクト
-    const times = computed(() => {
-      return timeList.value
-    })
     const selectedTime = ref<EstatTimes>(props.estatState.latestYear)
 
     // chartの種類を設定
