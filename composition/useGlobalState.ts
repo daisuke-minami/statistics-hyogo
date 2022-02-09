@@ -73,6 +73,10 @@ export const useGlobalState = () => {
     return getCityList(state.currentPref.prefCode, kind)
   }
 
+  const getCurrentPrefList = (): Pref[] => {
+    return state.prefList
+  }
+
   return {
     ...toRefs(state),
     setInitState,
@@ -81,6 +85,7 @@ export const useGlobalState = () => {
     getTitle,
     setState,
     getCurrentCityList,
+    getCurrentPrefList,
   }
 }
 

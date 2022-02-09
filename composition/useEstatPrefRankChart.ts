@@ -1,4 +1,4 @@
-import { computed, Ref, useRoute } from '@nuxtjs/composition-api'
+import { computed, inject, Ref, useRoute } from '@nuxtjs/composition-api'
 import {
   EstatState,
   VALUE,
@@ -6,8 +6,8 @@ import {
   EstatSeries,
   EstatResponse,
 } from '@/types/estat'
-import { usePrefecture } from '@/composition/usePrefecture'
 import { convertPrefCodeToString } from '@/composition/utils/formatEstat'
+import { GlobalState, StateKey } from './useGlobalState'
 
 export const useEstatPrefRankChart = (
   estatState: EstatState,
@@ -18,12 +18,13 @@ export const useEstatPrefRankChart = (
   totalPopulationData: Ref<[]>,
   totalAreaData: Ref<[]>
 ) => {
-  // 都道府県リストを取得
-  const { prefList, selectedPref } = usePrefecture()
+  // 都道府県の設定
+  const { currentPref, getCurrentPrefList } = inject(StateKey) as GlobalState
+  const prefList = getCurrentPrefList()
 
   // title
   const title = computed(() => {
-    return `${selectedPref.value.prefName}の${estatState.title}`
+    return `${currentPref.value.prefName}の${estatState.title}`
   })
 
   // titleId
@@ -132,7 +133,7 @@ export const useEstatPrefRankChart = (
     return [
       {
         name: currentSeries.value.name,
-        data: prefList.value.map((d) => {
+        data: prefList.map((d) => {
           const data = withRankingData.value.find(
             (f) => f.code === convertPrefCodeToString(d.prefCode)
           )
@@ -148,7 +149,7 @@ export const useEstatPrefRankChart = (
 
   const displayInfo = computed(() => {
     const data = withRankingData.value.find(
-      (f) => f.code === convertPrefCodeToString(selectedPref.value.prefCode)
+      (f) => f.code === convertPrefCodeToString(currentPref.value.prefCode)
     )
 
     return {
@@ -171,7 +172,7 @@ export const useEstatPrefRankChart = (
 
   // tableData
   const tableData = computed(() => {
-    return prefList.value.map((d) => {
+    return prefList.map((d) => {
       const data = currentValue.value.find(
         (f) => f['@area'] === convertPrefCodeToString(d.prefCode)
       )

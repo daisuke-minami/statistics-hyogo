@@ -18,7 +18,7 @@ export const useEstatCityRankChart = (
   totalPopulationData: Ref<[]>,
   totalAreaData: Ref<[]>
 ) => {
-  // globalState
+  // 市区町村の設定
   const { currentCity, getCurrentCityList } = inject(StateKey) as GlobalState
   const cityList = computed(() => {
     return getCurrentCityList(currentBigCityKind.value)
