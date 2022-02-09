@@ -12,6 +12,7 @@ import {
   getCity,
   getCityList,
   getPref,
+  getPrefList,
 } from '@/composition/utils/formatResas'
 import { Pref, City, GovType } from '~/types/resas'
 
@@ -58,6 +59,7 @@ export const useGlobalState = () => {
     state.currentPref = getPref(prefCode)
     state.currentCity = getCity(code)
     state.cityList = getCityList(prefCode)
+    state.prefList = getPrefList()
   }
 
   // stateの初期設定

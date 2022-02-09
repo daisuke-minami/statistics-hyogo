@@ -130,6 +130,7 @@ export const useEstatPrefRankChart = (
 
   // displayData
   const displayData = computed(() => {
+    console.log({ withRankingData })
     return [
       {
         name: currentSeries.value.name,

@@ -17,6 +17,10 @@ export const getPref = (prefCode: number): Pref => {
   )
 }
 
+export const getPrefList = (): Pref[] => {
+  return prefListMaster.result
+}
+
 export const getCity = (cityCode: string): City => {
   const prefCode = convertCodeToPrefCode(cityCode)
   const cityList = cityListMaster.result.filter((f) => f.prefCode === prefCode)
