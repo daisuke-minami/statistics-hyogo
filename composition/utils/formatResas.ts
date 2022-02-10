@@ -10,6 +10,11 @@ export const convertCodeToPrefCode = (code: string): number => {
   return +code.slice(0, 2)
 }
 
+// prefCodeを5桁文字列に変換
+export const convertPrefCodeToCode = (code: number): string => {
+  return ('0000000000' + code).slice(-2) + '000'
+}
+
 export const getPref = (prefCode: number): Pref => {
   return (
     prefListMaster.result.find((f) => f.prefCode === prefCode) ??

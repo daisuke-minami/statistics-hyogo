@@ -33,10 +33,11 @@ export default defineComponent({
     // パスパラメータの取得
     const route = useRoute()
     const { govType, code, statField, menuId } = route.value.params
+    const params = route.value.params
 
     // globalState
     const { setState } = inject(StateKey) as GlobalState
-    setState(code)
+    setState(params)
 
     // 市区町村判定フラグ
     const isCity = computed(() => {

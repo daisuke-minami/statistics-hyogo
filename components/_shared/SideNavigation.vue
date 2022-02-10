@@ -24,6 +24,17 @@
 
     <div :class="['SideNavigation-Body', { '-opened': isNaviOpen }]">
       <nav class="SideNavigation-Menu">
+        <div class="SideNavigation-Language">
+          <label
+            ref="LanguageLabel"
+            class="SideNavigation-LanguageLabel"
+            for="LanguageSelector"
+            tabindex="-1"
+          >
+            {{ '都道府県を選択' }}
+          </label>
+          <language-selector />
+        </div>
         <menu-list :items="items" @click="$emit('close-navigation', $event)" />
       </nav>
 

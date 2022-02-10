@@ -7,9 +7,9 @@ import {
   watch,
 } from '@nuxtjs/composition-api'
 import { useContents } from '@/composition/useContents'
-import { StateKey } from './useGlobalState'
+import { convertPrefCodeToCode } from '@/composition/utils/formatResas'
+import { GlobalState, StateKey } from './useGlobalState'
 import { City } from '~/types/resas'
-// import { StateKey } from '@/composition/useGlobalState'
 
 export const useChangeRouter = () => {
   // パスパラメータの取得
@@ -18,8 +18,11 @@ export const useChangeRouter = () => {
   const { govType, statField, menuId } = params
 
   // inject
-  const { currentGovType, currentCode, currentPref, currentCity } =
-    inject(StateKey)
+  const { currentGovType, currentCode, currentPref, currentCity } = inject(
+    StateKey
+  ) as GlobalState
+
+  // console.log({ currentGovType, currentCode, currentPref, currentCity })
 
   watch(currentGovType, () => {
     // console.log({ currentGovType })
@@ -35,6 +38,10 @@ export const useChangeRouter = () => {
     }
   })
 
+  const changeRoute = (code: string): void => {
+    router.push(`/${govType}/${code}/${statField}/${menuId}`)
+  }
+
   const getSideNaviLink = computed(() => {
     return function (statField: string) {
       const { getInitMenuId } = useContents()
@@ -46,7 +53,7 @@ export const useChangeRouter = () => {
     }
   })
 
-  const prefCode = toFiveDigit(currentPref.value.prefCode)
+  const prefCode = convertPrefCodeToCode(currentPref.value.prefCode)
   const cityCode = currentCity.value.cityCode
 
   // 都道府県・市区町村タブのpath設定
@@ -60,12 +67,8 @@ export const useChangeRouter = () => {
 
   return {
     changeRouterCity,
+    changeRoute,
     getSideNaviLink,
     getGovTabLink,
   }
-}
-
-// prefCodeを5桁文字列に変換
-function toFiveDigit(code: number): string {
-  return ('0000000000' + code).slice(-2) + '000'
 }

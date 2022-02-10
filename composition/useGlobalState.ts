@@ -51,7 +51,8 @@ export const useGlobalState = () => {
   }
 
   // stateの一括設定
-  const setState = (code: string): void => {
+  const setState = (params): void => {
+    const { code } = params
     const prefCode = convertCodeToPrefCode(code)
     const govType = convertCodeToGovType(code)
     state.currentGovType = govType
@@ -63,9 +64,14 @@ export const useGlobalState = () => {
   }
 
   // stateの初期設定
-  const initCode = '28100'
+  const initParams = {
+    govType: 'city',
+    code: '28100',
+    statField: 'landweather',
+    menuId: 'area',
+  }
   const setInitState = (): void => {
-    setState(initCode)
+    setState(initParams)
   }
 
   const getTitle = (title: string): string => {
