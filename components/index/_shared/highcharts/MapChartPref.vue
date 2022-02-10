@@ -5,9 +5,9 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from '@nuxtjs/composition-api'
+import { defineComponent, computed, PropType } from '@nuxtjs/composition-api'
+import { FeatureCollection } from 'geojson'
 import { cloneDeep } from 'lodash'
-// import * as topojson from 'topojson-client'
 
 type SeriesRankPref = {
   name: string
@@ -29,7 +29,7 @@ export default defineComponent({
       required: true,
     },
     geoJson: {
-      type: Object,
+      type: Object as PropType<FeatureCollection>,
       required: true,
     },
   },
