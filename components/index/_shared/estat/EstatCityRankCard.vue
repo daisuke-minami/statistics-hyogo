@@ -85,7 +85,6 @@ import {
   ref,
   computed,
   PropType,
-  reactive,
   useContext,
   useFetch,
   inject,
@@ -120,13 +119,14 @@ export default defineComponent({
     },
   },
   setup(props) {
-    // 市区町村リストの取得
-    const { getCurrentCityList } = inject(StateKey) as GlobalState
+    // globalState
+    const { currentPref, getCurrentCityList } = inject(StateKey) as GlobalState
     const cityList = getCurrentCityList('all')
+    const prefCode = currentPref.value.prefCode
 
     // reactive値
     const estatResponse = ref<EstatResponse>()
-    const cityMap = reactive<any>({ all: null, break: null })
+    const cityMap = ref<GeoJSON>()
     const totalPopulationData = ref<any>()
     const totalAreaData = ref<any>()
 
@@ -139,9 +139,10 @@ export default defineComponent({
       estatResponse.value = await useEstatApi($axios, params).getData()
 
       // geojsonの取得
-      cityMap.all = await useGeojson($axios).cityMapAll.value
-      cityMap.break = await useGeojson($axios).cityMapBreak.value
+      const { getCityMap } = useGeojson($axios)
+      cityMap.value = await getCityMap(prefCode)
 
+      // 総人口の取得
       totalPopulationData.value = await useTotalPopulation($axios).getCity(
         cityList
       )
@@ -187,7 +188,9 @@ export default defineComponent({
 
     // GeoJsonの設定
     const geoJson = computed(() => {
-      return selectedBigCityKind.value === 'join' ? cityMap.all : cityMap.break
+      return selectedBigCityKind.value === 'join'
+        ? cityMap.value.join
+        : cityMap.value.split
     })
 
     // MapChartとBarChartの切替
