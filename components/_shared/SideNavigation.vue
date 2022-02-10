@@ -110,7 +110,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from '@nuxtjs/composition-api'
+import { computed, defineComponent } from '@nuxtjs/composition-api'
 import { mdiClose, mdiMenu } from '@mdi/js'
 import { useSideNavi } from '~/composition/useSideNavi'
 
@@ -122,7 +122,9 @@ export default defineComponent({
     },
   },
   setup() {
-    const items = useSideNavi().naviItems.value
+    const items = computed(() => {
+      return useSideNavi().naviItems.value
+    })
 
     return {
       items,

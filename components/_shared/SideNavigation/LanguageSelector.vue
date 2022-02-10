@@ -22,13 +22,7 @@
 </template>
 
 <script lang="ts">
-import {
-  defineComponent,
-  inject,
-  ref,
-  useRoute,
-  watch,
-} from '@nuxtjs/composition-api'
+import { defineComponent, inject, ref, watch } from '@nuxtjs/composition-api'
 import EarthIcon from '@/static/earth.svg'
 import SelectMenuIcon from '@/static/selectmenu.svg'
 import { convertPrefCodeToCode } from '@/composition/utils/formatResas'
@@ -47,29 +41,21 @@ export default defineComponent({
   },
   setup() {
     // globalState
-    const { currentPref, setState, getCurrentPrefList } = inject(
+    const { currentPref, setPrefecture, getCurrentPrefList } = inject(
       StateKey
     ) as GlobalState
 
     // 市区町村リストの設定
     const prefList = getCurrentPrefList()
-
     const selectedPref = ref<Pref>(currentPref)
 
     watch(selectedPref, () => changePref())
-
     const { changeRoute } = useChangeRouter()
-    const route = useRoute()
-    const params = route.value.params
     const changePref = () => {
       const code = convertPrefCodeToCode(selectedPref.value.prefCode)
-      setState(params)
-
+      setPrefecture(code)
       changeRoute(code)
-      // console.log(currentPref)
     }
-
-    // console.log(selectedPref)
 
     return {
       prefList,

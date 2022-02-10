@@ -2,7 +2,7 @@ import { Pref, City } from '@/types/resas'
 
 export type StateType = {
   code: string
-  statField: string
+  FieldId: string
   routingPath: string
   prefList: Pref[]
   cityList: City[]
@@ -13,6 +13,6 @@ export type StateType = {
 
 export type RouteParams = {
   code: string
-  statField: string
+  FieldId: string
   menuId: string
 }

@@ -21,7 +21,7 @@ interface State {
 const initMenuList = () => {
   return contents.list.map((d) => {
     return {
-      statField: d.fieldId,
+      fieldId: d.fieldId,
       prefecture: d.menu.prefecture[0].menuId,
       city: d.menu.city[0].menuId,
     }
@@ -32,7 +32,7 @@ export const useContents = () => {
   // パスパラメータの取得
   const route = useRoute()
   const params = route.value.params
-  const { govType, code, statField, menuId } = params
+  const { govType, code, fieldId, menuId } = params
 
   // 統計分野リスト
   const fieldList = computed(() => {
@@ -46,7 +46,7 @@ export const useContents = () => {
 
   // 統計項目リスト
   const menuList = computed(() => {
-    const menu = contents.list.filter((f) => f.fieldId === statField)[0].menu
+    const menu = contents.list.filter((f) => f.fieldId === fieldId)[0].menu
     if (govType === 'prefecture') {
       return menu.prefecture
     } else {
@@ -59,14 +59,14 @@ export const useContents = () => {
     return menuList.value.map((d) => {
       return {
         label: d.menuTitle,
-        path: `/${govType}/${code}/${statField}/${d.menuId}/`,
+        path: `/${govType}/${code}/${fieldId}/${d.menuId}/`,
       }
     })
   })
 
   const getInitMenuId = computed(() => {
-    return function (statField: string) {
-      return initMenuList().find((f) => f.statField === statField)
+    return function (fieldId: string) {
+      return initMenuList().find((f) => f.fieldId === fieldId)
     }
   })
 

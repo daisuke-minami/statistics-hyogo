@@ -32,7 +32,7 @@ export default defineComponent({
   setup() {
     // パスパラメータの取得
     const route = useRoute()
-    const { govType, code, statField, menuId } = route.value.params
+    const { govType, code, FieldId, menuId } = route.value.params
     const params = route.value.params
 
     // globalState
@@ -64,7 +64,7 @@ export default defineComponent({
       {
         hid: 'og:url',
         property: 'og:url',
-        content: `${url}/${govType}/${code}/${statField}/${menuId}`,
+        content: `${url}/${govType}/${code}/${FieldId}/${menuId}`,
       },
       {
         hid: 'og:title',

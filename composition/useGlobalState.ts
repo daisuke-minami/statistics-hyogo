@@ -19,6 +19,8 @@ import { Pref, City, GovType } from '~/types/resas'
 interface State {
   currentGovType: GovType
   currentCode: string
+  currentFieldId: string
+  currentMenuId: string
   currentPref: Pref
   currentCity: City
   prefList: Pref[]
@@ -27,8 +29,10 @@ interface State {
 
 export const useGlobalState = () => {
   const state = reactive<State>({
-    currentGovType: 'prefecture',
-    currentCode: '28000',
+    currentGovType: '',
+    currentCode: '',
+    currentFieldId: '',
+    currentMenuId: '',
     currentPref: {
       prefCode: 28,
       prefName: '兵庫県',
@@ -39,8 +43,8 @@ export const useGlobalState = () => {
       cityName: '神戸市',
       bigCityFlag: '2',
     },
-    prefList: [],
-    cityList: [],
+    prefList: getPrefList(),
+    cityList: getCityList(28),
   })
 
   const setCurrentCode = (code: string): void => {
@@ -52,22 +56,31 @@ export const useGlobalState = () => {
 
   // stateの一括設定
   const setState = (params): void => {
-    const { code } = params
+    const { code, fieldId, menuId } = params
     const prefCode = convertCodeToPrefCode(code)
     const govType = convertCodeToGovType(code)
     state.currentGovType = govType
     state.currentCode = code
+    state.currentFieldId = fieldId
+    state.currentMenuId = menuId
     state.currentPref = getPref(prefCode)
     state.currentCity = getCity(code)
     state.cityList = getCityList(prefCode)
     state.prefList = getPrefList()
   }
 
+  const setPrefecture = (code: string): void => {
+    const prefCode = convertCodeToPrefCode(code)
+    state.currentCode = code
+    state.currentPref = getPref(prefCode)
+    console.log(state.currentCode)
+  }
+
   // stateの初期設定
   const initParams = {
     govType: 'city',
     code: '28100',
-    statField: 'landweather',
+    fieldId: 'landweather',
     menuId: 'area',
   }
   const setInitState = (): void => {
@@ -95,6 +108,7 @@ export const useGlobalState = () => {
     setCurrentCity,
     getTitle,
     setState,
+    setPrefecture,
     getCurrentCityList,
     getCurrentPrefList,
   }
