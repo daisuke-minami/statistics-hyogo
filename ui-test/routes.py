@@ -1,4 +1,4 @@
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 import pathlib
 import json
 import os
@@ -13,19 +13,24 @@ ssl._create_default_https_context = ssl._create_unverified_context
 root_dir = pathlib.Path(__file__).parent.parent
 
 # 環境変数から都道府県コードを取得
-load_dotenv()
-PREF_CODE = os.getenv('PREF_CODE')
-prefCode = PREF_CODE + '000'
+# load_dotenv()
+# PREF_CODE = os.getenv('PREF_CODE')
+# prefCode = PREF_CODE + '000'
+
+# 都道府県一覧の取得
+p = os.path.join(root_dir, 'data/codes/preflist.json')
+with open(p) as j:
+    prefList = json.load(j)
+    prefCodes = [str(d.get('prefCode')).zfill(
+        2) + '000' for d in prefList['result']]
 
 # 市区町村一覧の取得
 c = os.path.join(root_dir, 'data/codes/citylist.json')
 with open(c) as j:
     cityList = json.load(j)
     cityCodes = [d.get('cityCode')
-                 for d in cityList['result'] if d['prefCode'] == int(PREF_CODE)]
-    # print(cityCodes)
-
-# print(cityCodes)
+                 for d in cityList['result']]
+    # for d in cityList['result'] if d['prefCode'] == int(PREF_CODE)]
 
 # #routesを格納するリストの定義
 routes = []
@@ -43,16 +48,18 @@ with open(c) as j:
         # 都道府県
         for menu in menuList[0]['prefecture']:
             cardList = [d.get('cardId') for d in menu['card']]
-            routes.append('/prefecture/' + prefCode + '/' +
-                          field + '/' + menu['menuId'] + '/')
-            for cardId in cardList:
+
+            for prefCode in prefCodes:
                 routes.append('/prefecture/' + prefCode + '/' +
-                              field + '/' + menu['menuId'] + '/' + cardId + '/')
+                              field + '/' + menu['menuId'] + '/')
+                for cardId in cardList:
+                    routes.append('/prefecture/' + prefCode + '/' +
+                                  field + '/' + menu['menuId'] + '/' + cardId + '/')
 
         # 市区町村
         for menu in menuList[0]['city']:
             cardList = [d.get('cardId') for d in menu['card']]
-            print(cardList)
+            # print(cardList)
 
             for cityCode in cityCodes:
                 routes.append('/city/' + cityCode + '/' +
