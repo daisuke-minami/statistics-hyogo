@@ -12102,7 +12102,7 @@
   "resolved" "https://registry.npmjs.org/token-stream/-/token-stream-1.0.0.tgz"
   "version" "1.0.0"
 
-"topojson-client@^3.1.0":
+"topojson-client@^3.1.0", "topojson-client@3":
   "integrity" "sha512-605uxS6bcYxGXw9qi62XyrV6Q3xwbndjachmNxu8HWTtVPxZfEJN9fd/SZS1Q54Sn2y0TMyMxFj/cJINqGHrKw=="
   "resolved" "https://registry.npmjs.org/topojson-client/-/topojson-client-3.1.0.tgz"
   "version" "3.1.0"
@@ -12110,13 +12110,6 @@
     "commander" "2"
 
 "topojson-client@3.0.0":
-  "integrity" "sha1-H5kpOnfvQqRI0DKoGqmCtz82DS8="
-  "resolved" "https://registry.npmjs.org/topojson-client/-/topojson-client-3.0.0.tgz"
-  "version" "3.0.0"
-  dependencies:
-    "commander" "2"
-
-"topojson-client@3":
   "integrity" "sha1-H5kpOnfvQqRI0DKoGqmCtz82DS8="
   "resolved" "https://registry.npmjs.org/topojson-client/-/topojson-client-3.0.0.tgz"
   "version" "3.0.0"
@@ -12136,6 +12129,14 @@
   "version" "3.0.0"
   dependencies:
     "commander" "2"
+
+"topojson-simplify@^3.0.3":
+  "integrity" "sha512-V+pBjLVzSQ3+hSOxBiV01OVXgFiCmMO8ia3huxKEyIMTC1ApQHBcdXdOqcQ6U2JJJD31TZduwY6KyF15R8sUgg=="
+  "resolved" "https://registry.npmjs.org/topojson-simplify/-/topojson-simplify-3.0.3.tgz"
+  "version" "3.0.3"
+  dependencies:
+    "commander" "2"
+    "topojson-client" "3"
 
 "topojson-simplify@3.0.2":
   "integrity" "sha512-gyYSVRt4jO/0RJXKZQPzTDQRWV+D/nOfiljNUv0HBXslFLtq3yxRHrl7jbrjdbda5Ytdr7M8BZUI4OxU7tnbRQ=="
