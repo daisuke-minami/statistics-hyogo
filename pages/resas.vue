@@ -3,7 +3,6 @@
     <page-header class="mb-3"> RESAS-APIの使い方 </page-header>
 
     <static-card>
-      <div class="blog-content" v-html="$md.render(posts)" />
       <h3>RESAS-APIの概要</h3>
       <h4>RESASとは</h4>
       <p>
@@ -95,16 +94,8 @@
 </template>
 
 <script lang="ts">
-import {
-  defineComponent,
-  onMounted,
-  ref,
-  useAsync,
-  useMeta,
-} from '@nuxtjs/composition-api'
+import { defineComponent, onMounted, useMeta } from '@nuxtjs/composition-api'
 import Prism from '@/plugins/prism'
-// import resas from '@/assets/posts/nuxt-resas.md'
-import client from '~/plugins/contentful.js'
 
 export default defineComponent({
   head: {},
@@ -113,24 +104,12 @@ export default defineComponent({
       Prism.highlightAll()
     })
 
-    const posts = ref<any>()
-
-    useAsync(async () => {
-      posts.value = await client.getEntries().then((entries) => {
-        return entries.items[0].fields.body
-      })
-    })
-
-    // console.log(posts)
-    // const client = createClient()
-
     const { title } = useMeta()
     title.value = 'RESAS-APIの使い方'
 
     const content = '# 見出し1  ## 見出し２'
 
     return {
-      posts,
       content,
     }
   },

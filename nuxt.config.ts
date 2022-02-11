@@ -115,7 +115,6 @@ const config: NuxtConfig = {
     },
     { src: '@/plugins/leaflet', ssr: false },
     { src: '@/plugins/prism', ssr: true },
-    { src: '@/plugins/contentful', ssr: true },
   ],
   /*
    ** Nuxt.js dev-modules
