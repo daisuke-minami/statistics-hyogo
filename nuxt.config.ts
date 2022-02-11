@@ -6,8 +6,16 @@ import { NuxtConfig } from '@nuxt/types'
  **NuxtConfigのenv: {}に定義すること
  */
 const environment = process.env.NODE_ENV || 'development'
-const { PREF_CODE, API_KEY, ESTAT_APPID, GOOGLE_ANALYTICS_ID, BASE_URL } =
-  process.env
+// const client = require('./plugins/contentful')
+const {
+  PREF_CODE,
+  API_KEY,
+  ESTAT_APPID,
+  GOOGLE_ANALYTICS_ID,
+  BASE_URL,
+  CTF_SPACE_ID,
+  CTF_CDA_ACCESS_TOKEN,
+} = process.env
 require('dotenv').config()
 const routes = JSON.parse(fs.readFileSync('assets/json/routes.json'))
 
@@ -106,6 +114,8 @@ const config: NuxtConfig = {
       ssr: true,
     },
     { src: '@/plugins/leaflet', ssr: false },
+    { src: '@/plugins/prism', ssr: true },
+    { src: '@/plugins/contentful', ssr: true },
   ],
   /*
    ** Nuxt.js dev-modules
@@ -136,6 +146,7 @@ const config: NuxtConfig = {
    ** Nuxt.js modules
    */
   modules: [
+    '@nuxtjs/markdownit',
     '@nuxtjs/pwa',
     ['@nuxtjs/dotenv', { filename: `.env.${environment}` }],
     'nuxt-svg-loader',
@@ -240,7 +251,7 @@ const config: NuxtConfig = {
     splash_pages: null,
   },
   generate: {
-    interval: 100,
+    interval: 50,
     crawler: false,
     concurrency: 1,
     routes() {
@@ -255,9 +266,21 @@ const config: NuxtConfig = {
       poll: true,
     },
   },
-  env: { PREF_CODE, API_KEY, ESTAT_APPID, GOOGLE_ANALYTICS_ID, BASE_URL },
+  env: {
+    PREF_CODE,
+    API_KEY,
+    ESTAT_APPID,
+    GOOGLE_ANALYTICS_ID,
+    BASE_URL,
+    CTF_SPACE_ID,
+    CTF_CDA_ACCESS_TOKEN,
+  },
   router: {
     // middleware: 'vuex',
+  },
+  markdownit: {
+    injected: true,
+    breaks: true,
   },
   components: [
     {

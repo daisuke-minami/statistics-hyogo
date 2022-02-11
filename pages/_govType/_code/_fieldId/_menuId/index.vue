@@ -16,13 +16,11 @@
 <script lang="ts">
 import {
   defineComponent,
-  // inject,
   computed,
   useRoute,
   useMeta,
   reactive,
   inject,
-  // onMounted,
 } from '@nuxtjs/composition-api'
 import { useContents } from '~/composition/useContents'
 import { GlobalState, StateKey } from '~/composition/useGlobalState'

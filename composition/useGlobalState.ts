@@ -73,7 +73,6 @@ export const useGlobalState = () => {
     const prefCode = convertCodeToPrefCode(code)
     state.currentCode = code
     state.currentPref = getPref(prefCode)
-    console.log(state.currentCode)
   }
 
   // stateの初期設定
