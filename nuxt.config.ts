@@ -252,7 +252,7 @@ const config: NuxtConfig = {
   generate: {
     interval: 50,
     crawler: false,
-    concurrency: 1,
+    concurrency: 10,
     routes() {
       return routes
     },
