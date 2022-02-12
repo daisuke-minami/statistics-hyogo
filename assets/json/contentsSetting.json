@@ -78,10 +78,6 @@
               {
                 "cardTitle": "総人口（男女別）",
                 "cardId": "total-population"
-              },
-              {
-                "cardTitle": "総人口ランキング",
-                "cardId": "total-population-rank"
               }
             ]
           },
@@ -214,10 +210,6 @@
               {
                 "cardTitle": "総人口（男女別）",
                 "cardId": "total-population"
-              },
-              {
-                "cardTitle": "総人口ランキング",
-                "cardId": "total-population-rank"
               }
             ]
           }
@@ -236,10 +228,6 @@
               {
                 "cardTitle": "労働力人口",
                 "cardId": "labor-force-population"
-              },
-              {
-                "cardTitle": "労働力人口ランキング",
-                "cardId": "labor-force-population-rank"
               }
             ]
           }
