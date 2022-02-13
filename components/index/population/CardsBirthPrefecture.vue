@@ -6,24 +6,30 @@
 import CardsLazyRow from '@/components/index/_shared/CardsLazyRow.vue'
 import { defineComponent, ref } from '@nuxtjs/composition-api'
 
+// 合計特殊出生率
+const TotalFertilityRate = () => {
+  return import(
+    '~/components/index/population/cards/birth/totalFertilityRatePrefecture.vue'
+  )
+}
+
+const TotalFertilityRateRank = () => {
+  return import(
+    '~/components/index/population/cards/birth/totalFertilityRateRankPrefecture.vue'
+  )
+}
+
 // 出生数（男女別）
 const BirthSex = () => {
   return import(
-    '~/components/index/population/cards/bitrh/birthSexPrefecture.vue'
+    '~/components/index/population/cards/birth/birthSexPrefecture.vue'
   )
 }
 
 // 出生数（母親の年齢別）
 const BirthMotherAge = () => {
   return import(
-    '~/components/index/population/cards/bitrh/birthMotherAgePrefecture.vue'
-  )
-}
-
-// 合計特殊出生率
-const TotalFertilityRate = () => {
-  return import(
-    '~/components/index/population/cards/bitrh/totalFertilityRatePrefecture.vue'
+    '~/components/index/population/cards/birth/birthMotherAgePrefecture.vue'
   )
 }
 
@@ -33,7 +39,10 @@ export default defineComponent({
   },
   setup() {
     // Card
-    const rows = ref([[BirthSex, BirthMotherAge], [TotalFertilityRate]])
+    const rows = ref([
+      [TotalFertilityRate, TotalFertilityRateRank],
+      [BirthSex, BirthMotherAge],
+    ])
 
     return {
       rows,
