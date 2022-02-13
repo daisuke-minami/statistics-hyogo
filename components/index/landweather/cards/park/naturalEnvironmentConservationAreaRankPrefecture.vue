@@ -9,11 +9,11 @@ import { EstatState } from '@/types/estat'
 export default defineComponent({
   setup() {
     // cardコンポーネントの設定
-    const cardComponent = 'estat-column-card-all-break'
+    const cardComponent = 'estat-prefecture-rank-card'
 
     // State
     const estatState: EstatState = {
-      title: '自然環境保全地域面積',
+      title: '自然環境保全地域面積ランキング',
       titleId: 'natural-environment-conservation-area',
       params: {
         statsDataId: '0000010102',
@@ -42,6 +42,11 @@ export default defineComponent({
         },
       ],
       annotation: [],
+      latestYear: {
+        yearInt: 2019,
+        yearStr: '2019100000',
+        yearName: '2019年',
+      },
     }
 
     return {

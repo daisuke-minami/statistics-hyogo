@@ -13,10 +13,24 @@ const TotalArea = () => {
   )
 }
 
+// 総面積ランキング
+const TotalAreaRank = () => {
+  return import(
+    '~/components/index/landweather/cards/area/totalAreaRankPrefecture.vue'
+  )
+}
+
 // 可住地面積
 const HabitableArea = () => {
   return import(
     '~/components/index/landweather/cards/area/habitableAreaPrefecture.vue'
+  )
+}
+
+// 可住地面積ランキング
+const HabitableAreaRank = () => {
+  return import(
+    '~/components/index/landweather/cards/area/habitableAreaRankPrefecture.vue'
   )
 }
 
@@ -27,13 +41,24 @@ const EvaluationTotalCadastral = () => {
   )
 }
 
+// 評価総地積ランキング
+const EvaluationTotalCadastralRank = () => {
+  return import(
+    '~/components/index/landweather/cards/area/evaluationTotalCadastralRankPrefecture.vue'
+  )
+}
+
 export default defineComponent({
   components: {
     CardsLazyRow,
   },
   setup() {
     // Card
-    const rows = ref([[TotalArea, HabitableArea], [EvaluationTotalCadastral]])
+    const rows = ref([
+      [TotalArea, TotalAreaRank],
+      [HabitableArea, HabitableAreaRank],
+      [EvaluationTotalCadastral, EvaluationTotalCadastralRank],
+    ])
 
     return {
       rows,
