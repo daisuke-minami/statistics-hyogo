@@ -50,7 +50,8 @@
               {
                 "cardTitle": "自然環境保全地域面積",
                 "cardId": "natural-environment-conservation-area"
-              }, {
+              },
+              {
                 "cardTitle": "自然環境保全地域面積ランキング",
                 "cardId": "natural-environment-conservation-area-rank"
               }
@@ -149,8 +150,16 @@
                 "cardId": "household"
               },
               {
+                "cardTitle": "一般世帯数ランキング",
+                "cardId": "household-rank"
+              },
+              {
                 "cardTitle": "母子世帯数",
                 "cardId": "single-mother-household"
+              },
+              {
+                "cardTitle": "母子世帯数ランキング",
+                "cardId": "single-mother-household-rank"
               }
             ]
           },

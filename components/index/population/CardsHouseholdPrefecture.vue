@@ -13,10 +13,24 @@ const Household = () => {
   )
 }
 
+// 一般世帯数ランキング
+const HouseholdRank = () => {
+  return import(
+    '~/components/index/population/cards/household/householdRankPrefecture.vue'
+  )
+}
+
 // 母子世帯数
 const SingleMotherHousehold = () => {
   return import(
     '~/components/index/population/cards/household/singleMotherHouseholdPrefecture.vue'
+  )
+}
+
+// 母子世帯数ランキング
+const SingleMotherHouseholdRank = () => {
+  return import(
+    '~/components/index/population/cards/household/singleMotherHouseholdRankPrefecture.vue'
   )
 }
 
@@ -33,7 +47,10 @@ export default defineComponent({
   },
   setup() {
     // Card
-    const rows = ref([[Household, SingleMotherHousehold]])
+    const rows = ref([
+      [Household, HouseholdRank],
+      [SingleMotherHousehold, SingleMotherHouseholdRank],
+    ])
 
     return {
       rows,
