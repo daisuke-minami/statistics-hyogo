@@ -116,11 +116,6 @@ export const useSideNavi = () => {
         title: '国際',
         link: getSideNaviLink.value('international'),
       },
-      // {
-      //   title: 'RESAS-APIの使い方',
-      //   link: '/resas/',
-      //   // divider: true,
-      // },
       {
         title: '当サイトについて',
         link: '/about/',

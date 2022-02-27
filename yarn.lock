@@ -12903,7 +12903,7 @@
   "resolved" "https://registry.npmjs.org/vuex-module-decorators/-/vuex-module-decorators-1.0.1.tgz"
   "version" "1.0.1"
 
-"vuex@^3.0.0", "vuex@^3.6.0", "vuex@^3.6.2", "vuex@3":
+"vuex@^3.0.0", "vuex@^3.6.2", "vuex@3":
   "integrity" "sha512-ETW44IqCgBpVomy520DT5jf8n0zoCac+sxWnn+hMe/CzaSejb/eVw2YToiXYX+Ex/AuHHia28vWTq4goAexFbw=="
   "resolved" "https://registry.npmjs.org/vuex/-/vuex-3.6.2.tgz"
   "version" "3.6.2"
