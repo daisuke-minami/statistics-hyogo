@@ -21,7 +21,7 @@ export default defineComponent({
   setup() {
     // パスパラメータの取得
     const route = useRoute()
-    const { govType, code, FieldId, menuId, cardId } = route.value.params
+    const { govType, code, fieldId, menuId, cardId } = route.value.params
     const params = route.value.params
 
     // console.log({params})
@@ -43,7 +43,7 @@ export default defineComponent({
     // メタ
     const url = 'https://statistics-hyogo.com'
     const ogpImage = computed(() => {
-      return `${url}/ogp/_${govType}_${code}_${FieldId}_${menuId}_${cardId}_.png`
+      return `${url}/ogp/_${govType}_${code}_${fieldId}_${menuId}_${cardId}_.png`
     })
     const { getCardTitle } = useContents()
     const ogpTitle = computed(() => {
@@ -54,7 +54,7 @@ export default defineComponent({
       {
         hid: 'og:url',
         property: 'og:url',
-        content: `${url}/${govType}/${code}/${FieldId}/${menuId}/${cardId}`,
+        content: `${url}/${govType}/${code}/${fieldId}/${menuId}/${cardId}`,
       },
       {
         hid: 'og:title',
@@ -89,7 +89,7 @@ export default defineComponent({
 
     // console.log({ title, meta })
     return {
-      // FieldId,
+      // fieldId,
       cardComponent,
     }
   },
