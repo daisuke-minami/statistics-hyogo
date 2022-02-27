@@ -14,7 +14,7 @@ export default defineComponent({
     // State
     const estatState: EstatState = {
       title: '可住地面積ランキング',
-      titleId: 'habitable-area',
+      titleId: 'habitable-area-rank',
       params: {
         statsDataId: '0000010102',
         cdCat01: ['B1103'],

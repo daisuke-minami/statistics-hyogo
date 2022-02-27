@@ -11,13 +11,20 @@ const TotalAreaCity = () => {
   return import('~/components/index/landweather/cards/area/totalAreaCity.vue')
 }
 
+// 総面積ランキング
+const TotalAreaRankCity = () => {
+  return import(
+    '~/components/index/landweather/cards/area/totalAreaRankCity.vue'
+  )
+}
+
 export default defineComponent({
   components: {
     CardsLazyRow,
   },
   setup() {
     // Card
-    const rows = ref([[TotalAreaCity]])
+    const rows = ref([[TotalAreaCity, TotalAreaRankCity]])
 
     return {
       rows,

@@ -80,6 +80,10 @@
               {
                 "cardTitle": "総面積",
                 "cardId": "total-area"
+              },
+              {
+                "cardTitle": "総面積ランキング",
+                "cardId": "total-area-rank"
               }
             ]
           }

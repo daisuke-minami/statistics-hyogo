@@ -20,7 +20,9 @@ require('dotenv').config()
 const routes = JSON.parse(fs.readFileSync('assets/json/routes.json'))
 
 const config: NuxtConfig = {
-  target: 'static',
+  ssr: true,
+  target: 'server',
+  // target: 'static',
   /*
    ** Headers of the page
    */
@@ -101,10 +103,10 @@ const config: NuxtConfig = {
       src: '@/plugins/topojson-client',
       ssr: true,
     },
-    {
-      src: '@/plugins/estat',
-      ssr: true,
-    },
+    // {
+    //   src: '@/plugins/estat',
+    //   ssr: true,
+    // },
     {
       src: '@/plugins/highcharts-vue',
       mode: 'client',
@@ -114,7 +116,7 @@ const config: NuxtConfig = {
       ssr: true,
     },
     { src: '@/plugins/leaflet', ssr: false },
-    { src: '@/plugins/prism', ssr: true },
+    // { src: '@/plugins/prism', ssr: true },
   ],
   /*
    ** Nuxt.js dev-modules

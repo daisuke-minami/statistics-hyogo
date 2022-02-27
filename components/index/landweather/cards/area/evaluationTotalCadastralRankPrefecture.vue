@@ -14,7 +14,7 @@ export default defineComponent({
     // State
     const estatState: EstatState = {
       title: '評価総地積',
-      titleId: 'evaluation-total-cadastral',
+      titleId: 'evaluation-total-cadastral-rank',
       params: {
         statsDataId: '0000010102',
         cdCat01: [

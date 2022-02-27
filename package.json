@@ -73,7 +73,6 @@
     "nuxt-highlightjs": "^1.0.1",
     "nuxt-leaflet": "^0.0.25",
     "nuxt-property-decorator": "^2.9.1",
-    "prismjs": "^1.26.0",
     "qs": "^6.10.1",
     "sass-loader": "^10.1.1",
     "selenium-webdriver": "^4.0.0-beta.4",

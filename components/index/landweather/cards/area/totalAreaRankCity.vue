@@ -9,14 +9,14 @@ import { EstatState } from '@/types/estat'
 export default defineComponent({
   setup() {
     // cardコンポーネントの設定
-    const cardComponent = 'estat-prefecture-rank-card'
+    const cardComponent = 'estat-city-rank-card'
 
     // State
     const estatState: EstatState = {
       title: '総面積ランキング',
       titleId: 'total-area-rank',
       params: {
-        statsDataId: '0000010102',
+        statsDataId: '0000020202',
         cdCat01: ['B1101'],
       },
       series: [
