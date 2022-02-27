@@ -6,7 +6,6 @@ import { NuxtConfig } from '@nuxt/types'
  **NuxtConfigのenv: {}に定義すること
  */
 const environment = process.env.NODE_ENV || 'development'
-// const client = require('./plugins/contentful')
 const {
   PREF_CODE,
   API_KEY,
@@ -22,7 +21,6 @@ const routes = JSON.parse(fs.readFileSync('assets/json/routes.json'))
 const config: NuxtConfig = {
   ssr: true,
   target: 'server',
-  // target: 'static',
   /*
    ** Headers of the page
    */
@@ -30,12 +28,6 @@ const config: NuxtConfig = {
     htmlAttrs: {
       prefix: 'og: http://ogp.me/ns#',
     },
-    // script: [
-    //   {
-    //     'data-ad-client': 'ca-pub-4511811306180988',
-    //     src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js',
-    //   },
-    // ],
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -142,7 +134,6 @@ const config: NuxtConfig = {
    ** Nuxt.js modules
    */
   modules: [
-    '@nuxtjs/markdownit',
     '@nuxtjs/pwa',
     ['@nuxtjs/dotenv', { filename: `.env.${environment}` }],
     'nuxt-svg-loader',
@@ -152,9 +143,6 @@ const config: NuxtConfig = {
     '@nuxtjs/proxy',
     'nuxt-leaflet',
     '@nuxtjs/sitemap',
-    // ['@nuxtjs/google-adsense', { id: 'ca-pub-4511811306180988' }],
-    // ['@nuxtjs/google-gtag'],
-    ['nuxt-canonical', { baseUrl: 'https://statistics-hyogo.com' }],
   ],
   sitemap: {
     path: '/sitemap.xml',
@@ -204,10 +192,6 @@ const config: NuxtConfig = {
       families: ['Roboto:100,300,400,500,700,900&display=swap'],
     },
   },
-  'google-gtag': {
-    id: 'G-0ENS8E4461', // サイトのID
-    debug: false, // 開発環境でも表示したい場合
-  },
   /*
    ** @nuxtjs/gtm config
    */
@@ -217,7 +201,6 @@ const config: NuxtConfig = {
     enabled: true,
   },
   build: {
-    // vendor: ['@/plugins/highcharts-vue'],
     postcss: {
       preset: {
         autoprefixer: {
@@ -270,13 +253,6 @@ const config: NuxtConfig = {
     BASE_URL,
     CTF_SPACE_ID,
     CTF_CDA_ACCESS_TOKEN,
-  },
-  router: {
-    // middleware: 'vuex',
-  },
-  markdownit: {
-    injected: true,
-    breaks: true,
   },
   components: [
     {
