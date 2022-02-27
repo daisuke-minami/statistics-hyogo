@@ -103,10 +103,6 @@ const config: NuxtConfig = {
       src: '@/plugins/topojson-client',
       ssr: true,
     },
-    // {
-    //   src: '@/plugins/estat',
-    //   ssr: true,
-    // },
     {
       src: '@/plugins/highcharts-vue',
       mode: 'client',
@@ -116,7 +112,6 @@ const config: NuxtConfig = {
       ssr: true,
     },
     { src: '@/plugins/leaflet', ssr: false },
-    // { src: '@/plugins/prism', ssr: true },
   ],
   /*
    ** Nuxt.js dev-modules
@@ -158,7 +153,7 @@ const config: NuxtConfig = {
     'nuxt-leaflet',
     '@nuxtjs/sitemap',
     // ['@nuxtjs/google-adsense', { id: 'ca-pub-4511811306180988' }],
-    ['@nuxtjs/google-gtag'],
+    // ['@nuxtjs/google-gtag'],
     ['nuxt-canonical', { baseUrl: 'https://statistics-hyogo.com' }],
   ],
   sitemap: {
