@@ -1,5 +1,5 @@
-import prefListMaster from '~/data/codes/preflist.json'
-import cityListMaster from '~/data/codes/citylist.json'
+import prefListMaster from '~/assets/json/preflist.json'
+import cityListMaster from '~/assets/json/citylist.json'
 import { Pref, City, GovType } from '~/types/resas'
 
 export const convertCodeToGovType = (code: string): GovType => {

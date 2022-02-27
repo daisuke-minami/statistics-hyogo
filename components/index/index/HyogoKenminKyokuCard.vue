@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import KenminKyoku from '@/data/index/kenminkyoku.json'
+import KenminKyoku from '@/assets/json/kenminkyoku.json'
 import 'leaflet/dist/leaflet.css'
 
 export default {
