@@ -1,8 +1,0 @@
-[[redirects]]
-  from = "/json/*"
-  to = "https://api.e-stat.go.jp/rest/2.1/app/json/:splat"
-  status = 200
-  force = true
-  headers = {X-From = "Netlify"}
-[build.environment]
-  NODE_OPTIONS = "--max_old_space_size=8192"

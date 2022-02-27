@@ -5,7 +5,7 @@
   "author": "DAISUKE MINAMI",
   "private": true,
   "engines": {
-    "node": ">=10.19.0"
+    "node": "14.x.x"
   },
   "scripts": {
     "dev": "cross-env NODE_ENV=development GENERATE_ENV=development nuxt-ts",
