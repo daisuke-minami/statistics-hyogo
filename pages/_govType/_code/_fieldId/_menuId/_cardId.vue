@@ -24,7 +24,6 @@ export default defineComponent({
     const { govType, code, fieldId, menuId, cardId } = route.value.params
     const params = route.value.params
 
-    // console.log({params})
     // globalState
     const { setState } = inject(StateKey) as GlobalState
     setState(params)
@@ -37,8 +36,6 @@ export default defineComponent({
         return `lazy-${cardId}-city`
       }
     })
-
-    // console.log({cardId})
 
     // メタ
     const url = 'https://statistics-hyogo.com'
@@ -87,9 +84,7 @@ export default defineComponent({
     title.value = ogpTitle.value
     meta.value = mInfo
 
-    // console.log({ title, meta })
     return {
-      // fieldId,
       cardComponent,
     }
   },
