@@ -229,14 +229,14 @@ const config: NuxtConfig = {
     start_url: '/',
     splash_pages: null,
   },
-  generate: {
-    interval: 50,
-    crawler: false,
-    concurrency: 10,
-    routes() {
-      return routes
-    },
-  },
+  // generate: {
+  //   interval: 50,
+  //   crawler: false,
+  //   concurrency: 10,
+  //   routes() {
+  //     return routes
+  //   },
+  // },
   // /*
   // ** hot read configuration for docker
   // */

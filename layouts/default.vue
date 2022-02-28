@@ -1,11 +1,11 @@
 <template>
   <v-app class="app">
-    <v-overlay :value="loading" color="#F8F9FA" opacity="1" z-index="9999">
+    <!-- <v-overlay :value="loading" color="#F8F9FA" opacity="1" z-index="9999">
       <div class="loader">
         <img src="/logo.svg" alt="兵庫県" />
         <scale-loader color="#01A0C7" />
       </div>
-    </v-overlay>
+    </v-overlay> -->
     <div v-if="hasNavigation" class="appContainer">
       <div class="naviContainer">
         <side-navigation

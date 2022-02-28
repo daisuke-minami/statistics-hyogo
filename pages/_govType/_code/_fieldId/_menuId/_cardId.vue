@@ -42,6 +42,7 @@ export default defineComponent({
     const ogpImage = computed(() => {
       return `${url}/ogp/_${govType}_${code}_${fieldId}_${menuId}_${cardId}_.png`
     })
+    console.log(ogpImage)
     const { getCardTitle } = useContents()
     const ogpTitle = computed(() => {
       return `${getCardTitle.value(cardId)} | 統計で見る兵庫県のすがた`

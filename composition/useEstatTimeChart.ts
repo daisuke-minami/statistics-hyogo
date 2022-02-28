@@ -11,8 +11,6 @@ export const useEstatTimeChart = (
   estatState: EstatState,
   estatResponse: Ref<EstatResponse>
 ) => {
-  // console.log(estatResponse.value)
-
   // title
   const { getTitle } = inject(StateKey) as GlobalState
   const title = computed(() => {
