@@ -3,8 +3,8 @@ import time
 import json
 from selenium import webdriver
 
-if not os.path.exists("ogp"):
-    os.mkdir("ogp")
+if not os.path.exists("static/ogp"):
+    os.mkdir("static/ogp")
 
 f = open('assets/json/ogpSettings.json', 'r')
 card_data = json.load(f)
@@ -28,5 +28,5 @@ for value in card_data:
 
     time.sleep(20)
     driver.save_screenshot(
-        "ogp/{}.png".format(path)
+        "static/ogp/{}.png".format(path)
     )
