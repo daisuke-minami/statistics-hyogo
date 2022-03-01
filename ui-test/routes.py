@@ -12,6 +12,10 @@ ssl._create_default_https_context = ssl._create_unverified_context
 # ルートディレクトリの設定(dataディレクトリ )
 root_dir = pathlib.Path(__file__).parent.parent
 
+# routesディレクトリ作成
+if not os.path.exists("assets/routes"):
+    os.mkdir("assets/routes")
+
 # 環境変数から都道府県コードを取得
 # load_dotenv()
 # PREF_CODE = os.getenv('PREF_CODE')
@@ -29,11 +33,11 @@ c = os.path.join(root_dir, 'assets/json/citylist.json')
 with open(c) as j:
     cityList = json.load(j)
     cityCodes = [d.get('cityCode')
-                for d in cityList['result']]
+                 for d in cityList['result']]
     #  for d in cityList['result'] if d['prefCode'] == int(PREF_CODE)]
 
-# #routesを格納するリストの定義
-routes = []
+# routesを格納するリストの定義
+# routes = []
 
 # 統計分野を取得
 c = os.path.join(root_dir, 'assets/json/contentsSetting.json')
@@ -42,6 +46,9 @@ with open(c) as j:
     fieldList = [d.get('fieldId') for d in contents]
 
     for field in fieldList:
+        # routesを格納するリストの定義
+        routes = []
+
         menuList = [d.get('menu')
                     for d in contents if d['fieldId'] == field]
 
@@ -51,10 +58,10 @@ with open(c) as j:
 
             for prefCode in prefCodes:
                 routes.append('/prefecture/' + prefCode + '/' +
-                          field + '/' + menu['menuId'] + '/')
+                              field + '/' + menu['menuId'] + '/')
                 for cardId in cardList:
                     routes.append('/prefecture/' + prefCode + '/' +
-                              field + '/' + menu['menuId'] + '/' + cardId + '/')
+                                  field + '/' + menu['menuId'] + '/' + cardId + '/')
 
         # 市区町村
         for menu in menuList[0]['city']:
@@ -67,8 +74,7 @@ with open(c) as j:
                 for cardId in cardList:
                     routes.append('/city/' + cityCode + '/' +
                                   field + '/' + menu['menuId'] + '/' + cardId + '/')
-
-
-output = os.path.join(root_dir, 'assets/json/routes.json')
-with open(output, 'w') as f:
-    json.dump(routes, f)
+        
+        output = os.path.join(root_dir, 'assets/routes/'+ field + '_routes.json')
+        with open(output, 'w') as f:
+            json.dump(routes, f)
